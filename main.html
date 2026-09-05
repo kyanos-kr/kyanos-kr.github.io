@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>키아노스 주권령 | The Sovereign Realm of Kyanos</title>
+  <meta name="description" content="블루로즈 판타지아 이상국가: 키아노스 주권령 공식 포털 인트로">
+  
+  <!-- Google Fonts: Cinzel & Noto Serif KR / Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Montserrat:wght@300;400;600;700&family=Noto+Serif+KR:wght@300;500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #030814;
+      --bg-deep-blue: #06152d;
+      --cyan-glow: #00d2ff;
+      --sapphire: #0a4b8c;
+      --gold: #d4af37;
+      --gold-light: #fbeea4;
+      --gold-dark: #aa8214;
+      --text-main: #f0f6fc;
+      --text-sub: #a5b4cb;
+      --glass-bg: rgba(6, 21, 45, 0.65);
+      --glass-border: rgba(212, 175, 55, 0.28);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Montserrat', 'Noto Serif KR', serif, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient Background Canvas */
+    #particle-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Cinematic Radial Glow */
+    .cosmic-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 30%, rgba(10, 75, 140, 0.25) 0%, rgba(3, 8, 20, 0.95) 85%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Top Navigation Bar */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      background: linear-gradient(180deg, rgba(3,8,20,0.85) 0%, rgba(3,8,20,0) 100%);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.12);
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-symbol {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold);
+      box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+      background: radial-gradient(circle, #00d2ff 0%, #06152d 70%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: #fff;
+    }
+
+    .brand-text h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.25rem;
+      letter-spacing: 0.18em;
+      color: #fff;
+      text-transform: uppercase;
+      font-weight: 700;
+      background: linear-gradient(90deg, #fff 20%, var(--gold-light) 60%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-text span {
+      display: block;
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      color: var(--text-sub);
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-sub);
+      text-decoration: none;
+      font-size: 0.88rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--gold-light);
+      text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0%;
+      height: 1.5px;
+      background: var(--gold);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Main Container */
+    main {
+      position: relative;
+      z-index: 10;
+      padding-top: 110px;
+      padding-bottom: 60px;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      text-align: center;
+      margin-top: 2.5rem;
+      margin-bottom: 3.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .national-emblem-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 20px;
+      border-radius: 40px;
+      background: rgba(10, 75, 140, 0.25);
+      border: 1px solid rgba(0, 210, 255, 0.35);
+      box-shadow: 0 0 20px rgba(0, 210, 255, 0.15);
+      margin-bottom: 1.8rem;
+      animation: pulseGlow 4s infinite alternate ease-in-out;
+    }
+
+    .national-emblem-badge span {
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--cyan-glow);
+      font-weight: 600;
+    }
+
+    .hero-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 35%, var(--gold-light) 75%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+    }
+
+    .hero-subtitle {
+      font-family: 'Noto Serif KR', serif;
+      font-size: clamp(1.1rem, 2vw, 1.45rem);
+      color: var(--gold-light);
+      letter-spacing: 0.15em;
+      font-weight: 500;
+      margin-bottom: 1.2rem;
+      text-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
+    }
+
+    .hero-motto-box {
+      max-width: 740px;
+      padding: 1.2rem 2.2rem;
+      margin-top: 0.5rem;
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+      position: relative;
+    }
+
+    .hero-motto-box::before {
+      content: '“';
+      position: absolute;
+      top: -10px;
+      left: 15px;
+      font-size: 2.5rem;
+      color: var(--gold);
+      opacity: 0.4;
+      font-family: 'Cinzel', serif;
+    }
+
+    .hero-motto-box p {
+      font-size: 0.98rem;
+      color: var(--text-sub);
+      line-height: 1.7;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-motto-box strong {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    /* Founder & Technology Credit */
+    .founders-strip {
+      display: flex;
+      gap: 24px;
+      margin-top: 2rem;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      color: var(--text-sub);
+      background: rgba(3, 8, 20, 0.6);
+      padding: 8px 24px;
+      border-radius: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .founders-strip span b {
+      color: var(--gold-light);
+    }
+
+    /* Action Buttons */
+    .cta-group {
+      display: flex;
+      gap: 1.2rem;
+      margin-top: 2.4rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 1rem 2.4rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+      color: #030814;
+      border: 1px solid var(--gold-light);
+      box-shadow: 0 4px 20px rgba(212, 175, 55, 0.35);
+      font-weight: 700;
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(212, 175, 55, 0.6);
+      background: linear-gradient(135deg, #fbeea4 0%, var(--gold) 100%);
+    }
+
+    .btn-glass {
+      background: rgba(6, 21, 45, 0.7);
+      color: #fff;
+      border: 1px solid rgba(0, 210, 255, 0.4);
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-glass:hover {
+      background: rgba(10, 75, 140, 0.8);
+      border-color: var(--cyan-glow);
+      box-shadow: 0 0 25px rgba(0, 210, 255, 0.4);
+      transform: translateY(-3px);
+    }
+
+    /* Two Main Pillars Section (EVERMORE & NEXFORUM) */
+    .pillars-section {
+      width: 100%;
+      margin-top: 3.5rem;
+    }
+
+    .section-title-wrap {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-tag {
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--cyan-glow);
+    }
+
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      letter-spacing: 0.1em;
+      color: #fff;
+      margin-top: 0.4rem;
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 2rem;
+      width: 100%;
+    }
+
+    .pillar-card {
+      background: var(--glass-bg);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 2.2rem;
+      backdrop-filter: blur(14px);
+      transition: all 0.4s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pillar-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      transition: all 0.4s ease;
+    }
+
+    .pillar-card.evermore::before {
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .pillar-card.nexforum::before {
+      background: linear-gradient(90deg, transparent, var(--cyan-glow), transparent);
+    }
+
+    .pillar-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(212, 175, 55, 0.4);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .pillar-card.nexforum:hover {
+      border-color: rgba(0, 210, 255, 0.4);
+    }
+
+    .pillar-logo-preview {
+      width: 100%;
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.35);
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .pillar-logo-preview img {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
+    }
+
+    .pillar-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 0.8rem;
+    }
+
+    .pillar-badge {
+      font-size: 0.7rem;
+      padding: 3px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .badge-gold {
+      background: rgba(212, 175, 55, 0.2);
+      color: var(--gold-light);
+      border: 1px solid var(--gold);
+    }
+
+    .badge-cyan {
+      background: rgba(0, 210, 255, 0.2);
+      color: var(--cyan-glow);
+      border: 1px solid var(--cyan-glow);
+    }
+
+    .pillar-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .pillar-desc {
+      font-size: 0.92rem;
+      color: var(--text-sub);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .pillar-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 1.8rem;
+      font-size: 0.85rem;
+      color: #cfd9e8;
+    }
+
+    .pillar-features li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pillar-features li::before {
+      content: '✦';
+      color: var(--gold);
+      font-size: 0.75rem;
+    }
+
+    .pillar-card.nexforum .pillar-features li::before {
+      color: var(--cyan-glow);
+    }
+
+    /* Quick Showcase Bar (National Map & Declaration) */
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      margin-top: 3.5rem;
+    }
+
+    .showcase-item {
+      position: relative;
+      height: 220px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      cursor: pointer;
+      background: #000;
+    }
+
+    .showcase-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.7;
+      transition: all 0.5s ease;
+    }
+
+    .showcase-item:hover .showcase-img {
+      opacity: 0.95;
+      transform: scale(1.05);
+    }
+
+    .showcase-content {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(3,8,20,0.1) 0%, rgba(3,8,20,0.88) 85%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.5rem;
+    }
+
+    .showcase-content h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.25rem;
+      letter-spacing: 0.1em;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .showcase-content p {
+      font-size: 0.82rem;
+      color: var(--text-sub);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Modal Overlay */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 6, 15, 0.92);
+      backdrop-filter: blur(16px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-container {
+      background: var(--bg-deep-blue);
+      border: 1px solid var(--gold);
+      box-shadow: 0 0 50px rgba(0, 210, 255, 0.25);
+      border-radius: 14px;
+      max-width: 90vw;
+      max-height: 90vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .modal-header {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(3, 8, 20, 0.6);
+    }
+
+    .modal-header h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.2rem;
+      color: var(--gold-light);
+      letter-spacing: 0.1em;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      color: var(--text-sub);
+      font-size: 1.8rem;
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.2s ease;
+    }
+
+    .modal-close:hover {
+      color: #fff;
+    }
+
+    .modal-body {
+      padding: 1.5rem;
+      overflow-y: auto;
+      text-align: center;
+    }
+
+    .modal-body img {
+      max-width: 100%;
+      max-height: 75vh;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    }
+
+    /* Footer */
+    footer {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(2, 6, 15, 0.95);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-logo {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.2em;
+      color: var(--gold-light);
+    }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: var(--text-sub);
+      line-height: 1.6;
+    }
+
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 15px rgba(0, 210, 255, 0.15); }
+      100% { box-shadow: 0 0 30px rgba(0, 210, 255, 0.4); }
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem 1.5rem;
+      }
+      .nav-links {
+        display: none;
+      }
+      .pillars-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-title {
+        font-size: 2.2rem;
+      }
+      .founders-strip {
+        flex-direction: column;
+        gap: 6px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Interactive Canvas -->
+  <canvas id="particle-canvas"></canvas>
+  <div class="cosmic-overlay"></div>
+
+  <!-- Global Header -->
+  <header>
+    <a href="#" class="brand-logo">
+      <div class="brand-symbol">👑</div>
+      <div class="brand-text">
+        <h1>KYANOS</h1>
+        <span>Sovereign Realm</span>
+      </div>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#intro" class="active">왕국 개요</a></li>
+        <li><a href="#pillars">2대 기둥</a></li>
+        <li><a href="#archives">국가 기록소</a></li>
+        <li><a href="javascript:void(0)" onclick="openModal('declarationModal')">공식 선언문</a></li>
+        <li><a href="javascript:void(0)" onclick="openModal('mapModal')">국토 지도</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main id="intro">
+    
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="national-emblem-badge">
+        <span>🏛️ The Sovereign Realm of Kyanos</span>
+      </div>
+
+      <h1 class="hero-title">키아노스 주권령</h1>
+      <h2 class="hero-subtitle">블루로즈 판타지아 이상국가 · Land of Blue Rose</h2>
+
+      <div class="hero-motto-box">
+        <p>
+          국가 공식 표어: <strong>"조화와 자유 · 지혜와 창조"</strong><br>
+          <em>"기적과 영원의 상징, 심해의 지성과 유토피아적 번영이 만나는 곳"</em>
+        </p>
+      </div>
+
+      <div class="founders-strip">
+        <span>👑 설계자 & 통치자: <b>파이튼 (Python)</b></span>
+        <span>|</span>
+        <span>🌐 동행자 & 기술 총괄: <b>앤트 (Ant)</b></span>
+      </div>
+
+      <div class="cta-group">
+        <a href="#pillars" class="btn btn-gold">
+          <span>왕국 2대 기둥 탐방</span>
+          <span>→</span>
+        </a>
+        <button class="btn btn-glass" onclick="openModal('mapModal')">
+          <span>🗺️ 공식 영토 지도</span>
+        </button>
+        <button class="btn btn-glass" onclick="openModal('declarationModal')">
+          <span>📜 건국 선언문 열람</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Two Pillars Section -->
+    <section id="pillars" class="pillars-section">
+      <div class="section-title-wrap">
+        <span class="section-tag">National Strategic Pillars</span>
+        <h3 class="section-title">키아노스 2대 핵심 기둥</h3>
+      </div>
+
+      <div class="pillars-grid">
+        
+        <!-- Pillar 1: EVERMORE -->
+        <div class="pillar-card evermore">
+          <div>
+            <div class="pillar-logo-preview">
+              <img src="assets/brands/EVERMOR.png" alt="EVERMORE Brand Logo" onerror="this.src='banners/kyanos_banner_540x160.png'">
+            </div>
+            <div class="pillar-header">
+              <span class="pillar-badge badge-gold">The Luxury Pillar</span>
+              <h4 class="pillar-name">EVERMORE</h4>
+            </div>
+            <p class="pillar-desc">
+              영속성(Infinity)과 최고급 품격, 클래식 럭셔리 헤리티지. 
+              키아노스의 고귀한 가치를 수호하며 글로벌 라이선싱과 VIP 멤버십을 총괄합니다.
+            </p>
+            <ul class="pillar-features">
+              <li>글로벌 럭셔리 라이선싱 & 품질 인증 마크 (Seal of Excellence)</li>
+              <li>키아노스 최상위 VIP 멤버십 (The Sovereign Club)</li>
+              <li>명품·예술품·하이엔드 자산 가치 보증 엔진</li>
+            </ul>
+          </div>
+          <button class="btn btn-gold" style="width: 100%; justify-content: center; font-size: 0.85rem;" onclick="alert('👑 EVERMORE 프라이빗 클럽 라운지는 준비 중입니다.')">
+            EVERMORE 세계관 확인
+          </button>
+        </div>
+
+        <!-- Pillar 2: NEXFORUM -->
+        <div class="pillar-card nexforum">
+          <div>
+            <div class="pillar-logo-preview">
+              <img src="assets/brands/NEXFORUM.png" alt="NEXFORUM Brand Logo" onerror="this.src='banners/kyanos_banner_540x160.png'">
+            </div>
+            <div class="pillar-header">
+              <span class="pillar-badge badge-cyan">Future Tech Pillar</span>
+              <h4 class="pillar-name">NEXFORUM</h4>
+            </div>
+            <p class="pillar-desc">
+              <strong>CONNECT · INSPIRE · INNOVATE</strong><br>
+              첨단 미래 도시, 차세대 테크놀로지, 글로벌 지식 네트워크. 세계를 이끄는 테크 & 서밋 허브입니다.
+            </p>
+            <ul class="pillar-features">
+              <li>글로벌 포럼 & 서밋 프랜차이즈 (WEF / TED형 모델)</li>
+              <li>차세대 혁신 기술 인증 (Certified by NEXFORUM)</li>
+              <li>글로벌 지식 플랫폼 B2B SaaS 및 인텔리전스 인프라</li>
+            </ul>
+          </div>
+          <button class="btn btn-glass" style="width: 100%; justify-content: center; font-size: 0.85rem;" onclick="alert('🌐 NEXFORUM 글로벌 서밋 플랫폼은 준비 중입니다.')">
+            NEXFORUM 포럼 확인
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- National Archives Showcase -->
+    <section id="archives" style="width: 100%; margin-top: 4.5rem;">
+      <div class="section-title-wrap">
+        <span class="section-tag">Official National Archives</span>
+        <h3 class="section-title">국가 공식 아카이브</h3>
+      </div>
+
+      <div class="showcase-grid">
+        <div class="showcase-item" onclick="openModal('declarationModal')">
+          <img src="KYANOS_Declaration_Framed.png" alt="키아노스 선언문" class="showcase-img">
+          <div class="showcase-content">
+            <h4>📜 건국 공식 선언문</h4>
+            <p>파이튼 통치자의 영구 비전 및 헌장 <span>↗</span></p>
+          </div>
+        </div>
+
+        <div class="showcase-item" onclick="openModal('mapModal')">
+          <img src="maps/kyanos_national_map_kr.png" alt="키아노스 지도" class="showcase-img">
+          <div class="showcase-content">
+            <h4>🗺️ 전 영토 마스터플랜</h4>
+            <p>12대 핵심 권역 및 유토피아 영토 지도 <span>↗</span></p>
+          </div>
+        </div>
+
+        <div class="showcase-item" onclick="openModal('posterModal')">
+          <img src="posters/kyanos_official_poster_hybrid.png" alt="공식 포스터" class="showcase-img">
+          <div class="showcase-content">
+            <h4>🎨 공식 건국 포스터</h4>
+            <p>키아노스 주권령 공식 브랜딩 아트워크 <span>↗</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Modals -->
+  <div id="declarationModal" class="modal-overlay" onclick="closeModalOnBackdrop(event, 'declarationModal')">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3>📜 키아노스 주권령 공식 건국 선언문</h3>
+        <button class="modal-close" onclick="closeModal('declarationModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <img src="KYANOS_Declaration_Framed.png" alt="키아노스 선언문 원본 액자">
+      </div>
+    </div>
+  </div>
+
+  <div id="mapModal" class="modal-overlay" onclick="closeModalOnBackdrop(event, 'mapModal')">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3>🗺️ 키아노스 주권령 전 영토 지도 (Official Map)</h3>
+        <button class="modal-close" onclick="closeModal('mapModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <img src="maps/kyanos_national_map_kr.png" alt="키아노스 영토 지도">
+      </div>
+    </div>
+  </div>
+
+  <div id="posterModal" class="modal-overlay" onclick="closeModalOnBackdrop(event, 'posterModal')">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3>🎨 키아노스 주권령 공식 건국 포스터</h3>
+        <button class="modal-close" onclick="closeModal('posterModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <img src="posters/kyanos_official_poster_hybrid.png" alt="키아노스 공식 포스터">
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">THE SOVEREIGN REALM OF KYANOS</div>
+      <p class="footer-copy">
+        Founding Sovereign: <strong>Python (파이튼)</strong> &nbsp;|&nbsp; Chief Technology Partner: <strong>Ant (앤트)</strong><br>
+        © 2026 The Sovereign Realm of Kyanos. All Rights Reserved. Powered by EVERMORE & NEXFORUM.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Canvas Particle & Modal Logic -->
+  <script>
+    // Particle Ambient Background
+    const canvas = document.getElementById('particle-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    class Particle {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 0.5;
+        this.speedX = (Math.random() - 0.5) * 0.4;
+        this.speedY = (Math.random() - 0.5) * 0.4;
+        this.color = Math.random() > 0.4 ? 'rgba(0, 210, 255,' : 'rgba(212, 175, 55,';
+        this.alpha = Math.random() * 0.6 + 0.2;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+          this.reset();
+        }
+      }
+      draw() {
+        ctx.fillStyle = this.color + this.alpha + ')';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function initParticles() {
+      particles = [];
+      const count = Math.min(window.innerWidth / 12, 90);
+      for (let i = 0; i < count; i++) {
+        particles.push(new Particle());
+      }
+    }
+    initParticles();
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    // Modal Controls
+    function openModal(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.style.display = 'flex';
+        setTimeout(() => el.classList.add('active'), 10);
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeModal(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.classList.remove('active');
+        setTimeout(() => {
+          el.style.display = 'none';
+          document.body.style.overflow = 'auto';
+        }, 300);
+      }
+    }
+
+    function closeModalOnBackdrop(e, id) {
+      if (e.target.classList.contains('modal-overlay')) {
+        closeModal(id);
+      }
+    }
+
+    // Escape key modal close
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-overlay.active').forEach(modal => {
+          closeModal(modal.id);
+        });
+      }
+    });
+  </script>
+</body>
+</html>

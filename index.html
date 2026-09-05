@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>키아노스 주권령 | The Sovereign Realm of Kyanos</title>
+  <meta name="description" content="키아노스 주권령 공식 인트로 포털">
+
+  <!-- Google Fonts: Cinzel & Montserrat & Noto Sans KR -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Montserrat:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@500;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-color: #030814;
+      --gold-bright: #ffe066;
+      --gold: #d4af37;
+      --gold-light: #fbeea4;
+      --gold-dark: #8c6d1f;
+      --text-sub: #94a3b8;
+      --cyan-glow: rgba(0, 210, 255, 0.35);
+      --glass-card: rgba(8, 22, 48, 0.55);
+      --glass-border: rgba(212, 175, 55, 0.22);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+      font-family: 'Montserrat', 'Noto Serif KR', sans-serif;
+      position: relative;
+      user-select: none;
+      padding: 2rem 1rem;
+    }
+
+    /* Ambient Background Glow */
+    .background-glow {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 750px;
+      height: 750px;
+      background: radial-gradient(circle, rgba(12, 60, 120, 0.28) 0%, rgba(3, 8, 20, 0) 72%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Top Left National Symbol & Realm Name */
+    .top-brand-emblem {
+      position: fixed;
+      top: 1.6rem;
+      left: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      z-index: 50;
+      background: rgba(3, 8, 20, 0.6);
+      padding: 8px 18px;
+      border-radius: 40px;
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      transition: all 0.3s ease;
+    }
+
+    .top-brand-emblem:hover {
+      border-color: var(--gold);
+      box-shadow: 0 0 22px rgba(212, 175, 55, 0.35);
+      transform: translateY(-2px);
+    }
+
+    .emblem-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold);
+      box-shadow: 0 0 12px rgba(0, 210, 255, 0.5);
+      background: radial-gradient(circle, #00d2ff 0%, #06152d 75%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
+      color: #fff;
+    }
+
+    .emblem-text-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .emblem-main {
+      font-family: 'Cinzel', serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      color: #fff;
+      background: linear-gradient(90deg, #ffffff 10%, var(--gold-light) 60%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.15;
+    }
+
+    .emblem-sub {
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      color: var(--text-sub);
+      text-transform: uppercase;
+      margin-top: 1px;
+    }
+
+    /* Central Intro Main Container */
+    .intro-main-container {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 680px;
+      margin: auto 0;
+      opacity: 0;
+      animation: introFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Golden Title Above Flag */
+    .realm-title-area {
+      text-align: center;
+      margin-bottom: 1.4rem;
+    }
+
+    .realm-badge-top {
+      font-size: 0.72rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold-bright);
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      display: inline-block;
+      text-shadow: 0 0 10px rgba(255, 224, 102, 0.4);
+    }
+
+    .realm-gold-title {
+      font-family: 'Cinzel', 'Noto Serif KR', serif;
+      font-size: clamp(2.1rem, 4.5vw, 3.2rem);
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      line-height: 1.2;
+      background: linear-gradient(135deg, #ffffff 0%, var(--gold-light) 30%, var(--gold) 70%, var(--gold-dark) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 4px 15px rgba(212, 175, 55, 0.45));
+    }
+
+    .realm-kr-sub {
+      font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+      font-size: clamp(1.4rem, 2.8vw, 1.95rem);
+      font-weight: 800;
+      letter-spacing: 0.38em;
+      text-indent: 0.38em;
+      margin-top: 0.45rem;
+      background: linear-gradient(135deg, #ffffff 0%, var(--gold-light) 40%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 12px rgba(212, 175, 55, 0.45));
+      display: inline-block;
+    }
+
+    /* National Flag Wrapper */
+    .flag-card-wrap {
+      max-width: 440px;
+      width: 82vw;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.85), 0 0 35px var(--cyan-glow), 0 0 25px rgba(212, 175, 55, 0.2);
+      border: 2px solid rgba(212, 175, 55, 0.4);
+      background: #000;
+      transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+    }
+
+    .flag-card-wrap:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 20px 55px rgba(0, 0, 0, 0.95), 0 0 50px rgba(0, 210, 255, 0.5), 0 0 35px rgba(212, 175, 55, 0.5);
+      border-color: var(--gold-bright);
+    }
+
+    .flag-card-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    /* SKIP Button Area */
+    .skip-section {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .skip-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 11px 32px;
+      border-radius: 30px;
+      border: 1.5px solid var(--gold);
+      background: linear-gradient(135deg, rgba(8, 28, 60, 0.85) 0%, rgba(3, 10, 25, 0.95) 100%);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.6), 0 0 18px rgba(212, 175, 55, 0.3);
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      cursor: pointer;
+    }
+
+    .skip-btn:hover {
+      color: #030814;
+      background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold) 100%);
+      box-shadow: 0 8px 30px rgba(212, 175, 55, 0.6), 0 0 25px rgba(255, 224, 102, 0.5);
+      transform: translateY(-3px) scale(1.03);
+      border-color: #fff;
+    }
+
+    .skip-btn .arrow-icon {
+      font-size: 1rem;
+      transition: transform 0.3s ease;
+      letter-spacing: 0;
+    }
+
+    .skip-btn:hover .arrow-icon {
+      transform: translateX(5px);
+    }
+
+    /* Brand Promotion Showcase Below SKIP */
+    .brand-promo-container {
+      margin-top: 2.2rem;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .promo-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 80%;
+      max-width: 380px;
+      margin-bottom: 1.2rem;
+    }
+
+    .promo-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+    }
+
+    .promo-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.24em;
+      color: var(--text-sub);
+      text-transform: uppercase;
+      white-space: nowrap;
+      font-weight: 600;
+    }
+
+    .brand-cards-row {
+      display: flex;
+      gap: 1.2rem;
+      justify-content: center;
+      width: 100%;
+      max-width: 520px;
+      flex-wrap: wrap;
+    }
+
+    .brand-mini-card {
+      flex: 1;
+      min-width: 210px;
+      background: var(--glass-card);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 0.85rem 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      backdrop-filter: blur(10px);
+      text-decoration: none;
+      transition: all 0.35s ease;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .brand-mini-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .brand-mini-card.evermore::before {
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .brand-mini-card.nexforum::before {
+      background: linear-gradient(90deg, transparent, #00d2ff, transparent);
+    }
+
+    .brand-mini-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(212, 175, 55, 0.45);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6);
+      background: rgba(12, 32, 68, 0.7);
+    }
+
+    .brand-mini-card.nexforum:hover {
+      border-color: rgba(0, 210, 255, 0.45);
+    }
+
+    .brand-logo-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px;
+      flex-shrink: 0;
+    }
+
+    .brand-logo-circle img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .brand-info {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .brand-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.98rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .brand-tag {
+      font-size: 0.65rem;
+      color: var(--gold-light);
+      letter-spacing: 0.1em;
+      font-weight: 500;
+      margin-top: 1px;
+    }
+
+    .brand-mini-card.nexforum .brand-tag {
+      color: #00d2ff;
+    }
+
+    /* Fade Transition */
+    @keyframes introFadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(14px) scale(0.98);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .fade-out {
+      animation: introFadeOut 0.45s ease-in forwards !important;
+    }
+
+    @keyframes introFadeOut {
+      0% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-12px);
+      }
+    }
+
+    /* Mobile Responsive Adjustments */
+    @media (max-width: 768px) {
+      .top-brand-emblem {
+        top: 1rem;
+        left: 1rem;
+        padding: 6px 14px;
+      }
+      .emblem-main {
+        font-size: 0.9rem;
+      }
+      .emblem-sub {
+        font-size: 0.55rem;
+      }
+      .intro-main-container {
+        margin-top: 5rem;
+      }
+      .brand-cards-row {
+        flex-direction: column;
+        width: 82vw;
+      }
+      .realm-gold-title {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="background-glow"></div>
+
+  <!-- Top-Left Official National Emblem & Realm Title -->
+  <a href="main.html" class="top-brand-emblem" id="topEmblem" title="키아노스 메인 포털로 이동">
+    <div class="emblem-icon">👑</div>
+    <div class="emblem-text-group">
+      <span class="emblem-main">KYANOS</span>
+      <span class="emblem-sub">The Sovereign Realm</span>
+    </div>
+  </a>
+
+  <!-- Central Content -->
+  <main class="intro-main-container" id="introContainer">
+
+    <!-- Golden Name Above Flag -->
+    <div class="realm-title-area">
+      <div class="realm-badge-top">THE SOVEREIGN REALM OF</div>
+      <h1 class="realm-gold-title">KYANOS</h1>
+      <p class="realm-kr-sub">키아노스</p>
+    </div>
+
+    <!-- National Flag -->
+    <a href="main.html" class="flag-card-wrap" id="flagLink" title="클릭하여 키아노스 왕국으로 진입">
+      <img src="assets/Kyanos flag.png" alt="키아노스 주권령 국기 (National Flag of Kyanos)" class="flag-card-img">
+    </a>
+
+    <!-- SKIP Button -->
+    <div class="skip-section">
+      <a href="main.html" class="skip-btn" id="skipBtn" title="메인 페이지로 진입">
+        <span>SKIP</span>
+        <span class="arrow-icon">&rarr;</span>
+      </a>
+    </div>
+
+    <!-- Brand Promotion Showcase Below SKIP -->
+    <section class="brand-promo-container">
+      <div class="promo-divider">
+        <div class="promo-line"></div>
+        <span class="promo-label">National Core Brands</span>
+        <div class="promo-line"></div>
+      </div>
+
+      <div class="brand-cards-row">
+        <!-- Brand 1: EVERMORE -->
+        <a href="main.html#pillars" class="brand-mini-card evermore" title="EVERMORE - 키아노스 공식 럭셔리 & 헤리티지 브랜드">
+          <div class="brand-logo-circle">
+            <img src="assets/brands/EVERMOR.png" alt="EVERMORE Logo" onerror="this.src='banners/kyanos 270x80.png'">
+          </div>
+          <div class="brand-info">
+            <span class="brand-title">EVERMORE</span>
+            <span class="brand-tag">👑 The Luxury Pillar</span>
+          </div>
+        </a>
+
+        <!-- Brand 2: NEXFORUM -->
+        <a href="main.html#pillars" class="brand-mini-card nexforum" title="NEXFORUM - 키아노스 첨단 테크 & 미래 포럼 브랜드">
+          <div class="brand-logo-circle">
+            <img src="assets/brands/NEXFORUM.png" alt="NEXFORUM Logo" onerror="this.src='banners/kyanos 270x80.png'">
+          </div>
+          <div class="brand-info">
+            <span class="brand-title">NEXFORUM</span>
+            <span class="brand-tag">🌐 Future Tech Pillar</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // Smooth Page Transition
+    function handleNavigation(e) {
+      e.preventDefault();
+      const targetHref = this.getAttribute('href') || 'main.html';
+      const container = document.getElementById('introContainer');
+      container.classList.add('fade-out');
+      setTimeout(() => {
+        window.location.href = targetHref;
+      }, 400);
+    }
+
+    document.getElementById('skipBtn').addEventListener('click', handleNavigation);
+    document.getElementById('flagLink').addEventListener('click', handleNavigation);
+    document.getElementById('topEmblem').addEventListener('click', handleNavigation);
+    
+    document.querySelectorAll('.brand-mini-card').forEach(card => {
+      card.addEventListener('click', handleNavigation);
+    });
+
+    // Keyboard Shortcut (Enter / Space / Right Arrow)
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowRight') {
+        const skipBtn = document.getElementById('skipBtn');
+        if (skipBtn) skipBtn.click();
+      }
+    });
+  </script>
+</body>
+</html>

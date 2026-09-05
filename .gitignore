@@ -1,0 +1,12 @@
+﻿# Scripts & Temporary Files
+*.ps1
+inspect_site.py
+categories_extracted.txt
+
+# IDE & Config
+.vscode/
+.agents/
+
+# System
+Thumbs.db
+.DS_Store
