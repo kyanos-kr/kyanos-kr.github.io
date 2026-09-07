@@ -1,4 +1,4 @@
-﻿# 🌹 Land of Blue Rose (블루로즈 판타지아 이상국가: 키아노스 주권령)
+# 🌹 Land of Blue Rose (블루로즈 판타지아 이상국가: 키아노스 주권령)
 
 > **"기적과 영원의 상징, 에버모어(EVERMORE)와 넥스포럼(NEXFORUM)의 이름으로 세워지는 신세계"**
 
@@ -18,9 +18,11 @@
 
 ## 📜 2. 키아노스 공식 선언문 및 표어 액자
 
+- **공식 건국 선언문 원본**: [`docs/키아노스선언문.png`](file:///d:/안티그래비티파이튼/docs/키아노스선언문.png)
 - **공식 선언문 액자 이미지**: [`assets/declaration/KYANOS_Declaration_Framed.png`](file:///d:/안티그래비티파이튼/assets/declaration/KYANOS_Declaration_Framed.png)
-- **공식 표어 아트워크 이미지**: [`assets/declaration/KYANOS_Motto_Artwork.jpg`](file:///d:/안티그래비티파이튼/assets/declaration/KYANOS_Motto_Artwork.jpg)
 - **선언문 전문 문서**: [`assets/declaration/KYANOS_Declaration_Document.md`](file:///d:/안티그래비티파이튼/assets/declaration/KYANOS_Declaration_Document.md)
+- **선언문 원문 문서(HWPX)**: [`docs/키아노스 선언문.hwpx`](file:///d:/안티그래비티파이튼/docs/키아노스%20선언문.hwpx)
+- **공식 표어 아트워크 이미지**: [`docs/키아노스표어.png`](file:///d:/안티그래비티파이튼/docs/키아노스표어.png)
 
 ---
 

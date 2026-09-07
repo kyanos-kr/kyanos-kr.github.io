@@ -675,6 +675,316 @@
       100% { box-shadow: 0 0 30px rgba(0, 210, 255, 0.4); }
     }
 
+    /* ==============================
+       ANTNEWS MEDIA SECTION STYLES
+       ============================== */
+    :root {
+      --media-red: #e8223a;
+      --media-red-dark: #9e0a1e;
+      --media-red-glow: rgba(232, 34, 58, 0.35);
+      --media-card-bg: rgba(8, 4, 20, 0.75);
+    }
+
+    .media-section {
+      width: 100%;
+      margin-top: 5rem;
+      padding: 3.5rem 0;
+      position: relative;
+    }
+
+    .media-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--media-red), transparent);
+    }
+
+    /* Media Hero Banner */
+    .media-hero {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #08040e 0%, #180a18 40%, #0a0820 100%);
+      border: 1px solid rgba(232, 34, 58, 0.3);
+      padding: 3rem 3.5rem;
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      box-shadow: 0 0 60px rgba(232, 34, 58, 0.12), inset 0 0 80px rgba(0,0,0,0.5);
+    }
+
+    .media-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--media-red), var(--gold), transparent);
+    }
+
+    .media-hero-emblem {
+      flex-shrink: 0;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 2px solid var(--media-red);
+      box-shadow: 0 0 30px var(--media-red-glow), 0 0 60px rgba(232,34,58,0.1);
+      background: radial-gradient(circle, #3a0a14 0%, #08040e 70%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.2rem;
+      position: relative;
+    }
+
+    .media-hero-emblem::after {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 1px solid rgba(232, 34, 58, 0.25);
+      animation: mediaRingPulse 3s infinite ease-in-out;
+    }
+
+    @keyframes mediaRingPulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.08); opacity: 1; }
+    }
+
+    .media-hero-content {
+      flex: 1;
+    }
+
+    .media-live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 4px 14px;
+      background: var(--media-red);
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+
+    .media-live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #fff;
+      animation: liveBlink 1.2s infinite;
+    }
+
+    @keyframes liveBlink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.2; }
+    }
+
+    .media-kyanos-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+    }
+
+    .media-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #fff 0%, #ffd0d8 50%, var(--media-red) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.6rem;
+    }
+
+    .media-sub {
+      font-size: 0.9rem;
+      color: var(--text-sub);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .media-sub strong {
+      color: var(--gold-light);
+    }
+
+    .media-official-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      border-radius: 6px;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      color: var(--gold-light);
+      background: rgba(212, 175, 55, 0.08);
+      margin-bottom: 1.5rem;
+    }
+
+    .media-cta-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-media {
+      background: linear-gradient(135deg, var(--media-red) 0%, var(--media-red-dark) 100%);
+      color: #fff;
+      border: 1px solid rgba(232, 34, 58, 0.6);
+      box-shadow: 0 4px 20px var(--media-red-glow);
+      font-weight: 700;
+    }
+
+    .btn-media:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(232, 34, 58, 0.55);
+      background: linear-gradient(135deg, #ff3d57 0%, var(--media-red) 100%);
+    }
+
+    /* Media Stats Row */
+    .media-stats {
+      display: flex;
+      gap: 2rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .media-stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .media-stat-value {
+      font-family: 'Cinzel', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .media-stat-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-sub);
+    }
+
+    /* Channel Cards */
+    .media-channels-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .media-channel-card {
+      background: var(--media-card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 14px;
+      padding: 1.8rem;
+      backdrop-filter: blur(14px);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .media-channel-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--media-red), transparent);
+    }
+
+    .media-channel-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(232, 34, 58, 0.4);
+      box-shadow: 0 12px 35px rgba(232, 34, 58, 0.2);
+    }
+
+    .channel-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .channel-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .channel-desc {
+      font-size: 0.82rem;
+      color: var(--text-sub);
+      line-height: 1.6;
+    }
+
+    .channel-badge {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 3px 10px;
+      background: rgba(232, 34, 58, 0.15);
+      border: 1px solid rgba(232, 34, 58, 0.35);
+      border-radius: 20px;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #ff6b7a;
+    }
+
+    /* Broadcast Ticker */
+    .media-ticker-wrap {
+      background: var(--media-red);
+      border-radius: 8px;
+      padding: 10px 20px;
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      overflow: hidden;
+    }
+
+    .ticker-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: #fff;
+      white-space: nowrap;
+      border-right: 1px solid rgba(255,255,255,0.4);
+      padding-right: 16px;
+    }
+
+    .ticker-scroll {
+      overflow: hidden;
+      flex: 1;
+    }
+
+    .ticker-text {
+      font-size: 0.82rem;
+      color: #fff;
+      white-space: nowrap;
+      animation: tickerMove 30s linear infinite;
+    }
+
+    @keyframes tickerMove {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
     /* Mobile Responsive */
     @media (max-width: 768px) {
       header {
@@ -693,6 +1003,18 @@
         flex-direction: column;
         gap: 6px;
         text-align: center;
+      }
+      .media-hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem;
+        gap: 1.5rem;
+      }
+      .media-cta-row {
+        justify-content: center;
+      }
+      .media-stats {
+        justify-content: center;
       }
     }
   </style>
@@ -716,6 +1038,7 @@
       <ul class="nav-links">
         <li><a href="#intro" class="active">왕국 개요</a></li>
         <li><a href="#pillars">2대 기둥</a></li>
+        <li><a href="#media">📰 미디어</a></li>
         <li><a href="#archives">국가 기록소</a></li>
         <li><a href="javascript:void(0)" onclick="openModal('declarationModal')">공식 선언문</a></li>
         <li><a href="javascript:void(0)" onclick="openModal('mapModal')">국토 지도</a></li>
@@ -824,7 +1147,112 @@
       </div>
     </section>
 
-    <!-- National Archives Showcase -->
+    <!-- ============================================
+         ANTNEWS MEDIA SECTION — 키아노스 공식 미디어
+         ============================================ -->
+    <section id="media" class="media-section">
+
+      <div class="section-title-wrap">
+        <span class="section-tag">Kyanos Official State Media</span>
+        <h3 class="section-title">📰 앤트뉴스 — 키아노스 미디어 부문</h3>
+      </div>
+
+      <!-- Media Hero Banner -->
+      <div class="media-hero">
+        <div class="media-hero-emblem">📡</div>
+        <div class="media-hero-content">
+          <div class="media-live-badge">
+            <div class="media-live-dot"></div>
+            On Air
+          </div>
+          <div class="media-kyanos-label">🏛️ The Sovereign Realm of Kyanos · Official State Media</div>
+          <div class="media-title">AntNews</div>
+          <p class="media-sub">
+            <strong>앤트뉴스(AntNews)</strong>는 키아노스 주권령의 공식 미디어 기관입니다.<br>
+            파이튼 통치자의 글로벌 아젠다 세팅과 여론 선도를 위한 고품격 공론장으로,
+            AI 실시간 팩트체크와 심층 분석 뉴스 큐레이션을 제공합니다.
+          </p>
+          <div class="media-official-tag">
+            👑 키아노스 주권령 공식 지정 국가 미디어 · Officially Designated by Sovereign Python
+          </div>
+          <div class="media-cta-row">
+            <a href="http://www.antnews.org" target="_blank" class="btn btn-media">
+              <span>📰 앤트뉴스 바로가기</span>
+              <span>↗</span>
+            </a>
+            <button class="btn btn-glass" onclick="openModal('antNewsModal')">
+              <span>🌐 미디어 소개</span>
+            </button>
+          </div>
+          <div class="media-stats">
+            <div class="media-stat-item">
+              <span class="media-stat-value">14.8M</span>
+              <span class="media-stat-label">독자 잠재 시민</span>
+            </div>
+            <div class="media-stat-item">
+              <span class="media-stat-value">AI</span>
+              <span class="media-stat-label">실시간 팩트체크</span>
+            </div>
+            <div class="media-stat-item">
+              <span class="media-stat-value">24/7</span>
+              <span class="media-stat-label">무중단 방송</span>
+            </div>
+            <div class="media-stat-item">
+              <span class="media-stat-value">GLOBAL</span>
+              <span class="media-stat-label">글로벌 네트워크</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Breaking News Ticker -->
+      <div class="media-ticker-wrap">
+        <span class="ticker-label">📡 KYANOS BREAKING</span>
+        <div class="ticker-scroll">
+          <span class="ticker-text">
+            🔴 키아노스 주권령, 앤트뉴스를 공식 국가 미디어 기관으로 지정 &nbsp;·&nbsp;
+            👑 파이튼 통치자, "앤트뉴스는 키아노스 Phase 2 핵심 미디어 엔진" 선언 &nbsp;·&nbsp;
+            🌐 NEXFORUM × AntNews 글로벌 지식 파트너십 체결 &nbsp;·&nbsp;
+            📰 앤트뉴스 antnews.org — 진실을 향한 개미의 전진, 멈추지 않는 탐사 &nbsp;·&nbsp;
+            🏛️ 키아노스 Kyanos Ascendant AI OS, 앤트뉴스 실시간 연동 개시 &nbsp;·&nbsp;
+          </span>
+        </div>
+      </div>
+
+      <!-- Media Channel Cards -->
+      <div class="media-channels-grid">
+
+        <div class="media-channel-card">
+          <div class="channel-icon">🔍</div>
+          <div class="channel-name">심층 탐사보도</div>
+          <p class="channel-desc">파이튼 통치자의 글로벌 아젠다를 반영한 심층 탐사 보도. 권력의 그늘을 비추는 앤트뉴스의 핵심 채널.</p>
+          <span class="channel-badge">Investigative</span>
+        </div>
+
+        <div class="media-channel-card">
+          <div class="channel-icon">🤖</div>
+          <div class="channel-name">AI 팩트체크 엔진</div>
+          <p class="channel-desc">키아노스 Ascendant AI OS 연동 실시간 팩트체크. 허위정보 차단과 고품격 저널리즘의 새 기준을 제시합니다.</p>
+          <span class="channel-badge">AI-Powered</span>
+        </div>
+
+        <div class="media-channel-card">
+          <div class="channel-icon">🌐</div>
+          <div class="channel-name">글로벌 뉴스 큐레이션</div>
+          <p class="channel-desc">NEXFORUM 글로벌 네트워크와 연계한 세계 주요 사안 큐레이션. 지식 강국 키아노스의 시각으로 세계를 읽습니다.</p>
+          <span class="channel-badge">Global Coverage</span>
+        </div>
+
+        <div class="media-channel-card">
+          <div class="channel-icon">👑</div>
+          <div class="channel-name">키아노스 국정 채널</div>
+          <p class="channel-desc">파이튼 통치자의 왕국 건설 로드맵, 주요 정책 선포, 키아노스 국가 브리핑을 가장 먼저 보도하는 공식 채널.</p>
+          <span class="channel-badge">Official State</span>
+        </div>
+
+      </div>
+
+    </section>
     <section id="archives" style="width: 100%; margin-top: 4.5rem;">
       <div class="section-title-wrap">
         <span class="section-tag">Official National Archives</span>
@@ -833,7 +1261,7 @@
 
       <div class="showcase-grid">
         <div class="showcase-item" onclick="openModal('declarationModal')">
-          <img src="KYANOS_Declaration_Framed.png" alt="키아노스 선언문" class="showcase-img">
+          <img src="docs/키아노스선언문.png" alt="키아노스 주권령 공식 건국 선언문" class="showcase-img">
           <div class="showcase-content">
             <h4>📜 건국 공식 선언문</h4>
             <p>파이튼 통치자의 영구 비전 및 헌장 <span>↗</span></p>
@@ -868,7 +1296,7 @@
         <button class="modal-close" onclick="closeModal('declarationModal')">&times;</button>
       </div>
       <div class="modal-body">
-        <img src="KYANOS_Declaration_Framed.png" alt="키아노스 선언문 원본 액자">
+        <img src="docs/키아노스선언문.png" alt="키아노스 주권령 공식 건국 선언문">
       </div>
     </div>
   </div>
@@ -893,6 +1321,61 @@
       </div>
       <div class="modal-body">
         <img src="posters/kyanos_official_poster_hybrid.png" alt="키아노스 공식 포스터">
+      </div>
+    </div>
+  </div>
+
+  <!-- AntNews Media Modal -->
+  <div id="antNewsModal" class="modal-overlay" onclick="closeModalOnBackdrop(event, 'antNewsModal')">
+    <div class="modal-container" style="max-width: 680px;">
+      <div class="modal-header" style="border-bottom-color: rgba(232,34,58,0.4); background: rgba(8,4,20,0.95);">
+        <h3 style="color: #ff6b7a;">📰 앤트뉴스 — 키아노스 공식 미디어 소개</h3>
+        <button class="modal-close" onclick="closeModal('antNewsModal')">&times;</button>
+      </div>
+      <div class="modal-body" style="text-align: left; padding: 2rem; background: linear-gradient(135deg, #08040e, #180a18);">
+        <div style="display:flex; align-items:center; gap:14px; margin-bottom:1.5rem; padding-bottom:1.5rem; border-bottom: 1px solid rgba(232,34,58,0.25);">
+          <div style="width:64px; height:64px; border-radius:50%; border:2px solid #e8223a; background: radial-gradient(circle, #3a0a14 0%, #08040e 70%); display:flex; align-items:center; justify-content:center; font-size:1.8rem; flex-shrink:0;">📡</div>
+          <div>
+            <div style="font-size:0.7rem; letter-spacing:0.3em; text-transform:uppercase; color:#d4af37; margin-bottom:4px;">Kyanos Official State Media</div>
+            <div style="font-family:'Cinzel',serif; font-size:1.8rem; font-weight:900; letter-spacing:0.08em; color:#fff;">AntNews</div>
+            <div style="font-size:0.75rem; color:#a5b4cb;">www.antnews.org</div>
+          </div>
+        </div>
+
+        <div style="background:rgba(232,34,58,0.1); border:1px solid rgba(232,34,58,0.3); border-radius:10px; padding:1.2rem; margin-bottom:1.5rem;">
+          <p style="font-size:0.85rem; color:#e0e8f0; line-height:1.8;">
+            <strong style="color:#fbeea4;">앤트뉴스(AntNews)</strong>는 키아노스 주권령 파이튼 통치자의 공식 지정을 받은
+            <strong style="color:#ff6b7a;">국가 공식 미디어 기관</strong>입니다.<br><br>
+            글로벌 아젠다 세팅, AI 실시간 팩트체크, 심층 탐사보도를 통해 키아노스의 가치와 비전을 전 세계에 전파하는
+            키아노스 Phase 2 <strong style="color:#fbeea4;">Tri-Engine Matrix</strong>의 핵심 미디어 엔진입니다.
+          </p>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.5rem;">
+          <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:1rem;">
+            <div style="font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:#a5b4cb; margin-bottom:6px;">공식 지정일</div>
+            <div style="font-family:'Cinzel',serif; font-size:1.1rem; color:#fff;">2026. 09. 07</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:1rem;">
+            <div style="font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:#a5b4cb; margin-bottom:6px;">지정 주체</div>
+            <div style="font-family:'Cinzel',serif; font-size:1.1rem; color:#fbeea4;">Sovereign Python</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:1rem;">
+            <div style="font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:#a5b4cb; margin-bottom:6px;">Phase 분류</div>
+            <div style="font-family:'Cinzel',serif; font-size:1.1rem; color:#fff;">Phase 2 · Media Engine</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:1rem;">
+            <div style="font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:#a5b4cb; margin-bottom:6px;">운영 방식</div>
+            <div style="font-family:'Cinzel',serif; font-size:1.1rem; color:#fff;">AI · 24/7 Global</div>
+          </div>
+        </div>
+
+        <a href="http://www.antnews.org" target="_blank" 
+           style="display:flex; align-items:center; justify-content:center; gap:10px; width:100%; padding:1rem; background:linear-gradient(135deg,#e8223a,#9e0a1e); border:1px solid rgba(232,34,58,0.6); border-radius:8px; font-size:0.95rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#fff; text-decoration:none; transition:all 0.3s ease;" 
+           onmouseover="this.style.boxShadow='0 0 30px rgba(232,34,58,0.6)'" 
+           onmouseout="this.style.boxShadow='none'">
+          📰 앤트뉴스 공식 사이트 방문하기 ↗
+        </a>
       </div>
     </div>
   </div>

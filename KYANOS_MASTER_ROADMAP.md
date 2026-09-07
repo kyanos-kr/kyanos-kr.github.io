@@ -36,8 +36,9 @@ graph LR
 
 ### 🔹 Phase 2: The Tri-Engine Matrix (3대 핵심 성장 엔진 구축)
 1. **📰 앤트뉴스 (AntNews)**:
-   - 파이튼 님의 글로벌 여론 주도 및 아젠다 세팅 공론장 미디어 포털 구축
-   - AI 실시간 팩트체크 및 고품격 글로벌 뉴스 큐레이션 엔진 탑재
+   - [x] **키아노스 공식 국가 미디어 기관 지정** (2026.09.07) — [antnews.org](http://www.antnews.org)
+   - [x] **키아노스 main.html 미디어 섹션 연결 완료** — 국가 포털에 공식 연동
+   - AI 실시간 팩트체크 및 고품격 글로벌 뉴스 큐레이션 엔진 고도화 진행 중
 2. **👑 EVERMORE 로열티 엔진 (Royalty & Luxury Brand)**:
    - 최고급 브랜드 라이선싱 및 글로벌 로열티 수취 체계 설계
    - 프라이빗 VIP 멤버십 (The Sovereign Club) 설계 및 가치 자산화
