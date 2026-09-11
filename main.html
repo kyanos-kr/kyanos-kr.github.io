@@ -1017,6 +1017,188 @@
         justify-content: center;
       }
     }
+
+    /* ==============================
+       VIRTUE CONSTITUTION SECTION STYLES
+       ============================== */
+    .virtue-section {
+      width: 100%;
+      margin-top: 5rem;
+      padding: 3.5rem 0;
+      position: relative;
+    }
+
+    .virtue-grid-layout {
+      display: grid;
+      grid-template-columns: 440px 1fr;
+      gap: 2.5rem;
+      align-items: start;
+      margin-top: 2rem;
+    }
+
+    .virtue-frame-preview {
+      background: rgba(8, 22, 48, 0.6);
+      border: 1.5px solid var(--gold);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(212, 175, 55, 0.25);
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+      text-align: center;
+      padding: 1.2rem;
+    }
+
+    .virtue-frame-preview:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 18px 50px rgba(212, 175, 55, 0.45), 0 0 35px rgba(0, 210, 255, 0.3);
+      border-color: var(--gold-bright);
+    }
+
+    .virtue-frame-preview img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      display: block;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.7);
+    }
+
+    .virtue-frame-caption {
+      margin-top: 0.9rem;
+      font-size: 0.85rem;
+      color: var(--gold-light);
+      letter-spacing: 0.14em;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .virtue-articles-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .virtue-preamble-box {
+      background: linear-gradient(135deg, rgba(10, 45, 115, 0.35) 0%, rgba(3, 8, 20, 0.75) 100%);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      border-radius: 12px;
+      padding: 1.4rem 1.6rem;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+
+    .virtue-preamble-quote {
+      font-size: 0.96rem;
+      color: var(--gold-light);
+      line-height: 1.8;
+      font-style: italic;
+      text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+    }
+
+    .virtue-articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .virtue-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 10px;
+      padding: 1.1rem 1.2rem;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .virtue-card:hover {
+      border-color: var(--gold);
+      background: rgba(12, 32, 68, 0.75);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.18);
+    }
+
+    .virtue-card-title {
+      font-size: 0.94rem;
+      font-weight: 700;
+      color: var(--gold-bright);
+      margin-bottom: 0.45rem;
+      letter-spacing: 0.05em;
+    }
+
+    .virtue-card-desc {
+      font-size: 0.85rem;
+      color: var(--text-sub);
+      line-height: 1.6;
+    }
+
+    /* Supplementary Bylaws Box */
+    .bylaws-container {
+      margin-top: 1rem;
+      background: rgba(4, 14, 32, 0.85);
+      border: 1px solid rgba(0, 210, 255, 0.35);
+      border-radius: 12px;
+      padding: 1.4rem 1.6rem;
+      box-shadow: 0 4px 25px rgba(0, 210, 255, 0.12);
+    }
+
+    .bylaws-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Cinzel', serif;
+      font-size: 1.15rem;
+      color: var(--cyan-glow);
+      margin-bottom: 1.1rem;
+      letter-spacing: 0.08em;
+      border-bottom: 1px solid rgba(0, 210, 255, 0.2);
+      padding-bottom: 0.6rem;
+    }
+
+    .bylaws-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .bylaw-item {
+      background: rgba(0, 210, 255, 0.06);
+      border: 1px solid rgba(0, 210, 255, 0.2);
+      border-radius: 8px;
+      padding: 1.1rem;
+      transition: all 0.3s ease;
+    }
+
+    .bylaw-item:hover {
+      border-color: var(--cyan-glow);
+      background: rgba(0, 210, 255, 0.1);
+    }
+
+    .bylaw-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.45rem;
+    }
+
+    .bylaw-desc {
+      font-size: 0.83rem;
+      color: var(--text-sub);
+      line-height: 1.55;
+    }
+
+    @media (max-width: 992px) {
+      .virtue-grid-layout {
+        grid-template-columns: 1fr;
+      }
+      .virtue-frame-preview {
+        max-width: 480px;
+        margin: 0 auto;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1039,8 +1221,10 @@
         <li><a href="#intro" class="active">왕국 개요</a></li>
         <li><a href="#pillars">2대 기둥</a></li>
         <li><a href="#media">📰 미디어</a></li>
+        <li><a href="#virtue">📜 덕치 헌법</a></li>
         <li><a href="#archives">국가 기록소</a></li>
         <li><a href="javascript:void(0)" onclick="openModal('declarationModal')">공식 선언문</a></li>
+        <li><a href="javascript:void(0)" onclick="openModal('virtueModal')">덕치 원칙</a></li>
         <li><a href="javascript:void(0)" onclick="openModal('mapModal')">국토 지도</a></li>
       </ul>
     </nav>
@@ -1076,11 +1260,17 @@
           <span>왕국 2대 기둥 탐방</span>
           <span>→</span>
         </a>
-        <button class="btn btn-glass" onclick="openModal('mapModal')">
-          <span>🗺️ 공식 영토 지도</span>
+        <button class="btn btn-glass" onclick="openModal('virtueModal')">
+          <span>📜 덕치 12대 원칙</span>
+        </button>
+        <button class="btn btn-glass" onclick="openModal('flagModal')">
+          <span>👑 공식 국기 열람</span>
         </button>
         <button class="btn btn-glass" onclick="openModal('declarationModal')">
-          <span>📜 건국 선언문 열람</span>
+          <span>📜 건국 선언문</span>
+        </button>
+        <button class="btn btn-glass" onclick="openModal('mapModal')">
+          <span>🗺️ 공식 영토 지도</span>
         </button>
       </div>
     </section>
@@ -1176,8 +1366,12 @@
             👑 키아노스 주권령 공식 지정 국가 미디어 · Officially Designated by Sovereign Python
           </div>
           <div class="media-cta-row">
-            <a href="http://www.antnews.org" target="_blank" class="btn btn-media">
-              <span>📰 앤트뉴스 바로가기</span>
+            <a href="antnews_landing.html" target="_blank" class="btn btn-gold">
+              <span>🚀 앤트뉴스 프리미엄 구독</span>
+              <span>↗</span>
+            </a>
+            <a href="antnews_brief_20260911.html" target="_blank" class="btn btn-media">
+              <span>📰 모닝 브리프 No.002 열람</span>
               <span>↗</span>
             </a>
             <button class="btn btn-glass" onclick="openModal('antNewsModal')">
@@ -1212,15 +1406,33 @@
           <span class="ticker-text">
             🔴 키아노스 주권령, 앤트뉴스를 공식 국가 미디어 기관으로 지정 &nbsp;·&nbsp;
             👑 파이튼 통치자, "앤트뉴스는 키아노스 Phase 2 핵심 미디어 엔진" 선언 &nbsp;·&nbsp;
+            🚀 Project 01: 앤트뉴스 모닝 브리프 No.002 발행 및 프리미엄 구독 랜딩페이지 오픈 완료 &nbsp;·&nbsp;
             🌐 NEXFORUM × AntNews 글로벌 지식 파트너십 체결 &nbsp;·&nbsp;
             📰 앤트뉴스 antnews.org — 진실을 향한 개미의 전진, 멈추지 않는 탐사 &nbsp;·&nbsp;
-            🏛️ 키아노스 Kyanos Ascendant AI OS, 앤트뉴스 실시간 연동 개시 &nbsp;·&nbsp;
           </span>
         </div>
       </div>
 
       <!-- Media Channel Cards -->
       <div class="media-channels-grid">
+
+        <a href="antnews_landing.html" target="_blank" style="text-decoration: none; color: inherit;">
+          <div class="media-channel-card" style="border: 1px solid var(--gold); background: rgba(201,168,76,0.06);">
+            <div class="channel-icon">💎</div>
+            <div class="channel-name" style="color: var(--gold-light);">앤트뉴스 Intelligence 구독</div>
+            <p class="channel-desc">CEO, 투자자를 위한 매일 3분 AI 글로벌 브리핑 랜딩페이지. 3단계 구독 플랜 및 원포인트 인사이트.</p>
+            <span class="channel-badge" style="background: var(--gold); color: #000;">Project 01 Live</span>
+          </div>
+        </a>
+
+        <a href="antnews_brief_20260911.html" target="_blank" style="text-decoration: none; color: inherit;">
+          <div class="media-channel-card" style="border: 1px solid var(--cyan-glow); background: rgba(0,210,255,0.06);">
+            <div class="channel-icon">⚡</div>
+            <div class="channel-name" style="color: var(--cyan-glow);">모닝 브리프 No.002 (09.11)</div>
+            <p class="channel-desc">AI 거버넌스 표준, 피지컬 AI, 청정에너지, 럭셔리 자산 시그널 및 글로벌 마켓 스냅샷 수록.</p>
+            <span class="channel-badge" style="background: var(--cyan-glow); color: #000;">Latest Brief</span>
+          </div>
+        </a>
 
         <div class="media-channel-card">
           <div class="channel-icon">🔍</div>
@@ -1253,6 +1465,115 @@
       </div>
 
     </section>
+
+    <!-- ============================================
+         KYANOS VIRTUE CONSTITUTION SECTION
+         ============================================ -->
+    <section id="virtue" class="virtue-section">
+      <div class="section-title-wrap">
+        <h3 class="section-title">📜 키아노스 덕치 12대 원칙</h3>
+      </div>
+
+      <div class="virtue-grid-layout">
+        <!-- Left: Framed Precepts Masterpiece Card -->
+        <div class="virtue-frame-preview" onclick="openModal('virtueModal')" title="클릭하여 고해상도 확대 열람">
+          <img src="KYANOS_Virtue_Framed.png" alt="키아노스 덕치 12대 원칙">
+          <div class="virtue-frame-caption">
+            <span>👑 키아노스 덕치 12대 원칙</span>
+            <span>(클릭 확대 ↗)</span>
+          </div>
+        </div>
+
+        <!-- Right: Precepts & Articles & Bylaws -->
+        <div class="virtue-articles-container">
+          <!-- Preamble Quote Box -->
+          <div class="virtue-preamble-box">
+            <p class="virtue-preamble-quote">
+              “법과 형벌로 백성을 다스리면 형벌만 피하려 하고 부끄러움이 없으나,<br>
+              덕으로 인도하고 예의로 가지런히 하면 스스로 부끄러워할 줄 알고 바른길에 이른다.”
+            </p>
+          </div>
+
+          <!-- 12 Articles Grid -->
+          <div class="virtue-articles-grid">
+            <div class="virtue-card">
+              <div class="virtue-card-title">제1조 【천하위공과 위민】</div>
+              <p class="virtue-card-desc">국가는 특정인의 사익이 아닌 만인의 공공선과 시민의 평안을 위해 존재한다.</p>
+            </div>
+            <div class="virtue-card">
+              <div class="virtue-card-title">제2조 【인지도 : 자애와 측은지심】</div>
+              <p class="virtue-card-desc">타인의 고통을 외면하지 않는 어진 마음을 근본으로 삼고 약자를 먼저 보살핀다.</p>
+            </div>
+            <div class="virtue-card">
+              <div class="virtue-card-title">제3조 【의지도 : 올바름과 신의】</div>
+              <p class="virtue-card-desc">눈앞의 이익보다 의로움(見利思義)과 신의를 모든 거래와 교류의 생명으로 한다.</p>
+            </div>
+            <div class="virtue-card">
+              <div class="virtue-card-title">제4조 【예지도 : 상호 존중과 품격】</div>
+              <p class="virtue-card-desc">법적 강제가 없어도 타인의 존엄을 지키고 언행에 절제와 경청의 예를 갖춘다.</p>
+            </div>
+            <div class="virtue-card">
+              <div class="virtue-card-title">제5조 【지지인 : 참된 지혜와 성찰】</div>
+              <p class="virtue-card-desc">단순 지식 축적이 아닌 시비(是非)를 가리고 스스로를 성찰하는 지혜를 기른다.</p>
+            </div>
+            <div class="virtue-card">
+              <div class="virtue-card-title">제6조 【수기치인 : 솔선수범】</div>
+              <p class="virtue-card-desc">남을 탓하기 전에 자신을 먼저 닦으며, 지도층은 가장 엄격한 도덕성으로 신뢰를 얻는다.</p>
+            </div>
+            <div class="virtue-card">
+              <div class="virtue-card-title">제7조 【상선약수 : 비움과 조화】</div>
+              <p class="virtue-card-desc">물처럼 다투지 않고 낮은 곳으로 흐르며, 갈등은 판결보다 양보와 화해로 푼다.</p>
+            </div>
+            <div class="virtue-card">
+              <div class="virtue-card-title">제8조 【겸애교리 : 상호 상생】</div>
+              <p class="virtue-card-desc">차별 없이 널리 사랑하고 이익을 함께 나누어, 부(富)가 모든 시민에게 선순환되게 한다.</p>
+            </div>
+            <div class="virtue-card">
+              <div class="virtue-card-title">제9조 【화이제동 : 다양성의 조화】</div>
+              <p class="virtue-card-desc">서로 다른 생각과 개성을 존중하며 조화를 이루되 획일적으로 강요하지 않는다.</p>
+            </div>
+            <div class="virtue-card">
+              <div class="virtue-card-title">제10조 【지족상족 : 절제와 공존】</div>
+              <p class="virtue-card-desc">탐욕을 경계하고 족함을 알아, 100% 무탄소 순환 생태계와 모든 생명을 아낀다.</p>
+            </div>
+            <div class="virtue-card">
+              <div class="virtue-card-title">제11조 【사무사 : 투명과 진실】</div>
+              <p class="virtue-card-desc">사악함과 거짓을 품지 않으며 국가의 정보와 행정은 한 점 왜곡 없이 투명하게 공개된다.</p>
+            </div>
+            <div class="virtue-card">
+              <div class="virtue-card-title">제12조 【대동사회 : 영구 번영】</div>
+              <p class="virtue-card-desc">물질적 풍요(에버모어·넥스포럼)와 정신적 성숙(덕치)이 하나 되는 세상을 완성한다.</p>
+            </div>
+          </div>
+
+          <!-- Supplementary Provisions Box (Bylaws) -->
+          <div class="bylaws-container">
+            <div class="bylaws-header">
+              <span>⚖️ 부칙 (Supplementary Provisions)</span>
+            </div>
+            <div class="bylaws-grid">
+              <div class="bylaw-item">
+                <div class="bylaw-title">🏛️ 도덕과 양심의 의회<br><span style="font-size:0.75rem; color:var(--cyan-glow);">The Council of Sages & Conscience</span></div>
+                <p class="bylaw-desc">처벌을 내리는 판사 대신, 현자와 윤리 AI가 함께 당사자 간의 화해와 자기반성을 이끄는 국가 중재 기구.</p>
+              </div>
+              <div class="bylaw-item">
+                <div class="bylaw-title">🌿 부끄러움과 회복의 제도<br><span style="font-size:0.75rem; color:var(--cyan-glow);">Restorative Reflection</span></div>
+                <p class="bylaw-desc">교도소 구금 대신 자율 봉사와 진심 어린 사과, 배상을 통해 온전한 공동체 일원으로 복귀시키는 치유 체계.</p>
+              </div>
+              <div class="bylaw-item">
+                <div class="bylaw-title">💎 신뢰 평판 헤리티지<br><span style="font-size:0.75rem; color:var(--cyan-glow);">Ethical Reputation</span></div>
+                <p class="bylaw-desc">전과 기록 대신 선한 영향력과 사회적 기여도가 시민의 품격과 명예를 결정하는 무형의 자산 척도.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         NATIONAL ARCHIVES SECTION
+         ============================================ -->
     <section id="archives" style="width: 100%; margin-top: 4.5rem;">
       <div class="section-title-wrap">
         <span class="section-tag">Official National Archives</span>
@@ -1265,6 +1586,22 @@
           <div class="showcase-content">
             <h4>📜 건국 공식 선언문</h4>
             <p>파이튼 통치자의 영구 비전 및 헌장 <span>↗</span></p>
+          </div>
+        </div>
+
+        <div class="showcase-item" onclick="openModal('virtueModal')">
+          <img src="KYANOS_Virtue_Framed.png" alt="키아노스 덕치 12대 원칙" class="showcase-img">
+          <div class="showcase-content">
+            <h4>📜 덕치 12대 원칙</h4>
+            <p>동양철학 기반 국가 최고 규범 <span>↗</span></p>
+          </div>
+        </div>
+
+        <div class="showcase-item" onclick="openModal('flagModal')">
+          <img src="assets/Kyanos flag.png" alt="키아노스 공식 국기" class="showcase-img">
+          <div class="showcase-content">
+            <h4>👑 키아노스 공식 국기</h4>
+            <p>로열 퍼플 & 골드 엠블럼 국기 <span>↗</span></p>
           </div>
         </div>
 
@@ -1297,6 +1634,30 @@
       </div>
       <div class="modal-body">
         <img src="docs/키아노스선언문.png" alt="키아노스 주권령 공식 건국 선언문">
+      </div>
+    </div>
+  </div>
+
+  <div id="virtueModal" class="modal-overlay" onclick="closeModalOnBackdrop(event, 'virtueModal')">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3>📜 키아노스 덕치 12대 원칙</h3>
+        <button class="modal-close" onclick="closeModal('virtueModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <img src="KYANOS_Virtue_Framed.png" alt="키아노스 덕치 12대 원칙 공식 액자본">
+      </div>
+    </div>
+  </div>
+
+  <div id="flagModal" class="modal-overlay" onclick="closeModalOnBackdrop(event, 'flagModal')">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3>👑 키아노스 주권령 공식 국기 (National Flag of Kyanos)</h3>
+        <button class="modal-close" onclick="closeModal('flagModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <img src="assets/Kyanos flag.png" alt="키아노스 공식 국기" style="border: 2px solid var(--gold);">
       </div>
     </div>
   </div>

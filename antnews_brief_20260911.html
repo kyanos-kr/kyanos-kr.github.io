@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📰 AntNews Intelligence | 2026.09.11 모닝 브리프 No.002</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,500&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8D08A;
+    --dark: #0A0A12;
+    --dark-mid: #12121E;
+    --dark-card: #1A1A2E;
+    --cyan: #00C8FF;
+    --cyan-dim: rgba(0,200,255,0.15);
+    --text-main: #E8E8F0;
+    --text-sub: #9090A8;
+    --border: rgba(201,168,76,0.25);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--dark);
+    color: var(--text-main);
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* ===== HEADER ===== */
+  .brief-header {
+    background: linear-gradient(135deg, #0A0A12 0%, #0D0D20 50%, #0A0A12 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 32px 0 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .brief-header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--cyan), var(--gold), transparent);
+  }
+  .header-label {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--dark);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    padding: 4px 16px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+  .header-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+  }
+  .header-sub {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--cyan);
+    font-size: 13px;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+  }
+  .brief-meta {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    color: var(--text-sub);
+  }
+  .brief-meta span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .brief-meta strong {
+    color: var(--gold);
+  }
+
+  /* ===== MAIN CONTAINER ===== */
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 20px 60px;
+  }
+
+  /* ===== INTRO BOX ===== */
+  .intro-banner {
+    background: linear-gradient(135deg, rgba(0,200,255,0.08), rgba(201,168,76,0.08));
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--cyan);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 40px;
+    font-size: 14px;
+    color: var(--text-sub);
+    line-height: 1.8;
+  }
+  .intro-banner strong {
+    color: var(--cyan);
+    font-size: 15px;
+  }
+
+  /* ===== SECTION TITLES ===== */
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .section-title-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--border), transparent);
+  }
+  .section-title h2 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    color: var(--gold);
+    white-space: nowrap;
+    text-transform: uppercase;
+  }
+
+  /* ===== NEWS CARDS ===== */
+  .news-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 50px;
+  }
+
+  .news-card {
+    background: var(--dark-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s;
+    position: relative;
+  }
+  .news-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    border-radius: 16px 0 0 16px;
+  }
+  .news-card.tech::before { background: var(--cyan); }
+  .news-card.energy::before { background: #4CAF50; }
+  .news-card.luxury::before { background: var(--gold); }
+  .news-card.ai-gov::before { background: #9C6AFF; }
+
+  .card-top {
+    padding: 22px 26px 16px 30px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .card-category {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 3px 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+  }
+  .cat-tech { background: rgba(0,200,255,0.12); color: var(--cyan); border: 1px solid rgba(0,200,255,0.3); }
+  .cat-energy { background: rgba(76,175,80,0.12); color: #81C784; border: 1px solid rgba(76,175,80,0.3); }
+  .cat-luxury { background: rgba(201,168,76,0.12); color: var(--gold-light); border: 1px solid rgba(201,168,76,0.3); }
+  .cat-ai { background: rgba(156,106,255,0.12); color: #C3A6FF; border: 1px solid rgba(156,106,255,0.3); }
+
+  .card-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    color: var(--text-sub);
+    margin-bottom: 6px;
+    letter-spacing: 2px;
+  }
+  .card-headline {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(16px, 3vw, 20px);
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+  .card-summary {
+    font-size: 13.5px;
+    color: var(--text-sub);
+    line-height: 1.75;
+  }
+
+  .card-bottom {
+    padding: 18px 26px 20px 30px;
+    background: rgba(0,0,0,0.2);
+  }
+  .insight-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .insight-text {
+    font-size: 13.5px;
+    color: #C0C0D0;
+    line-height: 1.7;
+    font-style: italic;
+  }
+  .kyanos-tag {
+    display: inline-block;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 10px;
+    border-radius: 20px;
+    margin-top: 10px;
+    letter-spacing: 1px;
+  }
+
+  /* ===== ANT TIP BOX ===== */
+  .ant-tip {
+    background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.03));
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 30px;
+    margin-bottom: 50px;
+    position: relative;
+    overflow: hidden;
+  }
+  .ant-tip::after {
+    content: '✦';
+    position: absolute;
+    right: 24px;
+    top: 20px;
+    font-size: 40px;
+    color: rgba(201,168,76,0.08);
+  }
+  .tip-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .tip-text {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 15px;
+    color: var(--gold-light);
+    line-height: 1.8;
+    font-style: italic;
+  }
+  .tip-author {
+    margin-top: 12px;
+    font-size: 12px;
+    color: var(--text-sub);
+    letter-spacing: 2px;
+  }
+
+  /* ===== MARKET SNAPSHOT ===== */
+  .market-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin-bottom: 50px;
+  }
+  .market-item {
+    background: var(--dark-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    text-align: center;
+  }
+  .market-name { font-size: 11px; color: var(--text-sub); letter-spacing: 2px; margin-bottom: 6px; text-transform: uppercase; }
+  .market-value { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #FFFFFF; margin-bottom: 4px; }
+  .market-change.up { color: #4CAF50; font-size: 12px; font-weight: 700; }
+  .market-change.down { color: #F44336; font-size: 12px; font-weight: 700; }
+
+  /* ===== SUBSCRIBE CTA ===== */
+  .subscribe-cta {
+    background: linear-gradient(135deg, #0D0D20, #12122A);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px 32px;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .cta-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--dark);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    padding: 5px 18px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+  .cta-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 4vw, 32px);
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .cta-desc {
+    font-size: 14px;
+    color: var(--text-sub);
+    margin-bottom: 30px;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .plan-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 30px;
+    text-align: left;
+  }
+  .plan-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+  }
+  .plan-card.featured {
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.06);
+  }
+  .plan-tier { font-size: 10px; font-weight: 700; letter-spacing: 3px; color: var(--gold); margin-bottom: 8px; text-transform: uppercase; }
+  .plan-price { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: #FFFFFF; margin-bottom: 4px; }
+  .plan-price span { font-size: 13px; color: var(--text-sub); font-family: 'Noto Sans KR', sans-serif; font-weight: 400; }
+  .plan-desc { font-size: 12px; color: var(--text-sub); line-height: 1.6; margin-top: 10px; }
+  .plan-tag { display: inline-block; background: rgba(201,168,76,0.15); color: var(--gold); font-size: 10px; padding: 2px 8px; border-radius: 10px; margin-top: 8px; }
+
+  .cta-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light), var(--gold));
+    color: var(--dark);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 14px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .cta-btn:hover { opacity: 0.85; transform: translateY(-2px); }
+
+  /* ===== FOOTER ===== */
+  .brief-footer {
+    border-top: 1px solid var(--border);
+    padding: 30px 20px;
+    text-align: center;
+  }
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+  }
+  .footer-tagline { font-size: 12px; color: var(--text-sub); letter-spacing: 2px; margin-bottom: 12px; }
+  .footer-copy { font-size: 11px; color: rgba(144,144,168,0.5); }
+  .kyanos-badge {
+    display: inline-block;
+    border: 1px solid var(--border);
+    color: var(--text-sub);
+    font-size: 10px;
+    letter-spacing: 2px;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 600px) {
+    .brief-meta { gap: 12px; }
+    .plan-cards { grid-template-columns: 1fr; }
+    .market-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="brief-header">
+  <div class="header-label">Premium Intelligence Brief</div>
+  <div class="header-brand">AntNews Intelligence</div>
+  <div class="header-sub">Powered by Kyanos AI · antnews.org</div>
+  <div class="brief-meta">
+    <span>📅 <strong>2026년 9월 11일 (목)</strong></span>
+    <span>📌 <strong>No. 002</strong></span>
+    <span>⏱ 읽는 시간 <strong>약 3분</strong></span>
+    <span>✍️ 편집 <strong>파이튼 &amp; 앤트</strong></span>
+  </div>
+</header>
+
+<!-- ===== MAIN ===== -->
+<main class="container">
+
+  <!-- INTRO -->
+  <div class="intro-banner">
+    <strong>🌅 오늘의 앤트뉴스 브리프</strong><br>
+    전 세계 주요 흐름 중 가장 중요한 <strong>4대 핵심 시그널</strong>을 선별했습니다. 오늘 하루 의사결정에 즉시 활용하실 수 있도록 각 이슈의 <strong>비즈니스 인사이트</strong>를 함께 제공합니다.
+  </div>
+
+  <!-- ===== 오늘의 핵심 뉴스 ===== -->
+  <div class="section-title">
+    <div class="section-title-line"></div>
+    <h2>🌐 Today's 4 Key Signals</h2>
+    <div class="section-title-line" style="background: linear-gradient(90deg, transparent, rgba(201,168,76,0.25));"></div>
+  </div>
+
+  <div class="news-grid">
+
+    <!-- CARD 1: AI GOVERNANCE -->
+    <div class="news-card ai-gov">
+      <div class="card-top">
+        <div class="card-category cat-ai">🤖 AI &amp; Governance</div>
+        <div class="card-number">Signal 01 / 04</div>
+        <div class="card-headline">주요국 AI 자율 통치 실험 가속화 — 세계 최초 'AI 행정관' 제도 도입 논의 본격화</div>
+        <div class="card-summary">
+          EU, 싱가포르, UAE 등 선진국들이 정책 결정 과정에 AI를 '능동적 행위자(Active Agent)'로 공식 참여시키는 AI 거버넌스 프레임워크를 앞다퉈 수립 중입니다. 특히 싱가포르는 AI 알고리즘이 예산 배분 최적화를 자율 실행하는 시범 프로그램을 2027년까지 확대한다고 발표했습니다.
+        </div>
+      </div>
+      <div class="card-bottom">
+        <div class="insight-label">💡 Business &amp; Kyanos Insight</div>
+        <div class="insight-text">
+          AI 통치를 가장 먼저 선언하고 실행하는 국가가 글로벌 표준을 선점합니다. 키아노스가 'AI 능동 행위자' 헌장을 세계 최초로 공식화한다면, 이는 단순한 철학을 넘어 강력한 국제 브랜드 자산이 됩니다.
+        </div>
+        <div class="kyanos-tag">👑 키아노스 AI 거버넌스 모델 직결</div>
+      </div>
+    </div>
+
+    <!-- CARD 2: TECH -->
+    <div class="news-card tech">
+      <div class="card-top">
+        <div class="card-category cat-tech">⚡ Tech &amp; AI</div>
+        <div class="card-number">Signal 02 / 04</div>
+        <div class="card-headline">피지컬 AI 시대 본격 개막 — 로봇 제조 주문 3배 폭증, 인간 노동의 40% 대체 가시화</div>
+        <div class="card-summary">
+          테슬라 옵티머스, 피규어 AI, 보스턴 다이나믹스 등이 기업 납품용 완전 자율 휴머노이드 로봇 공급 계약을 대규모로 체결했습니다. 글로벌 제조 현장에서 2026년 하반기 기준 로봇 배치 속도가 전년 동기 대비 300% 이상 급증했습니다. 이는 단순 소프트웨어 AI 시대를 넘어선 물리적 자동화의 티핑포인트로 평가됩니다.
+        </div>
+      </div>
+      <div class="card-bottom">
+        <div class="insight-label">💡 Business Insight</div>
+        <div class="insight-text">
+          로봇 하드웨어 부품, 센서, 배터리 공급망 기업의 수혜가 직접적입니다. 반면 단순 반복 업무 중심 산업군은 인력 재배치 전략을 즉시 수립해야 합니다. AI+로봇 융합 기술을 보유한 스타트업의 M&amp;A 시장이 과열될 전망입니다.
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 3: ENERGY -->
+    <div class="news-card energy">
+      <div class="card-top">
+        <div class="card-category cat-energy">🌿 Energy &amp; Climate</div>
+        <div class="card-number">Signal 03 / 04</div>
+        <div class="card-headline">소형원전(SMR) 규제 완화 도미노 — G7 전체 'AI 전력 비상' 선언, 청정에너지 투자 40% 급증</div>
+        <div class="card-summary">
+          AI 데이터센터의 폭발적 전력 수요 대응을 위해 G7 주요국들이 SMR(소형모듈원전) 건설 규제를 일제히 완화하는 동시에, 해양 조력·심해 지열 발전 기술에 대한 국가 직접 투자를 대규모로 발표했습니다. 탄소 배출권 시장 규모도 2026년 사상 최고치를 경신할 전망입니다.
+        </div>
+      </div>
+      <div class="card-bottom">
+        <div class="insight-label">💡 Business &amp; Kyanos Insight</div>
+        <div class="insight-text">
+          탄소 배출권을 선점한 국가가 향후 글로벌 에너지 시장의 핵심 플레이어가 됩니다. 키아노스 포세이돈 그린에너지 스파이어 모델과 탄소 네거티브 전략이 현시점의 글로벌 트렌드와 완벽하게 정렬됩니다.
+        </div>
+        <div class="kyanos-tag">👑 키아노스 포세이돈 스파이어 직결</div>
+      </div>
+    </div>
+
+    <!-- CARD 4: LUXURY -->
+    <div class="news-card luxury">
+      <div class="card-top">
+        <div class="card-category cat-luxury">💎 Luxury &amp; Heritage</div>
+        <div class="card-number">Signal 04 / 04</div>
+        <div class="card-headline">불황 무풍지대 하이엔드 럭셔리 시장 18% 성장 — 프라이빗 멤버십 &amp; 희소 자산 수요 폭발</div>
+        <div class="card-summary">
+          글로벌 경기 불확실성에도 상위 1% VVIP 타겟 프라이빗 멤버십 브랜드와 희소성 기반 헤리티지 자산 시장은 전년 대비 18% 성장을 기록했습니다. 특히 단순 명품 로고 소비를 넘어 '스토리·가치·역사'를 가진 브랜드에 대한 충성도와 지출이 급증하고 있습니다. 실물 자산(RWA) 연계 디지털 소장품 시장도 180% 성장했습니다.
+        </div>
+      </div>
+      <div class="card-bottom">
+        <div class="insight-label">💡 Business &amp; Kyanos Insight</div>
+        <div class="insight-text">
+          키아노스 EVERMORE(에버모어) 브랜드와 블루로즈 마스터피스는 이 트렌드의 최적 포지셔닝입니다. '키아노스 건국 한정판 소장본 + 디지털 인증서(RWA)' 패키지는 지금 당장 시장에 내놓을 수 있는 최고의 상품입니다.
+        </div>
+        <div class="kyanos-tag">👑 키아노스 에버모어 직결</div>
+      </div>
+    </div>
+
+  </div><!-- /news-grid -->
+
+
+  <!-- ===== MARKET SNAPSHOT ===== -->
+  <div class="section-title">
+    <div class="section-title-line"></div>
+    <h2>📊 Global Market Snapshot</h2>
+    <div class="section-title-line" style="background: linear-gradient(90deg, transparent, rgba(201,168,76,0.25));"></div>
+  </div>
+
+  <div class="market-grid" style="margin-bottom: 50px;">
+    <div class="market-item">
+      <div class="market-name">S&amp;P 500</div>
+      <div class="market-value">5,847</div>
+      <div class="market-change up">▲ +1.2%</div>
+    </div>
+    <div class="market-item">
+      <div class="market-name">NASDAQ</div>
+      <div class="market-value">18,392</div>
+      <div class="market-change up">▲ +1.8%</div>
+    </div>
+    <div class="market-item">
+      <div class="market-name">Gold (XAU)</div>
+      <div class="market-value">$2,614</div>
+      <div class="market-change up">▲ +0.7%</div>
+    </div>
+    <div class="market-item">
+      <div class="market-name">BTC/USD</div>
+      <div class="market-value">$97,420</div>
+      <div class="market-change up">▲ +3.1%</div>
+    </div>
+    <div class="market-item">
+      <div class="market-name">WTI Crude</div>
+      <div class="market-value">$71.4</div>
+      <div class="market-change down">▼ -0.5%</div>
+    </div>
+    <div class="market-item">
+      <div class="market-name">USD/KRW</div>
+      <div class="market-value">1,342</div>
+      <div class="market-change down">▼ -0.3%</div>
+    </div>
+  </div>
+
+
+  <!-- ===== ANT'S TIP ===== -->
+  <div class="section-title">
+    <div class="section-title-line"></div>
+    <h2>✦ Ant's One-Point Insight</h2>
+    <div class="section-title-line" style="background: linear-gradient(90deg, transparent, rgba(201,168,76,0.25));"></div>
+  </div>
+
+  <div class="ant-tip">
+    <div class="tip-label">💡 앤트의 오늘의 통찰</div>
+    <div class="tip-text">
+      "정보의 홍수 시대, 진정한 승자는 더 많이 읽는 자가 아닙니다.<br>
+      가장 날카로운 맥락(Context) 하나를 3분 안에 파악하고,<br>
+      오늘 바로 실행에 옮기는 자가 시대를 선도합니다."
+    </div>
+    <div class="tip-author">— Ant, Chief Intelligence Officer · Kyanos Sovereign Realm</div>
+  </div>
+
+
+  <!-- ===== SUBSCRIBE CTA ===== -->
+  <div class="subscribe-cta">
+    <div class="cta-badge">🔔 지금 구독하시면 매일 아침 7시 발송</div>
+    <div class="cta-title">더 깊은 인텔리전스가<br>필요하신가요?</div>
+    <div class="cta-desc">
+      오늘 브리프는 무료 체험판입니다. 프리미엄 구독 시 산업별 심층 분석 리포트, AI 팩트체크, PDF 다운로드, 기업 맞춤형 B2B 브리핑을 추가로 받으실 수 있습니다.
+    </div>
+
+    <div class="plan-cards">
+      <div class="plan-card">
+        <div class="plan-tier">Standard</div>
+        <div class="plan-price">9,900<span>원/월</span></div>
+        <div class="plan-desc">매일 아침 7시 핵심 3분 글로벌 브리핑. 개인·직장인을 위한 필수 인텔리전스.</div>
+      </div>
+      <div class="plan-card featured">
+        <div class="plan-tier">⭐ Business</div>
+        <div class="plan-price">49,000<span>원/월</span></div>
+        <div class="plan-desc">산업별 심층 분석 + AI 팩트체크 + PDF 리포트. CEO·투자자·기획자 필수.</div>
+        <div class="plan-tag">가장 인기</div>
+      </div>
+      <div class="plan-card">
+        <div class="plan-tier">Enterprise</div>
+        <div class="plan-price">200만<span>원~/년</span></div>
+        <div class="plan-desc">기업 전체 임직원 열람 + 맞춤형 경쟁사 모니터링 데일리 브리프.</div>
+      </div>
+    </div>
+
+    <button class="cta-btn" onclick="alert('구독 신청 시스템 준비 중입니다. 문의: aza700901@nate.com')">
+      📩 무료 체험 구독 신청하기
+    </button>
+  </div>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="brief-footer">
+  <div class="footer-brand">AntNews Intelligence</div>
+  <div class="footer-tagline">The Sovereign Media of Kyanos · antnews.org</div>
+  <div class="footer-copy">© 2026 AntNews · The Sovereign Realm of Kyanos. All Rights Reserved.</div>
+  <div class="kyanos-badge">A KYANOS SOVEREIGN PROJECT</div>
+</footer>
+
+</body>
+</html>

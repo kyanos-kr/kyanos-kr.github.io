@@ -61,7 +61,8 @@ graph LR
 ### 🔹 Phase 4: Global Utopia & Prosperity (글로벌 유토피아 실현)
 - **Isle of Thalassa 금융 특구 활성화**: 해양 금융 거래소 및 글로벌 대사관 구역 운영
 - **Deep Ocean Aero-Marine Port 무역망 연결**: 초고속 수중익선 및 우주 셔틀 글로벌 물류 거점화
-- **영구 지속 가능한 번영 생태계**: 에버모어 로열티와 넥스포럼 테크 허브를 통한 무한 자본 선순환 완성
+- **키아노스 주권 국부펀드(KSWF) 운용**: 전 세계 분산 투자 및 시민 영구 번영 배당 체계 구축
+- **경제·재정 상세 전략**: 6대 사업 카테고리 및 수익화 실행 계획 ([KYANOS_ECONOMIC_ROADMAP.md](file:///d:/안티그래비티파이튼/KYANOS_ECONOMIC_ROADMAP.md)) 수립 완료
 
 ---
 
