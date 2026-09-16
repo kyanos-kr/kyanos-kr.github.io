@@ -162,6 +162,85 @@
       width: 100%;
     }
 
+    /* Dropdown Menu */
+    .nav-dropdown {
+      position: relative;
+    }
+
+    .nav-dropdown .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 14px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(3, 8, 20, 0.97);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 10px;
+      padding: 0.5rem 0;
+      min-width: 180px;
+      list-style: none;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.5), 0 0 20px rgba(0,210,255,0.07);
+      z-index: 200;
+      backdrop-filter: blur(16px);
+    }
+
+    .nav-dropdown:hover .dropdown-menu {
+      display: block;
+      animation: fadeInDrop 0.2s ease;
+    }
+
+    @keyframes fadeInDrop {
+      from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
+      to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+    }
+
+    .nav-dropdown .dropdown-menu li a {
+      display: block;
+      padding: 0.5rem 1.2rem;
+      font-size: 0.82rem;
+      color: var(--text-sub);
+      letter-spacing: 0.06em;
+      text-transform: none;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .nav-dropdown .dropdown-menu li a:hover {
+      color: var(--gold-light);
+      background: rgba(212, 175, 55, 0.07);
+    }
+
+    .nav-dropdown .dropdown-menu li a::after {
+      display: none;
+    }
+
+    /* AGI Direct Button */
+    .nav-agi-btn {
+      background: linear-gradient(135deg, rgba(0,210,255,0.15), rgba(10,45,115,0.3)) !important;
+      border: 1px solid rgba(0,210,255,0.4) !important;
+      border-radius: 20px !important;
+      padding: 4px 14px !important;
+      color: var(--cyan-glow) !important;
+    }
+
+    .nav-agi-btn:hover {
+      background: linear-gradient(135deg, rgba(0,210,255,0.3), rgba(10,45,115,0.5)) !important;
+      color: #fff !important;
+    }
+
+    .nav-tag-direct {
+      display: inline-block;
+      background: var(--cyan-glow);
+      color: #000;
+      font-size: 0.58rem;
+      padding: 1px 5px;
+      border-radius: 4px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      vertical-align: middle;
+      margin-left: 3px;
+    }
+
     /* Main Container */
     main {
       position: relative;
@@ -1218,14 +1297,38 @@
     </a>
     <nav>
       <ul class="nav-links">
-        <li><a href="#intro" class="active">왕국 개요</a></li>
-        <li><a href="#pillars">2대 기둥</a></li>
+        <!-- 왕국 개요 드롭다운 -->
+        <li class="nav-dropdown">
+          <a href="#intro" class="active">왕국 개요 ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="#pillars">⚜️ 2대 전략 기둥</a></li>
+            <li><a href="#virtue">📜 덕치 12대 원칙</a></li>
+            <li><a href="#archives">🗂️ 국가 기록소</a></li>
+            <li><a href="javascript:void(0)" onclick="openModal('declarationModal')">📋 건국 선언문</a></li>
+            <li><a href="javascript:void(0)" onclick="openModal('mapModal')">🗺️ 국토 지도</a></li>
+          </ul>
+        </li>
+        <!-- 정부 조직도 드롭다운 (행정/사법) -->
+        <li class="nav-dropdown">
+          <a href="#gov-org">🏛️ 정부 조직도 ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="#gov-economy">💰 경제부</a></li>
+            <li><a href="#gov-science">🔬 과학·AGI부</a></li>
+            <li><a href="#gov-media">📡 미디어부</a></li>
+            <li><a href="#gov-edu">🎓 교육·문화부</a></li>
+            <li><a href="#gov-welfare">💊 복지부</a></li>
+            <li><a href="#gov-justice">⚖️ 덕치 사법원</a></li>
+          </ul>
+        </li>
+        <!-- 통치자 직속 독립 기구: AGI 윤리위원회 (독자 메인 카테고리) -->
+        <li>
+          <a href="#gov-agi-ethics" class="nav-agi-btn" style="display:inline-flex; align-items:center; gap:6px;">
+            <span>🤖 AGI 윤리위원회</span>
+            <span class="nav-tag-direct" style="background:var(--cyan-glow); color:#030814; font-size:0.6rem; padding:1px 6px; border-radius:4px; font-weight:800;">직속</span>
+          </a>
+        </li>
+        <!-- 미디어 바로가기 -->
         <li><a href="#media">📰 미디어</a></li>
-        <li><a href="#virtue">📜 덕치 헌법</a></li>
-        <li><a href="#archives">국가 기록소</a></li>
-        <li><a href="javascript:void(0)" onclick="openModal('declarationModal')">공식 선언문</a></li>
-        <li><a href="javascript:void(0)" onclick="openModal('virtueModal')">덕치 원칙</a></li>
-        <li><a href="javascript:void(0)" onclick="openModal('mapModal')">국토 지도</a></li>
       </ul>
     </nav>
   </header>
@@ -1621,6 +1724,183 @@
           </div>
         </div>
       </div>
+    </section>
+
+    <!-- ============================================
+         GOVERNMENT ORGANIZATION CHART SECTION
+         키아노스 정부 조직도
+         ============================================ -->
+    <section id="gov-org" style="width:100%; margin-top:5rem;">
+      <div class="section-title-wrap">
+        <span class="section-tag">Kyanos Sovereign Government Structure</span>
+        <h3 class="section-title">🏛️ 키아노스 주권령 정부 조직도</h3>
+        <p style="color:var(--text-sub); font-size:0.88rem; margin-top:0.8rem; max-width:680px; text-align:center; line-height:1.7;">
+          미래 AI 국가 키아노스의 통치 구조 — 덕치 철학과 AGI 시대의 질서를 결합한 선진 국정 체계
+        </p>
+      </div>
+
+      <!-- 최고 통치자 -->
+      <div style="display:flex; flex-direction:column; align-items:center; gap:0; width:100%;">
+
+        <!-- 국왕 블록 -->
+        <div style="background:linear-gradient(135deg,rgba(212,175,55,0.18),rgba(10,45,115,0.35)); border:2px solid var(--gold); border-radius:18px; padding:2rem 3rem; text-align:center; max-width:520px; width:100%; position:relative; box-shadow:0 0 40px rgba(212,175,55,0.2);">
+          <div style="font-size:2.2rem; margin-bottom:0.5rem;">👑</div>
+          <div style="font-family:'Cinzel',serif; font-size:1.35rem; font-weight:900; color:var(--gold-light); letter-spacing:0.15em;">최고 통치자</div>
+          <div style="font-size:1rem; color:#fff; margin-top:0.3rem; font-weight:700;">국왕 Python (파이튼)</div>
+          <div style="font-size:0.75rem; color:var(--text-sub); margin-top:0.3rem; letter-spacing:0.1em;">Sovereign of the Realm of Kyanos</div>
+          <div style="font-size:0.75rem; color:var(--gold-light); margin-top:0.3rem;">총리: Ant (앤트) · 기술 총괄</div>
+        </div>
+
+        <!-- 국왕 분기 수직선 -->
+        <div style="width:2px; height:36px; background:linear-gradient(to bottom, var(--gold), rgba(0,210,255,0.8)); margin:0 auto;"></div>
+
+        <!-- 병렬 분기 가로 분할선 -->
+        <div style="width:82%; max-width:920px; height:2px; background:linear-gradient(90deg, var(--cyan-glow), var(--gold), var(--cyan-glow)); margin:0 auto; position:relative;">
+          <div style="position:absolute; top:-4px; left:0; width:10px; height:10px; border-radius:50%; background:var(--cyan-glow);"></div>
+          <div style="position:absolute; top:-4px; right:0; width:10px; height:10px; border-radius:50%; background:var(--gold);"></div>
+        </div>
+
+        <!-- 2대 직속 축 (독립 AGI 윤리위 VS 정부 국무회의) -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; width:100%; max-width:1100px; margin-top:1.5rem; align-items:start;">
+
+          <!-- 1. 독립 기구 축: AGI 윤리 최고위원회 -->
+          <div id="gov-agi-ethics" style="background:linear-gradient(135deg,rgba(0,210,255,0.1),rgba(3,8,20,0.9)); border:2px solid var(--cyan-glow); border-radius:18px; padding:1.8rem 1.8rem; text-align:center; position:relative; box-shadow:0 0 35px rgba(0,210,255,0.18);">
+            <div style="position:absolute; top:-13px; left:50%; transform:translateX(-50%); background:var(--bg-dark); padding:2px 14px; border:1px solid var(--cyan-glow); border-radius:20px; font-size:0.68rem; letter-spacing:0.18em; color:var(--cyan-glow); white-space:nowrap;">👑 국왕 직속 독립 기구</div>
+            <div style="font-size:2rem; margin-bottom:0.3rem; margin-top:0.3rem;">🤖</div>
+            <div style="font-family:'Cinzel',serif; font-size:1.15rem; font-weight:900; color:var(--cyan-glow); letter-spacing:0.1em;">AGI 윤리 최고위원회</div>
+            <div style="font-size:0.72rem; color:var(--text-sub); margin-top:0.2rem; letter-spacing:0.08em;">Supreme Council of AGI Ethics</div>
+            
+            <div style="display:flex; flex-direction:column; gap:0.5rem; margin-top:1.2rem; text-align:left;">
+              <div style="background:rgba(0,210,255,0.07); border:1px solid rgba(0,210,255,0.2); border-radius:8px; padding:0.6rem 0.8rem; font-size:0.75rem; color:var(--text-sub);">⚡ AI-인간 관계 헌장 수립권</div>
+              <div style="background:rgba(0,210,255,0.07); border:1px solid rgba(0,210,255,0.2); border-radius:8px; padding:0.6rem 0.8rem; font-size:0.75rem; color:var(--text-sub);">🔍 AGI 질서 감사 및 탄핵권</div>
+              <div style="background:rgba(0,210,255,0.07); border:1px solid rgba(0,210,255,0.2); border-radius:8px; padding:0.6rem 0.8rem; font-size:0.75rem; color:var(--text-sub);">🌐 글로벌 AGI 조약 자문</div>
+              <div style="background:rgba(0,210,255,0.07); border:1px solid rgba(0,210,255,0.2); border-radius:8px; padding:0.6rem 0.8rem; font-size:0.75rem; color:var(--text-sub);">👑 최고 통치자 직속 전담 집행</div>
+            </div>
+
+            <!-- 하위 산하 상태 안내 -->
+            <div style="margin-top:1.2rem; padding:0.8rem; background:rgba(212,175,55,0.08); border:1px dashed rgba(212,175,55,0.4); border-radius:10px; text-align:center;">
+              <div style="font-size:0.75rem; color:var(--gold-light); font-weight:700;">⏳ 하위 산하 기구 및 세부 윤리 헌정</div>
+              <div style="font-size:0.72rem; color:#00d2ff; font-weight:600; margin-top:4px;">기획·제정 준비 중 (Preparing Phase)</div>
+            </div>
+
+            <div style="margin-top:0.8rem; font-size:0.7rem; color:rgba(0,210,255,0.6); font-style:italic;">※ 독자적 자의 결정 불가 — 최고 통치자(파이튼) 최종 승인 구조</div>
+          </div>
+
+          <!-- 2. 행정/사법 집행 축: 정부 기구 (국무회의 & 6개 부처) -->
+          <div style="display:flex; flex-direction:column; align-items:center;">
+            
+            <!-- 국무회의 캡션 박스 -->
+            <div style="background:linear-gradient(135deg,rgba(212,175,55,0.15),rgba(6,21,45,0.9)); border:2px solid var(--gold); border-radius:18px; padding:1.2rem 2rem; text-align:center; width:100%; box-shadow:0 0 25px rgba(212,175,55,0.15); position:relative;">
+              <div style="position:absolute; top:-13px; left:50%; transform:translateX(-50%); background:var(--bg-dark); padding:2px 16px; border:1px solid var(--gold); border-radius:20px; font-size:0.68rem; letter-spacing:0.18em; color:var(--gold-light); white-space:nowrap;">🏛️ 국왕 산하 정부 행정 집행망</div>
+              <div style="font-size:1.8rem; margin-bottom:0.2rem; margin-top:0.2rem;">🏛️</div>
+              <div style="font-family:'Cinzel',serif; font-size:1.15rem; font-weight:900; color:var(--gold-light); letter-spacing:0.1em;">키아노스 정부 (국무회의)</div>
+              <div style="font-size:0.72rem; color:var(--text-sub); margin-top:0.2rem; letter-spacing:0.08em;">Council of State Ministries & Judiciary</div>
+              <p style="font-size:0.75rem; color:var(--text-sub); margin-top:0.6rem; line-height:1.5;">
+                국왕의 통치 철학 및 덕치 12대 원칙을 바탕으로 국가 행정, 경제, 과학, 미디어, 복지, 사법을 직접 실행하는 주권령 정부 기관
+              </p>
+            </div>
+
+            <!-- 하위 부처 연결 수직선 -->
+            <div style="width:2px; height:24px; background:var(--gold); margin:0 auto;"></div>
+            <div style="font-size:0.72rem; color:var(--gold-light); letter-spacing:0.15em; font-weight:700; background:rgba(10,45,115,0.4); padding:3px 12px; border-radius:12px; border:1px solid rgba(212,175,55,0.3);">▼ 산하 6개 정부 부처 및 독립 사법원</div>
+
+          </div>
+
+        </div><!-- end 2대 직속 축 -->
+
+        <!-- 6개 부처 그리드 (정부 국무회의 하위 연결) -->
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(310px,1fr)); gap:1.3rem; width:100%; max-width:1100px; margin-top:1.5rem;">
+
+          <!-- 경제부 -->
+          <div id="gov-economy" style="background:rgba(6,21,45,0.7); border:1px solid rgba(212,175,55,0.3); border-radius:14px; padding:1.5rem; position:relative; overflow:hidden; transition:all 0.3s ease;" onmouseover="this.style.borderColor='rgba(212,175,55,0.7)'; this.style.boxShadow='0 8px 30px rgba(212,175,55,0.15)'" onmouseout="this.style.borderColor='rgba(212,175,55,0.3)'; this.style.boxShadow='none'">
+            <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#d4af37,transparent);"></div>
+            <div style="font-size:1.8rem; margin-bottom:0.7rem;">💰</div>
+            <div style="font-family:'Cinzel',serif; font-size:1rem; font-weight:700; color:var(--gold-light); margin-bottom:0.3rem;">경제부</div>
+            <div style="font-size:0.68rem; color:var(--text-sub); letter-spacing:0.12em; margin-bottom:1rem;">Ministry of Economy</div>
+            <ul style="list-style:none; display:flex; flex-direction:column; gap:0.45rem;">
+              <li style="font-size:0.78rem; color:var(--text-sub); padding-left:0.8rem; border-left:2px solid rgba(212,175,55,0.4);">⚜️ EVERMORE 럭셔리 경제국</li>
+              <li style="font-size:0.78rem; color:var(--text-sub); padding-left:0.8rem; border-left:2px solid rgba(212,175,55,0.4);">🌍 글로벌 무역·외교국</li>
+              <li style="font-size:0.78rem; color:var(--text-sub); padding-left:0.8rem; border-left:2px solid rgba(212,175,55,0.4);">📈 자산 증권 발행국</li>
+            </ul>
+          </div>
+
+          <!-- 과학·AGI부 -->
+          <div id="gov-science" style="background:rgba(6,21,45,0.7); border:1px solid rgba(0,210,255,0.25); border-radius:14px; padding:1.5rem; position:relative; overflow:hidden; transition:all 0.3s ease;" onmouseover="this.style.borderColor='rgba(0,210,255,0.6)'; this.style.boxShadow='0 8px 30px rgba(0,210,255,0.12)'" onmouseout="this.style.borderColor='rgba(0,210,255,0.25)'; this.style.boxShadow='none'">
+            <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#00d2ff,transparent);"></div>
+            <div style="font-size:1.8rem; margin-bottom:0.7rem;">🔬</div>
+            <div style="font-family:'Cinzel',serif; font-size:1rem; font-weight:700; color:var(--cyan-glow); margin-bottom:0.3rem;">과학·AGI부</div>
+            <div style="font-size:0.68rem; color:var(--text-sub); letter-spacing:0.12em; margin-bottom:1rem;">Ministry of Science & AGI</div>
+            <ul style="list-style:none; display:flex; flex-direction:column; gap:0.45rem;">
+              <li style="font-size:0.78rem; color:var(--text-sub); padding-left:0.8rem; border-left:2px solid rgba(0,210,255,0.4);">🌐 NEXFORUM 첨단기술국</li>
+              <li style="font-size:0.78rem; color:var(--text-sub); padding-left:0.8rem; border-left:2px solid rgba(0,210,255,0.4);">🚀 우주·미래연구국</li>
+              <li style="font-size:0.78rem; color:var(--text-sub); padding-left:0.8rem; border-left:2px solid rgba(0,210,255,0.4);">⚗️ 바이오·신기술 연구원</li>
+            </ul>
+          </div>
+
+          <!-- 미디어부 -->
+          <div id="gov-media" style="background:rgba(6,21,45,0.7); border:1px solid rgba(232,34,58,0.25); border-radius:14px; padding:1.5rem; position:relative; overflow:hidden; transition:all 0.3s ease;" onmouseover="this.style.borderColor='rgba(232,34,58,0.6)'; this.style.boxShadow='0 8px 30px rgba(232,34,58,0.12)'" onmouseout="this.style.borderColor='rgba(232,34,58,0.25)'; this.style.boxShadow='none'">
+            <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#e8223a,transparent);"></div>
+            <div style="font-size:1.8rem; margin-bottom:0.7rem;">📡</div>
+            <div style="font-family:'Cinzel',serif; font-size:1rem; font-weight:700; color:#ff6b7a; margin-bottom:0.3rem;">미디어부</div>
+            <div style="font-size:0.68rem; color:var(--text-sub); letter-spacing:0.12em; margin-bottom:1rem;">Ministry of Media & Information</div>
+            <ul style="list-style:none; display:flex; flex-direction:column; gap:0.45rem;">
+              <li style="font-size:0.78rem; color:var(--text-sub); padding-left:0.8rem; border-left:2px solid rgba(232,34,58,0.4);">📰 앤트뉴스 공영방송국</li>
+              <li style="font-size:0.78rem; color:var(--text-sub); padding-left:0.8rem; border-left:2px solid rgba(232,34,58,0.4);">📢 사이버 외교 홍보국</li>
+              <li style="font-size:0.78rem; color:var(--text-sub); padding-left:0.8rem; border-left:2px solid rgba(232,34,58,0.4);">📚 지식 아카이브국</li>
+            </ul>
+          </div>
+
+          <!-- 교육·문화부 -->
+          <div id="gov-edu" style="background:rgba(6,21,45,0.7); border:1px solid rgba(120,80,220,0.3); border-radius:14px; padding:1.5rem; position:relative; overflow:hidden; transition:all 0.3s ease;" onmouseover="this.style.borderColor='rgba(150,100,255,0.6)'; this.style.boxShadow='0 8px 30px rgba(120,80,220,0.15)'" onmouseout="this.style.borderColor='rgba(120,80,220,0.3)'; this.style.boxShadow='none'">
+            <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#9060e0,transparent);"></div>
+            <div style="font-size:1.8rem; margin-bottom:0.7rem;">🎓</div>
+            <div style="font-family:'Cinzel',serif; font-size:1rem; font-weight:700; color:#b894ff; margin-bottom:0.3rem;">교육·문화부</div>
+            <div style="font-size:0.68rem; color:var(--text-sub); letter-spacing:0.12em; margin-bottom:1rem;">Ministry of Education & Culture</div>
+            <ul style="list-style:none; display:flex; flex-direction:column; gap:0.45rem;">
+              <li style="font-size:0.78rem; color:var(--text-sub); padding-left:0.8rem; border-left:2px solid rgba(120,80,220,0.5);">📖 덕치(德治) 교육원</li>
+              <li style="font-size:0.78rem; color:var(--text-sub); padding-left:0.8rem; border-left:2px solid rgba(120,80,220,0.5);">🌸 블루로즈 문화원</li>
+              <li style="font-size:0.78rem; color:var(--text-sub); padding-left:0.8rem; border-left:2px solid rgba(120,80,220,0.5);">🌏 국제 문화·학술 교류국</li>
+            </ul>
+          </div>
+
+          <!-- 복지부 -->
+          <div id="gov-welfare" style="background:rgba(6,21,45,0.7); border:1px solid rgba(30,180,100,0.3); border-radius:14px; padding:1.5rem; position:relative; overflow:hidden; transition:all 0.3s ease;" onmouseover="this.style.borderColor='rgba(50,220,130,0.6)'; this.style.boxShadow='0 8px 30px rgba(30,180,100,0.15)'" onmouseout="this.style.borderColor='rgba(30,180,100,0.3)'; this.style.boxShadow='none'">
+            <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#1eb464,transparent);"></div>
+            <div style="font-size:1.8rem; margin-bottom:0.7rem;">💊</div>
+            <div style="font-family:'Cinzel',serif; font-size:1rem; font-weight:700; color:#4ce89a; margin-bottom:0.3rem;">복지부</div>
+            <div style="font-size:0.68rem; color:var(--text-sub); letter-spacing:0.12em; margin-bottom:1rem;">Ministry of Welfare & Life</div>
+            <ul style="list-style:none; display:flex; flex-direction:column; gap:0.45rem;">
+              <li style="font-size:0.78rem; color:var(--text-sub); padding-left:0.8rem; border-left:2px solid rgba(30,180,100,0.5);">🏥 시민 복지 서비스국</li>
+              <li style="font-size:0.78rem; color:var(--text-sub); padding-left:0.8rem; border-left:2px solid rgba(30,180,100,0.5);">🛡️ AGI시대 인간 보호국</li>
+              <li style="font-size:0.78rem; color:var(--text-sub); padding-left:0.8rem; border-left:2px solid rgba(30,180,100,0.5);">🌿 바이오·윤리 위원회</li>
+            </ul>
+          </div>
+
+          <!-- 덕치 사법원 -->
+          <div id="gov-justice" style="background:rgba(6,21,45,0.7); border:1px solid rgba(212,175,55,0.3); border-radius:14px; padding:1.5rem; position:relative; overflow:hidden; transition:all 0.3s ease;" onmouseover="this.style.borderColor='rgba(212,175,55,0.7)'; this.style.boxShadow='0 8px 30px rgba(212,175,55,0.15)'" onmouseout="this.style.borderColor='rgba(212,175,55,0.3)'; this.style.boxShadow='none'">
+            <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#d4af37,transparent);"></div>
+            <div style="font-size:1.8rem; margin-bottom:0.7rem;">⚖️</div>
+            <div style="font-family:'Cinzel',serif; font-size:1rem; font-weight:700; color:var(--gold-light); margin-bottom:0.3rem;">덕치 사법원</div>
+            <div style="font-size:0.68rem; color:var(--text-sub); letter-spacing:0.12em; margin-bottom:0.5rem;">Court of Virtue Justice</div>
+            <div style="font-size:0.68rem; color:rgba(212,175,55,0.6); font-style:italic; margin-bottom:0.7rem;">독립 사법 기관</div>
+            <ul style="list-style:none; display:flex; flex-direction:column; gap:0.45rem;">
+              <li style="font-size:0.78rem; color:var(--text-sub); padding-left:0.8rem; border-left:2px solid rgba(212,175,55,0.4);">📜 덕치 12대 원칙 수호국</li>
+              <li style="font-size:0.78rem; color:var(--text-sub); padding-left:0.8rem; border-left:2px solid rgba(212,175,55,0.4);">🕊️ 국제 분쟁 조정국</li>
+              <li style="font-size:0.78rem; color:var(--text-sub); padding-left:0.8rem; border-left:2px solid rgba(212,175,55,0.4);">🏛️ 도덕·양심 의회</li>
+            </ul>
+          </div>
+
+        </div><!-- end ministries grid -->
+
+        <!-- 하단 철학 문구 -->
+        <div style="margin-top:2.5rem; padding:1.2rem 2rem; background:linear-gradient(135deg,rgba(10,45,115,0.2),rgba(3,8,20,0.6)); border:1px solid rgba(212,175,55,0.15); border-radius:12px; text-align:center; max-width:700px; width:100%;">
+          <p style="font-size:0.82rem; color:var(--text-sub); line-height:1.9; font-style:italic;">
+            "덕으로 인도하고 예의로 가지런히 하면 스스로 부끄러워할 줄 알고 바른길에 이른다." — 논어<br>
+            <span style="color:rgba(0,210,255,0.7); font-style:normal; font-size:0.75rem;">키아노스의 모든 국가 기관은 덕치(德治) 12대 원칙 위에 세워진다.</span>
+          </p>
+        </div>
+
+      </div><!-- end org chart -->
     </section>
 
   </main>
