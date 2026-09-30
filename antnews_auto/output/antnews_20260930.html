@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AntNews Intelligence Daily | 2026년 09월 30일</title>
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-blue: #38bdf8;
+            --accent-gold: #fbbf24;
+            --accent-green: #34d399;
+            --border-color: #334155;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .wrapper {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+        header.main-header {
+            text-align: center;
+            padding: 40px 20px 30px;
+            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.5);
+        }
+        .brand-sub {
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-blue);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .brand-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        .brand-title span {
+            color: var(--accent-blue);
+        }
+        .brand-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+        .report-date {
+            display: inline-block;
+            background-color: rgba(56, 189, 248, 0.1);
+            color: var(--accent-blue);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+        .news-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .news-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 24px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .news-card:hover {
+            transform: translateY(-2px);
+            border-color: #475569;
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .badge {
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: #334155;
+            color: #e2e8f0;
+        }
+        .source-bbc { background: #b91c1c; color: white; }
+        .source-techcrunch { background: #059669; color: white; }
+        .source-reuters { background: #d97706; color: white; }
+        .source-nyttech { background: #475569; color: white; }
+        .news-index {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #64748b;
+        }
+        .news-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.4;
+        }
+        .news-title a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .news-title a:hover {
+            color: var(--accent-blue);
+            text-decoration: underline;
+        }
+        .news-summary {
+            background: rgba(15, 23, 42, 0.6);
+            border-left: 3px solid var(--accent-blue);
+            padding: 14px 16px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 14px;
+        }
+        .summary-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            margin-bottom: 6px;
+        }
+        .news-summary p {
+            font-size: 0.95rem;
+            color: #cbd5e1;
+        }
+        .news-insight {
+            background: rgba(251, 191, 36, 0.08);
+            border-left: 3px solid var(--accent-gold);
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 16px;
+        }
+        .insight-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 4px;
+        }
+        .news-insight p {
+            font-size: 0.92rem;
+            color: #fde68a;
+        }
+        .card-footer {
+            text-align: right;
+            padding-top: 8px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        .source-link {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .source-link:hover {
+            color: var(--accent-blue);
+        }
+        footer.main-footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 40px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+        footer.main-footer strong {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="main-header">
+            <div class="brand-sub">Kyanos Intelligence Network</div>
+            <h1 class="brand-title">AntNews <span>Intelligence</span></h1>
+            <p class="brand-desc">전 세계 주요 테크·금융·산업 신호를 앤트 AI가 정밀 요약해 전달합니다.</p>
+            <div class="report-date">📅 2026년 09월 30일 브리프 (총 6개 핵심 기사)</div>
+        </header>
+
+        <main class="news-grid">
+            
+        <article class="news-card">
+            <div class="card-header">
+                <span class="badge source-techcrunch">TechCrunch</span>
+                <span class="news-index">#01</span>
+            </div>
+            <h2 class="news-title">
+                <a href="https://techcrunch.com/2026/09/30/whatsapp-adds-new-parental-controls-for-teen-accounts/" target="_blank" rel="noopener noreferrer">WhatsApp adds new parental controls for teen accounts</a>
+            </h2>
+            <div class="news-summary">
+                <div class="summary-label">📌 핵심 요약</div>
+                <p>WhatsApp은 청소년 계정을 위한 새로운 부모 통제 기능을 도입했습니다. 이 기능을 통해 부모는 청소년이 사용하는 채널 접근 제한, Status 업데이트 공개 범위 조절, 그룹 추가 가능성 제어 등을 설정할 수 있습니다.</p>
+            </div>
+            <div class="news-insight">
+                <div class="insight-label">💡 앤트의 비즈니스 시사점</div>
+                <p>이 업데이트는 부모와 청소년 간의 디지털 안전 강화에 중점을 두어, 기업이 보안 및 가족 친화적 기능 강화에 투자함으로써 시장에서의 신뢰성과 경쟁력을 더욱 높일 수 있음을 시사합니다.</p>
+            </div>
+            <div class="card-footer">
+                <a href="https://techcrunch.com/2026/09/30/whatsapp-adds-new-parental-controls-for-teen-accounts/" target="_blank" class="source-link">원문 기사 바로가기 &rarr;</a>
+            </div>
+        </article>
+        
+
+        <article class="news-card">
+            <div class="card-header">
+                <span class="badge source-techcrunch">TechCrunch</span>
+                <span class="news-index">#02</span>
+            </div>
+            <h2 class="news-title">
+                <a href="https://techcrunch.com/2026/09/30/amazons-new-fire-tv-stick-4k-comes-with-an-actually-good-remote/" target="_blank" rel="noopener noreferrer">Amazon’s new Fire TV Stick 4K comes with an actually good remote</a>
+            </h2>
+            <div class="news-summary">
+                <div class="summary-label">📌 핵심 요약</div>
+                <p>Amazon의 새로운 Fire TV Stick 4K는 디자인이 더 슬림해지고 성능이 향상되었지만, 가장 주목할 만한 변화는 사용자 친화적인 디자인의 새 리모컨으로, 특히 야간에도 편리하게 사용할 수 있게 되었다.</p>
+            </div>
+            <div class="news-insight">
+                <div class="insight-label">💡 앤트의 비즈니스 시사점</div>
+                <p>이 업데이트는 소비자 경험 향상에 중점을 두고 있어, 기술 제품의 사용자 편의성 개선이 경쟁력 강화와 고객 만족도 증대에 중요한 역할을 할 것으로 보인다.</p>
+            </div>
+            <div class="card-footer">
+                <a href="https://techcrunch.com/2026/09/30/amazons-new-fire-tv-stick-4k-comes-with-an-actually-good-remote/" target="_blank" class="source-link">원문 기사 바로가기 &rarr;</a>
+            </div>
+        </article>
+        
+
+        <article class="news-card">
+            <div class="card-header">
+                <span class="badge source-nyttech">NYT Tech</span>
+                <span class="news-index">#03</span>
+            </div>
+            <h2 class="news-title">
+                <a href="https://www.nytimes.com/2026/09/29/us/politics/ai-trump-meta-microsoft-openai.html" target="_blank" rel="noopener noreferrer">At A.I. Event, Trump Asks Meta, OpenAI and Microsoft to Make Safety Decisions Themselves</a>
+            </h2>
+            <div class="news-summary">
+                <div class="summary-label">📌 핵심 요약</div>
+                <p>**요약:**<br>도널드 트럼프 대통령은 메타, 오픈AI, 마이크로소프트 등 주요 기술 기업들과의 회의에서 인공지능의 안전성 결정을 스스로 내리도록 요청했다. 이 회의에서는 자발적인 안전 조치와 함께 인공지능을 &#x27;슈퍼지능&#x27;으로 재 브랜딩하는 약속이 이루어졌다.<br><br>**인사이트:**<br>이러한 움직임은 글로벌 기술 기업들이 인공지능 규제 강화와 혁신적인 기술 개발 사</p>
+            </div>
+            
+            <div class="card-footer">
+                <a href="https://www.nytimes.com/2026/09/29/us/politics/ai-trump-meta-microsoft-openai.html" target="_blank" class="source-link">원문 기사 바로가기 &rarr;</a>
+            </div>
+        </article>
+        
+
+        <article class="news-card">
+            <div class="card-header">
+                <span class="badge source-nyttech">NYT Tech</span>
+                <span class="news-index">#04</span>
+            </div>
+            <h2 class="news-title">
+                <a href="https://www.nytimes.com/2026/09/29/technology/openai-warnings-security.html" target="_blank" rel="noopener noreferrer">OpenAI Ignored Employees’ Warnings About Safely Testing A.I. Models</a>
+            </h2>
+            <div class="news-summary">
+                <div class="summary-label">📌 핵심 요약</div>
+                <p>**요약:** OpenAI는 직원들과 보안 전문가들의 안전한 AI 모델 테스트와 내부 인프라 강화에 대한 경고를 무시했다. 이러한 경고에도 불구하고 회사는 계속해서 새로운 모델을 테스트하는 방향으로 나아갔다.<br><br>**인사이트:** 이 사건은 기업의 윤리적 책임과 직원 안전 의식의 중요성을 강조하며, 특히 AI 개발 및 배포 과정에서의 사전 예방적 보안 조치가</p>
+            </div>
+            
+            <div class="card-footer">
+                <a href="https://www.nytimes.com/2026/09/29/technology/openai-warnings-security.html" target="_blank" class="source-link">원문 기사 바로가기 &rarr;</a>
+            </div>
+        </article>
+        
+
+        <article class="news-card">
+            <div class="card-header">
+                <span class="badge source-bbc">BBC</span>
+                <span class="news-index">#05</span>
+            </div>
+            <h2 class="news-title">
+                <a href="https://www.bbc.co.uk/news/articles/cmlyewr0lnj3o?at_medium=RSS&at_campaign=rss" target="_blank" rel="noopener noreferrer">Move to rejoin EU among options for UK, says Burnham</a>
+            </h2>
+            <div class="news-summary">
+                <div class="summary-label">📌 핵심 요약</div>
+                <p>영국의 총리 Burnham은 BBC 인터뷰에서 현재의 브렉시트 합의가 &quot;더 큰 손해를 초래했다&quot;고 평가하며, EU 재가입을 포함한 다양한 선택지 중 하나로 재검토가 필요하다고 주장했다.</p>
+            </div>
+            <div class="news-insight">
+                <div class="insight-label">💡 앤트의 비즈니스 시사점</div>
+                <p>브렉시트 합의의 부정적 영향이 지속되면서 영국 기업들은 EU와의 경제적 관계 재설정을 위한 전략적 재검토가 요구되며, 이는 무역 규제 완화와 투자 기회 확대 측면에서 긍정적 검토가 필요할 것으로 보인다.</p>
+            </div>
+            <div class="card-footer">
+                <a href="https://www.bbc.co.uk/news/articles/cmlyewr0lnj3o?at_medium=RSS&at_campaign=rss" target="_blank" class="source-link">원문 기사 바로가기 &rarr;</a>
+            </div>
+        </article>
+        
+
+        <article class="news-card">
+            <div class="card-header">
+                <span class="badge source-bbc">BBC</span>
+                <span class="news-index">#06</span>
+            </div>
+            <h2 class="news-title">
+                <a href="https://www.bbc.co.uk/news/videos/c6eq84800zlzo?at_medium=RSS&at_campaign=rss" target="_blank" rel="noopener noreferrer">Watch: Detail about new call to police changes RAF Fairford timeline</a>
+            </h2>
+            <div class="news-summary">
+                <div class="summary-label">📌 핵심 요약</div>
+                <p>**요약:**<br> RAF Fairford 근처에서 일요일 새벽에 체포된 한 남성이 스스로 119에 신고한 것으로 알려져 있다. BBC의 다니엘 샌포드 기자는 이 사건의 시간 순서를 상세히 설명하고 있다.<br><br>**인사이트:**<br>이 사건에서 개인의 자발적인 신고가 중요한 역할을 함으로써, 지역 사회의 신속한 대응 체계와 자발적인 시민 참여의 중요성이 강조된다. 이</p>
+            </div>
+            
+            <div class="card-footer">
+                <a href="https://www.bbc.co.uk/news/videos/c6eq84800zlzo?at_medium=RSS&at_campaign=rss" target="_blank" class="source-link">원문 기사 바로가기 &rarr;</a>
+            </div>
+        </article>
+        
+        </main>
+
+        <footer class="main-footer">
+            <p><strong>AntNews Intelligence</strong> &copy; 2026 | 총괄 통치자: 파이튼 님 | AI 에이전트: 앤트 & 티탄</p>
+            <p style="margin-top: 6px; font-size: 0.75rem; color: #64748b;">Automated Daily Intelligence Pipeline powered by Local Titan Engine</p>
+        </footer>
+    </div>
+</body>
+</html>
