@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AntNews Intelligence Daily | 2026년 10월 01일</title>
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-blue: #38bdf8;
+            --accent-gold: #fbbf24;
+            --accent-green: #34d399;
+            --border-color: #334155;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .wrapper {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+        header.main-header {
+            text-align: center;
+            padding: 40px 20px 30px;
+            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.5);
+        }
+        .brand-sub {
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-blue);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .brand-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        .brand-title span {
+            color: var(--accent-blue);
+        }
+        .brand-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+        .report-date {
+            display: inline-block;
+            background-color: rgba(56, 189, 248, 0.1);
+            color: var(--accent-blue);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+        .news-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .news-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 24px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .news-card:hover {
+            transform: translateY(-2px);
+            border-color: #475569;
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .badge {
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: #334155;
+            color: #e2e8f0;
+        }
+        .source-bbc { background: #b91c1c; color: white; }
+        .source-techcrunch { background: #059669; color: white; }
+        .source-reuters { background: #d97706; color: white; }
+        .source-nyttech { background: #475569; color: white; }
+        .news-index {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #64748b;
+        }
+        .news-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.4;
+        }
+        .news-title a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .news-title a:hover {
+            color: var(--accent-blue);
+            text-decoration: underline;
+        }
+        .news-summary {
+            background: rgba(15, 23, 42, 0.6);
+            border-left: 3px solid var(--accent-blue);
+            padding: 14px 16px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 14px;
+        }
+        .summary-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            margin-bottom: 6px;
+        }
+        .news-summary p {
+            font-size: 0.95rem;
+            color: #cbd5e1;
+        }
+        .news-insight {
+            background: rgba(251, 191, 36, 0.08);
+            border-left: 3px solid var(--accent-gold);
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 16px;
+        }
+        .insight-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 4px;
+        }
+        .news-insight p {
+            font-size: 0.92rem;
+            color: #fde68a;
+        }
+        .card-footer {
+            text-align: right;
+            padding-top: 8px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        .source-link {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .source-link:hover {
+            color: var(--accent-blue);
+        }
+        footer.main-footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 40px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+        footer.main-footer strong {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="main-header">
+            <div class="brand-sub">Kyanos Intelligence Network</div>
+            <h1 class="brand-title">AntNews <span>Intelligence</span></h1>
+            <p class="brand-desc">전 세계 주요 테크·금융·산업 신호를 앤트 AI가 정밀 요약해 전달합니다.</p>
+            <div class="report-date">📅 2026년 10월 01일 브리프 (총 1개 핵심 기사)</div>
+        </header>
+
+        <main class="news-grid">
+            
+        <article class="news-card">
+            <div class="card-header">
+                <span class="badge source-techcrunch">TechCrunch</span>
+                <span class="news-index">#01</span>
+            </div>
+            <h2 class="news-title">
+                <a href="https://techcrunch.com" target="_blank" rel="noopener noreferrer">Nvidia Announces Next-Generation Robotics AI Platform</a>
+            </h2>
+            <div class="news-summary">
+                <div class="summary-label">📌 핵심 요약</div>
+                <p>엔비디아가 산업용 휴머노이드 로봇을 위한 새로운 물리 AI 가속 플랫폼을 공개했습니다. 글로벌 제조업체들이 차세대 공장 자동화에 즉각 도입할 예정입니다.</p>
+            </div>
+            <div class="news-insight">
+                <div class="insight-label">💡 앤트의 비즈니스 시사점</div>
+                <p>하드웨어와 결합된 피지컬 AI 기업들의 밸류체인이 하반기 핵심 투자처로 부상할 전망입니다.</p>
+            </div>
+            <div class="card-footer">
+                <a href="https://techcrunch.com" target="_blank" class="source-link">원문 기사 바로가기 &rarr;</a>
+            </div>
+        </article>
+        
+        </main>
+
+        <footer class="main-footer">
+            <div class="footer-links" style="margin-bottom: 12px;">
+                <a href="about.html" style="color: var(--accent-blue); text-decoration: none; margin: 0 8px; font-size: 0.85rem;">About Us</a> |
+                <a href="privacy.html" style="color: var(--accent-blue); text-decoration: none; margin: 0 8px; font-size: 0.85rem;">Privacy Policy</a> |
+                <a href="terms.html" style="color: var(--accent-blue); text-decoration: none; margin: 0 8px; font-size: 0.85rem;">Terms & Disclaimer</a>
+            </div>
+            <p><strong>AntNews Intelligence</strong> &copy; 2026 | 총괄 통치자: 파이튼 님 | AI 에이전트: 앤트 & 티탄</p>
+            <p style="margin-top: 6px; font-size: 0.75rem; color: #64748b;">Automated Daily Intelligence Pipeline powered by Local Titan Engine</p>
+        </footer>
+    </div>
+</body>
+</html>
