@@ -1,0 +1,44 @@
+name: AntNews Daily Auto-Publish
+
+on:
+  schedule:
+    # 매일 KST 오전 6시 = UTC 21:00 (전날)
+    - cron: '0 21 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate-and-publish:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: antnews_auto
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Collect news and generate report
+        # OLLAMA_API 미설정 시 summarizer가 경량 Fallback 논평으로 자동 전환
+        run: python src/main.py
+        env:
+          PYTHONIOENCODING: utf-8
+          OLLAMA_API: ${{ secrets.OLLAMA_API_URL }}
+
+      - name: Commit and push output
+        working-directory: .
+        run: |
+          git config user.name "antnews-bot"
+          git config user.email "antnews-bot@users.noreply.github.com"
+          git add antnews_auto/output/
+          git diff --cached --quiet && echo "변경사항 없음" && exit 0
+          git commit -m "📰 AntNews 자동 업데이트 - $(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M')"
+          git pull --rebase
+          git push
