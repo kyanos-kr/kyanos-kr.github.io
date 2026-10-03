@@ -1464,8 +1464,8 @@
               <span>🚀 앤트뉴스 프리미엄 구독</span>
               <span>↗</span>
             </a>
-            <a href="antnews_brief_20260911.html" target="_blank" class="btn btn-media">
-              <span>📰 모닝 브리프 No.002 열람</span>
+            <a href="antnews_auto/output/index.html" target="_blank" class="btn btn-media">
+              <span>📰 오늘의 브리프 열람</span>
               <span>↗</span>
             </a>
             <button class="btn btn-glass" onclick="openModal('antNewsModal')">
@@ -1500,7 +1500,7 @@
           <span class="ticker-text">
             🔴 키아노스, 앤트뉴스를 공식 국가 미디어 기관으로 지정 &nbsp;·&nbsp;
             👑 파이튼 통치자, "앤트뉴스는 키아노스 Phase 2 핵심 미디어 엔진" 선언 &nbsp;·&nbsp;
-            🚀 Project 01: 앤트뉴스 모닝 브리프 No.002 발행 및 프리미엄 구독 랜딩페이지 오픈 완료 &nbsp;·&nbsp;
+            🚀 Project 01: 앤트뉴스 인텔리전스 매일 자동 발행 및 프리미엄 구독 랜딩페이지 오픈 완료 &nbsp;·&nbsp;
             🌐 NEXFORUM × AntNews 글로벌 지식 파트너십 체결 &nbsp;·&nbsp;
             📰 앤트뉴스 antnews.org — 진실을 향한 개미의 전진, 멈추지 않는 탐사 &nbsp;·&nbsp;
           </span>
@@ -1519,10 +1519,10 @@
           </div>
         </a>
 
-        <a href="antnews_brief_20260911.html" target="_blank" style="text-decoration: none; color: inherit;">
+        <a href="antnews_auto/output/index.html" target="_blank" style="text-decoration: none; color: inherit;">
           <div class="media-channel-card" style="border: 1px solid var(--cyan-glow); background: rgba(0,210,255,0.06);">
             <div class="channel-icon">⚡</div>
-            <div class="channel-name" style="color: var(--cyan-glow);">모닝 브리프 No.002 (09.11)</div>
+            <div class="channel-name" style="color: var(--cyan-glow);">오늘의 브리프 (<span id="brief-today">최신</span>)</div>
             <p class="channel-desc">AI 거버넌스 표준, 피지컬 AI, 청정에너지, 럭셔리 자산 시그널 및 글로벌 마켓 스냅샷 수록.</p>
             <span class="channel-badge" style="background: var(--cyan-glow); color: #000;">Latest Brief</span>
           </div>
@@ -2101,5 +2101,5 @@
       }
     });
   </script>
-</body>
+<script>(function(){var d=new Date(),e=document.getElementById("brief-today");if(e)e.textContent=String(d.getMonth()+1).padStart(2,"0")+"."+String(d.getDate()).padStart(2,"0");})();</script></body>
 </html>

@@ -446,7 +446,7 @@
   </p>
   <div class="hero-cta-group">
     <a href="#pricing" class="btn-primary">📩 무료 체험 시작하기</a>
-    <a href="antnews_brief_20260911.html" class="btn-secondary">📰 오늘의 브리프 보기</a>
+    <a href="antnews_auto/output/index.html" class="btn-secondary">📰 오늘의 브리프 보기</a>
   </div>
   <div class="hero-stats">
     <div class="stat-item">
@@ -515,17 +515,17 @@
   <div class="section-inner">
     <div class="section-eyebrow">Sample Brief</div>
     <h2 class="section-h2">이런 인텔리전스를<br>매일 아침 받으세요</h2>
-    <p class="section-desc">2026년 9월 11일자 브리프 미리보기입니다.</p>
+    <p class="section-desc" id="latest-desc">최신 브리프 미리보기입니다.</p>
 
     <div class="preview-box">
       <div class="preview-header">
         <div>
           <div class="preview-header-brand">📰 AntNews Intelligence</div>
-          <div class="preview-header-meta">2026.09.11 (목) · No.002 · 편집: 파이튼 &amp; 앤트</div>
+          <div class="preview-header-meta" id="latest-meta">최신 브리프 · 편집: 파이튼 &amp; 앤트</div>
         </div>
         <div style="font-size:11px;color:var(--text-sub);">⏱ 읽는 시간 약 3분</div>
       </div>
-      <div class="preview-body">
+      <div class="preview-body" id="latest-body">
         <div class="preview-item">
           <div class="preview-cat">🤖 AI &amp; GOVERNANCE · SIGNAL 01</div>
           <div class="preview-headline">주요국 AI 자율 통치 실험 가속화 — 세계 최초 'AI 행정관' 제도 도입 논의 본격화</div>
@@ -539,7 +539,7 @@
       </div>
       <div style="text-align:center; padding: 0 28px 28px; background:linear-gradient(to bottom,rgba(19,19,42,0),rgba(19,19,42,1)); margin-top:-20px; padding-top:40px;">
         <div style="font-size:13px; color:var(--text-sub); margin-bottom:16px;">나머지 시그널 2개 + 마켓 스냅샷 + 앤트의 인사이트 전체 보기</div>
-        <a href="antnews_brief_20260911.html" class="preview-unlock-btn">📰 오늘 브리프 전체 보기 →</a>
+        <a href="antnews_auto/output/index.html" class="preview-unlock-btn">📰 오늘 브리프 전체 보기 →</a>
       </div>
     </div>
   </div>
@@ -616,7 +616,7 @@
   <div class="footer-brand-lg">AntNews Intelligence</div>
   <div class="footer-tagline">The Sovereign Media of Kyanos · antnews.org</div>
   <div class="footer-links">
-    <a href="antnews_brief_20260911.html">오늘의 브리프</a>
+    <a href="antnews_auto/output/index.html">오늘의 브리프</a>
     <a href="#pricing">구독 플랜</a>
     <a href="mailto:aza700901@nate.com">문의하기</a>
     <a href="main.html">키아노스 공식 사이트</a>
@@ -624,5 +624,29 @@
   <div class="footer-copy">© 2026 AntNews · The Sovereign Realm of Kyanos. All Rights Reserved.</div>
 </footer>
 
-</body>
+<script>
+/* 최신 브리프 자동 연동: antnews_auto/output/index.html (매일 자동 생성)에서 날짜와 헤드라인을 읽어옴 */
+(function(){
+  var d=new Date(), w=['일','월','화','수','목','금','토'];
+  var today=d.getFullYear()+'.'+String(d.getMonth()+1).padStart(2,'0')+'.'+String(d.getDate()).padStart(2,'0')+' ('+w[d.getDay()]+')';
+  var meta=document.getElementById('latest-meta'), desc=document.getElementById('latest-desc'), body=document.getElementById('latest-body');
+  if(meta) meta.textContent=today+' · 편집: 파이튼 & 앤트';
+  fetch('antnews_auto/output/index.html',{cache:'no-store'}).then(function(r){return r.text();}).then(function(h){
+    var doc=new DOMParser().parseFromString(h,'text/html');
+    var t=(doc.querySelector('.report-date')||{}).textContent;
+    if(t&&desc) desc.textContent=t.replace(/^[^0-9]*/,'')+' 최신 브리프 미리보기입니다.';
+    if(t&&meta) meta.textContent=t.replace(/^[^0-9]*/,'').split(' 브리핑')[0]+' · 편집: 파이튼 & 앤트';
+    var cards=doc.querySelectorAll('.news-card'); if(!cards.length||!body) return;
+    body.innerHTML='';
+    Array.prototype.slice.call(cards,0,2).forEach(function(c,i){
+      var a=c.querySelector('.news-title a'), s=c.querySelector('.news-summary p'), b=c.querySelector('.badge');
+      var it=document.createElement('div'); it.className='preview-item';
+      var c1=document.createElement('div'); c1.className='preview-cat'; c1.textContent=(b?b.textContent:'NEWS')+' · SIGNAL 0'+(i+1);
+      var c2=document.createElement('div'); c2.className='preview-headline'; c2.textContent=a?a.textContent:'';
+      var c3=document.createElement('div'); c3.className='preview-text'; c3.textContent=s?s.textContent.slice(0,120)+'...':'';
+      it.appendChild(c1); it.appendChild(c2); it.appendChild(c3); body.appendChild(it);
+    });
+  }).catch(function(){});
+})();
+</script></body>
 </html>
