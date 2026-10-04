@@ -1826,9 +1826,12 @@
           </div>
 
           <!-- 복지부 -->
-          <div id="gov-welfare" style="background:rgba(6,21,45,0.7); border:1px solid rgba(30,180,100,0.3); border-radius:14px; padding:1.5rem; position:relative; overflow:hidden; transition:all 0.3s ease;" onmouseover="this.style.borderColor='rgba(50,220,130,0.6)'; this.style.boxShadow='0 8px 30px rgba(30,180,100,0.15)'" onmouseout="this.style.borderColor='rgba(30,180,100,0.3)'; this.style.boxShadow='none'">
+          <div id="gov-welfare" style="background:rgba(6,21,45,0.7); border:1px solid rgba(30,180,100,0.3); border-radius:14px; padding:1.5rem; position:relative; overflow:hidden; transition:all 0.3s ease; cursor:pointer;" onmouseover="this.style.borderColor='rgba(50,220,130,0.8)'; this.style.boxShadow='0 8px 30px rgba(30,180,100,0.25)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='rgba(30,180,100,0.3)'; this.style.boxShadow='none'; this.style.transform='translateY(0)'" onclick="openModal('welfareModal')">
             <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#1eb464,transparent);"></div>
-            <div style="font-size:1.8rem; margin-bottom:0.7rem;">💊</div>
+            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+              <div style="font-size:1.8rem; margin-bottom:0.7rem;">💊</div>
+              <span style="font-size:0.65rem; background:rgba(30,180,100,0.18); border:1px solid rgba(30,180,100,0.4); color:#4ce89a; padding:2px 8px; border-radius:10px; font-weight:600;">상세 계획·개념도 열람 ↗</span>
+            </div>
             <div style="font-family:'Cinzel',serif; font-size:1rem; font-weight:700; color:#4ce89a; margin-bottom:0.3rem;">복지부</div>
             <div style="font-size:0.68rem; color:var(--text-sub); letter-spacing:0.12em; margin-bottom:1rem;">Ministry of Welfare & Life</div>
             <ul style="list-style:none; display:flex; flex-direction:column; gap:0.45rem;">
@@ -2619,6 +2622,156 @@
       <div style="margin-top: 2rem; display: flex; justify-content: center;">
         <button onclick="closeModal('librarySearchModal')" style="padding: 0.8rem 2.5rem; background: linear-gradient(135deg, #ffe066, #d4af37); border: none; border-radius: 8px; font-size: 0.92rem; font-weight: 700; color: #000; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(255, 224, 102, 0.3);">
           도서관 닫기
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================
+       WELFARE & LIFE MINISTRY MODAL (복지부 하위 국 활동 계획 & 개념도)
+       ============================================ -->
+  <div id="welfareModal" class="modal">
+    <div class="modal-backdrop" onclick="closeModal('welfareModal')"></div>
+    <div class="modal-content" style="max-width: 980px; max-height: 90vh; overflow-y: auto; padding: 2.5rem; background: rgba(8, 28, 22, 0.97); border: 2px solid #4ce89a; border-radius: 18px; box-shadow: 0 0 50px rgba(76, 232, 154, 0.25);">
+      <button class="modal-close" onclick="closeModal('welfareModal')" style="font-size: 1.8rem; color: #4ce89a; position: absolute; top: 1.2rem; right: 1.5rem; background: none; border: none; cursor: pointer;">&times;</button>
+      
+      <!-- Modal Header -->
+      <div style="text-align: center; margin-bottom: 2rem; border-bottom: 1px solid rgba(76, 232, 154, 0.25); padding-bottom: 1.2rem;">
+        <span style="font-size: 0.75rem; color: #4ce89a; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700;">Ministry of Welfare &amp; Life · Human Dignity &amp; Universal Well-being</span>
+        <h2 style="font-family: 'Cinzel', serif; font-size: 1.85rem; color: #fff; margin-top: 0.4rem; letter-spacing: 0.08em;">
+          💊 키아노스 복지부 산하 부서 활동 계획 및 개념도
+        </h2>
+        <p style="font-size: 0.86rem; color: var(--text-sub); margin-top: 0.5rem; line-height: 1.6;">
+          최고 통치자 파이튼 국왕의 덕치 제2조(인지도: 자애와 측은지심)에 기반한 <strong>3대 핵심 국(局)·위원회</strong>의 인간 존엄 보장 청사진
+        </p>
+      </div>
+
+      <!-- 개념도 아키텍처 박스 (Interactive Conceptual Architecture) -->
+      <div style="background: rgba(12, 42, 32, 0.65); border: 1px solid rgba(76, 232, 154, 0.35); border-radius: 14px; padding: 1.8rem; margin-bottom: 2.2rem; position: relative; overflow: hidden;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+          <h4 style="font-family: 'Cinzel', serif; font-size: 1.05rem; color: #4ce89a; letter-spacing: 0.08em; display: flex; align-items: center; gap: 8px;">
+            <span>🌿</span> 복지부 3대 휴먼 축 통합 개념도 (Conceptual Architecture)
+          </h4>
+          <span style="font-size: 0.68rem; color: #4ce89a; background: rgba(76, 232, 154, 0.15); padding: 3px 8px; border-radius: 8px; border: 1px solid rgba(76, 232, 154, 0.35);">
+            Phase 1 시민 존엄 &amp; 인간 소외 제로
+          </span>
+        </div>
+        
+        <!-- Grid Conceptual Nodes (3대 축) -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.2rem;">
+          <!-- Node 1 -->
+          <div style="background: rgba(5, 20, 15, 0.85); border: 1px solid rgba(76, 232, 154, 0.4); border-radius: 10px; padding: 1.2rem; text-align: center;">
+            <div style="font-size: 1.8rem; margin-bottom: 0.4rem;">🏥</div>
+            <div style="font-size: 0.95rem; font-weight: 700; color: #4ce89a;">[시민 복지] 보편 서비스</div>
+            <p style="font-size: 0.78rem; color: #cfd9e8; margin-top: 0.4rem; line-height: 1.5;">
+              요람에서 무덤까지 생애주기 무상 케어 &amp; 안심 주거 인프라 ➔ <strong>사각지대 제로 사회</strong>
+            </p>
+          </div>
+          <!-- Node 2 -->
+          <div style="background: rgba(5, 20, 15, 0.85); border: 1px solid rgba(0, 210, 255, 0.4); border-radius: 10px; padding: 1.2rem; text-align: center;">
+            <div style="font-size: 1.8rem; margin-bottom: 0.4rem;">🛡️</div>
+            <div style="font-size: 0.95rem; font-weight: 700; color: var(--cyan-glow);">[인간 보호] AGI시대 인권 헌장</div>
+            <p style="font-size: 0.78rem; color: #cfd9e8; margin-top: 0.4rem; line-height: 1.5;">
+              인간 소외 원천 차단 &amp; 노동 해방 후 고차원 창작·자아실현 지원 ➔ <strong>인간 존엄 최고 권리</strong>
+            </p>
+          </div>
+          <!-- Node 3 -->
+          <div style="background: rgba(5, 20, 15, 0.85); border: 1px solid rgba(255, 224, 102, 0.4); border-radius: 10px; padding: 1.2rem; text-align: center;">
+            <div style="font-size: 1.8rem; margin-bottom: 0.4rem;">🌿</div>
+            <div style="font-size: 0.95rem; font-weight: 700; color: #ffe066;">[생명 윤리] 바이오·장수 케어</div>
+            <p style="font-size: 0.78rem; color: #cfd9e8; margin-top: 0.4rem; line-height: 1.5;">
+              유전자·AI 의료 윤리 심의 &amp; 수명연장(Longevity) 보편 분배 ➔ <strong>생명 존중 복지</strong>
+            </p>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 1.2rem; font-size: 0.82rem; color: #4ce89a; font-style: italic;">
+          “기계가 지능을 대체할수록 인간의 생명과 영혼은 더욱 존엄하게 보호받아야 한다는 덕치 복지의 완성”
+        </div>
+      </div>
+
+      <!-- 3대 국 세부 활동 계획 리스트 -->
+      <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+
+        <!-- 1. 시민 복지 서비스국 -->
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(76, 232, 154, 0.35); border-radius: 12px; padding: 1.5rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 1.5rem;">🏥</span>
+              <div>
+                <h3 style="font-family: 'Cinzel', serif; font-size: 1.15rem; color: #4ce89a; margin: 0;">1. 시민 복지 서비스국</h3>
+                <span style="font-size: 0.7rem; color: var(--text-sub); letter-spacing: 0.08em;">Bureau of Universal Citizen Welfare Services</span>
+              </div>
+            </div>
+            <span style="font-size: 0.68rem; color: #000; background: #4ce89a; padding: 3px 9px; border-radius: 10px; font-weight: 700;">보편적 복지 인프라</span>
+          </div>
+          <div style="font-size: 0.85rem; color: #cfd9e8; line-height: 1.7;">
+            <p style="margin-bottom: 0.6rem;">
+              <strong>🎯 핵심 역할 및 지침:</strong> 키아노스 시민 모두가 결핍과 생계의 공포 없이 살아갈 수 있도록 생애주기별 맞춤형 웰빙과 친환경 무상 주거, 청정 의료망을 통합 운영합니다.
+            </p>
+            <ul style="list-style: none; padding-left: 0.5rem; display: flex; flex-direction: column; gap: 0.4rem; color: #a5b4cb;">
+              <li>✦ <strong>생애 전 주기 AI 스마트 웰빙 케어:</strong> 영유아부터 고령층까지 24/7 건강 데이터 감지 및 1:1 방문 맞춤 의료 돌봄.</li>
+              <li>✦ <strong>무결점 기본 주거권 &amp; 청정 생필품 보장:</strong> 키아노스 스마트 주거 단지 내 시민 기본 거주 공간 및 필수 유기농 생필품 공공 제공.</li>
+              <li>✦ <strong>위기 시민 사전 감지 (Ant-Care):</strong> 생활고나 정서적 고립 위험에 처한 시민을 AI가 사전에 파악하여 복지관이 즉각 구호.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 2. AGI시대 인간 보호국 -->
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(0, 210, 255, 0.35); border-radius: 12px; padding: 1.5rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 1.5rem;">🛡️</span>
+              <div>
+                <h3 style="font-family: 'Cinzel', serif; font-size: 1.15rem; color: var(--cyan-glow); margin: 0;">2. AGI시대 인간 보호국</h3>
+                <span style="font-size: 0.7rem; color: var(--text-sub); letter-spacing: 0.08em;">Bureau of Human Dignity &amp; Protection in AGI Era</span>
+              </div>
+            </div>
+            <span style="font-size: 0.68rem; color: #000; background: var(--cyan-glow); padding: 3px 9px; border-radius: 10px; font-weight: 700;">인간 존엄 수호 최고 헌장</span>
+          </div>
+          <div style="font-size: 0.85rem; color: #cfd9e8; line-height: 1.7;">
+            <p style="margin-bottom: 0.6rem;">
+              <strong>🎯 핵심 역할 및 지침:</strong> 인공지능이 인간 노동을 전면 대체하는 환경 속에서, 인간이 기계의 지배를 받거나 소외당하지 않도록 인간 고유의 권리와 창작 자유를 보장합니다.
+            </p>
+            <ul style="list-style: none; padding-left: 0.5rem; display: flex; flex-direction: column; gap: 0.4rem; color: #a5b4cb;">
+              <li>✦ <strong>AGI 시대 인간 존엄 권리 헌장 제정:</strong> 인공지능의 자율 판단이 인간의 행복 추구권과 생명권을 침해할 수 없도록 법제화.</li>
+              <li>✦ <strong>노동 해방 후 자아실현 전환 지원:</strong> 노동에서 벗어난 시민들이 예술, 철학, 학문, 취미에 몰입할 수 있도록 활동비 및 창작 지원금 지급.</li>
+              <li>✦ <strong>디지털 중독 및 정서적 단절 치유:</strong> 가상공간 과몰입을 예방하고 따뜻한 오프라인 공동체 감성을 회복하는 휴먼 힐링 센터 운영.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 3. 바이오·윤리 위원회 -->
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 224, 102, 0.35); border-radius: 12px; padding: 1.5rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 1.5rem;">🌿</span>
+              <div>
+                <h3 style="font-family: 'Cinzel', serif; font-size: 1.15rem; color: #ffe066; margin: 0;">3. 바이오·윤리 위원회</h3>
+                <span style="font-size: 0.7rem; color: var(--text-sub); letter-spacing: 0.08em;">Bio-Ethics &amp; Longevity Care Commission</span>
+              </div>
+            </div>
+            <span style="font-size: 0.68rem; color: #000; background: #ffe066; padding: 3px 9px; border-radius: 10px; font-weight: 700;">생명윤리 &amp; 장수 공공분배</span>
+          </div>
+          <div style="font-size: 0.85rem; color: #cfd9e8; line-height: 1.7;">
+            <p style="margin-bottom: 0.6rem;">
+              <strong>🎯 핵심 역할 및 지침:</strong> 첨단 바이오 신기술과 유전자 조작 기술의 윤리적 안전성을 엄격히 통제하고, 건강 수명 연장(Longevity)의 혜택이 모든 시민에게 공평하게 돌아가도록 감독합니다.
+            </p>
+            <ul style="list-style: none; padding-left: 0.5rem; display: flex; flex-direction: column; gap: 0.4rem; color: #a5b4cb;">
+              <li>✦ <strong>생명 복제 및 유전자 편집 엄격 감시:</strong> 생명 경시 및 무분별한 유전자 변형을 원천 차단하는 최고 국가 윤리 심의제 가동.</li>
+              <li>✦ <strong>건강 수명 연장(Longevity) 보편적 무상 분배:</strong> 최첨단 노화 역전 테라피와 희귀병 치료제를 전 국민 공공 의료 체계로 편입.</li>
+              <li>✦ <strong>생태계 및 동물 복지 모니터링:</strong> 영내 해양 생물 및 친환경 생태계에 대한 인도적 대우와 자연과의 무해한 공존 감사.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Action Button / Footer Close -->
+      <div style="margin-top: 2rem; display: flex; justify-content: center;">
+        <button onclick="closeModal('welfareModal')" style="padding: 0.8rem 2.5rem; background: linear-gradient(135deg, #4ce89a, #1eb464); border: none; border-radius: 8px; font-size: 0.92rem; font-weight: 700; color: #000; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(76, 232, 154, 0.3);">
+          확인 및 닫기
         </button>
       </div>
 
