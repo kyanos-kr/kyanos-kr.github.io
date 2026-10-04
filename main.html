@@ -1842,9 +1842,12 @@
           </div>
 
           <!-- 사회부 -->
-          <div id="gov-society" style="background:rgba(6,21,45,0.7); border:1px solid rgba(255,136,0,0.3); border-radius:14px; padding:1.5rem; position:relative; overflow:hidden; transition:all 0.3s ease;" onmouseover="this.style.borderColor='rgba(255,150,50,0.6)'; this.style.boxShadow='0 8px 30px rgba(255,136,0,0.15)'" onmouseout="this.style.borderColor='rgba(255,136,0,0.3)'; this.style.boxShadow='none'">
+          <div id="gov-society" style="background:rgba(6,21,45,0.7); border:1px solid rgba(255,136,0,0.3); border-radius:14px; padding:1.5rem; position:relative; overflow:hidden; transition:all 0.3s ease; cursor:pointer;" onmouseover="this.style.borderColor='rgba(255,160,50,0.8)'; this.style.boxShadow='0 8px 30px rgba(255,136,0,0.25)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='rgba(255,136,0,0.3)'; this.style.boxShadow='none'; this.style.transform='translateY(0)'" onclick="openModal('societyModal')">
             <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#ff8800,transparent);"></div>
-            <div style="font-size:1.8rem; margin-bottom:0.7rem;">🤝</div>
+            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+              <div style="font-size:1.8rem; margin-bottom:0.7rem;">🤝</div>
+              <span style="font-size:0.65rem; background:rgba(255,136,0,0.18); border:1px solid rgba(255,136,0,0.4); color:#ffcc88; padding:2px 8px; border-radius:10px; font-weight:600;">상세 계획·개념도 열람 ↗</span>
+            </div>
             <div style="font-family:'Cinzel',serif; font-size:1rem; font-weight:700; color:#ffcc88; margin-bottom:0.3rem;">사회부</div>
             <div style="font-size:0.68rem; color:var(--text-sub); letter-spacing:0.12em; margin-bottom:1rem;">Ministry of Society</div>
             <ul style="list-style:none; display:flex; flex-direction:column; gap:0.45rem;">
@@ -2771,6 +2774,156 @@
       <!-- Action Button / Footer Close -->
       <div style="margin-top: 2rem; display: flex; justify-content: center;">
         <button onclick="closeModal('welfareModal')" style="padding: 0.8rem 2.5rem; background: linear-gradient(135deg, #4ce89a, #1eb464); border: none; border-radius: 8px; font-size: 0.92rem; font-weight: 700; color: #000; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(76, 232, 154, 0.3);">
+          확인 및 닫기
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================
+       SOCIETY MINISTRY MODAL (사회부 하위 국 활동 계획 & 개념도)
+       ============================================ -->
+  <div id="societyModal" class="modal">
+    <div class="modal-backdrop" onclick="closeModal('societyModal')"></div>
+    <div class="modal-content" style="max-width: 980px; max-height: 90vh; overflow-y: auto; padding: 2.5rem; background: rgba(30, 18, 6, 0.98); border: 2px solid #ffaa32; border-radius: 18px; box-shadow: 0 0 50px rgba(255, 170, 50, 0.25);">
+      <button class="modal-close" onclick="closeModal('societyModal')" style="font-size: 1.8rem; color: #ffcc88; position: absolute; top: 1.2rem; right: 1.5rem; background: none; border: none; cursor: pointer;">&times;</button>
+      
+      <!-- Modal Header -->
+      <div style="text-align: center; margin-bottom: 2rem; border-bottom: 1px solid rgba(255, 170, 50, 0.25); padding-bottom: 1.2rem;">
+        <span style="font-size: 0.75rem; color: #ffcc88; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700;">Ministry of Society · Civic Harmony &amp; Sustainable Coexistence</span>
+        <h2 style="font-family: 'Cinzel', serif; font-size: 1.85rem; color: #fff; margin-top: 0.4rem; letter-spacing: 0.08em;">
+          🤝 키아노스 사회부 산하 부서 활동 계획 및 개념도
+        </h2>
+        <p style="font-size: 0.86rem; color: var(--text-sub); margin-top: 0.5rem; line-height: 1.6;">
+          최고 통치자 파이튼 국왕의 덕치 제7·8·9·10조(화이제동·상선약수·지족상족)에 기반한 <strong>3대 핵심 축</strong>의 지속가능 공동체 청사진
+        </p>
+      </div>
+
+      <!-- 개념도 아키텍처 박스 (Interactive Conceptual Architecture) -->
+      <div style="background: rgba(45, 24, 8, 0.65); border: 1px solid rgba(255, 170, 50, 0.35); border-radius: 14px; padding: 1.8rem; margin-bottom: 2.2rem; position: relative; overflow: hidden;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+          <h4 style="font-family: 'Cinzel', serif; font-size: 1.05rem; color: #ffcc88; letter-spacing: 0.08em; display: flex; align-items: center; gap: 8px;">
+            <span>🏡</span> 사회부 3대 공동체 축 통합 개념도 (Conceptual Architecture)
+          </h4>
+          <span style="font-size: 0.68rem; color: #ffaa32; background: rgba(255, 170, 50, 0.15); padding: 3px 8px; border-radius: 8px; border: 1px solid rgba(255, 170, 50, 0.35);">
+            Phase 1 시민 화합 &amp; 자원 순환 생태계
+          </span>
+        </div>
+        
+        <!-- Grid Conceptual Nodes (3대 축) -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.2rem;">
+          <!-- Node 1 -->
+          <div style="background: rgba(22, 10, 4, 0.85); border: 1px solid rgba(255, 170, 50, 0.4); border-radius: 10px; padding: 1.2rem; text-align: center;">
+            <div style="font-size: 1.8rem; margin-bottom: 0.4rem;">🏡</div>
+            <div style="font-size: 0.95rem; font-weight: 700; color: #ffcc88;">[공동체 화합] 자율 조정</div>
+            <p style="font-size: 0.78rem; color: #ebd8c8; margin-top: 0.4rem; line-height: 1.5;">
+              처벌 대신 상호 화해(Peace Circle) &amp; 성숙한 시민 아고라 ➔ <strong>화이제동(和而不同) 사회</strong>
+            </p>
+          </div>
+          <!-- Node 2 -->
+          <div style="background: rgba(22, 10, 4, 0.85); border: 1px solid rgba(0, 210, 255, 0.4); border-radius: 10px; padding: 1.2rem; text-align: center;">
+            <div style="font-size: 1.8rem; margin-bottom: 0.4rem;">⚖️</div>
+            <div style="font-size: 0.95rem; font-weight: 700; color: var(--cyan-glow);">[시민 권익] 신뢰 평판 자산</div>
+            <p style="font-size: 0.78rem; color: #ebd8c8; margin-top: 0.4rem; line-height: 1.5;">
+              자기주권 신원(DID) &amp; 선행이 명예가 되는 신뢰 평판 헤리티지 ➔ <strong>투명한 데이터 주권</strong>
+            </p>
+          </div>
+          <!-- Node 3 -->
+          <div style="background: rgba(22, 10, 4, 0.85); border: 1px solid rgba(76, 232, 154, 0.4); border-radius: 10px; padding: 1.2rem; text-align: center;">
+            <div style="font-size: 1.8rem; margin-bottom: 0.4rem;">🌱</div>
+            <div style="font-size: 0.95rem; font-weight: 700; color: #4ce89a;">[지속가능 발전] 순환 생태계</div>
+            <p style="font-size: 0.78rem; color: #ebd8c8; margin-top: 0.4rem; line-height: 1.5;">
+              100% 무탄소 넷제로 &amp; 자원 순환 루프(지족상족) ➔ <strong>영구 청정 미래 유토피아</strong>
+            </p>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 1.2rem; font-size: 0.82rem; color: #ffcc88; font-style: italic;">
+          “서로의 다름을 존중하여 조화를 이루고(화이제동), 자연과 공존하며 족함을 아는(지족상족) 선진 사회 질서”
+        </div>
+      </div>
+
+      <!-- 3대 국 세부 활동 계획 리스트 -->
+      <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+
+        <!-- 1. 공동체 화합·조정국 -->
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 170, 50, 0.35); border-radius: 12px; padding: 1.5rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 1.5rem;">🏡</span>
+              <div>
+                <h3 style="font-family: 'Cinzel', serif; font-size: 1.15rem; color: #ffcc88; margin: 0;">1. 공동체 화합·조정국</h3>
+                <span style="font-size: 0.7rem; color: var(--text-sub); letter-spacing: 0.08em;">Bureau of Community Harmony &amp; Civic Mediation</span>
+              </div>
+            </div>
+            <span style="font-size: 0.68rem; color: #000; background: #ffaa32; padding: 3px 9px; border-radius: 10px; font-weight: 700;">자율 화해 &amp; 상호 공존</span>
+          </div>
+          <div style="font-size: 0.85rem; color: #cfd9e8; line-height: 1.7;">
+            <p style="margin-bottom: 0.6rem;">
+              <strong>🎯 핵심 역할 및 지침:</strong> 법적 처벌보다 상호 양보와 대화를 우선시하며, 이웃 간의 갈등을 온화하게 중재하고 품격 있는 시민 자치 토론 문화를 확립합니다.
+            </p>
+            <ul style="list-style: none; padding-left: 0.5rem; display: flex; flex-direction: column; gap: 0.4rem; color: #a5b4cb;">
+              <li>✦ <strong>자율적 시민 화해 서클(Peace Circle):</strong> 사법원과 연계하여 소송 이전에 당사자 간 진솔한 대화와 사과, 화해를 이끄는 중재 프로토콜.</li>
+              <li>✦ <strong>키아노스 시민 아고라(Civic Agora):</strong> 국가 주요 사회적 의제를 모든 시민이 온·오프라인으로 투명하게 토론하는 열린 광장 운영.</li>
+              <li>✦ <strong>글로벌 다문화 화합 프로그램:</strong> 전 세계 다양한 문화적 배경을 가진 시민들이 화이제동(和而不同) 정신으로 하나 되는 공동체 교류 지원.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 2. 시민 권익 보호국 -->
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(0, 210, 255, 0.35); border-radius: 12px; padding: 1.5rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 1.5rem;">⚖️</span>
+              <div>
+                <h3 style="font-family: 'Cinzel', serif; font-size: 1.15rem; color: var(--cyan-glow); margin: 0;">2. 시민 권익 보호국</h3>
+                <span style="font-size: 0.7rem; color: var(--text-sub); letter-spacing: 0.08em;">Bureau of Civil Rights &amp; Digital Trust</span>
+              </div>
+            </div>
+            <span style="font-size: 0.68rem; color: #000; background: var(--cyan-glow); padding: 3px 9px; border-radius: 10px; font-weight: 700;">데이터 주권 &amp; 신뢰 평판</span>
+          </div>
+          <div style="font-size: 0.85rem; color: #cfd9e8; line-height: 1.7;">
+            <p style="margin-bottom: 0.6rem;">
+              <strong>🎯 핵심 역할 및 지침:</strong> 디지털 초연결 사회에서 시민의 데이터 주권과 사생활을 철저히 수호하며, 사회적 기여와 선행이 공인되는 신뢰 평판 자산화를 총괄합니다.
+            </p>
+            <ul style="list-style: none; padding-left: 0.5rem; display: flex; flex-direction: column; gap: 0.4rem; color: #a5b4cb;">
+              <li>✦ <strong>자기주권 신원(DID) 프라이버시 통제권:</strong> 국가나 기업의 사생활 감시를 원천 차단하고 개인정보 통제권을 100% 시민에게 환원.</li>
+              <li>✦ <strong>신뢰 평판 헤리티지(Ethical Reputation) 관리:</strong> 전과 기록 대신 공공선 기여도와 도덕적 품격이 명예가 되는 무형 자산 체계 보존.</li>
+              <li>✦ <strong>24/7 시민 권익 무료 옴부즈만:</strong> 불공정 거래, 가짜뉴스 피해, 디지털 권리 침해로부터 시민을 즉각 보호하는 무료 법률 지원.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 3. 지속가능 발전 위원회 -->
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(76, 232, 154, 0.35); border-radius: 12px; padding: 1.5rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 1.5rem;">🌱</span>
+              <div>
+                <h3 style="font-family: 'Cinzel', serif; font-size: 1.15rem; color: #4ce89a; margin: 0;">3. 지속가능 발전 위원회</h3>
+                <span style="font-size: 0.7rem; color: var(--text-sub); letter-spacing: 0.08em;">Commission on Sustainability &amp; Green Future</span>
+              </div>
+            </div>
+            <span style="font-size: 0.68rem; color: #000; background: #4ce89a; padding: 3px 9px; border-radius: 10px; font-weight: 700;">100% 넷제로 &amp; 자원 순환</span>
+          </div>
+          <div style="font-size: 0.85rem; color: #cfd9e8; line-height: 1.7;">
+            <p style="margin-bottom: 0.6rem;">
+              <strong>🎯 핵심 역할 및 지침:</strong> 덕치 제10조(지족상족)에 부합하도록 영내 모든 생산과 소비를 100% 무탄소 자원 순환 루프로 구축하고 자연 생태계를 영구 보전합니다.
+            </p>
+            <ul style="list-style: none; padding-left: 0.5rem; display: flex; flex-direction: column; gap: 0.4rem; color: #a5b4cb;">
+              <li>✦ <strong>Net-Zero 무탄소 환경 실시간 모니터링:</strong> 과학·AGI부의 청정에너지 그리드와 연동하여 전 영토의 탄소 배출량 0을 항시 유지.</li>
+              <li>✦ <strong>100% 자원 순환 루프(Circularity Protocol):</strong> 일회용 폐기물을 원천 금지하고 모든 생활 자재의 친환경 재활용 생태계 감독.</li>
+              <li>✦ <strong>청정 해양 및 스마트 녹지 보존 구역:</strong> 키아노스 마리나와 도심을 둘러싼 청정 해역과 생태 숲을 영구 보존 구역으로 지정·보호.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Action Button / Footer Close -->
+      <div style="margin-top: 2rem; display: flex; justify-content: center;">
+        <button onclick="closeModal('societyModal')" style="padding: 0.8rem 2.5rem; background: linear-gradient(135deg, #ffaa32, #d47700); border: none; border-radius: 8px; font-size: 0.92rem; font-weight: 700; color: #000; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(255, 170, 50, 0.3);">
           확인 및 닫기
         </button>
       </div>
