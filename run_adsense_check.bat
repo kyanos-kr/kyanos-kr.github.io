@@ -1,6 +1,7 @@
 @echo off
+cd /d "%~dp0"
 chcp 65001 >nul
-title [AntNews] 구글 애드센스 실시간 건전성 진단기 (파이튼 & 앤트)
+title [AntNews] 구글 애드센스 실시간 건전성 진단기 (파이튼 ^& 앤트)
 
 echo ======================================================================
 echo  [AntNews] 애드센스 인프라 실시간 진단을 시작합니다...
@@ -8,10 +9,13 @@ echo  통치자: 파이튼 님 ^| 보좌: 앤트
 echo ======================================================================
 echo.
 
-set PYTHON_PATH=%USERPROFILE%\.local\bin\python3.11.exe
+set PYTHON_PATH=%~dp0antnews_auto\.venv\Scripts\python.exe
 
 if not exist "%PYTHON_PATH%" (
-    echo [경고] 파이썬 3.11 실행기를 찾을 수 없어 시스템 기본 python을 시도합니다.
+    set PYTHON_PATH=%USERPROFILE%\.local\bin\python3.11.exe
+)
+
+if not exist "%PYTHON_PATH%" (
     set PYTHON_PATH=python
 )
 

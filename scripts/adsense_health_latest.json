@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-10-04 14:29:59",
+  "timestamp": "2026-10-05 07:58:05",
   "domain": "https://www.antnews.org",
   "all_passed": true,
   "checks": [
     [
       "메인 페이지 접속 및 응답",
       true,
-      "166.58ms"
+      "33.58ms"
     ],
     [
       "ads.txt 단독 ID 무결성",
