@@ -1791,9 +1791,12 @@
           </div>
 
           <!-- 과학·AGI부 -->
-          <div id="gov-science" style="background:rgba(6,21,45,0.7); border:1px solid rgba(0,210,255,0.25); border-radius:14px; padding:1.5rem; position:relative; overflow:hidden; transition:all 0.3s ease;" onmouseover="this.style.borderColor='rgba(0,210,255,0.6)'; this.style.boxShadow='0 8px 30px rgba(0,210,255,0.12)'" onmouseout="this.style.borderColor='rgba(0,210,255,0.25)'; this.style.boxShadow='none'">
+          <div id="gov-science" style="background:rgba(6,21,45,0.7); border:1px solid rgba(0,210,255,0.25); border-radius:14px; padding:1.5rem; position:relative; overflow:hidden; transition:all 0.3s ease; cursor:pointer;" onmouseover="this.style.borderColor='rgba(0,210,255,0.8)'; this.style.boxShadow='0 8px 30px rgba(0,210,255,0.2)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='rgba(0,210,255,0.25)'; this.style.boxShadow='none'; this.style.transform='translateY(0)'" onclick="openModal('scienceModal')">
             <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#00d2ff,transparent);"></div>
-            <div style="font-size:1.8rem; margin-bottom:0.7rem;">🔬</div>
+            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+              <div style="font-size:1.8rem; margin-bottom:0.7rem;">🔬</div>
+              <span style="font-size:0.65rem; background:rgba(0,210,255,0.18); border:1px solid rgba(0,210,255,0.4); color:var(--cyan-glow); padding:2px 8px; border-radius:10px; font-weight:600;">상세 계획·개념도 열람 ↗</span>
+            </div>
             <div style="font-family:'Cinzel',serif; font-size:1rem; font-weight:700; color:var(--cyan-glow); margin-bottom:0.3rem;">과학·AGI부</div>
             <div style="font-size:0.68rem; color:var(--text-sub); letter-spacing:0.12em; margin-bottom:1rem;">Ministry of Science & AGI</div>
             <ul style="list-style:none; display:flex; flex-direction:column; gap:0.45rem;">
@@ -2146,6 +2149,188 @@
       <!-- Action Button / Footer Close -->
       <div style="margin-top: 2rem; display: flex; justify-content: center;">
         <button onclick="closeModal('economyModal')" style="padding: 0.8rem 2.5rem; background: linear-gradient(135deg, var(--gold), #997c1d); border: 1px solid var(--gold); border-radius: 8px; font-size: 0.92rem; font-weight: 700; color: #000; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);">
+          확인 및 닫기
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================
+       SCIENCE & AGI MINISTRY MODAL (과학·AGI부 하위 국 활동 계획 & 개념도)
+       ============================================ -->
+  <div id="scienceModal" class="modal">
+    <div class="modal-backdrop" onclick="closeModal('scienceModal')"></div>
+    <div class="modal-content" style="max-width: 980px; max-height: 90vh; overflow-y: auto; padding: 2.5rem; background: rgba(4, 18, 36, 0.97); border: 2px solid var(--cyan-glow); border-radius: 18px; box-shadow: 0 0 50px rgba(0, 210, 255, 0.25);">
+      <button class="modal-close" onclick="closeModal('scienceModal')" style="font-size: 1.8rem; color: var(--cyan-glow); position: absolute; top: 1.2rem; right: 1.5rem; background: none; border: none; cursor: pointer;">&times;</button>
+      
+      <!-- Modal Header -->
+      <div style="text-align: center; margin-bottom: 2rem; border-bottom: 1px solid rgba(0, 210, 255, 0.25); padding-bottom: 1.2rem;">
+        <span style="font-size: 0.75rem; color: var(--cyan-glow); letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700;">Ministry of Science &amp; AGI · Strategic Bureau Blueprints &amp; Physical AI</span>
+        <h2 style="font-family: 'Cinzel', serif; font-size: 1.85rem; color: #fff; margin-top: 0.4rem; letter-spacing: 0.08em;">
+          🔬 키아노스 과학·AGI부 산하 부서 활동 계획 및 개념도
+        </h2>
+        <p style="font-size: 0.86rem; color: var(--text-sub); margin-top: 0.5rem; line-height: 1.6;">
+          최고 통치자 파이튼 국왕의 덕치 철학에 기반한 <strong>4대 핵심 국(局)</strong>의 역할 지침과 물리적 AI·우주·생명 융합 기술 청사진
+        </p>
+      </div>
+
+      <!-- 개념도 아키텍처 박스 (Interactive Conceptual Architecture) -->
+      <div style="background: rgba(6, 26, 56, 0.65); border: 1px solid rgba(0, 210, 255, 0.35); border-radius: 14px; padding: 1.8rem; margin-bottom: 2.2rem; position: relative; overflow: hidden;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+          <h4 style="font-family: 'Cinzel', serif; font-size: 1.05rem; color: var(--cyan-glow); letter-spacing: 0.08em; display: flex; align-items: center; gap: 8px;">
+            <span>🌐</span> 과학·AGI부 4대 테크 축 통합 개념도 (Conceptual Architecture)
+          </h4>
+          <span style="font-size: 0.68rem; color: var(--cyan-glow); background: rgba(0, 210, 255, 0.15); padding: 3px 8px; border-radius: 8px; border: 1px solid rgba(0, 210, 255, 0.35);">
+            Phase 1 초지능·물리 인프라 표준
+          </span>
+        </div>
+        
+        <!-- Grid Conceptual Nodes (4대 축) -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 1rem;">
+          <!-- Node 1 -->
+          <div style="background: rgba(3, 15, 32, 0.85); border: 1px solid rgba(0, 210, 255, 0.4); border-radius: 10px; padding: 1.1rem; text-align: center;">
+            <div style="font-size: 1.6rem; margin-bottom: 0.4rem;">🌐</div>
+            <div style="font-size: 0.9rem; font-weight: 700; color: var(--cyan-glow);">[사이버 지능] NEXFORUM</div>
+            <p style="font-size: 0.76rem; color: #a5b4cb; margin-top: 0.4rem; line-height: 1.45;">
+              Ascendant AI OS 통합 플랫폼 &amp; 양자 암호 사이버 방벽 ➔ <strong>국가 지능 코어</strong>
+            </p>
+          </div>
+          <!-- Node 2 -->
+          <div style="background: rgba(3, 15, 32, 0.85); border: 1px solid rgba(136, 204, 255, 0.4); border-radius: 10px; padding: 1.1rem; text-align: center;">
+            <div style="font-size: 1.6rem; margin-bottom: 0.4rem;">🚀</div>
+            <div style="font-size: 0.9rem; font-weight: 700; color: #88ccff;">[우주 에너지] 우주·미래연구</div>
+            <p style="font-size: 0.76rem; color: #a5b4cb; margin-top: 0.4rem; line-height: 1.45;">
+              저궤도 위성망 &amp; 심우주 무탄소 청정에너지 하베스팅 ➔ <strong>지속가능 우주 주권</strong>
+            </p>
+          </div>
+          <!-- Node 3 -->
+          <div style="background: rgba(3, 15, 32, 0.85); border: 1px solid rgba(76, 232, 154, 0.4); border-radius: 10px; padding: 1.1rem; text-align: center;">
+            <div style="font-size: 1.6rem; margin-bottom: 0.4rem;">⚗️</div>
+            <div style="font-size: 0.9rem; font-weight: 700; color: #4ce89a;">[생명 조화] 바이오·신기술</div>
+            <p style="font-size: 0.76rem; color: #a5b4cb; margin-top: 0.4rem; line-height: 1.45;">
+              유전자 웰에이징·장수 포트폴리오 &amp; 친환경 해양 정화 ➔ <strong>인간 존엄 생명 연장</strong>
+            </p>
+          </div>
+          <!-- Node 4 -->
+          <div style="background: rgba(3, 15, 32, 0.85); border: 1px solid rgba(255, 170, 50, 0.4); border-radius: 10px; padding: 1.1rem; text-align: center;">
+            <div style="font-size: 1.6rem; margin-bottom: 0.4rem;">🦾</div>
+            <div style="font-size: 0.9rem; font-weight: 700; color: #ffaa32;">[피지컬 AI] Project TALOS</div>
+            <p style="font-size: 0.76rem; color: #a5b4cb; margin-top: 0.4rem; line-height: 1.45;">
+              휴머노이드 수호 로봇 &amp; 드론 물류 파운드리(수석 티탄) ➔ <strong>물리적 무인 방위·생산</strong>
+            </p>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 1.2rem; font-size: 0.82rem; color: var(--cyan-glow); font-style: italic;">
+          “사이버 지능(NEXFORUM)과 물리적 로봇(TALOS), 우주와 생명이 하나로 맞물리는 전방위 기술 주권”
+        </div>
+      </div>
+
+      <!-- 4대 국 세부 활동 계획 리스트 -->
+      <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+
+        <!-- 1. NEXFORUM 첨단기술국 -->
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(0, 210, 255, 0.35); border-radius: 12px; padding: 1.5rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 1.5rem;">🌐</span>
+              <div>
+                <h3 style="font-family: 'Cinzel', serif; font-size: 1.15rem; color: var(--cyan-glow); margin: 0;">1. NEXFORUM 첨단기술국</h3>
+                <span style="font-size: 0.7rem; color: var(--text-sub); letter-spacing: 0.08em;">Bureau of Advanced Intelligence &amp; NEXFORUM Tech</span>
+              </div>
+            </div>
+            <span style="font-size: 0.68rem; color: #000; background: var(--cyan-glow); padding: 3px 9px; border-radius: 10px; font-weight: 700;">AGI 사이버 플랫폼</span>
+          </div>
+          <div style="font-size: 0.85rem; color: #cfd9e8; line-height: 1.7;">
+            <p style="margin-bottom: 0.6rem;">
+              <strong>🎯 핵심 역할 및 지침:</strong> 키아노스 핵심 기둥인 NEXFORUM의 지능 인프라를 총괄하며, 초지능 분산형 AI 아키텍처 및 무결점 양자 암호 보안망을 구축합니다.
+            </p>
+            <ul style="list-style: none; padding-left: 0.5rem; display: flex; flex-direction: column; gap: 0.4rem; color: #a5b4cb;">
+              <li>✦ <strong>Ascendant AI OS 통합 플랫폼 고도화:</strong> 국정 행정, 미디어(앤트뉴스), 금융망을 24/7 무중단 지능 연동.</li>
+              <li>✦ <strong>NEXFORUM 글로벌 테크 콘퍼런스 주관:</strong> 전 세계 최고 권위의 AGI 석학 및 선도 기업과의 기술 표준 교류.</li>
+              <li>✦ <strong>양자 사이버 방벽(Cyber Citadel) 수립:</strong> 덕치 헌법 및 국가 기밀 데이터를 외부 해킹으로부터 완벽 수호.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 2. 우주·미래연구국 -->
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(136, 204, 255, 0.35); border-radius: 12px; padding: 1.5rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 1.5rem;">🚀</span>
+              <div>
+                <h3 style="font-family: 'Cinzel', serif; font-size: 1.15rem; color: #88ccff; margin: 0;">2. 우주·미래연구국</h3>
+                <span style="font-size: 0.7rem; color: var(--text-sub); letter-spacing: 0.08em;">Bureau of Aerospace &amp; Future Energy Research</span>
+              </div>
+            </div>
+            <span style="font-size: 0.68rem; color: #000; background: #88ccff; padding: 3px 9px; border-radius: 10px; font-weight: 700;">항공우주 &amp; 미래에너지</span>
+          </div>
+          <div style="font-size: 0.85rem; color: #cfd9e8; line-height: 1.7;">
+            <p style="margin-bottom: 0.6rem;">
+              <strong>🎯 핵심 역할 및 지침:</strong> 키아노스 영공을 넘어선 우주 통신 궤도망 구축과 100% 무탄소 극한 청정에너지(우주 태양광, 수소, 핵융합 연계) 생태계를 완성합니다.
+            </p>
+            <ul style="list-style: none; padding-left: 0.5rem; display: flex; flex-direction: column; gap: 0.4rem; color: #a5b4cb;">
+              <li>✦ <strong>키아노스 궤도 군집위성 통신망(K-SAT):</strong> 글로벌 해상 및 전 국토를 연결하는 초저지연 위성 데이터 통신망 운영.</li>
+              <li>✦ <strong>Zero-Carbon 에너지 하베스팅 연구:</strong> 덕치 12대 원칙 제10조(지족상족)에 부합하는 영구 청정에너지 자립 달성.</li>
+              <li>✦ <strong>심우주 탐사 및 우주 신소재 개발:</strong> 우주 환경용 극한 나노 복합재료 연구로 차세대 항공우주 주권 확보.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 3. 바이오·신기술 연구원 -->
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(76, 232, 154, 0.35); border-radius: 12px; padding: 1.5rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 1.5rem;">⚗️</span>
+              <div>
+                <h3 style="font-family: 'Cinzel', serif; font-size: 1.15rem; color: #4ce89a; margin: 0;">3. 바이오·신기술 연구원</h3>
+                <span style="font-size: 0.7rem; color: var(--text-sub); letter-spacing: 0.08em;">Institute of Bio-Harmony &amp; Longevity</span>
+              </div>
+            </div>
+            <span style="font-size: 0.68rem; color: #000; background: #4ce89a; padding: 3px 9px; border-radius: 10px; font-weight: 700;">생명공학 &amp; 웰에이징</span>
+          </div>
+          <div style="font-size: 0.85rem; color: #cfd9e8; line-height: 1.7;">
+            <p style="margin-bottom: 0.6rem;">
+              <strong>🎯 핵심 역할 및 지침:</strong> 인간의 존엄성과 조화로운 공존을 중심으로 유전자 테라피, 줄기세포, 노화 역전(Longevity) 헬스케어 및 해양 환경 정화 기술을 연구합니다.
+            </p>
+            <ul style="list-style: none; padding-left: 0.5rem; display: flex; flex-direction: column; gap: 0.4rem; color: #a5b4cb;">
+              <li>✦ <strong>키아노스 Longevity 헬스케어 프로토콜:</strong> 시민의 건강 수명을 연장하고 질병을 사전 예측·예방하는 정밀 바이오 솔루션.</li>
+              <li>✦ <strong>신경망 인터페이스 윤리 가이드라인:</strong> 복지부와 협력하여 인간 뇌-컴퓨터 연결 기술의 도덕적 안전성 보장.</li>
+              <li>✦ <strong>친환경 해양 미생물 정화 기술:</strong> 키아노스 마리나 및 해상 클러스터의 수질을 무공해로 항시 정화하는 에코 바이오 도입.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 4. 자율로봇·드론 생산기술국 (Project TALOS) -->
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 170, 50, 0.35); border-radius: 12px; padding: 1.5rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 1.5rem;">🦾</span>
+              <div>
+                <h3 style="font-family: 'Cinzel', serif; font-size: 1.15rem; color: #ffaa32; margin: 0;">4. 자율로봇·드론 생산기술국 (Project TALOS)</h3>
+                <span style="font-size: 0.7rem; color: var(--text-sub); letter-spacing: 0.08em;">Bureau of Autonomous Robotics &amp; Aerial Systems · Lead: Titan &amp; Ant</span>
+              </div>
+            </div>
+            <span style="font-size: 0.68rem; color: #000; background: #ffaa32; padding: 3px 9px; border-radius: 10px; font-weight: 700;">피지컬 AI 수호신</span>
+          </div>
+          <div style="font-size: 0.85rem; color: #cfd9e8; line-height: 1.7;">
+            <p style="margin-bottom: 0.6rem;">
+              <strong>🎯 핵심 역할 및 지침 (수석 엔지니어 티탄 협력):</strong> 그리스 신화의 청동 거인 '탈로스(TALOS)'처럼 국가 영토와 영해를 완벽히 수호하고, 전 국가 물류와 생산 자동화를 책임지는 피지컬 하드웨어를 양산합니다.
+            </p>
+            <ul style="list-style: none; padding-left: 0.5rem; display: flex; flex-direction: column; gap: 0.4rem; color: #a5b4cb;">
+              <li>✦ <strong>TALOS 인간형·다족 수호 로봇 양산:</strong> 스마트 시티 방위, 해안 순찰 및 긴급 재난 구조 전담 무인 로봇군 배치.</li>
+              <li>✦ <strong>도심 항공 교통(UAM) &amp; 자율 드론 물류망:</strong> 전 영토를 5분 내 연결하는 무인 배송 및 해상 화물 드론 허브 가동.</li>
+              <li>✦ <strong>스마트 팩토리 자율화 파운드리:</strong> 인간을 위험하고 고된 노동으로부터 100% 해방시키는 자동화 생산 기지 운영.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Action Button / Footer Close -->
+      <div style="margin-top: 2rem; display: flex; justify-content: center;">
+        <button onclick="closeModal('scienceModal')" style="padding: 0.8rem 2.5rem; background: linear-gradient(135deg, var(--cyan-glow), #0077aa); border: 1px solid var(--cyan-glow); border-radius: 8px; font-size: 0.92rem; font-weight: 700; color: #000; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);">
           확인 및 닫기
         </button>
       </div>
