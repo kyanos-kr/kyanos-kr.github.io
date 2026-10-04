@@ -1,0 +1,737 @@
+/* ==========================================================================
+   KYANOS SOVEREIGN REALM - CIVIC XP & TREASURY STYLES
+   키아노스 주권국 - 국민 방문 경험치 & 국가 자립 재정 확충 시스템 전용 스타일
+   제작: 앤트 국무총리 & 탈로스(티탄) 수석 엔지니어
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. 헤더 시민 등급 배지 & 위젯 (Civic Header Widget)
+   -------------------------------------------------------------------------- */
+.kyanos-civic-widget {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(6, 21, 45, 0.75);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 24px;
+  padding: 5px 14px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 101;
+}
+
+.kyanos-civic-widget:hover {
+  border-color: #ffe066;
+  background: rgba(10, 35, 75, 0.9);
+  box-shadow: 0 0 20px rgba(0, 210, 255, 0.4), 0 0 10px rgba(212, 175, 55, 0.3);
+  transform: translateY(-2px);
+}
+
+.civic-widget-badge {
+  font-size: 1.15rem;
+  line-height: 1;
+  filter: drop-shadow(0 0 6px rgba(255, 224, 102, 0.6));
+}
+
+.civic-widget-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.civic-widget-level {
+  font-family: 'Cinzel', serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #ffe066;
+  letter-spacing: 0.08em;
+}
+
+.civic-widget-rank {
+  font-size: 0.68rem;
+  color: #a5b4cb;
+  font-weight: 500;
+}
+
+.civic-widget-bar {
+  width: 55px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 3px;
+}
+
+.civic-widget-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00d2ff, #ffe066);
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+/* --------------------------------------------------------------------------
+   2. 디지털 시민증 모달 (Digital Civic ID Pass Modal)
+   -------------------------------------------------------------------------- */
+.kyanos-civic-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(2, 6, 16, 0.85);
+  backdrop-filter: blur(12px);
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.kyanos-civic-modal-overlay.active {
+  display: flex;
+  opacity: 1;
+}
+
+.kyanos-civic-card {
+  width: 100%;
+  max-width: 480px;
+  background: linear-gradient(145deg, rgba(8, 25, 55, 0.95) 0%, rgba(3, 10, 25, 0.98) 100%);
+  border: 1.5px solid rgba(212, 175, 55, 0.5);
+  border-radius: 20px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 35px rgba(0, 210, 255, 0.25), 0 0 20px rgba(212, 175, 55, 0.2);
+  padding: 2rem;
+  position: relative;
+  color: #fff;
+  transform: translateY(20px) scale(0.96);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.kyanos-civic-modal-overlay.active .kyanos-civic-card {
+  transform: translateY(0) scale(1);
+}
+
+/* Card Decorative Background Glow */
+.civic-card-watermark {
+  position: absolute;
+  right: -30px;
+  bottom: -30px;
+  font-size: 15rem;
+  color: rgba(212, 175, 55, 0.04);
+  pointer-events: none;
+  font-family: 'Cinzel', serif;
+  user-select: none;
+}
+
+.civic-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+  padding-bottom: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.civic-card-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.civic-card-emblem {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid #d4af37;
+  background: radial-gradient(circle, #00d2ff 0%, #06152d 75%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+}
+
+.civic-card-main-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  background: linear-gradient(90deg, #ffffff 10%, #fbeea4 60%, #d4af37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.civic-card-sub-title {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: #a5b4cb;
+  text-transform: uppercase;
+}
+
+.civic-card-close {
+  background: none;
+  border: none;
+  color: #a5b4cb;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.civic-card-close:hover {
+  color: #ffe066;
+}
+
+/* Card Body */
+.civic-id-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.civic-id-label {
+  font-size: 0.75rem;
+  color: #a5b4cb;
+}
+
+.civic-id-value {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.95rem;
+  color: #00d2ff;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.civic-rank-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(0, 210, 255, 0.08) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 14px;
+  padding: 1rem 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.civic-rank-icon {
+  font-size: 2.2rem;
+}
+
+.civic-rank-details {
+  flex: 1;
+}
+
+.civic-rank-level {
+  font-family: 'Cinzel', serif;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #ffe066;
+}
+
+.civic-rank-name {
+  font-size: 0.85rem;
+  color: #f0f6fc;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+/* XP Progress Gauge */
+.civic-xp-progress-wrap {
+  margin-bottom: 1.4rem;
+}
+
+.civic-xp-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: #a5b4cb;
+  margin-bottom: 6px;
+}
+
+.civic-xp-meter {
+  width: 100%;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+
+.civic-xp-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00d2ff, #ffe066);
+  border-radius: 6px;
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 10px rgba(0, 210, 255, 0.6);
+}
+
+/* Achievements Grid */
+.civic-achievements-section {
+  margin-bottom: 1.4rem;
+}
+
+.civic-section-heading {
+  font-size: 0.78rem;
+  color: #ffe066;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.civic-badges-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.civic-badge-item {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 8px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.2s;
+  cursor: pointer;
+  position: relative;
+}
+
+.civic-badge-item.unlocked {
+  background: rgba(212, 175, 55, 0.1);
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+.civic-badge-item.locked {
+  opacity: 0.35;
+  filter: grayscale(1);
+}
+
+.civic-badge-item:hover {
+  transform: translateY(-2px);
+  border-color: #00d2ff;
+}
+
+.civic-badge-icon {
+  font-size: 1.4rem;
+  margin-bottom: 4px;
+}
+
+.civic-badge-title {
+  font-size: 0.65rem;
+  color: #cfd9e8;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Card Actions */
+.civic-card-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.civic-btn-primary {
+  flex: 1;
+  background: linear-gradient(135deg, #d4af37, #aa8214);
+  border: 1px solid #ffe066;
+  color: #030814;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+
+.civic-btn-primary:hover {
+  background: linear-gradient(135deg, #ffe066, #d4af37);
+  box-shadow: 0 0 15px rgba(255, 224, 102, 0.5);
+  transform: translateY(-2px);
+}
+
+.civic-btn-secondary {
+  flex: 1;
+  background: rgba(0, 210, 255, 0.1);
+  border: 1px solid rgba(0, 210, 255, 0.4);
+  color: #00d2ff;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+
+.civic-btn-secondary:hover {
+  background: rgba(0, 210, 255, 0.2);
+  color: #fff;
+  border-color: #00d2ff;
+}
+
+/* --------------------------------------------------------------------------
+   3. 경험치 획득 & 레벨업 플로팅 토스트 (Toast Notifications)
+   -------------------------------------------------------------------------- */
+.kyanos-toast-container {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 10001;
+  pointer-events: none;
+}
+
+.kyanos-toast {
+  background: linear-gradient(135deg, rgba(8, 25, 55, 0.96) 0%, rgba(3, 10, 25, 0.98) 100%);
+  border: 1.5px solid #d4af37;
+  border-radius: 14px;
+  padding: 12px 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 210, 255, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+  transform: translateX(120%);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: auto;
+  max-width: 380px;
+}
+
+.kyanos-toast.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.kyanos-toast-icon {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.kyanos-toast-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.kyanos-toast-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #ffe066;
+}
+
+.kyanos-toast-desc {
+  font-size: 0.75rem;
+  color: #a5b4cb;
+  margin-top: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   4. 키아노스 국가 자립 재정 확충 센터 (Sovereign Treasury Section)
+   -------------------------------------------------------------------------- */
+.kyanos-treasury-section {
+  padding: 5rem 1rem;
+  position: relative;
+  z-index: 10;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.treasury-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.treasury-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #ffe066;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  background: rgba(212, 175, 55, 0.1);
+  padding: 4px 16px;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+}
+
+.treasury-main-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2rem, 3.8vw, 2.9rem);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  background: linear-gradient(135deg, #ffffff 20%, #ffe066 60%, #d4af37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.8rem;
+}
+
+.treasury-subtitle {
+  font-size: 1rem;
+  color: #a5b4cb;
+  max-width: 720px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* Treasury 4 Pillars Grid */
+.treasury-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.8rem;
+  margin-bottom: 4rem;
+}
+
+.treasury-card {
+  background: linear-gradient(145deg, rgba(8, 25, 55, 0.65) 0%, rgba(3, 10, 25, 0.85) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 18px;
+  padding: 2rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.35s ease;
+  backdrop-filter: blur(10px);
+}
+
+.treasury-card:hover {
+  border-color: #ffe066;
+  transform: translateY(-6px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 210, 255, 0.25);
+}
+
+.treasury-card.featured {
+  border-color: #d4af37;
+  background: linear-gradient(145deg, rgba(16, 45, 95, 0.75) 0%, rgba(6, 18, 42, 0.95) 100%);
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+}
+
+.treasury-card-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 3px 10px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  background: rgba(255, 224, 102, 0.15);
+  border: 1px solid #ffe066;
+  color: #ffe066;
+}
+
+.treasury-card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.treasury-card-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.treasury-card-target {
+  font-size: 0.8rem;
+  color: #00d2ff;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.treasury-card-desc {
+  font-size: 0.85rem;
+  color: #a5b4cb;
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+  flex: 1;
+}
+
+.treasury-card-benefits {
+  list-style: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.treasury-card-benefits li {
+  font-size: 0.78rem;
+  color: #cfd9e8;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.treasury-card-benefits li::before {
+  content: '✦';
+  color: #ffe066;
+  font-size: 0.7rem;
+}
+
+.treasury-action-btn {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(0, 210, 255, 0.2));
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  color: #ffe066;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.25s;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+}
+
+.treasury-action-btn:hover {
+  background: linear-gradient(135deg, #ffe066, #d4af37);
+  color: #030814;
+  box-shadow: 0 0 15px rgba(255, 224, 102, 0.4);
+}
+
+/* Contribution Gateway Modal */
+.treasury-gateway-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(2, 6, 16, 0.85);
+  backdrop-filter: blur(12px);
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.treasury-gateway-modal.active {
+  display: flex;
+}
+
+.treasury-gateway-card {
+  width: 100%;
+  max-width: 540px;
+  background: linear-gradient(145deg, rgba(8, 25, 55, 0.98) 0%, rgba(3, 10, 25, 0.98) 100%);
+  border: 1.5px solid #d4af37;
+  border-radius: 20px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 35px rgba(0, 210, 255, 0.25);
+  padding: 2.2rem;
+  position: relative;
+  color: #fff;
+}
+
+/* Tabs inside Gateway Modal */
+.treasury-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.5rem;
+}
+
+.treasury-tab-btn {
+  background: none;
+  border: none;
+  color: #a5b4cb;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.treasury-tab-btn.active {
+  background: rgba(212, 175, 55, 0.15);
+  color: #ffe066;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+}
+
+.treasury-tab-content {
+  display: none;
+}
+
+.treasury-tab-content.active {
+  display: block;
+}
+
+.treasury-copy-box {
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px dashed rgba(212, 175, 55, 0.4);
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.treasury-copy-text {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.85rem;
+  color: #00d2ff;
+  word-break: break-all;
+}
+
+.treasury-copy-btn {
+  background: rgba(0, 210, 255, 0.2);
+  border: 1px solid #00d2ff;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  white-space: nowrap;
+  margin-left: 10px;
+}
+
+.treasury-copy-btn:hover {
+  background: #00d2ff;
+  color: #030814;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .kyanos-civic-widget {
+    padding: 4px 10px;
+  }
+  .civic-widget-bar {
+    display: none;
+  }
+  .civic-widget-rank {
+    display: none;
+  }
+  .kyanos-civic-card {
+    padding: 1.5rem;
+  }
+  .treasury-pillars-grid {
+    grid-template-columns: 1fr;
+  }
+}
