@@ -1858,9 +1858,12 @@
           </div>
 
           <!-- 국제부 -->
-          <div id="gov-intl" style="background:rgba(6,21,45,0.7); border:1px solid rgba(0,150,255,0.3); border-radius:14px; padding:1.5rem; position:relative; overflow:hidden; transition:all 0.3s ease;" onmouseover="this.style.borderColor='rgba(50,180,255,0.6)'; this.style.boxShadow='0 8px 30px rgba(0,150,255,0.15)'" onmouseout="this.style.borderColor='rgba(0,150,255,0.3)'; this.style.boxShadow='none'">
+          <div id="gov-intl" style="background:rgba(6,21,45,0.7); border:1px solid rgba(0,150,255,0.3); border-radius:14px; padding:1.5rem; position:relative; overflow:hidden; transition:all 0.3s ease; cursor:pointer;" onmouseover="this.style.borderColor='rgba(80,190,255,0.8)'; this.style.boxShadow='0 8px 30px rgba(0,150,255,0.25)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='rgba(0,150,255,0.3)'; this.style.boxShadow='none'; this.style.transform='translateY(0)'" onclick="openModal('intlModal')">
             <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#0096ff,transparent);"></div>
-            <div style="font-size:1.8rem; margin-bottom:0.7rem;">🌍</div>
+            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+              <div style="font-size:1.8rem; margin-bottom:0.7rem;">🌍</div>
+              <span style="font-size:0.65rem; background:rgba(0,150,255,0.18); border:1px solid rgba(0,150,255,0.4); color:#88ccff; padding:2px 8px; border-radius:10px; font-weight:600;">상세 계획·개념도 열람 ↗</span>
+            </div>
             <div style="font-family:'Cinzel',serif; font-size:1rem; font-weight:700; color:#88ccff; margin-bottom:0.3rem;">국제부</div>
             <div style="font-size:0.68rem; color:var(--text-sub); letter-spacing:0.12em; margin-bottom:1rem;">Ministry of International Affairs</div>
             <ul style="list-style:none; display:flex; flex-direction:column; gap:0.45rem;">
@@ -2924,6 +2927,156 @@
       <!-- Action Button / Footer Close -->
       <div style="margin-top: 2rem; display: flex; justify-content: center;">
         <button onclick="closeModal('societyModal')" style="padding: 0.8rem 2.5rem; background: linear-gradient(135deg, #ffaa32, #d47700); border: none; border-radius: 8px; font-size: 0.92rem; font-weight: 700; color: #000; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(255, 170, 50, 0.3);">
+          확인 및 닫기
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================
+       INTERNATIONAL AFFAIRS MINISTRY MODAL (국제부 하위 국 활동 계획 & 개념도)
+       ============================================ -->
+  <div id="intlModal" class="modal">
+    <div class="modal-backdrop" onclick="closeModal('intlModal')"></div>
+    <div class="modal-content" style="max-width: 980px; max-height: 90vh; overflow-y: auto; padding: 2.5rem; background: rgba(5, 18, 42, 0.98); border: 2px solid #0096ff; border-radius: 18px; box-shadow: 0 0 50px rgba(0, 150, 255, 0.25);">
+      <button class="modal-close" onclick="closeModal('intlModal')" style="font-size: 1.8rem; color: #88ccff; position: absolute; top: 1.2rem; right: 1.5rem; background: none; border: none; cursor: pointer;">&times;</button>
+      
+      <!-- Modal Header -->
+      <div style="text-align: center; margin-bottom: 2rem; border-bottom: 1px solid rgba(0, 150, 255, 0.25); padding-bottom: 1.2rem;">
+        <span style="font-size: 0.75rem; color: #88ccff; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700;">Ministry of International Affairs · Global Peace &amp; AGI Governance</span>
+        <h2 style="font-family: 'Cinzel', serif; font-size: 1.85rem; color: #fff; margin-top: 0.4rem; letter-spacing: 0.08em;">
+          🌍 키아노스 국제부 산하 부서 활동 계획 및 개념도
+        </h2>
+        <p style="font-size: 0.86rem; color: var(--text-sub); margin-top: 0.5rem; line-height: 1.6;">
+          최고 통치자 파이튼 국왕의 덕치 제1·12조(천하위공·대동사회)에 기반한 <strong>3대 글로벌 축</strong>의 평화 외교 및 인류 연대 청사진
+        </p>
+      </div>
+
+      <!-- 개념도 아키텍처 박스 (Interactive Conceptual Architecture) -->
+      <div style="background: rgba(8, 28, 65, 0.65); border: 1px solid rgba(0, 150, 255, 0.35); border-radius: 14px; padding: 1.8rem; margin-bottom: 2.2rem; position: relative; overflow: hidden;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+          <h4 style="font-family: 'Cinzel', serif; font-size: 1.05rem; color: #88ccff; letter-spacing: 0.08em; display: flex; align-items: center; gap: 8px;">
+            <span>🌐</span> 국제부 3대 글로벌 축 통합 개념도 (Conceptual Architecture)
+          </h4>
+          <span style="font-size: 0.68rem; color: #88ccff; background: rgba(0, 150, 255, 0.15); padding: 3px 8px; border-radius: 8px; border: 1px solid rgba(0, 150, 255, 0.35);">
+            Phase 1 평화 외교 &amp; AGI 국제 거버넌스
+          </span>
+        </div>
+        
+        <!-- Grid Conceptual Nodes (3대 축) -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.2rem;">
+          <!-- Node 1 -->
+          <div style="background: rgba(4, 15, 36, 0.85); border: 1px solid rgba(0, 150, 255, 0.4); border-radius: 10px; padding: 1.2rem; text-align: center;">
+            <div style="font-size: 1.8rem; margin-bottom: 0.4rem;">🕊️</div>
+            <div style="font-size: 0.95rem; font-weight: 700; color: #88ccff;">[글로벌 외교] 평화 조약</div>
+            <p style="font-size: 0.78rem; color: #cfd9e8; margin-top: 0.4rem; line-height: 1.5;">
+              주요국 영사 협약 &amp; 덕치 중재 이니셔티브(상선약수) ➔ <strong>평화주의 주권 외교</strong>
+            </p>
+          </div>
+          <!-- Node 2 -->
+          <div style="background: rgba(4, 15, 36, 0.85); border: 1px solid rgba(76, 232, 154, 0.4); border-radius: 10px; padding: 1.2rem; text-align: center;">
+            <div style="font-size: 1.8rem; margin-bottom: 0.4rem;">🤝</div>
+            <div style="font-size: 0.95rem; font-weight: 700; color: #4ce89a;">[세계 시민] 인류 연대</div>
+            <p style="font-size: 0.78rem; color: #cfd9e8; margin-top: 0.4rem; line-height: 1.5;">
+              블록체인 글로벌 시민 여권(e-Passport) &amp; 인도 구호 ➔ <strong>천하위공(天下爲公) 실천</strong>
+            </p>
+          </div>
+          <!-- Node 3 -->
+          <div style="background: rgba(4, 15, 36, 0.85); border: 1px solid rgba(0, 210, 255, 0.4); border-radius: 10px; padding: 1.2rem; text-align: center;">
+            <div style="font-size: 1.8rem; margin-bottom: 0.4rem;">🌐</div>
+            <div style="font-size: 0.95rem; font-weight: 700; color: var(--cyan-glow);">[거버넌스] NEXFORUM</div>
+            <p style="font-size: 0.78rem; color: #cfd9e8; margin-top: 0.4rem; line-height: 1.5;">
+              세계 AGI 안전·윤리 헌장 비준 &amp; 연례 글로벌 서밋 ➔ <strong>미래 문명 거버넌스 주도</strong>
+            </p>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 1.2rem; font-size: 0.82rem; color: #88ccff; font-style: italic;">
+          “국경을 넘어 인류의 공공선을 추구하고(천하위공), 물질과 정신이 하나 되는 세계 평화(대동사회)의 완성”
+        </div>
+      </div>
+
+      <!-- 3대 국 세부 활동 계획 리스트 -->
+      <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+
+        <!-- 1. 글로벌 외교·협력국 -->
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(0, 150, 255, 0.35); border-radius: 12px; padding: 1.5rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 1.5rem;">🕊️</span>
+              <div>
+                <h3 style="font-family: 'Cinzel', serif; font-size: 1.15rem; color: #88ccff; margin: 0;">1. 글로벌 외교·협력국</h3>
+                <span style="font-size: 0.7rem; color: var(--text-sub); letter-spacing: 0.08em;">Bureau of Global Diplomacy &amp; Strategic Treaties</span>
+              </div>
+            </div>
+            <span style="font-size: 0.68rem; color: #fff; background: rgba(0, 150, 255, 0.6); padding: 3px 9px; border-radius: 10px; font-weight: 700;">평화 외교 &amp; 전략 조약</span>
+          </div>
+          <div style="font-size: 0.85rem; color: #cfd9e8; line-height: 1.7;">
+            <p style="margin-bottom: 0.6rem;">
+              <strong>🎯 핵심 역할 및 지침:</strong> 키아노스 주권령의 독립성과 평화주의를 수호하며, 주요 중립국 및 테크 강국들과의 외교 관계 수립과 국제 분쟁의 평화적 중재를 총괄합니다.
+            </p>
+            <ul style="list-style: none; padding-left: 0.5rem; display: flex; flex-direction: column; gap: 0.4rem; color: #a5b4cb;">
+              <li>✦ <strong>글로벌 재외 공관 및 영사 협정 체결:</strong> 스위스, 싱가포르, UAE 등 전략적 우호국과의 외교 사절단 파견 및 비자 면제 협정 비준.</li>
+              <li>✦ <strong>키아노스 평화 중재 이니셔티브:</strong> 덕치 제7조(상선약수)를 기반으로 다자간 분쟁과 무역 갈등을 화해로 이끄는 중재 회담 주최.</li>
+              <li>✦ <strong>무관세 자유무역구(FTZ) 외교 통상망:</strong> 경제부와 공조하여 입주 글로벌 테크·럭셔리 기업을 위한 다국적 외교 안전망 제공.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 2. 세계 시민 연대국 -->
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(76, 232, 154, 0.35); border-radius: 12px; padding: 1.5rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 1.5rem;">🤝</span>
+              <div>
+                <h3 style="font-family: 'Cinzel', serif; font-size: 1.15rem; color: #4ce89a; margin: 0;">2. 세계 시민 연대국</h3>
+                <span style="font-size: 0.7rem; color: var(--text-sub); letter-spacing: 0.08em;">Bureau of World Citizens &amp; Humanitarian Solidarity</span>
+              </div>
+            </div>
+            <span style="font-size: 0.68rem; color: #000; background: #4ce89a; padding: 3px 9px; border-radius: 10px; font-weight: 700;">인류 연대 &amp; 글로벌 여권</span>
+          </div>
+          <div style="font-size: 0.85rem; color: #cfd9e8; line-height: 1.7;">
+            <p style="margin-bottom: 0.6rem;">
+              <strong>🎯 핵심 역할 및 지침:</strong> 인종과 국경을 초월하여 전 세계 지성인들에게 명예 시민권을 부여하고, 국제적 인도주의 구호와 글로벌 청년 교류를 지휘합니다.
+            </p>
+            <ul style="list-style: none; padding-left: 0.5rem; display: flex; flex-direction: column; gap: 0.4rem; color: #a5b4cb;">
+              <li>✦ <strong>글로벌 시민 디지털 여권(e-Passport) 발급:</strong> 덕치 헌법과 평화 이념을 지지하는 전 세계 시민에게 블록체인 DID 명예 시민권 증명.</li>
+              <li>✦ <strong>국제 인도주의 구호 기금(Humanity Fund):</strong> 글로벌 재난 지역에 과학·AGI부의 무인 드론 물류 및 친환경 바이오 복구 패키지 긴급 무상 파견.</li>
+              <li>✦ <strong>세계 청년 평화 펠로우십 운영:</strong> 전 세계 미래 세대 청년들을 초청하여 인류 문명사, 덕치 철학, AGI 윤리 집중 교육.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 3. NEXFORUM 글로벌 거버넌스 -->
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(0, 210, 255, 0.35); border-radius: 12px; padding: 1.5rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 1.5rem;">🌐</span>
+              <div>
+                <h3 style="font-family: 'Cinzel', serif; font-size: 1.15rem; color: var(--cyan-glow); margin: 0;">3. NEXFORUM 글로벌 거버넌스</h3>
+                <span style="font-size: 0.7rem; color: var(--text-sub); letter-spacing: 0.08em;">Bureau of NEXFORUM Global Governance &amp; AGI Policy</span>
+              </div>
+            </div>
+            <span style="font-size: 0.68rem; color: #000; background: var(--cyan-glow); padding: 3px 9px; border-radius: 10px; font-weight: 700;">AGI 글로벌 표준 제정</span>
+          </div>
+          <div style="font-size: 0.85rem; color: #cfd9e8; line-height: 1.7;">
+            <p style="margin-bottom: 0.6rem;">
+              <strong>🎯 핵심 역할 및 지침:</strong> 키아노스 핵심 기둥인 NEXFORUM의 국제 정책 플랫폼으로서, 전 세계 정부와 빅테크가 준수해야 할 국제 AI 안전 표준 규범을 주도적으로 입안합니다.
+            </p>
+            <ul style="list-style: none; padding-left: 0.5rem; display: flex; flex-direction: column; gap: 0.4rem; color: #a5b4cb;">
+              <li>✦ <strong>세계 AGI 안전·윤리 헌장(Global Safety Accord) 비준:</strong> 인간 존엄성을 최우선으로 하는 국제 AI 통제 기준 수립 및 국제 본부 유치.</li>
+              <li>✦ <strong>연례 NEXFORUM 글로벌 서밋 정상회의 주관:</strong> 세계 정상, 빅테크 CEO, AGI 석학들이 한자리에 모여 인류의 미래를 설계하는 최고위 콘퍼런스.</li>
+              <li>✦ <strong>국가 인텔리전스 24/7 글로벌 시그널 브리핑:</strong> 전 세계 기술 패권, 통상 리스크, 지정학적 변화를 실시간 분석하여 국무회의에 직보.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Action Button / Footer Close -->
+      <div style="margin-top: 2rem; display: flex; justify-content: center;">
+        <button onclick="closeModal('intlModal')" style="padding: 0.8rem 2.5rem; background: linear-gradient(135deg, #0096ff, #0055aa); border: none; border-radius: 8px; font-size: 0.92rem; font-weight: 700; color: #fff; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(0, 150, 255, 0.3);">
           확인 및 닫기
         </button>
       </div>
