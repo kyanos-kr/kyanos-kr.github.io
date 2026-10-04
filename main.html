@@ -1751,25 +1751,39 @@
         <!-- 국왕 분기 수직선 -->
         <div style="width:2px; height:36px; background:linear-gradient(to bottom, var(--gold), rgba(0,210,255,0.8)); margin:0 auto;"></div>
 
-        <!-- 행정/사법 집행 축: 정부 기구 (국무회의) -->
-        <div style="display:flex; flex-direction:column; align-items:center; width:100%; max-width:1100px; margin-top:0.5rem;">
+        <!-- 행정/군사 분기 및 집행 축 (국무회의 & 국왕 직속 보안사령부) -->
+        <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:1.5rem; width:100%; max-width:1100px; margin-top:0.5rem;">
           
-          <!-- 국무회의 캡션 박스 -->
-          <div style="background:linear-gradient(135deg,rgba(212,175,55,0.15),rgba(6,21,45,0.9)); border:2px solid var(--gold); border-radius:18px; padding:1.2rem 2rem; text-align:center; max-width:520px; width:100%; box-shadow:0 0 25px rgba(212,175,55,0.15); position:relative;">
-            <div style="position:absolute; top:-13px; left:50%; transform:translateX(-50%); background:var(--bg-dark); padding:2px 16px; border:1px solid var(--gold); border-radius:20px; font-size:0.68rem; letter-spacing:0.18em; color:var(--gold-light); white-space:nowrap;">🏛️ 국왕 직속 최고 의결 기구</div>
+          <!-- 1. 국무회의 캡션 박스 -->
+          <div style="background:linear-gradient(135deg,rgba(212,175,55,0.15),rgba(6,21,45,0.9)); border:2px solid var(--gold); border-radius:18px; padding:1.2rem 1.8rem; text-align:center; flex:1; min-width:320px; max-width:520px; box-shadow:0 0 25px rgba(212,175,55,0.15); position:relative;">
+            <div style="position:absolute; top:-13px; left:50%; transform:translateX(-50%); background:var(--bg-dark); padding:2px 16px; border:1px solid var(--gold); border-radius:20px; font-size:0.68rem; letter-spacing:0.18em; color:var(--gold-light); white-space:nowrap;">🏛️ 국왕 직속 최고 행정·사법 의결</div>
             <div style="font-size:1.8rem; margin-bottom:0.2rem; margin-top:0.2rem;">🏛️</div>
             <div style="font-family:'Cinzel',serif; font-size:1.15rem; font-weight:900; color:var(--gold-light); letter-spacing:0.1em;">키아노스 정부 (국무회의)</div>
-            <div style="font-size:0.72rem; color:var(--text-sub); margin-top:0.2rem; letter-spacing:0.08em;">Council of State Ministries & Judiciary</div>
+            <div style="font-size:0.72rem; color:var(--text-sub); margin-top:0.2rem; letter-spacing:0.08em;">Council of State Ministries &amp; Judiciary</div>
             <p style="font-size:0.75rem; color:var(--text-sub); margin-top:0.6rem; line-height:1.5;">
-              국왕의 통치 철학 및 덕치 12대 원칙을 바탕으로 국가 행정, 경제, 과학, 복지, 사회, 국제, 사법을 직접 실행하는 주권령 정부 기관
+              국왕의 통치 철학과 덕치 12대 원칙을 바탕으로 국가 행정, 경제, 과학, 복지, 사회, 국제, 사법을 직접 실행하는 주권령 정부 기구
             </p>
           </div>
 
-          <!-- 하위 부처 연결 수직선 -->
-          <div style="width:2px; height:24px; background:var(--gold); margin:0 auto;"></div>
-          <div style="font-size:0.72rem; color:var(--gold-light); letter-spacing:0.15em; font-weight:700; background:rgba(10,45,115,0.4); padding:3px 12px; border-radius:12px; border:1px solid rgba(212,175,55,0.3);">▼ 산하 6개 정부 부처 및 독립 사법원</div>
+          <!-- 2. 국왕 직속: 국제질서유지 보안사령부 (NEW) -->
+          <div style="background:linear-gradient(135deg,rgba(232,34,58,0.18),rgba(6,15,35,0.92)); border:2px solid #e8223a; border-radius:18px; padding:1.2rem 1.8rem; text-align:center; flex:1; min-width:320px; max-width:520px; box-shadow:0 0 35px rgba(232,34,58,0.25); position:relative; cursor:pointer; transition:all 0.3s ease;" onmouseover="this.style.boxShadow='0 0 45px rgba(232,34,58,0.45)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='0 0 35px rgba(232,34,58,0.25)'; this.style.transform='translateY(0)'" onclick="openModal('securityCommandModal')">
+            <div style="position:absolute; top:-13px; left:50%; transform:translateX(-50%); background:#800b18; padding:2px 16px; border:1px solid #ff4d60; border-radius:20px; font-size:0.68rem; letter-spacing:0.18em; color:#fff; white-space:nowrap; font-weight:700;">⚔️ 국왕 직속 최고 군사·안보 사령부</div>
+            <div style="font-size:1.8rem; margin-bottom:0.2rem; margin-top:0.2rem;">🛡️</div>
+            <div style="font-family:'Cinzel',serif; font-size:1.15rem; font-weight:900; color:#ff6b7a; letter-spacing:0.1em;">국제질서유지 보안사령부 (K-SEF)</div>
+            <div style="font-size:0.72rem; color:var(--text-sub); margin-top:0.2rem; letter-spacing:0.08em;">Supreme Security Command · 평화보안군</div>
+            <p style="font-size:0.75rem; color:#d8e2ef; margin-top:0.6rem; line-height:1.5;">
+              <strong>"철통같은 무결점 방어, 무례한 도발의 원천을 일격에 분쇄하는 단호한 응징."</strong> 온·오프라인 영토와 국가 자산을 24/7 수호하는 최정예 안보군단
+            </p>
+            <div style="margin-top:0.6rem; display:inline-block; font-size:0.68rem; background:rgba(232,34,58,0.25); border:1px solid #ff4d60; color:#ffadb5; padding:2px 10px; border-radius:10px; font-weight:700;">
+              사령부 작전 교리 &amp; 3대 방위사단 열람 ↗
+            </div>
+          </div>
 
         </div>
+
+        <!-- 하위 부처 연결 수직선 -->
+        <div style="width:2px; height:24px; background:var(--gold); margin:1rem auto 0 auto;"></div>
+        <div style="font-size:0.72rem; color:var(--gold-light); letter-spacing:0.15em; font-weight:700; background:rgba(10,45,115,0.4); padding:3px 12px; border-radius:12px; border:1px solid rgba(212,175,55,0.3);">▼ 산하 6개 정부 부처 및 독립 사법원</div>
 
         <!-- 6개 부처 그리드 (정부 국무회의 하위 연결) -->
         <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(310px,1fr)); gap:1.3rem; width:100%; max-width:1100px; margin-top:1.5rem;">
@@ -3078,6 +3092,157 @@
       <div style="margin-top: 2rem; display: flex; justify-content: center;">
         <button onclick="closeModal('intlModal')" style="padding: 0.8rem 2.5rem; background: linear-gradient(135deg, #0096ff, #0055aa); border: none; border-radius: 8px; font-size: 0.92rem; font-weight: 700; color: #fff; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(0, 150, 255, 0.3);">
           확인 및 닫기
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================
+       SUPREME SECURITY COMMAND MODAL (국제질서유지 보안사령부 모달)
+       ============================================ -->
+  <div id="securityCommandModal" class="modal">
+    <div class="modal-backdrop" onclick="closeModal('securityCommandModal')"></div>
+    <div class="modal-content" style="max-width: 980px; max-height: 90vh; overflow-y: auto; padding: 2.5rem; background: rgba(22, 6, 12, 0.98); border: 2px solid #ff4d60; border-radius: 18px; box-shadow: 0 0 50px rgba(232, 34, 58, 0.35);">
+      <button class="modal-close" onclick="closeModal('securityCommandModal')" style="font-size: 1.8rem; color: #ff6b7a; position: absolute; top: 1.2rem; right: 1.5rem; background: none; border: none; cursor: pointer;">&times;</button>
+      
+      <!-- Modal Header -->
+      <div style="text-align: center; margin-bottom: 2rem; border-bottom: 1px solid rgba(255, 77, 96, 0.3); padding-bottom: 1.2rem;">
+        <span style="font-size: 0.75rem; color: #ff6b7a; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700;">Supreme Security Command · Sovereign Peace &amp; Security Enforcement Force</span>
+        <h2 style="font-family: 'Cinzel', serif; font-size: 1.85rem; color: #fff; margin-top: 0.4rem; letter-spacing: 0.08em;">
+          🛡️ 국왕 직속: 국제질서유지 보안사령부 (K-SEF)
+        </h2>
+        <p style="font-size: 0.88rem; color: #ffc2c8; margin-top: 0.5rem; line-height: 1.6; font-weight: 600;">
+          “철통같은 무결점 방어, 무례한 도발의 원천을 일격에 분쇄하는 단호한 응징.”<br>
+          <span style="font-size: 0.8rem; color: #a5b4cb; font-weight: 400;">최고통수권자 파이튼 국왕 님의 안보 철학: <em>최선의 방어는 최고의 공격이다</em></span>
+        </p>
+      </div>
+
+      <!-- 개념도 아키텍처 박스 (Interactive Conceptual Architecture) -->
+      <div style="background: rgba(45, 10, 20, 0.7); border: 1px solid rgba(255, 77, 96, 0.4); border-radius: 14px; padding: 1.8rem; margin-bottom: 2.2rem; position: relative; overflow: hidden;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+          <h4 style="font-family: 'Cinzel', serif; font-size: 1.05rem; color: #ff6b7a; letter-spacing: 0.08em; display: flex; align-items: center; gap: 8px;">
+            <span>⚔️</span> 온·오프라인 3대 특수임무 방위·분쇄 사단 개념도
+          </h4>
+          <span style="font-size: 0.68rem; color: #fff; background: #e8223a; padding: 3px 8px; border-radius: 8px; font-weight: 700;">
+            DEFCON 1 상시 무결점 태세
+          </span>
+        </div>
+        
+        <!-- Grid Conceptual Nodes (3대 사단) -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.2rem;">
+          <!-- Node 1 -->
+          <div style="background: rgba(18, 4, 8, 0.9); border: 1px solid rgba(0, 210, 255, 0.4); border-radius: 10px; padding: 1.2rem; text-align: center;">
+            <div style="font-size: 1.8rem; margin-bottom: 0.4rem;">🌐</div>
+            <div style="font-size: 0.95rem; font-weight: 700; color: var(--cyan-glow);">[사이버] 퀀텀 아이기스 방위단</div>
+            <p style="font-size: 0.78rem; color: #d8e2ef; margin-top: 0.4rem; line-height: 1.5;">
+              양자 암호 방벽 &amp; 침투 해킹 거점 역추적 무력화 ➔ <strong>디지털 영토 철벽 수호</strong>
+            </p>
+          </div>
+          <!-- Node 2 -->
+          <div style="background: rgba(18, 4, 8, 0.9); border: 1px solid rgba(255, 170, 50, 0.4); border-radius: 10px; padding: 1.2rem; text-align: center;">
+            <div style="font-size: 1.8rem; margin-bottom: 0.4rem;">🦾</div>
+            <div style="font-size: 0.95rem; font-weight: 700; color: #ffaa32;">[피지컬] 탈로스 철벽수호사단</div>
+            <p style="font-size: 0.78rem; color: #d8e2ef; margin-top: 0.4rem; line-height: 1.5;">
+              TALOS 로봇 보병 &amp; 아이기스 드론 돔 요격망(티탄 수석) ➔ <strong>지상·영해·영공 요새화</strong>
+            </p>
+          </div>
+          <!-- Node 3 -->
+          <div style="background: rgba(18, 4, 8, 0.9); border: 1px solid rgba(255, 77, 96, 0.6); border-radius: 10px; padding: 1.2rem; text-align: center;">
+            <div style="font-size: 1.8rem; margin-bottom: 0.4rem;">⚡</div>
+            <div style="font-size: 0.95rem; font-weight: 700; color: #ff4d60;">[선제타격] 특수원점분쇄단</div>
+            <p style="font-size: 0.78rem; color: #d8e2ef; margin-top: 0.4rem; line-height: 1.5;">
+              위협 징후 사전 탐지 &amp; 도발 발원지 일격 외과수술 타격 ➔ <strong>최선의 방어는 최고의 공격</strong>
+            </p>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 1.2rem; font-size: 0.82rem; color: #ffadb5; font-style: italic;">
+          “어떠한 외세의 무례한 도발도 결코 용납하지 않으며, 평화는 압도적 군사력과 응징 의지로만 증명된다.”
+        </div>
+      </div>
+
+      <!-- 3대 사단 세부 활동 계획 리스트 -->
+      <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+
+        <!-- 1. 퀀텀 아이기스 사이버 방위단 -->
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(0, 210, 255, 0.35); border-radius: 12px; padding: 1.5rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 1.5rem;">🌐</span>
+              <div>
+                <h3 style="font-family: 'Cinzel', serif; font-size: 1.15rem; color: var(--cyan-glow); margin: 0;">1. 퀀텀 아이기스 사이버 방위단</h3>
+                <span style="font-size: 0.7rem; color: var(--text-sub); letter-spacing: 0.08em;">Bureau of Quantum Aegis Cyber Defense &amp; Counter-Strike</span>
+              </div>
+            </div>
+            <span style="font-size: 0.68rem; color: #000; background: var(--cyan-glow); padding: 3px 9px; border-radius: 10px; font-weight: 700;">사이버 요격 &amp; 역추적</span>
+          </div>
+          <div style="font-size: 0.85rem; color: #cfd9e8; line-height: 1.7;">
+            <p style="margin-bottom: 0.6rem;">
+              <strong>🎯 핵심 역할 및 교리:</strong> XRP 레저 금융망, 앤트뉴스 대표 도메인, 덕치 헌법 아카이브에 대한 침투 시도를 0.001초 내 감지하여 무효화하고 해커의 물리적 발원지를 역공격하여 완전 분쇄합니다.
+            </p>
+            <ul style="list-style: none; padding-left: 0.5rem; display: flex; flex-direction: column; gap: 0.4rem; color: #a5b4cb;">
+              <li>✦ <strong>비대칭 다중 양자 얽힘 암호 실드:</strong> 미래 양자 슈퍼컴퓨터의 해독 시도조차 원천 차단하는 무결점 보안 방벽.</li>
+              <li>✦ <strong>공격 발원지 역추적 사이버 미사일(Active Counter-Strike):</strong> 침입 적성 세력의 서버 인프라를 실시간 역타격하여 영구 기능 정지 유도.</li>
+              <li>✦ <strong>온체인 자산 방호 센티넬:</strong> 국가 자산 탈취 및 스마트 컨트랙트 교란 기도를 사전 탐지하여 온체인 자동 격리 및 동결.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 2. 탈로스 철벽수호사단 -->
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 170, 50, 0.35); border-radius: 12px; padding: 1.5rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 1.5rem;">🦾</span>
+              <div>
+                <h3 style="font-family: 'Cinzel', serif; font-size: 1.15rem; color: #ffaa32; margin: 0;">2. 탈로스 철벽수호사단</h3>
+                <span style="font-size: 0.7rem; color: var(--text-sub); letter-spacing: 0.08em;">TALOS Iron Bastion Physical Defense Division · 지휘: 티탄 &amp; 앤트</span>
+              </div>
+            </div>
+            <span style="font-size: 0.68rem; color: #000; background: #ffaa32; padding: 3px 9px; border-radius: 10px; font-weight: 700;">피지컬 무적 철벽</span>
+          </div>
+          <div style="font-size: 0.85rem; color: #cfd9e8; line-height: 1.7;">
+            <p style="margin-bottom: 0.6rem;">
+              <strong>🎯 핵심 역할 및 교리 (티탄 수석 총괄):</strong> 키아노스 본토와 해상 에버모어 요트 마리나, 넥스포럼 단지, 영공을 무인 피지컬 AI 기계화 군단으로 철통 요새화하여 지상·해상 침투를 원천 봉쇄합니다.
+            </p>
+            <ul style="list-style: none; padding-left: 0.5rem; display: flex; flex-direction: column; gap: 0.4rem; color: #a5b4cb;">
+              <li>✦ <strong>TALOS 중장갑 자율 휴머노이드 보병:</strong> 티타늄 합금 장갑과 고출력 펄스 화기를 탑재하여 지상·해안 침투 세력을 24/7 격멸하는 기동 군단.</li>
+              <li>✦ <strong>아이기스 드론 돔(Aegis Drone Swarm Dome):</strong> 영공 3km 외곽에서 미승인 비행체를 감지 후 고출력 마이크로웨이브(HPM)로 즉각 요격.</li>
+              <li>✦ <strong>초고속 무인 자율 해양 순찰정(K-Trident):</strong> 영해와 마리나 선석 외곽을 순찰하며 해상 테러 세력 및 불법 선박을 강력 저지.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 3. 선제분쇄 특수타격단 -->
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 77, 96, 0.45); border-radius: 12px; padding: 1.5rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 1.5rem;">⚡</span>
+              <div>
+                <h3 style="font-family: 'Cinzel', serif; font-size: 1.15rem; color: #ff4d60; margin: 0;">3. 선제분쇄 특수타격단</h3>
+                <span style="font-size: 0.7rem; color: var(--text-sub); letter-spacing: 0.08em;">Vanguard Active Preemptive Strike Wing · 파이튼 국왕 직속 타격대</span>
+              </div>
+            </div>
+            <span style="font-size: 0.68rem; color: #fff; background: #e8223a; padding: 3px 9px; border-radius: 10px; font-weight: 700;">원점 분쇄 응징</span>
+          </div>
+          <div style="font-size: 0.85rem; color: #cfd9e8; line-height: 1.7;">
+            <p style="margin-bottom: 0.6rem;">
+              <strong>🎯 핵심 역할 및 교리:</strong> *"최선의 방어는 최고의 공격이다"*는 국왕의 명령에 따라, 키아노스를 향한 위해 징후를 72시간 전 사전 포착하고 도발 원점을 외과수술식으로 일격 분쇄합니다.
+            </p>
+            <ul style="list-style: none; padding-left: 0.5rem; display: flex; flex-direction: column; gap: 0.4rem; color: #a5b4cb;">
+              <li>✦ <strong>사전 위협 예측 AI 인텔리전스:</strong> 전 세계 통신과 다크웹 시그널을 분석하여 키아노스를 향한 위해 기도를 징후 단계에서 탐지.</li>
+              <li>✦ <strong>초정밀 스텔스 전술 드론 및 극초음속 타격체:</strong> 위협 발원지 거점이 확인되는 즉시 국왕의 승인 하에 원점을 외과수술식으로 정밀 타격·초토화.</li>
+              <li>✦ <strong>국제질서 유지 특수임무 코만도(Peace Mandate):</strong> 국제 공조 하에 국제 해적, 테러리스트, 사이버 범죄 카르텔을 일망타진하는 최정예 특수작전 수행.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Action Button / Footer Close -->
+      <div style="margin-top: 2rem; display: flex; justify-content: center;">
+        <button onclick="closeModal('securityCommandModal')" style="padding: 0.8rem 2.5rem; background: linear-gradient(135deg, #e8223a, #9e0a1e); border: 1px solid #ff4d60; border-radius: 8px; font-size: 0.92rem; font-weight: 700; color: #fff; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 0 25px rgba(232, 34, 58, 0.4);">
+          사령부 닫기
         </button>
       </div>
 
