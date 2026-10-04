@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>키아노스 마켓 펄스 & 파이튼 경제 칼럼룸 | The Sovereign Realm of Kyanos</title>
+  <meta name="description" content="키아노스 정부 경제부 글로벌 금융 인텔리전스국 - 주식, XRP, 귀금속 실시간 시세 및 파이튼 국왕 경제 칼럼 보도룸">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=JetBrains+Mono:wght@400;600;700;800&family=Pretendard:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #030814;
+      --card-bg: rgba(7, 20, 44, 0.75);
+      --card-border: rgba(212, 175, 55, 0.22);
+      --gold: #d4af37;
+      --gold-light: #fbeea4;
+      --cyan: #00d2ff;
+      --emerald: #10b981;
+      --text-main: #f0f6fc;
+      --text-sub: #94a3b8;
+      --up-color: #ef4444;      /* 한국형 상승 빨강 */
+      --down-color: #3b82f6;    /* 한국형 하락 파랑 */
+      --flat-color: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Pretendard', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient Lighting */
+    .ambient-glow {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 900px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, rgba(0, 210, 255, 0.08) 35%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Top Navigation Header */
+    header {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: rgba(3, 8, 20, 0.9);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.18);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #10b981 0%, #06152d 75%);
+      border: 1.5px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+    }
+
+    .brand-title-wrap h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      color: #fff;
+    }
+
+    .brand-title-wrap span {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .btn-portal-back {
+      color: var(--text-sub);
+      text-decoration: none;
+      font-size: 0.82rem;
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: all 0.3s;
+    }
+
+    .btn-portal-back:hover {
+      color: #fff;
+      border-color: var(--gold);
+      background: rgba(212, 175, 55, 0.1);
+    }
+
+    .live-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #34d399;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-weight: 700;
+    }
+
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #10b981;
+      animation: pulseBlink 1.5s infinite;
+    }
+
+    @keyframes pulseBlink {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    /* Main Container */
+    main {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem 1.5rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Hero Banner */
+    .market-hero {
+      background: linear-gradient(135deg, rgba(8, 25, 55, 0.85) 0%, rgba(4, 15, 35, 0.95) 100%);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 16px;
+      padding: 1.8rem 2.2rem;
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-text h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.7rem;
+      color: #fff;
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.06em;
+    }
+
+    .hero-text p {
+      color: #cfd9e8;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      max-width: 760px;
+    }
+
+    .hero-text strong {
+      color: var(--gold-light);
+    }
+
+    .hero-stats-strip {
+      display: flex;
+      gap: 1.2rem;
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+    }
+
+    .hero-stat-box {
+      text-align: center;
+    }
+
+    .hero-stat-label {
+      font-size: 0.7rem;
+      color: var(--text-sub);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+
+    .hero-stat-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #34d399;
+    }
+
+    /* Section Tabs */
+    .tabs-nav {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 0.8rem;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      color: var(--text-sub);
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 8px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.25s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tab-btn:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .tab-btn.active {
+      color: #030814;
+      background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+    }
+
+    /* 4-Column Grid for Live Market Cards */
+    .market-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .market-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .market-card-header {
+      padding: 1rem 1.4rem;
+      background: rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      padding: 2px 8px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-sub);
+    }
+
+    .item-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .item-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 13px 1.4rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      transition: background 0.2s;
+    }
+
+    .item-row:last-child {
+      border-bottom: none;
+    }
+
+    .item-row:hover {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .item-left {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .item-name {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .item-sub {
+      font-size: 0.72rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-sub);
+    }
+
+    .item-right {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .item-price {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .item-rate-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      font-weight: 700;
+    }
+
+    .up { color: var(--up-color); }
+    .down { color: var(--down-color); }
+    .flat { color: var(--flat-color); }
+
+    .tag-rate {
+      padding: 1px 5px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+    }
+    .up .tag-rate { background: rgba(239, 68, 68, 0.18); color: var(--up-color); }
+    .down .tag-rate { background: rgba(59, 130, 246, 0.18); color: var(--down-color); }
+    .flat .tag-rate { background: rgba(148, 163, 184, 0.18); color: var(--flat-color); }
+
+    /* Python Column & Press Room Section */
+    .press-section {
+      background: rgba(8, 22, 48, 0.6);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 16px;
+      padding: 2.2rem;
+      margin-top: 1rem;
+    }
+
+    .press-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 1.8rem;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+      padding-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .press-title-area h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.45rem;
+      color: var(--gold-light);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .press-title-area p {
+      font-size: 0.86rem;
+      color: var(--text-sub);
+    }
+
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .article-card {
+      background: rgba(3, 12, 28, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .article-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.18);
+    }
+
+    .article-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.8rem;
+      font-size: 0.74rem;
+      color: var(--text-sub);
+    }
+
+    .article-author-tag {
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      color: var(--gold-light);
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-weight: 700;
+    }
+
+    .article-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.45;
+      margin-bottom: 0.8rem;
+    }
+
+    .article-snippet {
+      font-size: 0.84rem;
+      color: #a5b4cb;
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
+      flex-grow: 1;
+    }
+
+    .article-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 0.8rem;
+      font-size: 0.76rem;
+      color: var(--text-sub);
+    }
+
+    .article-link {
+      color: var(--gold-light);
+      text-decoration: none;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .article-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      max-width: 1380px;
+      margin: 3rem auto 0 auto;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: var(--text-sub);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient-glow"></div>
+
+  <!-- Top Navigation -->
+  <header>
+    <a href="main.html" class="brand-group">
+      <div class="brand-icon">📊</div>
+      <div class="brand-title-wrap">
+        <h1>KYANOS MARKET PULSE</h1>
+        <span>국가 경제부 · 글로벌 금융 인텔리전스국</span>
+      </div>
+    </a>
+    <div class="nav-actions">
+      <div class="live-status-badge">
+        <span class="live-dot"></span>
+        <span id="sync-time">동기화 완료</span>
+      </div>
+      <a href="main.html" class="btn-portal-back">🏛️ 메인 포털</a>
+      <a href="main.html#gov-economy" class="btn-portal-back">💰 경제부</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Banner -->
+    <section class="market-hero">
+      <div class="hero-text">
+        <h2>실시간 시장 통찰 & 파이튼 국왕 경제 칼럼룸</h2>
+        <p>
+          파이튼 국왕의 <strong>실전자산 운용(주식·XRP·금)</strong>을 완벽히 보좌하기 위해 개설된 키아노스 국가급 금융 허브입니다.
+          글로벌 4대 마켓의 실시간 시세와 온체인 원장을 상시 추적하고, 파이튼 국왕의 날카로운 시장 통찰과 글로벌 정세 칼럼을 엄선 보도합니다.
+        </p>
+      </div>
+      <div class="hero-stats-strip">
+        <div class="hero-stat-box">
+          <div class="hero-stat-label">핵심 전략 코인</div>
+          <div class="hero-stat-val" id="hero-xrp">XRP 2,034원</div>
+        </div>
+        <div class="hero-stat-box" style="border-left: 1px solid rgba(255,255,255,0.1); padding-left: 1.2rem;">
+          <div class="hero-stat-label">원/달러 환율</div>
+          <div class="hero-stat-val" id="hero-fx">1,349.0원</div>
+        </div>
+        <div class="hero-stat-box" style="border-left: 1px solid rgba(255,255,255,0.1); padding-left: 1.2rem;">
+          <div class="hero-stat-label">금/은 교환비 (GSR)</div>
+          <div class="hero-stat-val" id="hero-gsr" style="color: var(--gold-light);">68.90배</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4대 마켓 실시간 시세 섹션 -->
+    <div class="tabs-nav">
+      <button class="tab-btn active">⚡ 실시간 4대 금융 마켓 (Live Pulse)</button>
+    </div>
+
+    <section class="market-grid">
+      <!-- 1. 암호화폐 (XRP 중심) -->
+      <div class="market-card">
+        <div class="market-card-header">
+          <div class="card-title">🪙 암호화폐 &amp; XRPL</div>
+          <span class="card-badge" style="color:#00d2ff; background:rgba(0,210,255,0.1);">UPBIT KRW</span>
+        </div>
+        <ul class="item-list" id="crypto-items">
+          <li class="item-row"><div class="item-left">시세 로딩 중...</div></li>
+        </ul>
+      </div>
+
+      <!-- 2. 국내 증시 & 환율 -->
+      <div class="market-card">
+        <div class="market-card-header">
+          <div class="card-title">📈 국내 증시 &amp; 환율</div>
+          <span class="card-badge" style="color:#34d399; background:rgba(16,185,129,0.1);">KRX / FX</span>
+        </div>
+        <ul class="item-list" id="domestic-items">
+          <li class="item-row"><div class="item-left">시세 로딩 중...</div></li>
+        </ul>
+      </div>
+
+      <!-- 3. 글로벌 증시 & 빅테크 -->
+      <div class="market-card">
+        <div class="market-card-header">
+          <div class="card-title">🌐 글로벌 증시 &amp; 빅테크</div>
+          <span class="card-badge" style="color:#ffe066; background:rgba(255,224,102,0.1);">US MARKETS</span>
+        </div>
+        <ul class="item-list" id="global-items">
+          <li class="item-row"><div class="item-left">시세 로딩 중...</div></li>
+        </ul>
+      </div>
+
+      <!-- 4. 귀금속 (실물 살때/팔때 & 국제) -->
+      <div class="market-card">
+        <div class="market-card-header">
+          <div class="card-title">🥇 귀금속 시세 &amp; 현물</div>
+          <span class="card-badge" style="color:#f59e0b; background:rgba(245,158,11,0.1);">한국금거래소/COMEX</span>
+        </div>
+        <ul class="item-list" id="metals-items">
+          <li class="item-row"><div class="item-left">시세 로딩 중...</div></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 파이튼 국왕 경제 칼럼 & 보도 기사 전용 프레스 룸 -->
+    <section class="press-section" id="press-room">
+      <div class="press-header">
+        <div class="press-title-area">
+          <h3>👑 파이튼 경제 칼럼 &amp; 시장 보도룸 (Press Room)</h3>
+          <p>파이튼 국왕의 날카로운 시장 혜안과 글로벌 매크로 분석, 마이클 스나이더 등 해외 석학의 정밀 직역 기사 수록</p>
+        </div>
+        <div style="font-size:0.75rem; color:var(--gold-light); background:rgba(212,175,55,0.15); border:1px solid rgba(212,175,55,0.3); padding:4px 12px; border-radius:15px; font-weight:700;">
+          국왕 직속 인텔리전스 보도실
+        </div>
+      </div>
+
+      <div class="articles-grid">
+        <!-- Article 1: 파이튼 칼럼 -->
+        <article class="article-card" style="border: 1px solid rgba(212,175,55,0.45); background: rgba(12,28,58,0.85);">
+          <div>
+            <div class="article-meta">
+              <span class="article-author-tag">👑 파이튼 국왕 권두 논평</span>
+              <span>2026.10.04</span>
+            </div>
+            <h4 class="article-title">
+              "실물과 디지털의 대전환기, 왜 XRP와 금·은의 결합에 주목해야 하는가"
+            </h4>
+            <p class="article-snippet">
+              글로벌 부채 위기와 달러 패권의 지정학적 균열 속에서, 실물 가치 저장 수단인 금(Gold)과 초고속 국경 간 청산 레일인 XRPL의 가치는 상호 보완적입니다. 키아노스 경제부가 추진하는 RWA 토큰화와 국부 유동성 구축의 본질적 의미를 고찰합니다.
+            </p>
+          </div>
+          <div class="article-footer">
+            <span>소관: 키아노스 경제부 전략분석실</span>
+            <span class="article-link" style="color:var(--gold-light);">전문 수록 ↗</span>
+          </div>
+        </article>
+
+        <!-- Article 2: 시장 동향 브리프 -->
+        <article class="article-card">
+          <div>
+            <div class="article-meta">
+              <span class="article-author-tag" style="background:rgba(0,210,255,0.15); border-color:rgba(0,210,255,0.35); color:var(--cyan);">📊 총리 앤트 시장 브리프</span>
+              <span>2026.10.04</span>
+            </div>
+            <h4 class="article-title">
+              "글로벌 빅테크 실적 발표와 반도체·AI 인프라 섹터 수급 분석"
+            </h4>
+            <p class="article-snippet">
+              엔비디아, SK하이닉스 및 국내외 핵심 파운드리 공급망의 수급 변곡점을 점검합니다. 파이튼 님의 주요 보유 및 관심 주식 종목을 중심으로 시장의 밸류에이션 왜곡 요인을 분석하고 실전 대응 전략을 제언합니다.
+            </p>
+          </div>
+          <div class="article-footer">
+            <span>소관: 글로벌 금융 인텔리전스국</span>
+            <span class="article-link" style="color:var(--cyan);">분석 보고서 ↗</span>
+          </div>
+        </article>
+
+        <!-- Article 3: 마이클 스나이더 칼럼 -->
+        <article class="article-card">
+          <div>
+            <div class="article-meta">
+              <span class="article-author-tag" style="background:rgba(239,68,68,0.15); border-color:rgba(239,68,68,0.35); color:#ff6b7a;">🌎 마이클 스나이더 정밀 직역</span>
+              <span>2026.10.03</span>
+            </div>
+            <h4 class="article-title">
+              "세계 금융 시스템의 보이지 않는 균열과 상업용 부동산의 연쇄 압박"
+            </h4>
+            <p class="article-snippet">
+              원작자의 1인칭 시점을 그대로 유지한 단정한 해라체 번역문. 글로벌 은행권의 대출 부실화 조짐과 자산 가격 재조정 위험을 담담하고 객관적인 팩트 위주로 짚어낸 심층 국제 칼럼입니다.
+            </p>
+          </div>
+          <div class="article-footer">
+            <span>출처: The Economic Collapse Blog 직역</span>
+            <span class="article-link" style="color:#ff6b7a;">기사 전문 ↗</span>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>🏛️ The Sovereign Realm of Kyanos · Ministry of Economy · Bureau of Global Financial Intelligence</div>
+    <div>실시간 시장 데이터: Upbit, Naver Pay Finance, Yahoo Finance, 한국금거래소 연동</div>
+  </footer>
+
+  <script>
+    // 내장 기본 스냅샷 데이터
+    const defaultData = {
+      timestamp: "2026-10-04 21:05:27",
+      crypto: [
+        { name: "비트코인", symbol: "BTC", price_str: "115,799,000원", change_rate: 0.53, change_rate_str: "+0.53%", status: "up" },
+        { name: "이더리움", symbol: "ETH", price_str: "3,666,000원", change_rate: 0.41, change_rate_str: "+0.41%", status: "up" },
+        { name: "리플 (XRP)", symbol: "XRP", price_str: "2,034원", change_rate: 0.69, change_rate_str: "+0.69%", status: "up" },
+        { name: "솔라나", symbol: "SOL", price_str: "164,600원", change_rate: 1.17, change_rate_str: "+1.17%", status: "up" },
+        { name: "도지코인", symbol: "DOGE", price_str: "127원", change_rate: 0.00, change_rate_str: "+0.00%", status: "flat" }
+      ],
+      domestic: [
+        { name: "코스피", symbol: "KOSPI", price_str: "7,003.74pt", change_rate: 0.46, change_rate_str: "+0.46%", status: "up" },
+        { name: "코스닥", symbol: "KOSDAQ", price_str: "893.29pt", change_rate: -0.11, change_rate_str: "-0.11%", status: "down" },
+        { name: "삼성전자", symbol: "005930", price_str: "276,000원", change_rate: 0.00, change_rate_str: "+0.00%", status: "flat" },
+        { name: "SK하이닉스", symbol: "000660", price_str: "1,842,000원", change_rate: 0.49, change_rate_str: "+0.49%", status: "up" },
+        { name: "원/달러 환율", symbol: "USD/KRW", price_str: "1,349.00원", change_rate: -0.77, change_rate_str: "-0.77%", status: "down" }
+      ],
+      global: [
+        { name: "나스닥 종합", symbol: "IXIC", price_str: "27,190.86pt", change_rate: 1.19, change_rate_str: "+1.19%", status: "up" },
+        { name: "S&P 500", symbol: "GSPC", price_str: "7,722.72pt", change_rate: 0.73, change_rate_str: "+0.73%", status: "up" },
+        { name: "엔비디아", symbol: "NVDA", price_str: "$233.95", change_rate: 1.34, change_rate_str: "+1.34%", status: "up" },
+        { name: "테슬라", symbol: "TSLA", price_str: "$370.59", change_rate: 4.65, change_rate_str: "+4.65%", status: "up" },
+        { name: "애플", symbol: "AAPL", price_str: "$333.69", change_rate: 1.02, change_rate_str: "+1.02%", status: "up" }
+      ],
+      metals: [
+        { name: "순금(24K) 살 때 (1돈)", symbol: "GOLD-BUY", price_str: "787,000원", change_rate: -1.14, change_rate_str: "-1.14%", status: "down" },
+        { name: "순금(24K) 팔 때 (1돈)", symbol: "GOLD-SELL", price_str: "676,000원", change_rate: -1.78, change_rate_str: "-1.78%", status: "down" },
+        { name: "실물 은(Silver 3.75g)", symbol: "SILVER", price_str: "살때 10,960원", change_rate: -1.46, change_rate_str: "-1.46%", status: "down" },
+        { name: "국제 금 선물 (COMEX)", symbol: "GC=F", price_str: "$4,162.30", change_rate: -0.95, change_rate_str: "-0.95%", status: "down" },
+        { name: "금/은 교환비 (GSR)", symbol: "GSR", price_str: "68.90배", change_rate: 0, change_rate_str: "적정 60~80", status: "flat" }
+      ]
+    };
+
+    function renderList(containerId, items) {
+      const container = document.getElementById(containerId);
+      if (!items || !container) return;
+
+      container.innerHTML = items.map(item => {
+        const statusClass = item.status === 'up' ? 'up' : (item.status === 'down' ? 'down' : 'flat');
+        const sign = item.change_rate > 0 ? '▲ ' : (item.change_rate < 0 ? '▼ ' : '');
+        return `
+          <li class="item-row">
+            <div class="item-left">
+              <span class="item-name">${item.name}</span>
+              <span class="item-sub">${item.symbol}</span>
+            </div>
+            <div class="item-right">
+              <span class="item-price">${item.price_str}</span>
+              <div class="item-rate-wrap ${statusClass}">
+                <span class="tag-rate">${sign}${item.change_rate_str}</span>
+              </div>
+            </div>
+          </li>
+        `;
+      }).join('');
+    }
+
+    function applyData(data) {
+      if (!data) return;
+      document.getElementById('sync-time').innerText = '기준: ' + (data.timestamp || '실시간');
+      renderList('crypto-items', data.crypto);
+      renderList('domestic-items', data.domestic);
+      renderList('global-items', data.global);
+      renderList('metals-items', data.metals);
+
+      // Hero Strip values
+      if (data.crypto) {
+        const xrp = data.crypto.find(c => c.symbol === 'XRP');
+        if (xrp) document.getElementById('hero-xrp').innerText = 'XRP ' + xrp.price_str;
+      }
+      if (data.domestic) {
+        const fx = data.domestic.find(d => d.symbol === 'USD/KRW');
+        if (fx) document.getElementById('hero-fx').innerText = fx.price_str;
+      }
+      if (data.metals) {
+        const gsr = data.metals.find(m => m.symbol === 'GSR');
+        if (gsr) document.getElementById('hero-gsr').innerText = gsr.price_str;
+      }
+    }
+
+    // 1단계: 기본 스냅샷 즉시 렌더
+    applyData(defaultData);
+
+    // 2단계: 로컬 API 서버(http://localhost:8899/api/market) 또는 assets/market_snapshot.json 비동기 연동
+    async function refreshMarketData() {
+      try {
+        // 로컬 파이썬 웹 대시보드가 켜져있는 경우 실시간 4초 연동
+        const res = await fetch('http://localhost:8899/api/market', { mode: 'cors' });
+        if (res.ok) {
+          const liveData = await res.json();
+          applyData(liveData);
+          return;
+        }
+      } catch (e) {
+        // fallback to snapshot file
+      }
+
+      try {
+        const resSnap = await fetch('assets/market_snapshot.json?t=' + Date.now());
+        if (resSnap.ok) {
+          const snapData = await resSnap.json();
+          applyData(snapData);
+        }
+      } catch (err) {}
+    }
+
+    // 5초 주기 시세 체크
+    setInterval(refreshMarketData, 5000);
+    refreshMarketData();
+  </script>
+</body>
+</html>

@@ -291,10 +291,10 @@
 
     .brand-cards-row {
       display: flex;
-      gap: 1.2rem;
+      gap: 1.1rem;
       justify-content: center;
       width: 100%;
-      max-width: 520px;
+      max-width: 960px;
       flex-wrap: wrap;
     }
 
@@ -334,6 +334,10 @@
       background: linear-gradient(90deg, transparent, #00d2ff, transparent);
     }
 
+    .brand-mini-card.market::before {
+      background: linear-gradient(90deg, transparent, #10b981, transparent);
+    }
+
     .brand-mini-card:hover {
       transform: translateY(-3px);
       border-color: rgba(212, 175, 55, 0.45);
@@ -343,6 +347,10 @@
 
     .brand-mini-card.nexforum:hover {
       border-color: rgba(0, 210, 255, 0.45);
+    }
+
+    .brand-mini-card.market:hover {
+      border-color: rgba(16, 185, 129, 0.6);
     }
 
     .brand-logo-circle {
@@ -521,6 +529,17 @@
           <div class="brand-info">
             <span class="brand-title" style="color: var(--gold-bright);">AntNews AI</span>
             <span class="brand-tag">💎 Intelligence Media</span>
+          </div>
+        </a>
+
+        <!-- Brand 4: KYANOS MARKET PULSE -->
+        <a href="market_monitor.html" target="_blank" class="brand-mini-card market" title="키아노스 마켓 펄스 - 실시간 주식·XRP·금 시장 모니터" style="border-color: rgba(16,185,129,0.4);">
+          <div class="brand-logo-circle" style="background: radial-gradient(circle, #10b981 0%, #06152d 70%);">
+            <span style="font-size: 1.2rem;">📊</span>
+          </div>
+          <div class="brand-info">
+            <span class="brand-title" style="color: #34d399;">마켓 펄스</span>
+            <span class="brand-tag" style="color: #6ee7b7;">📈 실시간 금융 센터</span>
           </div>
         </a>
       </div>
