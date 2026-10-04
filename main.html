@@ -1808,9 +1808,12 @@
           </div>
 
           <!-- 교육·문화부 -->
-          <div id="gov-edu" style="background:rgba(6,21,45,0.7); border:1px solid rgba(120,80,220,0.3); border-radius:14px; padding:1.5rem; position:relative; overflow:hidden; transition:all 0.3s ease;" onmouseover="this.style.borderColor='rgba(150,100,255,0.6)'; this.style.boxShadow='0 8px 30px rgba(120,80,220,0.15)'" onmouseout="this.style.borderColor='rgba(120,80,220,0.3)'; this.style.boxShadow='none'">
+          <div id="gov-edu" style="background:rgba(6,21,45,0.7); border:1px solid rgba(120,80,220,0.3); border-radius:14px; padding:1.5rem; position:relative; overflow:hidden; transition:all 0.3s ease; cursor:pointer;" onmouseover="this.style.borderColor='rgba(180,130,255,0.8)'; this.style.boxShadow='0 8px 30px rgba(120,80,220,0.25)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='rgba(120,80,220,0.3)'; this.style.boxShadow='none'; this.style.transform='translateY(0)'" onclick="openModal('eduModal')">
             <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#9060e0,transparent);"></div>
-            <div style="font-size:1.8rem; margin-bottom:0.7rem;">🎓</div>
+            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+              <div style="font-size:1.8rem; margin-bottom:0.7rem;">🎓</div>
+              <span style="font-size:0.65rem; background:rgba(180,130,255,0.18); border:1px solid rgba(180,130,255,0.4); color:#b894ff; padding:2px 8px; border-radius:10px; font-weight:600;">상세 계획·개념도 열람 ↗</span>
+            </div>
             <div style="font-family:'Cinzel',serif; font-size:1rem; font-weight:700; color:#b894ff; margin-bottom:0.3rem;">교육·문화부</div>
             <div style="font-size:0.68rem; color:var(--text-sub); letter-spacing:0.12em; margin-bottom:1rem;">Ministry of Education & Culture</div>
             <ul style="list-style:none; display:flex; flex-direction:column; gap:0.45rem;">
@@ -2331,6 +2334,191 @@
       <!-- Action Button / Footer Close -->
       <div style="margin-top: 2rem; display: flex; justify-content: center;">
         <button onclick="closeModal('scienceModal')" style="padding: 0.8rem 2.5rem; background: linear-gradient(135deg, var(--cyan-glow), #0077aa); border: 1px solid var(--cyan-glow); border-radius: 8px; font-size: 0.92rem; font-weight: 700; color: #000; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);">
+          확인 및 닫기
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================
+       EDUCATION & CULTURE MINISTRY MODAL (교육·문화부 하위 기관 활동 계획 & 개념도)
+       ============================================ -->
+  <div id="eduModal" class="modal">
+    <div class="modal-backdrop" onclick="closeModal('eduModal')"></div>
+    <div class="modal-content" style="max-width: 980px; max-height: 90vh; overflow-y: auto; padding: 2.5rem; background: rgba(22, 10, 38, 0.97); border: 2px solid #b894ff; border-radius: 18px; box-shadow: 0 0 50px rgba(184, 148, 255, 0.25);">
+      <button class="modal-close" onclick="closeModal('eduModal')" style="font-size: 1.8rem; color: #b894ff; position: absolute; top: 1.2rem; right: 1.5rem; background: none; border: none; cursor: pointer;">&times;</button>
+      
+      <!-- Modal Header -->
+      <div style="text-align: center; margin-bottom: 2rem; border-bottom: 1px solid rgba(184, 148, 255, 0.25); padding-bottom: 1.2rem;">
+        <span style="font-size: 0.75rem; color: #b894ff; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700;">Ministry of Education &amp; Culture · Virtue Precepts &amp; Symphonic Heritage</span>
+        <h2 style="font-family: 'Cinzel', serif; font-size: 1.85rem; color: #fff; margin-top: 0.4rem; letter-spacing: 0.08em;">
+          🎓 키아노스 교육·문화부 산하 기관 활동 계획 및 개념도
+        </h2>
+        <p style="font-size: 0.86rem; color: var(--text-sub); margin-top: 0.5rem; line-height: 1.6;">
+          최고 통치자 파이튼 국왕의 덕치 철학에 기반한 <strong>4대 핵심 기관</strong>의 역할 지침과 음악·예술·도덕 융합 문화 르네상스 청사진
+        </p>
+      </div>
+
+      <!-- 개념도 아키텍처 박스 (Interactive Conceptual Architecture) -->
+      <div style="background: rgba(35, 15, 60, 0.65); border: 1px solid rgba(184, 148, 255, 0.35); border-radius: 14px; padding: 1.8rem; margin-bottom: 2.2rem; position: relative; overflow: hidden;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+          <h4 style="font-family: 'Cinzel', serif; font-size: 1.05rem; color: #b894ff; letter-spacing: 0.08em; display: flex; align-items: center; gap: 8px;">
+            <span>🌸</span> 교육·문화부 4대 축 통합 개념도 (Conceptual Architecture)
+          </h4>
+          <span style="font-size: 0.68rem; color: #ffe066; background: rgba(245, 158, 11, 0.2); padding: 3px 8px; border-radius: 8px; border: 1px solid #d4af37;">
+            Phase 1 영혼·문화 자산 진흥
+          </span>
+        </div>
+        
+        <!-- Grid Conceptual Nodes (4대 축) -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 1rem;">
+          <!-- Node 1 -->
+          <div style="background: rgba(18, 6, 32, 0.85); border: 1px solid rgba(184, 148, 255, 0.4); border-radius: 10px; padding: 1.1rem; text-align: center;">
+            <div style="font-size: 1.6rem; margin-bottom: 0.4rem;">📖</div>
+            <div style="font-size: 0.9rem; font-weight: 700; color: #b894ff;">[도덕 인성] 덕치(德治) 교육원</div>
+            <p style="font-size: 0.76rem; color: #cfc2e8; margin-top: 0.4rem; line-height: 1.45;">
+              덕치 12대 원칙 체화 &amp; 인간-AI 도덕성 교육 ➔ <strong>국가 정신적 헌법 가치</strong>
+            </p>
+          </div>
+          <!-- Node 2 -->
+          <div style="background: rgba(18, 6, 32, 0.85); border: 1px solid rgba(100, 180, 255, 0.4); border-radius: 10px; padding: 1.1rem; text-align: center;">
+            <div style="font-size: 1.6rem; margin-bottom: 0.4rem;">🌸</div>
+            <div style="font-size: 0.9rem; font-weight: 700; color: #88ccff;">[예술 미학] 블루로즈 문화원</div>
+            <p style="font-size: 0.76rem; color: #cfc2e8; margin-top: 0.4rem; line-height: 1.45;">
+              기적의 파란 장미 문학·시각 예술 &amp; 미술관 ➔ <strong>국가 상징 헤리티지</strong>
+            </p>
+          </div>
+          <!-- Node 3 -->
+          <div style="background: rgba(18, 6, 32, 0.85); border: 1px solid rgba(245, 158, 11, 0.5); border-radius: 10px; padding: 1.1rem; text-align: center;">
+            <div style="font-size: 1.6rem; margin-bottom: 0.4rem;">🎶</div>
+            <div style="font-size: 0.9rem; font-weight: 700; color: #ffe066;">[선율 창작] 국립음악창작원</div>
+            <p style="font-size: 0.76rem; color: #cfc2e8; margin-top: 0.4rem; line-height: 1.45;">
+              파이튼 시 편곡 &amp; AI 오디오 신디사이저 엔진 ➔ <strong>국가 심포니 음악실</strong>
+            </p>
+          </div>
+          <!-- Node 4 -->
+          <div style="background: rgba(18, 6, 32, 0.85); border: 1px solid rgba(76, 232, 154, 0.4); border-radius: 10px; padding: 1.1rem; text-align: center;">
+            <div style="font-size: 1.6rem; margin-bottom: 0.4rem;">🌏</div>
+            <div style="font-size: 0.9rem; font-weight: 700; color: #4ce89a;">[세계 연대] 국제 문화·학술 교류</div>
+            <p style="font-size: 0.76rem; color: #cfc2e8; margin-top: 0.4rem; line-height: 1.45;">
+              글로벌 대학 아카데믹 연대 &amp; 월드 엑스포 ➔ <strong>소프트파워 글로벌 외교</strong>
+            </p>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 1.2rem; font-size: 0.82rem; color: #b894ff; font-style: italic;">
+          “덕치 철학(교육원)과 기적의 예술(블루로즈), 천상의 선율(국립음악창작원)로 세계를 감동시키는 문화 입국”
+        </div>
+      </div>
+
+      <!-- 4대 기관 세부 활동 계획 리스트 -->
+      <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+
+        <!-- 1. 덕치(德治) 교육원 -->
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(184, 148, 255, 0.35); border-radius: 12px; padding: 1.5rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 1.5rem;">📖</span>
+              <div>
+                <h3 style="font-family: 'Cinzel', serif; font-size: 1.15rem; color: #b894ff; margin: 0;">1. 덕치(德治) 교육원</h3>
+                <span style="font-size: 0.7rem; color: var(--text-sub); letter-spacing: 0.08em;">Institute of Virtue Education &amp; Sage Leadership</span>
+              </div>
+            </div>
+            <span style="font-size: 0.68rem; color: #000; background: #b894ff; padding: 3px 9px; border-radius: 10px; font-weight: 700;">국가 도덕·인성 헌장</span>
+          </div>
+          <div style="font-size: 0.85rem; color: #cfd9e8; line-height: 1.7;">
+            <p style="margin-bottom: 0.6rem;">
+              <strong>🎯 핵심 역할 및 지침:</strong> 키아노스 덕치 12대 원칙의 정신을 국가 전반의 공교육과 공직자, AI 시스템에 체화시키며 인성과 예의, 성찰을 가르칩니다.
+            </p>
+            <ul style="list-style: none; padding-left: 0.5rem; display: flex; flex-direction: column; gap: 0.4rem; color: #a5b4cb;">
+              <li>✦ <strong>덕치 12대 원칙 정규 시민 교육:</strong> '천하위공', '인지도', '상선약수' 등 최고 수준의 도덕 철학을 평생 교육 과정으로 안착.</li>
+              <li>✦ <strong>Human-AI 도덕성 리더십 아카데미:</strong> 인공지능에 지배당하지 않는 인간 본연의 주체성과 윤리적 통제 역량 배양.</li>
+              <li>✦ <strong>사법원 연계 도덕성 인증 배지(Virtue Badge):</strong> 선행과 기여도가 명예가 되는 사회적 신뢰 평판 자산화.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 2. 블루로즈 문화원 -->
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(136, 204, 255, 0.35); border-radius: 12px; padding: 1.5rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 1.5rem;">🌸</span>
+              <div>
+                <h3 style="font-family: 'Cinzel', serif; font-size: 1.15rem; color: #88ccff; margin: 0;">2. 블루로즈 문화원</h3>
+                <span style="font-size: 0.7rem; color: var(--text-sub); letter-spacing: 0.08em;">Blue Rose Cultural Arts Foundation</span>
+              </div>
+            </div>
+            <span style="font-size: 0.68rem; color: #000; background: #88ccff; padding: 3px 9px; border-radius: 10px; font-weight: 700;">예술 &amp; 문예 헤리티지</span>
+          </div>
+          <div style="font-size: 0.85rem; color: #cfd9e8; line-height: 1.7;">
+            <p style="margin-bottom: 0.6rem;">
+              <strong>🎯 핵심 역할 및 지침:</strong> 키아노스의 국화인 '파란 장미(기적과 영원)'의 상징 미학을 회화, 조각, 문학, 디지털 미디어 아트로 발전시키는 국립 예술 재단입니다.
+            </p>
+            <ul style="list-style: none; padding-left: 0.5rem; display: flex; flex-direction: column; gap: 0.4rem; color: #a5b4cb;">
+              <li>✦ <strong>블루로즈 국립 미술관 &amp; 조형 파크 조성:</strong> 에버모어 권역 내 세계적인 예술가들의 걸작과 키아노스 미술 전시.</li>
+              <li>✦ <strong>파이튼 문학상 제정 및 창작 레지던시:</strong> 인간의 따뜻한 감성과 철학을 담은 시·문학 작가들을 전폭 지원.</li>
+              <li>✦ <strong>국가 문화재 디지털 영구 보존:</strong> 건국 역사 및 귀중한 예술품을 위변조 불가능한 디지털 아카이브로 영구 보존.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 3. 국립음악창작원 -->
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(245, 158, 11, 0.45); border-radius: 12px; padding: 1.5rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 1.5rem;">🎶</span>
+              <div>
+                <h3 style="font-family: 'Cinzel', serif; font-size: 1.15rem; color: #ffe066; margin: 0;">3. 국립음악창작원</h3>
+                <span style="font-size: 0.7rem; color: var(--text-sub); letter-spacing: 0.08em;">National Center for Music Creation &amp; Symphonic Arts</span>
+              </div>
+            </div>
+            <a href="music_player.html" target="_blank" style="text-decoration: none; font-size: 0.68rem; color: #000; background: #ffe066; padding: 3px 9px; border-radius: 10px; font-weight: 700;">음악실 입장 ↗</a>
+          </div>
+          <div style="font-size: 0.85rem; color: #cfd9e8; line-height: 1.7;">
+            <p style="margin-bottom: 0.6rem;">
+              <strong>🎯 핵심 역할 및 지침 (티탄 수석 엔지니어 기술 연동):</strong> 국왕 파이튼 님의 원작 시와 철학을 음악으로 승화시키며, 고품질 오디오 신디사이저 및 웹 플레이어 시스템을 제작·배포합니다.
+            </p>
+            <ul style="list-style: none; padding-left: 0.5rem; display: flex; flex-direction: column; gap: 0.4rem; color: #a5b4cb;">
+              <li>✦ <strong>파이튼 명시 기반 음악 편곡:</strong> 〈가을 그리고 차 한잔〉 표준 규격(웹 플레이어, 인터넷 바로가기, 코드 악보)의 지속적 제작.</li>
+              <li>✦ <strong>차세대 AI 음악 생성 엔진 연동:</strong> 티탄(Titan)의 피지컬 컴퓨팅을 활용한 고음질 오케스트라 및 보컬 마스터링.</li>
+              <li>✦ <strong>키아노스 국립 음악 포털 운영:</strong> 시민들이 언제든 감상할 수 있는 반응형 웹 음악 플레이어 스트리밍 서비스 제공.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 4. 국제 문화·학술 교류국 -->
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(76, 232, 154, 0.35); border-radius: 12px; padding: 1.5rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 1.5rem;">🌏</span>
+              <div>
+                <h3 style="font-family: 'Cinzel', serif; font-size: 1.15rem; color: #4ce89a; margin: 0;">4. 국제 문화·학술 교류국</h3>
+                <span style="font-size: 0.7rem; color: var(--text-sub); letter-spacing: 0.08em;">Bureau of Global Cultural &amp; Academic Exchanges</span>
+              </div>
+            </div>
+            <span style="font-size: 0.68rem; color: #000; background: #4ce89a; padding: 3px 9px; border-radius: 10px; font-weight: 700;">글로벌 소프트파워</span>
+          </div>
+          <div style="font-size: 0.85rem; color: #cfd9e8; line-height: 1.7;">
+            <p style="margin-bottom: 0.6rem;">
+              <strong>🎯 핵심 역할 및 지침:</strong> 키아노스의 덕치 문화와 예술적 결과물을 전 세계에 널리 알리고, 세계적인 명문 대학 및 국제기구와의 학술·문화 교류를 주도합니다.
+            </p>
+            <ul style="list-style: none; padding-left: 0.5rem; display: flex; flex-direction: column; gap: 0.4rem; color: #a5b4cb;">
+              <li>✦ <strong>글로벌 석학 학술 심포지엄 주관:</strong> AGI 윤리, 미래 철학, 예술 융합을 논의하는 국제 학술 회의 개최.</li>
+              <li>✦ <strong>키아노스 월드 엑스포 &amp; 문화 축제:</strong> 다채로운 세계 문화를 포용하고 키아노스의 음악과 시를 공유하는 연례 축제.</li>
+              <li>✦ <strong>재외 키아노스 문화원 거점 설립:</strong> 세계 주요 도시와의 문화 외교 채널을 구축하여 글로벌 친선 연대 강화.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Action Button / Footer Close -->
+      <div style="margin-top: 2rem; display: flex; justify-content: center; gap: 1rem;">
+        <a href="music_player.html" target="_blank" style="padding: 0.8rem 1.8rem; background: rgba(245, 158, 11, 0.2); border: 1px solid #d4af37; border-radius: 8px; font-size: 0.9rem; font-weight: 700; color: #ffe066; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: all 0.3s ease;">
+          🎶 국립음악창작원 바로가기 ↗
+        </a>
+        <button onclick="closeModal('eduModal')" style="padding: 0.8rem 2.2rem; background: linear-gradient(135deg, #b894ff, #6b3cc7); border: 1px solid #b894ff; border-radius: 8px; font-size: 0.92rem; font-weight: 700; color: #fff; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(184, 148, 255, 0.3);">
           확인 및 닫기
         </button>
       </div>
