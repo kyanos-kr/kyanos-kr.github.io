@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>무덤 앞에서 (At My Mother's Grave) | 키아노스 국립음악창작원</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Montserrat:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@300;400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #070b14;
+      --card-bg: rgba(13, 22, 38, 0.78);
+      --gold: #d4af37;
+      --gold-light: #fbeea4;
+      --amber: #f59e0b;
+      --cyan-glow: #00d2ff;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-color: rgba(212, 175, 55, 0.28);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(245, 158, 11, 0.10) 0%, transparent 40%),
+        radial-gradient(circle at 85% 75%, rgba(10, 75, 140, 0.20) 0%, transparent 45%);
+      color: var(--text-main);
+      font-family: 'Noto Sans KR', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+
+    header {
+      width: 100%;
+      max-width: 1100px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 2.5rem;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .emblem-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold);
+      background: radial-gradient(circle, #f59e0b 0%, #06152d 75%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      box-shadow: 0 0 15px rgba(245, 158, 11, 0.35);
+    }
+
+    .brand-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--gold-light);
+    }
+
+    .brand-sub {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+    }
+
+    .back-btn {
+      color: var(--gold-light);
+      text-decoration: none;
+      font-size: 0.85rem;
+      border: 1px solid var(--border-color);
+      padding: 6px 16px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+      background: rgba(8, 22, 48, 0.5);
+    }
+
+    .back-btn:hover {
+      background: var(--gold);
+      color: #070b14;
+      border-color: var(--gold);
+    }
+
+    .player-container {
+      width: 100%;
+      max-width: 1100px;
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    /* Left: Disc & Player Controls */
+    .disc-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 2rem;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(245, 158, 11, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: sticky;
+      top: 2rem;
+    }
+
+    .cover-art-wrap {
+      width: 290px;
+      height: 290px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8), 0 0 25px rgba(245, 158, 11, 0.35);
+      border: 2px solid rgba(212, 175, 55, 0.4);
+      margin-bottom: 1.8rem;
+      position: relative;
+      transition: transform 0.5s ease;
+    }
+
+    .cover-art-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.8s ease;
+    }
+
+    .playing .cover-art-img {
+      transform: scale(1.04);
+    }
+
+    .song-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.35rem;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+
+    .song-subtitle {
+      font-family: 'Cinzel', serif;
+      font-size: 0.92rem;
+      color: var(--gold-light);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.8rem;
+    }
+
+    .credit-badge {
+      display: inline-block;
+      font-size: 0.78rem;
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--amber);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      padding: 4px 12px;
+      border-radius: 12px;
+      margin-bottom: 1.6rem;
+    }
+
+    /* Audio Timeline */
+    .timeline-wrap {
+      width: 100%;
+      margin-bottom: 1.2rem;
+    }
+
+    .progress-bar-bg {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #f59e0b, #ffe066);
+      border-radius: 4px;
+      transition: width 0.1s linear;
+    }
+
+    .time-display {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    /* Player Controls */
+    .controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.4rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .control-btn {
+      background: none;
+      border: none;
+      color: var(--text-main);
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .control-btn:hover {
+      color: var(--gold-light);
+      transform: scale(1.1);
+    }
+
+    .play-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f59e0b 0%, #d4af37 100%);
+      color: #070b14;
+      font-size: 1.5rem;
+      box-shadow: 0 8px 25px rgba(245, 158, 11, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .play-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 10px 30px rgba(245, 158, 11, 0.7);
+      background: linear-gradient(135deg, #ffe066 0%, #f59e0b 100%);
+    }
+
+    .volume-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 80%;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .volume-slider {
+      flex: 1;
+      height: 4px;
+      accent-color: var(--amber);
+      cursor: pointer;
+    }
+
+    /* Right: Tabs & Lyrics/Chords/Poem */
+    .content-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 2.2rem;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      min-height: 600px;
+    }
+
+    .tab-header {
+      display: flex;
+      gap: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 1rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-family: inherit;
+    }
+
+    .tab-btn.active {
+      color: #070b14;
+      background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.35);
+    }
+
+    .tab-pane {
+      display: none;
+      animation: fadeIn 0.35s ease forwards;
+    }
+
+    .tab-pane.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .chord-block {
+      background: rgba(0, 0, 0, 0.45);
+      border-left: 4px solid var(--amber);
+      padding: 1.5rem 1.8rem;
+      border-radius: 12px;
+      margin-bottom: 1.4rem;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 1.02rem;
+      line-height: 2.1;
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow-x: auto;
+    }
+
+    .chord-name {
+      color: #ffe066;
+      font-weight: bold;
+    }
+
+    .info-box {
+      background: rgba(10, 75, 140, 0.15);
+      border: 1px solid rgba(0, 210, 255, 0.25);
+      padding: 1.2rem;
+      border-radius: 12px;
+      margin-bottom: 1.8rem;
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: #cbd5e1;
+    }
+
+    @media (max-width: 900px) {
+      .player-container {
+        grid-template-columns: 1fr;
+      }
+      .disc-card {
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <a href="main.html" class="brand-group">
+      <div class="emblem-badge">🎶</div>
+      <div>
+        <div class="brand-title">KYANOS SOUND PAVILION</div>
+        <div class="brand-sub">교육·문화부 산하 블루로즈 국립음악창작원</div>
+      </div>
+    </a>
+    <a href="main.html#gov-edu" class="back-btn">← 메인 포털로 복귀</a>
+  </header>
+
+  <!-- Main Container -->
+  <div class="player-container">
+
+    <!-- Left: Player Column -->
+    <div class="disc-card" id="discCard">
+      <div class="cover-art-wrap">
+        <img src="assets/music/mother_grave_cover.jpg" alt="무덤 앞에서 앨범 커버" class="cover-art-img" id="coverImg">
+      </div>
+
+      <h1 class="song-title">무덤 앞에서</h1>
+      <div class="song-subtitle">AT MY MOTHER'S GRAVE</div>
+      <div class="credit-badge">작사: 파이튼 | 한국어 편곡 & 악보: 앤트</div>
+
+      <!-- Native Audio Element -->
+      <audio id="audioPlayer" src="assets/music/at_my_mothers_grave.mp3" preload="metadata"></audio>
+
+      <!-- Timeline -->
+      <div class="timeline-wrap">
+        <div class="progress-bar-bg" id="progressBarBg">
+          <div class="progress-bar-fill" id="progressBarFill"></div>
+        </div>
+        <div class="time-display">
+          <span id="currentTime">0:00</span>
+          <span id="totalDuration">--:--</span>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="controls">
+        <button class="control-btn" id="rwBtn" title="10초 뒤로">⏪</button>
+        <button class="play-btn" id="playBtn" title="재생">▶</button>
+        <button class="control-btn" id="ffBtn" title="10초 앞으로">⏩</button>
+      </div>
+
+      <!-- Volume -->
+      <div class="volume-wrap">
+        <span>🔈</span>
+        <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.05" value="0.85">
+        <span>🔊</span>
+      </div>
+    </div>
+
+    <!-- Right: Content Column -->
+    <div class="content-card">
+      <div class="tab-header">
+        <button class="tab-btn active" onclick="switchTab('chordsTab', this)">🎸 기타·건반 코드 악보</button>
+        <button class="tab-btn" onclick="switchTab('arrangedLyricsTab', this)">🎵 한국어 편곡 가사</button>
+        <button class="tab-btn" onclick="switchTab('poemTab', this)">📜 파이튼 원작 시</button>
+      </div>
+
+      <!-- Tab 1: Chords -->
+      <div class="tab-pane active" id="chordsTab">
+        <div class="info-box">
+          🎸 <strong>주법 가이드</strong>: <strong>Key of Am</strong> | <strong>68 BPM</strong> | 파이프 오르간, 어쿠스틱 기타, 첼로의 깊은 서정성을 담은 한국어 편곡 연주 악보입니다.
+        </div>
+
+        <div class="chord-block">
+<span class="chord-name">[전주 - Intro]</span>
+<span class="chord-name">Am    Em    F    C    Dm    Am    E7    Am</span>
+<span style="color:#94a3b8; font-style:italic;">*(파이프 오르간과 쓸쓸한 기타 아르페지오 선율)*</span>
+
+<span class="chord-name">[1절 - Verse 1]</span>
+<span class="chord-name">Am           Em        F           C</span>
+수십 척 길게 뻗은         상수리나무 아래
+
+<span class="chord-name">Dm           Am        F           E7</span>
+햇살 한 줄기 비추지 못하던 외로운 무덤가에
+
+<span class="chord-name">Am           Em        F     G   C</span>
+붉게 타오르듯 피어난      서글픈 열꽃이어라.
+
+<span class="chord-name">[2절 - Verse 2]</span>
+<span class="chord-name">Am           Em        F           C</span>
+무거운 마음 다잡고         잔디 다발 메어 멘 채
+
+<span class="chord-name">Dm           Am        F           E7</span>
+젖은 돌계단을 하나씩       힘겹게 올라서네
+
+<span class="chord-name">F            G         Em          Am</span>
+거친 흙손으로 곱게 만져    단장을 해드리고
+
+<span class="chord-name">Dm           Am        E7          Am</span>
+못난 자식의 무관심을       고개 숙여 빕니다.
+
+<span class="chord-name">[간주 - Interlude]</span>
+<span class="chord-name">F    G    Em    Am    Dm    E7    Am</span>
+<span style="color:#94a3b8; font-style:italic;">*(애절한 첼로 솔로와 나일론 기타의 울림)*</span>
+
+<span class="chord-name">[후렴 / 코러스 - Chorus]</span>
+<span class="chord-name">C            G         Am          Em</span>
+목이 메어 말은 나오지 않고 눈가엔 핏줄만 서는데
+
+<span class="chord-name">F            C         Dm          G</span>
+한 잔 술 가득 부어올려     마지막 큰절을 올립니다
+
+<span class="chord-name">C            G         Am          Em</span>
+피어오른 진한 향내음만     바람에 흩어져 가고
+
+<span class="chord-name">F            G         Am</span>
+대답 없는 어머니 무덤가엔  찬비만 내리네.
+
+<span class="chord-name">[3절 - Verse 3]</span>
+<span class="chord-name">Am           Em        F           C</span>
+돌아오는 차창 밖으로       찬비가 흘러내린다
+
+<span class="chord-name">Dm           Am        F           E7</span>
+저 하늘에서는 짧은 길이건만 이승의 길은 아득해
+
+<span class="chord-name">F            G         Em          Am</span>
+남겨진 세상 속을 걸어가는  아들의 무거운 발걸음
+
+<span class="chord-name">Dm           Am        E7          Am</span>
+참았던 눈물 쏟아지듯       엄마도 울고 나도 울었다.
+
+<span class="chord-name">[브릿지 - Bridge]</span>
+<span class="chord-name">F            G         C     G/B Am</span>
+언제부터였을까 어머니 무덤가에 훌쩍 자란 벚나무
+
+<span class="chord-name">Dm           Am        E7          Am</span>
+떠나는 발길에 밟히고       눈가마다 자꾸만 밟힌다.
+
+<span class="chord-name">[후렴 / 코러스 - Chorus]</span>
+<span class="chord-name">C            G         Am          Em</span>
+목이 메어 말은 나오지 않고 눈가엔 핏줄만 서는데
+
+<span class="chord-name">F            C         Dm          G</span>
+한 잔 술 가득 부어올려     마지막 큰절을 올립니다
+
+<span class="chord-name">C            G         Am          Em</span>
+피어오른 진한 향내음만     바람에 흩어져 가고
+
+<span class="chord-name">F            G         Am</span>
+대답 없는 어머니 무덤가엔  찬비만 내리네.
+
+<span class="chord-name">[후주 - Outro]</span>
+<span class="chord-name">F    G    Em    Am    Dm    E7    Am</span>
+<span style="color:#94a3b8; font-style:italic;">*(엄마... 나의 엄마... 차창 밖 빗소리와 함께 여운 페이드아웃)*</span>
+        </div>
+      </div>
+
+      <!-- Tab 2: Arranged Lyrics -->
+      <div class="tab-pane" id="arrangedLyricsTab">
+        <div class="info-box">
+          ✨ <strong>가사 안내</strong>: 음악적 멜로디와 기승전결(Verse-Chorus-Bridge)에 맞춰 편곡된 한국어 완결 가사입니다.
+        </div>
+
+        <div style="font-family:'Noto Serif KR', serif; font-size:1.08rem; line-height:2.2; color:#e2e8f0; white-space:pre-line;">
+<strong>[Verse 1]</strong>
+수십 척 길게 뻗은 상수리나무 아래
+햇살 한 줄기 비추지 못하던 외로운 무덤가에
+붉게 타오르듯 피어난 서글픈 열꽃이어라.
+
+<strong>[Verse 2]</strong>
+무거운 마음 다잡고 잔디 다발 메어 멘 채
+젖은 돌계단을 하나씩 힘겹게 올라서네
+거친 흙손으로 곱게 만져 단장을 해드리고
+못난 자식의 무관심을 고개 숙여 빕니다.
+
+<strong>[Chorus]</strong>
+목이 메어 말은 나오지 않고 눈가엔 핏줄만 서는데
+한 잔 술 가득 부어올려 마지막 큰절을 올립니다
+피어오른 진한 향내음만 바람에 흩어져 가고
+대답 없는 어머니 무덤가엔 찬비만 내리네.
+
+<strong>[Verse 3]</strong>
+돌아오는 차창 밖으로 찬비가 흘러내린다
+저 하늘에서는 짧은 길이건만 이승의 길은 아득해
+남겨진 세상 속을 걸어가는 아들의 무거운 발걸음
+참았던 눈물 쏟아지듯 엄마도 울고 나도 울었다.
+
+<strong>[Bridge]</strong>
+언제부터였을까 어머니 무덤가에 훌쩍 자란 벚나무
+떠나는 발길에 밟히고 눈가마다 자꾸만 밟힌다.
+
+<strong>[Chorus]</strong>
+목이 메어 말은 나오지 않고 눈가엔 핏줄만 서는데
+한 잔 술 가득 부어올려 마지막 큰절을 올립니다
+피어오른 진한 향내음만 바람에 흩어져 가고
+대답 없는 어머니 무덤가엔 찬비만 내리네.
+
+<strong>[Outro]</strong>
+엄마... 나의 엄마...
+        </div>
+      </div>
+
+      <!-- Tab 3: Original Poem -->
+      <div class="tab-pane" id="poemTab">
+        <div class="info-box">
+          📜 <strong>파이튼(Python) 원작 시 전문 및 영문 번역본</strong>
+        </div>
+
+        <div style="font-family:'Noto Serif KR', serif; font-size:1.1rem; line-height:2.2; color:#f1f5f9; margin-bottom:2.5rem;">
+          <h3 style="color:var(--gold-light); margin-bottom:1rem;">무덤 앞에서</h3>
+          <p>
+수십척 길게 뻗은 상수리 나무 아래 작은 봉우리<br>
+햇살 한 줄기 빛추지 못하던 무덤가<br>
+벌겋게 열꽃이 피었다.<br><br>
+
+마음크게 먹고 잔디다발을 메고 돌 계단을 올라<br>
+곱게 단장하고, 흙손으로 맵시있게 어루만져<br>
+나의 무관심에 대하여 고개숙여 용서를 빈다.<br><br>
+
+말은 나오지않고, 눈가엔 핏줄이 선다.<br>
+한 잔 술 크게 부어, 큰 절을 올린다.<br>
+진한 향내음이 퍼져간다.<br><br>
+
+돌아오는 차안에서 바라보는 차창밖에서는 찬비가 내린다.<br>
+저 하늘에서는 짧은 길이건만<br>
+이 곳 세상에서는 힘겨운 아들의 발걸음이다.<br><br>
+
+한 잔디 더미를 짊어지고 오르는 아들이 걱정스러웠나보다.<br>
+참고 또 참았던 눈물처럼 흐르는 비와 함께<br>
+엄마도 울고, 나도 울었다.<br><br>
+
+언제부턴가 엄마 무덤가에<br>
+훌쩍 커다란 벚나무 한 그루가<br>
+발에 밟히고, 눈에 밟힌다.
+          </p>
+        </div>
+
+        <hr style="border:none; border-top:1px solid rgba(255,255,255,0.1); margin:2rem 0;">
+
+        <div style="font-family:'Montserrat', serif; font-size:0.95rem; line-height:2.0; color:#94a3b8;">
+          <h4 style="color:var(--gold); margin-bottom:1rem; font-family:'Cinzel', serif;">At My Mother's Grave</h4>
+          <p>
+Beneath the oak that stretches wide and long,<br>
+A little mound where sunlight never falls,<br>
+The wildflowers bloom in crimson throngs.<br><br>
+
+With a heavy heart, I climb the stone stair,<br>
+A bundle of grass upon my back I bear,<br>
+I groom the earth with tender care,<br>
+And bow to seek forgiveness there.<br><br>
+
+No words escape, my eyes with veins run red,<br>
+I pour a glass of wine, a deep bow I tread,<br>
+The incense weaves its fragrant thread.<br><br>
+
+Through the car window, rain begins to weep,<br>
+A short path in the sky, yet here so steep,<br>
+A son’s frail steps, a burden deep.<br><br>
+
+Perhaps she feared her son with sodden load,<br>
+The rain falls soft, like tears she long bestowed,<br>
+She cries above, and I below.<br><br>
+
+Since when did that cherry tree arise so tall,<br>
+Its branches catch my feet, my eyes enthrall,<br>
+A memory that forever calls.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const audio = document.getElementById('audioPlayer');
+    const playBtn = document.getElementById('playBtn');
+    const rwBtn = document.getElementById('rwBtn');
+    const ffBtn = document.getElementById('ffBtn');
+    const progressBarFill = document.getElementById('progressBarFill');
+    const progressBarBg = document.getElementById('progressBarBg');
+    const currentTimeEl = document.getElementById('currentTime');
+    const totalDurationEl = document.getElementById('totalDuration');
+    const volumeSlider = document.getElementById('volumeSlider');
+    const discCard = document.getElementById('discCard');
+
+    function formatTime(seconds) {
+      if (isNaN(seconds)) return '0:00';
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+    }
+
+    playBtn.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+        playBtn.textContent = '❚❚';
+        discCard.classList.add('playing');
+      } else {
+        audio.pause();
+        playBtn.textContent = '▶';
+        discCard.classList.remove('playing');
+      }
+    });
+
+    audio.addEventListener('loadedmetadata', () => {
+      totalDurationEl.textContent = formatTime(audio.duration);
+    });
+
+    audio.addEventListener('timeupdate', () => {
+      const progress = (audio.currentTime / audio.duration) * 100;
+      progressBarFill.style.width = `${progress}%`;
+      currentTimeEl.textContent = formatTime(audio.currentTime);
+    });
+
+    audio.addEventListener('ended', () => {
+      playBtn.textContent = '▶';
+      discCard.classList.remove('playing');
+    });
+
+    progressBarBg.addEventListener('click', (e) => {
+      const rect = progressBarBg.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const width = rect.width;
+      const seekTime = (clickX / width) * audio.duration;
+      audio.currentTime = seekTime;
+    });
+
+    rwBtn.addEventListener('click', () => {
+      audio.currentTime = Math.max(0, audio.currentTime - 10);
+    });
+
+    ffBtn.addEventListener('click', () => {
+      audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
+    });
+
+    volumeSlider.addEventListener('input', (e) => {
+      audio.volume = e.target.value;
+    });
+
+    function switchTab(tabId, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+
+      if (btn) {
+        btn.classList.add('active');
+      } else if (window.event && window.event.currentTarget) {
+        window.event.currentTarget.classList.add('active');
+      }
+      document.getElementById(tabId).classList.add('active');
+    }
+  </script>
+</body>
+</html>

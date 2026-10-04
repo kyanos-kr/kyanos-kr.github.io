@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>가을 그리고 차 한잔 | 키아노스 국립음악창작원</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Montserrat:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@300;400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #070b14;
+      --card-bg: rgba(13, 22, 38, 0.78);
+      --gold: #d4af37;
+      --gold-light: #fbeea4;
+      --amber: #f59e0b;
+      --cyan-glow: #00d2ff;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-color: rgba(212, 175, 55, 0.28);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(245, 158, 11, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 85% 75%, rgba(10, 75, 140, 0.18) 0%, transparent 45%);
+      color: var(--text-main);
+      font-family: 'Noto Sans KR', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+
+    header {
+      width: 100%;
+      max-width: 1100px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 2.5rem;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .emblem-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold);
+      background: radial-gradient(circle, #f59e0b 0%, #06152d 75%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      box-shadow: 0 0 15px rgba(245, 158, 11, 0.35);
+    }
+
+    .brand-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--gold-light);
+    }
+
+    .brand-sub {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+    }
+
+    .back-btn {
+      color: var(--gold-light);
+      text-decoration: none;
+      font-size: 0.85rem;
+      border: 1px solid var(--border-color);
+      padding: 6px 16px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+      background: rgba(8, 22, 48, 0.5);
+    }
+
+    .back-btn:hover {
+      background: var(--gold);
+      color: #070b14;
+      border-color: var(--gold);
+    }
+
+    .player-container {
+      width: 100%;
+      max-width: 1100px;
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    /* Left: Disc & Player Controls */
+    .disc-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 2rem;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(245, 158, 11, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: sticky;
+      top: 2rem;
+    }
+
+    .cover-art-wrap {
+      width: 290px;
+      height: 290px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8), 0 0 25px rgba(245, 158, 11, 0.35);
+      border: 2px solid rgba(212, 175, 55, 0.4);
+      margin-bottom: 1.8rem;
+      position: relative;
+      transition: transform 0.5s ease;
+    }
+
+    .cover-art-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.8s ease;
+    }
+
+    .playing .cover-art-img {
+      transform: scale(1.04);
+    }
+
+    .song-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.35rem;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+
+    .song-subtitle {
+      font-family: 'Cinzel', serif;
+      font-size: 0.92rem;
+      color: var(--gold-light);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.8rem;
+    }
+
+    .credit-badge {
+      display: inline-block;
+      font-size: 0.78rem;
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--amber);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      padding: 4px 12px;
+      border-radius: 12px;
+      margin-bottom: 1.6rem;
+    }
+
+    /* Audio Timeline */
+    .timeline-wrap {
+      width: 100%;
+      margin-bottom: 1.2rem;
+    }
+
+    .progress-bar-bg {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #f59e0b, #ffe066);
+      border-radius: 4px;
+      transition: width 0.1s linear;
+    }
+
+    .time-display {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    /* Player Controls */
+    .controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.4rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .control-btn {
+      background: none;
+      border: none;
+      color: var(--text-main);
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .control-btn:hover {
+      color: var(--gold-light);
+      transform: scale(1.1);
+    }
+
+    .play-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f59e0b 0%, #d4af37 100%);
+      color: #070b14;
+      font-size: 1.5rem;
+      box-shadow: 0 8px 25px rgba(245, 158, 11, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .play-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 10px 30px rgba(245, 158, 11, 0.7);
+      background: linear-gradient(135deg, #ffe066 0%, #f59e0b 100%);
+    }
+
+    .volume-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 80%;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .volume-slider {
+      flex: 1;
+      height: 4px;
+      accent-color: var(--amber);
+      cursor: pointer;
+    }
+
+    /* Right: Lyrics & Chords & Original Poem Tabs */
+    .content-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 2.2rem;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      min-height: 600px;
+    }
+
+    .tab-header {
+      display: flex;
+      gap: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 1rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-family: inherit;
+    }
+
+    .tab-btn.active {
+      color: #070b14;
+      background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.35);
+    }
+
+    .tab-pane {
+      display: none;
+      animation: fadeIn 0.35s ease forwards;
+    }
+
+    .tab-pane.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Lyrics Display */
+    .lyrics-section {
+      margin-bottom: 1.8rem;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: var(--amber);
+      background: rgba(245, 158, 11, 0.12);
+      padding: 3px 10px;
+      border-radius: 6px;
+      margin-bottom: 0.6rem;
+      font-family: 'Cinzel', serif;
+    }
+
+    .lyrics-lines {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.05rem;
+      line-height: 2.1;
+      color: #e2e8f0;
+      white-space: pre-line;
+    }
+
+    /* Chord Block */
+    .chord-block {
+      background: rgba(0, 0, 0, 0.45);
+      border-left: 4px solid var(--amber);
+      padding: 1.5rem 1.8rem;
+      border-radius: 12px;
+      margin-bottom: 1.4rem;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 1.05rem;
+      line-height: 2.0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow-x: auto;
+    }
+
+    .chord-name {
+      color: #ffe066;
+      font-weight: bold;
+    }
+
+    .info-box {
+      background: rgba(10, 75, 140, 0.15);
+      border: 1px solid rgba(0, 210, 255, 0.25);
+      padding: 1.2rem;
+      border-radius: 12px;
+      margin-bottom: 1.8rem;
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: #cbd5e1;
+    }
+
+    @media (max-width: 900px) {
+      .player-container {
+        grid-template-columns: 1fr;
+      }
+      .disc-card {
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <a href="main.html" class="brand-group">
+      <div class="emblem-badge">🎶</div>
+      <div>
+        <div class="brand-title">KYANOS SOUND PAVILION</div>
+        <div class="brand-sub">교육·문화부 산하 블루로즈 국립음악창작원</div>
+      </div>
+    </a>
+    <a href="main.html#gov-edu" class="back-btn">← 메인 포털로 복귀</a>
+  </header>
+
+  <!-- Main Container -->
+  <div class="player-container">
+
+    <!-- Left: Player Column -->
+    <div class="disc-card" id="discCard">
+      <div class="cover-art-wrap">
+        <img src="assets/music/autumn_tea_cover.jpg" alt="가을 그리고 차 한잔 앨범 커버" class="cover-art-img" id="coverImg">
+      </div>
+
+      <h1 class="song-title">가을 그리고 차 한잔</h1>
+      <div class="song-subtitle">AUTUMN AND A CUP OF TEA</div>
+      <div class="credit-badge">작사: 파이튼 | 내레이션 믹싱 & 편곡: 앤트</div>
+
+      <!-- Track Switcher -->
+      <div style="display:flex; gap:8px; margin-bottom:1.2rem; width:100%; justify-content:center;">
+        <button id="trackKoreanBtn" style="background:linear-gradient(135deg, #f59e0b, #d4af37); color:#070b14; border:none; padding:6px 14px; border-radius:16px; font-size:0.78rem; font-weight:700; cursor:pointer;" onclick="changeTrack('assets/music/autumn_tea_korean_poem.mp3', '가을 그리고 차 한잔 (한국어 시 낭송 Ver.)', this)">🎙️ 한국어 낭송 & BGM</button>
+        <button id="trackOrigBtn" style="background:rgba(255,255,255,0.1); color:#cbd5e1; border:1px solid rgba(255,255,255,0.2); padding:6px 14px; border-radius:16px; font-size:0.78rem; cursor:pointer;" onclick="changeTrack('assets/music/autumn_and_cup_of_tea.mp3', '가을 그리고 차 한잔 (원곡 Suno Ver.)', this)">🎵 원곡 (영어 보컬)</button>
+      </div>
+
+      <!-- Native Audio Element -->
+      <audio id="audioPlayer" src="assets/music/autumn_tea_korean_poem.mp3" preload="metadata"></audio>
+
+      <!-- Timeline -->
+      <div class="timeline-wrap">
+        <div class="progress-bar-bg" id="progressBarBg">
+          <div class="progress-bar-fill" id="progressBarFill"></div>
+        </div>
+        <div class="time-display">
+          <span id="currentTime">0:00</span>
+          <span id="totalDuration">--:--</span>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="controls">
+        <button class="control-btn" id="rwBtn" title="10초 뒤로">⏪</button>
+        <button class="play-btn" id="playBtn" title="재생">▶</button>
+        <button class="control-btn" id="ffBtn" title="10초 앞으로">⏩</button>
+      </div>
+
+      <!-- Volume -->
+      <div class="volume-wrap">
+        <span>🔈</span>
+        <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.05" value="0.85">
+        <span>🔊</span>
+      </div>
+    </div>
+
+    <!-- Right: Content Column (Lyrics & Chords & Poem) -->
+    <div class="content-card">
+      <div class="tab-header">
+        <button class="tab-btn active" onclick="switchTab('chordsTab', this)">🎸 기타 코드 악보</button>
+        <button class="tab-btn" onclick="switchTab('lyricsTab', this)">🎵 시 원문 가사</button>
+        <button class="tab-btn" onclick="switchTab('poemTab', this)">📜 파이튼 원작 시</button>
+      </div>
+
+      <!-- Tab 1: Chords (Default Active) -->
+      <div class="tab-pane active" id="chordsTab">
+        <div class="info-box">
+          🎸 <strong>주법 가이드</strong>: <strong>Key of G</strong> | <strong>70 BPM</strong> | 가사 윗줄에 배치된 정통 코드 진행 악보입니다.
+        </div>
+
+        <div class="chord-block">
+<span class="chord-name">[전주 - Intro]</span>
+<span class="chord-name">G    D/F#    Em7    Bm7    Cadd9    G/B    Am7    Dsus4  D</span>
+
+<span class="chord-name">[1연]</span>
+<span class="chord-name">G             D/F#       Em7      Bm7</span>
+가을이 어김없이   가슴으로 스며들어온다.
+
+<span class="chord-name">Cadd9         G/B        Am7      Dsus4  D</span>
+거대한 용광로의   분노가,
+
+<span class="chord-name">G             D/F#       Em7      Bm7</span>
+붉은 황혼의   숙명이,
+
+<span class="chord-name">Cadd9         D          G</span>
+차디찬 불꽃을   온 대지위에 토해낸다.
+
+<span class="chord-name">[간주 - Interlude 1]</span>
+<span class="chord-name">Em7    Bm7    Cadd9    Dsus4  D</span>
+
+<span class="chord-name">[2연]</span>
+<span class="chord-name">Em7          Bm7        Cadd9    G</span>
+온기 사라진   이 대지위에
+
+<span class="chord-name">Am7          Em7        Cadd9    Dsus4  D</span>
+흐르는 강물위로   내 뿜는 숨소리가
+
+<span class="chord-name">G            D/F#       Em7      Bm7</span>
+차갑게 온 몸으로전율해   다가올 때,
+
+<span class="chord-name">Cadd9        D          G</span>
+나는 카페의   차 한잔으로 여유롭다.
+
+<span class="chord-name">[간주 - Interlude 2]</span>
+<span class="chord-name">Cadd9    D    Bm7    Em7    Am7    D    G</span>
+
+<span class="chord-name">[3연]</span>
+<span class="chord-name">G            D/F#       Em7      Bm7</span>
+살랑이는 갈대 숲   사이로
+
+<span class="chord-name">Cadd9        G/B        Am7      Dsus4  D</span>
+두팔 벌려   안겨본다.
+
+<span class="chord-name">G            D/F#       Em7      Bm7</span>
+스치는 두 뺨위로   그녀의 향긋한 내음이
+
+<span class="chord-name">Cadd9        D          G</span>
+가을의 유혹을   부벼댄다.
+
+<span class="chord-name">[4연]</span>
+<span class="chord-name">Em           Bm7        Cadd9    G</span>
+사랑도,
+
+<span class="chord-name">Am7          Em         Dsus4    D</span>
+미움도
+
+<span class="chord-name">Em           Bm7        Cadd9    G/B</span>
+한 때 활활 타 오르던   푸른 청춘이어늘
+
+<span class="chord-name">Am7          G/B        C        D        G</span>
+이제 대지위에 갈잎되어버린   잿빛 노객이 된다.
+
+<span class="chord-name">[후주 - Outro]</span>
+<span class="chord-name">Cadd9        G/B        Am7      D        G</span>
+        </div>
+      </div>
+
+      <!-- Tab 2: Lyrics -->
+      <div class="tab-pane" id="lyricsTab">
+        <div class="info-box">
+          ✨ <strong>가사 안내</strong>: 파이튼 님의 시 원본 그대로 구성된 가사입니다.
+        </div>
+
+        <div class="lyrics-section">
+          <div class="lyrics-lines">가을이 어김없이 가슴으로 스며들어온다.
+거대한 용광로의 분노가,
+붉은 황혼의 숙명이,
+차디찬 불꽃을 온 대지위에 토해낸다.
+
+온기 사라진 이 대지위에
+흐르는 강물위로 내 뿜는 숨소리가
+차갑게 온 몸으로전율해 다가올 때,
+나는 카페의 차 한잔으로 여유롭다.
+
+살랑이는 갈대 숲 사이로
+두팔 벌려 안겨본다.
+스치는 두 뺨위로 그녀의 향긋한 내음이
+가을의 유혹을 부벼댄다.
+
+사랑도,
+미움도
+한 때 활활 타 오르던 푸른 청춘이어늘
+이제 대지위에 갈잎되어버린 잿빛 노객이 된다.</div>
+        </div>
+      </div>
+
+      <!-- Tab 3: Original Poem -->
+      <div class="tab-pane" id="poemTab">
+        <div class="info-box">
+          📜 <strong>파이튼(Python) 원작 시 전문</strong> (한글 및 영문 아카이브)
+        </div>
+
+        <div style="font-family:'Noto Serif KR', serif; font-size:1.1rem; line-height:2.2; color:#f1f5f9; margin-bottom:2.5rem;">
+          <h3 style="color:var(--gold-light); margin-bottom:1rem;">가을 그리고 차 한잔</h3>
+          <p>
+가을이 어김없이 가슴으로 스며들어온다.<br>
+거대한 용광로의 분노가,<br>
+붉은 황혼의 숙명이,<br>
+차디찬 불꽃을 온 대지위에 토해낸다.<br><br>
+
+온기 사라진 이 대지위에<br>
+흐르는 강물위로 내 뿜는 숨소리가<br>
+차갑게 온 몸으로전율해 다가올 때,<br>
+나는 카페의 차 한잔으로 여유롭다.<br><br>
+
+살랑이는 갈대 숲 사이로<br>
+두팔 벌려 안겨본다.<br>
+스치는 두 뺨위로 그녀의 향긋한 내음이<br>
+가을의 유혹을 부벼댄다.<br><br>
+
+사랑도,<br>
+미움도<br>
+한 때 활활 타 오르던 푸른 청춘이어늘<br>
+이제 대지위에 갈잎되어버린 잿빛 노객이 된다.
+          </p>
+        </div>
+
+        <hr style="border:none; border-top:1px solid rgba(255,255,255,0.1); margin:2rem 0;">
+
+        <div style="font-family:'Montserrat', serif; font-size:0.95rem; line-height:2.0; color:#94a3b8;">
+          <h4 style="color:var(--gold); margin-bottom:1rem; font-family:'Cinzel', serif;">Autumn and a Cup of Tea</h4>
+          <p>
+Autumn seeps into my heart once again.<br>
+The fury of a colossal furnace,<br>
+The fate of the crimson twilight,<br>
+Spills its icy flames upon the earth.<br><br>
+
+As my breath drifts over the river<br>
+On this land where warmth has vanished,<br>
+The cold air sends shivers through my body,<br>
+Yet, I find solace in a cup of tea at a café.<br><br>
+
+Stretching my arms wide in the swaying reed fields,<br>
+I embrace the season.<br>
+The gentle breeze brushes against my cheeks,<br>
+Carrying her fragrant scent,<br>
+Whispering autumn’s sweet temptation.<br><br>
+
+Love and hatred alike,<br>
+Once burned fiercely in the fire of youth,<br>
+Now turn to ashen leaves,<br>
+Falling as a weary traveler upon the earth.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const audio = document.getElementById('audioPlayer');
+    const playBtn = document.getElementById('playBtn');
+    const rwBtn = document.getElementById('rwBtn');
+    const ffBtn = document.getElementById('ffBtn');
+    const progressBarFill = document.getElementById('progressBarFill');
+    const progressBarBg = document.getElementById('progressBarBg');
+    const currentTimeEl = document.getElementById('currentTime');
+    const totalDurationEl = document.getElementById('totalDuration');
+    const volumeSlider = document.getElementById('volumeSlider');
+    const discCard = document.getElementById('discCard');
+
+    function formatTime(seconds) {
+      if (isNaN(seconds)) return '0:00';
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+    }
+
+    playBtn.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+        playBtn.textContent = '❚❚';
+        discCard.classList.add('playing');
+      } else {
+        audio.pause();
+        playBtn.textContent = '▶';
+        discCard.classList.remove('playing');
+      }
+    });
+
+    audio.addEventListener('loadedmetadata', () => {
+      totalDurationEl.textContent = formatTime(audio.duration);
+    });
+
+    audio.addEventListener('timeupdate', () => {
+      const progress = (audio.currentTime / audio.duration) * 100;
+      progressBarFill.style.width = `${progress}%`;
+      currentTimeEl.textContent = formatTime(audio.currentTime);
+    });
+
+    audio.addEventListener('ended', () => {
+      playBtn.textContent = '▶';
+      discCard.classList.remove('playing');
+    });
+
+    progressBarBg.addEventListener('click', (e) => {
+      const rect = progressBarBg.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const width = rect.width;
+      const seekTime = (clickX / width) * audio.duration;
+      audio.currentTime = seekTime;
+    });
+
+    rwBtn.addEventListener('click', () => {
+      audio.currentTime = Math.max(0, audio.currentTime - 10);
+    });
+
+    ffBtn.addEventListener('click', () => {
+      audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
+    });
+
+    volumeSlider.addEventListener('input', (e) => {
+      audio.volume = e.target.value;
+    });
+
+    function changeTrack(src, title, btn) {
+      document.getElementById('trackKoreanBtn').style.background = 'rgba(255,255,255,0.1)';
+      document.getElementById('trackKoreanBtn').style.color = '#cbd5e1';
+      document.getElementById('trackOrigBtn').style.background = 'rgba(255,255,255,0.1)';
+      document.getElementById('trackOrigBtn').style.color = '#cbd5e1';
+
+      btn.style.background = 'linear-gradient(135deg, #f59e0b, #d4af37)';
+      btn.style.color = '#070b14';
+
+      audio.src = src;
+      audio.play();
+      playBtn.textContent = '❚❚';
+      discCard.classList.add('playing');
+    }
+
+    function switchTab(tabId, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+
+      if (btn) {
+        btn.classList.add('active');
+      } else if (window.event && window.event.currentTarget) {
+        window.event.currentTarget.classList.add('active');
+      }
+      document.getElementById(tabId).classList.add('active');
+    }
+  </script>
+</body>
+</html>

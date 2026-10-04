@@ -1,0 +1,32 @@
+{
+  "timestamp": "2026-10-04 14:29:59",
+  "domain": "https://www.antnews.org",
+  "all_passed": true,
+  "checks": [
+    [
+      "메인 페이지 접속 및 응답",
+      true,
+      "166.58ms"
+    ],
+    [
+      "ads.txt 단독 ID 무결성",
+      true,
+      "google.com, pub-9953982328724476, DIRECT, f08c47fec0942fa0"
+    ],
+    [
+      "robots.txt 크롤러 허용",
+      true,
+      "정상 수집 허용"
+    ],
+    [
+      "차단 스크립트 부재",
+      true,
+      "차단 스크립트 없음"
+    ],
+    [
+      "애드센스 태그 삽입",
+      true,
+      "정상 호출"
+    ]
+  ]
+}
