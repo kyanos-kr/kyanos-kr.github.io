@@ -22,6 +22,84 @@
       this.currentLang = localStorage.getItem(STORAGE_KEY) || 'ko';
       this.initGoogleTranslate();
       this.initUI();
+      this.initBrandProtection();
+    }
+
+    /**
+     * 🛡️ 키아노스(KYANOS) 국가 브랜드 고유명사 보호 및 실시간 자동 교정기
+     * 구글 번역기가 'KYANOS'를 오역한 '캬노스'를 원천 방지하고 '키아노스'로 자동 수복함
+     */
+    initBrandProtection() {
+      const protectElements = () => {
+        // 로고 및 국가명 관련 셀렉터에 notranslate 및 translate="no" 강제 부여
+        const logoSelectors = [
+          '.brand-logo', '.brand-text', '.nav-logo-group', '.nav-title-box',
+          '.top-brand-emblem', '.emblem-text-group', '.realm-title-area',
+          '.national-emblem-badge', '.hero-title', '.badge'
+        ];
+        
+        logoSelectors.forEach(selector => {
+          document.querySelectorAll(selector).forEach(el => {
+            el.classList.add('notranslate');
+            el.setAttribute('translate', 'no');
+          });
+        });
+
+        // 텍스트 노드 실시간 교정: '캬노스' 오타 발견 즉시 '키아노스'로 복원
+        this.healTypoInNode(document.body);
+      };
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+          protectElements();
+          this.observeDOM();
+        });
+      } else {
+        protectElements();
+        this.observeDOM();
+      }
+    }
+
+    observeDOM() {
+      // 구글 번역기가 텍스트를 비동기로 변경할 때 '캬노스' 발생 즉시 감지하여 교정
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.type === 'characterData') {
+            this.healTextNode(mutation.target);
+          } else if (mutation.type === 'childList') {
+            mutation.addedNodes.forEach(node => {
+              this.healTypoInNode(node);
+            });
+          }
+        });
+      });
+
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true,
+        characterData: true
+      });
+    }
+
+    healTypoInNode(rootNode) {
+      if (!rootNode) return;
+      if (rootNode.nodeType === Node.TEXT_NODE) {
+        this.healTextNode(rootNode);
+        return;
+      }
+      
+      const walker = document.createTreeWalker(rootNode, NodeFilter.SHOW_TEXT, null, false);
+      let currentNode = walker.nextNode();
+      while (currentNode) {
+        this.healTextNode(currentNode);
+        currentNode = walker.nextNode();
+      }
+    }
+
+    healTextNode(textNode) {
+      if (textNode && textNode.nodeValue && textNode.nodeValue.includes('캬노스')) {
+        textNode.nodeValue = textNode.nodeValue.replace(/캬노스/g, '키아노스');
+      }
     }
 
     initGoogleTranslate() {
@@ -66,7 +144,8 @@
 
         const container = document.createElement('div');
         container.id = 'kyanosLangSelector';
-        container.className = 'kyanos-lang-selector-wrap';
+        container.className = 'kyanos-lang-selector-wrap notranslate';
+        container.setAttribute('translate', 'no');
         container.setAttribute('aria-label', 'Global Language Switcher');
 
         let buttonsHtml = '';
@@ -123,7 +202,7 @@
 
     applyLanguage(langCode) {
       if (langCode === 'ko') {
-        // 한국어 원문 복구: 구글 번역 쿠키 초기화 및 원본 복원
+        // 한국어 원문 복구: 구글 번역 쿠키 및 세션 완전 초기화 후 원본 복원
         this.resetGoogleTranslate();
         return;
       }
@@ -142,24 +221,42 @@
     }
 
     resetGoogleTranslate() {
-      // 쿠키 삭제 및 원본 복원
-      document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-      document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${window.location.hostname}`;
-      
-      const iframe = document.querySelector('iframe.goog-te-banner-frame');
-      if (iframe) {
-        const innerDoc = iframe.contentDocument || iframe.contentWindow.document;
-        const closeBtn = innerDoc.querySelector('.goog-te-button button');
-        if (closeBtn) closeBtn.click();
-      }
+      // 1. 모든 구글 번역 쿠키 완전 삭제 (경로 및 서브도메인 포함)
+      const hostname = window.location.hostname;
+      const domains = [hostname, '.' + hostname, ''];
+      const paths = ['/', window.location.pathname];
 
+      domains.forEach(d => {
+        paths.forEach(p => {
+          const cookieBase = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=${p};`;
+          document.cookie = d ? `${cookieBase} domain=${d};` : cookieBase;
+        });
+      });
+
+      // 2. 로컬 스토리지에 'ko' 명시적 저장
+      localStorage.setItem(STORAGE_KEY, 'ko');
+
+      // 3. 상단 구글 번역 iframe 배너 닫기 시도
+      try {
+        const iframe = document.querySelector('iframe.goog-te-banner-frame');
+        if (iframe) {
+          const innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+          const closeBtn = innerDoc.querySelector('.goog-te-button button');
+          if (closeBtn) closeBtn.click();
+        }
+      } catch (e) {}
+
+      // 4. 셀렉트 박스 ko로 초기화 시도
       const select = document.querySelector('.goog-te-combo');
       if (select) {
         select.value = 'ko';
         select.dispatchEvent(new Event('change'));
-      } else {
-        window.location.reload();
       }
+
+      // 5. 구글 번역 잔여 텍스트 오염을 원천 차단하고 순수한 원본을 로드하기 위해 즉각 리로드
+      setTimeout(() => {
+        window.location.reload();
+      }, 50);
     }
   }
 
