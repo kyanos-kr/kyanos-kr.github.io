@@ -27,6 +27,8 @@
 - `KYANOS_ECONOMIC_ROADMAP.md` (키아노스 경제 발전 로드맵)
 - `KYANOS_INDEPENDENT_REVENUE_PROGRAM.md` (국가 자립 재정 확충 백서)
 - `kyanos_monetization_plan_step1.md` (수익화 1단계 실무 계획)
+- `market_monitor/` (글로벌 금융 인텔리전스국 전용 실시간 마켓 펄스 시스템 및 실행 스크립트)
 - `경제부_공식포털_열기.url` (전용 단독 포털 `gov_economy.html` 새창 열람)
 - `마켓펄스_실시간금융센터.url` (실시간 금융 대시보드 `market_monitor.html` 열람)
 - `키아노스_자립재정허브.url` (자립 재정 센터 `treasury_hub.html` 열람)
+
