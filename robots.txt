@@ -1,0 +1,9 @@
+# Robots.txt for Kyannos & Ant News
+# https://kyanos-kr.github.io/
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://kyanos-kr.github.io/sitemap.xml
+Sitemap: https://antnews.org/sitemap.xml

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>앤트뉴스 (Ant News) | 글로벌 인텔리전스 데일리</title>
+    <link>https://kyanos-kr.github.io/antnews_landing.html</link>
+    <description>앤트뉴스 AI와 키아노스 정부가 분석하는 매일 아침 글로벌 테크, 금융, 지정학 핵심 3분 인텔리전스 브리핑</description>
+    <language>ko-kr</language>
+    <lastBuildDate>Tue, 06 Oct 2026 07:29:00 +0900</lastBuildDate>
+    <atom:link href="https://kyanos-kr.github.io/rss.xml" rel="self" type="application/rss+xml" />
+
+    <item>
+      <title>[앤트뉴스 데일리 10.04] 글로벌 지정학 공급망과 AI 반도체 재편 동향</title>
+      <link>https://kyanos-kr.github.io/antnews_auto/output/antnews_20261004.html</link>
+      <description>중동 에너지 공급망 변화와 빅테크 기업들의 차세대 인프라 투자 전략을 분석합니다.</description>
+      <pubDate>Sun, 04 Oct 2026 09:00:00 +0900</pubDate>
+      <guid>https://kyanos-kr.github.io/antnews_auto/output/antnews_20261004.html</guid>
+    </item>
+
+    <item>
+      <title>[앤트뉴스 데일리 10.03] 미래 첨단 로보틱스와 차세대 청정 에너지 패러다임</title>
+      <link>https://kyanos-kr.github.io/antnews_auto/output/antnews_20261003.html</link>
+      <description>자율주행 및 휴머노이드 로봇 상용화 현황과 전력 인프라 확충 이슈를 심층 점검합니다.</description>
+      <pubDate>Sat, 03 Oct 2026 09:00:00 +0900</pubDate>
+      <guid>https://kyanos-kr.github.io/antnews_auto/output/antnews_20261003.html</guid>
+    </item>
+
+    <item>
+      <title>[앤트뉴스 데일리 10.01] 글로벌 통화 정책과 거시 경제 유동성 전망</title>
+      <link>https://kyanos-kr.github.io/antnews_auto/output/antnews_20261001.html</link>
+      <description>주요국 중앙은행의 금리 정책과 원자재 및 귀금속 시장의 변동성을 평가합니다.</description>
+      <pubDate>Thu, 01 Oct 2026 09:00:00 +0900</pubDate>
+      <guid>https://kyanos-kr.github.io/antnews_auto/output/antnews_20261001.html</guid>
+    </item>
+
+    <item>
+      <title>[앤트뉴스 데일리 09.30] 피지컬 AI의 부상과 산업 자동화 혁신</title>
+      <link>https://kyanos-kr.github.io/antnews_auto/output/antnews_20260930.html</link>
+      <description>제조 및 물류 산업 전반으로 침투하는 AI 모델의 최신 기술 트렌드를 요약합니다.</description>
+      <pubDate>Wed, 30 Sep 2026 09:00:00 +0900</pubDate>
+      <guid>https://kyanos-kr.github.io/antnews_auto/output/antnews_20260930.html</guid>
+    </item>
+  </channel>
+</rss>
