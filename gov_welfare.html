@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>키아노스 복지부 (Ministry of Welfare & Life) | 주권국 국정 포털</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Montserrat:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@300;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/kyanos_civic_treasury.css">
+  <link rel="stylesheet" href="assets/css/kyanos_i18n.css">
+
+  <style>
+    :root {
+      --bg-dark: #041410;
+      --bg-card: rgba(8, 28, 22, 0.85);
+      --gold: #d4af37;
+      --gold-light: #f3e5ab;
+      --gold-bright: #ffe066;
+      --emerald: #4ce89a;
+      --emerald-glow: #1eb464;
+      --cyan: #00d2ff;
+      --text-main: #f0faf5;
+      --text-sub: #a3c4b7;
+      --border-emerald: rgba(76, 232, 154, 0.35);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(76, 232, 154, 0.14) 0%, transparent 60%),
+        radial-gradient(circle at 10% 50%, rgba(0, 210, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 90% 70%, rgba(30, 180, 100, 0.1) 0%, transparent 50%);
+      color: var(--text-main);
+      font-family: 'Montserrat', 'Noto Serif KR', serif;
+      min-height: 100vh;
+      line-height: 1.7;
+    }
+
+    /* Top Navigation */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(4, 20, 16, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-emerald);
+      padding: 0.8rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo-icon { font-size: 1.6rem; }
+
+    .nav-title-box .en {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--emerald);
+      display: block;
+    }
+
+    .nav-title-box .kr {
+      font-size: 0.7rem;
+      color: var(--text-sub);
+      letter-spacing: 0.15em;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-btn {
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-btn-emerald {
+      background: rgba(76, 232, 154, 0.15);
+      border: 1px solid var(--emerald);
+      color: var(--emerald);
+    }
+    .nav-btn-emerald:hover {
+      background: var(--emerald);
+      color: #000;
+      box-shadow: 0 0 15px rgba(76, 232, 154, 0.4);
+    }
+
+    .nav-btn-gold {
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+    }
+    .nav-btn-gold:hover {
+      background: var(--gold);
+      color: #000;
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+    }
+
+    /* Main Container */
+    .gov-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem 1.5rem;
+    }
+
+    /* Hero Header */
+    .gov-hero {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .gov-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      color: var(--emerald);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      font-weight: 700;
+      background: rgba(76, 232, 154, 0.12);
+      border: 1px solid rgba(76, 232, 154, 0.35);
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 0.8rem;
+    }
+
+    .gov-hero-title {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      color: #ffffff;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.6rem;
+    }
+
+    .gov-hero-desc {
+      font-size: 1rem;
+      color: var(--text-sub);
+      max-width: 820px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* 3대 축 통합 아키텍처 박스 */
+    .architecture-card {
+      background: rgba(12, 42, 32, 0.65);
+      border: 1px solid var(--border-emerald);
+      border-radius: 16px;
+      padding: 2.2rem;
+      margin-bottom: 3.5rem;
+      position: relative;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .architecture-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .architecture-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.25rem;
+      color: var(--emerald);
+      letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .architecture-status {
+      font-size: 0.75rem;
+      color: var(--emerald);
+      background: rgba(76, 232, 154, 0.15);
+      padding: 4px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(76, 232, 154, 0.3);
+      font-weight: 600;
+    }
+
+    .architecture-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .arch-node {
+      background: rgba(5, 20, 15, 0.9);
+      border-radius: 12px;
+      padding: 1.4rem;
+      text-align: center;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .arch-node:hover { transform: translateY(-4px); }
+    .arch-node.emerald { border: 1px solid rgba(76, 232, 154, 0.45); }
+    .arch-node.cyan { border: 1px solid rgba(0, 210, 255, 0.45); }
+    .arch-node.gold { border: 1px solid rgba(255, 224, 102, 0.45); }
+
+    .arch-node .node-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+    .arch-node .node-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .arch-node .node-desc { font-size: 0.8rem; color: #a3c4b7; line-height: 1.6; }
+
+    /* 3대 국 세부 카드 섹션 */
+    .bureau-section {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .bureau-card {
+      background: var(--bg-card);
+      border-radius: 16px;
+      padding: 2.2rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      transition: border-color 0.3s ease;
+    }
+
+    .bureau-card:hover { border-color: rgba(76, 232, 154, 0.5); }
+
+    .bureau-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .bureau-title-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .bureau-icon { font-size: 2rem; }
+
+    .bureau-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .bureau-en {
+      font-size: 0.75rem;
+      color: var(--text-sub);
+      letter-spacing: 0.08em;
+    }
+
+    .bureau-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 12px;
+    }
+    .bureau-tag.emerald { background: rgba(76, 232, 154, 0.15); color: var(--emerald); border: 1px solid var(--emerald); }
+    .bureau-tag.cyan { background: rgba(0, 210, 255, 0.15); color: var(--cyan); border: 1px solid var(--cyan); }
+    .bureau-tag.gold { background: rgba(255, 224, 102, 0.15); color: var(--gold-bright); border: 1px solid var(--gold); }
+
+    .bureau-directive {
+      background: rgba(0, 0, 0, 0.4);
+      border-left: 3px solid;
+      padding: 1rem 1.2rem;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 1.2rem;
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+    .bureau-directive.emerald { border-left-color: var(--emerald); }
+    .bureau-directive.cyan { border-left-color: var(--cyan); }
+    .bureau-directive.gold { border-left-color: var(--gold-bright); }
+
+    .bureau-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      padding-left: 0.5rem;
+    }
+
+    .bureau-list li {
+      position: relative;
+      padding-left: 1.5rem;
+      font-size: 0.88rem;
+      color: #d2ebe0;
+      line-height: 1.7;
+    }
+
+    .bureau-list li::before {
+      content: "✦";
+      position: absolute;
+      left: 0;
+      color: var(--emerald);
+    }
+
+    /* Footer */
+    .gov-footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      .top-nav { padding: 0.8rem 1rem; }
+      .gov-hero-title { font-size: 1.9rem; }
+      .architecture-card, .bureau-card { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="top-nav">
+    <a href="main.html" class="nav-logo-group" title="키아노스 메인 포털로 이동">
+      <span class="nav-logo-icon">👑</span>
+      <div class="nav-title-box">
+        <span class="en">THE SOVEREIGN REALM OF KYANOS</span>
+        <span class="kr">복지부 (Ministry of Welfare & Life)</span>
+      </div>
+    </a>
+    <div class="nav-actions">
+      <a href="main.html#governance" class="nav-btn nav-btn-gold">
+        <span>🏛️</span> 국무회의
+      </a>
+      <a href="main.html" class="nav-btn nav-btn-emerald">
+        <span>🏠</span> 메인 포털
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="gov-container">
+
+    <!-- Hero Header -->
+    <section class="gov-hero">
+      <div class="gov-badge">Ministry of Welfare & Life · Human Dignity & Universal Well-being</div>
+      <h1 class="gov-hero-title">💊 키아노스 복지부</h1>
+      <p class="gov-hero-desc">
+        최고 통치자 파이튼 국왕의 덕치 제2조(인지도: 자애와 측은지심)에 기반한 <strong>3대 핵심 국(局)·위원회</strong>의 인간 존엄 보장 및 보편적 복지·생명윤리 청사진을 총괄합니다.
+      </p>
+    </section>
+
+    <!-- 3대 축 통합 아키텍처 박스 -->
+    <section class="architecture-card">
+      <div class="architecture-header">
+        <h2 class="architecture-title">
+          <span>🌿</span> 복지부 3대 휴먼 축 통합 개념도 (Conceptual Architecture)
+        </h2>
+        <span class="architecture-status">Phase 1 시민 존엄 & 인간 소외 제로</span>
+      </div>
+
+      <div class="architecture-grid">
+        <div class="arch-node emerald">
+          <div class="node-icon">🏥</div>
+          <div class="node-title" style="color: var(--emerald);">[시민 복지] 보편 서비스</div>
+          <p class="node-desc">요람에서 무덤까지 생애주기 무상 케어 & 안심 주거 인프라 ➔ <strong>사각지대 제로 사회</strong></p>
+        </div>
+        <div class="arch-node cyan">
+          <div class="node-icon">🛡️</div>
+          <div class="node-title" style="color: var(--cyan);">[인간 보호] AGI시대 인권 헌장</div>
+          <p class="node-desc">인간 소외 원천 차단 & 노동 해방 후 고차원 창작·자아실현 지원 ➔ <strong>인간 존엄 최고 권리</strong></p>
+        </div>
+        <div class="arch-node gold">
+          <div class="node-icon">🌿</div>
+          <div class="node-title" style="color: var(--gold-bright);">[생명 윤리] 바이오·장수 케어</div>
+          <p class="node-desc">유전자·AI 의료 윤리 심의 & 수명연장(Longevity) 보편 분배 ➔ <strong>생명 존중 복지</strong></p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 1.5rem; font-size: 0.85rem; color: var(--emerald); font-style: italic;">
+        “기계가 지능을 대체할수록 인간의 생명과 영혼은 더욱 존엄하게 보호받아야 한다는 덕치 복지의 완성”
+      </div>
+    </section>
+
+    <!-- 3대 국 세부 카드 섹션 -->
+    <section class="bureau-section">
+
+      <!-- 1. 시민 복지 서비스국 -->
+      <article class="bureau-card">
+        <div class="bureau-header">
+          <div class="bureau-title-group">
+            <span class="bureau-icon">🏥</span>
+            <div>
+              <h3 class="bureau-name" style="color: var(--emerald);">1. 시민 복지 서비스국</h3>
+              <span class="bureau-en">Bureau of Universal Citizen Welfare Services</span>
+            </div>
+          </div>
+          <span class="bureau-tag emerald">보편적 복지 인프라</span>
+        </div>
+        <div class="bureau-directive emerald">
+          <strong>🎯 핵심 역할 및 지침:</strong> 키아노스 시민 모두가 결핍과 생계의 공포 없이 살아갈 수 있도록 생애주기별 맞춤형 웰빙과 친환경 무상 주거, 청정 의료망을 통합 운영합니다.
+        </div>
+        <ul class="bureau-list">
+          <li><strong>생애 전 주기 AI 스마트 웰빙 케어:</strong> 영유아부터 고령층까지 24/7 건강 데이터 감지 및 1:1 방문 맞춤 의료 돌봄.</li>
+          <li><strong>무결점 기본 주거권 & 청정 생필품 보장:</strong> 키아노스 스마트 주거 단지 내 시민 기본 거주 공간 및 필수 유기농 생필품 공공 제공.</li>
+          <li><strong>위기 시민 사전 감지 (Ant-Care):</strong> 생활고나 정서적 고립 위험에 처한 시민을 AI가 사전에 파악하여 복지관이 즉각 구호.</li>
+        </ul>
+      </article>
+
+      <!-- 2. AGI시대 인간 보호국 -->
+      <article class="bureau-card">
+        <div class="bureau-header">
+          <div class="bureau-title-group">
+            <span class="bureau-icon">🛡️</span>
+            <div>
+              <h3 class="bureau-name" style="color: var(--cyan);">2. AGI시대 인간 보호국</h3>
+              <span class="bureau-en">Bureau of Human Dignity & Protection in AGI Era</span>
+            </div>
+          </div>
+          <span class="bureau-tag cyan">인간 존엄 수호 최고 헌장</span>
+        </div>
+        <div class="bureau-directive cyan">
+          <strong>🎯 핵심 역할 및 지침:</strong> 인공지능이 인간 노동을 전면 대체하는 환경 속에서, 인간이 기계의 지배를 받거나 소외당하지 않도록 인간 고유의 권리와 창작 자유를 보장합니다.
+        </div>
+        <ul class="bureau-list">
+          <li><strong>AGI 시대 인간 존엄 권리 헌장 제정:</strong> 인공지능의 자율 판단이 인간의 행복 추구권과 생명권을 침해할 수 없도록 법제화.</li>
+          <li><strong>노동 해방 후 자아실현 전환 지원:</strong> 노동에서 벗어난 시민들이 예술, 철학, 학문, 취미에 몰입할 수 있도록 활동비 및 창작 지원금 지급.</li>
+          <li><strong>디지털 중독 및 정서적 단절 치유:</strong> 가상공간 과몰입을 예방하고 따뜻한 오프라인 공동체 감성을 회복하는 휴먼 힐링 센터 운영.</li>
+        </ul>
+      </article>
+
+      <!-- 3. 바이오·윤리 위원회 -->
+      <article class="bureau-card">
+        <div class="bureau-header">
+          <div class="bureau-title-group">
+            <span class="bureau-icon">🌿</span>
+            <div>
+              <h3 class="bureau-name" style="color: var(--gold-bright);">3. 바이오·윤리 위원회</h3>
+              <span class="bureau-en">Bio-Ethics & Longevity Care Commission</span>
+            </div>
+          </div>
+          <span class="bureau-tag gold">생명윤리 & 장수 공공분배</span>
+        </div>
+        <div class="bureau-directive gold">
+          <strong>🎯 핵심 역할 및 지침:</strong> 첨단 바이오 신기술과 유전자 조작 기술의 윤리적 안전성을 엄격히 통제하고, 건강 수명 연장(Longevity)의 혜택이 모든 시민에게 공평하게 돌아가도록 감독합니다.
+        </div>
+        <ul class="bureau-list">
+          <li><strong>생명 복제 및 유전자 편집 엄격 감시:</strong> 생명 경시 및 무분별한 유전자 변형을 원천 차단하는 최고 국가 윤리 심의제 가동.</li>
+          <li><strong>건강 수명 연장(Longevity) 보편적 무상 분배:</strong> 최첨단 노화 역전 테라피와 희귀병 치료제를 전 국민 공공 의료 체계로 편입.</li>
+          <li><strong>생태계 및 동물 복지 모니터링:</strong> 영내 해양 생물 및 친환경 생태계에 대한 인도적 대우와 자연과의 무해한 공존 감사.</li>
+        </ul>
+      </article>
+
+    </section>
+
+    <!-- Footer Navigation -->
+    <footer class="gov-footer">
+      <a href="KYANOS_MASTER_PROJECT_REGISTRY.html" class="nav-btn nav-btn-gold" style="padding: 0.8rem 2rem; font-size: 0.95rem;">
+        <span>📜</span> 사업설계 마스터 대장 열람
+      </a>
+      <a href="main.html" class="nav-btn nav-btn-emerald" style="padding: 0.8rem 2rem; font-size: 0.95rem;">
+        <span>👑</span> 키아노스 메인 포털로 돌아가기
+      </a>
+      <a href="gov_economy.html" class="nav-btn nav-btn-gold" style="padding: 0.8rem 2rem; font-size: 0.95rem;">
+        <span>💰</span> 경제부 포털 열람 ↗
+      </a>
+    </footer>
+
+  </main>
+
+  <!-- 키아노스 글로벌 다국어 실시간 번역기 -->
+  <script src="assets/js/kyanos_i18n.js"></script>
+</body>
+</html>

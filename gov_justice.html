@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>덕치 사법원 (Court of Virtue Justice) | 키아노스 독립 사법 포털</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Montserrat:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@300;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/kyanos_civic_treasury.css">
+  <link rel="stylesheet" href="assets/css/kyanos_i18n.css">
+
+  <style>
+    :root {
+      --bg-dark: #070914;
+      --bg-card: rgba(8, 14, 30, 0.88);
+      --gold: #d4af37;
+      --gold-light: #f3e5ab;
+      --gold-bright: #ffe066;
+      --cyan: #00d2ff;
+      --text-main: #f5f6fa;
+      --text-sub: #a4adc2;
+      --border-gold: rgba(212, 175, 55, 0.35);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.16) 0%, transparent 60%),
+        radial-gradient(circle at 10% 50%, rgba(0, 210, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 90% 70%, rgba(255, 224, 102, 0.08) 0%, transparent 50%);
+      color: var(--text-main);
+      font-family: 'Montserrat', 'Noto Serif KR', serif;
+      min-height: 100vh;
+      line-height: 1.7;
+    }
+
+    /* Top Navigation */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7, 9, 20, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-gold);
+      padding: 0.8rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo-icon { font-size: 1.6rem; }
+
+    .nav-title-box .en {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--gold-bright);
+      display: block;
+    }
+
+    .nav-title-box .kr {
+      font-size: 0.7rem;
+      color: var(--text-sub);
+      letter-spacing: 0.15em;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-btn {
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-btn-gold {
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--gold);
+      color: var(--gold-bright);
+    }
+    .nav-btn-gold:hover {
+      background: var(--gold);
+      color: #000;
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+    }
+
+    /* Main Container */
+    .gov-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem 1.5rem;
+    }
+
+    /* Hero Header */
+    .gov-hero {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .gov-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      color: var(--gold-bright);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      font-weight: 700;
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid var(--gold);
+      padding: 4px 16px;
+      border-radius: 20px;
+      margin-bottom: 0.8rem;
+    }
+
+    .gov-hero-title {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      color: #ffffff;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.6rem;
+    }
+
+    .gov-hero-desc {
+      font-size: 1rem;
+      color: var(--text-sub);
+      max-width: 820px;
+      margin: 0 auto;
+      line-height: 1.8;
+      font-weight: 500;
+    }
+
+    /* 3대 사법 축 아키텍처 박스 */
+    .architecture-card {
+      background: rgba(15, 22, 45, 0.65);
+      border: 1px solid var(--border-gold);
+      border-radius: 16px;
+      padding: 2.2rem;
+      margin-bottom: 3.5rem;
+      position: relative;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .architecture-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .architecture-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.25rem;
+      color: var(--gold-bright);
+      letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .architecture-status {
+      font-size: 0.75rem;
+      color: #000;
+      background: var(--gold-bright);
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-weight: 700;
+    }
+
+    .architecture-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .arch-node {
+      background: rgba(6, 12, 26, 0.95);
+      border-radius: 12px;
+      padding: 1.4rem;
+      text-align: center;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .arch-node:hover { transform: translateY(-4px); }
+    .arch-node.cyan { border: 1px solid rgba(0, 210, 255, 0.45); }
+    .arch-node.gold { border: 1px solid rgba(212, 175, 55, 0.5); }
+    .arch-node.blue { border: 1px solid rgba(136, 204, 255, 0.45); }
+
+    .arch-node .node-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+    .arch-node .node-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .arch-node .node-desc { font-size: 0.8rem; color: #a4adc2; line-height: 1.6; }
+
+    /* 3대 사법 기관 세부 카드 섹션 */
+    .bureau-section {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .bureau-card {
+      background: var(--bg-card);
+      border-radius: 16px;
+      padding: 2.2rem;
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      transition: border-color 0.3s ease;
+    }
+
+    .bureau-card:hover { border-color: rgba(212, 175, 55, 0.6); }
+
+    .bureau-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.2rem;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+      padding-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .bureau-title-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .bureau-icon { font-size: 2rem; }
+
+    .bureau-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .bureau-en {
+      font-size: 0.75rem;
+      color: var(--text-sub);
+      letter-spacing: 0.08em;
+    }
+
+    .bureau-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 12px;
+    }
+    .bureau-tag.cyan { background: rgba(0, 210, 255, 0.15); color: var(--cyan); border: 1px solid var(--cyan); }
+    .bureau-tag.gold { background: rgba(212, 175, 55, 0.2); color: var(--gold-bright); border: 1px solid var(--gold); }
+    .bureau-tag.blue { background: rgba(136, 204, 255, 0.15); color: #88ccff; border: 1px solid #88ccff; }
+
+    .bureau-directive {
+      background: rgba(0, 0, 0, 0.45);
+      border-left: 3px solid;
+      padding: 1rem 1.2rem;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 1.2rem;
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+    .bureau-directive.cyan { border-left-color: var(--cyan); }
+    .bureau-directive.gold { border-left-color: var(--gold); }
+    .bureau-directive.blue { border-left-color: #88ccff; }
+
+    .bureau-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      padding-left: 0.5rem;
+    }
+
+    .bureau-list li {
+      position: relative;
+      padding-left: 1.5rem;
+      font-size: 0.88rem;
+      color: #e2e8f5;
+      line-height: 1.7;
+    }
+
+    .bureau-list li::before {
+      content: "✦";
+      position: absolute;
+      left: 0;
+      color: var(--gold-bright);
+    }
+
+    /* Footer */
+    .gov-footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      .top-nav { padding: 0.8rem 1rem; }
+      .gov-hero-title { font-size: 1.9rem; }
+      .architecture-card, .bureau-card { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="top-nav">
+    <a href="main.html" class="nav-logo-group" title="키아노스 메인 포털로 이동">
+      <span class="nav-logo-icon">⚖️</span>
+      <div class="nav-title-box">
+        <span class="en">THE SOVEREIGN REALM OF KYANOS</span>
+        <span class="kr">덕치 사법원 (Court of Virtue Justice)</span>
+      </div>
+    </a>
+    <div class="nav-actions">
+      <a href="main.html#governance" class="nav-btn nav-btn-gold">
+        <span>🏛️</span> 국무회의
+      </a>
+      <a href="main.html" class="nav-btn nav-btn-gold">
+        <span>🏠</span> 메인 포털
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="gov-container">
+
+    <!-- Hero Header -->
+    <section class="gov-hero">
+      <div class="gov-badge">⚖️ 키아노스 최고 독립 사법기관</div>
+      <h1 class="gov-hero-title">⚖️ 덕치 사법원</h1>
+      <p class="gov-hero-desc">
+        덕치 12대 원칙 수호 및 AGI 윤리 최고 통제, 코드와 행정의 무결점 감사를 독립적으로 수행하는 최고 사법기구입니다.
+      </p>
+    </section>
+
+    <!-- 3대 사법 축 아키텍처 박스 -->
+    <section class="architecture-card">
+      <div class="architecture-header">
+        <h2 class="architecture-title">
+          <span>📜</span> 덕치 사법원 3대 독립 사법 축 (Conceptual Architecture)
+        </h2>
+        <span class="architecture-status">사법 독립 & 도덕적 무결점 감사</span>
+      </div>
+
+      <div class="architecture-grid">
+        <div class="arch-node cyan">
+          <div class="node-icon">🤖</div>
+          <div class="node-title" style="color: var(--cyan);">[AGI 윤리] 윤리최고위원회</div>
+          <p class="node-desc">AI 알고리즘 편향 검증 & 인간 권리 침해 방지 ➔ <strong>지능 윤리 절대 기준</strong></p>
+        </div>
+        <div class="arch-node gold">
+          <div class="node-icon">📜</div>
+          <div class="node-title" style="color: var(--gold-bright);">[헌법 수호] 덕치12대원칙 수호국</div>
+          <p class="node-desc">천하위공·인지도·염치 등 12대 규범 감사 ➔ <strong>국가 근본 헌장 보존</strong></p>
+        </div>
+        <div class="arch-node blue">
+          <div class="node-icon">🕊️</div>
+          <div class="node-title" style="color: #88ccff);">[분쟁 조정] 국제분쟁조정국</div>
+          <p class="node-desc">상선약수 철학 기반의 평화적 중재 판결 ➔ <strong>정의와 화해의 사법</strong></p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 1.5rem; font-size: 0.85rem; color: var(--gold-bright); font-style: italic;">
+        “형벌보다 솔선수범과 양심으로 다스리고, 인공지능 시대의 최고 법관은 덕과 양심이어야 한다”
+      </div>
+    </section>
+
+    <!-- 3대 기관 세부 카드 섹션 -->
+    <section class="bureau-section">
+
+      <!-- 1. AGI 윤리 최고위원회 -->
+      <article class="bureau-card">
+        <div class="bureau-header">
+          <div class="bureau-title-group">
+            <span class="bureau-icon">🤖</span>
+            <div>
+              <h3 class="bureau-name" style="color: var(--cyan);">1. AGI 윤리 최고위원회</h3>
+              <span class="bureau-en">Supreme Commission on AGI Ethics & Algorithms</span>
+            </div>
+          </div>
+          <span class="bureau-tag cyan">AGI 윤리 감사</span>
+        </div>
+        <div class="bureau-directive cyan">
+          <strong>🎯 핵심 역할 및 교리:</strong> 국가 행정망과 로봇 시스템에 탑재되는 모든 인공지능 알고리즘이 덕치 헌법과 인간 존엄성을 침해하지 않도록 사전 코드 및 동작 감사를 전담합니다.
+        </div>
+        <ul class="bureau-list">
+          <li><strong>알고리즘 무결점 도덕성 감사:</strong> 차별, 편향, 인간 소외를 유발하는 AI 모델의 영내 배포 즉각 차단.</li>
+          <li><strong>자율로봇 행동 규범 비준:</strong> TALOS 생산 로봇군이 인간에게 절대 해를 끼칠 수 없도록 하는 최고위 안전 킬스위치 법제화.</li>
+          <li><strong>인공지능 판결 권한 제한:</strong> 기계는 오직 데이터 분석만 보좌하며 최종 사법 판단은 인간 양심에 둔다는 원칙 확립.</li>
+        </ul>
+      </article>
+
+      <!-- 2. 덕치 12대 원칙 수호국 -->
+      <article class="bureau-card">
+        <div class="bureau-header">
+          <div class="bureau-title-group">
+            <span class="bureau-icon">📜</span>
+            <div>
+              <h3 class="bureau-name" style="color: var(--gold-bright);">2. 덕치 12대 원칙 수호국</h3>
+              <span class="bureau-en">Bureau for the Protection of the 12 Principles of Virtue</span>
+            </div>
+          </div>
+          <span class="bureau-tag gold">헌법 가치 수호</span>
+        </div>
+        <div class="bureau-directive gold">
+          <strong>🎯 핵심 역할 및 교리:</strong> 천도, 성실, 인애, 의리, 예절, 지혜, 충의, 효제, 염치, 용기, 화평, 중용의 12대 원칙이 국가 모든 법령과 행정에 올바르게 투영되는지 독립 감찰합니다.
+        </div>
+        <ul class="bureau-list">
+          <li><strong>국가 법령 위헌 심사:</strong> 정부 부처의 시행령과 규정이 덕치 12대 원칙에 어긋날 경우 즉각 시정 명령 및 거부권 행사.</li>
+          <li><strong>공직자 염치(廉恥) 평가제:</strong> 권력 남용과 부패를 원천 방지하는 투명한 공직자 도덕성 상시 평가.</li>
+          <li><strong>국민 양심 청원 수렴:</strong> 부당한 권익 침해를 당한 시민의 호소를 직접 청취하고 직권 조사.</li>
+        </ul>
+      </article>
+
+      <!-- 3. 국제 분쟁 조정국 -->
+      <article class="bureau-card">
+        <div class="bureau-header">
+          <div class="bureau-title-group">
+            <span class="bureau-icon">🕊️</span>
+            <div>
+              <h3 class="bureau-name" style="color: #88ccff;">3. 국제 분쟁 조정국</h3>
+              <span class="bureau-en">International Dispute Resolution & Arbitration Bureau</span>
+            </div>
+          </div>
+          <span class="bureau-tag blue">평화적 중재 판결</span>
+        </div>
+        <div class="bureau-directive blue">
+          <strong>🎯 핵심 역할 및 교리:</strong> 국가 간 통상 분쟁, 다국적 기업 간 기술 특허 갈등을 덕치 제7조(상선약수)의 물 흐르듯 유연한 지혜로 중재하는 국제 중재 법원입니다.
+        </div>
+        <ul class="bureau-list">
+          <li><strong>다국적 기술·IP 중재 법정:</strong> 글로벌 테크 기업 간의 AGI 지식재산권 및 특허 분쟁에 대한 공정하고 신속한 중재.</li>
+          <li><strong>화해 지향형 판결 권고:</strong> 가해자의 반성과 배상, 피해자의 명예 회복을 중심으로 하는 평화적 조정 모델 제시.</li>
+          <li><strong>국제 인도법 및 평화 협정 준수 감시:</strong> 국제 사회와의 평화 조약 이행 여부를 사법적으로 독립 모니터링.</li>
+        </ul>
+      </article>
+
+    </section>
+
+    <!-- Footer Navigation -->
+    <footer class="gov-footer">
+      <a href="KYANOS_MASTER_PROJECT_REGISTRY.html" class="nav-btn nav-btn-gold" style="padding: 0.8rem 2rem; font-size: 0.95rem;">
+        <span>📜</span> 사업설계 마스터 대장 열람
+      </a>
+      <a href="main.html" class="nav-btn nav-btn-gold" style="padding: 0.8rem 2rem; font-size: 0.95rem;">
+        <span>👑</span> 키아노스 메인 포털로 돌아가기
+      </a>
+      <a href="gov_economy.html" class="nav-btn nav-btn-gold" style="padding: 0.8rem 2rem; font-size: 0.95rem;">
+        <span>💰</span> 경제부 포털 열람 ↗
+      </a>
+    </footer>
+
+  </main>
+
+  <!-- 키아노스 글로벌 다국어 실시간 번역기 -->
+  <script src="assets/js/kyanos_i18n.js"></script>
+</body>
+</html>

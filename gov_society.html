@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>키아노스 사회부 (Ministry of Society) | 주권국 국정 포털</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Montserrat:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@300;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/kyanos_civic_treasury.css">
+  <link rel="stylesheet" href="assets/css/kyanos_i18n.css">
+
+  <style>
+    :root {
+      --bg-dark: #140b04;
+      --bg-card: rgba(30, 18, 6, 0.88);
+      --gold: #d4af37;
+      --gold-light: #f3e5ab;
+      --gold-bright: #ffe066;
+      --amber: #ffaa32;
+      --amber-glow: #ff8800;
+      --cyan: #00d2ff;
+      --emerald: #4ce89a;
+      --text-main: #faf4ed;
+      --text-sub: #cfbeae;
+      --border-amber: rgba(255, 170, 50, 0.35);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(255, 170, 50, 0.14) 0%, transparent 60%),
+        radial-gradient(circle at 10% 50%, rgba(255, 136, 0, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 90% 70%, rgba(212, 175, 55, 0.08) 0%, transparent 50%);
+      color: var(--text-main);
+      font-family: 'Montserrat', 'Noto Serif KR', serif;
+      min-height: 100vh;
+      line-height: 1.7;
+    }
+
+    /* Top Navigation */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(20, 11, 4, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-amber);
+      padding: 0.8rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo-icon { font-size: 1.6rem; }
+
+    .nav-title-box .en {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--amber);
+      display: block;
+    }
+
+    .nav-title-box .kr {
+      font-size: 0.7rem;
+      color: var(--text-sub);
+      letter-spacing: 0.15em;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-btn {
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-btn-amber {
+      background: rgba(255, 170, 50, 0.15);
+      border: 1px solid var(--amber);
+      color: var(--amber);
+    }
+    .nav-btn-amber:hover {
+      background: var(--amber);
+      color: #000;
+      box-shadow: 0 0 15px rgba(255, 170, 50, 0.4);
+    }
+
+    .nav-btn-gold {
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+    }
+    .nav-btn-gold:hover {
+      background: var(--gold);
+      color: #000;
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+    }
+
+    /* Main Container */
+    .gov-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem 1.5rem;
+    }
+
+    /* Hero Header */
+    .gov-hero {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .gov-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      color: var(--amber);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      font-weight: 700;
+      background: rgba(255, 170, 50, 0.12);
+      border: 1px solid rgba(255, 170, 50, 0.35);
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 0.8rem;
+    }
+
+    .gov-hero-title {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      color: #ffffff;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.6rem;
+    }
+
+    .gov-hero-desc {
+      font-size: 1rem;
+      color: var(--text-sub);
+      max-width: 820px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* 3대 축 통합 아키텍처 박스 */
+    .architecture-card {
+      background: rgba(45, 24, 8, 0.65);
+      border: 1px solid var(--border-amber);
+      border-radius: 16px;
+      padding: 2.2rem;
+      margin-bottom: 3.5rem;
+      position: relative;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .architecture-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .architecture-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.25rem;
+      color: var(--amber);
+      letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .architecture-status {
+      font-size: 0.75rem;
+      color: var(--amber);
+      background: rgba(255, 170, 50, 0.15);
+      padding: 4px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 170, 50, 0.3);
+      font-weight: 600;
+    }
+
+    .architecture-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .arch-node {
+      background: rgba(22, 10, 4, 0.9);
+      border-radius: 12px;
+      padding: 1.4rem;
+      text-align: center;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .arch-node:hover { transform: translateY(-4px); }
+    .arch-node.amber { border: 1px solid rgba(255, 170, 50, 0.45); }
+    .arch-node.cyan { border: 1px solid rgba(0, 210, 255, 0.45); }
+    .arch-node.green { border: 1px solid rgba(76, 232, 154, 0.45); }
+
+    .arch-node .node-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+    .arch-node .node-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .arch-node .node-desc { font-size: 0.8rem; color: #cfbeae; line-height: 1.6; }
+
+    /* 3대 국 세부 카드 섹션 */
+    .bureau-section {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .bureau-card {
+      background: var(--bg-card);
+      border-radius: 16px;
+      padding: 2.2rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      transition: border-color 0.3s ease;
+    }
+
+    .bureau-card:hover { border-color: rgba(255, 170, 50, 0.5); }
+
+    .bureau-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .bureau-title-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .bureau-icon { font-size: 2rem; }
+
+    .bureau-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .bureau-en {
+      font-size: 0.75rem;
+      color: var(--text-sub);
+      letter-spacing: 0.08em;
+    }
+
+    .bureau-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 12px;
+    }
+    .bureau-tag.amber { background: rgba(255, 170, 50, 0.15); color: var(--amber); border: 1px solid var(--amber); }
+    .bureau-tag.cyan { background: rgba(0, 210, 255, 0.15); color: var(--cyan); border: 1px solid var(--cyan); }
+    .bureau-tag.green { background: rgba(76, 232, 154, 0.15); color: var(--emerald); border: 1px solid var(--emerald); }
+
+    .bureau-directive {
+      background: rgba(0, 0, 0, 0.4);
+      border-left: 3px solid;
+      padding: 1rem 1.2rem;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 1.2rem;
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+    .bureau-directive.amber { border-left-color: var(--amber); }
+    .bureau-directive.cyan { border-left-color: var(--cyan); }
+    .bureau-directive.green { border-left-color: var(--emerald); }
+
+    .bureau-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      padding-left: 0.5rem;
+    }
+
+    .bureau-list li {
+      position: relative;
+      padding-left: 1.5rem;
+      font-size: 0.88rem;
+      color: #ebd8c8;
+      line-height: 1.7;
+    }
+
+    .bureau-list li::before {
+      content: "✦";
+      position: absolute;
+      left: 0;
+      color: var(--amber);
+    }
+
+    /* Footer */
+    .gov-footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      .top-nav { padding: 0.8rem 1rem; }
+      .gov-hero-title { font-size: 1.9rem; }
+      .architecture-card, .bureau-card { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="top-nav">
+    <a href="main.html" class="nav-logo-group" title="키아노스 메인 포털로 이동">
+      <span class="nav-logo-icon">👑</span>
+      <div class="nav-title-box">
+        <span class="en">THE SOVEREIGN REALM OF KYANOS</span>
+        <span class="kr">사회부 (Ministry of Society)</span>
+      </div>
+    </a>
+    <div class="nav-actions">
+      <a href="main.html#governance" class="nav-btn nav-btn-gold">
+        <span>🏛️</span> 국무회의
+      </a>
+      <a href="main.html" class="nav-btn nav-btn-amber">
+        <span>🏠</span> 메인 포털
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="gov-container">
+
+    <!-- Hero Header -->
+    <section class="gov-hero">
+      <div class="gov-badge">Ministry of Society · Civic Harmony & Sustainable Coexistence</div>
+      <h1 class="gov-hero-title">🤝 키아노스 사회부</h1>
+      <p class="gov-hero-desc">
+        최고 통치자 파이튼 국왕의 덕치 제7·8·9·10조(화이부동·상선약수·지족상족)에 기반한 <strong>3대 핵심 축</strong>의 지속가능 공동체, 시민 권익 및 자원 순환 생태계를 총괄합니다.
+      </p>
+    </section>
+
+    <!-- 3대 축 통합 아키텍처 박스 -->
+    <section class="architecture-card">
+      <div class="architecture-header">
+        <h2 class="architecture-title">
+          <span>🏡</span> 사회부 3대 공동체 축 통합 개념도 (Conceptual Architecture)
+        </h2>
+        <span class="architecture-status">Phase 1 시민 화합 & 자원 순환 생태계</span>
+      </div>
+
+      <div class="architecture-grid">
+        <div class="arch-node amber">
+          <div class="node-icon">🏡</div>
+          <div class="node-title" style="color: var(--amber);">[공동체 화합] 자율 조정</div>
+          <p class="node-desc">처벌 대신 상호 화해(Peace Circle) & 성숙한 시민 아고라 ➔ <strong>화이부동(和而不同) 사회</strong></p>
+        </div>
+        <div class="arch-node cyan">
+          <div class="node-icon">⚖️</div>
+          <div class="node-title" style="color: var(--cyan);">[시민 권익] 신뢰 평판 자산</div>
+          <p class="node-desc">자기주권 신원(DID) & 선행이 명예가 되는 신뢰 평판 헤리티지 ➔ <strong>투명한 데이터 주권</strong></p>
+        </div>
+        <div class="arch-node green">
+          <div class="node-icon">🌱</div>
+          <div class="node-title" style="color: var(--emerald);">[지속가능 발전] 순환 생태계</div>
+          <p class="node-desc">100% 무탄소 넷제로 & 자원 순환 루프(지족상족) ➔ <strong>영구 청정 미래 유토피아</strong></p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 1.5rem; font-size: 0.85rem; color: var(--amber); font-style: italic;">
+        “서로의 다름을 존중하여 조화를 이루고(화이부동), 자연과 공존하며 족함을 아는(지족상족) 선진 사회 질서”
+      </div>
+    </section>
+
+    <!-- 3대 국 세부 카드 섹션 -->
+    <section class="bureau-section">
+
+      <!-- 1. 공동체 화합·조정국 -->
+      <article class="bureau-card">
+        <div class="bureau-header">
+          <div class="bureau-title-group">
+            <span class="bureau-icon">🏡</span>
+            <div>
+              <h3 class="bureau-name" style="color: var(--amber);">1. 공동체 화합·조정국</h3>
+              <span class="bureau-en">Bureau of Community Harmony & Civic Mediation</span>
+            </div>
+          </div>
+          <span class="bureau-tag amber">자율 화해 & 상호 공존</span>
+        </div>
+        <div class="bureau-directive amber">
+          <strong>🎯 핵심 역할 및 지침:</strong> 법적 처벌보다 상호 양보와 대화를 우선시하며, 이웃 간의 갈등을 온화하게 중재하고 품격 있는 시민 자치 토론 문화를 확립합니다.
+        </div>
+        <ul class="bureau-list">
+          <li><strong>자율적 시민 화해 서클(Peace Circle):</strong> 사법원과 연계하여 소송 이전에 당사자 간 진솔한 대화와 사과, 화해를 이끄는 중재 프로토콜.</li>
+          <li><strong>키아노스 시민 아고라(Civic Agora):</strong> 국가 주요 사회적 의제를 모든 시민이 온·오프라인으로 투명하게 토론하는 열린 광장 운영.</li>
+          <li><strong>글로벌 다문화 화합 프로그램:</strong> 전 세계 다양한 문화적 배경을 가진 시민들이 화이부동(和而不同) 정신으로 하나 되는 공동체 교류 지원.</li>
+        </ul>
+      </article>
+
+      <!-- 2. 시민 권익 보호국 -->
+      <article class="bureau-card">
+        <div class="bureau-header">
+          <div class="bureau-title-group">
+            <span class="bureau-icon">⚖️</span>
+            <div>
+              <h3 class="bureau-name" style="color: var(--cyan);">2. 시민 권익 보호국</h3>
+              <span class="bureau-en">Bureau of Civil Rights & Digital Trust</span>
+            </div>
+          </div>
+          <span class="bureau-tag cyan">데이터 주권 & 신뢰 평판</span>
+        </div>
+        <div class="bureau-directive cyan">
+          <strong>🎯 핵심 역할 및 지침:</strong> 디지털 초연결 사회에서 시민의 데이터 주권과 사생활을 철저히 수호하며, 사회적 기여와 선행이 공인되는 신뢰 평판 자산화를 총괄합니다.
+        </div>
+        <ul class="bureau-list">
+          <li><strong>자기주권 신원(DID) 프라이버시 통제권:</strong> 국가나 기업의 사생활 감시를 원천 차단하고 개인정보 통제권을 100% 시민에게 환원.</li>
+          <li><strong>신뢰 평판 헤리티지(Ethical Reputation) 관리:</strong> 전과 기록 대신 공공선 기여도와 도덕적 품격이 명예가 되는 무형 자산 체계 보존.</li>
+          <li><strong>24/7 시민 권익 무료 옴부즈만:</strong> 불공정 거래, 가짜뉴스 피해, 디지털 권리 침해로부터 시민을 즉각 보호하는 무료 법률 지원.</li>
+        </ul>
+      </article>
+
+      <!-- 3. 지속가능 발전 위원회 -->
+      <article class="bureau-card">
+        <div class="bureau-header">
+          <div class="bureau-title-group">
+            <span class="bureau-icon">🌱</span>
+            <div>
+              <h3 class="bureau-name" style="color: var(--emerald);">3. 지속가능 발전 위원회</h3>
+              <span class="bureau-en">Commission on Sustainability & Green Future</span>
+            </div>
+          </div>
+          <span class="bureau-tag green">100% 넷제로 & 자원 순환</span>
+        </div>
+        <div class="bureau-directive green">
+          <strong>🎯 핵심 역할 및 지침:</strong> 덕치 제10조(지족상족)에 부합하도록 영내 모든 생산과 소비를 100% 무탄소 자원 순환 루프로 구축하고 자연 생태계를 영구 보전합니다.
+        </div>
+        <ul class="bureau-list">
+          <li><strong>Net-Zero 무탄소 환경 실시간 모니터링:</strong> 과학·AGI부의 청정에너지 그리드와 연동하여 전 영토의 탄소 배출량 0을 항시 유지.</li>
+          <li><strong>100% 자원 순환 루프(Circularity Protocol):</strong> 일회용 폐기물을 원천 금지하고 모든 생활 자재의 친환경 재활용 생태계 감독.</li>
+          <li><strong>청정 해양 및 스마트 녹지 보존 구역:</strong> 키아노스 마리나와 도심을 둘러싼 청정 해역과 생태 숲을 영구 보존 구역으로 지정·보호.</li>
+        </ul>
+      </article>
+
+    </section>
+
+    <!-- Footer Navigation -->
+    <footer class="gov-footer">
+      <a href="KYANOS_MASTER_PROJECT_REGISTRY.html" class="nav-btn nav-btn-gold" style="padding: 0.8rem 2rem; font-size: 0.95rem;">
+        <span>📜</span> 사업설계 마스터 대장 열람
+      </a>
+      <a href="main.html" class="nav-btn nav-btn-amber" style="padding: 0.8rem 2rem; font-size: 0.95rem;">
+        <span>👑</span> 키아노스 메인 포털로 돌아가기
+      </a>
+      <a href="gov_economy.html" class="nav-btn nav-btn-gold" style="padding: 0.8rem 2rem; font-size: 0.95rem;">
+        <span>💰</span> 경제부 포털 열람 ↗
+      </a>
+    </footer>
+
+  </main>
+
+  <!-- 키아노스 글로벌 다국어 실시간 번역기 -->
+  <script src="assets/js/kyanos_i18n.js"></script>
+</body>
+</html>

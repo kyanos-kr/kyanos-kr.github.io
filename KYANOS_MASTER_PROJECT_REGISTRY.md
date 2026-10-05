@@ -27,7 +27,7 @@
 | **01** | `GOV-ID-01` | **키아노스 건국 선언 및 상징 체계** | 국가원수실 | **✅ 완료** | [선언문 액자](file:///d:/안티그래비티파이튼/assets/declaration/KYANOS_Declaration_Framed.png), [국기](file:///d:/안티그래비티파이튼/assets/Kyanos%20flag.png) |
 | **02** | `GOV-ID-02` | **공식 8대 권역 국가지도 등록** | 국가원수실 | **✅ 완료** | [공식 국가지도](file:///d:/안티그래비티파이튼/kyanos_official_national_map.jpg), [등록증](file:///d:/안티그래비티파이튼/KYANOS_OFFICIAL_MAP_REGISTRY.md) |
 | **03** | `GOV-LAW-01` | **키아노스 덕치 헌법(헌장) 제정** | 덕치사법원 | **✅ 완료** | [덕치 헌법 전문](file:///d:/안티그래비티파이튼/KYANOS_CONSTITUTION_OF_VIRTUE.md), [헌법 액자](file:///d:/안티그래비티파이튼/KYANOS_Virtue_Framed.png) |
-| **04** | `GOV-ORG-01` | **정부 6개 부처·사법원·보안사령부 직제** | 국무총리실 | **✅ 완료** | [정부부처 폴더군](file:///d:/안티그래비티파이튼/키아노스_정부부처), [종합집무실](file:///d:/안티그래비티파이튼/gov_economy.html) |
+| **04** | `GOV-ORG-01` | **정부 6개 부처·사법원·보안사령부 직제** | 국무총리실 | **✅ 완료** | [정부부처 폴더군](file:///d:/안티그래비티파이튼/키아노스_정부부처), 8대 독립 국정 포털(gov_*.html) 분리 새창 연동 완료 |
 | **05** | `MIL-SEC-01` | **국제질서유지 보안사령부 (K-SEF)** | 보안사령부 | **📐 설계완료** | [보안군 창설설계안](file:///d:/안티그래비티파이튼/docs/국제질서유지보안군_창설설계안.md) |
 | **06** | `MED-ANT-01` | **antnews.org 서버/애드센스 정상화** | 앤트뉴스/경제부 | **🟢 실시간 가동** | [애드센스 진단기](file:///d:/안티그래비티파이튼/run_adsense_check.bat), [antnews.org](https://www.antnews.org) |
 | **07** | `MED-ANT-02` | **저작권 안심 공공저작물 뉴스 파이프라인** | 앤트뉴스 | **🟢 실시간 가동** | [antnews_auto/](file:///d:/안티그래비티파이튼/antnews_auto), UN·IMF·한은 연동 |

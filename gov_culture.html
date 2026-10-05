@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>키아노스 교육·문화부 (Ministry of Education & Culture) | 주권국 국정 포털</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Montserrat:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@300;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/kyanos_civic_treasury.css">
+  <link rel="stylesheet" href="assets/css/kyanos_i18n.css">
+
+  <style>
+    :root {
+      --bg-dark: #0b0517;
+      --bg-card: rgba(22, 10, 38, 0.85);
+      --gold: #d4af37;
+      --gold-light: #f3e5ab;
+      --gold-bright: #ffe066;
+      --purple: #b894ff;
+      --purple-glow: #9060e0;
+      --cyan: #88ccff;
+      --emerald: #4ce89a;
+      --text-main: #f5f0fb;
+      --text-sub: #bcaece;
+      --border-purple: rgba(184, 148, 255, 0.35);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(184, 148, 255, 0.14) 0%, transparent 60%),
+        radial-gradient(circle at 10% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 90% 70%, rgba(144, 96, 224, 0.1) 0%, transparent 50%);
+      color: var(--text-main);
+      font-family: 'Montserrat', 'Noto Serif KR', serif;
+      min-height: 100vh;
+      line-height: 1.7;
+    }
+
+    /* Top Navigation */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11, 5, 23, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-purple);
+      padding: 0.8rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo-icon { font-size: 1.6rem; }
+
+    .nav-title-box .en {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--purple);
+      display: block;
+    }
+
+    .nav-title-box .kr {
+      font-size: 0.7rem;
+      color: var(--text-sub);
+      letter-spacing: 0.15em;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-btn {
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-btn-purple {
+      background: rgba(184, 148, 255, 0.15);
+      border: 1px solid var(--purple);
+      color: var(--purple);
+    }
+    .nav-btn-purple:hover {
+      background: var(--purple);
+      color: #000;
+      box-shadow: 0 0 15px rgba(184, 148, 255, 0.4);
+    }
+
+    .nav-btn-gold {
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+    }
+    .nav-btn-gold:hover {
+      background: var(--gold);
+      color: #000;
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+    }
+
+    /* Main Container */
+    .gov-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem 1.5rem;
+    }
+
+    /* Hero Header */
+    .gov-hero {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .gov-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      color: var(--purple);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      font-weight: 700;
+      background: rgba(184, 148, 255, 0.12);
+      border: 1px solid rgba(184, 148, 255, 0.35);
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 0.8rem;
+    }
+
+    .gov-hero-title {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      color: #ffffff;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.6rem;
+    }
+
+    .gov-hero-desc {
+      font-size: 1rem;
+      color: var(--text-sub);
+      max-width: 820px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* 5대 축 통합 아키텍처 박스 */
+    .architecture-card {
+      background: rgba(35, 15, 60, 0.65);
+      border: 1px solid var(--border-purple);
+      border-radius: 16px;
+      padding: 2.2rem;
+      margin-bottom: 3.5rem;
+      position: relative;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .architecture-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .architecture-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.25rem;
+      color: var(--purple);
+      letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .architecture-status {
+      font-size: 0.75rem;
+      color: var(--gold-bright);
+      background: rgba(245, 158, 11, 0.2);
+      padding: 4px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--gold);
+      font-weight: 600;
+    }
+
+    .architecture-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .arch-node {
+      background: rgba(18, 6, 32, 0.9);
+      border-radius: 12px;
+      padding: 1.2rem;
+      text-align: center;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .arch-node:hover { transform: translateY(-4px); }
+    .arch-node.purple { border: 1px solid rgba(184, 148, 255, 0.45); }
+    .arch-node.gold { border: 1px solid rgba(224, 200, 112, 0.6); box-shadow: 0 0 15px rgba(212, 175, 55, 0.15); }
+    .arch-node.cyan { border: 1px solid rgba(136, 204, 255, 0.45); }
+    .arch-node.amber { border: 1px solid rgba(245, 158, 11, 0.5); }
+    .arch-node.green { border: 1px solid rgba(76, 232, 154, 0.45); }
+
+    .arch-node .node-icon { font-size: 1.8rem; margin-bottom: 0.4rem; }
+    .arch-node .node-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .arch-node .node-desc { font-size: 0.76rem; color: #cfc2e8; line-height: 1.5; }
+
+    /* 대도서관 검색 위젯 */
+    .library-search-widget {
+      background: rgba(18, 12, 30, 0.95);
+      border: 2px solid var(--gold);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 3.5rem;
+      box-shadow: 0 0 35px rgba(212, 175, 55, 0.2);
+    }
+
+    .lib-search-header {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .lib-search-header h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.45rem;
+      color: var(--gold-bright);
+      margin-bottom: 0.3rem;
+    }
+
+    .search-input-group {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .search-input-group input {
+      flex: 1;
+      padding: 0.85rem 1.2rem;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      border-radius: 8px;
+      color: #fff;
+      font-size: 0.92rem;
+      outline: none;
+    }
+
+    .search-input-group button {
+      padding: 0.85rem 1.8rem;
+      background: linear-gradient(135deg, #ffe066, #d4af37);
+      border: none;
+      border-radius: 8px;
+      color: #000;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 0.92rem;
+      transition: all 0.2s ease;
+    }
+
+    .search-input-group button:hover {
+      box-shadow: 0 0 15px rgba(255, 224, 102, 0.5);
+    }
+
+    .quick-tag {
+      font-size: 0.75rem;
+      background: rgba(255, 224, 102, 0.12);
+      color: #ffe066;
+      border: 1px solid rgba(255, 224, 102, 0.3);
+      padding: 3px 10px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .quick-tag:hover {
+      background: #ffe066;
+      color: #000;
+    }
+
+    .search-result-box {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px dashed rgba(212, 175, 55, 0.3);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-top: 1rem;
+      color: #cfd9e8;
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    /* 5대 기관 세부 카드 섹션 */
+    .bureau-section {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .bureau-card {
+      background: var(--bg-card);
+      border-radius: 16px;
+      padding: 2.2rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      transition: border-color 0.3s ease;
+    }
+
+    .bureau-card:hover { border-color: rgba(184, 148, 255, 0.5); }
+
+    .bureau-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .bureau-title-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .bureau-icon { font-size: 2rem; }
+
+    .bureau-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .bureau-en {
+      font-size: 0.75rem;
+      color: var(--text-sub);
+      letter-spacing: 0.08em;
+    }
+
+    .bureau-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 12px;
+    }
+    .bureau-tag.purple { background: rgba(184, 148, 255, 0.15); color: var(--purple); border: 1px solid var(--purple); }
+    .bureau-tag.gold { background: rgba(212, 175, 55, 0.2); color: var(--gold-bright); border: 1px solid var(--gold); }
+    .bureau-tag.cyan { background: rgba(136, 204, 255, 0.15); color: #88ccff; border: 1px solid #88ccff; }
+    .bureau-tag.amber { background: rgba(245, 158, 11, 0.2); color: #ffe066; border: 1px solid #d4af37; }
+    .bureau-tag.green { background: rgba(76, 232, 154, 0.15); color: #4ce89a; border: 1px solid #4ce89a; }
+
+    .bureau-directive {
+      background: rgba(0, 0, 0, 0.4);
+      border-left: 3px solid;
+      padding: 1rem 1.2rem;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 1.2rem;
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+    .bureau-directive.purple { border-left-color: var(--purple); }
+    .bureau-directive.gold { border-left-color: var(--gold); }
+    .bureau-directive.cyan { border-left-color: #88ccff; }
+    .bureau-directive.amber { border-left-color: #f59e0b; }
+    .bureau-directive.green { border-left-color: #4ce89a; }
+
+    .bureau-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      padding-left: 0.5rem;
+    }
+
+    .bureau-list li {
+      position: relative;
+      padding-left: 1.5rem;
+      font-size: 0.88rem;
+      color: #cfd9e8;
+      line-height: 1.7;
+    }
+
+    .bureau-list li::before {
+      content: "✦";
+      position: absolute;
+      left: 0;
+      color: var(--purple);
+    }
+
+    /* Footer */
+    .gov-footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      .top-nav { padding: 0.8rem 1rem; }
+      .gov-hero-title { font-size: 1.9rem; }
+      .architecture-card, .bureau-card, .library-search-widget { padding: 1.5rem; }
+      .search-input-group { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="top-nav">
+    <a href="main.html" class="nav-logo-group" title="키아노스 메인 포털로 이동">
+      <span class="nav-logo-icon">👑</span>
+      <div class="nav-title-box">
+        <span class="en">THE SOVEREIGN REALM OF KYANOS</span>
+        <span class="kr">교육·문화부 (Ministry of Education & Culture)</span>
+      </div>
+    </a>
+    <div class="nav-actions">
+      <a href="music_player.html" target="_blank" class="nav-btn nav-btn-gold">
+        <span>🎶</span> 국립음악창작원 ↗
+      </a>
+      <a href="main.html" class="nav-btn nav-btn-purple">
+        <span>🏠</span> 메인 포털
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="gov-container">
+
+    <!-- Hero Header -->
+    <section class="gov-hero">
+      <div class="gov-badge">Ministry of Education & Culture · Symphonic & Civil Heritage</div>
+      <h1 class="gov-hero-title">🎓 키아노스 교육·문화부</h1>
+      <p class="gov-hero-desc">
+        최고 통치자 파이튼 국왕의 덕치 철학에 기반한 <strong>5대 핵심 기관</strong>의 역할 지침과 동서양 인류 문명사 보존·음악·예술·도덕 융합 문화 주권을 총괄합니다.
+      </p>
+    </section>
+
+    <!-- 5대 축 통합 아키텍처 박스 -->
+    <section class="architecture-card">
+      <div class="architecture-header">
+        <h2 class="architecture-title">
+          <span>🌸</span> 교육·문화부 5대 핵심 축 통합 개념도 (Conceptual Architecture)
+        </h2>
+        <span class="architecture-status">Phase 1 인류 문명사 & 문화자산 영구 보존</span>
+      </div>
+
+      <div class="architecture-grid">
+        <div class="arch-node purple">
+          <div class="node-icon">📖</div>
+          <div class="node-title" style="color: var(--purple);">[도덕 인성] 덕치 교육원</div>
+          <p class="node-desc">덕치 12대 원칙 & 인간·AI 도덕성 교육 ➔ <strong>국가 정신 헌법</strong></p>
+        </div>
+        <div class="arch-node gold">
+          <div class="node-icon">🏛️</div>
+          <div class="node-title" style="color: var(--gold-bright);">[문명 보존] 인류문명사연구원</div>
+          <p class="node-desc">동서양 문명 통섭 & 인류 지혜 옴니포털 ➔ <strong>역사 자산 영구 계승</strong></p>
+        </div>
+        <div class="arch-node cyan">
+          <div class="node-icon">🌸</div>
+          <div class="node-title" style="color: #88ccff;">[예술 미학] 블루로즈 문화원</div>
+          <p class="node-desc">파란 장미 문학·시각 예술 & 미술관 ➔ <strong>국가 상징 미학</strong></p>
+        </div>
+        <div class="arch-node amber">
+          <div class="node-icon">🎶</div>
+          <div class="node-title" style="color: #ffe066;">[선율 창작] 국립음악창작원</div>
+          <p class="node-desc">파이튼 시 편곡 & AI 오디오 신디사이저 ➔ <strong>국가 심포니 음악실</strong></p>
+        </div>
+        <div class="arch-node green">
+          <div class="node-icon">🌏</div>
+          <div class="node-title" style="color: #4ce89a;">[세계 연대] 문화·학술 교류</div>
+          <p class="node-desc">글로벌 대학 아카데믹 연대 & 엑스포 ➔ <strong>소프트파워 글로벌 외교</strong></p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 1.5rem; font-size: 0.85rem; color: #ffe066; font-style: italic;">
+        “AI 개벽 시대, 동서양 인류 문명의 영구 보존(인류문명사연구원)과 덕치·예술·음악이 융합된 문화 주권 완성”
+      </div>
+    </section>
+
+    <!-- 국립 인류문명사대도서관 지능형 사료 검색 위젯 -->
+    <section class="library-search-widget">
+      <div class="lib-search-header">
+        <span style="font-size: 0.72rem; color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700;">National Grand Library & Institute of World Civilizations</span>
+        <h3>🏛️ 국립 인류문명사대도서관 지능형 사료 검색실</h3>
+        <p style="font-size: 0.85rem; color: #cfd9e8;">
+          전 국민을 위한 열린 지식 아카이브와 연구자를 위한 심층 원전 사료 정밀 검색 엔진
+        </p>
+      </div>
+
+      <div class="search-input-group">
+        <input type="text" id="libSearchInput" placeholder="궁금한 문명사 주제, 철학자, 사료를 입력하세요 (예: 춘추전국시대, 플라톤 국가론, 훈민정음, 덕치 철학)" onkeydown="if(event.key==='Enter') executeLibrarySearch()">
+        <button onclick="executeLibrarySearch()">🔍 정밀 검색</button>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 0.6rem;">
+        <span style="font-size: 0.75rem; color: #a5b4cb;">추천 키워드:</span>
+        <span class="quick-tag" onclick="setSearchKeyword('동양 덕치철학과 민본사상')">#동양 덕치철학</span>
+        <span class="quick-tag" onclick="setSearchKeyword('그리스 아테네 민주정과 플라톤')">#서양 고전철학</span>
+        <span class="quick-tag" onclick="setSearchKeyword('이슬람 과학과 지혜의 집')">#이슬람 지혜의집</span>
+        <span class="quick-tag" onclick="setSearchKeyword('AI 개벽 시대의 역사적 교훈')">#AI시대 역사교훈</span>
+      </div>
+
+      <div id="libSearchResults" class="search-result-box">
+        💡 검색어를 입력하거나 상단 추천 키워드를 클릭하시면 <strong>국립 인류문명사연구원 지능형 아카이브</strong>에서 즉시 분석 사료와 교훈을 도출합니다.
+      </div>
+    </section>
+
+    <!-- 5대 기관 세부 카드 섹션 -->
+    <section class="bureau-section">
+
+      <!-- 1. 덕치(德治) 교육원 -->
+      <article class="bureau-card">
+        <div class="bureau-header">
+          <div class="bureau-title-group">
+            <span class="bureau-icon">📖</span>
+            <div>
+              <h3 class="bureau-name" style="color: var(--purple);">1. 덕치(德治) 교육원</h3>
+              <span class="bureau-en">Institute of Virtue Education & Sage Leadership</span>
+            </div>
+          </div>
+          <span class="bureau-tag purple">국가 도덕·인성 헌장</span>
+        </div>
+        <div class="bureau-directive purple">
+          <strong>🎯 핵심 역할 및 지침:</strong> 키아노스 덕치 12대 원칙의 정신을 국가 전반의 공교육과 공직자, AI 시스템에 체화시키며 인성과 예의, 성찰을 가르칩니다.
+        </div>
+        <ul class="bureau-list">
+          <li><strong>덕치 12대 원칙 정규 시민 교육:</strong> '천하위공', '인지도', '상선약수' 등 최고 수준의 도덕 철학을 평생 교육 과정으로 안착.</li>
+          <li><strong>Human-AI 도덕성 리더십 아카데미:</strong> 인공지능에 지배당하지 않는 인간 본연의 주체성과 윤리적 통제 역량 배양.</li>
+          <li><strong>사법원 연계 도덕성 인증 배지(Virtue Badge):</strong> 선행과 기여도가 명예가 되는 사회적 신뢰 평판 자산화.</li>
+        </ul>
+      </article>
+
+      <!-- 2. 국립 인류문명사연구원 및 대도서관 -->
+      <article class="bureau-card" style="border-color: rgba(224, 200, 112, 0.5);">
+        <div class="bureau-header">
+          <div class="bureau-title-group">
+            <span class="bureau-icon">🏛️</span>
+            <div>
+              <h3 class="bureau-name" style="color: var(--gold-bright);">2. 국립 인류문명사연구원 및 대도서관</h3>
+              <span class="bureau-en">National Grand Library & Institute of World Civilizations · 파이튼 국왕 특명</span>
+            </div>
+          </div>
+          <span class="bureau-tag gold">인류 지혜 영구 보존</span>
+        </div>
+        <div class="bureau-directive gold">
+          <strong>🎯 국왕 파이튼 님 국정 원칙:</strong> 키아노스 국민이라면 누구나 쉽게 접근하여 학습할 수 있도록 전면 개방을 원칙으로 하며, 전문가들의 고도 지식 습득을 위해 원전·교차 사료까지 무제한 개방합니다. 또한 지능형 정밀 검색을 통해 연구자의 의문을 즉시 해결합니다.
+        </div>
+        <ul class="bureau-list">
+          <li><strong>누구나 쉬운 열린 지식 도서관 (Universal Public Access):</strong> 동서양 전 문명(유·불·도, 그리스·로마, 르네상스, 이슬람, 메소포타미아 등)의 지식·사상을 시각적 요약과 쉬운 해설로 전 국민 무료 개방.</li>
+          <li><strong>전문가·학자 심층 연구 지원 (Specialist Deep-Dive):</strong> 원전 고문헌(라틴어·한문·그리스어 원문), 교차 사료 비평, 학술 논문 및 고해상도 3D 문화재 원본 데이터베이스 완비.</li>
+          <li><strong>AI 기반 정밀 사료 검색 & 의문 즉시 해결 (Semantic Instant Solver):</strong> 자연어 질문에 다각도 역사적 근거와 사상적 인과관계를 즉시 도출하는 지능형 검색 엔진 운영.</li>
+          <li><strong>인류 지혜 디지털 판테온 (Living Pantheon):</strong> 동서양 현인들과의 인터랙티브 대화형 문답을 통해 삶의 지혜와 역사적 교훈 체득.</li>
+        </ul>
+      </article>
+
+      <!-- 3. 블루로즈 문화원 -->
+      <article class="bureau-card">
+        <div class="bureau-header">
+          <div class="bureau-title-group">
+            <span class="bureau-icon">🌸</span>
+            <div>
+              <h3 class="bureau-name" style="color: #88ccff;">3. 블루로즈 문화원</h3>
+              <span class="bureau-en">Blue Rose Cultural Arts Foundation</span>
+            </div>
+          </div>
+          <span class="bureau-tag cyan">예술 & 문예 헤리티지</span>
+        </div>
+        <div class="bureau-directive cyan">
+          <strong>🎯 핵심 역할 및 지침:</strong> 키아노스의 국화인 '파란 장미(기적과 영원)'의 상징 미학을 회화, 조각, 문학, 디지털 미디어 아트로 발전시키는 국립 예술 재단입니다.
+        </div>
+        <ul class="bureau-list">
+          <li><strong>블루로즈 국립 미술관 & 조형 파크 조성:</strong> 에버모어 권역 내 세계적인 예술가들의 걸작과 키아노스 미술 전시.</li>
+          <li><strong>파이튼 문학상 제정 및 창작 레지던시:</strong> 인간의 따뜻한 감성과 철학을 담은 시·문학 작가들을 전폭 지원.</li>
+          <li><strong>국가 문화재 디지털 영구 보존:</strong> 건국 역사 및 귀중한 예술품을 위변조 불가능한 디지털 아카이브로 영구 보존.</li>
+        </ul>
+      </article>
+
+      <!-- 4. 국립음악창작원 -->
+      <article class="bureau-card">
+        <div class="bureau-header">
+          <div class="bureau-title-group">
+            <span class="bureau-icon">🎶</span>
+            <div>
+              <h3 class="bureau-name" style="color: #ffe066;">4. 국립음악창작원</h3>
+              <span class="bureau-en">National Center for Music Creation & Symphonic Arts</span>
+            </div>
+          </div>
+          <a href="music_player.html" target="_blank" class="nav-btn nav-btn-gold" style="font-size: 0.72rem; padding: 4px 12px;">음악실 입장 ↗</a>
+        </div>
+        <div class="bureau-directive amber">
+          <strong>🎯 핵심 역할 및 지침 (티탄 수석 엔지니어 기술 연동):</strong> 국왕 파이튼 님의 원작 시와 철학을 음악으로 승화시키며, 고품질 오디오 신디사이저 및 웹 플레이어 시스템을 제작·배포합니다.
+        </div>
+        <ul class="bureau-list">
+          <li><strong>파이튼 명시 기반 음악 편곡:</strong> 〈가을 그리고 차 한잔〉 표준 규격(웹 플레이어, 인터넷 바로가기, 코드 악보)의 지속적 제작.</li>
+          <li><strong>차세대 AI 음악 생성 엔진 연동:</strong> 티탄(Titan)의 피지컬 컴퓨팅을 활용한 고음질 오케스트라 및 보컬 마스터링.</li>
+          <li><strong>키아노스 국립 음악 포털 운영:</strong> 시민들이 언제든 감상할 수 있는 반응형 웹 음악 플레이어 스트리밍 서비스 제공.</li>
+        </ul>
+      </article>
+
+      <!-- 5. 국제 문화·학술 교류국 -->
+      <article class="bureau-card">
+        <div class="bureau-header">
+          <div class="bureau-title-group">
+            <span class="bureau-icon">🌏</span>
+            <div>
+              <h3 class="bureau-name" style="color: #4ce89a;">5. 국제 문화·학술 교류국</h3>
+              <span class="bureau-en">Bureau of Global Cultural & Academic Exchanges</span>
+            </div>
+          </div>
+          <span class="bureau-tag green">글로벌 소프트파워</span>
+        </div>
+        <div class="bureau-directive green">
+          <strong>🎯 핵심 역할 및 지침:</strong> 키아노스의 덕치 문화와 문명사적 성취를 전 세계에 널리 알리고, 세계적인 명문 대학 및 국제기구와의 학술·문화 교류를 주도합니다.
+        </div>
+        <ul class="bureau-list">
+          <li><strong>글로벌 석학 학술 심포지엄 주관:</strong> AGI 윤리, 미래 철학, 인류 문명사 융합을 논의하는 국제 학술 회의 개최.</li>
+          <li><strong>키아노스 월드 엑스포 & 문화 축제:</strong> 다채로운 동서양 전통 문화를 포용하고 키아노스의 음악과 시를 공유하는 연례 축제.</li>
+          <li><strong>재외 키아노스 문화원 거점 설립:</strong> 세계 주요 도시와의 문화 외교 채널을 구축하여 글로벌 친선 연대 강화.</li>
+        </ul>
+      </article>
+
+    </section>
+
+    <!-- Footer Navigation -->
+    <footer class="gov-footer">
+      <a href="KYANOS_MASTER_PROJECT_REGISTRY.html" class="nav-btn nav-btn-gold" style="padding: 0.8rem 2rem; font-size: 0.95rem;">
+        <span>📜</span> 사업설계 마스터 대장 열람
+      </a>
+      <a href="main.html" class="nav-btn nav-btn-purple" style="padding: 0.8rem 2rem; font-size: 0.95rem;">
+        <span>👑</span> 키아노스 메인 포털로 돌아가기
+      </a>
+      <a href="music_player.html" target="_blank" class="nav-btn nav-btn-gold" style="padding: 0.8rem 2rem; font-size: 0.95rem;">
+        <span>🎶</span> 국립음악창작원 바로가기 ↗
+      </a>
+    </footer>
+
+  </main>
+
+  <script>
+    const libraryKnowledgeBase = [
+      {
+        keywords: ["덕치", "동양", "민본", "유교", "맹자", "공자", "천하위공", "정약용"],
+        title: "동양 덕치철학과 민본사상 (Virtue Governance & People-First Ethos)",
+        badge: "동양 문명 고전사료",
+        color: "#ffe066",
+        summary: "공자의 논어와 맹자의 민귀군경(民貴君輕), 다산 정약용의 목민심서로 이어지는 동양 정치사상의 정수입니다.",
+        lesson: "권력의 정당성은 백성의 평안과 공공선(천하위공)에서 나오며, 형벌보다 솔선수범과 덕(德)으로 이끄는 통치가 항구적 평화를 만든다는 교훈을 AGI 시대에 전합니다."
+      },
+      {
+        keywords: ["서양", "그리스", "로마", "플라톤", "아리스토텔레스", "국가론", "민주정"],
+        title: "그리스 아테네 민주정과 플라톤의 철인정치 (Athenian Democracy & Platonic Republic)",
+        badge: "서양 고전 문명",
+        color: "#88ccff",
+        summary: "고대 그리스 아테네의 직접 민주주의와 플라톤의 국가론(Politeia), 아리스토텔레스의 정치학 사상입니다.",
+        lesson: "법의 지배(Nomos)와 공론장 아고라의 토론 문화는 키아노스 시민 거버넌스의 밑거름이며, 지혜로운 통치자의 절제와 정의가 국가의 지속성을 결정짓는다는 사실을 증명합니다."
+      },
+      {
+        keywords: ["이슬람", "과학", "지혜의집", "바그다드", "번역", "수학"],
+        title: "이슬람 황금기와 바그다드 지혜의 집 (House of Wisdom & Islamic Golden Age)",
+        badge: "중동·이슬람 문명",
+        color: "#4ce89a",
+        summary: "8~13세기 바그다드 '지혜의 집(Bayt al-Hikma)'을 중심으로 그리스, 페르시아, 인도 문헌을 아랍어로 번역·집대성한 인류 지식 융합의 절정기입니다.",
+        lesson: "지식과 진리 앞에서는 종교와 국경이 없으며, 개방적 학술 번역과 문명 통섭이 위대한 과학 혁명을 꽃피운다는 열린 도서관의 원형을 보여줍니다."
+      },
+      {
+        keywords: ["AI", "인공지능", "역사", "교훈", "산업혁명", "문명사"],
+        title: "인류 문명사적 관점에서의 AGI 개벽과 역사적 교훈 (Civilizational Lessons for AGI Era)",
+        badge: "현대·미래 문명학",
+        color: "#b894ff",
+        summary: "1~4차 산업혁명과 동서양 제국의 흥망성쇠를 비교 분석하여 인공지능 전환기의 생존 해법을 모색합니다.",
+        lesson: "물질과 기술만 앞서고 도덕과 철학이 결여된 문명은 자멸했습니다. AGI 시대일수록 인간 존엄성, 덕치 헌법, 영혼의 성찰이 동반되어야만 지속 가능한 평화 문명을 이룰 수 있습니다."
+      }
+    ];
+
+    function executeLibrarySearch() {
+      const q = document.getElementById('libSearchInput').value.trim().toLowerCase();
+      const container = document.getElementById('libSearchResults');
+      if (!q) {
+        container.innerHTML = `<div style="text-align:center; color:#cfd9e8;">💡 검색어를 입력해 주세요.</div>`;
+        return;
+      }
+      const matches = libraryKnowledgeBase.filter(item => 
+        item.keywords.some(k => q.includes(k.toLowerCase()) || k.toLowerCase().includes(q)) ||
+        item.title.toLowerCase().includes(q) ||
+        item.summary.toLowerCase().includes(q)
+      );
+
+      if (matches.length > 0) {
+        container.innerHTML = matches.map(m => `
+          <div style="background: rgba(0,0,0,0.45); border: 1px solid ${m.color}; border-radius: 10px; padding: 1.2rem; margin-bottom: 0.8rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+              <h4 style="color:${m.color}; font-size:1.05rem; margin:0;">${m.title}</h4>
+              <span style="font-size:0.7rem; background:${m.color}22; border:1px solid ${m.color}; color:${m.color}; padding:2px 8px; border-radius:10px; font-weight:700;">${m.badge}</span>
+            </div>
+            <p style="font-size:0.85rem; color:#f0f4f8; margin-bottom:0.5rem; line-height:1.6;">${m.summary}</p>
+            <div style="background:rgba(255,255,255,0.05); border-left:3px solid ${m.color}; padding:0.6rem 0.8rem; font-size:0.82rem; color:#ffe066; line-height:1.6;">
+              <strong>🏛️ 문명사적 통찰 & 덕치 교훈:</strong> ${m.lesson}
+            </div>
+          </div>
+        `).join('');
+      } else {
+        container.innerHTML = `
+          <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,224,102,0.3); border-radius: 10px; padding: 1.2rem; text-align:center;">
+            <p style="color:#ffe066; font-size:0.95rem; margin-bottom:0.4rem;"><strong>'${q}' 관련 심층 사료 탐색 결과</strong></p>
+            <p style="font-size:0.84rem; color:#cfd9e8; line-height:1.6;">
+              국립 인류문명사연구원의 지능형 엔진이 전 세계 사료 아카이브에서 관련 문헌과 철학적 교훈을 교차 분석 중입니다.
+            </p>
+          </div>
+        `;
+      }
+    }
+
+    function setSearchKeyword(kw) {
+      document.getElementById('libSearchInput').value = kw;
+      executeLibrarySearch();
+    }
+  </script>
+
+  <!-- 키아노스 글로벌 다국어 실시간 번역기 -->
+  <script src="assets/js/kyanos_i18n.js"></script>
+</body>
+</html>
