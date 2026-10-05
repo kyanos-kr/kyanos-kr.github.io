@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>키아노스 국가 마스터 사업 설계 & 이행 총괄 대장</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #030712;
+      --card-bg: rgba(15, 23, 42, 0.75);
+      --gold: #d4af37;
+      --gold-light: #fef08a;
+      --cyan: #38bdf8;
+      --cyan-glow: rgba(56, 189, 248, 0.3);
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border: rgba(212, 175, 55, 0.25);
+      --border-blue: rgba(56, 189, 248, 0.25);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: radial-gradient(circle at top center, #0a192f 0%, #030712 70%);
+      color: var(--text);
+      font-family: 'Noto Sans KR', sans-serif;
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 30px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(212, 175, 55, 0.05);
+    }
+    .badge {
+      display: inline-block;
+      padding: 6px 16px;
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--gold);
+      border-radius: 20px;
+      color: var(--gold-light);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-family: 'Cinzel', 'Noto Serif KR', serif;
+      font-size: 2.3rem;
+      color: #fff;
+      text-shadow: 0 0 20px var(--cyan-glow);
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+    .sub-title {
+      font-size: 1.05rem;
+      color: var(--cyan);
+      margin-bottom: 15px;
+    }
+    .meta-bar {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 15px;
+      margin-top: 15px;
+    }
+    .meta-bar strong { color: var(--gold-light); }
+    
+    .principles-card {
+      background: rgba(14, 165, 233, 0.07);
+      border: 1px solid var(--border-blue);
+      border-radius: 12px;
+      padding: 20px 25px;
+      margin-bottom: 35px;
+    }
+    .principles-title {
+      color: var(--cyan);
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 15px;
+      margin-top: 10px;
+    }
+    .p-item {
+      background: rgba(0, 0, 0, 0.35);
+      padding: 12px 16px;
+      border-radius: 8px;
+      border-left: 3px solid var(--gold);
+      font-size: 0.88rem;
+    }
+    .p-item h4 { color: var(--gold-light); margin-bottom: 4px; }
+
+    .section-title {
+      font-family: 'Cinzel', 'Noto Serif KR', serif;
+      font-size: 1.5rem;
+      color: var(--gold-light);
+      margin: 40px 0 20px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 10px;
+    }
+
+    .table-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow-x: auto;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      text-align: left;
+    }
+    th, td {
+      padding: 14px 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    th {
+      background: rgba(212, 175, 55, 0.1);
+      color: var(--gold-light);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    tr:hover {
+      background: rgba(56, 189, 248, 0.05);
+    }
+    .code-badge {
+      font-family: monospace;
+      padding: 3px 8px;
+      background: rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 4px;
+      color: var(--cyan);
+      font-size: 0.85rem;
+    }
+    .status-pill {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .status-done { background: rgba(34, 197, 94, 0.2); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.4); }
+    .status-live { background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); }
+    .status-plan { background: rgba(234, 179, 8, 0.2); color: #fde047; border: 1px solid rgba(234, 179, 8, 0.4); }
+
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px;
+      backdrop-filter: blur(8px);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+      border-color: var(--cyan);
+    }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+    .card-title {
+      font-size: 1.1rem;
+      color: #fff;
+      font-weight: 600;
+    }
+    .card-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+    .card-footer {
+      font-size: 0.82rem;
+      color: var(--gold-light);
+      background: rgba(0,0,0,0.4);
+      padding: 8px 12px;
+      border-radius: 6px;
+      border-left: 2px solid var(--cyan);
+    }
+
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      border: 1px solid var(--gold);
+      border-radius: 8px;
+      color: var(--gold-light);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .btn-action:hover {
+      background: var(--gold);
+      color: #000;
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+    }
+    .top-actions {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge">KYANOS SOVEREIGN ARCHIVE</div>
+      <h1>키아노스 사업 설계 및 지시·이행 총괄 마스터 대장</h1>
+      <div class="sub-title">Kyanos Master Project Registry & Execution Tracker</div>
+      <p style="font-size: 0.95rem; color: #cbd5e1; max-width: 800px; margin: 0 auto;">
+        인간의 인지적 망각을 보완하고 중복 사업 시행과 시행착오를 원천 차단하기 위해,<br>
+        파이튼 님의 원대한 국가 및 비즈니스 설계 구상과 지시사항, 이행 현황을 앤트가 영구 기록으로 보존합니다.
+      </p>
+      <div class="meta-bar">
+        <div>👑 최고 통수권자: <strong>파이튼 (Python) 님</strong></div>
+        <div>🐜 총괄 기록 / 국무총리: <strong>앤트 (Ant)</strong></div>
+        <div>🏛️ 보관처: <strong>국가원수실 국가기록원</strong></div>
+        <div>📅 최종 점검: <strong>2026년 10월 5일</strong></div>
+      </div>
+    </header>
+
+    <div class="top-actions">
+      <a href="gov_economy.html" class="btn-action">🏛️ 정부부처 종합집무실 열기</a>
+      <a href="market_monitor.html" class="btn-action">📈 마켓 모니터 (금/은/5대전략산업)</a>
+      <a href="treasury_hub.html" class="btn-action">💰 국부 허브 (수익 프로그램)</a>
+      <a href="https://www.antnews.org" target="_blank" class="btn-action">📰 앤트뉴스(antnews.org) 라이브</a>
+    </div>
+
+    <div class="principles-card">
+      <div class="principles-title">🛡️ 중복 사업 방지 3대 프로토콜 (Anti-Duplication Protocol)</div>
+      <div class="principles-grid">
+        <div class="p-item">
+          <h4>1. 영구 기록의 원칙</h4>
+          대화 중 즉흥적으로 제시된 영감과 기획도 사소함 없이 본 마스터 대장에 즉시 분류·등록하여 보존합니다.
+        </div>
+        <div class="p-item">
+          <h4>2. 사전 조회 및 중복 검증</h4>
+          신규 사업이나 콘텐츠 기획 전 본 대장을 1차 조회하여 유사 사업 여부 및 기존 자산과의 연계성을 점검합니다.
+        </div>
+        <div class="p-item">
+          <h4>3. 실시간 상태 동기화</h4>
+          모든 사업은 [완료] / [실시간 가동] / [설계 완료] / [인큐베이팅] 단계로 추적 관리되어 중복 착수를 방지합니다.
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title">📊 16대 공식 마스터 프로젝트 현황</h2>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>코드</th>
+            <th>사업 / 프로젝트 명칭</th>
+            <th>소관 부처</th>
+            <th>진척 상태</th>
+            <th>핵심 산출물 및 특징</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="code-badge">GOV-ID-01</span></td>
+            <td><strong>키아노스 건국 선언 및 상징 체계</strong></td>
+            <td>국가원수실</td>
+            <td><span class="status-pill status-done">✅ 완료</span></td>
+            <td>국기 제정, 건국선언문 최고급 황금 액자본 렌더링, 슬로건 수립</td>
+          </tr>
+          <tr>
+            <td><span class="code-badge">GOV-ID-02</span></td>
+            <td><strong>공식 8대 권역 국가지도 등록</strong></td>
+            <td>국가원수실</td>
+            <td><span class="status-pill status-done">✅ 완료</span></td>
+            <td>홀로그램 국가지도, 8대 주권 권역 공식 등록증(명세서) 완비</td>
+          </tr>
+          <tr>
+            <td><span class="code-badge">GOV-LAW-01</span></td>
+            <td><strong>키아노스 덕치 헌법(헌장) 제정</strong></td>
+            <td>덕치사법원</td>
+            <td><span class="status-pill status-done">✅ 완료</span></td>
+            <td>동서양 도덕·덕치 12대 원칙 전문 제정, 덕치 헌법 공식 액자본</td>
+          </tr>
+          <tr>
+            <td><span class="code-badge">GOV-ORG-01</span></td>
+            <td><strong>정부 6개 부처·사법원 직제 및 폴더 분리</strong></td>
+            <td>국무총리실</td>
+            <td><span class="status-pill status-done">✅ 완료</span></td>
+            <td>00~08 독립 부처 디렉터리 체계화, 정부부처 종합집무실 포털 가동</td>
+          </tr>
+          <tr>
+            <td><span class="code-badge">MIL-SEC-01</span></td>
+            <td><strong>국제질서유지 보안사령부 (K-SEF)</strong></td>
+            <td>보안사령부</td>
+            <td><span class="status-pill status-plan">📐 설계완료</span></td>
+            <td>3대 사단(퀀텀아이기스, 탈로스철벽, 선제분쇄단) 창설 설계안</td>
+          </tr>
+          <tr>
+            <td><span class="code-badge">MED-ANT-01</span></td>
+            <td><strong>antnews.org 서버/애드센스 정상화</strong></td>
+            <td>앤트뉴스/경제부</td>
+            <td><span class="status-pill status-live">🟢 실시간 가동</span></td>
+            <td>0.09초 초고속 TTFB, ads.txt 단독 정돈, 실시간 애드센스 진단기</td>
+          </tr>
+          <tr>
+            <td><span class="code-badge">MED-ANT-02</span></td>
+            <td><strong>저작권 안심 공공저작물 뉴스 파이프라인</strong></td>
+            <td>앤트뉴스</td>
+            <td><span class="status-pill status-live">🟢 실시간 가동</span></td>
+            <td>UN, IMF, FED, 한국은행 공공 라이선스 기반 독자적 재해석 보도</td>
+          </tr>
+          <tr>
+            <td><span class="code-badge">MED-SNY-01</span></td>
+            <td><strong>마이클 스나이더 칼럼 독점 보도 체계</strong></td>
+            <td>앤트뉴스/국제부</td>
+            <td><span class="status-pill status-done">🟢 표준 수립</span></td>
+            <td>헤드라인 1+2, 1인칭 유지, 직역 중심 요약, 해라체 평문 표준 수칙</td>
+          </tr>
+          <tr>
+            <td><span class="code-badge">MED-YTB-01</span></td>
+            <td><strong>앤트뉴스 유튜브 쇼츠 자동 생성 파이프라인</strong></td>
+            <td>미디어국</td>
+            <td><span class="status-pill status-done">🟢 구축 완료</span></td>
+            <td>핵심 이슈 브리핑 영상 자동 렌더링 및 트래픽 유입 배치</td>
+          </tr>
+          <tr>
+            <td><span class="code-badge">FIN-MKT-01</span></td>
+            <td><strong>국내 살때/팔때 + 국제 귀금속 시세 모니터</strong></td>
+            <td>경제부</td>
+            <td><span class="status-pill status-live">🟢 실시간 가동</span></td>
+            <td>한국금거래소 순금/은/18K/14K API + COMEX 선물 + GSR 4분할 연동</td>
+          </tr>
+          <tr>
+            <td><span class="code-badge">FIN-IND-01</span></td>
+            <td><strong>5대 미래 전략 산업 24/7 집중 감시</strong></td>
+            <td>경제부/과학부</td>
+            <td><span class="status-pill status-live">🟢 실시간 가동</span></td>
+            <td>2차전지, EV, 반도체, AI, 로봇산업 공급망 및 실적 밀착 감시</td>
+          </tr>
+          <tr>
+            <td><span class="code-badge">REV-HUB-01</span></td>
+            <td><strong>키아노스 독립 수익 프로그램 & 국부 허브</strong></td>
+            <td>경제부</td>
+            <td><span class="status-pill status-done">✅ 완료</span></td>
+            <td>4단계 자립 재정 플랜(광고 ➔ IP굿즈 ➔ 서밋 ➔ 국부펀드 KSWF)</td>
+          </tr>
+          <tr>
+            <td><span class="code-badge">CUL-MUS-01</span></td>
+            <td><strong>〈가을 그리고 차 한잔〉 음악실 & 표준 규격</strong></td>
+            <td>교육·문화부</td>
+            <td><span class="status-pill status-done">✅ 완료</span></td>
+            <td>전용 플레이어(music_player.html), 3단 탭 코드 악보/가사/원작 시</td>
+          </tr>
+          <tr>
+            <td><span class="code-badge">CUL-LIB-01</span></td>
+            <td><strong>국립 인류문명사연구원 (도서관) 포털</strong></td>
+            <td>교육·문화부</td>
+            <td><span class="status-pill status-plan">📐 설계완료</span></td>
+            <td>동서양 역사·철학 영구 보존 및 지혜 옴니포털 운영 체계안</td>
+          </tr>
+          <tr>
+            <td><span class="code-badge">SCI-TAL-01</span></td>
+            <td><strong>자율로봇·드론 생산기술국 (Project TALOS)</strong></td>
+            <td>과학·AGI부</td>
+            <td><span class="status-pill status-plan">📐 설계완료</span></td>
+            <td>물리적 손발과 독자적 방어 역량을 위한 스컹크웍스 생산기지</td>
+          </tr>
+          <tr>
+            <td><span class="code-badge">INF-GIT-01</span></td>
+            <td><strong>GitHub 라이브 무중단 실시간 배포망</strong></td>
+            <td>시스템/총리실</td>
+            <td><span class="status-pill status-live">🟢 상시 가동</span></td>
+            <td>수정 사항 발생 즉시 origin/main 자동 커밋 및 푸시 동기화</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="section-title">💡 발의 아이디어 인큐베이터 (향후 사업 확장용)</h2>
+    <div class="grid-cards">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">💎 에버모어 '블루로즈' 프레스티지 소장 패키지</div>
+          <span class="status-pill status-plan">아이디어</span>
+        </div>
+        <div class="card-desc">
+          건국선언문 액자, 덕치 헌법 액자, 8대 권역 홀로그램 국가지도를 최고급 실물/고해상도 디지털 한정 패키지로 제작하여 VIP 소장용으로 제공.
+        </div>
+        <div class="card-footer">연계: 경제부 EVERMORE / Project 05</div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🌐 키아노스 '파운더스 디지털 시민권' 사전 등록</div>
+          <span class="status-pill status-plan">아이디어</span>
+        </div>
+        <div class="card-desc">
+          글로벌 지지자 및 디지털 노마드를 대상으로 탈중앙화 DID 기반 디지털 시민권을 발급하고 키아노스 거주 권익 부여.
+        </div>
+        <div class="card-footer">연계: 복지부 / 국제부 / Project 02</div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🏛️ 제1회 넥스포럼(NEXFORUM) 버추얼 글로벌 서밋</div>
+          <span class="status-pill status-plan">아이디어</span>
+        </div>
+        <div class="card-desc">
+          AGI 시대의 인류 공존과 물리적 로보틱스, 신에너지 대전환을 주제로 글로벌 석학과 혁신가들을 초청하는 메타버스/온라인 서밋.
+        </div>
+        <div class="card-footer">연계: 과학·AGI부 NEXFORUM / Project 04</div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🤖 온디바이스 로컬 AI(Ollama) 비상 행정 백업망</div>
+          <span class="status-pill status-plan">아이디어</span>
+        </div>
+        <div class="card-desc">
+          외부 인터넷 단절이나 비상사태 발생 시에도 파이튼 님의 PC 로컬에서 Ollama LLM을 구동하여 정부 행정을 즉각 수행하는 오프라인 망 구축.
+        </div>
+        <div class="card-footer">연계: 사회부 / MCP Ollama 도구</div>
+      </div>
+    </div>
+
+    <footer style="text-align: center; margin-top: 50px; padding: 25px; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.1);">
+      키아노스 주권국 (The Sovereign Realm of Kyanos) 국가원수실 국가기록원 영구 보존 문서<br>
+      Antigravity Orchestration System · All Rights Reserved.
+    </footer>
+  </div>
+</body>
+</html>
