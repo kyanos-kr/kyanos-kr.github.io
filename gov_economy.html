@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>키아노스 경제부 (Ministry of Economy) | 주권국 국정 포털</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Montserrat:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@300;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/kyanos_civic_treasury.css">
+  <link rel="stylesheet" href="assets/css/kyanos_i18n.css">
+
+  <style>
+    :root {
+      --bg-dark: #040914;
+      --bg-card: rgba(6, 18, 38, 0.85);
+      --gold: #d4af37;
+      --gold-light: #f3e5ab;
+      --gold-bright: #ffe066;
+      --cyan: #00d2ff;
+      --emerald: #10b981;
+      --text-main: #f0f4f8;
+      --text-sub: #94a3b8;
+      --border-gold: rgba(212, 175, 55, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.12) 0%, transparent 60%),
+        radial-gradient(circle at 10% 50%, rgba(0, 210, 255, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 90% 70%, rgba(16, 185, 129, 0.06) 0%, transparent 50%);
+      color: var(--text-main);
+      font-family: 'Montserrat', 'Noto Serif KR', serif;
+      min-height: 100vh;
+      line-height: 1.7;
+    }
+
+    /* Top Navigation */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(4, 9, 20, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-gold);
+      padding: 0.8rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo-icon {
+      font-size: 1.6rem;
+    }
+
+    .nav-title-box .en {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--gold-bright);
+      display: block;
+    }
+
+    .nav-title-box .kr {
+      font-size: 0.7rem;
+      color: var(--text-sub);
+      letter-spacing: 0.15em;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-btn {
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-btn-gold {
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--gold);
+      color: var(--gold-bright);
+    }
+    .nav-btn-gold:hover {
+      background: var(--gold);
+      color: #000;
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+    }
+
+    .nav-btn-pulse {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid var(--emerald);
+      color: #6ee7b7;
+    }
+    .nav-btn-pulse:hover {
+      background: var(--emerald);
+      color: #000;
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+    }
+
+    /* Main Container */
+    .gov-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem 1.5rem;
+    }
+
+    /* Hero Header */
+    .gov-hero {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .gov-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      color: var(--gold);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      font-weight: 700;
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 0.8rem;
+    }
+
+    .gov-hero-title {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      color: #ffffff;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.6rem;
+    }
+
+    .gov-hero-desc {
+      font-size: 1rem;
+      color: var(--text-sub);
+      max-width: 780px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* 4대 축 통합 아키텍처 박스 */
+    .architecture-card {
+      background: rgba(10, 25, 55, 0.6);
+      border: 1px solid rgba(0, 210, 255, 0.35);
+      border-radius: 16px;
+      padding: 2.2rem;
+      margin-bottom: 3rem;
+      position: relative;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .architecture-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .architecture-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.25rem;
+      color: var(--cyan);
+      letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .architecture-status {
+      font-size: 0.75rem;
+      color: var(--gold-light);
+      background: rgba(212, 175, 55, 0.15);
+      padding: 4px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      font-weight: 600;
+    }
+
+    .architecture-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .arch-node {
+      background: rgba(6, 18, 38, 0.9);
+      border-radius: 12px;
+      padding: 1.4rem;
+      text-align: center;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .arch-node:hover {
+      transform: translateY(-4px);
+    }
+
+    .arch-node.gold { border: 1px solid rgba(212, 175, 55, 0.4); }
+    .arch-node.cyan { border: 1px solid rgba(0, 210, 255, 0.4); }
+    .arch-node.blue { border: 1px solid rgba(136, 204, 255, 0.4); }
+    .arch-node.emerald { border: 1px solid rgba(16, 185, 129, 0.5); }
+
+    .arch-node .node-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .arch-node .node-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .arch-node .node-desc {
+      font-size: 0.8rem;
+      color: #94a3b8;
+      line-height: 1.6;
+    }
+
+    /* 4대 국 세부 카드 섹션 */
+    .bureau-section {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .bureau-card {
+      background: rgba(6, 18, 38, 0.7);
+      border-radius: 14px;
+      padding: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+      transition: all 0.3s ease;
+    }
+
+    .bureau-card:hover {
+      border-color: rgba(212, 175, 55, 0.4);
+      box-shadow: 0 12px 40px rgba(212, 175, 55, 0.1);
+    }
+
+    .bureau-card.highlight {
+      border-color: rgba(16, 185, 129, 0.5);
+      background: rgba(6, 24, 40, 0.8);
+      box-shadow: 0 10px 40px rgba(16, 185, 129, 0.15);
+    }
+
+    .bureau-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.2rem;
+      flex-wrap: wrap;
+      gap: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding-bottom: 1rem;
+    }
+
+    .bureau-title-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .bureau-icon {
+      font-size: 2rem;
+    }
+
+    .bureau-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+    }
+
+    .bureau-name-en {
+      font-size: 0.75rem;
+      color: var(--text-sub);
+      letter-spacing: 0.08em;
+    }
+
+    .bureau-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 12px;
+    }
+
+    .bureau-body {
+      font-size: 0.92rem;
+      color: #cfd9e8;
+      line-height: 1.8;
+    }
+
+    .bureau-directive {
+      background: rgba(0, 0, 0, 0.25);
+      border-left: 3px solid var(--gold);
+      padding: 0.8rem 1.2rem;
+      border-radius: 4px;
+      margin-bottom: 1.2rem;
+      font-size: 0.88rem;
+    }
+
+    .bureau-directive.emerald {
+      border-left-color: var(--emerald);
+    }
+
+    .bureau-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+
+    .bureau-list li {
+      padding-left: 1.2rem;
+      position: relative;
+      font-size: 0.88rem;
+      color: #a5b4cb;
+    }
+
+    .bureau-list li::before {
+      content: "✦";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+
+    .bureau-list.emerald li::before {
+      color: var(--emerald);
+    }
+
+    /* Strategy Sector Badges */
+    .sector-badges-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.8rem;
+      margin: 1.2rem 0;
+    }
+
+    .sector-badge {
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: 8px;
+      padding: 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: #e2e8f0;
+    }
+
+    .sector-badge strong {
+      color: #34d399;
+    }
+
+    /* Footer Navigation */
+    .gov-footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      .top-nav {
+        padding: 0.8rem 1rem;
+      }
+      .gov-hero-title {
+        font-size: 1.8rem;
+      }
+      .bureau-card {
+        padding: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Sticky Navigation -->
+  <header class="top-nav">
+    <a href="main.html" class="nav-logo-group" title="키아노스 메인 포털로 이동">
+      <span class="nav-logo-icon">👑</span>
+      <div class="nav-title-box">
+        <span class="en">KYANOS GOV</span>
+        <span class="kr">주권국 메인 포털</span>
+      </div>
+    </a>
+    <div class="nav-actions">
+      <a href="market_monitor.html" target="_blank" class="nav-btn nav-btn-pulse" title="실시간 금융 인텔리전스 센터">
+        <span>📊</span> 마켓 펄스 ↗
+      </a>
+      <a href="treasury_hub.html" class="nav-btn nav-btn-gold" title="국가 자립 재정 허브">
+        <span>💎</span> 자립 재정 허브
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="gov-container">
+
+    <!-- Hero Header -->
+    <section class="gov-hero">
+      <div class="gov-badge">Ministry of Economy · Sovereign Portals</div>
+      <h1 class="gov-hero-title">🏛️ 키아노스 경제부 산하 부서 로드맵</h1>
+      <p class="gov-hero-desc">
+        국가 최고 원수 파이튼 국왕의 덕치(德治) 철학에 기반한 <strong>4대 핵심 국(局)</strong>의 역할 지침과 실물·디지털·금융 융합 경제 아키텍처
+      </p>
+    </section>
+
+    <!-- 4대 축 통합 아키텍처 박스 -->
+    <section class="architecture-card">
+      <div class="architecture-header">
+        <h2 class="architecture-title">
+          <span>🌐</span> 경제부 4대 축 통합 아키텍처 (Conceptual Architecture)
+        </h2>
+        <span class="architecture-status">실시간 금융 인텔리전스 24/7 가동</span>
+      </div>
+
+      <div class="architecture-grid">
+        <!-- Node 1 -->
+        <div class="arch-node gold">
+          <div class="node-icon">⚜️</div>
+          <div class="node-title" style="color: var(--gold-light);">[실물 축] EVERMORE 럭셔리</div>
+          <p class="node-desc">
+            요트·슈퍼카·하이엔드 리조트 및 아트 실물 클러스터 구축 ➔ <strong>실물 담보 가치 창출</strong>
+          </p>
+        </div>
+
+        <!-- Node 2 -->
+        <div class="arch-node cyan">
+          <div class="node-icon">📈</div>
+          <div class="node-title" style="color: var(--cyan);">[디지털 축] 자산 증권 발행</div>
+          <p class="node-desc">
+            실물 연계 자산(RWA) 토큰화 &amp; XRP 레저 기반 국부 유동성 공급 ➔ <strong>디지털 자본 파운드리</strong>
+          </p>
+        </div>
+
+        <!-- Node 3 -->
+        <div class="arch-node blue">
+          <div class="node-icon">🌍</div>
+          <div class="node-title" style="color: #88ccff;">[글로벌 축] 무역·외교</div>
+          <p class="node-desc">
+            키아노스 무관세 자유무역구(FTZ) 운영 &amp; 글로벌 국부펀드 유치 ➔ <strong>대외 자본 네트워크</strong>
+          </p>
+        </div>
+
+        <!-- Node 4 -->
+        <div class="arch-node emerald">
+          <div class="node-icon">📊</div>
+          <div class="node-title" style="color: #34d399;">[금융 인텔리전스] 마켓 펄스</div>
+          <p class="node-desc">
+            주식·암호화폐(XRP)·금 실시간 추적 &amp; 파이튼 경제 칼럼·시장 보도 ➔ <strong>실전자산 운용 인텔리전스</strong>
+          </p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 1.5rem; font-size: 0.85rem; color: var(--gold-light); font-style: italic;">
+        “실물 자산(에버모어)과 디지털 유동성(증권 발행국), 글로벌 관문(무역외교국), 실시간 시장 인텔리전스(마켓 펄스)의 완벽한 결합”
+      </div>
+    </section>
+
+    <!-- 4대 국 세부 실무 계획 리스트 -->
+    <section class="bureau-section">
+
+      <!-- 1. EVERMORE 럭셔리 경제국 -->
+      <article class="bureau-card">
+        <div class="bureau-head">
+          <div class="bureau-title-group">
+            <span class="bureau-icon">⚜️</span>
+            <div>
+              <h2 class="bureau-name" style="color: var(--gold-light);">1. EVERMORE 럭셔리 경제국</h2>
+              <span class="bureau-name-en">Bureau of Luxury Economy &amp; High-End Heritage</span>
+            </div>
+          </div>
+          <span class="bureau-tag" style="background: var(--gold); color: #000;">실물 자산 표준</span>
+        </div>
+        <div class="bureau-body">
+          <div class="bureau-directive">
+            <strong>🎯 핵심 역할 및 지침:</strong> 키아노스 영내 최고급 럭셔리 라이프스타일(요트 마리나, 프라이빗 에스테이트, 오트쿠튀르)의 공인 규격을 제정하고 가치 보존형 실물 자산군을 집중 육성합니다.
+          </div>
+          <ul class="bureau-list">
+            <li><strong>EVERMORE 럭셔리 정품 인증제:</strong> 영내 거래되는 명품 및 수집형 자산에 대한 고유 블록체인 식별코드 부여.</li>
+            <li><strong>마리나 &amp; 하이퍼카 인프라 포트폴리오 관리:</strong> 키아노스 국가 지도의 핵심 에버모어 권역 내 자산 가치 평가 체계 수립.</li>
+            <li><strong>앤트뉴스 라이프스타일 시그널 공급:</strong> 글로벌 럭셔리 옥션 및 대체투자 동향을 국가 미디어에 정기 브리핑.</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 2. 자산 증권 발행국 -->
+      <article class="bureau-card">
+        <div class="bureau-head">
+          <div class="bureau-title-group">
+            <span class="bureau-icon">📈</span>
+            <div>
+              <h2 class="bureau-name" style="color: var(--cyan);">2. 자산 증권 발행국</h2>
+              <span class="bureau-name-en">Bureau of Asset-Backed Securities &amp; XRPL Tokenization</span>
+            </div>
+          </div>
+          <span class="bureau-tag" style="background: var(--cyan); color: #000;">RWA 디지털 파운드리</span>
+        </div>
+        <div class="bureau-body">
+          <div class="bureau-directive">
+            <strong>🎯 핵심 역할 및 지침:</strong> 실물 연계 자산(RWA)의 토큰 증권(ST) 발행 메커니즘을 총괄하며, XRP 원장 기반의 키아노스 국부 펀드 및 국채 유동성 모델을 설계합니다.
+          </div>
+          <ul class="bureau-list">
+            <li><strong>키아노스 RWA 파운드리 설계:</strong> 실물 부동산, 마리나 선석, 희귀 예술품의 분할 지분 증권화 프레임워크 구축.</li>
+            <li><strong>국가 디지털 자산 백서(Whitepaper) 초안 편찬:</strong> 국고 리저브 안정성 유지 및 스마트 컨트랙트 발행 규정 입안.</li>
+            <li><strong>XRP 온체인 모니터링:</strong> 글로벌 디지털 유동성 흐름과 리스크를 24/7 추적 분석하여 자산 건전성 유지.</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 3. 글로벌 무역·외교국 -->
+      <article class="bureau-card">
+        <div class="bureau-head">
+          <div class="bureau-title-group">
+            <span class="bureau-icon">🌍</span>
+            <div>
+              <h2 class="bureau-name" style="color: #88ccff;">3. 글로벌 무역·외교국</h2>
+              <span class="bureau-name-en">Bureau of Global Trade &amp; Economic Diplomacy</span>
+            </div>
+          </div>
+          <span class="bureau-tag" style="background: rgba(50, 150, 255, 0.7); color: #fff;">외교 &amp; 자유무역</span>
+        </div>
+        <div class="bureau-body">
+          <div class="bureau-directive">
+            <strong>🎯 핵심 역할 및 지침:</strong> 키아노스 영내 무관세 자유무역항(FTZ) 조성, 글로벌 국부펀드 및 전략적 테크 자본 유치, 다자간 디지털 경제 협력망을 지휘합니다.
+          </div>
+          <ul class="bureau-list">
+            <li><strong>키아노스 자유무역구(FTZ) 조례 수립:</strong> 입주 글로벌 테크/럭셔리 기업을 위한 법인세 인센티브 및 통상 규정 명문화.</li>
+            <li><strong>스위스·UAE·싱가포르 패밀리 오피스 IR 패키지:</strong> 글로벌 자본 유치를 위한 국가 투자 안내서 편찬.</li>
+            <li><strong>국제부와의 외교 협력:</strong> 양자 무역 협정 및 글로벌 거버넌스 회의(NEXFORUM) 연계 무역 활성화.</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 4. 글로벌 금융 인텔리전스국 -->
+      <article class="bureau-card highlight">
+        <div class="bureau-head">
+          <div class="bureau-title-group">
+            <span class="bureau-icon">📊</span>
+            <div>
+              <h2 class="bureau-name" style="color: #34d399;">4. 글로벌 금융 인텔리전스국</h2>
+              <span class="bureau-name-en">Bureau of Global Financial Intelligence &amp; Market Newsroom</span>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span class="bureau-tag" style="background: #34d399; color: #000;">실전자산 운용 인텔리전스</span>
+            <a href="market_monitor.html" target="_blank" class="nav-btn nav-btn-pulse" style="padding: 4px 12px; font-size: 0.75rem;">
+              ⚡ LIVE 마켓 펄스 ↗
+            </a>
+          </div>
+        </div>
+        <div class="bureau-body">
+          <div class="bureau-directive emerald">
+            <strong>🎯 국왕 파이튼 님 지침:</strong> 파이튼 국왕의 실전 주식·암호화폐·원자재 자산 운용을 정밀 보좌하기 위해 국내외 실시간 시세 및 온체인 지표를 상시 감시하고, 국왕의 날카로운 경제 칼럼과 글로벌 매크로 분석 보도 기사를 총괄 발행합니다.
+          </div>
+
+          <!-- 파이튼 국왕 5대 중점 전략 산업 안내 배지 -->
+          <div style="margin: 1.2rem 0; font-size: 0.85rem; font-weight: 700; color: #6ee7b7;">
+            ⚡ 파이튼 국왕 지정 5대 미래 테크 중점 전략 산업 밀착 감시망:
+          </div>
+          <div class="sector-badges-grid">
+            <div class="sector-badge"><span>🔋</span> <div><strong>2차전지</strong><br><small style="color:#94a3b8;">배터리·소재 공급망</small></div></div>
+            <div class="sector-badge"><span>⚡</span> <div><strong>전기자동차(EV)</strong><br><small style="color:#94a3b8;">자율주행·FSD 혁신</small></div></div>
+            <div class="sector-badge"><span>💾</span> <div><strong>반도체</strong><br><small style="color:#94a3b8;">HBM·수급 파운드리</small></div></div>
+            <div class="sector-badge"><span>🧠</span> <div><strong>인공지능(AI)</strong><br><small style="color:#94a3b8;">빅테크 데이터센터</small></div></div>
+            <div class="sector-badge"><span>🦾</span> <div><strong>로봇산업</strong><br><small style="color:#94a3b8;">휴머노이드 자동화</small></div></div>
+          </div>
+
+          <ul class="bureau-list emerald">
+            <li><strong>실시간 글로벌 4대 마켓 모니터링 (Market Pulse):</strong> 암호화폐(XRP·비트코인·이더리움 등 업비트 실시간), 국내 증시(코스피·코스닥 및 관심 종목), 글로벌 빅테크(나스닥·엔비디아·테슬라), 귀금속(한국금거래소 살때/팔때 금·은 &amp; 뉴욕 COMEX 및 금은비) 무과금 초고속 연동.</li>
+            <li><strong>파이튼 경제 칼럼 &amp; 시장 보도룸 (Python Column &amp; Press Room):</strong> 파이튼 국왕께서 직접 집필하시는 시장 통찰 칼럼, 매크로 논평 및 마이클 스나이더 등 글로벌 석학의 칼럼 정밀 번역본 공식 보도.</li>
+            <li><strong>총리 앤트 직속 24/7 리스크 조기경보 (Ant Early Warning):</strong> 미 연준(Fed) 금리 정책, 글로벌 공급망·지정학 리스크 및 보유 주식 관련 핵심 공시를 실시간 요약 브리핑.</li>
+          </ul>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- Footer Navigation -->
+    <footer class="gov-footer">
+      <a href="main.html" class="nav-btn nav-btn-gold" style="padding: 0.8rem 2rem; font-size: 0.95rem;">
+        <span>👑</span> 키아노스 메인 포털로 돌아가기
+      </a>
+      <a href="market_monitor.html" target="_blank" class="nav-btn nav-btn-pulse" style="padding: 0.8rem 2rem; font-size: 0.95rem;">
+        <span>📊</span> 마켓 펄스 실시간 금융 센터 ↗
+      </a>
+    </footer>
+
+  </main>
+
+  <!-- 키아노스 국민 방문 경험치 & 자립 재정 스크립트 -->
+  <script src="assets/js/kyanos_citizen_xp.js"></script>
+  <script src="assets/js/kyanos_treasury.js"></script>
+  <!-- 키아노스 글로벌 다국어 실시간 번역기 -->
+  <script src="assets/js/kyanos_i18n.js"></script>
+</body>
+</html>

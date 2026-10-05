@@ -1,0 +1,79 @@
+/* ============================================================================
+   KYANOS GLOBAL I18N & LANGUAGE TRANSLATOR STYLES
+   키아노스 주권국 글로벌 다국어 번역 위젯 스타일
+   총괄: 앤트 국무총리 | 수석 엔지니어: 탈로스 (티탄)
+   ============================================================================ */
+
+.kyanos-lang-selector-wrap {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(6, 18, 38, 0.85);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 20px;
+  padding: 3px 8px;
+  gap: 6px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  font-family: 'Montserrat', sans-serif;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.kyanos-lang-selector-wrap:hover {
+  border-color: rgba(212, 175, 55, 0.8);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+.kyanos-lang-globe {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.kyanos-lang-btn {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.kyanos-lang-btn:hover {
+  color: #fff;
+}
+
+.kyanos-lang-btn.active {
+  background: linear-gradient(135deg, #d4af37, #b89028);
+  color: #040914;
+  font-weight: 700;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+}
+
+/* Hide Google Translate Default Banner & Tooltips for Clean UI */
+.goog-te-banner-frame.skiptranslate,
+body > .skiptranslate > iframe {
+  display: none !important;
+}
+
+body {
+  top: 0px !important;
+}
+
+#goog-gt-tt,
+.goog-te-balloon-frame {
+  display: none !important;
+}
+
+.goog-text-highlight {
+  background: none !important;
+  box-shadow: none !important;
+}
+
+/* Floating position when no header */
+.kyanos-lang-selector-wrap.floating {
+  position: fixed;
+  top: 1.2rem;
+  right: 1.5rem;
+}
