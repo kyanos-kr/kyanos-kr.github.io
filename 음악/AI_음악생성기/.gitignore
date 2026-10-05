@@ -1,0 +1,20 @@
+# 보안 격리 대상 (Git 추적 배제)
+.env
+*.token
+*.key
+kaggle.json
+__pycache__/
+*.pyc
+*.pyo
+
+# 대용량 모델 가중치 및 캐시
+*.ckpt
+*.safetensors
+*.pt
+*.bin
+models/
+cache/
+
+# 가상환경
+.venv/
+venv/
