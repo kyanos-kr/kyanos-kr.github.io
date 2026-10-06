@@ -26,16 +26,18 @@
     }
 
     /**
-     * 🛡️ 키아노스(KYANOS) 국가 브랜드 고유명사 보호 및 실시간 자동 교정기
-     * 구글 번역기가 'KYANOS'를 오역한 '캬노스'를 원천 방지하고 '키아노스'로 자동 수복함
+     * 🛡️ 키아노스(KYANOS) 국가 브랜드 고유명사 보호 및 실시간 지능형 국호 전환기
+     * - 한국어(ko): 한국어 고유 국호 '키아노스' 완벽 보존
+     * - 다국어(en, ja, zh-CN 등): 글로벌 공식 영문 대문자 'KYANOS' 일괄 적용
+     * - 구글 번역 엔진의 '캬노스' 등 오역/왜곡 원천 방지 및 자동 치환
      */
     initBrandProtection() {
       const protectElements = () => {
-        // 로고 및 국가명 관련 셀렉터에 notranslate 및 translate="no" 강제 부여
+        // 로고 및 브랜드 영문 고유명사 요소 보호
         const logoSelectors = [
-          '.brand-logo', '.brand-text', '.nav-logo-group', '.nav-title-box',
-          '.top-brand-emblem', '.emblem-text-group', '.realm-title-area',
-          '.national-emblem-badge', '.hero-title', '.badge'
+          '.brand-logo', '.brand-text', '.nav-logo-group',
+          '.top-brand-emblem', '.emblem-text-group',
+          '.national-emblem-badge', '.badge'
         ];
         
         logoSelectors.forEach(selector => {
@@ -45,8 +47,12 @@
           });
         });
 
-        // 텍스트 노드 실시간 교정: '캬노스' 오타 발견 즉시 '키아노스'로 복원
-        this.healTypoInNode(document.body);
+        // 국호 지능형 표기 즉시 적용
+        this.updateBrandPresentation(this.currentLang);
+        // 전체 DOM 텍스트 노드 힐링
+        if (document.body) {
+          this.healTypoInNode(document.body);
+        }
       };
 
       if (document.readyState === 'loading') {
@@ -60,14 +66,77 @@
       }
     }
 
+    /**
+     * 👑 국가 명칭 지능형 스위칭
+     * 한국어(ko) -> '키아노스'
+     * 글로벌(en, ja, zh-CN 등) -> 'KYANOS'
+     */
+    updateBrandPresentation(langCode) {
+      const isKorean = (langCode === 'ko');
+
+      // 1. Hero Title (.hero-title)
+      document.querySelectorAll('.hero-title').forEach(el => {
+        if (!el.dataset.origKr) el.dataset.origKr = el.textContent.trim();
+        el.textContent = isKorean ? (el.dataset.origKr || '키아노스') : 'KYANOS';
+        el.classList.add('notranslate');
+        el.setAttribute('translate', 'no');
+      });
+
+      // 2. Realm Sub (.realm-kr-sub)
+      document.querySelectorAll('.realm-kr-sub').forEach(el => {
+        if (!el.dataset.origKr) el.dataset.origKr = el.textContent.trim();
+        el.textContent = isKorean ? (el.dataset.origKr || '키아노스') : 'THE SOVEREIGN REALM';
+        el.classList.add('notranslate');
+        el.setAttribute('translate', 'no');
+      });
+
+      // 3. Navigation Title Box (.nav-title-box)
+      document.querySelectorAll('.nav-title-box').forEach(box => {
+        const krSpan = box.querySelector('.kr');
+        if (krSpan) {
+          if (!krSpan.dataset.origKr) krSpan.dataset.origKr = krSpan.textContent.trim();
+          if (krSpan.dataset.origKr.includes('키아노스 주권국')) {
+            krSpan.textContent = isKorean ? krSpan.dataset.origKr : 'The Sovereign Realm';
+          } else if (!isKorean && krSpan.textContent.includes('키아노스')) {
+            krSpan.textContent = krSpan.textContent.replace(/키아노스/g, 'KYANOS');
+          } else if (isKorean && krSpan.dataset.origKr) {
+            krSpan.textContent = krSpan.dataset.origKr;
+          }
+        }
+      });
+
+      // 4. 고정 골드 타이틀 (.realm-gold-title)
+      document.querySelectorAll('.realm-gold-title').forEach(el => {
+        el.textContent = 'KYANOS';
+        el.classList.add('notranslate');
+        el.setAttribute('translate', 'no');
+      });
+
+      // 5. 문서 제목 (document.title)
+      if (!isKorean && document.title && document.title.includes('키아노스')) {
+        document.title = document.title.replace(/키아노스/g, 'KYANOS');
+      }
+
+      // 6. 텍스트 노드 순회
+      if (document.body) {
+        this.healTypoInNode(document.body);
+      }
+    }
+
     observeDOM() {
-      // 구글 번역기가 텍스트를 비동기로 변경할 때 '캬노스' 발생 즉시 감지하여 교정
+      // 구글 번역기가 텍스트를 비동기로 변경할 때 실시간 감지하여 교정
       const observer = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
           if (mutation.type === 'characterData') {
-            this.healTextNode(mutation.target);
+            const parent = mutation.target.parentElement;
+            if (parent && parent.tagName !== 'SCRIPT' && parent.tagName !== 'STYLE' && parent.tagName !== 'TEXTAREA') {
+              this.healTextNode(mutation.target);
+            }
           } else if (mutation.type === 'childList') {
             mutation.addedNodes.forEach(node => {
+              if (node.nodeType === Node.ELEMENT_NODE && (node.tagName === 'SCRIPT' || node.tagName === 'STYLE' || node.tagName === 'TEXTAREA')) {
+                return;
+              }
               this.healTypoInNode(node);
             });
           }
@@ -88,7 +157,21 @@
         return;
       }
       
-      const walker = document.createTreeWalker(rootNode, NodeFilter.SHOW_TEXT, null, false);
+      const walker = document.createTreeWalker(
+        rootNode,
+        NodeFilter.SHOW_TEXT,
+        {
+          acceptNode: function(node) {
+            if (!node || !node.parentElement) return NodeFilter.FILTER_REJECT;
+            const tag = node.parentElement.tagName;
+            if (tag === 'SCRIPT' || tag === 'STYLE' || tag === 'NOSCRIPT' || tag === 'TEXTAREA') {
+              return NodeFilter.FILTER_REJECT;
+            }
+            return NodeFilter.FILTER_ACCEPT;
+          }
+        },
+        false
+      );
       let currentNode = walker.nextNode();
       while (currentNode) {
         this.healTextNode(currentNode);
@@ -97,8 +180,21 @@
     }
 
     healTextNode(textNode) {
-      if (textNode && textNode.nodeValue && textNode.nodeValue.includes('캬노스')) {
-        textNode.nodeValue = textNode.nodeValue.replace(/캬노스/g, '키아노스');
+      if (!textNode || !textNode.nodeValue) return;
+      const val = textNode.nodeValue;
+      const isKorean = (this.currentLang === 'ko');
+
+      if (isKorean) {
+        // 한국어 모드: '캬노스' 오역 발생 시 '키아노스'로 복원
+        if (val.includes('캬노스')) {
+          textNode.nodeValue = val.replace(/캬노스/g, '키아노스');
+        }
+      } else {
+        // 다국어 모드 (EN, JP, CN 등):
+        // 한국어 '키아노스' 및 구글 오역 '캬노스'를 영문 공식 국호 'KYANOS'로 일괄 치환
+        if (val.includes('키아노스') || val.includes('캬노스')) {
+          textNode.nodeValue = val.replace(/키아노스|캬노스/g, 'KYANOS');
+        }
       }
     }
 
@@ -115,6 +211,7 @@
 
           // 초기 저장된 언어가 영어나 기타 언어일 경우 자동 적용
           if (this.currentLang && this.currentLang !== 'ko') {
+            this.updateBrandPresentation(this.currentLang);
             setTimeout(() => this.applyLanguage(this.currentLang), 600);
           }
         }
@@ -197,6 +294,7 @@
         }
       });
 
+      this.updateBrandPresentation(langCode);
       this.applyLanguage(langCode);
     }
 
@@ -206,6 +304,8 @@
         this.resetGoogleTranslate();
         return;
       }
+
+      this.updateBrandPresentation(langCode);
 
       // 구글 번역 셀렉트박스 조작
       const select = document.querySelector('.goog-te-combo');
