@@ -1,15 +1,15 @@
 /**
- * 키아노스 시스템 개편 및 서비스 점검 안내 팝업 스크립트
- * Kyanos System Renovation & Service Update Notice Popup
+ * 키아노스 우측 상단 슬림 플로팅 공지 위젯
+ * Kyanos Top-Right Floating Notice Widget Script
  */
 
 (function () {
   'use strict';
 
-  const STORAGE_KEY = 'kyanos_hide_renovation_notice';
+  const STORAGE_KEY = 'kyanos_hide_top_notice';
   const EXPIRE_HOURS = 24;
 
-  // 1. 숨김 여부 체크 (localStorage 확인)
+  // 1. 표시 여부 판별 (24시간 숨김 체크)
   function shouldShowNotice() {
     try {
       const hideUntil = localStorage.getItem(STORAGE_KEY);
@@ -21,7 +21,7 @@
     }
   }
 
-  // 2. CSS 자동 인클루드 (없을 경우 보장)
+  // 2. CSS 링크 보장
   function ensureCSS() {
     const existing = document.querySelector('link[href*="kyanos_notice_popup.css"]');
     if (!existing) {
@@ -32,79 +32,67 @@
     }
   }
 
-  // 3. 모달 DOM 생성 및 렌더링
-  function createNoticeModal() {
+  // 3. 위젯 렌더링
+  function createTopNoticeWidget() {
     if (!shouldShowNotice()) return;
 
     ensureCSS();
 
-    // Backdrop
-    const backdrop = document.createElement('div');
-    backdrop.className = 'kyanos-notice-backdrop';
-    backdrop.id = 'kyanosNoticeBackdrop';
+    const widget = document.createElement('aside');
+    widget.className = 'kyanos-top-notice-widget';
+    widget.id = 'kyanosTopNoticeWidget';
+    widget.setAttribute('aria-label', '키아노스 시스템 개편 안내');
 
-    backdrop.innerHTML = `
-      <div class="kyanos-notice-modal" role="dialog" aria-modal="true" aria-labelledby="kyanosNoticeTitle">
-        <div class="kyanos-notice-header-bar"></div>
-        <div class="kyanos-notice-body">
-          <div class="kyanos-notice-icon-wrap">
-            <span>⚙️</span>
-          </div>
-          <div>
-            <span class="kyanos-notice-tag">NOTICE • OFFICIAL ANNOUNCEMENT</span>
-          </div>
-          <h2 class="kyanos-notice-title" id="kyanosNoticeTitle">
-            시스템 개편 및 서비스 점검 안내
-          </h2>
-          <p class="kyanos-notice-desc">
-            현재 <strong>키아노스(KYANOS)</strong> 공식 포털은 국가 시스템 전면 개편과<br>
-            인텔리전스 인프라 고도화 작업이 상시 진행 중에 있습니다.<br>
-            이에 따라 일부 서비스 및 메뉴 이용 시 일시적인 연결 지연이나 변동이 발생할 수 있으니 방문객 여러분의 너그러운 양해를 부탁드립니다.
-          </p>
+    widget.innerHTML = `
+      <div class="kyanos-top-notice-bar"></div>
+      <div class="kyanos-top-notice-head">
+        <div class="kyanos-top-notice-title-group">
+          <span class="kyanos-top-notice-icon">⚙️</span>
+          <h3 class="kyanos-top-notice-title">시스템 개편 점검 안내</h3>
+        </div>
+        <button type="button" class="kyanos-top-notice-close-x" id="kyanosTopNoticeCloseX" title="닫기" aria-label="닫기">✕</button>
+      </div>
 
-          <div class="kyanos-notice-status-box">
-            <div class="kyanos-notice-status-item">
-              <span class="bullet">✦</span>
-              <span><strong>진행 사항:</strong> 각 부처별 시스템 개편 및 데이터베이스 최적화 정비</span>
-            </div>
-            <div class="kyanos-notice-status-item">
-              <span class="bullet">✦</span>
-              <span><strong>이용 안내:</strong> 개편 완료 시까지 일부 링크 및 기능이 순차적으로 업데이트됩니다.</span>
-            </div>
-            <div class="kyanos-notice-status-item">
-              <span class="bullet">✦</span>
-              <span><strong>목표:</strong> 더욱 품격 있고 신뢰받는 국가 최고 지능형 포털로 도약하겠습니다.</span>
-            </div>
+      <div class="kyanos-top-notice-body">
+        <p class="kyanos-top-notice-text">
+          현재 키아노스 포털은 <strong>시스템 전면 개편 및 DB 인프라 고도화</strong> 작업이 상시 진행 중입니다. 일부 서비스의 이용 변동이 있을 수 있습니다.
+        </p>
+        <div class="kyanos-top-notice-chips">
+          <div class="kyanos-top-notice-chip">
+            <span class="chip-dot">✦</span>
+            <span><strong>진행:</strong> 각 부처 시스템 개편 & 최적화</span>
+          </div>
+          <div class="kyanos-top-notice-chip">
+            <span class="chip-dot">✦</span>
+            <span><strong>안내:</strong> 메뉴 및 기능 순차적 정상화</span>
           </div>
         </div>
+      </div>
 
-        <div class="kyanos-notice-footer">
-          <label class="kyanos-notice-check-label">
-            <input type="checkbox" id="kyanosNoticeHideCheck">
-            <span>오늘 하루 이 창을 열지 않음</span>
-          </label>
-          <button type="button" class="kyanos-notice-btn" id="kyanosNoticeCloseBtn">
-            <span>확인 및 사이트 입장</span>
-            <span>&rarr;</span>
-          </button>
-        </div>
+      <div class="kyanos-top-notice-foot">
+        <label class="kyanos-top-notice-check">
+          <input type="checkbox" id="kyanosTopNoticeHideCheck">
+          <span>오늘 하루 보지 않기</span>
+        </label>
+        <button type="button" class="kyanos-top-notice-confirm-btn" id="kyanosTopNoticeConfirmBtn">닫기</button>
       </div>
     `;
 
-    document.body.appendChild(backdrop);
+    document.body.appendChild(widget);
 
-    // Fade-in animation trigger
+    // Fade-in animation
     requestAnimationFrame(() => {
       setTimeout(() => {
-        backdrop.classList.add('active');
-      }, 50);
+        widget.classList.add('active');
+      }, 80);
     });
 
     // 닫기 로직
-    const closeBtn = backdrop.querySelector('#kyanosNoticeCloseBtn');
-    const hideCheck = backdrop.querySelector('#kyanosNoticeHideCheck');
+    const closeX = widget.querySelector('#kyanosTopNoticeCloseX');
+    const confirmBtn = widget.querySelector('#kyanosTopNoticeConfirmBtn');
+    const hideCheck = widget.querySelector('#kyanosTopNoticeHideCheck');
 
-    function closeModal() {
+    function closeWidget() {
       if (hideCheck && hideCheck.checked) {
         try {
           const expireTime = new Date().getTime() + (EXPIRE_HOURS * 60 * 60 * 1000);
@@ -114,34 +102,19 @@
         }
       }
 
-      backdrop.classList.remove('active');
+      widget.classList.remove('active');
       setTimeout(() => {
-        backdrop.remove();
-      }, 400);
+        widget.remove();
+      }, 350);
     }
 
-    closeBtn.addEventListener('click', closeModal);
-
-    // 배경 클릭 시 닫기
-    backdrop.addEventListener('click', (e) => {
-      if (e.target === backdrop) {
-        closeModal();
-      }
-    });
-
-    // ESC 키로 닫기
-    window.addEventListener('keydown', function escHandler(e) {
-      if (e.key === 'Escape' && document.body.contains(backdrop)) {
-        closeModal();
-        window.removeEventListener('keydown', escHandler);
-      }
-    });
+    if (closeX) closeX.addEventListener('click', closeWidget);
+    if (confirmBtn) confirmBtn.addEventListener('click', closeWidget);
   }
 
-  // DOM 로드 완료 후 실행
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', createNoticeModal);
+    document.addEventListener('DOMContentLoaded', createTopNoticeWidget);
   } else {
-    createNoticeModal();
+    createTopNoticeWidget();
   }
 })();
