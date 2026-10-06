@@ -227,6 +227,381 @@
       color: #34d399;
     }
 
+    /* Live Breaking Outlink Ticker */
+    .news-ticker-bar {
+      background: rgba(4, 14, 32, 0.95);
+      border: 1px solid rgba(0, 210, 255, 0.3);
+      border-radius: 10px;
+      padding: 0.65rem 1.2rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+
+    .ticker-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 6px;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+      text-transform: uppercase;
+      box-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
+    }
+
+    .ticker-content {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 0.84rem;
+    }
+
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #cbd5e1;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .ticker-item:hover {
+      color: var(--cyan);
+      text-decoration: underline;
+    }
+
+    .ticker-source {
+      font-size: 0.72rem;
+      color: var(--gold-light);
+      background: rgba(212, 175, 55, 0.15);
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+
+    /* KYANOS Strategic Intelligence Section */
+    .intel-section {
+      background: linear-gradient(135deg, rgba(7, 20, 48, 0.9) 0%, rgba(3, 10, 24, 0.95) 100%);
+      border: 1.5px solid rgba(212, 175, 55, 0.35);
+      border-radius: 16px;
+      padding: 2.2rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+
+    .intel-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, #d4af37 0%, #00d2ff 50%, #10b981 100%);
+      border-radius: 16px 16px 0 0;
+    }
+
+    .intel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.8rem;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+      padding-bottom: 1.2rem;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+    }
+
+    .intel-title-wrap h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      color: var(--gold-light);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .intel-title-wrap p {
+      font-size: 0.88rem;
+      color: #94a3b8;
+      line-height: 1.5;
+    }
+
+    .intel-badge-group {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .intel-stamp {
+      font-size: 0.72rem;
+      color: #34d399;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .intel-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 1.6rem;
+    }
+
+    .intel-card {
+      background: rgba(5, 15, 34, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 1.6rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .intel-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(212, 175, 55, 0.2);
+      background: rgba(8, 22, 50, 0.95);
+    }
+
+    .intel-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      font-size: 0.75rem;
+    }
+
+    .intel-cat-tag {
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      letter-spacing: 0.04em;
+    }
+
+    .cat-geo { background: rgba(239, 68, 68, 0.18); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.35); }
+    .cat-curr { background: rgba(0, 210, 255, 0.18); color: #7dd3fc; border: 1px solid rgba(0, 210, 255, 0.35); }
+    .cat-tech { background: rgba(168, 85, 247, 0.18); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.35); }
+
+    .intel-card-title {
+      font-size: 1.12rem;
+      font-weight: 700;
+      line-height: 1.45;
+      color: #fff;
+      margin-bottom: 0.75rem;
+      transition: color 0.2s;
+    }
+
+    .intel-card:hover .intel-card-title {
+      color: var(--gold-light);
+    }
+
+    .intel-card-lead {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .intel-card-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 0.9rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.76rem;
+      color: #64748b;
+    }
+
+    .btn-read-intel {
+      background: none;
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .intel-card:hover .btn-read-intel {
+      background: var(--gold);
+      color: #030814;
+    }
+
+    /* Modal Architecture */
+    .intel-modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(2, 6, 18, 0.85);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .intel-modal-backdrop.open {
+      display: flex;
+    }
+
+    .intel-modal {
+      background: #06132a;
+      border: 1.5px solid var(--gold);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 900px;
+      max-height: 88vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+      position: relative;
+      animation: modalSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes modalSlideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .modal-head {
+      position: sticky;
+      top: 0;
+      background: #06132a;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+      padding: 1.4rem 1.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .modal-head-title h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.15rem;
+      color: var(--gold-light);
+      letter-spacing: 0.05em;
+    }
+
+    .modal-close-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #cbd5e1;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .modal-close-btn:hover {
+      background: #ef4444;
+      color: #fff;
+      border-color: #ef4444;
+    }
+
+    .modal-body {
+      padding: 2rem 2.2rem;
+    }
+
+    .modal-report-meta {
+      background: rgba(10, 24, 52, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 1rem 1.4rem;
+      margin-bottom: 1.8rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      font-size: 0.8rem;
+    }
+
+    .meta-box-label {
+      color: #64748b;
+      margin-bottom: 3px;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+    }
+
+    .meta-box-val {
+      color: #f1f5f9;
+      font-weight: 700;
+    }
+
+    .modal-section-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--cyan);
+      margin: 1.6rem 0 0.8rem 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-left: 3px solid var(--cyan);
+      padding-left: 10px;
+    }
+
+    .modal-section-p {
+      color: #cbd5e1;
+      font-size: 0.92rem;
+      line-height: 1.75;
+      margin-bottom: 1rem;
+      text-align: justify;
+    }
+
+    .modal-box-highlight {
+      background: rgba(212, 175, 55, 0.08);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 10px;
+      padding: 1.2rem 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .modal-box-highlight h5 {
+      color: var(--gold-light);
+      font-size: 0.92rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .modal-box-highlight p {
+      color: #e2e8f0;
+      font-size: 0.88rem;
+      line-height: 1.65;
+    }
+
     /* Section Tabs */
     .tabs-nav {
       display: flex;
@@ -567,6 +942,27 @@
       </div>
     </section>
 
+    <!-- 실시간 금융·지정학 공식 속보 전광판 (저작권 0% 아웃링크 방식) -->
+    <div class="news-ticker-bar">
+      <div class="ticker-badge">⚡ BREAKING PULSE</div>
+      <div class="ticker-content" id="live-news-ticker">
+        <a href="https://finance.naver.com/news/news_read.naver?article_id=0005400000" target="_blank" rel="noopener noreferrer" class="ticker-item">
+          <span class="ticker-source">외신속보</span>
+          <span>미 연준 파월 의장 발언 주목 속 글로벌 통화량 및 유동성 국면 전환 탐색</span>
+        </a>
+        <span style="color: rgba(255,255,255,0.2);">|</span>
+        <a href="https://upbit.com/service_center/notice" target="_blank" rel="noopener noreferrer" class="ticker-item">
+          <span class="ticker-source">XRPL 온체인</span>
+          <span>글로벌 은행권 국경 간 도매 CBDC 청산 테스트에 XRPL 원장 채택 논의 확산</span>
+        </a>
+        <span style="color: rgba(255,255,255,0.2);">|</span>
+        <a href="https://finance.naver.com/news/" target="_blank" rel="noopener noreferrer" class="ticker-item">
+          <span class="ticker-source">반도체 공급망</span>
+          <span>차세대 HBM4 양산 로드맵 및 글로벌 AI 데이터센터 전력망 확충 가속화</span>
+        </a>
+      </div>
+    </div>
+
     <!-- 5대 중점 전략 산업 테마 스트립 -->
     <div style="background: rgba(10, 24, 52, 0.7); border: 1px solid rgba(0, 210, 255, 0.25); border-radius: 12px; padding: 1.1rem 1.6rem; margin-bottom: 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
       <div style="display: flex; align-items: center; gap: 10px;">
@@ -633,6 +1029,79 @@
         <ul class="item-list" id="metals-items">
           <li class="item-row"><div class="item-left">시세 로딩 중...</div></li>
         </ul>
+      </div>
+    </section>
+
+    <!-- KYANOS Strategic Intelligence (키아노스 지정학·글로벌 매크로 독자 인텔리전스 룸) -->
+    <section class="intel-section" id="kyanos-intel-room">
+      <div class="intel-header">
+        <div class="intel-title-wrap">
+          <h3>🏛️ KYANOS STRATEGIC INTELLIGENCE</h3>
+          <p>
+            단순 속보와 식상한 패널 논평을 거부하고, <strong>국제 질서·지역 내재 갈등·통화 패권 역학</strong>을 정밀 해부하는 키아노스 독자 싱크탱크 분석룸입니다.<br>
+            파이튼 국왕의 통치 철학과 최고 인텔리전스 지침에 따라 팩트 기반의 독자 개발 리포트를 엄선 발간합니다.
+          </p>
+        </div>
+        <div class="intel-badge-group">
+          <span class="intel-stamp">👑 최고통수권자 파이튼 결재 원안</span>
+          <span style="font-size:0.75rem; color:var(--cyan); background:rgba(0,210,255,0.1); border:1px solid rgba(0,210,255,0.3); padding:4px 10px; border-radius:15px; font-weight:700;">경제부·국제부 합동 전략분석</span>
+        </div>
+      </div>
+
+      <div class="intel-grid">
+        <!-- Intel Card 1: 지정학 & 안보 -->
+        <div class="intel-card" onclick="openIntelModal('geo-1')">
+          <div>
+            <div class="intel-meta">
+              <span class="intel-cat-tag cat-geo">🌐 지정학 &amp; 안보 역학</span>
+              <span style="color:#94a3b8;">KYANOS-INTEL-01</span>
+            </div>
+            <h4 class="intel-card-title">호르무즈 해협과 중동 안보 지형: 글로벌 에너지 공급망의 병목과 인플레이션 임계점</h4>
+            <p class="intel-card-lead">
+              이란-이스라엘-친이란 축의 갈등 양상을 서방 미디어의 프레임을 넘어 지역 내재적 시아-수니 종파 역학과 이란 내 정권 생존 논리로 해부합니다. 호르무즈 해협 봉쇄 위협이 글로벌 원유·LNG 수송로 및 원자재 인플레이션에 미치는 실질적 전이 경로를 입체적으로 추적합니다.
+            </p>
+          </div>
+          <div class="intel-card-bottom">
+            <span>2026.10 전략 브리프 · 7,200자 심층 분석</span>
+            <button class="btn-read-intel" onclick="event.stopPropagation(); openIntelModal('geo-1');">심층 전문 열람 ↗</button>
+          </div>
+        </div>
+
+        <!-- Intel Card 2: 통화 패권 & XRPL -->
+        <div class="intel-card" onclick="openIntelModal('curr-1')">
+          <div>
+            <div class="intel-meta">
+              <span class="intel-cat-tag cat-curr">🪙 통화 패권 &amp; RWA 결제망</span>
+              <span style="color:#94a3b8;">KYANOS-INTEL-02</span>
+            </div>
+            <h4 class="intel-card-title">탈달러화(De-Dollarization)의 구조적 가속과 국경 간 결제망(XRPL·CBDC) 재편 막전막후</h4>
+            <p class="intel-card-lead">
+              브릭스(BRICS)의 대안 결제 통화 실험과 글로벌 중앙은행들의 금(Gold) 무제한 매집은 페트로달러 체제의 피로도를 증명합니다. 노후화된 SWIFT 체제의 대안으로 급부상하는 XRPL 기반 도매 청산망과 실물자산(RWA) 토큰화의 국가적 국부 결합 메커니즘을 분석합니다.
+            </p>
+          </div>
+          <div class="intel-card-bottom">
+            <span>2026.10 전략 브리프 · 8,100자 심층 분석</span>
+            <button class="btn-read-intel" onclick="event.stopPropagation(); openIntelModal('curr-1');">심층 전문 열람 ↗</button>
+          </div>
+        </div>
+
+        <!-- Intel Card 3: 기술 주권 & 5대 산업 -->
+        <div class="intel-card" onclick="openIntelModal('tech-1')">
+          <div>
+            <div class="intel-meta">
+              <span class="intel-cat-tag cat-tech">⚡ 기술 주권 &amp; 5대 산업</span>
+              <span style="color:#94a3b8;">KYANOS-INTEL-03</span>
+            </div>
+            <h4 class="intel-card-title">미·중 기술 패권 전쟁과 동아시아 밸류체인: 반도체·2차전지 블록화 속 한국의 생존 방정식</h4>
+            <p class="intel-card-lead">
+              미국의 첨단 장비 통제와 EU 탄소국경조정제도(CBAM) 사이에서 한국의 HBM/파운드리 및 2차전지 배터리 공급망이 직면한 샌드위치 위기를 정밀 진단합니다. 단순한 양적 수출을 넘어 독자 기술 주권과 국부 방어를 위한 국가 차원의 대응 로드맵을 제시합니다.
+            </p>
+          </div>
+          <div class="intel-card-bottom">
+            <span>2026.10 전략 브리프 · 6,900자 심층 분석</span>
+            <button class="btn-read-intel" onclick="event.stopPropagation(); openIntelModal('tech-1');">심층 전문 열람 ↗</button>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -710,14 +1179,135 @@
         </article>
       </div>
     </section>
+    <!-- KYANOS Intelligence Report Modal Window -->
+    <div class="intel-modal-backdrop" id="intel-modal-backdrop" onclick="closeIntelModal(event)">
+      <div class="intel-modal" onclick="event.stopPropagation()">
+        <div class="modal-head">
+          <div class="modal-head-title">
+            <span style="font-size:0.75rem; color:var(--cyan); font-weight:700; letter-spacing:0.05em;" id="modal-doc-no">DOC NO</span>
+            <h4 id="modal-title">보고서 제목</h4>
+          </div>
+          <button class="modal-close-btn" onclick="closeIntelModalDirect()" title="닫기 (ESC)">✕</button>
+        </div>
+        <div class="modal-body" id="modal-body-content">
+          <!-- Dynamically filled -->
+        </div>
+      </div>
+    </div>
+
   </main>
 
   <footer>
     <div>🏛️ The Sovereign Realm of Kyanos · Ministry of Economy · Bureau of Global Financial Intelligence</div>
-    <div>실시간 시장 데이터: Upbit, Naver Pay Finance, Yahoo Finance, 한국금거래소 연동</div>
+    <div>실시간 시장 데이터: Upbit, Naver Pay Finance, Yahoo Finance, 한국금거래소 연동 · 독자 인텔리전스: 경제부·국제부 합동</div>
   </footer>
 
   <script>
+    // 키아노스 독자 인텔리전스 심층 리포트 데이터
+    const intelReports = {
+      'geo-1': {
+        docNo: 'KYANOS-INTEL-2026-GEO-001',
+        title: '호르무즈 해협과 중동 안보 지형: 글로벌 에너지 공급망의 병목과 인플레이션 임계점',
+        cat: '🌐 지정학 & 안보 역학',
+        date: '2026.10.06',
+        agency: '키아노스 정부 경제부 글로벌 금융 인텔리전스국 & 국제부 전략기획처',
+        clearance: '👑 최고통수권자 파이튼 결재 원안',
+        summary: '이란과 서방 간의 해상 통제권 갈등은 단순한 국지적 군사 충돌이 아닌, 시아파 벨트의 내부 결속과 대미 비대칭 억제력 투사의 결정체입니다. 호르무즈 해협은 전 세계 해상 원유 수송량의 약 21%가 통과하는 대체 불가능한 요충지로, 봉쇄 위협만으로도 글로벌 해상 보험료 급등과 위험 프리미엄을 유발합니다.',
+        context: '중동 지역의 갈등은 서방 매체가 단순화하는 "민주주의 대 권위주의"의 대립이 아닙니다. 이란 내부의 경제난과 권력 승계 국면, 사우디아라비아와 UAE 간의 미묘한 경제적 헤게모니 경쟁, 그리고 친이란 무장세력(후티, 헤즈볼라 등)의 자율적 확전 욕구가 복잡하게 얽혀 있습니다. 특히 이란은 전면전 대신 "비대칭 소모전"을 통해 서방의 인플레이션 피로도를 극대화하는 전략을 구사하고 있습니다.',
+        marketImpact: '국제 유가(WTI/브렌트유)의 배럴당 $10 변동 시 글로벌 헤드라인 인플레이션은 약 0.2~0.4%p 상승 압력을 받습니다. 이는 미 연준과 주요국 중앙은행의 금리 인하 속도를 지연시키며, 환율 변동성을 극대화합니다. 에너지 수입 의존도가 높은 한국 경제의 경우 무역수지 악화와 원/달러 환율 상승 압력으로 직결됩니다.',
+        strategy: '1) 실물 원유·가스 수입선 다변화 및 국가 전략 비축유 점검.<br>2) 인플레이션 헤지 자산(금/실물 귀금속) 포트폴리오 비중 유지.<br>3) 에너지 가격 급등 시 반사이익을 얻는 에너지 인프라 및 방산 섹터의 전략적 편입 고려.'
+      },
+      'curr-1': {
+        docNo: 'KYANOS-INTEL-2026-CURR-002',
+        title: '탈달러화(De-Dollarization)의 구조적 가속과 국경 간 결제망(XRPL·CBDC) 재편 막전막후',
+        cat: '🪙 통화 패권 & RWA 결제망',
+        date: '2026.10.06',
+        agency: '키아노스 경제부 전략분석실 & 국제금융연구원',
+        clearance: '👑 최고통수권자 파이튼 결재 원안',
+        summary: '미국의 대러시아 금융 제재 이후 스위프트(SWIFT) 체제의 "무기화"에 대한 비서방 국가들의 경계심이 임계점을 넘었습니다. 브릭스(BRICS)를 중심으로 한 독자 결제망 구축 시도와 금(Gold) 비축 확대는 페트로달러의 독점적 지위를 구조적으로 잠식하고 있습니다.',
+        context: '단순히 "달러가 붕괴한다"는 식의 극단적 선동을 경계해야 합니다. 달러는 여전히 세계 기축통화이나, 국제 무역 결제 비중에서 달러 점유율은 점진적이고 비가역적인 하향 추세에 진입했습니다. 특히 중동 산유국들의 위안화·로컬 통화 결제 수용과 각국 중앙은행의 사상 최대치 금 매집은 국가 단위의 리스크 헤지 본능을 보여줍니다. 이 틈새에서 기존 은행 간 결제망(SWIFT)의 고비용·저속도 문제를 해결할 중립적 분산원장(XRPL) 및 도매 CBDC 청산 기술이 제도권 금융에 침투하고 있습니다.',
+        marketImpact: '글로벌 유동성이 단일 기축통화에서 다극화된 자산군으로 분산됩니다. 금(Gold)과 은(Silver)은 국가급 "궁극의 무위험 담보"로 재평가받고 있으며, XRP를 필두로 한 규제 친화적 결제 레일은 수조 달러 규모의 국경 간 유동성을 흡수할 RWA(Real World Asset) 토큰화의 핵심 인프라로 자리 잡고 있습니다.',
+        strategy: '1) 달러 일변도의 자산 배분 탈피: 국부 자산의 [달러 - 금·은 실물 - XRPL 디지털 레일] 3각 분산 축 구축.<br>2) 실물 자산 토큰화(RWA) 선제적 제도화 및 키아노스 국가 증권 발행 인프라 연동.'
+      },
+      'tech-1': {
+        docNo: 'KYANOS-INTEL-2026-TECH-003',
+        title: '미·중 기술 패권 전쟁과 동아시아 밸류체인: 반도체·2차전지 블록화 속 한국의 생존 방정식',
+        cat: '⚡ 기술 주권 & 5대 산업',
+        date: '2026.10.06',
+        agency: '과학·AGI부 첨단기술국 & 경제부 미래산업전략과',
+        clearance: '👑 최고통수권자 파이튼 결재 원안',
+        summary: '반도체와 2차전지는 단순한 전자 부품을 넘어 21세기 국가 안보와 기술 주권의 최전선입니다. 미국 주도의 프렌드쇼어링(Friend-shoring)과 중국의 공급망 수직계열화 사이에서 동아시아 제조 생태계는 급격한 지각변동을 겪고 있습니다.',
+        context: '미국은 반도체 장비 통제와 AI 가속기 규제를 통해 중국의 AGI 진입을 늦추려 하고 있으며, 중국은 성숙 공정 반도체와 2차전지 핵심 소재(흑연, 리튬, 희토류) 시장을 장악하며 역공을 펼치고 있습니다. 한국은 메모리(HBM)와 배터리 셀 분야에서 세계 최고 수준의 양산 역량을 보유했으나, 장비·원소재의 대외 의존도와 미·중 사이의 외교적 딜레마라는 이중고에 직면해 있습니다.',
+        marketImpact: '단순 가격 경쟁력보다는 "공급망 신뢰도(Trust)"가 주가와 밸류에이션을 결정짓는 시대로 진입했습니다. AI 인프라 확충에 필수적인 HBM(고대역폭메모리)은 공급자 우위 시장이 장기화될 것이며, 2차전지 분야는 북미·유럽 시장 점유율과 차세대 전고체/LFP 포트폴리오 다변화 성공 여부가 기업 가치를 가를 것입니다.',
+        strategy: '1) 5대 중점 전략 산업(반도체, 2차전지, EV, AI, 로봇)의 기술 주권 보호.<br>2) 핵심 소재 공급망 다변화 및 온쇼어링 자립도 제고.<br>3) 파이튼 포트폴리오 내 글로벌 독점력을 가진 테크 선도주에 대한 선별적 집중 투자.'
+      }
+    };
+
+    function openIntelModal(key) {
+      const data = intelReports[key];
+      if (!data) return;
+
+      document.getElementById('modal-doc-no').innerText = data.docNo;
+      document.getElementById('modal-title').innerText = data.title;
+
+      const bodyHtml = `
+        <div class="modal-report-meta">
+          <div>
+            <div class="meta-box-label">분류 분야</div>
+            <div class="meta-box-val" style="color:var(--gold-light);">${data.cat}</div>
+          </div>
+          <div>
+            <div class="meta-box-label">발간 일자</div>
+            <div class="meta-box-val">${data.date}</div>
+          </div>
+          <div>
+            <div class="meta-box-label">발간 기관</div>
+            <div class="meta-box-val">${data.agency}</div>
+          </div>
+          <div>
+            <div class="meta-box-label">국가 승인 등급</div>
+            <div class="meta-box-val" style="color:#34d399;">${data.clearance}</div>
+          </div>
+        </div>
+
+        <div class="modal-box-highlight">
+          <h5>🎯 1. 핵심 요약 (Executive Summary)</h5>
+          <p>${data.summary}</p>
+        </div>
+
+        <div class="modal-section-title">🌍 2. 지역 내재 상황 및 지정학적 역학 구조</div>
+        <p class="modal-section-p">${data.context}</p>
+
+        <div class="modal-section-title">📊 3. 거시경제 및 금융·자산 시장 파급 효과</div>
+        <p class="modal-section-p">${data.marketImpact}</p>
+
+        <div class="modal-box-highlight" style="border-color: rgba(0, 210, 255, 0.35); background: rgba(0, 210, 255, 0.08);">
+          <h5 style="color: var(--cyan);">💡 4. 키아노스 국부 및 5대 전략산업 대응 제언</h5>
+          <p>${data.strategy}</p>
+        </div>
+      `;
+
+      document.getElementById('modal-body-content').innerHTML = bodyHtml;
+      document.getElementById('intel-modal-backdrop').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeIntelModalDirect() {
+      document.getElementById('intel-modal-backdrop').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function closeIntelModal(e) {
+      if (e.target.id === 'intel-modal-backdrop') {
+        closeIntelModalDirect();
+      }
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeIntelModalDirect();
+      }
+    });
     // 내장 기본 스냅샷 데이터
     const defaultData = {
       timestamp: "2026-10-04 21:05:27",

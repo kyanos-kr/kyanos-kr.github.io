@@ -1,4 +1,4 @@
-﻿# Scripts & Temporary Files
+# Scripts & Temporary Files
 *.ps1
 inspect_site.py
 categories_extracted.txt
@@ -10,3 +10,5 @@ categories_extracted.txt
 # System
 Thumbs.db
 .DS_Store
+__pycache__/
+*.pyc

@@ -1,4 +1,4 @@
-"""
+﻿"""
 KYANOS Market Pulse - Realtime Web Dashboard
 Lightweight, Zero-dependency Python HTTP Server
 Access via http://localhost:8899
@@ -434,14 +434,22 @@ class MarketHandler(http.server.BaseHTTPRequestHandler):
         # 콘솔 로그 간소화
         pass
 
+socketserver.TCPServer.allow_reuse_address = True
+
+def safe_print(*args, **kwargs):
+    try:
+        print(*args, **kwargs)
+    except Exception:
+        pass
+
 def start_server():
     server_address = ('', PORT)
     with socketserver.TCPServer(server_address, MarketHandler) as httpd:
-        print(f"==================================================")
-        print(f" [KYANOS] 키아노스 마켓 펄스 실시간 웹 대시보드 구동")
-        print(f" 브라우저 주소: http://localhost:{PORT}")
-        print(f" 종료하려면 터미널에서 Ctrl+C 를 누르세요.")
-        print(f"==================================================")
+        safe_print(f"==================================================")
+        safe_print(f" [KYANOS] 키아노스 마켓 펄스 실시간 웹 대시보드 구동")
+        safe_print(f" 브라우저 주소: http://localhost:{PORT}")
+        safe_print(f" 종료하려면 터미널에서 Ctrl+C 를 누르세요.")
+        safe_print(f"==================================================")
         
         # 1초 후 브라우저 자동 오픈
         threading.Timer(1.0, lambda: webbrowser.open(f"http://localhost:{PORT}")).start()
@@ -449,7 +457,7 @@ def start_server():
         try:
             httpd.serve_forever()
         except KeyboardInterrupt:
-            print("\n서버를 종료합니다.")
+            safe_print("\n서버를 종료합니다.")
 
 if __name__ == '__main__':
     start_server()
