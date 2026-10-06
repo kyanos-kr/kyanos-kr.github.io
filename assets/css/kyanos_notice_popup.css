@@ -1,0 +1,270 @@
+/* ==========================================================================
+   키아노스 포털 시스템 개편 및 서비스 점검 안내 팝업 스타일
+   Kyanos System Renovation & Maintenance Notice Modal
+   ========================================================================== */
+
+.kyanos-notice-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(2, 6, 18, 0.78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s ease;
+  padding: 1.2rem;
+  box-sizing: border-box;
+}
+
+.kyanos-notice-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.kyanos-notice-modal {
+  position: relative;
+  background: radial-gradient(circle at 50% 0%, #0d2246 0%, #040c1e 65%, #020713 100%);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  border-radius: 18px;
+  max-width: 540px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.75), 0 0 35px rgba(0, 210, 255, 0.2), inset 0 1px 0 rgba(255, 235, 160, 0.3);
+  overflow: hidden;
+  transform: translateY(20px) scale(0.96);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
+  color: #f1f5f9;
+}
+
+.kyanos-notice-backdrop.active .kyanos-notice-modal {
+  transform: translateY(0) scale(1);
+}
+
+/* 상단 골드 하이라이트 바 */
+.kyanos-notice-header-bar {
+  height: 4px;
+  background: linear-gradient(90deg, #aa8214, #ffe066, #00d2ff, #ffe066, #aa8214);
+  background-size: 200% 100%;
+  animation: noticeGoldFlow 4s linear infinite;
+}
+
+@keyframes noticeGoldFlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* 모달 본문 컨테이너 */
+.kyanos-notice-body {
+  padding: 2.2rem 2rem 1.8rem;
+  text-align: center;
+}
+
+/* 헤더 아이콘 & 뱃지 */
+.kyanos-notice-icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 210, 255, 0.25) 0%, rgba(6, 21, 45, 0.9) 70%);
+  border: 1.5px solid rgba(212, 175, 55, 0.55);
+  box-shadow: 0 0 20px rgba(0, 210, 255, 0.35);
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  animation: noticePulse 2.8s ease-in-out infinite;
+}
+
+@keyframes noticePulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(0, 210, 255, 0.35); }
+  50% { transform: scale(1.05); box-shadow: 0 0 28px rgba(255, 224, 102, 0.5); }
+}
+
+.kyanos-notice-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #ffe066;
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 0.85rem;
+}
+
+/* 제목 */
+.kyanos-notice-title {
+  font-family: 'Cinzel', 'Noto Serif KR', serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  line-height: 1.45;
+  color: #ffffff;
+  margin-bottom: 0.85rem;
+  background: linear-gradient(135deg, #ffffff 20%, #ffe066 70%, #d4af37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  word-break: keep-all;
+}
+
+/* 설명 문구 */
+.kyanos-notice-desc {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: #cbd5e1;
+  margin-bottom: 1.4rem;
+  word-break: keep-all;
+}
+
+/* 상태 안내 카드 */
+.kyanos-notice-status-box {
+  background: rgba(4, 15, 36, 0.65);
+  border: 1px solid rgba(0, 210, 255, 0.2);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.kyanos-notice-status-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: #94a3b8;
+  line-height: 1.5;
+  margin-bottom: 0.55rem;
+}
+
+.kyanos-notice-status-item:last-child {
+  margin-bottom: 0;
+}
+
+.kyanos-notice-status-item .bullet {
+  color: #ffe066;
+  font-size: 0.95rem;
+  line-height: 1.3;
+}
+
+.kyanos-notice-status-item strong {
+  color: #e2e8f0;
+}
+
+/* 하단 버튼 및 옵션 영역 */
+.kyanos-notice-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 1.8rem;
+  background: rgba(3, 9, 23, 0.85);
+  border-top: 1px solid rgba(212, 175, 55, 0.18);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* 오늘 하루 보지 않기 체크박스 라벨 */
+.kyanos-notice-check-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: #94a3b8;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s ease;
+}
+
+.kyanos-notice-check-label:hover {
+  color: #f1f5f9;
+}
+
+.kyanos-notice-check-label input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 17px;
+  height: 17px;
+  border: 1.5px solid rgba(212, 175, 55, 0.5);
+  border-radius: 4px;
+  background: rgba(4, 15, 36, 0.8);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.kyanos-notice-check-label input[type="checkbox"]:checked {
+  background: #d4af37;
+  border-color: #ffe066;
+}
+
+.kyanos-notice-check-label input[type="checkbox"]:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #030814;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+/* 닫기 / 둘러보기 버튼 */
+.kyanos-notice-btn {
+  background: linear-gradient(135deg, #d4af37 0%, #aa8214 100%);
+  color: #030814;
+  border: 1px solid #ffe066;
+  padding: 8px 22px;
+  border-radius: 25px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.kyanos-notice-btn:hover {
+  background: linear-gradient(135deg, #ffe066 0%, #d4af37 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 224, 102, 0.45);
+}
+
+.kyanos-notice-btn:active {
+  transform: translateY(0);
+}
+
+/* 모바일 대응 */
+@media (max-width: 600px) {
+  .kyanos-notice-body {
+    padding: 1.6rem 1.2rem 1.4rem;
+  }
+  .kyanos-notice-title {
+    font-size: 1.15rem;
+  }
+  .kyanos-notice-desc {
+    font-size: 0.85rem;
+  }
+  .kyanos-notice-footer {
+    padding: 0.9rem 1.2rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .kyanos-notice-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 0;
+  }
+  .kyanos-notice-check-label {
+    justify-content: center;
+  }
+}
