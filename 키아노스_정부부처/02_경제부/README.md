@@ -28,7 +28,11 @@
 - `KYANOS_INDEPENDENT_REVENUE_PROGRAM.md` (국가 자립 재정 확충 백서)
 - `kyanos_monetization_plan_step1.md` (수익화 1단계 실무 계획)
 - `market_monitor/` (글로벌 금융 인텔리전스국 전용 실시간 마켓 펄스 시스템 및 실행 스크립트)
+- `adsense_monitor_dashboard.html` (앤트뉴스 애드센스 인프라 건전성 실시간 감시 대시보드)
+- `애드센스_실시간_감시센터.url` (애드센스 인프라 건전성 감시센터 원클릭 열람)
+- `애드센스_인프라_즉시진단.bat` (애드센스 8대 인프라 실시간 진단 원클릭 즉시 가동)
 - `경제부_공식포털_열기.url` (전용 단독 포털 `gov_economy.html` 새창 열람)
 - `마켓펄스_실시간금융센터.url` (실시간 금융 대시보드 `market_monitor.html` 열람)
 - `키아노스_자립재정허브.url` (자립 재정 센터 `treasury_hub.html` 열람)
+
 
