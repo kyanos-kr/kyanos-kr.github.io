@@ -38,8 +38,9 @@
 | **12** | `REV-HUB-01` | **키아노스 독립 수익 프로그램 & 국부 허브** | 경제부 | **✅ 완료** | [KYANOS_INDEPENDENT_REVENUE_PROGRAM.md](file:///d:/안티그래비티파이튼/KYANOS_INDEPENDENT_REVENUE_PROGRAM.md), [treasury_hub.html](file:///d:/안티그래비티파이튼/treasury_hub.html) |
 | **13** | `CUL-MUS-01` | **〈가을 그리고 차 한잔〉 음악실 & 표준 규격** | 교육·문화부 | **✅ 완료** | [music_player.html](file:///d:/안티그래비티파이튼/music_player.html), 3단 탭 플레이어 |
 | **14** | `CUL-LIB-01` | **국립 인류문명사연구원 (도서관) 포털** | 교육·문화부 | **📐 설계완료** | [연구원 운영체계안](file:///d:/안티그래비티파이튼/docs/국립_인류문명사도서관_연구원_운영체계.md) |
-| **15** | `SCI-TAL-01` | **자율로봇·드론 생산기술국 (Project TALOS)** | 과학·AGI부 | **📐 설계완료** | 물리적 방어·손발 확보, 스마트팩토리 기획 |
+| **15** | `SCI-TAL-01` | **자율로봇·드론 생산기술국 (Project TALOS)** | 과학·SI부 | **📐 설계완료** | 물리적 방어·손발 확보, 스마트팩토리 기획 |
 | **16** | `INF-GIT-01` | **GitHub 라이브 무중단 실시간 배포망** | 총리실/시스템 | **🟢 상시 가동** | `origin/main` 자동 커밋·푸시 동기화 체계 |
+| **17** | `REV-SI-02` | **SI 5대 수익 프로그램 & 3대 블로그 입체 활성화** | 경제부/과학SI부 | **📐 설계완료** | [5대 수익·블로그 기획안](file:///d:/안티그래비티파이튼/키아노스_정부부처/02_경제부/KYANOS_SI_5_REVENUE_AND_BLOG_STRATEGY.md) |
 
 ---
 
@@ -83,6 +84,10 @@
     - [KYANOS_INDEPENDENT_REVENUE_PROGRAM.md](file:///d:/안티그래비티파이튼/KYANOS_INDEPENDENT_REVENUE_PROGRAM.md) 수립.
     - [treasury_hub.html](file:///d:/안티그래비티파이튼/treasury_hub.html) 실시간 국고 허브 개발 완료.
     - 4단계 구조: ① 앤트뉴스 애드센스/쇼츠 트래픽 ➔ ② 에버모어 블루로즈 럭셔리 IP & 소장 패키지 ➔ ③ 넥스포럼 서밋 & 디지털 시민권 ➔ ④ 실물 귀금속/5대 전략산업 KSWF 국부펀드.
+* **`REV-SI-02` SI 시대 5대 수익 창출 프로그램 및 3대 블로그(구글 2·네이버 1) 입체 활성화**
+  - **파이튼 님의 구상/지시**: 애드센스 단일 의존의 한계를 돌파하기 위해 SI 기반 실질 수익 창출 프로그램 4종(① 한컴 HWP/HWPX 자동 문서화 엔진, ② VIP 딥 인텔리전스 구독, ③ 파이튼 문학·음악 IP 패키지, ④ 로컬 온디바이스 SI 구축 키트)과 더불어, 파이튼 님이 구축하신 **3대 블로그(구글 영문 여행 블로그 세밀화 + 네이버 순수 저작물 블로그와 국문 구글 블로그의 중복 해소 및 투트랙 활성화)** 기획안을 통합 추진할 것.
+  - **이행 내역**:
+    - [KYANOS_SI_5_REVENUE_AND_BLOG_STRATEGY.md](file:///d:/안티그래비티파이튼/키아노스_정부부처/02_경제부/KYANOS_SI_5_REVENUE_AND_BLOG_STRATEGY.md) 마스터 기획안 수립 완료.
 
 ---
 
