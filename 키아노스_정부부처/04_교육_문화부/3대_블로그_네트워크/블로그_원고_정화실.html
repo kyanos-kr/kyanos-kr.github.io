@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>키아노스 3대 블로그 관제실 · 블로그 원고 정화실</title>
+<style>
+  :root{
+    --bg:#0f1420; --panel:#171e2e; --line:#2a3550; --text:#e8ecf5; --muted:#9aa6c0;
+    --naver:#03c75a; --travel:#3b9cff; --art:#c58cff; --gold:#e8c26a;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);
+       font-family:"Pretendard","Malgun Gothic","맑은 고딕",system-ui,sans-serif;line-height:1.6}
+  header{padding:28px 32px 12px;border-bottom:1px solid var(--line)}
+  header h1{margin:0;font-size:24px;letter-spacing:-.3px}
+  header h1 span{color:var(--gold)}
+  header p{margin:6px 0 0;color:var(--muted);font-size:14px}
+  main{max-width:1400px;margin:0 auto;padding:24px 32px 60px}
+  h2{font-size:18px;margin:28px 0 12px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px;border-top:4px solid var(--c)}
+  .card h3{margin:0 0 4px;font-size:17px}
+  .card .role{color:var(--c);font-weight:700;font-size:13px}
+  .card ul{margin:10px 0 14px;padding-left:18px;color:var(--muted);font-size:13.5px}
+  .card a.btn{display:inline-block;background:var(--c);color:#0b0f18;font-weight:700;text-decoration:none;
+              padding:7px 14px;border-radius:8px;font-size:13.5px;margin-right:6px}
+  .card a.sub{color:var(--muted);font-size:12.5px}
+  .rules{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 20px;font-size:14px}
+  .rules b{color:var(--gold)}
+  .studio{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media (max-width:1000px){.studio{grid-template-columns:1fr}}
+  .pane{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;min-height:520px}
+  .pane h3{margin:0 0 10px;font-size:15px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+  textarea{flex:1;width:100%;min-height:380px;background:#0b101a;color:var(--text);border:1px solid var(--line);
+           border-radius:10px;padding:12px;font:13.5px/1.6 Consolas,"D2Coding",monospace;resize:vertical}
+  .targets{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+  .targets label{cursor:pointer;border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:13.5px;user-select:none}
+  .targets input{display:none}
+  .targets input:checked + span{font-weight:700}
+  .targets label:has(input:checked){background:var(--c);color:#0b0f18;border-color:var(--c)}
+  .opts{display:flex;gap:14px;flex-wrap:wrap;align-items:center;font-size:13px;color:var(--muted);margin-bottom:10px}
+  .opts input[type=text]{background:#0b101a;border:1px solid var(--line);color:var(--text);border-radius:6px;padding:5px 8px;width:330px}
+  button{background:var(--gold);color:#0b0f18;border:0;border-radius:8px;padding:8px 16px;font-weight:700;cursor:pointer;font-size:13.5px}
+  button.ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
+  .badge{font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;background:#26304a;color:var(--muted)}
+  .badge.on{background:#3a2a12;color:var(--gold)}
+  .stats{font-size:13px;color:var(--muted);margin-top:8px;min-height:20px}
+  .stats b{color:var(--text)}
+  .tabs{display:flex;gap:6px}
+  .tabs button{padding:4px 10px;font-size:12.5px}
+  .tabs button.off{background:transparent;color:var(--muted);border:1px solid var(--line)}
+  iframe{flex:1;width:100%;min-height:380px;border:1px solid var(--line);border-radius:10px;background:#fff}
+  .hidden{display:none!important}
+  .toast{position:fixed;right:24px;bottom:24px;background:var(--gold);color:#0b0f18;font-weight:700;padding:10px 18px;border-radius:10px;opacity:0;transition:.25s}
+  .toast.show{opacity:1}
+  footer{color:var(--muted);font-size:12.5px;text-align:center;padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <h1>🌐 키아노스 <span>3대 블로그 관제실</span> · 블로그 원고 정화실</h1>
+  <p>교육·문화부 소관 | 한글(HWP)에서 복사한 원고의 숨은 코드를 없애고, 블로그마다 맞는 형식으로 바꿔 드립니다. 모든 처리는 이 컴퓨터 안에서만 이루어집니다.</p>
+</header>
+
+<main>
+  <h2>① 3대 블로그 바로가기</h2>
+  <div class="cards">
+    <div class="card" style="--c:var(--naver)">
+      <div class="role">본진 · 출판 원본 금고</div>
+      <h3>🖋️ 『파이튼의 문학산책』</h3>
+      <ul>
+        <li>파이튼 님 원작 <b>전문</b>은 이곳에만 싣습니다</li>
+        <li>수필 · 일대기 · 시 · 팝송 이야기 · 고문진보 · 사진 회상</li>
+        <li>평문으로 붙여넣고 에디터에서 서식 적용</li>
+      </ul>
+      <a class="btn" href="https://blog.naver.com/invision" target="_blank" rel="noopener">블로그 열기</a>
+      <a class="btn" href="https://blog.naver.com/invision?Redirect=Write" target="_blank" rel="noopener">글쓰기</a>
+      <a class="sub" href="templates/naver_munhak_template.md">원고 규격</a>
+    </div>
+    <div class="card" style="--c:var(--travel)">
+      <div class="role">글로벌 #1 · 영문 K-Travel 가이드</div>
+      <h3>✈️ 『Ant-Travel Korea』</h3>
+      <ul>
+        <li>외국인 여행자용 영문 가이드 (주소·요금·교통·팁)</li>
+        <li>Hidden Gems · K-Cycling · Global Horizons · Practical Guide</li>
+        <li>Blogger "HTML 보기"에 클린 HTML 붙여넣기</li>
+      </ul>
+      <a class="btn" href="https://antkoreatrip.blogspot.com" target="_blank" rel="noopener">블로그 열기</a>
+      <a class="btn" href="https://www.blogger.com" target="_blank" rel="noopener">Blogger</a>
+      <a class="sub" href="templates/antkoreatrip_post_template.html">원고 규격</a>
+    </div>
+    <div class="card" style="--c:var(--art)">
+      <div class="role">글로벌 #2 · 인문·예술 한·영 큐레이션</div>
+      <h3>🎨 『파이튼의 예술세계』</h3>
+      <ul>
+        <li>네이버 원문을 그대로 옮기지 않음 → 발췌 + 해설 + 영역</li>
+        <li>스토리텔링 · 시조 · 자작시 · 애송시 · 고문진보 · Proverb</li>
+        <li>맨 아래에 네이버 원문 링크 카드</li>
+      </ul>
+      <a class="btn" href="https://phaetonktb.blogspot.com" target="_blank" rel="noopener">블로그 열기</a>
+      <a class="btn" href="https://www.blogger.com" target="_blank" rel="noopener">Blogger</a>
+      <a class="sub" href="templates/phaetonktb_post_template.html">원고 규격</a>
+    </div>
+  </div>
+
+  <h2>중복 문서 방지 3대 철칙</h2>
+  <div class="rules">
+    <b>1.</b> 원작 전문은 네이버에 한 번만. &nbsp; <b>2.</b> 구글 『예술세계』에는 발췌·해설·영역판과 원문 링크만. &nbsp; <b>3.</b> 한글(HWP)에서 블로그로 바로 붙여넣지 말고 아래 정화실을 거칠 것.
+  </div>
+
+  <h2>② 블로그 원고 정화실</h2>
+  <div class="targets" id="targets">
+    <label style="--c:var(--naver)"><input type="radio" name="t" value="naver" checked><span>🖋️ 네이버 문학산책 (평문)</span></label>
+    <label style="--c:var(--travel)"><input type="radio" name="t" value="travel"><span>✈️ Ant-Travel Korea (클린 HTML)</span></label>
+    <label style="--c:var(--art)"><input type="radio" name="t" value="art"><span>🎨 파이튼의 예술세계 (클린 HTML)</span></label>
+  </div>
+  <div class="opts">
+    <span id="optArt" class="hidden">네이버 원문 글 주소:
+      <input type="text" id="naverUrl" placeholder="https://blog.naver.com/invision/..." /></span>
+    <label id="optFooter" class="hidden"><input type="checkbox" id="addFooter" checked> 블로그 서명·원문 링크 카드 붙이기</label>
+  </div>
+
+  <div class="studio">
+    <div class="pane">
+      <h3>원고 붙여넣기 <span class="badge" id="srcBadge">대기 중</span></h3>
+      <textarea id="src" placeholder="한글(HWP)·워드·웹페이지에서 복사한 원고를 여기에 붙여넣으십시오 (Ctrl+V).&#10;Blogger의 HTML 코드를 그대로 붙여넣어도 정화됩니다."></textarea>
+      <div style="display:flex;gap:8px;margin-top:10px">
+        <button id="runBtn">정화·변환</button>
+        <button class="ghost" id="clearBtn">비우기</button>
+      </div>
+    </div>
+    <div class="pane">
+      <h3>
+        <span>완성 원고</span>
+        <span class="tabs">
+          <button id="tabCode">코드</button>
+          <button id="tabView" class="off">미리보기</button>
+          <button id="copyBtn">📋 복사</button>
+        </span>
+      </h3>
+      <textarea id="out" readonly placeholder="정화된 원고가 여기에 나타납니다."></textarea>
+      <iframe id="view" class="hidden" sandbox title="미리보기"></iframe>
+      <div class="stats" id="stats"></div>
+    </div>
+  </div>
+</main>
+
+<footer>키아노스 교육·문화부 · 국무총리 앤트 시행 · 재가 파이튼 님 · 2026.10.08</footer>
+<div class="toast" id="toast">복사되었습니다</div>
+
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const src = $('src'), out = $('out'), view = $('view');
+  let rawHtml = '';           // 클립보드에서 받은 서식(HTML) 원본
+  let lastHtml = '';          // 미리보기용 클린 HTML
+
+  const target = () => document.querySelector('input[name=t]:checked').value;
+
+  /* ---------- 붙여넣기: 서식 원본(HTML) 확보 ---------- */
+  src.addEventListener('paste', e => {
+    const cd = e.clipboardData;
+    const html = cd.getData('text/html');
+    const text = cd.getData('text/plain');
+    if (html) {
+      e.preventDefault();
+      rawHtml = html;
+      src.value = text || html;
+      setBadge(true);
+      run();
+    } else {
+      rawHtml = '';
+      setTimeout(() => { setBadge(false); run(); }, 0);
+    }
+  });
+  src.addEventListener('input', () => { rawHtml = ''; setBadge(false); });
+
+  function setBadge(isHtml){
+    const b = $('srcBadge');
+    b.textContent = isHtml ? '서식 원본 감지됨' : (src.value.trim() ? '평문' : '대기 중');
+    b.classList.toggle('on', isHtml);
+  }
+
+  /* ---------- 정화 엔진 ---------- */
+  const BLOCK = new Set(['P','H2','H3','H4','UL','OL','LI','BLOCKQUOTE','TABLE','THEAD','TBODY','TR','TH','TD','HR']);
+  const MAP = {B:'STRONG',STRONG:'STRONG',I:'EM',EM:'EM',H1:'H2',H2:'H2',H3:'H3',H4:'H4',H5:'H4',H6:'H4',
+               P:'P',BR:'BR',UL:'UL',OL:'OL',LI:'LI',BLOCKQUOTE:'BLOCKQUOTE',A:'A',IMG:'IMG',
+               TABLE:'TABLE',THEAD:'THEAD',TBODY:'TBODY',TR:'TR',TH:'TH',TD:'TD',HR:'HR'};
+  const DROP = new Set(['STYLE','SCRIPT','META','LINK','TITLE','HEAD','XML','NOSCRIPT','IFRAME','OBJECT','SVG']);
+  let warnLocalImg = 0;
+
+  function looksLikeHtml(s){ return /<\s*(p|div|span|br|h[1-6]|table|img|a)\b/i.test(s) || /hwpjson|hwp_editor|mso-/i.test(s); }
+
+  function textToHtml(s){
+    const esc = t => t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    s = s.replace(/\r\n?/g,'\n').trim();
+    if (!s) return '';
+    const parts = /\n\s*\n/.test(s) ? s.split(/\n\s*\n+/) : s.split('\n');
+    return parts.map(p => p.trim()).filter(Boolean)
+                .map(p => '<p>' + esc(p).replace(/\n/g,'<br>') + '</p>').join('');
+  }
+
+  function cleanHtml(raw){
+    warnLocalImg = 0;
+    raw = raw.replace(/<!--[\s\S]*?-->/g,'')         // data-hwpjson 등 숨은 주석
+             .replace(/<\/?o:p[^>]*>/gi,'')
+             .replace(/<\?xml[^>]*>/gi,'')
+             .replace(/<\/?(v|w|m|st1):[^>]*>/gi,'');
+    const doc = new DOMParser().parseFromString(raw,'text/html');
+    const box = document.createElement('div');
+    walk(doc.body, box);
+    tidy(box);
+    return box.innerHTML;
+  }
+
+  function hasBlockChild(el){
+    return [...el.querySelectorAll('*')].some(n => BLOCK.has(n.tagName) || n.tagName==='DIV');
+  }
+
+  function walk(from, to){
+    for (const n of from.childNodes){
+      if (n.nodeType === 3){
+        const t = n.nodeValue.replace(/[\t\r\n]+/g,' ');
+        if (t) to.appendChild(document.createTextNode(t));
+        continue;
+      }
+      if (n.nodeType !== 1) continue;
+      const tag = n.tagName.toUpperCase();
+      if (DROP.has(tag)) continue;
+
+      if (tag === 'DIV' || tag === 'SECTION' || tag === 'ARTICLE'){
+        if (hasBlockChild(n)) walk(n, to);
+        else { const p = document.createElement('p'); walk(n, p); to.appendChild(p); }
+        continue;
+      }
+      const m = MAP[tag];
+      if (!m){ walk(n, to); continue; }       // span, font, u 등은 껍질만 벗김
+
+      const el = document.createElement(m);
+      if (m === 'A'){
+        const href = (n.getAttribute('href')||'').trim();
+        if (/^(https?:|mailto:)/i.test(href)) el.setAttribute('href', href);
+        else { walk(n, to); continue; }
+      }
+      if (m === 'IMG'){
+        const s = (n.getAttribute('src')||'').trim();
+        if (!/^https?:/i.test(s)){ warnLocalImg++; continue; }
+        el.setAttribute('src', s);
+        el.setAttribute('alt', (n.getAttribute('alt')||'').trim());
+        to.appendChild(el); continue;
+      }
+      if (m === 'TD' || m === 'TH'){
+        ['colspan','rowspan'].forEach(a => { const v = n.getAttribute(a); if (v && v !== '1') el.setAttribute(a, v); });
+      }
+      walk(n, el);
+      to.appendChild(el);
+    }
+  }
+
+  function tidy(box){
+    // 문단 안에 블록이 들어간 경우 문단 껍질 제거
+    let changed = true;
+    while (changed){
+      changed = false;
+      box.querySelectorAll('p').forEach(p => {
+        if ([...p.children].some(c => BLOCK.has(c.tagName))){
+          p.replaceWith(...p.childNodes); changed = true;
+        }
+      });
+    }
+    // 같은 서식 중첩 정리 (<strong><strong>)
+    box.querySelectorAll('strong strong, em em').forEach(e => e.replaceWith(...e.childNodes));
+    // 빈 요소 제거
+    changed = true;
+    while (changed){
+      changed = false;
+      box.querySelectorAll('p,strong,em,li,h2,h3,h4,blockquote,a').forEach(e => {
+        const txt = e.textContent.replace(/\u00a0/g,' ').trim();
+        if (!txt && !e.querySelector('img,br')){ e.remove(); changed = true; }
+      });
+    }
+    // 문단 앞뒤 공백·&nbsp; 정리
+    box.querySelectorAll('p,li,h2,h3,h4,td,th').forEach(e => {
+      const f = e.firstChild, l = e.lastChild;
+      if (f && f.nodeType === 3) f.nodeValue = f.nodeValue.replace(/^[\s\u00a0]+/,'');
+      if (l && l.nodeType === 3) l.nodeValue = l.nodeValue.replace(/[\s\u00a0]+$/,'');
+    });
+    // 최상위에 떠 있는 글자는 문단으로 묶기
+    const loose = [];
+    [...box.childNodes].forEach(n => {
+      const inline = n.nodeType === 3 || (n.nodeType === 1 && !BLOCK.has(n.tagName) && n.tagName !== 'IMG');
+      if (inline) loose.push(n);
+      else flush();
+    });
+    flush();
+    function flush(){
+      if (!loose.length) return;
+      const txt = loose.map(n => n.textContent).join('').trim();
+      if (txt){ const p = document.createElement('p'); loose[0].before(p); loose.forEach(n => p.appendChild(n)); }
+      else loose.forEach(n => n.remove());
+      loose.length = 0;
+    }
+  }
+
+  function pretty(html){
+    return html.replace(/<(p|h2|h3|h4|ul|ol|blockquote|table|thead|tbody|tr|hr|img)\b/g, '\n<$1')
+               .replace(/<li\b/g, '\n  <li')
+               .replace(/<\/(ul|ol|table|tbody|thead|blockquote)>/g, '\n</$1>')
+               .replace(/\n{2,}/g,'\n').trim();
+  }
+
+  function toPlain(html){
+    const box = document.createElement('div');
+    box.innerHTML = html;
+    const rec = n => {
+      if (n.nodeType === 3) return n.nodeValue;
+      if (n.nodeType !== 1) return '';
+      const t = n.tagName, inner = [...n.childNodes].map(rec).join('');
+      if (t === 'BR') return '\n';
+      if (t === 'IMG') return '\n\n(사진: ' + (n.getAttribute('alt') || '이미지') + ')\n\n';
+      if (t === 'LI') return '\n· ' + inner.trim();
+      if (t === 'TD' || t === 'TH') return inner.trim() + '\t';
+      if (t === 'TR') return '\n' + inner.replace(/\t$/,'');
+      if (t === 'HR') return '\n\n─────────────\n\n';
+      if (t === 'BLOCKQUOTE') return '\n\n「' + inner.trim() + '」\n\n';
+      if (BLOCK.has(t)) return '\n\n' + inner.trim() + '\n\n';
+      return inner;
+    };
+    return rec(box).replace(/\u00a0/g,' ').replace(/[ \t]+\n/g,'\n').replace(/\n{3,}/g,'\n\n').trim();
+  }
+
+  function footer(t){
+    if (!$('addFooter').checked) return '';
+    if (t === 'travel')
+      return '<hr><p><small>Photos &amp; story by Python · <a href="https://antkoreatrip.blogspot.com">Ant-Travel Korea</a></small></p>';
+    if (t === 'art'){
+      const u = $('naverUrl').value.trim();
+      const href = /^https?:\/\//.test(u) ? u : 'https://blog.naver.com/invision';
+      return '<hr><p>📖 <strong>전문 감상</strong>: 이 작품의 원문 전체는 파이튼 공식 작가 블로그 '
+           + '<a href="' + href.replace(/"/g,'&quot;') + '">『파이튼의 문학산책』</a>에서 읽으실 수 있습니다.<br>'
+           + '<em>Read the full original (Korean) on Python\'s official literary blog.</em></p>'
+           + '<p><small>© Python · 파이튼의 예술세계 | <a href="https://antnews.org">Ant News</a> · <a href="https://kyanos.kr">Kyanos</a></small></p>';
+    }
+    return '';
+  }
+
+  /* ---------- 실행 ---------- */
+  function run(){
+    const t = target();
+    const input = rawHtml || src.value;
+    if (!input.trim()){ out.value=''; $('stats').textContent=''; lastHtml=''; renderView(); return; }
+    const isHtml = !!rawHtml || looksLikeHtml(input);
+    let html = isHtml ? cleanHtml(input) : textToHtml(input);
+    let result;
+    if (t === 'naver'){ result = toPlain(html); lastHtml = html; }
+    else { html += footer(t); lastHtml = html; result = pretty(html); }
+    out.value = result;
+
+    const size = s => new Blob([s]).size;
+    const before = size(input), after = size(result);
+    const hits = (input.match(/hwpjson|hwp_editor|mso-|함초롬/gi) || []).length;
+    const cut = before ? Math.max(0, Math.round((1 - after/before)*100)) : 0;
+    $('stats').innerHTML = '원본 <b>' + before.toLocaleString() + '</b>바이트 → 완성 <b>' + after.toLocaleString()
+      + '</b>바이트 (<b>' + cut + '%</b> 감량)' + (hits ? ' · HWP/워드 찌꺼기 <b>' + hits + '</b>곳 제거' : '')
+      + (warnLocalImg ? ' · ⚠️ 내 컴퓨터 안의 이미지 ' + warnLocalImg + '장은 제외됨 (블로그 편집기에서 직접 올려 주십시오)' : '');
+    renderView();
+  }
+
+  function renderView(){
+    view.srcdoc = '<!DOCTYPE html><meta charset="utf-8"><style>body{font-family:"Malgun Gothic",sans-serif;line-height:1.8;padding:16px 22px;color:#222;max-width:760px}'
+      + 'img{max-width:100%}blockquote{border-left:4px solid #ccc;margin:1em 0;padding:.2em 1em;color:#555}table{border-collapse:collapse}th,td{border:1px solid #ccc;padding:6px 10px;text-align:left}</style>'
+      + (lastHtml || '<p style="color:#999">미리볼 원고가 없습니다.</p>');
+  }
+
+  function showTab(code){
+    out.classList.toggle('hidden', !code); view.classList.toggle('hidden', code);
+    $('tabCode').classList.toggle('off', !code); $('tabView').classList.toggle('off', code);
+  }
+
+  function syncOpts(){
+    const t = target();
+    $('optArt').classList.toggle('hidden', t !== 'art');
+    $('optFooter').classList.toggle('hidden', t === 'naver');
+  }
+
+  async function copy(){
+    if (!out.value) return;
+    try { await navigator.clipboard.writeText(out.value); }
+    catch { out.classList.remove('hidden'); out.select(); document.execCommand('copy'); }
+    const toast = $('toast'); toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 1400);
+  }
+
+  document.querySelectorAll('input[name=t]').forEach(r => r.addEventListener('change', () => { syncOpts(); run(); }));
+  $('addFooter').addEventListener('change', run);
+  $('naverUrl').addEventListener('input', run);
+  $('runBtn').addEventListener('click', run);
+  $('clearBtn').addEventListener('click', () => { src.value=''; rawHtml=''; setBadge(false); run(); src.focus(); });
+  $('copyBtn').addEventListener('click', copy);
+  $('tabCode').addEventListener('click', () => showTab(true));
+  $('tabView').addEventListener('click', () => showTab(false));
+  syncOpts(); renderView();
+})();
+</script>
+</body>
+</html>
