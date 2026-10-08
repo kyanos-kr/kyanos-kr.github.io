@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-07 10:39:10",
+  "timestamp": "2026-10-07 11:37:12",
   "domain": "https://www.antnews.org",
   "checks": [
     [
@@ -10,7 +10,7 @@
     [
       "메인 페이지 접속 및 응답",
       true,
-      "48.62ms"
+      "24.98ms"
     ],
     [
       "ads.txt 단독 ID 무결성",
@@ -40,7 +40,7 @@
     [
       "구글 CDN 라이브러리 응답",
       true,
-      "132.43ms"
+      "123.88ms"
     ]
   ],
   "all_passed": true,

@@ -123,4 +123,37 @@ operable program or batch file.
 
 [2/4] 앤트(Ant) 오리지널 인텔리전스 집필 중 (8건)...
   [1/8] (AI 논평) 인텔리전스 집필: 블루로즈 문화원, 글로벌 지식인 대상 키아노스 건국 가치 및 인문 강좌 개설
-^C
+^C====================================================== 
+[2026-10-07  7:19:54.72] AntNews 자동 실행 시작 
+====================================================== 
+============================================================
+📰 AntNews 파이프라인 시작: 2026-10-07 07:19
+============================================================
+
+[1/4] 키아노스 공식 의제 및 오픈 지표 수집 중 (저작권 침해 0%)...
+
+[OK] 키아노스 내부 미디어 및 공공 지표 총 8건 편성 완료 (외부 언론 기사 인용 0%)
+  → 총 8건 편성 완료
+
+[2/4] 앤트(Ant) 오리지널 인텔리전스 집필 중 (8건)...
+  [1/8] (AI 논평) 인텔리전스 집필: 경제부 EVERMORE 럭셔리 경제국, 글로벌 프라이빗 헤리티지 자산 전략 수립
+  [Notice] Ollama AI 미응답(HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/generate (Caused by NewConnectionError("HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [WinError 10061] 대상 컴퓨터에서 연결을 거부했으므로 연결하지 못했습니다"))) → 키아노스 표준 인텔리전스 전환
+  [2/8] (표준) 인텔리전스 집필: 파이튼 국왕의 덕치(德治) 12대 원칙 기반 차세대 AI 자율 거버넌스 모델 정립
+  [3/8] (표준) 인텔리전스 집필: 과학·AGI부, 산하 자율로봇·드론 생산기술국(Project TALOS) 가동 본
+  [4/8] (표준) 인텔리전스 집필: AI 연산 폭증에 대응하는 무탄소 청정 전력망과 소형원전(SMR)의 지정학
+  [5/8] (표준) 인텔리전스 집필: 피지컬 AI와 자율 제조 로보틱스 전환 가속 — 하드웨어 융합 패러다임 분석
+  [6/8] (표준) 인텔리전스 집필: [공개 시장 지표] BTC 실시간 거래가 115,879,000원 (▼0.10%)
+  [7/8] (표준) 인텔리전스 집필: [공개 시장 지표] ETH 실시간 거래가 3,652,000원 (▼0.35%)
+  [8/8] (표준) 인텔리전스 집필: [공개 시장 지표] XRP 실시간 거래가 2,032원 (▼0.39%)
+  → 집필 완료: AI 오리지널 논평 0건 / 표준 인텔리전스 8건
+  → 집필 완료
+
+[3/4] HTML 리포트 생성 중...
+  → 생성 완료: D:\안티그래비티파이튼\antnews_auto\output\antnews_20261007.html
+
+[4/4] GitHub Pages 발행 중...
+  [Notice] git pull rebase 알림: Git 오류: error: unable to unlink old 'antnews_auto/run_log.txt': Invalid argument
+fatal: could not reset --hard
+  → [WARNING] Git 발행 실패 (로컬 파일은 생성됨): Git 오류: error: failed to push some refs to 'https://github.com/kyanos-kr/kyanos-kr.github.io.git'
+
+============================================================^C
