@@ -83,6 +83,9 @@ flowchart LR
 | :--- | :--- |
 | `블로그_원고_정화실.html` | 3대 블로그 관제 + HWP 원고 정화·변환 도구 (Edge 전용) |
 | `키아노스_3대블로그_관제실.url` | 위 도구 바로 열기 |
+| `antkoreatrip_시범원고_1호_선유도공원.html` | 『Ant-Travel Korea』 시범 원고 1호 클린 HTML (Blogger 즉시 게시용) |
+| `antkoreatrip_시범원고_1호_선유도공원_안내문.md` | 시범 원고 1호 기획 배경, SEO 전략 및 사진 매칭 안내문 |
+| `예술세계_92편_전수점검_및_해설판_전환목록.md` | 『파이튼의 예술세계』 92편 전수 점검 대장 및 해설판 전환 로드맵 |
 | `templates/naver_munhak_template.md` | 네이버 원고 규격 |
 | `templates/antkoreatrip_post_template.html` | 영문 여행 포스트 규격 (SEO 5단 구조) |
 | `templates/phaetonktb_post_template.html` | 예술세계 한·영 큐레이션 규격 |
@@ -94,5 +97,5 @@ flowchart LR
 - [x] **1단계** 3대 블로그 정체성·조판 표준 확정 (본 헌장)
 - [x] **2단계** 원고 규격(템플릿 3종) + HWP 정화 도구 구축
 - [x] **3단계** 교육·문화부 폴더·바로가기·국가 사업 대장 반영
-- [ ] **다음 단계** 『Ant-Travel Korea』 시범 개편 원고 1호 (`photo world` 사진 활용) — 파이튼 님이 주제를 정해 주시면 시작
-- [ ] **다음 단계** 『예술세계』 기존 92편 중 네이버와 중복된 글 점검 및 해설판 전환 목록 작성
+- [x] **4단계** 『Ant-Travel Korea』 시범 개편 원고 1호 완성 (`D:\My photo\korea\선유도\` 사진 매칭 및 Mistral 7B 영문 윤문)
+- [x] **5단계** 『예술세계』 기존 92편 전수 분석 대장 완성 (네이버 중복 진단, HWP 코드 검출 및 Exaone 3.5 비평 테스팅)
