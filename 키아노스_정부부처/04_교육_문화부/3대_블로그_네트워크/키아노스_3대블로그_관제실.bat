@@ -1,4 +1,3 @@
 @echo off
-chcp 65001 >nul
-start "" msedge "%~dp0ë¸”ë¡œê·¸_ì›ê³ _ì •í™”ì‹¤.html"
+start "" "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" "%~dp0ºí·Î±×_¿ø°í_Á¤È­½Ç.html"
 exit
