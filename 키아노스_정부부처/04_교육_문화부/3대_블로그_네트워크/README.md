@@ -9,11 +9,11 @@
 
 ## 1. 3대 블로그 정체성 확정표
 
-| 구분 | 블로그 | 주소 | 정체성 | 언어 | 조판 규격 |
+| 구분 | 블로그 | 주소 (공개) | 관리자 대시보드 (직접 연결) | 정체성 | 조판 규격 |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| 🖋️ **본진** | 『파이튼의 문학산책』 (네이버) | https://blog.naver.com/invision | 파이튼 순수 창작물의 **출판 원본 금고** | 한국어 | 스마트에디터 서식 (평문 붙여넣기) |
-| ✈️ **글로벌 #1** | 『Ant-Travel Korea』 (구글) | https://antkoreatrip.blogspot.com | 외국인 여행자용 **영문 K-Travel 가이드** | 영어 | 클린 HTML · 여행 SEO 5단 구조 |
-| 🎨 **글로벌 #2** | 『파이튼의 예술세계』 (구글) | https://phaetonktb.blogspot.com | 인문·예술 세계의 **구글 SEO판 큐레이션** | 한·영 | 클린 HTML · 발췌+해설+영역+원문 링크 |
+| 🖋️ **본진** | 『파이튼의 문학산책』 (네이버) | https://blog.naver.com/invision | https://admin.blog.naver.com/invision | 파이튼 순수 창작물의 **출판 원본 금고** | 스마트에디터 (평문) |
+| ✈️ **글로벌 #1** | 『Ant-Travel Korea』 (구글) | https://antkoreatrip.blogspot.com | https://www.blogger.com/blog/posts/9119618905484144503 | 외국인 여행자용 **영문 K-Travel 가이드** | 클린 HTML · SEO 5단 구조 |
+| 🎨 **글로벌 #2** | 『파이튼의 예술세계』 (구글) | https://phaetonktb.blogspot.com | https://www.blogger.com/blog/posts/4640767143667658473 | 인문·예술 세계의 **구글 SEO판 큐레이션** | 클린 HTML · 발췌+해설+영역 |
 
 > [!NOTE]
 > 경제부 `KYANOS_SI_5_REVENUE_AND_BLOG_STRATEGY.md`에는 『파이튼의 예술세계』를 테크·금융 저널로 바꾸자는 안이 실려 있습니다. 그러나 이후 영구 등재된 `GEMINI.md` 제13조가 **인문·예술 블로그 유지 + 한·영 큐레이션 차별화**로 정했으므로, 본 헌장은 제13조를 따릅니다. 테크·금융 글은 앤트뉴스(`antnews`)가 맡습니다.
