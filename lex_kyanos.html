@@ -1,0 +1,1717 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>키아노스 시민 법률 나침반 (Lex-Kyanos) | 덕치사법원 대민 법률 자조 포털</title>
+  <meta name="description" content="변호사 없이도 시민 스스로 법을 이해하고 권리를 구제하는 키아노스 덕치사법원 초지능(SI) 대민 법률 솔루션">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Montserrat:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700;800&family=Noto+Serif+KR:wght@500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/kyanos_i18n.css">
+
+  <style>
+    :root {
+      --bg-dark: #040814;
+      --bg-navy: #081226;
+      --bg-card: rgba(10, 20, 42, 0.88);
+      --bg-glass: rgba(14, 28, 56, 0.72);
+      --gold: #d4af37;
+      --gold-light: #fbeea4;
+      --gold-bright: #ffe066;
+      --gold-dark: #9e7c1c;
+      --cyan: #00d2ff;
+      --cyan-soft: rgba(0, 210, 255, 0.14);
+      --emerald: #10b981;
+      --amber: #f59e0b;
+      --rose: #f43f5e;
+      --text-main: #f4f7fc;
+      --text-sub: #a3b3cc;
+      --border-gold: rgba(212, 175, 55, 0.35);
+      --border-cyan: rgba(0, 210, 255, 0.3);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image:
+        radial-gradient(circle at 20% 0%, rgba(212, 175, 55, 0.16) 0%, transparent 55%),
+        radial-gradient(circle at 85% 15%, rgba(0, 210, 255, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 50% 90%, rgba(212, 175, 55, 0.08) 0%, transparent 60%);
+      color: var(--text-main);
+      font-family: 'Noto Sans KR', 'Montserrat', sans-serif;
+      min-height: 100vh;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* Top Sticky Navigation */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(4, 8, 20, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-gold);
+      padding: 0.75rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-emblem {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold);
+      background: radial-gradient(circle, #1a3a6e 0%, #050b18 75%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.35);
+    }
+
+    .brand-titles .en {
+      font-family: 'Cinzel', serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      color: var(--gold-bright);
+      display: block;
+    }
+
+    .brand-titles .kr {
+      font-size: 0.75rem;
+      color: var(--text-sub);
+      letter-spacing: 0.06em;
+    }
+
+    .nav-quick-links {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-pill {
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 7px 15px;
+      border-radius: 20px;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      cursor: pointer;
+    }
+
+    .nav-pill:hover {
+      border-color: var(--gold);
+      color: var(--gold-bright);
+      transform: translateY(-2px);
+    }
+
+    .nav-pill.gold {
+      background: rgba(212, 175, 55, 0.18);
+      border-color: var(--gold);
+      color: var(--gold-bright);
+    }
+
+    .nav-pill.med-switch {
+      background: rgba(16, 185, 129, 0.16);
+      border-color: rgba(16, 185, 129, 0.5);
+      color: #6ee7b7;
+    }
+    .nav-pill.med-switch:hover {
+      background: #10b981;
+      color: #03150e;
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1260px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 5rem;
+    }
+
+    /* Hero Search Banner */
+    .lex-hero {
+      text-align: center;
+      padding: 2.8rem 2rem 3rem;
+      border-radius: 24px;
+      background: linear-gradient(145deg, rgba(12, 26, 54, 0.92) 0%, rgba(5, 11, 24, 0.96) 100%);
+      border: 1.5px solid var(--border-gold);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(212, 175, 55, 0.12);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 2.5rem;
+    }
+
+    .lex-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold), var(--cyan), var(--gold), transparent);
+    }
+
+    .ministry-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 18px;
+      border-radius: 30px;
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--gold);
+      color: var(--gold-bright);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title {
+      font-family: 'Noto Serif KR', 'Cinzel', serif;
+      font-size: clamp(1.9rem, 3.8vw, 2.85rem);
+      font-weight: 900;
+      background: linear-gradient(135deg, #ffffff 10%, var(--gold-light) 55%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-sub {
+      color: var(--text-sub);
+      font-size: 1rem;
+      max-width: 780px;
+      margin: 0 auto 2rem;
+    }
+
+    /* Search Bar Box */
+    .search-box-wrap {
+      max-width: 820px;
+      margin: 0 auto 1.4rem;
+      position: relative;
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      background: rgba(3, 7, 18, 0.92);
+      border: 2px solid var(--gold);
+      border-radius: 50px;
+      padding: 6px 8px 6px 24px;
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.25), inset 0 2px 10px rgba(0, 0, 0, 0.8);
+      transition: all 0.3s ease;
+    }
+
+    .search-bar:focus-within {
+      border-color: var(--cyan);
+      box-shadow: 0 0 35px rgba(0, 210, 255, 0.4), 0 0 15px rgba(212, 175, 55, 0.3);
+    }
+
+    .search-icon {
+      font-size: 1.35rem;
+      margin-right: 12px;
+      color: var(--gold-bright);
+    }
+
+    .search-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 1.05rem;
+      font-family: inherit;
+      outline: none;
+      padding: 12px 0;
+    }
+
+    .search-input::placeholder {
+      color: #6c7e9c;
+    }
+
+    .search-btn {
+      background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold) 100%);
+      color: #050914;
+      border: none;
+      border-radius: 40px;
+      padding: 13px 28px;
+      font-size: 0.95rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .search-btn:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 20px rgba(255, 224, 102, 0.6);
+    }
+
+    /* Quick Keyword Chips */
+    .quick-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .tag-chip {
+      font-size: 0.8rem;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      color: #dbe6f7;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tag-chip:hover {
+      background: rgba(212, 175, 55, 0.22);
+      border-color: var(--gold-bright);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* Diagnosis Result Panel */
+    .result-section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 90px;
+    }
+
+    .result-card {
+      background: linear-gradient(160deg, rgba(10, 22, 46, 0.95) 0%, rgba(6, 13, 28, 0.98) 100%);
+      border: 1.5px solid var(--cyan);
+      border-radius: 20px;
+      padding: 2.2rem;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.75), 0 0 30px rgba(0, 210, 255, 0.15);
+      animation: fadeSlideUp 0.4s ease forwards;
+    }
+
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .result-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding-bottom: 1.3rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 1.6rem;
+    }
+
+    .result-category-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: var(--cyan-soft);
+      color: var(--cyan);
+      border: 1px solid var(--cyan);
+      margin-bottom: 0.5rem;
+    }
+
+    .result-title {
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .win-gauge-box {
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid var(--border-gold);
+      border-radius: 12px;
+      padding: 0.7rem 1.2rem;
+      text-align: right;
+    }
+
+    .win-gauge-label {
+      font-size: 0.72rem;
+      color: var(--text-sub);
+      display: block;
+    }
+
+    .win-gauge-val {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--gold-bright);
+    }
+
+    /* 3-Line Easy Summary */
+    .easy-summary-box {
+      background: rgba(212, 175, 55, 0.1);
+      border-left: 4px solid var(--gold-bright);
+      padding: 1.2rem 1.5rem;
+      border-radius: 0 12px 12px 0;
+      margin-bottom: 1.8rem;
+    }
+
+    .easy-summary-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--gold-bright);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .easy-summary-text {
+      font-size: 0.98rem;
+      color: #f8fafc;
+      line-height: 1.75;
+    }
+
+    /* Result Grid: Law/Precedent + DIY Steps */
+    .result-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .info-panel {
+      background: rgba(4, 9, 22, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 1.4rem;
+    }
+
+    .panel-heading {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--cyan);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid rgba(0, 210, 255, 0.2);
+      padding-bottom: 0.6rem;
+    }
+
+    .statute-item {
+      margin-bottom: 0.9rem;
+      font-size: 0.9rem;
+    }
+
+    .statute-item strong {
+      color: var(--gold-light);
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .step-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .step-item {
+      display: flex;
+      gap: 12px;
+      font-size: 0.9rem;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      background: var(--gold);
+      color: #050914;
+      font-weight: 800;
+      font-size: 0.75rem;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* Evidence Interactive Checklist */
+    .evidence-box {
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      border-radius: 14px;
+      padding: 1.3rem 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .evidence-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.9rem;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .evidence-title {
+      font-weight: 700;
+      color: #34d399;
+      font-size: 0.98rem;
+    }
+
+    .evidence-score {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--gold-bright);
+      background: rgba(0,0,0,0.5);
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 10px;
+    }
+
+    .evidence-check-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.88rem;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      transition: all 0.2s;
+    }
+
+    .evidence-check-label:hover {
+      border-color: #34d399;
+    }
+
+    .evidence-check-label input {
+      accent-color: #10b981;
+      width: 17px;
+      height: 17px;
+      cursor: pointer;
+    }
+
+    .result-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .btn-action {
+      padding: 11px 22px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s;
+      text-decoration: none;
+    }
+
+    .btn-action.gold {
+      background: linear-gradient(135deg, var(--gold-bright), var(--gold));
+      color: #040814;
+    }
+    .btn-action.gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(212, 175, 55, 0.45);
+    }
+
+    .btn-action.outline {
+      background: rgba(255, 255, 255, 0.06);
+      color: #fff;
+      border: 1px solid var(--border-cyan);
+    }
+    .btn-action.outline:hover {
+      background: var(--cyan-soft);
+      border-color: var(--cyan);
+    }
+
+    /* Section Headings */
+    .section-head {
+      margin-bottom: 1.6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .section-head h2 {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.55rem;
+      color: var(--gold-bright);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-head p {
+      color: var(--text-sub);
+      font-size: 0.9rem;
+    }
+
+    /* 10 Categories Grid */
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 1rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .cat-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(212, 175, 55, 0.22);
+      border-radius: 16px;
+      padding: 1.3rem;
+      cursor: pointer;
+      transition: all 0.28s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .cat-card:hover, .cat-card.active {
+      border-color: var(--gold-bright);
+      background: rgba(18, 36, 72, 0.95);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 175, 55, 0.25);
+    }
+
+    .cat-icon {
+      font-size: 1.9rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .cat-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.4rem;
+    }
+
+    .cat-desc {
+      font-size: 0.8rem;
+      color: var(--text-sub);
+      line-height: 1.5;
+      margin-bottom: 0.8rem;
+    }
+
+    .cat-more {
+      font-size: 0.76rem;
+      color: var(--gold-bright);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Two-Column Interactive Tools Area: Document Builder & Legal Calculator */
+    .tools-layout {
+      display: grid;
+      grid-template-columns: 1.25fr 0.95fr;
+      gap: 2rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .tool-box {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-gold);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .tool-box-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--gold-bright);
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .tool-box-sub {
+      font-size: 0.85rem;
+      color: var(--text-sub);
+      margin-bottom: 1.5rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    .form-group label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--gold-light);
+    }
+
+    .form-control {
+      background: rgba(3, 8, 20, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 8px;
+      padding: 10px 12px;
+      color: #fff;
+      font-family: inherit;
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .form-control:focus {
+      border-color: var(--cyan);
+      box-shadow: 0 0 10px rgba(0, 210, 255, 0.25);
+    }
+
+    .doc-preview {
+      background: #030712;
+      border: 1px solid rgba(0, 210, 255, 0.3);
+      border-radius: 12px;
+      padding: 1.3rem;
+      font-family: 'Noto Serif KR', monospace;
+      font-size: 0.86rem;
+      color: #e2e8f0;
+      white-space: pre-wrap;
+      line-height: 1.75;
+      max-height: 360px;
+      overflow-y: auto;
+      margin: 1rem 0;
+    }
+
+    /* Calculators */
+    .calc-card {
+      background: rgba(4, 10, 24, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 1.3rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .calc-card h4 {
+      color: var(--cyan);
+      font-size: 1rem;
+      margin-bottom: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .calc-output {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 10px;
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid var(--border-gold);
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+
+    /* Legal Charter & Guardrail Footer */
+    .guardrail-banner {
+      background: rgba(8, 18, 38, 0.9);
+      border: 1px solid var(--border-gold);
+      border-radius: 16px;
+      padding: 1.6rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .guardrail-icon {
+      font-size: 2.4rem;
+      flex-shrink: 0;
+    }
+
+    .guardrail-text h4 {
+      color: var(--gold-bright);
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .guardrail-text p {
+      font-size: 0.83rem;
+      color: var(--text-sub);
+      line-height: 1.6;
+    }
+
+    .footer-nav {
+      text-align: center;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 960px) {
+      .result-grid, .tools-layout {
+        grid-template-columns: 1fr;
+      }
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="top-nav">
+    <a href="main.html" class="brand-group" title="키아노스 메인 포털로 이동">
+      <div class="brand-emblem">⚖️</div>
+      <div class="brand-titles">
+        <span class="en">LEX-KYANOS · VIRTUE JUSTICE</span>
+        <span class="kr">키아노스 시민 법률 나침반 | 덕치사법원 대민 자조 솔루션</span>
+      </div>
+    </a>
+
+    <div class="nav-quick-links">
+      <a href="#diagnosisSection" class="nav-pill gold">🔍 법률 즉시 진단</a>
+      <a href="#categoriesSection" class="nav-pill">📂 10대 생활법률</a>
+      <a href="#docBuilderSection" class="nav-pill">📝 내용증명·소장 자동작성</a>
+      <a href="#calcSection" class="nav-pill">🧮 소송비용·시효 계산기</a>
+      <a href="med_kyanos.html" class="nav-pill med-switch">🩺 시민 생명케어 (Med-Kyanos) ↗</a>
+      <a href="gov_justice.html" class="nav-pill">🏛️ 덕치사법원</a>
+      <a href="main.html" class="nav-pill">🏠 메인 포털</a>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Hero Search Section -->
+    <section class="lex-hero">
+      <div class="ministry-badge">⚖️ 키아노스 독립 덕치사법원 공식 대민 초지능(SI) 인프라</div>
+      <h1 class="hero-title">키아노스 시민 법률 나침반 (Lex-Kyanos)</h1>
+      <p class="hero-sub">
+        변호사를 선임하지 않아도, 어려운 법전을 뒤지지 않아도 됩니다.<br>
+        일상 언어로 겪고 계신 억울한 상황이나 분쟁을 입력하시면 <strong>적용 법조문 · 대법원 판례 · 나홀로 해결 절차 · 내용증명 서식</strong>을 즉시 완성해 드립니다.
+      </p>
+
+      <form class="search-box-wrap" onsubmit="handleLegalSearch(event)">
+        <div class="search-bar">
+          <span class="search-icon">⚖️</span>
+          <input type="text" id="legalSearchInput" class="search-input" placeholder="예: 집주인이 전세보증금을 안 돌려줘요 / 퇴직금과 월급을 못 받았어요 / 중고거래 사기 신고..." autocomplete="off">
+          <button type="submit" class="search-btn">
+            <span>SI 법률 해답 검색</span>
+            <span>→</span>
+          </button>
+        </div>
+      </form>
+
+      <div class="quick-tags">
+        <span class="tag-chip" onclick="selectCase('deposit')">🏠 전월세 보증금 미반환</span>
+        <span class="tag-chip" onclick="selectCase('wage')">💼 임금·퇴직금 체불 및 부당해고</span>
+        <span class="tag-chip" onclick="selectCase('loan')">💰 빌려준 돈(대여금) 회수</span>
+        <span class="tag-chip" onclick="selectCase('fraud')">🚨 중고거래·보이스피싱 사기</span>
+        <span class="tag-chip" onclick="selectCase('defamation')">💬 온라인 악플·명예훼손·모욕</span>
+        <span class="tag-chip" onclick="selectCase('traffic')">🚗 교통사고 합의금·과실비율</span>
+        <span class="tag-chip" onclick="selectCase('inheritance')">👨‍👩‍👧 부모님 빚 상속포기·한정승인</span>
+        <span class="tag-chip" onclick="selectCase('consumer')">🛒 환불 거부·계약 해지 위약금</span>
+        <span class="tag-chip" onclick="selectCase('neighbor')">🏢 윗집 누수·층간소음 배상</span>
+        <span class="tag-chip" onclick="selectCase('admin')">🏛️ 억울한 과태료·행정처분 이의신청</span>
+      </div>
+    </section>
+
+    <!-- Dynamic Legal Diagnosis Result Section -->
+    <section id="diagnosisSection" class="result-section">
+      <div id="resultContainer" class="result-card">
+        <!-- Populated dynamically by JavaScript -->
+      </div>
+    </section>
+
+    <!-- 10 Major Life-Law Categories -->
+    <section id="categoriesSection">
+      <div class="section-head">
+        <div>
+          <h2>📂 10대 생활 법률 자가 해결 백과</h2>
+          <p>시민들이 가장 많이 겪는 10대 법률 분쟁의 핵심 법리와 나홀로 해결 절차를 원클릭으로 확인하세요.</p>
+        </div>
+      </div>
+
+      <div class="categories-grid" id="categoryGrid">
+        <!-- Populated by JS -->
+      </div>
+    </section>
+
+    <!-- DIY Document Builder & Calculators -->
+    <section id="docBuilderSection" class="tools-layout">
+
+      <!-- Left: Automated Legal Document Builder -->
+      <div class="tool-box">
+        <div class="tool-box-title">📝 나홀로 법률 서식 자동 완성기 (DIY Document Builder)</div>
+        <p class="tool-box-sub">빈칸만 채우면 우체국 내용증명서, 법원 지급명령 신청서, 형사 고소장 초안이 표준 법률 문장으로 자동 생성됩니다.</p>
+
+        <div class="form-grid">
+          <div class="form-group full">
+            <label for="docType">작성할 법률 서식 선택</label>
+            <select id="docType" class="form-control" onchange="generateDocument()">
+              <option value="deposit_notice">1. [내용증명] 임대차 보증금 반환 독촉 및 법적조치 최고서</option>
+              <option value="loan_notice">2. [내용증명] 대여금(빌려준 돈) 및 미수금 변제 최고서</option>
+              <option value="refund_notice">3. [내용증명] 계약 해지 통보 및 대금 환불 청구서</option>
+              <option value="payment_order">4. [법원 전자소송] 나홀로 지급명령 신청서 (청구취지 및 청구원인)</option>
+              <option value="criminal_complaint">5. [형사 고소장] 사기 / 사이버 모욕·명예훼손 고소장 초안</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="docSender">발신인 (채권자 / 임차인 / 고소인 성명)</label>
+            <input type="text" id="docSender" class="form-control" value="홍길동" oninput="generateDocument()">
+          </div>
+
+          <div class="form-group">
+            <label for="docReceiver">수신인 (채무자 / 임대인 / 피고소인 성명)</label>
+            <input type="text" id="docReceiver" class="form-control" value="김갑수" oninput="generateDocument()">
+          </div>
+
+          <div class="form-group">
+            <label for="docAmount">청구 금액 / 피해 금액 (원)</label>
+            <input type="text" id="docAmount" class="form-control" value="50,000,000" oninput="generateDocument()">
+          </div>
+
+          <div class="form-group">
+            <label for="docDate">사건 발생일 / 계약 만료일</label>
+            <input type="date" id="docDate" class="form-control" value="2026-09-30" onchange="generateDocument()">
+          </div>
+
+          <div class="form-group full">
+            <label for="docDetail">핵심 사실관계 요약 (주소지, 약정 내용, 피해 경위 등)</label>
+            <input type="text" id="docDetail" class="form-control" value="서울시 강남구 키아노스로 101호 임대차계약 만료에 따른 전세보증금 반환 건" oninput="generateDocument()">
+          </div>
+        </div>
+
+        <div id="docPreview" class="doc-preview"></div>
+
+        <div class="result-actions">
+          <button type="button" class="btn-action gold" onclick="copyDocument()">📋 완성 문서 전체 복사</button>
+          <button type="button" class="btn-action outline" onclick="downloadDocument()">💾 텍스트 파일(.txt) 저장</button>
+          <button type="button" class="btn-action outline" onclick="printDocument()">🖨️ 인쇄 / PDF 출력</button>
+        </div>
+      </div>
+
+      <!-- Right: Legal Cost & Statute of Limitations Calculators -->
+      <div class="tool-box" id="calcSection">
+        <div class="tool-box-title">🧮 나홀로 소송 비용 & 소멸시효 계산기</div>
+        <p class="tool-box-sub">변호사 선임 대비 절감 비용과 내 권리의 법적 유효기간(소멸시효)을 즉시 계산합니다.</p>
+
+        <!-- Calculator 1: Litigation Cost -->
+        <div class="calc-card">
+          <h4>⚖️ 1. 나홀로 소송 비용 vs 변호사 선임료 비교</h4>
+          <div class="form-group" style="margin-bottom:0.8rem;">
+            <label for="claimAmountInput">청구할 금액 (소송가액, 숫자만 입력)</label>
+            <input type="number" id="claimAmountInput" class="form-control" value="30000000" min="100000" step="1000000" oninput="calculateLitigationCost()">
+          </div>
+          <div id="costCalcOutput" class="calc-output"></div>
+        </div>
+
+        <!-- Calculator 2: Statute of Limitations -->
+        <div class="calc-card">
+          <h4>⏳ 2. 내 채권·권리 소멸시효 D-Day 판독기</h4>
+          <div class="form-group" style="margin-bottom:0.7rem;">
+            <label for="limitationType">권리 / 채권 종류 선택</label>
+            <select id="limitationType" class="form-control" onchange="calculateLimitation()">
+              <option value="10">일반 개인 간 빌려준 돈 (민사채권: 10년)</option>
+              <option value="5">사업자·상인 간 거래 대금 (상사채권: 5년)</option>
+              <option value="3_wage">밀린 월급 · 퇴직금 · 공사대금 · 병원비 (단기시효: 3년)</option>
+              <option value="3_tort">폭행 · 교통사고 · 사기 등 불법행위 손해배상 (안 날로부터 3년)</option>
+              <option value="1">음식값 · 숙박비 · 학원비 · 렌트비 (초단기시효: 1년)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="limitationDate">권리 발생일 (변제기일 또는 피해를 안 날)</label>
+            <input type="date" id="limitationDate" class="form-control" value="2024-05-01" onchange="calculateLimitation()">
+          </div>
+          <div id="limitationOutput" class="calc-output"></div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Virtue Court Guardrail Banner -->
+    <section class="guardrail-banner">
+      <div class="guardrail-icon">🏛️</div>
+      <div class="guardrail-text">
+        <h4>키아노스 독립 덕치사법원 시민 권리 수호 헌장 및 이용 안내</h4>
+        <p>
+          본 「키아노스 시민 법률 나침반 (Lex-Kyanos)」은 법률 지식의 독점을 타파하고 모든 시민이 비용 장벽 없이 스스로 권리를 지킬 수 있도록 돕는 공공 초지능(SI) 법률 정보 및 서식 자동화 시스템입니다. 제공되는 판례·법조문 해설 및 자동 생성 문서는 시민의 자가 법률 행위(나홀로 소송·내용증명 발송 등)를 지원하는 참고 표준안이며, 개별 사건의 특수한 사실관계에 따라 법원의 최종 판단은 달라질 수 있습니다.
+        </p>
+      </div>
+    </section>
+
+    <footer class="footer-nav">
+      <a href="main.html" class="btn-action gold">👑 키아노스 메인 포털로 이동</a>
+      <a href="med_kyanos.html" class="btn-action outline">🩺 시민 생명케어 가이드 (Med-Kyanos) 열람</a>
+      <a href="gov_justice.html" class="btn-action outline">⚖️ 덕치사법원 공식 포털</a>
+    </footer>
+
+  </main>
+
+  <script>
+    const LEGAL_CASES = {
+      deposit: {
+        id: 'deposit',
+        icon: '🏠',
+        category: '주택·상가 임대차 분쟁',
+        title: '전월세 보증금 미반환 및 계약만료 나홀로 회수 솔루션',
+        shortDesc: '계약 만료 후 집주인이 "새 세입자가 들어와야 준다"며 보증금을 돌려주지 않을 때의 완벽 대처법',
+        winRate: '승소·회수 확실성 98% (계약서·확정일자 보유 시)',
+        summary: '집주인이 "다음 세입자가 구해져야 보증금을 줄 수 있다"고 말하는 것은 법적 근거가 전혀 없는 핑계입니다. 만기일 최소 2개월 전까지 갱신거절(이사) 의사를 문자·내용증명으로 남기고, 만기 후 보증금을 못 받으면 ① 임차권등기명령 신청 후 이사 ➔ ② 지급명령 또는 보증금반환소송(연 12% 지연이자 청구 가능) 순으로 혼자서도 100% 해결할 수 있습니다.',
+        statutes: [
+          { law: '주택임대차보호법 제6조(계약의 갱신)', desc: '임대차기간 끝나기 6개월 전부터 2개월 전까지 갱신거절 통지를 하면 만기일에 계약은 확정적으로 종료됩니다.' },
+          { law: '주택임대차보호법 제3조의3(임차권등기명령)', desc: '임대차가 끝난 후 보증금이 반환되지 아니한 경우, 임차인은 법원에 단독으로 임차권등기명령을 신청하여 대항력과 우선변제권을 유지한 채 자유롭게 이사할 수 있습니다.' },
+          { law: '대법원 판례 (2002다52657 등)', desc: '임차인이 임차권등기명령에 따라 이사를 나가 집을 비워주었다면, 그 다음 날부터 임대인은 보증금 및 법정 지연손해금(소송촉진법상 연 12%)을 지급할 의무가 발생합니다.' }
+        ],
+        steps: [
+          '만기 2개월 전까지 임대인에게 계약 연장 의사가 없음을 문자·카톡·통화녹음 및 [내용증명]으로 명확히 발송합니다.',
+          '만기일에 보증금이 입금되지 않으면 절대 먼저 전출신고를 하지 말고, 대법원 전자소송 사이트에서 [임차권등기명령]을 나홀로 신청합니다 (비용 약 4만 원, 임대인에게 청구 가능).',
+          '등기부등본에 임차권등기가 기입된 것을 확인한 후 이사하고 열쇠(비밀번호)를 인계했다고 문자 통보합니다.',
+          '전세보증보험(HUG 등) 가입자는 보증기관에 이행청구를 하고, 미가입자는 전자소송으로 [지급명령 신청]을 접수하여 집행권원 확보 후 경매/채권압류를 진행합니다.'
+        ],
+        evidence: [
+          '확정일자가 날인된 임대차계약서 원본 및 전입신고(주민등록초본)',
+          '보증금 송금 이체확인증 (계좌내역)',
+          '만기 2개월 전 해지 통보 문자·카카오톡 캡처 또는 통화 녹취록',
+          '발송한 내용증명 우체국 등기 영수증',
+          '임차권등기 기입 후 퇴거(공실 상태 사진 및 비밀번호 인계 문자)'
+        ],
+        docPreset: {
+          type: 'deposit_notice',
+          amount: '150,000,000',
+          detail: '임대차계약 기간 만료에 따른 전세보증금 전액 반환 최고 및 임차권등기·지급명령 예고 건'
+        }
+      },
+      wage: {
+        id: 'wage',
+        icon: '💼',
+        category: '근로·임금·부당해고',
+        title: '임금·퇴직금 체불 및 부당해고 원스톱 권리 구제',
+        shortDesc: '월급·퇴직금 미지급(14일 이내 지급 원칙), 갑작스러운 해고 통보, 직장 내 괴롭힘 해결 절차',
+        winRate: '구제 성공률 95% (노동청 진정 및 대지급금 활용)',
+        summary: '사용자는 근로자가 퇴직한 날로부터 14일 이내에 임금과 퇴직금을 전액 지급해야 하며, 위반 시 3년 이하의 징역 또는 3천만 원 이하의 벌금(형사처벌) 대상입니다. 변호사 없이도 [고용노동부 노동포털 온라인 임금체불 진정]을 넣으면 근로감독관이 사업주를 소환 조사하며, 사업주가 돈이 없더라도 국가가 먼저 지급하는 [간이대지급금(최대 1,000만 원)] 제도로 빠르게 받을 수 있습니다.',
+        statutes: [
+          { law: '근로기준법 제36조(금품 청산) 및 제109조(벌칙)', desc: '퇴직 후 14일 이내에 임금·보상금·퇴직금 등 일체의 금품을 지급해야 하며, 미지급 시 형사처벌 및 연 20%의 지연이자가 부과됩니다.' },
+          { law: '근로기준법 제23조(해고 등의 제한) 및 제27조(서면통지)', desc: '정당한 이유 없는 해고는 무효이며, 해고 사유와 시기를 서면(종이 문서)으로 통지하지 않은 구두·카톡 해고는 100% 부당해고입니다 (5인 이상 사업장, 해고일로부터 3개월 내 노동위원회 구제신청).' },
+          { law: '임금채권보장법 제7조(대지급금의 지급)', desc: '노동청에서 체불 임금 등 사업주 확인서를 발급받으면, 근로복지공단을 통해 국가로부터 최대 1,000만 원까지 간이대지급금을 우선 수령할 수 있습니다.' }
+        ],
+        steps: [
+          '급여명세서, 급여 통장 입금 내역, 출퇴근 기록(카톡, 교통카드, 구글 타임라인), 근로계약서를 먼저 백업합니다.',
+          '퇴직 후 14일이 지나도 입금되지 않으면 [고용노동부 노동포털(minwon.moel.go.kr)]에서 공인인증서 로그인 후 [임금체불 진정서]를 접수합니다.',
+          '담당 근로감독관 출석 조사에 참석하여 체불액을 확정받고, 사업주가 미지급 시 [체불임금 등·사업주 확인서] 발급을 신청합니다.',
+          '근로복지공단에 [간이대지급금]을 청구하여 먼저 현금을 수령하고, 잔여 금액은 대한법률구조공단 무료 소송지원으로 강제집행합니다.'
+        ],
+        evidence: [
+          '근로계약서 또는 채용 공고문 캡처 (구두 계약 시 업무 지시 카톡)',
+          '최근 1년 치 급여 통장 거래내역서',
+          '출퇴근 시간 증빙 자료 (메신저 대화, 이메일 발송 시각, 교통카드 내역)',
+          '해고 통보 녹취록 또는 문자 메시지 (부당해고의 경우)',
+          '4대보험 가입내역 확인서 또는 소득금액증명원'
+        ],
+        docPreset: {
+          type: 'loan_notice',
+          amount: '8,500,000',
+          detail: '퇴직 후 14일 도과에 따른 미지급 급여 및 법정 퇴직금 즉시 지급 최고 (미이행 시 고용노동청 형사 고소 예고)'
+        }
+      },
+      loan: {
+        id: 'loan',
+        icon: '💰',
+        category: '금전거래·채권추심',
+        title: '빌려준 돈(대여금)·미수금 나홀로 회수 (차용증 없을 때 포함)',
+        shortDesc: '지인에게 빌려준 돈이나 거래처 미수금을 법원 지급명령과 계좌 압류로 신속히 받아내는 법',
+        winRate: '승소 가능성 92% (계좌이체 내역 및 독촉 문자 확보 시)',
+        summary: '차용증을 쓰지 않았더라도 ① 계좌이체 송금 내역과 ② "언제까지 갚겠다", "조금만 기다려달라"는 카카오톡·문자·통화녹음만 있으면 법원에서 100% 대여금으로 인정받습니다. 재판에 출석할 필요조차 없는 [대법원 전자소송 지급명령 신청]을 활용하면 소송 비용의 1/10 수준으로 2~4주 만에 판결문과 동일한 효력을 얻어 상대방 통장을 압류할 수 있습니다.',
+        statutes: [
+          { law: '민법 제598조(소비대차의 의의) 및 제397조(금전채무불이행)', desc: '금전 대여 약정 및 송금 사실이 입증되면 원금 반환 의무는 물론 변제기 이후 연 12%(소송촉진법)의 지연손해금을 청구할 수 있습니다.' },
+          { law: '민사소송법 제462조(지급명령의 신청)', desc: '금전 지급을 목적으로 하는 청구에 대하여 법원은 채권자의 일방 신청만으로 서류 심사 후 즉시 지급명령을 발령합니다 (인지대 일반 소송의 1/10).' },
+          { law: '민사집행법 제223조(채권의 압류명령)', desc: '확정된 지급명령 정본을 가지고 채무자의 주거래 은행 예금 계좌나 급여를 즉시 압류 및 추심할 수 있습니다.' }
+        ],
+        steps: [
+          '차용증이 없다면 먼저 상대방에게 "지난번 빌려간 OOO만 원 언제까지 입금 가능한가요?"라고 문자를 보내 채무를 인정하는 답장이나 통화 녹음을 확보합니다.',
+          '우체국 [내용증명]을 발송하여 기한 내 변제를 공식 독촉하고 법적 조치를 예고합니다 (심리적 압박 효과 극대화).',
+          '대법원 전자소송(ecfs.scourt.go.kr)에 접속하여 [지급명령 신청서]를 작성하고 송금확인증과 카톡 캡처를 첨부합니다.',
+          '채무자가 송달받은 후 2주 내에 이의신청을 하지 않으면 지급명령이 확정되며, 즉시 은행 계좌 압류·추심명령을 신청하여 돈을 회수합니다.'
+        ],
+        evidence: [
+          '은행 계좌이체 거래내역 확인서 (송금 영수증)',
+          '돈을 빌려달라고 요청하거나 갚겠다고 약속한 카카오톡·문자 대화',
+          '변제 독촉 통화 녹취 파일 (본인이 참여한 대화 녹음은 합법)',
+          '채무자의 이름, 주민등록번호 또는 주소/연락처 (사실조회 신청용)',
+          '차용증 또는 각서 (있는 경우)'
+        ],
+        docPreset: {
+          type: 'payment_order',
+          amount: '15,000,000',
+          detail: '차용 약정에 따라 송금한 대여금 원금 및 변제기 도과에 따른 법정 지연손해금 지급 청구'
+        }
+      },
+      fraud: {
+        id: 'fraud',
+        icon: '🚨',
+        category: '사기·사이버범죄 피해',
+        title: '중고거래 사기 · 투자/메신저 사기 형사 고소 및 배상명령',
+        shortDesc: '물건을 안 보내주거나 속여서 돈을 가로챈 사기범을 형사 처벌하고 민사 소송 없이 피해금을 돌려받는 법',
+        winRate: '피해금 합의·회수율 88% (형사고소 + 배상명령 병행 시)',
+        summary: '사기 피해를 당했을 때 별도로 비싼 민사소송을 할 필요가 없습니다! 먼저 경찰서(또는 사이버범죄신고시스템 ECRM)에 [사기죄 형사 고소장]을 접수하면 가해자는 구속·처벌을 피하기 위해 합의금(피해 원금 이상)을 들고 연락해 옵니다. 만약 합의하지 않더라도 형사재판 법원에 [배상명령 신청서] 한 장만 제출하면 형사 유죄 판결과 동시에 민사 강제집행 권원을 무료로 얻을 수 있습니다.',
+        statutes: [
+          { law: '형법 제347조(사기)', desc: '사람을 기망하여 재물의 교부를 받거나 재산상의 이익을 취득한 자는 10년 이하의 징역 또는 2천만 원 이하의 벌금에 처합니다.' },
+          { law: '소송촉진 등에 관한 특례법 제25조(배상명령)', desc: '형사사건의 피해자는 제1심 또는 제2심 공판의 변론이 종결될 때까지 사건이 계속된 법원에 피해 배상명령을 무료로 신청할 수 있습니다.' },
+          { law: '전기통신금융사기 피해방지법 (지급정지)', desc: '보이스피싱·메신저피싱 등 금융사기의 경우 즉시 112 또는 해당 은행 콜센터에 전화하여 사기 이용 계좌 전체에 대한 즉시 지급정지를 신청할 수 있습니다.' }
+        ],
+        steps: [
+          '판매 게시글 캡처, 상대방과 나눈 대화 전체 화면, 상대방 계좌번호 및 이체확인증을 PDF/이미지로 저장합니다.',
+          '경찰청 사이버범죄신고시스템(ecrm.police.go.kr)에 온라인 신고 후, 출력물과 신분증을 지참하여 가장 가까운 경찰서 민원실에 방문 접수합니다.',
+          '수사 진행 중 피의자가 특정되어 합의를 요청해 오면 피해 원금 전액 입금을 확인한 후 처벌불원서(합의서)를 작성해 줍니다 (사기는 반의사불벌죄가 아니나 양형에 결정적).',
+          '합의 없이 기소되어 법원 재판으로 넘어가면, 해당 형사재판부에 [배상명령 신청서]를 우편 또는 전자소송으로 제출합니다.'
+        ],
+        evidence: [
+          '송금 이체확인증 (은행명, 계좌번호, 예금주명, 송금 일시 표시)',
+          '사기범이 올린 판매글/투자권유글 전체 화면 캡처',
+          '카카오톡, 당근마켓, 번개장터, 문자메시지 대화 전문 캡처',
+          '사기범의 연락처 및 더치트(TheCheat) 피해 사례 조회 내역'
+        ],
+        docPreset: {
+          type: 'criminal_complaint',
+          amount: '2,400,000',
+          detail: '피고소인이 물품 인도 의사나 능력 없이 피해자를 기망하여 대금을 편취한 사기죄 고소 건'
+        }
+      },
+      defamation: {
+        id: 'defamation',
+        icon: '💬',
+        category: '명예훼손·사이버모욕',
+        title: '온라인 악플 · 허위사실 유포 · 모욕죄 증거 수집 및 고소 가이드',
+        shortDesc: '인터넷 커뮤니티, SNS, 단톡방에서 명예훼손이나 욕설 피해를 입었을 때 성립 요건과 고소 절차',
+        winRate: '기소·합의 성공률 85% (공연성·특정성·URL 증거 확보 시)',
+        summary: '온라인 명예훼손이나 모욕죄가 성립하려면 3가지 핵심 요건인 ① 공연성(다수가 볼 수 있거나 전파 가능성), ② 특정성(주변 사람이 보면 누구인지 알 수 있음), ③ 구체적 사실 적시(명예훼손) 또는 경멸적 욕설(모욕)이 충족되어야 합니다. 가해자가 글을 지우기 전에 반드시 **웹페이지 URL 주소와 작성 일시, 댓글 전체가 나오도록 PDF 인쇄 캡처**를 해두는 것이 승패를 가릅니다.',
+        statutes: [
+          { law: '정보통신망법 제70조(사이버 명예훼손)', desc: '사람을 비방할 목적으로 정보통신망을 통하여 공공연하게 사실을 드러내면 3년 이하 징역/3천만 원 이하 벌금, 거짓 사실(허위사실)을 드러내면 7년 이하 징역/5천만 원 이하 벌금에 처합니다.' },
+          { law: '형법 제311조(모욕죄)', desc: '공연히 사람을 모욕한 자는 1년 이하의 징역이나 금고 또는 200만 원 이하의 벌금에 처합니다 (고소기간: 범인을 안 날로부터 6개월 이내 필수).' }
+        ],
+        steps: [
+          '모니터 화면을 휴대폰으로 찍지 말고, 브라우저 [인쇄 -> PDF로 저장] 기능을 사용하여 상단 URL 주소, 작성자 닉네임/ID, 작성 일시, 본문과 댓글이 모두 포함되게 저장합니다.',
+          '내 신상(실명, 사진, 직장, 연락처 등)이 노출되어 제3자가 나를 알아볼 수 있었다는 자료(특정성 입증 자료)를 함께 첨부합니다.',
+          '본 페이지 하단의 [형사 고소장 자동 완성기]로 고소장을 작성하여 관할 경찰서 사이버수사팀에 접수합니다.',
+          '형사 벌금형(약식명령)이 확정되면 그 결과를 첨부하여 민사 소액소송으로 정신적 위자료(통상 100만~500만 원)를 추가 청구할 수 있습니다.'
+        ],
+        evidence: [
+          '웹페이지 상단 URL과 날짜가 찍힌 전체 화면 PDF 파일',
+          '피해자가 누구인지 주변 지인이 알 수 있었음을 증명하는 자료(특정성)',
+          '가해자 계정 프로필 화면 및 고유 ID/고정닉 캡처',
+          '정신적 고통으로 인한 상담 기록 또는 주변인의 진술서'
+        ],
+        docPreset: {
+          type: 'criminal_complaint',
+          amount: '3,000,000',
+          detail: '다수가 열람하는 온라인 게시판에서 피해자를 특정하여 허위사실 적시 및 경멸적 표현으로 모욕한 건'
+        }
+      },
+      traffic: {
+        id: 'traffic',
+        icon: '🚗',
+        category: '교통사고·손해배상',
+        title: '교통사고 과실비율 불복 및 보험사 합의금 제대로 받는 법',
+        shortDesc: '보험사가 부당한 과실비율(예: 8:2)을 강요하거나 조기 합의를 종용할 때 시민이 대처하는 핵심 전략',
+        winRate: '과실 조정·합의금 증액률 90% (블랙박스 + 분심위/소송 활용)',
+        summary: '보험사 직원이 제시하는 초도 과실비율이나 합의금은 보험사 내부 기준일 뿐 법원의 확정 판결이 아닙니다! 억울한 쌍방과실 주장을 당했다면 절대 서둘러 합의하지 마시고 ① 블랙박스 원본 확보 ➔ ② 손해보험협회 과실비율 분쟁심의위원회 청구 또는 자차 선처리 후 구상금 소송 유도 ➔ ③ 인명 피해 시 치료가 충분히 끝난 뒤(합의 시효 3년) 위자료·휴업손해·향후치료비를 합산하여 합의하십시오.',
+        statutes: [
+          { law: '민법 제750조(불법행위의 내용) 및 자동차손해배상 보장법 제3조', desc: '자기를 위하여 자동차를 운행하는 자는 그 운행으로 다른 사람을 다치게 한 경우 손해를 배상할 책임을 집니다 (손해배상 청구권 시효: 사고일로부터 3년).' },
+          { law: '대법원 판례 (황색실선 침범·후방추돌 무과실 원칙)', desc: '정상 주행 중 예측 불가능한 상대방의 급차선 변경이나 신호위반 사고의 경우, 피해 운전자의 회피 가능성 여부에 따라 100:0 무과실이 폭넓게 인정됩니다.' }
+        ],
+        steps: [
+          '사고 즉시 블랙박스 메모리카드 원본을 분리하여 PC와 클라우드에 백업하고, 현장 도로 차선·신호등 사진을 촬영합니다.',
+          '보험사가 부당한 과실비율을 주장하면 "인정할 수 없으니 분쟁심의위원회가 아닌 법원 소송으로 판단받겠다"고 명확히 의사 표시합니다.',
+          '대인 피해 합의는 서두르지 말고 충분한 통원·입원 치료 및 정밀검사(MRI 등)를 받은 후, [위자료 + 휴업손해 + 통원교통비 + 향후치료비] 내역서를 서면으로 요구합니다.',
+          '일상생활 중 발생한 비차량 사고(자전거, 반려견, 누수 등)는 본인 및 가족이 가입한 보험의 [일상생활배상책임특약] 가입 여부를 반드시 먼저 조회합니다.'
+        ],
+        evidence: [
+          '사고 당시 블랙박스 전·후방 고화질 원본 영상 및 주변 CCTV',
+          '경찰서 교통사고사실확인원 (신고 접수 시)',
+          '병원 진단서, 진료비 세부내역서 및 통원 확인서',
+          '소득 증빙 자료 (원천징수영수증 등 휴업손해 산정용)'
+        ],
+        docPreset: {
+          type: 'refund_notice',
+          amount: '5,000,000',
+          detail: '불법행위(안전주의의무 위반 사고)로 인해 발생한 치료비 및 재산상 손해배상 청구 건'
+        }
+      },
+      inheritance: {
+        id: 'inheritance',
+        icon: '👨‍👩‍👧',
+        category: '가사·상속·이혼',
+        title: '부모님·가족 사망 시 빚(채무) 상속포기 및 한정승인 3개월 골든타임',
+        shortDesc: '고인의 재산보다 빚이 많을 때 가족에게 빚이 대물림되지 않도록 법원에 신청하는 완벽 절차',
+        winRate: '채무 승계 차단율 100% (사망을 안 날로부터 3개월 내 신청 시)',
+        summary: '가족이 사망했을 때 가장 중요한 법적 골든타임은 **[사망 사실을 안 날로부터 3개월 이내]**입니다. 고인의 예금을 인출하거나 처분하면 빚까지 모두 떠안는 "단순승인"으로 간주되므로 절대 고인의 계좌를 건드리지 마시고, 주민센터에서 [안심상속 원스톱 서비스]로 재산과 채무를 조회한 뒤 가정법원에 **① 한정승인(남긴 재산 한도 내에서만 빚 변제)** 또는 **② 상속포기**를 전자소송으로 신청하십시오.',
+        statutes: [
+          { law: '민법 제1019조(승인·포기의 기간 및 특별한정승인)', desc: '상속인은 상속개시있음을 안 날로부터 3개월 내에 단순승인, 한정승인 또는 포기를 할 수 있습니다. 중대한 과실 없이 채무 초과 사실을 몰랐다면 이를 안 날로부터 3개월 내에 특별한정승인이 가능합니다.' },
+          { law: '민법 제1026조(법정단순승인 주의사항)', desc: '상속인이 상속재산을 임의로 처분(예금 인출, 자동차 폐차/이전, 보증금 수령 후 임의 사용)하면 한정승인이나 포기를 했더라도 무효가 되어 빚을 전액 상속받게 되므로 각별히 주의해야 합니다.' }
+        ],
+        steps: [
+          '사망신고와 동시에 주민센터(또는 정부24 온라인)에서 [안심상속 원스톱 통합조회]를 신청하여 고인의 금융채무, 세금, 토지, 연금 내역을 확인합니다.',
+          '주의: 고인 명의의 예금을 인출하여 장례비 이외의 용도로 쓰거나 고인 채무를 임의로 갚지 마십시오 (법정단순승인 위험).',
+          '빚이 재산보다 많다면 사망일로부터 3개월 이내에 대법원 전자소송(가사)에서 **1순위 상속인 중 1명은 [한정승인]**, 나머지 가족은 **[상속포기]**를 신청합니다 (전원 상속포기 시 4촌 이내 친척에게까지 빚 통지가 넘어가는 것을 방지!).',
+          '한정승인 결정문을 받은 후 5일 이내에 신문 공고 및 알고 있는 채권자에게 내용증명으로 한정승인 사실을 통지하면 모든 절차가 안전하게 종료됩니다.'
+        ],
+        evidence: [
+          '피상속인(고인)의 기본증명서(사망 표시), 가족관계증명서(상세), 주민등록말소자초본',
+          '상속인 본인의 가족관계증명서, 주민등록등본, 인감증명서(또는 본인서명사실확인서)',
+          '안심상속 원스톱 금융내역 조회 결과서 (적극재산 및 소극재산 목록 작성용)'
+        ],
+        docPreset: {
+          type: 'refund_notice',
+          amount: '0',
+          detail: '가정법원 상속 한정승인 심판 결정에 따른 상속채권자 대상 법정 채권신고 최고 및 변제 통지 건'
+        }
+      },
+      consumer: {
+        id: 'consumer',
+        icon: '🛒',
+        category: '소비자·계약분쟁',
+        title: '환불 거부 · 과도한 위약금 · 헬스장/학원/온라인쇼핑 계약 해지',
+        shortDesc: '"환불 불가" 약관의 법적 무효 근거와 한국소비자원 피해구제 및 신용카드 할부항변권 행사법',
+        winRate: '환불 성공률 93% (방문판매법·전자상거래법 강행규정 적용)',
+        summary: '업체가 계약서에 "이유 불문 환불 불가"라고 적어놓았더라도 이는 소비자보호 관련 법률을 위반한 불공정 약관으로 **법적 무효**입니다! 온라인 구매는 수령 후 7일 이내, 헬스장·필라테스·피부관리실·학원 등 1개월 이상 계속거래 계약은 **언제든지 중도 해지 및 잔여기간 대금 환불(위약금은 총 계약대금의 최대 10%까지만 공제 가능)**을 요구할 법적 권리가 있습니다.',
+        statutes: [
+          { law: '방문판매 등에 관한 법률 제31조(계속거래의 해지)', desc: '헬스장, 미용, 학원 등 1개월 이상 계속하여 서비스를 제공받는 계약의 소비자는 계약기간 중 언제든지 계약을 해지할 수 있으며, 사업자는 위약금(최대 10%)과 이용일수 금액만 제외하고 3영업일 내에 환급해야 합니다.' },
+          { law: '전자상거래법 제17조(청약철회 등)', desc: '온라인 쇼핑몰 구매자는 재화를 공급받은 날부터 7일(표시·광고와 다를 경우 3개월) 이내에 청약철회 및 전액 환불을 요구할 수 있습니다.' },
+          { law: '할부거래에 관한 법률 제16조(소비자의 항변권)', desc: '20만 원 이상을 신용카드 3개월 이상 할부로 결제한 경우, 업체가 폐업(먹튀)하거나 환불을 거부하면 카드사에 [할부항변권]을 신청하여 남은 할부금 납부를 즉시 중단할 수 있습니다.' }
+        ],
+        steps: [
+          '업체에 전화가 아닌 **문자나 내용증명**으로 오늘 날짜로 중도 해지 및 환불을 요청한다는 기록을 먼저 남깁니다 (이용일수 산정 기준일이 됨!).',
+          '업체가 환불을 거부하거나 과도한 정가 차감을 주장하면, 본 페이지 하단의 [계약 해지 및 환불 청구 내용증명]을 작성해 발송합니다.',
+          '신용카드 할부(20만 원 이상, 3개월 이상) 결제 건이라면 즉시 카드사 고객센터에 전화하여 **[할부항변권 및 청약철회권 행사 신청]**을 접수합니다.',
+          '한국소비자원(1372 또는 kca.go.kr)에 온라인 피해구제를 신청하면 공단 조사관이 업체에 직접 시정 및 환급을 권고합니다.'
+        ],
+        evidence: [
+          '결제 영수증 또는 신용카드 매출전표',
+          '계약서 또는 수강증/회원권 사진',
+          '업체에 해지 및 환불을 요청한 날짜가 찍힌 문자메시지·카톡 캡처',
+          '업체가 보낸 부당한 환불 산정 내역 또는 거부 답변'
+        ],
+        docPreset: {
+          type: 'refund_notice',
+          amount: '1,200,000',
+          detail: '방문판매법 제31조(계속거래 해지권)에 의거한 이용계약 중도 해지 통보 및 잔여 대금 즉시 환급 청구'
+        }
+      },
+      neighbor: {
+        id: 'neighbor',
+        icon: '🏢',
+        category: '이웃·누수·생활분쟁',
+        title: '윗집 누수 손해배상 · 층간소음 · 반려동물 사고 법적 해결',
+        shortDesc: '공동주택 아파트·빌라 누수 피해 복구비 청구와 층간소음 합법적 대응 수칙',
+        winRate: '누수 배상 인정률 96% (누수 탐지 소견서 + 일배책 보험 활용)',
+        summary: '아파트나 빌라 천장에서 물이 새는 누수 사고가 발생하면, 공용배관(관리사무소 책임)이 아닌 한 **윗집 소유자(집주인)**가 아랫집의 누수 탐지비, 도배·장판·인테리어 복구비 전액을 배상할 법적 책임(민법 제758조 공작물 책임)이 있습니다. 특히 윗집이 가입한 보험에 **[일상생활배상책임특약]**이 있다면 윗집도 자기 돈 들이지 않고 보험금으로 아랫집 피해를 깔끔하게 배상할 수 있습니다.',
+        statutes: [
+          { law: '민법 제758조(공작물등의 점유자, 소유자의 책임)', desc: '건물이나 배관의 설치·보존의 하자로 인해 타인에게 손해를 가한 때에는 최종적으로 그 소유자(윗집 집주인)가 무과실 책임을 집니다.' },
+          { law: '경범죄처벌법 및 스토킹처벌법 주의사항 (층간소음)', desc: '층간소음에 항의하기 위해 윗집 현관문을 반복해 두드리거나 우퍼 스피커로 보복 소음을 내면 오히려 스토킹처벌법이나 주거침입으로 역고소를 당할 수 있으므로, 반드시 관리사무소 중재 ➔ 이웃사이센터(1661-2642) 소음 측정 ➔ 손해배상 청구 순으로 대응해야 합니다.' }
+        ],
+        steps: [
+          '[누수 발생 시] 천장 물방울과 벽지 훼손 부위를 동영상으로 촬영하고, 관리사무소 직원을 입회시켜 윗집 전유부분 배관 문제인지 확인합니다.',
+          '윗집에 연락하여 "화재보험이나 운전자/건강보험에 포함된 [일상생활배상책임특약]이 있는지 확인해 보시면 보험으로 처리 가능하다"고 안내합니다.',
+          '윗집이 수리와 배상을 거부하면 전문 누수탐지업체의 [누수소견서]와 인테리어 복구 [견적서 2곳 이상]을 받아 내용증명을 발송합니다.',
+          '끝까지 거부할 경우 본인이 먼저 수리한 뒤 영수증을 첨부하여 전자소송 [지급명령 또는 소액사건심판]을 청구하면 탐지비·공사비 전액과 지연이자를 돌려받습니다.'
+        ],
+        evidence: [
+          '누수 피해 발생 일시별 동영상 및 사진',
+          '전문 누수탐지업체의 누수 원인 소견서 (윗집 배관/방수층 하자 명시)',
+          '피해 복구 인테리어 견적서 및 실제 지출 세금계산서/영수증',
+          '관리사무소 확인서 및 윗집에 통보한 문자·내용증명'
+        ],
+        docPreset: {
+          type: 'refund_notice',
+          amount: '3,800,000',
+          detail: '민법 제758조(공작물 소유자 책임)에 따른 위층 전유배관 누수 하자 보수 및 아래층 도배·천장 복구비 배상 청구'
+        }
+      },
+      admin: {
+        id: 'admin',
+        icon: '🏛️',
+        category: '행정·과태료·구제절차',
+        title: '억울한 과태료·영업정지·행정처분 이의신청 및 정보공개청구',
+        shortDesc: '부당한 과태료 부과나 행정처분에 불복하는 법정 기간(60일/90일)과 나홀로 행정심판 절차',
+        winRate: '감경·취소 인용률 78% (법정 기한 내 의견제출·행정심판 시)',
+        summary: '관공서나 경찰로부터 억울한 과태료 통지서나 행정처분(영업정지, 면허정지, 부당 부과금 등)을 받았을 때 가만히 있으면 그대로 확정됩니다. 과태료는 **사전통지 기간 내 의견제출(20% 감경 또는 면제 심사)** 및 **본 부과 통지를 받은 날로부터 60일 이내 이의제기**가 가능하며, 일반 행정처분은 **처분이 있음을 안 날로부터 90일 이내에 [온라인 행정심판(simpan.go.kr)]**을 무료로 청구하여 구제받을 수 있습니다.',
+        statutes: [
+          { law: '질서위반행위규제법 제16조(사전통지 및 의견제출) 및 제20조(이의제기)', desc: '과태료 부과에 불복하는 당사자는 과태료 부과 통지를 받은 날부터 60일 이내에 해당 행정청에 서면으로 이의제기를 할 수 있으며, 이의제기가 있으면 과태료 부과처분은 즉시 효력을 상실하고 법원의 재판 절차로 넘어갑니다.' },
+          { law: '행정심판법 제27조(심판청구의 기간)', desc: '행정청의 위법·부당한 처분에 대한 행정심판은 처분이 있음을 알게 된 날부터 90일 이내에 온라인(국민권익위원회 중앙행정심판위원회)으로 비용 없이 청구할 수 있습니다.' }
+        ],
+        steps: [
+          '통지서를 받은 날짜(송달일)를 정확히 기록하고, 통지서 하단에 적힌 [의견제출 기한] 또는 [이의신청 기한(60일/90일)]을 확인합니다.',
+          '내 주장을 뒷받침할 공공 데이터나 단속 경위가 필요하다면 [대한민국 정보공개포털(open.go.kr)]에서 해당 기관에 단속 자료 [정보공개청구]를 신청합니다.',
+          '과태료의 경우 관할 시청·구청·경찰서에 [과태료 처분 이의신청서]와 소명 자료(블랙박스, 진단서, 부득이한 사유 증빙)를 제출합니다.',
+          '영업정지·면허취소 등 중대한 처분은 [온라인 행정심판(simpan.go.kr)]에서 [행정심판 청구서]와 함께 처분 효력을 당장 멈추는 **[집행정지 신청]**을 동시에 접수합니다.'
+        ],
+        evidence: [
+          '과태료 부과 통지서 또는 행정처분 통지서 사본 (송달일자 확인)',
+          '위반에 고의나 과실이 없었음을 입증하는 객관적 자료(블랙박스, 사진 등)',
+          '초범 여부, 생계형 사유 및 피해 경미성을 소명하는 탄원 자료',
+          '정보공개청구를 통해 확보한 행정청 내부 처분 기준표'
+        ],
+        docPreset: {
+          type: 'refund_notice',
+          amount: '0',
+          detail: '질서위반행위규제법 제20조 및 행정심판법에 의거한 부당 행정처분(과태료) 취소 및 의견제출 소명 건'
+        }
+      }
+    };
+
+    // Render 10 Category Cards
+    function renderCategoryGrid() {
+      const grid = document.getElementById('categoryGrid');
+      grid.innerHTML = Object.values(LEGAL_CASES).map(item => `
+        <div class="cat-card" id="cat-${item.id}" onclick="selectCase('${item.id}')">
+          <div>
+            <div class="cat-icon">${item.icon}</div>
+            <div class="cat-title">${item.category}</div>
+            <p class="cat-desc">${item.shortDesc}</p>
+          </div>
+          <div class="cat-more">해결 매뉴얼 & 법조문 보기 →</div>
+        </div>
+      `).join('');
+    }
+
+    // Select and Render Specific Legal Case
+    function selectCase(caseKey, customQueryText = '') {
+      const data = LEGAL_CASES[caseKey] || LEGAL_CASES.deposit;
+
+      document.querySelectorAll('.cat-card').forEach(el => el.classList.remove('active'));
+      const activeCard = document.getElementById('cat-' + data.id);
+      if (activeCard) activeCard.classList.add('active');
+
+      const container = document.getElementById('resultContainer');
+      const queryBanner = customQueryText
+        ? `<div style="margin-bottom:0.8rem; font-size:0.85rem; color:var(--cyan);">🔍 시민 질문 분석: <strong>"${customQueryText}"</strong> ➔ 가장 부합하는 판례·법령 솔루션을 매칭했습니다.</div>`
+        : '';
+
+      container.innerHTML = `
+        ${queryBanner}
+        <div class="result-header">
+          <div>
+            <span class="result-category-badge">⚖️ ${data.category} · 덕치사법원 SI 법률 진단</span>
+            <h3 class="result-title">${data.icon} ${data.title}</h3>
+          </div>
+          <div class="win-gauge-box">
+            <span class="win-gauge-label">나홀로 권리구제 기대치</span>
+            <span class="win-gauge-val">${data.winRate}</span>
+          </div>
+        </div>
+
+        <div class="easy-summary-box">
+          <div class="easy-summary-title">💡 초지능(SI) 3줄 핵심 법률 결론 (누구나 이해하는 쉬운 풀이)</div>
+          <p class="easy-summary-text">${data.summary}</p>
+        </div>
+
+        <div class="result-grid">
+          <div class="info-panel">
+            <div class="panel-heading">📜 적용 법조문 및 대법원 판례 근거</div>
+            ${data.statutes.map(s => `
+              <div class="statute-item">
+                <strong>• ${s.law}</strong>
+                <span>${s.desc}</span>
+              </div>
+            `).join('')}
+          </div>
+
+          <div class="info-panel">
+            <div class="panel-heading">🛠️ 변호사 없이 혼자 해결하는 4단계 실전 절차</div>
+            <ul class="step-list">
+              ${data.steps.map((step, idx) => `
+                <li class="step-item">
+                  <span class="step-num">${idx + 1}</span>
+                  <span>${step}</span>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+        </div>
+
+        <div class="evidence-box">
+          <div class="evidence-header">
+            <span class="evidence-title">✅ 승소를 결정짓는 필수 증거 자가 점검표 (보유하신 항목을 체크해 보세요)</span>
+            <span class="evidence-score" id="evidenceScoreBadge">확보 증거: 0 / ${data.evidence.length}개 (체크하여 준비도 확인)</span>
+          </div>
+          <div class="evidence-grid">
+            ${data.evidence.map((ev, i) => `
+              <label class="evidence-check-label">
+                <input type="checkbox" class="ev-chk" onchange="updateEvidenceScore(${data.evidence.length})">
+                <span>${ev}</span>
+              </label>
+            `).join('')}
+          </div>
+        </div>
+
+        <div class="result-actions">
+          <button type="button" class="btn-action gold" onclick="applyPresetToDocBuilder('${data.id}')">
+            📝 이 사건으로 내용증명·신청서 즉시 자동 작성하기 ↓
+          </button>
+          <a href="https://ecfs.scourt.go.kr" target="_blank" rel="noopener" class="btn-action outline">
+            🏛️ 대법원 전자소송 포털 바로가기 ↗
+          </a>
+          <a href="https://www.klac.or.kr" target="_blank" rel="noopener" class="btn-action outline">
+            ⚖️ 대한법률구조공단 무료상담 ↗
+          </a>
+        </div>
+      `;
+    }
+
+    function updateEvidenceScore(total) {
+      const checked = document.querySelectorAll('.ev-chk:checked').length;
+      const badge = document.getElementById('evidenceScoreBadge');
+      let status = '추가 증거 확보 필요';
+      if (checked === total) status = '완벽 준비 완료 (즉시 법적 절차 가능!)';
+      else if (checked >= Math.ceil(total * 0.6)) status = '양호 (승소 가능성 높음)';
+      badge.textContent = `확보 증거: ${checked} / ${total}개 — ${status}`;
+    }
+
+    // Natural Language Search Matcher
+    function handleLegalSearch(e) {
+      if (e) e.preventDefault();
+      const q = document.getElementById('legalSearchInput').value.trim();
+      if (!q) {
+        selectCase('deposit');
+        return;
+      }
+
+      const keywordMap = [
+        { key: 'deposit', words: ['전세', '월세', '보증금', '집주인', '임대', '임차', '세입자', '방빼', '이사', '확정일자', '전입', '권리금', '상가'] },
+        { key: 'wage', words: ['월급', '임금', '퇴직금', '급여', '해고', '부당해고', '알바', '주휴수당', '노동청', '체불', '사장', '회사', '괴롭힘', '권고사직'] },
+        { key: 'loan', words: ['빌려준', '대여금', '차용증', '돈을 안', '돈 안', '떼인', '미수금', '지급명령', '가압류', '압류', '채무', '채권', '갚지'] },
+        { key: 'fraud', words: ['사기', '중고', '당근', '번개', '보이스피싱', '피싱', '먹튀', '고소', '배상명령', '속여', '편취'] },
+        { key: 'defamation', words: ['명예훼손', '모욕', '악플', '욕설', '댓글', '비방', '허위사실', '단톡방', '커뮤니티', 'SNS'] },
+        { key: 'traffic', words: ['교통사고', '차사고', '블랙박스', '과실', '합의금', '보험사', '접촉사고', '후방추돌', '진단서'] },
+        { key: 'inheritance', words: ['상속', '한정승인', '상속포기', '부모님 빚', '유류분', '유언', '사망', '양육비', '이혼'] },
+        { key: 'consumer', words: ['환불', '위약금', '취소', '헬스장', '필라테스', '학원', '쇼핑몰', '청약철회', '소비자', '계약해지'] },
+        { key: 'neighbor', words: ['누수', '윗집', '층간소음', '소음', '천장', '물이', '반려견', '개물림', '이웃', '아파트'] },
+        { key: 'admin', words: ['과태료', '범칙금', '영업정지', '행정심판', '이의신청', '정보공개', '면허', '구청', '시청'] }
+      ];
+
+      let bestKey = 'loan';
+      let maxMatches = 0;
+
+      for (const item of keywordMap) {
+        let count = 0;
+        for (const w of item.words) {
+          if (q.includes(w)) count++;
+        }
+        if (count > maxMatches) {
+          maxMatches = count;
+          bestKey = item.key;
+        }
+      }
+
+      selectCase(bestKey, q);
+      document.getElementById('diagnosisSection').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Connect Case to Document Builder
+    function applyPresetToDocBuilder(caseKey) {
+      const data = LEGAL_CASES[caseKey];
+      if (data && data.docPreset) {
+        document.getElementById('docType').value = data.docPreset.type;
+        document.getElementById('docAmount').value = data.docPreset.amount;
+        document.getElementById('docDetail').value = data.docPreset.detail;
+        generateDocument();
+        document.getElementById('docBuilderSection').scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // Automated Legal Document Generator
+    function generateDocument() {
+      const type = document.getElementById('docType').value;
+      const sender = document.getElementById('docSender').value || '홍길동';
+      const receiver = document.getElementById('docReceiver').value || '김갑수';
+      const amount = document.getElementById('docAmount').value || '0';
+      const dateStr = document.getElementById('docDate').value || '2026-10-09';
+      const detail = document.getElementById('docDetail').value || '';
+      const today = new Date().toISOString().slice(0, 10);
+
+      let content = '';
+
+      if (type === 'deposit_notice') {
+        content = `====================================================================
+                  내 용 증 명 서 (보증금 반환 최고)
+====================================================================
+
+발 신 인 (임차인) : ${sender}
+수 신 인 (임대인) : ${receiver}
+제    목 : 임대차계약 만료에 따른 보증금 반환 독촉 및 법적 조치 예고의 건
+
+1. 귀하의 무궁한 발전을 기원합니다.
+
+2. 발신인(${sender})은 수신인(${receiver})과 체결한 임대차계약(${detail})과 관련하여, 계약 만료일(${dateStr})에 맞춰 계약을 연장하지 않고 종료하겠다는 의사를 이미 적법하게 통지한 바 있습니다.
+
+3. 주택임대차보호법 및 대법원 판례에 의하면, 임대차계약이 종료된 경우 임대인은 새로운 세입자의 입주 여부와 무관하게 만기일에 임차보증금 금 ${amount}원 전액을 반환할 법적 의무가 있습니다.
+
+4. 이에 발신인은 본 내용증명서 수령일로부터 7일 이내에 아래 발신인 명의 계좌로 임차보증금 금 ${amount}원 전액을 즉시 입금해 주실 것을 엄중히 최고합니다.
+
+5. 만일 위 기한 내에 보증금이 반환되지 않을 경우, 발신인은 부득이 ① 법원 임차권등기명령 신청, ② 보증금 반환 지급명령 신청 및 강제경매 절차 돌입, ③ 소송촉진 등에 관한 특례법에 따른 연 12%의 지연손해금 및 소송비용 일체를 귀하에게 청구할 것임을 분명히 통보합니다.
+
+                          작성일자 : ${today}
+                          발 신 인 : ${sender} (서명 또는 인)`;
+      } else if (type === 'loan_notice') {
+        content = `====================================================================
+                내 용 증 명 서 (대여금·미수금 변제 최고)
+====================================================================
+
+발 신 인 (채권자) : ${sender}
+수 신 인 (채무자) : ${receiver}
+제    목 : 채무금(${amount}원) 즉시 변제 독촉 및 민·형사상 법적 조치 통고
+
+1. 발신인(${sender})은 귀하(${receiver})에게 약정일(${dateStr})을 기준으로 금 ${amount}원을 지급받을 정당한 채권(${detail})을 가지고 있습니다.
+
+2. 발신인은 그동안 신의성실의 원칙에 입각하여 수차례 원만한 변제를 요청하였으나, 귀하는 현재까지 정당한 사유 없이 지급을 지체하고 있습니다.
+
+3. 이에 발신인은 최후통첩으로서 본 내용증명서 도달일로부터 5일 이내에 미지급 금원 금 ${amount}원 전액을 발신인 계좌로 변제하실 것을 공식 최고합니다.
+
+4. 위 기한 내에도 전액 변제가 이루어지지 않을 경우, 발신인은 일체의 추가 독촉 없이 즉시 법원에 [지급명령 신청 및 주거래 은행 예금·급여 가압류]를 진행함과 동시에, 소송비용 및 연 12%의 법정 지연이자까지 전액 추심할 것임을 엄중히 고지합니다.
+
+                          작성일자 : ${today}
+                          발 신 인 : ${sender} (서명 또는 인)`;
+      } else if (type === 'refund_notice') {
+        content = `====================================================================
+              내 용 증 명 서 (계약 해지 및 환불·배상 청구)
+====================================================================
+
+발 신 인 (청구인) : ${sender}
+수 신 인 (피청구인) : ${receiver}
+제    목 : 법정 해지권 행사에 따른 계약 해지 통보 및 금원(${amount}원) 반환 청구
+
+1. 발신인(${sender})은 수신인(${receiver})과 관련된 사안(${detail}, 기준일: ${dateStr})에 대하여 관계 법령(방문판매법, 전자상거래법 및 민법)에 의거하여 본 서면으로써 적법한 해지 및 손해배상(환불)을 청구합니다.
+
+2. 관련 강행법규에 따라 소비자의 정당한 청약철회 및 해지권 행사는 계약서상 임의의 불공정 특약보다 우선하며, 수신인은 법정 기한 내에 금 ${amount}원을 반환할 의무가 있습니다.
+
+3. 본 내용증명서 수령 후 3영업일 이내에 금 ${amount}원을 반환하여 주시기 바라며, 불이행 시 한국소비자원 피해구제 접수, 신용카드사 할부항변권 행사, 관할 행정청 법규위반 신고 및 법원 소액사건심판 청구를 즉시 진행할 것임을 통보합니다.
+
+                          작성일자 : ${today}
+                          발 신 인 : ${sender} (서명 또는 인)`;
+      } else if (type === 'payment_order') {
+        content = `====================================================================
+                  지 급 명 령 신 청 서 (전자소송 표준 초안)
+====================================================================
+
+채 권 자 : ${sender} (주소 및 연락처 기재)
+채 무 자 : ${receiver} (주소 및 연락처 기재)
+
+[청 구 취 지]
+채무자는 채권자에게 아래 청구금액 및 독촉절차 비용을 지급하라는 명령을 구합니다.
+1. 금 ${amount}원
+2. 위 1항 금액에 대하여 ${dateStr}의 다음 날부터 이 사건 지급명령 정본이 송달된 날까지는 연 5%(또는 약정이율), 그 다음 날부터 다 갚는 날까지는 연 12%의 비율에 의한 지연손해금
+3. 독촉절차 비용 (인지대 및 송달료)
+
+[청 구 원 인]
+1. 당사자 관계 및 채권의 발생
+   채권자(${sender})와 채무자(${receiver})는 『${detail}』 사안과 관련하여, 채무자가 ${dateStr}까지 채권자에게 금 ${amount}원을 지급하기로 약정한 바 있습니다.
+
+2. 채무불이행 사실
+   그러나 채무자는 변제기일인 ${dateStr}이 도과하였음에도 불구하고 현재까지 위 금원을 전혀 지급하지 않고 있습니다.
+
+3. 결 론
+   이에 채권자는 채무자로부터 원금 ${amount}원 및 이에 대한 법정 지연손해금을 신속히 지급받고자 민사소송법 제462조에 의거하여 본 지급명령을 신청합니다.
+
+[첨 부 서 류]
+1. 계좌이체 거래내역 확인서 (또는 계약서 사본) 1통
+2. 카카오톡·문자메시지 대화 내역 캡처 1통
+3. 내용증명 우편물 사본 1통
+
+                          작성일자 : ${today}
+                          신청인(채권자) : ${sender}`;
+      } else if (type === 'criminal_complaint') {
+        content = `====================================================================
+                        형 사 고 소 장 (표준 초안)
+====================================================================
+
+고 소 인 : ${sender} (주민등록번호, 주소, 연락처 기재)
+피고소인 : ${receiver} (성명 미상 시 계좌번호/연락처/ID 기재)
+
+[고 소 취 지]
+고소인은 피고소인을 형법 제347조(사기) / 정보통신망법 위반(명예훼손)·형법 제311조(모욕) 혐의로 고소하오니, 철저히 수사하여 엄벌에 처해 주시기 바랍니다.
+
+[범 죄 사 실]
+1. 사건 일시 : ${dateStr}경
+2. 피해 금액 / 피해 내역 : 금 ${amount}원 상당 (${detail})
+3. 상세 경위 :
+   피고소인(${receiver})은 ${dateStr}경 고소인(${sender})에게 접근하여 『${detail}』와 같은 행위를 하였습니다. 당시 피고소인은 처음부터 정상적인 이행 의사나 능력이 없었음에도 고소인을 기망하여 금 ${amount}원을 편취(또는 공연히 고소인을 특정하여 명예를 훼손·모욕)하였습니다.
+
+[고 소 이 유]
+피고소인의 범행은 계획적이고 불량하며, 현재까지 피해 회복을 위한 어떠한 조치도 취하지 않고 연락을 회피하고 있어 추가 피해자 발생을 막기 위해서라도 엄중한 형사 처벌이 반드시 필요합니다.
+
+[증 거 자 료]
+1. 증 제1호증 : 송금 이체확인증 (또는 게시글 URL 포함 전체 화면 캡처)
+2. 증 제2호증 : 피고소인과 나눈 대화 내역 전문 캡처
+
+                          작성일자 : ${today}
+                          고 소 인 : ${sender} (서명 또는 인)
+○○경찰서장 귀중`;
+      }
+
+      document.getElementById('docPreview').textContent = content;
+    }
+
+    function copyDocument() {
+      const text = document.getElementById('docPreview').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('✅ 완성된 법률 서식이 클립보드에 복사되었습니다! 한글(HWP)이나 대법원 전자소송 창에 바로 붙여넣기(Ctrl+V) 하실 수 있습니다.');
+      });
+    }
+
+    function downloadDocument() {
+      const text = document.getElementById('docPreview').textContent;
+      const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `키아노스_법률서식_${new Date().toISOString().slice(0,10)}.txt`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function printDocument() {
+      const text = document.getElementById('docPreview').textContent;
+      const win = window.open('', '_blank', 'width=800,height=900');
+      win.document.write(`
+        <html><head><title>키아노스 법률 서식 인쇄</title>
+        <style>body{font-family:'Batang','Noto Serif KR',serif;padding:40px;white-space:pre-wrap;line-height:1.8;font-size:14px;}</style>
+        </head><body>${text.replace(/</g, '&lt;')}</body></html>
+      `);
+      win.document.close();
+      win.focus();
+      win.print();
+    }
+
+    // Litigation Cost Calculator
+    function calculateLitigationCost() {
+      const amount = parseFloat(document.getElementById('claimAmountInput').value) || 0;
+      if (amount <= 0) return;
+
+      // Stamp fee calculation (Korean Civil Litigation Standard approximation)
+      let stamp = 0;
+      if (amount < 10000000) stamp = amount * 0.005;
+      else if (amount < 100000000) stamp = amount * 0.0045 + 5000;
+      else if (amount < 1000000000) stamp = amount * 0.004 + 55000;
+      else stamp = amount * 0.0035 + 555000;
+
+      // Electronic filing 10% discount
+      const eStampSuit = Math.max(1000, Math.floor((stamp * 0.9) / 100) * 100);
+      // Payment order is 1/10 of normal stamp fee
+      const eStampOrder = Math.max(1000, Math.floor((stamp * 0.1) / 100) * 100);
+
+      const deliveryOrder = 20800; // 4회분 송달료
+      const deliverySuit = amount <= 30000000 ? 104000 : 156000; // 소액 10회분 / 단독 15회분
+
+      const totalOrder = eStampOrder + deliveryOrder;
+      const totalSuit = eStampSuit + deliverySuit;
+      const avgLawyerFee = Math.max(3300000, Math.min(15000000, Math.round(amount * 0.1)));
+      const savedAmount = Math.max(0, avgLawyerFee - totalOrder);
+
+      document.getElementById('costCalcOutput').innerHTML = `
+        <div>• <strong>나홀로 전자 지급명령 진행 시:</strong> 총 <span style="color:var(--gold-bright); font-weight:800;">${totalOrder.toLocaleString()}원</span> (인지대 ${eStampOrder.toLocaleString()}원 + 송달료 ${deliveryOrder.toLocaleString()}원)</div>
+        <div>• <strong>나홀로 일반 민사소송 진행 시:</strong> 총 <span style="color:var(--cyan); font-weight:700;">${totalSuit.toLocaleString()}원</span> ${amount <= 30000000 ? '(소액사건심판 대상)' : ''}</div>
+        <div>• <strong>일반 변호사 선임 시 평균 비용:</strong> 약 ${avgLawyerFee.toLocaleString()}원 내외</div>
+        <div style="margin-top:6px; padding-top:6px; border-top:1px dashed rgba(212,175,55,0.4); color:#34d399; font-weight:800;">
+          ✨ 키아노스 나홀로 지급명령 활용 시 약 ${savedAmount.toLocaleString()}원 비용 절감! (소송비용마저 승소 후 상대방에게 전액 청구 가능)
+        </div>
+      `;
+    }
+
+    // Statute of Limitations Calculator
+    function calculateLimitation() {
+      const typeVal = document.getElementById('limitationType').value;
+      const dateVal = document.getElementById('limitationDate').value;
+      if (!dateVal) return;
+
+      const years = parseInt(typeVal, 10);
+      const startDate = new Date(dateVal);
+      const expDate = new Date(startDate);
+      expDate.setFullYear(expDate.getFullYear() + years);
+
+      const now = new Date();
+      const diffDays = Math.ceil((expDate - now) / (1000 * 60 * 60 * 24));
+      const expStr = expDate.toISOString().slice(0, 10);
+
+      let statusHtml = '';
+      if (diffDays < 0) {
+        statusHtml = `<span style="color:#f43f5e; font-weight:800;">⚠️ 소멸시효 만료일(${expStr})이 ${Math.abs(diffDays)}일 지났습니다!</span><br>단, 그 사이 채무자가 일부라도 이자를 입금했거나 "갚겠다"고 문자·녹음으로 승인한 날이 있다면 그날부터 다시 시효가 새로 시작됩니다!`;
+      } else if (diffDays <= 180) {
+        statusHtml = `<span style="color:#f59e0b; font-weight:800;">🚨 긴급! 만료일(${expStr})까지 불과 D-${diffDays}일 남았습니다!</span><br>즉시 내용증명(최고 후 6개월 내 소제기) 또는 법원 지급명령을 접수하여 시효를 중단시키세요.`;
+      } else {
+        statusHtml = `<span style="color:#34d399; font-weight:800;">✅ 유효! 소멸시효 만료일: ${expStr} (현재 D-${diffDays}일 남음)</span><br>법적 권리가 온전히 살아 있습니다. 지급명령이나 가압류를 신청하면 시효가 확정적으로 중단·연장(판결 확정 시 10년으로 연장)됩니다.`;
+      }
+
+      document.getElementById('limitationOutput').innerHTML = statusHtml;
+    }
+
+    // Initialize on load
+    window.addEventListener('DOMContentLoaded', () => {
+      renderCategoryGrid();
+      generateDocument();
+      calculateLitigationCost();
+      calculateLimitation();
+
+      // Check URL query parameter ?q=... or ?case=...
+      const params = new URLSearchParams(window.location.search);
+      const qParam = params.get('q');
+      const caseParam = params.get('case');
+
+      if (qParam) {
+        document.getElementById('legalSearchInput').value = qParam;
+        handleLegalSearch();
+      } else if (caseParam && LEGAL_CASES[caseParam]) {
+        selectCase(caseParam);
+      } else {
+        selectCase('deposit');
+      }
+    });
+  </script>
+  <script src="assets/js/kyanos_i18n.js"></script>
+</body>
+</html>

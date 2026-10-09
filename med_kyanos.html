@@ -1,0 +1,1666 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>키아노스 시민 생명케어 가이드 (Med-Kyanos) | 보건·복지부 의료 사각지대 해소 포털</title>
+  <meta name="description" content="의료 사각지대에 놓인 시민을 위해 증상 감별, 응급도 판정, 홈케어 및 복약 가이드를 제공하는 키아노스 복지부 초지능(SI) 생명케어 솔루션">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Montserrat:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700;800&family=Noto+Serif+KR:wght@500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/kyanos_i18n.css">
+
+  <style>
+    :root {
+      --bg-dark: #030c0a;
+      --bg-card: rgba(7, 24, 20, 0.88);
+      --emerald: #10b981;
+      --emerald-light: #34d399;
+      --emerald-soft: rgba(16, 185, 129, 0.15);
+      --cyan: #00d2ff;
+      --cyan-soft: rgba(0, 210, 255, 0.14);
+      --gold: #d4af37;
+      --gold-bright: #ffe066;
+      --amber: #f59e0b;
+      --rose: #f43f5e;
+      --text-main: #f0fdf8;
+      --text-sub: #9dc2b5;
+      --border-emerald: rgba(16, 185, 129, 0.38);
+      --border-gold: rgba(212, 175, 55, 0.35);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image:
+        radial-gradient(circle at 20% 0%, rgba(16, 185, 129, 0.18) 0%, transparent 55%),
+        radial-gradient(circle at 85% 15%, rgba(0, 210, 255, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 50% 90%, rgba(212, 175, 55, 0.08) 0%, transparent 60%);
+      color: var(--text-main);
+      font-family: 'Noto Sans KR', 'Montserrat', sans-serif;
+      min-height: 100vh;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* Sticky Top Navigation */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(3, 12, 10, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-emerald);
+      padding: 0.75rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-emblem {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1.5px solid var(--emerald-light);
+      background: radial-gradient(circle, #0d5c46 0%, #03120e 75%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+    }
+
+    .brand-titles .en {
+      font-family: 'Cinzel', serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      color: var(--emerald-light);
+      display: block;
+    }
+
+    .brand-titles .kr {
+      font-size: 0.75rem;
+      color: var(--text-sub);
+      letter-spacing: 0.06em;
+    }
+
+    .nav-quick-links {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-pill {
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 7px 15px;
+      border-radius: 20px;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      cursor: pointer;
+    }
+
+    .nav-pill:hover {
+      border-color: var(--emerald-light);
+      color: var(--emerald-light);
+      transform: translateY(-2px);
+    }
+
+    .nav-pill.emerald {
+      background: var(--emerald-soft);
+      border-color: var(--emerald-light);
+      color: var(--emerald-light);
+    }
+
+    .nav-pill.lex-switch {
+      background: rgba(212, 175, 55, 0.16);
+      border-color: var(--gold);
+      color: var(--gold-bright);
+    }
+    .nav-pill.lex-switch:hover {
+      background: var(--gold);
+      color: #040814;
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1260px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 5rem;
+    }
+
+    /* Hero Search Section */
+    .med-hero {
+      text-align: center;
+      padding: 2.8rem 2rem 3rem;
+      border-radius: 24px;
+      background: linear-gradient(145deg, rgba(8, 34, 28, 0.92) 0%, rgba(3, 14, 12, 0.96) 100%);
+      border: 1.5px solid var(--border-emerald);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.75), 0 0 40px rgba(16, 185, 129, 0.14);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 2.5rem;
+    }
+
+    .med-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--emerald-light), var(--cyan), var(--emerald-light), transparent);
+    }
+
+    .ministry-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 18px;
+      border-radius: 30px;
+      background: var(--emerald-soft);
+      border: 1px solid var(--emerald-light);
+      color: var(--emerald-light);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title {
+      font-family: 'Noto Serif KR', 'Cinzel', serif;
+      font-size: clamp(1.9rem, 3.8vw, 2.85rem);
+      font-weight: 900;
+      background: linear-gradient(135deg, #ffffff 10%, #a7f3d0 55%, var(--emerald-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-sub {
+      color: var(--text-sub);
+      font-size: 1rem;
+      max-width: 790px;
+      margin: 0 auto 2rem;
+    }
+
+    /* Search Box */
+    .search-box-wrap {
+      max-width: 820px;
+      margin: 0 auto 1.4rem;
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      background: rgba(2, 10, 8, 0.92);
+      border: 2px solid var(--emerald-light);
+      border-radius: 50px;
+      padding: 6px 8px 6px 24px;
+      box-shadow: 0 0 30px rgba(16, 185, 129, 0.25), inset 0 2px 10px rgba(0, 0, 0, 0.8);
+      transition: all 0.3s ease;
+    }
+
+    .search-bar:focus-within {
+      border-color: var(--cyan);
+      box-shadow: 0 0 35px rgba(0, 210, 255, 0.4), 0 0 15px rgba(16, 185, 129, 0.3);
+    }
+
+    .search-icon {
+      font-size: 1.35rem;
+      margin-right: 12px;
+    }
+
+    .search-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 1.05rem;
+      font-family: inherit;
+      outline: none;
+      padding: 12px 0;
+    }
+
+    .search-input::placeholder {
+      color: #5b8276;
+    }
+
+    .search-btn {
+      background: linear-gradient(135deg, var(--emerald-light) 0%, var(--emerald) 100%);
+      color: #02120e;
+      border: none;
+      border-radius: 40px;
+      padding: 13px 28px;
+      font-size: 0.95rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .search-btn:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 20px rgba(52, 211, 153, 0.6);
+    }
+
+    .quick-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      max-width: 880px;
+      margin: 0 auto;
+    }
+
+    .tag-chip {
+      font-size: 0.8rem;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      color: #d1fae5;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tag-chip:hover {
+      background: rgba(16, 185, 129, 0.24);
+      border-color: var(--emerald-light);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* Triage Result Card */
+    .result-section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 90px;
+    }
+
+    .result-card {
+      background: linear-gradient(160deg, rgba(6, 26, 22, 0.95) 0%, rgba(3, 14, 12, 0.98) 100%);
+      border: 1.5px solid var(--emerald-light);
+      border-radius: 20px;
+      padding: 2.2rem;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.75), 0 0 30px rgba(16, 185, 129, 0.15);
+      animation: fadeSlideUp 0.4s ease forwards;
+    }
+
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .result-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding-bottom: 1.3rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 1.5rem;
+    }
+
+    .result-category-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: var(--emerald-soft);
+      color: var(--emerald-light);
+      border: 1px solid var(--emerald-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .result-title {
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .triage-badge-box {
+      padding: 0.75rem 1.3rem;
+      border-radius: 12px;
+      text-align: right;
+      font-weight: 800;
+    }
+
+    .triage-badge-box.red {
+      background: rgba(244, 63, 94, 0.18);
+      border: 1.5px solid #f43f5e;
+      color: #fda4af;
+    }
+
+    .triage-badge-box.yellow {
+      background: rgba(245, 158, 11, 0.18);
+      border: 1.5px solid #f59e0b;
+      color: #fde68a;
+    }
+
+    .triage-badge-box.green {
+      background: rgba(16, 185, 129, 0.18);
+      border: 1.5px solid #10b981;
+      color: #6ee7b7;
+    }
+
+    .easy-summary-box {
+      background: rgba(16, 185, 129, 0.1);
+      border-left: 4px solid var(--emerald-light);
+      padding: 1.2rem 1.5rem;
+      border-radius: 0 12px 12px 0;
+      margin-bottom: 1.8rem;
+    }
+
+    .easy-summary-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--emerald-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .easy-summary-text {
+      font-size: 0.98rem;
+      color: #f0fdf4;
+      line-height: 1.75;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .info-panel {
+      background: rgba(2, 10, 8, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 1.4rem;
+    }
+
+    .panel-heading {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--emerald-light);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid rgba(16, 185, 129, 0.25);
+      padding-bottom: 0.6rem;
+    }
+
+    .cause-item {
+      margin-bottom: 0.9rem;
+      font-size: 0.9rem;
+    }
+
+    .cause-item strong {
+      color: var(--gold-bright);
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .step-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .step-item {
+      display: flex;
+      gap: 12px;
+      font-size: 0.9rem;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      background: var(--emerald-light);
+      color: #02120e;
+      font-weight: 800;
+      font-size: 0.75rem;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* Red Flags Interactive Box */
+    .redflag-box {
+      background: rgba(244, 63, 94, 0.08);
+      border: 1px solid rgba(244, 63, 94, 0.4);
+      border-radius: 14px;
+      padding: 1.3rem 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .redflag-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.9rem;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .redflag-title {
+      font-weight: 700;
+      color: #fda4af;
+      font-size: 0.98rem;
+    }
+
+    .redflag-status {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #6ee7b7;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    .redflag-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 10px;
+    }
+
+    .rf-check-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.88rem;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      transition: all 0.2s;
+    }
+
+    .rf-check-label:hover {
+      border-color: #f43f5e;
+    }
+
+    .rf-check-label input {
+      accent-color: #f43f5e;
+      width: 17px;
+      height: 17px;
+      cursor: pointer;
+    }
+
+    /* Doctor Questions Box */
+    .doc-questions-box {
+      background: rgba(0, 210, 255, 0.08);
+      border: 1px solid rgba(0, 210, 255, 0.3);
+      border-radius: 14px;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .doc-questions-box h4 {
+      color: var(--cyan);
+      margin-bottom: 0.6rem;
+      font-size: 0.96rem;
+    }
+
+    .result-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .btn-action {
+      padding: 11px 22px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s;
+      text-decoration: none;
+    }
+
+    .btn-action.emerald {
+      background: linear-gradient(135deg, var(--emerald-light), var(--emerald));
+      color: #02120e;
+    }
+    .btn-action.emerald:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(16, 185, 129, 0.45);
+    }
+
+    .btn-action.outline {
+      background: rgba(255, 255, 255, 0.06);
+      color: #fff;
+      border: 1px solid var(--border-emerald);
+    }
+    .btn-action.outline:hover {
+      background: var(--emerald-soft);
+      border-color: var(--emerald-light);
+    }
+
+    /* Categories Section */
+    .section-head {
+      margin-bottom: 1.6rem;
+    }
+
+    .section-head h2 {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.55rem;
+      color: var(--emerald-light);
+      margin-bottom: 0.3rem;
+    }
+
+    .section-head p {
+      color: var(--text-sub);
+      font-size: 0.9rem;
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 1rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .cat-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: 16px;
+      padding: 1.3rem;
+      cursor: pointer;
+      transition: all 0.28s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .cat-card:hover, .cat-card.active {
+      border-color: var(--emerald-light);
+      background: rgba(12, 42, 35, 0.95);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6), 0 0 20px rgba(16, 185, 129, 0.25);
+    }
+
+    .cat-icon { font-size: 1.9rem; margin-bottom: 0.7rem; }
+    .cat-title { font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 0.4rem; }
+    .cat-desc { font-size: 0.8rem; color: var(--text-sub); line-height: 1.5; margin-bottom: 0.8rem; }
+    .cat-more { font-size: 0.76rem; color: var(--emerald-light); font-weight: 600; }
+
+    /* Tools Layout */
+    .tools-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 2rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .tool-box {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-emerald);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .tool-box-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--emerald-light);
+      margin-bottom: 0.4rem;
+    }
+
+    .tool-box-sub {
+      font-size: 0.85rem;
+      color: var(--text-sub);
+      margin-bottom: 1.5rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    .form-group label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #a7f3d0;
+    }
+
+    .form-control {
+      background: rgba(2, 10, 8, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 8px;
+      padding: 10px 12px;
+      color: #fff;
+      font-family: inherit;
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .form-control:focus {
+      border-color: var(--emerald-light);
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.25);
+    }
+
+    .doc-preview {
+      background: #020806;
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      border-radius: 12px;
+      padding: 1.3rem;
+      font-family: 'Noto Sans KR', monospace;
+      font-size: 0.86rem;
+      color: #e2f8f0;
+      white-space: pre-wrap;
+      line-height: 1.75;
+      max-height: 350px;
+      overflow-y: auto;
+      margin: 1rem 0;
+    }
+
+    .calc-card {
+      background: rgba(2, 10, 8, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 1.3rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .calc-card h4 {
+      color: var(--cyan);
+      font-size: 1rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .calc-output {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 10px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid var(--border-emerald);
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+
+    .guardrail-banner {
+      background: rgba(5, 20, 16, 0.92);
+      border: 1px solid var(--border-emerald);
+      border-radius: 16px;
+      padding: 1.6rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .guardrail-icon { font-size: 2.4rem; flex-shrink: 0; }
+    .guardrail-text h4 { color: var(--emerald-light); font-size: 1rem; margin-bottom: 4px; }
+    .guardrail-text p { font-size: 0.83rem; color: var(--text-sub); line-height: 1.6; }
+
+    .footer-nav {
+      text-align: center;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 960px) {
+      .result-grid, .tools-layout, .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="top-nav">
+    <a href="main.html" class="brand-group" title="키아노스 메인 포털로 이동">
+      <div class="brand-emblem">🩺</div>
+      <div class="brand-titles">
+        <span class="en">MED-KYANOS · BIO & LIFE CARE</span>
+        <span class="kr">키아노스 시민 생명케어 가이드 | 보건·복지부 의료 사각지대 해소 솔루션</span>
+      </div>
+    </a>
+
+    <div class="nav-quick-links">
+      <a href="#triageSection" class="nav-pill emerald">🔍 증상·응급도 즉시 감별</a>
+      <a href="#categoriesSection" class="nav-pill">🩺 10대 부위별 생명케어</a>
+      <a href="#visitSheetSection" class="nav-pill">📋 의사 소통용 문진표 생성</a>
+      <a href="#medCalcSection" class="nav-pill">💊 해열진통제·혈압혈당 판독기</a>
+      <a href="lex_kyanos.html" class="nav-pill lex-switch">⚖️ 시민 법률 나침반 (Lex-Kyanos) ↗</a>
+      <a href="gov_welfare.html" class="nav-pill">🏛️ 복지부 포털</a>
+      <a href="main.html" class="nav-pill">🏠 메인 포털</a>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Hero Search Section -->
+    <section class="med-hero">
+      <div class="ministry-badge">🩺 키아노스 보건·복지부 공식 대민 초지능(SI) 생명 보호 인프라</div>
+      <h1 class="hero-title">키아노스 시민 생명케어 가이드 (Med-Kyanos)</h1>
+      <p class="hero-sub">
+        의료 혜택의 사각지대에 있거나 한밤중 갑작스러운 증상으로 불안할 때,<br>
+        현재 겪고 계신 증상을 입력하시면 <strong>응급도 판정(Triage) · 의심 원인 해설 · 즉시 실천 홈케어 · 병원 진료 질문표</strong>를 안내해 드립니다.
+      </p>
+
+      <form class="search-box-wrap" onsubmit="handleMedSearch(event)">
+        <div class="search-bar">
+          <span class="search-icon">🩺</span>
+          <input type="text" id="medSearchInput" class="search-input" placeholder="예: 가슴이 답답하고 식은땀이 나요 / 아이가 밤에 고열이 나요 / 머리가 어지럽고 속이 쓰려요..." autocomplete="off">
+          <button type="submit" class="search-btn">
+            <span>SI 증상·케어 검색</span>
+            <span>→</span>
+          </button>
+        </div>
+      </form>
+
+      <div class="quick-tags">
+        <span class="tag-chip" onclick="selectSymptom('chest')">🫀 가슴 통증·답답함·호흡곤란</span>
+        <span class="tag-chip" onclick="selectSymptom('neuro')">🧠 극심한 두통·어지럼증·마비</span>
+        <span class="tag-chip" onclick="selectSymptom('fever')">🌡️ 소아·성인 야간 고열 및 해열제</span>
+        <span class="tag-chip" onclick="selectSymptom('stomach')">胃 복통·속쓰림·신물·설사</span>
+        <span class="tag-chip" onclick="selectSymptom('joint')">🦴 허리·무릎 관절 통증 및 찜질</span>
+        <span class="tag-chip" onclick="selectSymptom('metabolic')">🩸 혈압·혈당 급상승 및 당뇨 케어</span>
+        <span class="tag-chip" onclick="selectSymptom('sensory')">👁️ 이명·난청·시야 이상·급성치통</span>
+        <span class="tag-chip" onclick="selectSymptom('skin')">🩹 화상·두드러기·알레르기 응급처치</span>
+        <span class="tag-chip" onclick="selectSymptom('mind')">🧘 불면증·가슴 두근거림·공황 호흡법</span>
+        <span class="tag-chip" onclick="selectSymptom('firstaid')">🚑 심폐소생술·하임리히 골든타임</span>
+      </div>
+    </section>
+
+    <!-- Dynamic Symptom Triage Result Section -->
+    <section id="triageSection" class="result-section">
+      <div id="medResultContainer" class="result-card">
+        <!-- Populated dynamically by JavaScript -->
+      </div>
+    </section>
+
+    <!-- 10 Body & Life-Care Categories -->
+    <section id="categoriesSection">
+      <div class="section-head">
+        <h2>🩺 신체 부위·상황별 10대 생명케어 백과</h2>
+        <p>의사를 바로 만나기 어려운 순간에도 당황하지 않고 내 몸을 지킬 수 있는 표준 의학 가이드입니다.</p>
+      </div>
+
+      <div class="categories-grid" id="medCategoryGrid">
+        <!-- Populated by JS -->
+      </div>
+    </section>
+
+    <!-- Interactive Medical Tools: Doctor Visit Sheet Builder & Safe Medication/Vital Calculators -->
+    <section id="visitSheetSection" class="tools-layout">
+
+      <!-- Left: Doctor Visit Summary Sheet Builder -->
+      <div class="tool-box">
+        <div class="tool-box-title">📋 병원 방문 전 '의사 소통용 1분 문진 요약표' 생성기</div>
+        <p class="tool-box-sub">진료실에서 긴장해 증상을 빠뜨리지 않도록, 의사가 가장 알고 싶어 하는 6대 임상 정보(OPQRST)를 한 장의 요약표로 완성합니다.</p>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="ptName">환자 성명 / 연령대</label>
+            <input type="text" id="ptName" class="form-control" value="김키안 (60대 남성)" oninput="generateVisitSheet()">
+          </div>
+
+          <div class="form-group">
+            <label for="ptDept">방문 예정 진료과</label>
+            <input type="text" id="ptDept" class="form-control" value="내과 / 가정의학과" oninput="generateVisitSheet()">
+          </div>
+
+          <div class="form-group full">
+            <label for="ptChief">가장 불편한 핵심 증상 (어디가, 어떻게 아픈가요?)</label>
+            <input type="text" id="ptChief" class="form-control" value="명치와 가슴 중앙이 타는 듯이 쓰리고, 식후 및 새벽에 신물이 올라옴" oninput="generateVisitSheet()">
+          </div>
+
+          <div class="form-group">
+            <label for="ptOnset">증상 시작 시기 및 빈도</label>
+            <input type="text" id="ptOnset" class="form-control" value="약 5일 전부터 시작, 매일 밤 심해짐" oninput="generateVisitSheet()">
+          </div>
+
+          <div class="form-group">
+            <label for="ptPainScore">통증·불편감 강도 (1점 경미 ~ 10점 극심)</label>
+            <select id="ptPainScore" class="form-control" onchange="generateVisitSheet()">
+              <option value="3점 (일상생활 가능하나 신경 쓰임)">3점 (일상생활 가능하나 신경 쓰임)</option>
+              <option value="5점 (중등도 통증, 수면·집중 방해)" selected>5점 (중등도 통증, 수면·집중 방해)</option>
+              <option value="7점 (심한 통증, 일상생활 어려움)">7점 (심한 통증, 일상생활 어려움)</option>
+              <option value="9점 이상 (참기 힘든 극심한 고통)">9점 이상 (참기 힘든 극심한 고통)</option>
+            </select>
+          </div>
+
+          <div class="form-group full">
+            <label for="ptHistory">현재 복용 중인 약물 · 기저질환 · 알레르기 여부</label>
+            <input type="text" id="ptHistory" class="form-control" value="고혈압약 아침 1정 복용 중 / 페니실린 항생제 알레르기 없음" oninput="generateVisitSheet()">
+          </div>
+        </div>
+
+        <div id="visitSheetPreview" class="doc-preview"></div>
+
+        <div class="result-actions">
+          <button type="button" class="btn-action emerald" onclick="copyVisitSheet()">📋 문진 요약표 복사</button>
+          <button type="button" class="btn-action outline" onclick="printVisitSheet()">🖨️ 인쇄하여 진료실 지참</button>
+        </div>
+      </div>
+
+      <!-- Right: Safe Medication & Vital Sign Calculators -->
+      <div class="tool-box" id="medCalcSection">
+        <div class="tool-box-title">💊 안전 복약 계산기 & 혈압·혈당 판독기</div>
+        <p class="tool-box-sub">가정 상비약(해열·진통제) 정량 계산과 혈압·혈당 수치를 즉시 판독합니다.</p>
+
+        <!-- Calculator 1: Safe OTC Analgesic/Antipyretic Dosage -->
+        <div class="calc-card">
+          <h4>🌡️ 1. 해열·진통제 체중별 안전 용량 & 교차복용 계산기</h4>
+          <div class="form-grid" style="margin-bottom:0.5rem;">
+            <div class="form-group">
+              <label for="medWeight">체중 (kg)</label>
+              <input type="number" id="medWeight" class="form-control" value="65" min="5" max="150" oninput="calculateMedDosage()">
+            </div>
+            <div class="form-group">
+              <label for="medAgeGroup">대상 구분</label>
+              <select id="medAgeGroup" class="form-control" onchange="calculateMedDosage()">
+                <option value="adult" selected>성인 및 만 12세 이상 (정제 알약 기준)</option>
+                <option value="child">소아·어린이 (챔프/맥시부펜 시럽 기준)</option>
+              </select>
+            </div>
+          </div>
+          <div id="medDosageOutput" class="calc-output"></div>
+        </div>
+
+        <!-- Calculator 2: Blood Pressure & Fasting Glucose Reader -->
+        <div class="calc-card">
+          <h4>🩸 2. 가정 혈압 · 공복혈당 즉시 판독기</h4>
+          <div class="form-grid" style="margin-bottom:0.5rem;">
+            <div class="form-group">
+              <label for="bpSys">수축기(최고) 혈압 (mmHg)</label>
+              <input type="number" id="bpSys" class="form-control" value="135" oninput="calculateVitals()">
+            </div>
+            <div class="form-group">
+              <label for="bpDia">이완기(최저) 혈압 (mmHg)</label>
+              <input type="number" id="bpDia" class="form-control" value="85" oninput="calculateVitals()">
+            </div>
+            <div class="form-group full">
+              <label for="fastingGlu">아침 공복혈당 (mg/dL)</label>
+              <input type="number" id="fastingGlu" class="form-control" value="108" oninput="calculateVitals()">
+            </div>
+          </div>
+          <div id="vitalOutput" class="calc-output"></div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Bio-Ethics & Medical Safety Guardrail Banner -->
+    <section class="guardrail-banner">
+      <div class="guardrail-icon">🌿</div>
+      <div class="guardrail-text">
+        <h4>키아노스 보건·복지부 생명 존엄 수호 및 법적 안전 안내</h4>
+        <p>
+          본 「키아노스 시민 생명케어 가이드 (Med-Kyanos)」는 의료 접근성이 취약한 시민들의 건강 문해력을 높이고 응급 골든타임을 수호하기 위해 제공되는 공공 초지능(SI) 건강 정보 및 자가 관리 보조 시스템입니다. 본 가이드는 의사의 대면 확정 진단이나 처방을 대신하지 않으며, 적색경보(Red Flag) 증상이 나타나면 지체 없이 <strong>119 구급대 또는 가까운 응급의료기관</strong>을 방문하시기 바랍니다.
+        </p>
+      </div>
+    </section>
+
+    <footer class="footer-nav">
+      <a href="main.html" class="btn-action emerald">👑 키아노스 메인 포털로 이동</a>
+      <a href="lex_kyanos.html" class="btn-action outline">⚖️ 시민 법률 나침반 (Lex-Kyanos) 열람</a>
+      <a href="gov_welfare.html" class="btn-action outline">💊 복지부 공식 포털</a>
+    </footer>
+
+  </main>
+
+  <script>
+    const MED_SYMPTOMS = {
+      chest: {
+        id: 'chest',
+        icon: '🫀',
+        category: '흉통·심혈관·호흡기',
+        title: '가슴 통증 · 답답함 · 호흡곤란 감별 및 응급 대처',
+        shortDesc: '가슴 중앙을 쥐어짜는 통증, 식은땀, 숨찬 증상 발생 시 심근경색·협심증·역류성식도염 감별',
+        triageClass: 'red',
+        triageLabel: '🔴 적색경보 주의 (식이·자세성 외 흉통은 즉시 심전도 확인 필수)',
+        summary: '가슴 통증은 생명과 직결되는 [급성 심근경색·협심증]부터 [역류성 식도염], [늑간신경통·근막통증]까지 원인이 다양합니다. 특히 **가슴 한가운데를 무거운 돌로 누르거나 쥐어짜는 듯한 통증이 10분 이상 지속되거나 왼쪽 어깨·턱·등으로 뻗치고 식은땀이 동반된다면 단 1분도 지체하지 말고 119를 불러야 합니다.**',
+        causes: [
+          { name: '1. 허혈성 심장질환 (협심증 · 급성 심근경색)', desc: '계단을 오르거나 빨리 걸을 때 가슴이 뻐근하고 쉬면 가라앉거나(협심증), 안정 시에도 식은땀과 함께 20분 이상 극심한 압박감이 지속됨(심근경색).' },
+          { name: '2. 위식도역류질환 · 식도경련', desc: '식사 후 또는 바로 누웠을 때 가슴 중앙(명치 위)이 타는 듯이 쓰리고 물이나 제산제를 먹으면 완화됨.' },
+          { name: '3. 근골격계 흉벽 통증 (늑골연골염)', desc: '손가락으로 가슴 특정 부위를 눌렀을 때 아픈 부위가 명확히 느껴지거나 상체를 비틀 때 순간적으로 찌릿함.' }
+        ],
+        homecare: [
+          '활동 중 흉통이 발생했다면 즉시 모든 움직임을 멈추고 상체를 45도 정도 높여 편하게 기대어 앉고 꽉 끼는 옷·벨트를 느슨하게 풉니다.',
+          '주의: 심근경색이 의심될 때 절대 본인이 직접 운전해서 병원에 가지 마십시오 (운전 중 의식 소실 위험 ➔ 반드시 119 구급차 이용).',
+          '기존에 협심증 진단을 받아 니트로글리세린 설하정을 보유 중이라면 혀 밑에 1정을 넣고 녹여 복용합니다 (우황청심원이나 소화제를 억지로 먹이지 마십시오).',
+          '손으로 눌렀을 때만 아픈 근육통이거나 신물이 올라오는 식도염 증상이라면 미지근한 물을 한 컵 마시고 왼쪽으로 누워 안정을 취합니다.'
+        ],
+        redFlags: [
+          '가슴을 쥐어짜거나 짓누르는 통증이 15분 이상 멈추지 않음',
+          '식은땀이 비 오듯 흐르고 얼굴이 창백해지거나 메스꺼움 동반',
+          '통증이 왼쪽 팔, 어깨, 목, 턱 또는 등 쪽으로 퍼져나감(방사통)',
+          '가만히 앉아 있어도 숨이 차서 문장을 끝까지 말하기 힘듦'
+        ],
+        dept: '순환기내과(심장내과) / 응급의학과',
+        questions: [
+          '1. 제 흉통 양상이 심장 혈관(관상동맥) 문제일 가능성이 있나요, 아니면 식도나 근육 문제인가요?',
+          '2. 심전도(ECG)와 심근효소 혈액검사(Troponin)가 당장 필요한 상태인가요?',
+          '3. 현재 복용 중인 혈압/고지혈증 약물 용량을 조절해야 할까요?',
+          '4. 일상생활에서 운동 강도는 어느 정도까지 허용되나요?'
+        ],
+        sheetPreset: {
+          dept: '순환기내과 (심장내과)',
+          chief: '빨리 걸을 때 가슴 중앙이 뻐근하게 조이는 느낌이 들고 숨이 참',
+          onset: '3일 전부터 계단 오를 때 발생, 쉬면 5분 내 가라앉음',
+          score: '7점 (심한 통증, 일상생활 어려움)'
+        }
+      },
+      neuro: {
+        id: 'neuro',
+        icon: '🧠',
+        category: '뇌신경·두통·어지럼증',
+        title: '극심한 두통 · 어지럼증 · 마비 증상 (뇌졸중 FAST 법칙)',
+        shortDesc: '번개 치듯 시작된 두통, 세상이 빙글빙글 도는 어지럼증(이석증 vs 뇌졸중)의 정확한 구별법',
+        triageClass: 'red',
+        triageLabel: '🔴 FAST 징후(안면마비·팔다리 힘빠짐·발음어눌) 동반 시 즉시 119 (3시간 골든타임)',
+        summary: '두통과 어지럼증에서 가장 중요한 것은 **[뇌졸중(뇌경색·뇌출혈) 전조증상]**과 **[양성 질환(편두통·긴장성두통·이석증)]**을 구별하는 것입니다. 고개를 돌릴 때만 1분 이내로 빙글빙글 도는 어지럼증은 귀의 [이석증]일 확률이 높지만, **한쪽 팔다리에 힘이 빠지거나, 발음이 어눌해지거나, 물체가 두 개로 보이거나, 생애 처음 겪는 망치로 맞은 듯한 벼락 두통**은 즉시 응급실로 가야 합니다.',
+        causes: [
+          { name: '1. 뇌혈관 질환 (뇌경색 · 뇌출혈 · 지주막하출혈)', desc: '갑작스러운 편마비, 언어장애, 한쪽 시야 결손, 중심을 못 잡고 쓰러지는 어지럼증 또는 1초 만에 최고조에 달하는 벼락 두통.' },
+          { name: '2. 말초성 현훈 (이석증 · 전정신경염 · 메니에르병)', desc: '아침에 잠자리에서 일어나거나 고개를 특정 방향으로 돌릴 때 천장이 빙글빙글 돌며 구역질이 나나, 팔다리 마비나 발음 장애는 전혀 없음.' },
+          { name: '3. 일차성 두통 (긴장성 두통 · 편두통)', desc: '스트레스·수면부족 후 머리 전체를 띠로 조이는 듯한 통증(긴장성) 또는 한쪽 관자놀이가 맥박 뛰듯 욱신거리고 빛·소리에 예민해짐(편두통).' }
+        ],
+        homecare: [
+          '[FAST 자가점검] 거울을 보고 웃을 때 입꼬리가 한쪽만 올라가는지(Face), 양팔을 앞으로 나란히 들었을 때 한쪽 팔이 스르륵 떨어지는지(Arm), "라디오 로고" 발음이 뭉개지는지(Speech) 즉시 확인합니다.',
+          '마비·언어장애가 전혀 없는 일반 편두통·긴장성 두통은 조용하고 어두운 방에 누워 관자놀이와 뒷목에 냉찜질을 하고 초기에 진통제(아세트아미노펜 또는 이부프로펜)를 복용합니다.',
+          '빙글빙글 도는 어지럼증(이석증 의심) 발생 시 넘어져 머리를 다치지 않도록 즉시 바닥에 앉거나 옆으로 눕고, 시선을 한 곳(고정된 물체)에 두면 어지럼증이 빠르게 줄어듭니다.',
+          '주의: 어지럼증이나 마비 환자에게 임의로 손끝을 따거나 찬물을 마시게 하지 마십시오 (기도 흡인 위험).'
+        ],
+        redFlags: [
+          '한쪽 입꼬리가 처지거나 한쪽 팔다리에 갑자기 힘이 빠짐·저림',
+          '말이 어눌해지거나 상대방 말을 이해하지 못함',
+          '망치로 머리를 얻어맞은 듯 생애 가장 극심한 벼락 두통 발생',
+          '물체가 두 개로 겹쳐 보이거나(복시) 똑바로 서 있지 못하고 비틀거림'
+        ],
+        dept: '신경과 / 이비인후과(이석증 의심 시)',
+        questions: [
+          '1. 제 어지럼증/두통이 뇌혈관(중추성) 문제인가요, 귀의 전정기관(말초성) 문제인가요?',
+          '2. 뇌 MRI/MRA 촬영이 필요한 신경학적 이상 징후가 보이나요?',
+          '3. 진통제를 주 몇 회 이하로 복용해야 약물과용두통을 예방할 수 있나요?'
+        ],
+        sheetPreset: {
+          dept: '신경과 / 이비인후과',
+          chief: '아침에 자고 일어날 때 천장이 빙글빙글 도는 어지럼증과 오른쪽 관자놀이 욱신거림',
+          onset: '어제 아침 기상 직후 발생, 고개 돌릴 때 30초간 심해짐',
+          score: '5점 (중등도 통증, 수면·집중 방해)'
+        }
+      },
+      fever: {
+        id: 'fever',
+        icon: '🌡️',
+        category: '소아·야간발열·감염',
+        title: '소아 및 성인 한밤중 고열 대처 · 해열제 교차복용 표준 공식',
+        shortDesc: '밤중에 열이 38.5℃ 이상 오를 때 당황하지 않는 해열제 교차복용 시간표와 열성경련 대처법',
+        triageClass: 'yellow',
+        triageLabel: '🟡 황색주의 (생후 3개월 미만 38℃ 이상 발열은 즉시 응급실 방문)',
+        summary: '열 자체는 우리 몸의 면역계가 바이러스와 싸우고 있다는 정상적인 방어 반응입니다. 체온이 **38.0~38.5℃ 이상이거나 아이가 열로 인해 힘들어할 때** 첫 번째 해열제(아세트아미노펜 계열)를 먹이고, **2시간이 지나도 열이 떨어지지 않고 계속 오르면 다른 계열 해열제(이부프로펜/덱시부프로펜)로 교차복용**합니다. 단, **생후 100일(3개월) 미만 영아의 38℃ 이상 발열**은 해열제를 먹이지 말고 즉시 응급실로 가야 합니다.',
+        causes: [
+          { name: '1. 급성 바이러스성 상기도 감염 (감기 · 독감 · 코로나19)', desc: '기침, 콧물, 인후통, 근육통을 동반하며 보통 3~5일간 열이 오르내리다 호전됨.' },
+          { name: '2. 세균성 편도염 · 중이염 · 요로감염', desc: '침을 삼키기 힘들 정도의 목 통증, 귀 통증, 또는 다른 감기 증상 없이 고열만 지속되는 경우(소아 요로감염 의심).' },
+          { name: '3. 소아 열성경련 (생후 6개월 ~ 만 5세)', desc: '체온이 급격히 오를 때 눈이 돌아가고 팔다리가 뻣뻣해지며 떨리는 증상으로, 대개 2~3분 내 자연 멈춤.' }
+        ],
+        homecare: [
+          '[해열제 교차복용 공식] ① 아세트아미노펜(타이레놀/챔프빨강) 복용 ➔ 2시간 뒤에도 38.5℃ 이상이면 ➔ ② 이부프로펜·덱시부프로펜(부루펜/맥시부펜/챔프파랑) 복용! (같은 성분끼리는 최소 4~6시간 간격 준수).',
+          '오한(몸이 부르르 떨리고 손발이 찬 상태)이 있을 때는 열이 오르는 중이므로 얇은 담요를 덮어주고, 열이 다 올라 땀이 나고 더워할 때는 옷을 가볍게 입히고 미지근한 물수건으로 목·겨드랑이·사타구니를 닦아줍니다 (찬물·알코올 마사지 절대 금지).',
+          '고열로 인한 탈수를 막기 위해 미지근한 보리차, 물, 또는 경구수액(이온음료 희석액)을 조금씩 자주 마시게 합니다.',
+          '만약 아이가 [열성경련]을 일으키면 억지로 팔다리를 붙잡거나 입에 손가락·물건을 넣지 말고, 토사물에 기도가 막히지 않게 **고개를 옆으로 돌려 눕힌 뒤** 경련 시작 시각과 양상을 휴대폰 동영상으로 촬영하며 5분 이상 지속 시 119를 부릅니다.'
+        ],
+        redFlags: [
+          '생후 100일(3개월) 미만 아기의 체온이 38.0℃ 이상일 때',
+          '열이 내렸는데도 아이가 축 처져 눈을 맞추지 못하거나 계속 잠만 자려 할 때',
+          '경련(발작)이 5분 이상 멈추지 않거나 하루에 2번 이상 반복될 때',
+          '목이 뻣뻣해져 고개를 앞으로 숙이지 못하고 구토·보랏빛 피부 반점이 동반될 때'
+        ],
+        dept: '소아청소년과 / 내과 / 이비인후과',
+        questions: [
+          '1. 단순 바이러스 감기인가요, 항생제 치료가 필요한 세균 감염(중이염·편도염·요로감염)인가요?',
+          '2. 현재 아이 체중에서 1회 해열제 최대 몇 cc(ml)까지 먹여도 되나요?',
+          '3. 며칠째까지 열이 안 떨어지면 혈액검사나 엑스레이 검사를 받아야 하나요?'
+        ],
+        sheetPreset: {
+          dept: '소아청소년과 / 내과',
+          chief: '어젯밤부터 38.8℃ 고열과 오한, 침 삼킬 때 목 통증 동반',
+          onset: '어제 저녁 8시경부터 발열 시작, 해열제 복용 시 37.5℃로 내려갔다 4시간 후 재상승',
+          score: '5점 (중등도 통증, 수면·집중 방해)'
+        }
+      },
+      stomach: {
+        id: 'stomach',
+        icon: '胃',
+        category: '소화기·복통·위식도역류',
+        title: '급성 복통 · 속쓰림 · 구토 · 설사 위치별 원인 감별',
+        shortDesc: '배 아픈 위치(명치 vs 오른쪽 아랫배)로 구별하는 급성 충수염(맹장)·담석증·위염·장염 홈케어',
+        triageClass: 'yellow',
+        triageLabel: '🟡 황색주의 (오른쪽 아랫배를 눌렀다 뗄 때 극심한 통증·혈변 시 응급 진료)',
+        summary: '복통은 **아픈 부위와 양상**이 가장 중요한 단서입니다. 처음엔 체한 것처럼 명치·배꼽 주변이 더부룩하다가 6~12시간 뒤 **오른쪽 아랫배로 통증이 옮겨가며 손으로 눌렀다 뗄 때(반발압통) 억 소리 나게 아프다면 [급성 충수염(맹장염)]**일 가능성이 높으므로 진통제를 먹지 말고 즉시 외과/응급실로 가야 합니다. 반면 설사·구토가 동반된 물배앓이는 [급성 위장관염]으로 수분 보충이 핵심입니다.',
+        causes: [
+          { name: '1. 급성 충수염 (맹장염) · 급성 담낭염', desc: '명치에서 오른쪽 아랫배로 이동하는 지속적 통증 및 미열(충수염), 또는 기름진 식사 후 오른쪽 윗배와 등까지 쥐어짜듯 아픈 통증(담석·담낭염).' },
+          { name: '2. 급성 위염 · 역류성 식도염 · 소화성 궤양', desc: '명치 부위가 쓰리거나 콕콕 쑤시고, 공복이나 새벽에 속쓰림이 심하며 신물이 올라옴.' },
+          { name: '3. 급성 감염성 장염 · 과민성 대장증후군', desc: '배가 꾸르륵거리며 주기적으로 뒤틀리듯 아프고 물설사·구토가 동반됨.' }
+        ],
+        homecare: [
+          '원인을 모르는 급성 복통(특히 오른쪽 아랫배나 오른쪽 윗배의 날카로운 통증)이 있을 때는 **임의로 소염진통제(이부프로펜, 아스피린 등)를 복용하지 마십시오** (위점막을 더 헐게 하거나 맹장염 진단을 가릴 수 있음).',
+          '구토와 설사가 심할 때는 반나절 정도 고형식(밥)을 금식하되, 탈수를 막기 위해 따뜻한 보리차나 물 1L에 소금 반 티스푼+설탕 2스푼을 탄 수액을 조금씩 자주 마십니다.',
+          '설사가 날 때 지사제(설사 멈추는 약)를 함부로 먹으면 장 속 세균·독소가 배출되지 못해 병이 길어질 수 있으므로 열이나 혈변이 있는 설사에는 지사제를 피하십시오.',
+          '속쓰림·신물 역류가 심할 때는 식후 3시간 이내에 눕지 말고, 잘 때 상체와 베개를 높여 왼쪽으로 누워 자면 위산 역류가 크게 줄어듭니다.'
+        ],
+        redFlags: [
+          '오른쪽 아랫배를 손으로 깊게 눌렀다가 뗄 때 통증이 극심해짐(충수염 의심)',
+          '배 전체가 나무판자처럼 딱딱하게 굳고 살짝만 스쳐도 자지러지게 아픔(복막염 의심)',
+          '짜장면 소스처럼 새까만 변(흑색변)을 보거나 선홍색 피를 토함(위장관 출혈)',
+          '복통과 함께 눈 흰자위나 피부가 노랗게 변하고 소변 색이 진한 갈색으로 나옴(황달)'
+        ],
+        dept: '소화기내과 / 외과(충수염·담낭염 의심 시)',
+        questions: [
+          '1. 오른쪽 아랫배/윗배 압통이 있는데 복부 초음파나 CT 검사가 필요한가요?',
+          '2. 위내시경/대장내시경을 받아봐야 할 시기인가요?',
+          '3. 증상이 가라앉을 때까지 어떤 음식을 피하고 죽 식사를 며칠간 유지해야 하나요?'
+        ],
+        sheetPreset: {
+          dept: '소화기내과',
+          chief: '식후 명치 통증과 더부룩함, 하루 3~4회 묽은 설사 동반',
+          onset: '이틀 전 저녁 식사 이후 시작되어 지속됨',
+          score: '5점 (중등도 통증, 수면·집중 방해)'
+        }
+      },
+      joint: {
+        id: 'joint',
+        icon: '🦴',
+        category: '척추·관절·근골격 통증',
+        title: '갑자기 삐끗한 허리 · 무릎/어깨 관절통 및 냉·온찜질 공식',
+        shortDesc: '무거운 것을 들다 허리를 삐었을 때, 무릎이 시큰거릴 때의 정확한 초기 처치(RICE)와 찜질 구별법',
+        triageClass: 'green',
+        triageLabel: '🟢 녹색케어 (단, 다리 마비·대소변 장애 동반 허리통증은 즉시 신경외과 응급진료)',
+        summary: '많은 시민들이 가장 헷갈려하시는 것이 **[냉찜질 vs 온찜질]**입니다! 갑자기 허리를 삐끗했거나 발목을 접질렸거나 관절이 붓고 열감이 나는 **급성 손상 후 첫 48시간(이틀) 동안은 무조건 [냉찜질(얼음찜질)]**로 염증과 부기를 가라앉혀야 합니다. 그 이후 뻐근하고 뭉친 **만성 통증이나 관절 강직에는 [온찜질]**로 혈액순환을 돕는 것이 의학적 정석입니다.',
+        causes: [
+          { name: '1. 급성 요추염좌 · 추간판탈출증(허리디스크)', desc: '허리 근육·인대가 놀라 허리를 펴기 힘든 통증(염좌), 또는 엉치부터 허벅지·종아리·발끝까지 전기 오듯 당기고 저린 방사통(디스크).' },
+          { name: '2. 퇴행성 슬관절염 · 반월상연골판 손상', desc: '계단을 내려갈 때나 쪼그려 앉을 때 무릎 안쪽이 시큰거리고 관절에 물이 차서 부어오름.' },
+          { name: '3. 회전근개 증후군 · 오십견(유착성 관절낭염)', desc: '팔을 옆이나 앞으로 들어 올릴 때 어깨가 걸리는 듯 아프고 밤에 아픈 쪽으로 누워 자기 힘듦.' }
+        ],
+        homecare: [
+          '[급성 요통 안심 자세] 갑자기 허리가 우두둑하며 움직이기 힘들 때는 억지로 스트레칭을 하지 마시고, 바닥이나 단단한 매트리스에 똑바로 누워 **무릎 밑에 베개나 이불을 높게 받쳐(종아리를 의자에 올려놓는 자세)** 허리 압력을 최소화한 채 1~2일 안정합니다.',
+          '[냉·온찜질 골든 룰] 다친 직후~48시간 이내(붓고 열날 때) = 얼음팩 냉찜질 15분 / 다친 지 3일 이후 또는 오래된 뻐근함 = 따뜻한 온찜질 20분!',
+          '무릎 통증이 있을 때는 바닥에 양반다리나 쪼그려 앉는 좌식 생활을 피하고 의자·침대 입식 생활로 전환하며, 평지 걷기와 실내 자전거로 허벅지 앞쪽 근육(대퇴사두근)을 강화합니다.',
+          '약국에서 파스나 진통제를 구매할 때는 단순 진통제보다 염증을 함께 가라앉히는 **소염진통제(이부프로펜, 나프록센 등 식후 복용)**가 근골격계 통증에 훨씬 효과적입니다.'
+        ],
+        redFlags: [
+          '허리 통증과 함께 소변이 안 나오거나 대소변을 지리는 감각 마비 발생 (마미증후군 - 응급수술 필요!)',
+          '한쪽 발목이나 엄지발가락에 힘이 빠져 발끝을 위로 들어 올리지 못함 (신경 마비)',
+          '넘어진 후 해당 부위가 심하게 변형·부어오르고 체중을 전혀 실을 수 없음 (골절 의심)',
+          '관절이 빨갛게 붓고 뜨거우며 38℃ 이상의 전신 발열과 오한이 동반됨 (화농성 관절염/통풍)'
+        ],
+        dept: '정형외과 / 신경외과 / 재활의학과 / 마취통증의학과',
+        questions: [
+          '1. 단순 근육·인대 염좌인가요, 신경이 눌리는 디스크나 연골 손상인가요?',
+          '2. 엑스레이 외에 초음파나 MRI 정밀검사가 당장 필요한 단계인가요?',
+          '3. 통증이 가라앉은 후 집에서 매일 해줘야 할 재활 스트레칭은 무엇인가요?'
+        ],
+        sheetPreset: {
+          dept: '정형외과 / 신경외과',
+          chief: '물건을 들다 허리 오른쪽이 삐끗한 후 오른쪽 엉치까지 당기는 통증',
+          onset: '어제 오후 발생, 허리를 숙이거나 의자에서 일어날 때 심해짐',
+          score: '7점 (심한 통증, 일상생활 어려움)'
+        }
+      },
+      metabolic: {
+        id: 'metabolic',
+        icon: '🩸',
+        category: '고혈압·당뇨·대사질환',
+        title: '혈압·혈당 급상승 대처 및 저혈당 쇼크 응급 케어',
+        shortDesc: '가정에서 잰 혈압이 160 이상이거나 혈당이 높을 때, 또는 식은땀 나는 저혈당 시 즉시 대처법',
+        triageClass: 'yellow',
+        triageLabel: '🟡 황색주의 (혈압 180/120 이상 + 두통·흉통 동반 시 응급실 / 저혈당 시 즉시 당분 섭취)',
+        summary: '고혈압과 당뇨는 평소 증상이 없지만 합병증을 막는 정밀 관리가 생명입니다. 갑자기 혈압이 높게 측정되었다면 당황해서 약을 2배로 먹지 마시고 **조용히 앉아 10분간 심호흡 후 재측정**하십시오. 반대로 당뇨 환자가 **갑자기 손이 떨리고 식은땀이 나며 어지러운 [저혈당(혈당 70 미만)]** 증상을 보일 때는 뇌 손상을 막기 위해 즉시 **사탕 3~4개나 주스 반 컵(단순당 15g)**을 섭취해야 합니다.',
+        causes: [
+          { name: '1. 일시적 혈압 상승 vs 고혈압성 응급증', desc: '통증, 스트레스, 수면부족, 카페인으로 인해 일시적으로 혈압이 150~170까지 오를 수 있으나, 180/120mmHg 이상이면서 심한 두통·시야흐림·흉통이 동반되면 응급 치료가 필요함.' },
+          { name: '2. 저혈당 쇼크 (혈당 70mg/dL 이하)', desc: '당뇨약을 복용하거나 인슐린을 맞은 후 식사를 거르거나 과도한 운동을 했을 때 발생하며, 방치 시 의식 소실 위험.' },
+          { name: '3. 고혈당 및 당뇨병성 케톤산증', desc: '혈당이 250~300 이상 지속되며 극심한 갈증, 다음·다뇨, 구역질, 과일 냄새 나는 숨결이 동반됨.' }
+        ],
+        homecare: [
+          '[올바른 가정혈압 측정법] 아침 기상 후 1시간 이내(소변 본 후, 식사·혈압약 복용 전)와 저녁 잠들기 전, 등받이 의자에 앉아 5분 안정 후 심장 높이에서 2분 간격으로 2회 측정하여 평균값을 기록합니다.',
+          '[혈압이 갑자기 높을 때] 그 날 아침 혈압약을 깜빡했다면 즉시 1회분을 복용하되, 이미 복용했다면 임의로 추가 복용하지 말고 조용한 방에서 30분 휴식 후 다시 측정합니다.',
+          '[저혈당 15-15 법칙] 혈당이 70 이하이거나 식은땀·손떨림이 나면 즉시 **주스 반 컵, 사탕 3~4알, 요구르트 1개, 꿀 1스푼** 중 하나(당질 15g)를 먹고 15분 뒤 혈당을 다시 잽니다 (초콜릿이나 우유는 지방 때문에 흡수가 느려 응급용으로 부적합).',
+          '[식후 혈당 스파이크 예방] 식사할 때 **채소/해조류 ➔ 단백질(생선·두부·고기) ➔ 탄수화물(현미밥)** 순서로 거꾸로 식사하고 식후 20분 가볍게 산책하면 식후 혈당이 30~40mg/dL 낮아집니다.'
+        ],
+        redFlags: [
+          '혈압이 180/120mmHg 이상이면서 극심한 두통, 가슴 통증, 호흡곤란, 마비가 동반될 때',
+          '저혈당 환자가 의식이 흐려져 음식을 삼키지 못할 때 (억지로 먹이면 기도 질식 위험 ➔ 즉시 119)',
+          '혈당이 300mg/dL 이상이면서 구토, 복통, 거친 호흡이 나타날 때',
+          '당뇨 환자의 발에 작은 상처나 물집이 생겼는데 감각이 둔하고 검붉게 변할 때(당뇨발)'
+        ],
+        dept: '내분비내과 / 순환기내과 / 가정의학과',
+        questions: [
+          '1. 제가 집에서 잰 최근 2주간 아침/저녁 혈압·혈당 수첩 기록인데 약 용량이 적절한가요?',
+          '2. 당화혈색소(HbA1c)와 신장 기능(단백뇨), 안저검사 주기는 어떻게 되나요?',
+          '3. 현재 먹는 혈압/당뇨약과 함께 먹으면 안 되는 영양제나 음식(예: 자몽 등)이 있나요?'
+        ],
+        sheetPreset: {
+          dept: '내과 / 가정의학과',
+          chief: '최근 1주일간 아침 가정혈압이 145/92 내외로 평소보다 높게 측정됨',
+          onset: '1주일 전부터 지속, 가벼운 뒷목 뻐근함 외 특이 증상 없음',
+          score: '3점 (일상생활 가능하나 신경 쓰임)'
+        }
+      },
+      sensory: {
+        id: 'sensory',
+        icon: '👁️',
+        category: '안과·이비인후·급성치통',
+        title: '갑작스러운 이명·난청 골든타임 · 날파리증 · 한밤중 치통 대처',
+        shortDesc: '치료 시기를 놓치면 영구 손상되는 돌발성 난청·망막박리 징후와 야간 급성 치통 진통 조합',
+        triageClass: 'yellow',
+        triageLabel: '🟡 황색주의 (갑자기 한쪽 귀가 먹먹하고 안 들리거나 시야에 검은 커튼이 쳐지면 24시간 내 진료)',
+        summary: '눈과 귀에는 절대 놓쳐서는 안 될 **골든타임 질환**이 있습니다! ① 어느 날 갑자기 한쪽 귀가 물 들어간 것처럼 멍멍하고 삐~ 소리(이명)가 나며 소리가 잘 안 들리는 **[돌발성 난청]**은 발생 후 **3일~1주일 이내에 고용량 스테로이드 치료**를 시작해야 청력을 살릴 수 있습니다. ② 눈앞에 날파리나 검은 점(비문증)이 갑자기 수십 개로 늘어나고 번쩍거림(광시증)이 보이면 **[망막열공·망막박리]** 여부를 당일 안과에서 확인해야 합니다.',
+        causes: [
+          { name: '1. 돌발성 난청 · 급성 이명', desc: '과로·스트레스·바이러스 감염으로 달팽이관 신경이 손상되어 수 시간~수 일 내에 청력이 급격히 떨어지는 응급 이비인후과 질환.' },
+          { name: '2. 유리체 박리 · 망막박리 전조증상', desc: '눈앞에 떠다니는 검은 점·실오라기 개수가 갑자기 폭증하거나 시야 한쪽 구석이 검은 커튼을 친 것처럼 가려져 보임.' },
+          { name: '3. 급성 치수염 (한밤중 극심한 치통)', desc: '치아 내부 신경에 염증이 생겨 밤에 누우면 머리 쪽으로 혈류가 몰리며 압력이 상승해 맥박 뛰듯 극심한 치통 발생.' }
+        ],
+        homecare: [
+          '[돌발성 난청 의심 시] 단순 피로나 귀지 때문이겠거니 방치하지 말고, 양쪽 귀에 번갈아 휴대폰 통화음을 대보아 소리 크기 차이가 느껴지면 **다음 날 즉시 이비인후과 청력검사**를 받으십시오.',
+          '[한밤중 급성 치통 특효 대처법] ① 머리를 심장보다 높게(베개 2개) 베고 눕고, ② 아픈 쪽 볼 바깥쪽에 **수건으로 감싼 얼음팩(냉찜질)**을 대어 혈관을 수축시킵니다. ③ 약국 진통제는 **[이부프로펜/나프록센 1정 + 아세트아미노펜 1정]**을 함께(또는 교차) 복용하면 치과 신경통 완화 효과가 극대화됩니다.',
+          '주의: 치통 부위에 소주나 마늘을 머금거나 뜨거운 찜질을 하면 염증 압력이 폭발적으로 증가하여 통증이 훨씬 심해집니다.',
+          '[눈에 화학물질이나 이물질이 들어갔을 때] 절대 눈을 비비지 말고 생리식염수나 깨끗한 흐르는 수돗물로 눈을 깜빡이며 15분 이상 충분히 씻어냅니다.'
+        ],
+        redFlags: [
+          '갑자기 한쪽 귀가 먹먹해지며 소리가 작게 들리고 어지럼증이 동반됨 (돌발성 난청)',
+          '눈앞에 번개 치듯 빛이 번쩍거리거나 시야 일부가 검은 장막처럼 가려짐 (망막박리)',
+          '심한 안구 통증과 함께 두통·구토가 나며 불빛 주변에 무지개 달무리가 보임 (급성 폐쇄각 녹내장)',
+          '치통과 함께 턱 밑이나 목까지 심하게 부어올라 침 삼키기나 숨쉬기가 불편함 (심경부 감염)'
+        ],
+        dept: '이비인후과 / 안과 / 치과',
+        questions: [
+          '1. 순음청력검사상 돌발성 난청 기준에 해당하나요? 초기 스테로이드 치료가 필요한가요?',
+          '2. 산동(동공 확대) 안저검사에서 망막 주변부에 찢어진 곳(열공)은 없나요?',
+          '3. 신경치료나 발치를 하기 전까지 며칠간 항생제와 소염진통제를 어떻게 복용해야 하나요?'
+        ],
+        sheetPreset: {
+          dept: '이비인후과 / 안과 / 치과',
+          chief: '어제 저녁부터 오른쪽 귀가 멍멍하고 삐- 하는 이명 소리가 계속 들림',
+          onset: '약 24시간 전 갑자기 시작되어 지속 중',
+          score: '5점 (중등도 통증, 수면·집중 방해)'
+        }
+      },
+      skin: {
+        id: 'skin',
+        icon: '🩹',
+        category: '피부·화상·외상 응급처치',
+        title: '화상 초기 처치 · 급성 두드러기/아나필락시스 · 대상포진 구별',
+        shortDesc: '뜨거운 물·불에 데었을 때 흉터를 줄이는 초기 20분 처치와 몸 한쪽 띠 모양 수포(대상포진)72시간 골든타임',
+        triageClass: 'green',
+        triageLabel: '🟢 녹색케어 (단, 두드러기와 함께 목이 붓고 숨이 차면 아나필락시스 ➔ 즉시 119)',
+        summary: '피부 질환과 외상에서 시민들이 꼭 기억해야 할 3가지 핵심이 있습니다. ① **화상**은 사고 직후 **흐르는 시원한 수돗물(얼음 직접 접촉 금지)로 20분 이상 열기를 빼는 것**이 그 어떤 연고보다 중요하며 물집은 절대 터뜨리지 마십시오. ② 몸의 **왼쪽 또는 오른쪽 한쪽으로만 띠 모양의 물집과 바늘로 찌르는 통증**이 나타나면 **[대상포진]**이므로 발진 후 **72시간 이내에 항바이러스제**를 복용해야 신경통 후유증을 막습니다.',
+        causes: [
+          { name: '1. 대상포진 (Herpes Zoster)', desc: '수두-대상포진 바이러스가 면역력 저하 시 신경절을 따라 재활성화되어, 처음 3~4일은 근육통처럼 아프다가 한쪽 피부에 붉은 반점과 군집성 수포가 띠 모양으로 발생.' },
+          { name: '2. 급성 두드러기 및 혈관부종 · 아나필락시스', desc: '음식, 약물, 온도 변화 등으로 피부가 모기 물린 것처럼 부풀어 오르고 가려우며, 심할 경우 입술·눈꺼풀·기도가 붓는 중증 알레르기 반응.' },
+          { name: '3. 1도~2도 열탕·접촉 화상 및 찰과상', desc: '피부가 붉어지고 화끈거리는 1도 화상과 물집(수포)이 잡히는 2도 화상.' }
+        ],
+        homecare: [
+          '[화상 초기 20분 골든타임] 데인 즉시 흐르는 시원한 물(15~20℃)에 15~20분간 식힙니다. 옷 위에 뜨거운 물이 쏟아졌다면 옷을 억지로 벗기지 말고 옷 위로 찬물을 먼저 부은 뒤 가위로 잘라냅니다. 물집은 세균 감염을 막는 천연 보호막이므로 절대 터뜨리지 말고 멸균 거즈나 습윤밴드를 덮습니다 (소주·치약·된장·얼음 직접 대기 절대 금지!).',
+          '[상처 소독 정석] 찰과상(까진 상처)은 과산화수소수나 빨간약(포비돈)을 매일 바르면 새살 세포까지 죽어 흉터가 남습니다. 생리식염수로 씻어낸 뒤 항생제 연고를 얇게 바르고 **하이드로콜로이드 습윤밴드(메디폼·듀오덤 등)**를 붙여 진물을 유지해 주는 것이 가장 빨리 아뭅니다.',
+          '[급성 두드러기] 가려운 부위를 긁으면 히스타민이 더 분비되어 전신으로 번집니다. 차가운 물수건으로 냉찜질을 하고 약국에서 2세대 항히스타민제(세티리진·지르텍, 로라타딘·클라리틴 등)를 복용합니다.'
+        ],
+        redFlags: [
+          '두드러기와 함께 입술·혀·목구멍이 붓고 쉰 목소리가 나거나 숨쉬기가 답답함 (아나필락시스 쇼크 ➔ 즉시 119)',
+          '얼굴(특히 눈 주변이나 코끝)에 한쪽으로 수포가 올라오는 안면 대상포진 (시신경 손상 위험 ➔ 즉시 안과·피부과)',
+          '화상 부위가 하얗거나 검게 변하고 오히려 통증이 잘 느껴지지 않음 (심재성 2도~3도 중증 화상)',
+          '녹슨 못이나 깊은 상처, 동물에게 물린 상처로 파상풍 예방접종 후 10년이 지났을 때'
+        ],
+        dept: '피부과 / 외과(화상·창상) / 내과',
+        questions: [
+          '1. 발진 양상이 대상포진이 맞나요? 72시간 내 항바이러스제 복용을 바로 시작해야 하나요?',
+          '2. 화상 수포(물집) 처치와 드레싱 교체 주기는 며칠마다 어떻게 해야 흉터가 안 남나요?',
+          '3. 두드러기 원인을 찾기 위한 알레르기 항원 검사(MAST)가 필요한가요?'
+        ],
+        sheetPreset: {
+          dept: '피부과 / 내과',
+          chief: '3일 전부터 오른쪽 옆구리와 등이 찌릿하더니 오늘 아침 붉은 물집이 띠 모양으로 올라옴',
+          onset: '통증은 3일 전, 피부 수포는 오늘 아침 발견',
+          score: '7점 (심한 통증, 일상생활 어려움)'
+        }
+      },
+      mind: {
+        id: 'mind',
+        icon: '🧘',
+        category: '수면·자율신경·마음케어',
+        title: '불면증 · 가슴 두근거림 · 과호흡/공황발작 즉시 진정 가이드',
+        shortDesc: '갑자기 숨이 안 쉬어지고 심장이 터질 듯 뛸 때 자율신경계를 3분 만에 안정시키는 의학적 호흡법',
+        triageClass: 'green',
+        triageLabel: '🟢 녹색케어 (자율신경 안정 호흡법 즉시 실행 · 지속 시 심전도/갑상선 확인)',
+        summary: '극심한 스트레스나 피로 속에서 갑자기 심장이 쿵쾅거리고 숨이 끝까지 안 쉬어지며 손발이 저리고 죽을 것 같은 공포감이 밀려오는 것은 **[교감신경 과항진 및 공황·과호흡 증상]**인 경우가 많습니다. 가장 중요한 의학적 사실은 **"공황발작이나 과호흡으로는 절대 심장이 멈추거나 질식하지 않으며, 대개 10~20분 내에 저절로 가라앉는다"**는 점입니다.',
+        causes: [
+          { name: '1. 자율신경 실조증 · 공황발작 · 과호흡 증후군', desc: '불안으로 호흡이 빨라지면 혈중 이산화탄소가 과도하게 빠져나가 오히려 어지럼증, 손발 경련·저림, 가슴 답답함이 유발됨.' },
+          { name: '2. 부정맥 · 갑상선 기능 항진증 · 카페인 과다', desc: '심장 박동이 불규칙하게 건너뛰거나(기외수축), 체중 감소와 손떨림·더위 못 참음이 동반되는 내과적 원인.' },
+          { name: '3. 만성 입면장애 · 수면유지장애(불면증)', desc: '뇌의 각성 상태가 밤에도 꺼지지 않아 잠들기까지 30분 이상 걸리거나 새벽에 자주 깨어 피로가 누적됨.' }
+        ],
+        homecare: [
+          '[과호흡·두근거림을 멈추는 4-7-8 부교감신경 스위치 호흡법] ① 코로 4초간 천천히 숨을 들이마시고 ➔ ② 7초간 숨을 가볍게 멈춘 뒤 ➔ ③ 입술을 오므려 "후-" 소리를 내며 8초 동안 길게 내쉽니다. 날숨을 들숨보다 2배 길게 내쉬면 미주신경이 자극되어 심장 박동이 즉각 느려집니다.',
+          '[5-4-3-2-1 그라운딩(Grounding) 기법] 불안감이 치솟을 때 지금 눈앞에 보이는 물건 5개, 손으로 만져지는 감각 4개, 들리는 소리 3개를 소리 내어 말하면 뇌의 편도체 흥분이 가라앉고 이성 뇌(전두엽)가 즉시 회복됩니다.',
+          '[약 없이 잠드는 수면위생 3원칙] ① 잠이 안 오는데 침대에 누워 휴대폰을 보며 뒤척이지 말고(20분 이상 잠 안 오면 거실로 나와 은은한 조명 아래 독서 후 졸릴 때만 침대로 이동), ② 매일 아침 같은 시각에 일어나 햇볕을 15분 쬐며, ③ 커피·녹차는 오후 1시 이전에만 마십니다.'
+        ],
+        redFlags: [
+          '두근거림과 함께 실제로 의식을 잃고 쓰러진 적(실신)이 있을 때 (부정맥 정밀검사 필수)',
+          '맥박을 짚었을 때 박자가 매우 불규칙하거나 분당 120회 이상 빈맥이 안정 시에도 계속될 때',
+          '2주 이상 극심한 우울감·무기력감으로 식사와 일상생활이 불가능할 때'
+        ],
+        dept: '순환기내과(심전도·갑상선 확인) / 정신건강의학과 / 신경과',
+        questions: [
+          '1. 24시간 홀터 심전도 검사와 갑상선 호르몬 혈액검사로 신체적 원인을 먼저 확인해 볼 수 있나요?',
+          '2. 의존성 걱정 없이 단기간 수면 리듬이나 자율신경 안정을 도와주는 안전한 치료법이 있나요?',
+          '3. 급성 불안이나 두근거림이 올 때 상비약으로 휴대할 수 있는 필요시 복용약(PRN)이 있나요?'
+        ],
+        sheetPreset: {
+          dept: '내과 / 정신건강의학과',
+          chief: '밤에 잠들기 힘들고 가끔 이유 없이 가슴이 두근거리며 숨이 답답한 증상',
+          onset: '최근 한 달간 업무 과로 후 주 2~3회 발생 (15분 정도 지나면 가라앉음)',
+          score: '5점 (중등도 통증, 수면·집중 방해)'
+        }
+      },
+      firstaid: {
+        id: 'firstaid',
+        icon: '🚑',
+        category: '생명수호 골든타임 매뉴얼',
+        title: '심정지 심폐소생술(CPR) · 기도폐쇄 하임리히법 · 혼자 막혔을 때 대처',
+        shortDesc: '가족이나 나 자신이 음식이 목에 걸렸을 때, 또는 쓰러진 환자를 마주했을 때 생명을 구하는 4분 매뉴얼',
+        triageClass: 'red',
+        triageLabel: '🔴 골든타임 4분 생명수호 매뉴얼 (119 스피커폰 연결 후 즉시 시행)',
+        summary: '심장이 멈추거나 기도가 완전히 막힌 순간부터 **뇌 손상이 시작되기까지의 골든타임은 단 4분**입니다! 그 자리에 있는 가족이나 시민이 즉시 가슴압박이나 하임리히법을 시행하면 생존율이 3배 이상 높아집니다. 특히 **혼자 있을 때 음식이 목에 걸렸다면 의자 등받이나 책상 모서리에 명치 아래를 강하게 밀어 올리는 [자가 하임리히법]**으로 스스로 생명을 구할 수 있습니다.',
+        causes: [
+          { name: '1. 급성 기도폐쇄 (떡 · 고기 · 사탕 · 견과류 질식)', desc: '환자가 갑자기 말을 하지 못하고 두 손으로 목을 움켜쥐며(Choking Sign) 얼굴이 파랗게 질림.' },
+          { name: '2. 급성 심정지 (의식 및 정상 호흡 소실)', desc: '어깨를 두드리며 불러도 반응이 없고, 숨을 쉬지 않거나 헐떡이는 비정상 호흡(심정지 호흡)만 보임.' }
+        ],
+        homecare: [
+          '[기도폐쇄: 하임리히법] 환자가 기침을 할 수 있다면 스스로 강하게 기침하게 유도하고, 기침조차 못 하고 숨을 못 쉬면 **즉시 환자 등 뒤로 가서 주먹 쥔 손의 엄지 방향을 환자 배꼽과 명치 중간에 대고, 다른 손으로 감싼 뒤 뒤쪽 위로 강하게 당겨 올리기를 이물질이 나올 때까지 반복**합니다 (등 두드리기는 오히려 이물질이 더 깊숙이 박힐 수 있으므로 완전 폐쇄 시에는 하임리히법 우선! 단, 1세 미만 영아는 머리를 낮추고 등 두드리기 5회 + 가슴 압박 5회 교대).',
+          '[혼자 있을 때 목에 음식이 걸렸다면 (자가 하임리히)] 즉시 119에 신고(말이 안 나와도 주소 추적 가능)한 뒤, 본인의 주먹으로 배꼽 위를 강하게 밀어 올리거나 **단단한 의자 등받이 상단·식탁 모서리에 배꼽과 명치 사이를 대고 체중을 실어 강하게 압박**하여 이물질을 뱉어냅니다.',
+          '[심정지: 가슴압박 소생술(CPR)] ① 어깨를 두드려 의식 확인 ➔ ② 주변 사람에게 119 신고 및 자동심장충격기(AED) 요청 ➔ ③ **양젖꼭지 연결선 중앙(가슴뼈 아래쪽 1/2)에 깍지 낀 손바닥 뒤꿈치를 대고 팔꿈치를 편 채 분당 100~120회 속도, 5cm 깊이로 강하고 빠르게 119 도착 시까지 압박**합니다 (인공호흡을 몰라도 가슴압박만 계속하면 충분합니다!).'
+        ],
+        redFlags: [
+          '두 손으로 목을 감싸 쥐고 소리나 기침을 전혀 내지 못함 (완전 기도폐쇄)',
+          '어깨를 강하게 두드려도 의식 반응이 없고 가슴이 오르내리지 않음 (심정지)',
+          '자동심장충격기(AED)가 도착하면 전원을 켜고 패드 2장을 오른쪽 쇄골 아래와 왼쪽 젖꼭지 바깥쪽 아래에 부착'
+        ],
+        dept: '즉시 119 응급출동 및 권역응급의료센터',
+        questions: [
+          '1. 119 구급상황관리센터(전화 119) 스피커폰을 켜두시면 구급대원이 실시간으로 박자와 응급처치를 코칭해 줍니다.',
+          '2. 하임리히법으로 이물질이 나왔더라도 내부 장기 손상 확인을 위해 반드시 병원 진료를 받으십시오.'
+        ],
+        sheetPreset: {
+          dept: '응급의학과 / 호흡기내과',
+          chief: '음식물 섭취 중 일시적 기도폐쇄 발생 후 하임리히법으로 배출하였으나 흉부·복부 불편감 확인 필요',
+          onset: '금일 식사 중 발생',
+          score: '5점 (중등도 통증, 수면·집중 방해)'
+        }
+      }
+    };
+
+    // Render 10 Category Cards
+    function renderMedCategories() {
+      const grid = document.getElementById('medCategoryGrid');
+      grid.innerHTML = Object.values(MED_SYMPTOMS).map(item => `
+        <div class="cat-card" id="medcat-${item.id}" onclick="selectSymptom('${item.id}')">
+          <div>
+            <div class="cat-icon">${item.icon}</div>
+            <div class="cat-title">${item.category}</div>
+            <p class="cat-desc">${item.shortDesc}</p>
+          </div>
+          <div class="cat-more">증상 감별 & 홈케어 보기 →</div>
+        </div>
+      `).join('');
+    }
+
+    // Select and Render Specific Symptom
+    function selectSymptom(symKey, customQuery = '') {
+      const data = MED_SYMPTOMS[symKey] || MED_SYMPTOMS.chest;
+
+      document.querySelectorAll('.cat-card').forEach(el => el.classList.remove('active'));
+      const activeCard = document.getElementById('medcat-' + data.id);
+      if (activeCard) activeCard.classList.add('active');
+
+      const container = document.getElementById('medResultContainer');
+      const queryBanner = customQuery
+        ? `<div style="margin-bottom:0.8rem; font-size:0.85rem; color:var(--emerald-light);">🔍 시민 증상 문진 분석: <strong>"${customQuery}"</strong> ➔ 가장 부합하는 의학 감별 및 홈케어 가이드를 매칭했습니다.</div>`
+        : '';
+
+      container.innerHTML = `
+        ${queryBanner}
+        <div class="result-header">
+          <div>
+            <span class="result-category-badge">🩺 ${data.category} · 복지부 SI 생명케어 가이드</span>
+            <h3 class="result-title">${data.icon} ${data.title}</h3>
+          </div>
+          <div class="triage-badge-box ${data.triageClass}">
+            ${data.triageLabel}
+          </div>
+        </div>
+
+        <div class="easy-summary-box">
+          <div class="easy-summary-title">💡 초지능(SI) 핵심 의학 요약 (일반인을 위한 쉬운 해설)</div>
+          <p class="easy-summary-text">${data.summary}</p>
+        </div>
+
+        <div class="result-grid">
+          <div class="info-panel">
+            <div class="panel-heading">🧬 의심 가능한 주요 원인 질환 감별</div>
+            ${data.causes.map(c => `
+              <div class="cause-item">
+                <strong>• ${c.name}</strong>
+                <span>${c.desc}</span>
+              </div>
+            `).join('')}
+          </div>
+
+          <div class="info-panel">
+            <div class="panel-heading">🏡 의료 사각지대 즉시 실천 홈케어 & 복약 수칙</div>
+            <ul class="step-list">
+              ${data.homecare.map((step, idx) => `
+                <li class="step-item">
+                  <span class="step-num">${idx + 1}</span>
+                  <span>${step}</span>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+        </div>
+
+        <div class="redflag-box">
+          <div class="redflag-header">
+            <span class="redflag-title">🚨 응급실 즉시 이동 기준 점검표 (Red Flags — 해당되는 증상이 있는지 체크하세요)</span>
+            <span class="redflag-status" id="rfStatusBadge">체크된 위험 징후: 0개 (안심 관찰 가능)</span>
+          </div>
+          <div class="redflag-grid">
+            ${data.redFlags.map(rf => `
+              <label class="rf-check-label">
+                <input type="checkbox" class="rf-chk" onchange="updateRedFlagStatus()">
+                <span>${rf}</span>
+              </label>
+            `).join('')}
+          </div>
+        </div>
+
+        <div class="doc-questions-box">
+          <h4>🏥 권장 방문 진료과: <span style="color:#fff;">${data.dept}</span> | 의사 진료 시 꼭 물어봐야 할 핵심 질문</h4>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:6px; color:#d1fae5;">
+            ${data.questions.map(q => `<div>${q}</div>`).join('')}
+          </div>
+        </div>
+
+        <div class="result-actions">
+          <button type="button" class="btn-action emerald" onclick="applyPresetToVisitSheet('${data.id}')">
+            📋 이 증상으로 '의사 소통용 문진 요약표' 즉시 자동 작성 ↓
+          </button>
+          <a href="https://www.e-gen.or.kr" target="_blank" rel="noopener" class="btn-action outline">
+            🏥 중앙응급의료센터 (야간·휴일 문 여는 병원/약국 찾기) ↗
+          </a>
+        </div>
+      `;
+    }
+
+    function updateRedFlagStatus() {
+      const checked = document.querySelectorAll('.rf-chk:checked').length;
+      const badge = document.getElementById('rfStatusBadge');
+      if (checked > 0) {
+        badge.style.color = '#fda4af';
+        badge.style.border = '1px solid #f43f5e';
+        badge.textContent = `🚨 경고! 위험 징후 ${checked}개 해당 — 지체 없이 119 또는 응급의료기관 진료를 권고합니다!`;
+      } else {
+        badge.style.color = '#6ee7b7';
+        badge.style.border = 'none';
+        badge.textContent = '체크된 위험 징후: 0개 (홈케어 수칙을 지키며 경과 관찰 가능)';
+      }
+    }
+
+    // Natural Language Symptom Search
+    function handleMedSearch(e) {
+      if (e) e.preventDefault();
+      const q = document.getElementById('medSearchInput').value.trim();
+      if (!q) {
+        selectSymptom('chest');
+        return;
+      }
+
+      const keywordMap = [
+        { key: 'chest', words: ['가슴', '흉통', '답답', '식은땀', '심장', '협심증', '심근경색', '숨이', '호흡곤란', '숨찬'] },
+        { key: 'neuro', words: ['머리', '두통', '편두통', '어지럽', '어지럼', '이석증', '마비', '발음', '뇌졸중', '중풍', '저림'] },
+        { key: 'fever', words: ['열', '고열', '발열', '해열제', '타이레놀', '부루펜', '아이', '아기', '오한', '감기', '독감', '목이 아'] },
+        { key: 'stomach', words: ['배', '복통', '속쓰림', '신물', '소화', '체한', '구토', '설사', '변비', '맹장', '위염', '장염', '식도염', '명치'] },
+        { key: 'joint', words: ['허리', '디스크', '무릎', '어깨', '관절', '발목', '삐끗', '염좌', '파스', '찜질', '근육통', '오십견'] },
+        { key: 'metabolic', words: ['혈압', '고혈압', '당뇨', '혈당', '저혈당', '콜레스테롤', '고지혈', '비만'] },
+        { key: 'sensory', words: ['귀', '이명', '난청', '먹먹', '눈', '시야', '날파리', '비문증', '치통', '이빨', '잇몸', '치아'] },
+        { key: 'skin', words: ['피부', '두드러기', '가려움', '발진', '화상', '데였', '물집', '대상포진', '상처', '알레르기'] },
+        { key: 'mind', words: ['잠', '불면', '수면', '두근', '공황', '과호흡', '불안', '우울', '스트레스'] },
+        { key: 'firstaid', words: ['심폐소생', 'CPR', '기도', '목에 걸', '떡', '하임리히', '응급처치', '기절', '쓰러'] }
+      ];
+
+      let bestKey = 'chest';
+      let maxMatches = 0;
+
+      for (const item of keywordMap) {
+        let count = 0;
+        for (const w of item.words) {
+          if (q.includes(w)) count++;
+        }
+        if (count > maxMatches) {
+          maxMatches = count;
+          bestKey = item.key;
+        }
+      }
+
+      selectSymptom(bestKey, q);
+      document.getElementById('triageSection').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function applyPresetToVisitSheet(symKey) {
+      const data = MED_SYMPTOMS[symKey];
+      if (data && data.sheetPreset) {
+        document.getElementById('ptDept').value = data.sheetPreset.dept;
+        document.getElementById('ptChief').value = data.sheetPreset.chief;
+        document.getElementById('ptOnset').value = data.sheetPreset.onset;
+        document.getElementById('ptPainScore').value = data.sheetPreset.score;
+        generateVisitSheet();
+        document.getElementById('visitSheetSection').scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // Doctor Visit Summary Sheet Generator
+    function generateVisitSheet() {
+      const name = document.getElementById('ptName').value || '환자';
+      const dept = document.getElementById('ptDept').value || '일반진료과';
+      const chief = document.getElementById('ptChief').value || '';
+      const onset = document.getElementById('ptOnset').value || '';
+      const score = document.getElementById('ptPainScore').value || '';
+      const history = document.getElementById('ptHistory').value || '없음';
+      const today = new Date().toISOString().slice(0, 10);
+
+      const text = `====================================================================
+        [병원 진료용] 환자 증상 표준 요약표 (Med-Kyanos OPQRST)
+====================================================================
+• 작성 일자 : ${today}
+• 환자 정보 : ${name}
+• 희망 진료과 : ${dept}
+--------------------------------------------------------------------
+1. 주 호소 증상 (Chief Complaint & Character)
+   👉 ${chief}
+
+2. 발병 시기 및 경과 (Onset & Time Course)
+   👉 ${onset}
+
+3. 통증 / 불편감 강도 (Severity, NRS 1~10)
+   👉 ${score}
+
+4. 기저질환 · 현재 복용 약물 · 약물 알레르기 여부
+   👉 ${history}
+--------------------------------------------------------------------
+[담당 의사 선생님께 드리는 핵심 질문 메모]
+□ 현재 증상의 가장 유력한 원인과 감별해야 할 질환은 무엇인가요?
+□ 오늘 필요한 검사나 처방 약 복용 시 주의할 점이 있나요?
+□ 집에서 어떤 증상이 추가로 나타나면 즉시 다시 내원해야 하나요?
+====================================================================`;
+
+      document.getElementById('visitSheetPreview').textContent = text;
+    }
+
+    function copyVisitSheet() {
+      const text = document.getElementById('visitSheetPreview').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('✅ 의사 소통용 문진 요약표가 복사되었습니다! 휴대폰 메모장에 붙여넣거나 인쇄하여 진료 시 의사에게 보여주시면 매우 정확한 진료를 받으실 수 있습니다.');
+      });
+    }
+
+    function printVisitSheet() {
+      const text = document.getElementById('visitSheetPreview').textContent;
+      const win = window.open('', '_blank', 'width=760,height=860');
+      win.document.write(`
+        <html><head><title>키아노스 진료 문진 요약표</title>
+        <style>body{font-family:'Malgun Gothic',sans-serif;padding:40px;white-space:pre-wrap;line-height:1.8;font-size:14px;}</style>
+        </head><body>${text.replace(/</g, '&lt;')}</body></html>
+      `);
+      win.document.close();
+      win.focus();
+      win.print();
+    }
+
+    // Safe OTC Medication Dosage Calculator
+    function calculateMedDosage() {
+      const weight = parseFloat(document.getElementById('medWeight').value) || 60;
+      const group = document.getElementById('medAgeGroup').value;
+
+      let html = '';
+      if (group === 'adult') {
+        html = `
+          <div>• <strong>아세트아미노펜 (타이레놀 500mg 기준):</strong> 1회 <span style="color:var(--emerald-light);font-weight:800;">1~2정 (500~1,000mg)</span>, 최소 4~6시간 간격 (성인 하루 최대 4,000mg=8정 절대 초과 금지, 음주 후 복용 절대 금기!)</div>
+          <div>• <strong>이부프로펜 (부루펜/애드빌 200~400mg 기준):</strong> 1회 <span style="color:var(--cyan);font-weight:800;">200~400mg</span>, 식후 복용 권장, 6시간 간격 (하루 최대 1,200~2,400mg)</div>
+          <div style="margin-top:6px;padding-top:6px;border-top:1px dashed rgba(16,185,129,0.4);color:var(--gold-bright);">
+            💡 <strong>교차복용 원칙:</strong> 타이레놀 복용 후 열·통증이 안 잡히면 <strong>최소 2~3시간 뒤</strong> 이부프로펜을 복용할 수 있습니다. (단, 종합감기약에 이미 타이레놀 성분이 들어 있는지 반드시 확인!)
+          </div>
+        `;
+      } else {
+        // Pediatric calculation: Acetaminophen 10~15mg/kg, Ibuprofen 5~10mg/kg
+        // Standard syrup concentration in Korea: Acetaminophen 32mg/mL (or 160mg/5mL), Ibuprofen 20mg/mL, Dexibuprofen 12mg/mL
+        const acetaMgMin = Math.round(weight * 10);
+        const acetaMgMax = Math.round(weight * 15);
+        const acetaMl = Math.min(20, (weight * 0.4).toFixed(1)); // approx 12.8mg/kg at 32mg/mL
+
+        const ibuMl = Math.min(20, (weight * 0.35).toFixed(1)); // approx 7mg/kg at 20mg/mL
+        const dexiMl = Math.min(20, (weight * 0.45).toFixed(1)); // approx 5.4mg/kg at 12mg/mL
+
+        html = `
+          <div>• <strong>소아 체중 ${weight}kg 1회 권장량:</strong></div>
+          <div>  ① <strong>아세트아미노펜 시럽(챔프빨강/타이레놀현탁액 32mg/mL):</strong> 1회 약 <span style="color:var(--emerald-light);font-weight:800;">${acetaMl} mL(cc)</span> (${acetaMgMin}~${acetaMgMax}mg), 4~6시간 간격 (하루 최대 5회)</div>
+          <div>  ② <strong>이부프로펜 시럽(부루펜/챔프파랑 20mg/mL):</strong> 1회 약 <span style="color:var(--cyan);font-weight:800;">${ibuMl} mL(cc)</span>, 6~8시간 간격 (생후 6개월 이상부터)</div>
+          <div>  ③ <strong>덱시부프로펜 시럽(맥시부펜 12mg/mL):</strong> 1회 약 <span style="color:var(--gold-bright);font-weight:800;">${dexiMl} mL(cc)</span>, 4~6시간 간격</div>
+          <div style="margin-top:6px;padding-top:6px;border-top:1px dashed rgba(16,185,129,0.4);color:#fda4af;">
+            ⚠️ 주의: 이부프로펜과 덱시부프로펜은 같은 계열이므로 서로 교차복용하면 안 됩니다! 반드시 [아세트아미노펜 ↔ 이부프로펜/덱시부프로펜]으로만 2시간 간격 교차하세요.
+          </div>
+        `;
+      }
+
+      document.getElementById('medDosageOutput').innerHTML = html;
+    }
+
+    // Vital Signs Reader
+    function calculateVitals() {
+      const sys = parseInt(document.getElementById('bpSys').value, 10) || 120;
+      const dia = parseInt(document.getElementById('bpDia').value, 10) || 80;
+      const glu = parseInt(document.getElementById('fastingGlu').value, 10) || 95;
+
+      let bpStatus = '';
+      if (sys >= 180 || dia >= 120) {
+        bpStatus = `<span style="color:#f43f5e;font-weight:800;">🚨 고혈압 위기 (${sys}/${dia} mmHg)</span> — 안정 후 재측정 시에도 같거나 두통·흉통 동반 시 즉시 진료!`;
+      } else if (sys >= 140 || dia >= 90) {
+        bpStatus = `<span style="color:#f59e0b;font-weight:800;">⚠️ 고혈압 기준 해당 (${sys}/${dia} mmHg)</span> — 2주간 아침·저녁 혈압 기록 후 내과 상담 권장`;
+      } else if (sys >= 120 || dia >= 80) {
+        bpStatus = `<span style="color:var(--gold-bright);font-weight:800;">🟡 주의혈압·고혈압 전단계 (${sys}/${dia} mmHg)</span> — 저염식 및 유산소 운동으로 정상 회복 가능`;
+      } else {
+        bpStatus = `<span style="color:var(--emerald-light);font-weight:800;">✅ 정상 혈압 (${sys}/${dia} mmHg)</span> — 매우 안정적인 혈관 상태입니다.`;
+      }
+
+      let gluStatus = '';
+      if (glu < 70) {
+        gluStatus = `<span style="color:#f43f5e;font-weight:800;">🚨 저혈당 위험 (${glu} mg/dL)</span> — 즉시 주스 반 컵이나 사탕 3알(단순당 15g)을 섭취하세요!`;
+      } else if (glu >= 126) {
+        gluStatus = `<span style="color:#f59e0b;font-weight:800;">⚠️ 당뇨병 진단 범위 (${glu} mg/dL)</span> — 내과에서 당화혈색소(HbA1c) 혈액검사를 확인하세요.`;
+      } else if (glu >= 100) {
+        gluStatus = `<span style="color:var(--gold-bright);font-weight:800;">🟡 공복혈당장애·당뇨 전단계 (${glu} mg/dL)</span> — 식후 20분 걷기와 정제 탄수화물 줄이기가 필수입니다.`;
+      } else {
+        gluStatus = `<span style="color:var(--emerald-light);font-weight:800;">✅ 정상 공복혈당 (${glu} mg/dL)</span> — 이상적인 대사 균형 상태입니다.`;
+      }
+
+      document.getElementById('vitalOutput').innerHTML = `
+        <div style="margin-bottom:6px;">• <strong>혈압 판독:</strong> ${bpStatus}</div>
+        <div>• <strong>혈당 판독:</strong> ${gluStatus}</div>
+      `;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderMedCategories();
+      generateVisitSheet();
+      calculateMedDosage();
+      calculateVitals();
+
+      const params = new URLSearchParams(window.location.search);
+      const qParam = params.get('q');
+      const symParam = params.get('symptom');
+
+      if (qParam) {
+        document.getElementById('medSearchInput').value = qParam;
+        handleMedSearch();
+      } else if (symParam && MED_SYMPTOMS[symParam]) {
+        selectSymptom(symParam);
+      } else {
+        selectSymptom('chest');
+      }
+    });
+  </script>
+  <script src="assets/js/kyanos_i18n.js"></script>
+</body>
+</html>
