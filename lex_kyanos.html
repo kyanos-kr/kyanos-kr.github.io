@@ -833,15 +833,20 @@
       <h1 class="hero-title">키아노스 시민 법률 나침반 (Lex-Kyanos)</h1>
       <p class="hero-sub">
         변호사를 선임하지 않아도, 어려운 법전을 뒤지지 않아도 됩니다.<br>
-        일상 언어로 겪고 계신 억울한 상황이나 분쟁을 입력하시면 <strong>적용 법조문 · 대법원 판례 · 나홀로 해결 절차 · 내용증명 서식</strong>을 즉시 완성해 드립니다.
+        일상 언어로 겪고 계신 억울한 상황이나 분쟁을 입력하시면 <strong>관련 법조문 · 대법원 판례 정보 · 나홀로 해결 절차 · 표준 서식 양식</strong>을 즉시 안내해 드립니다.
       </p>
+
+      <!-- 상단 변호사법 제109조 준수 및 공공 법률정보 고지 배지 -->
+      <div style="max-width:820px; margin:0 auto 1.4rem; padding:10px 18px; border-radius:12px; background:rgba(212, 175, 55, 0.12); border:1px solid rgba(212, 175, 55, 0.45); color:#fbeea4; font-size:0.8rem; line-height:1.55; text-align:left;">
+        🛡️ <strong>[변호사법 준수 및 공공 법률정보 고지]</strong> 본 시스템은 변호사법 제109조의 법적 한계를 엄격히 준수하여, 특정 사건에 대한 유상 법률대리·감정·유권해석이 아닌 <strong>대한민국 공개 법령·대법원 판례의 객관적 정보 전달 및 시민 본인의 나홀로 소송용 표준 서식 자동화 보조</strong>만을 무료로 제공합니다.
+      </div>
 
       <form class="search-box-wrap" onsubmit="handleLegalSearch(event)">
         <div class="search-bar">
           <span class="search-icon">⚖️</span>
           <input type="text" id="legalSearchInput" class="search-input" placeholder="예: 집주인이 전세보증금을 안 돌려줘요 / 퇴직금과 월급을 못 받았어요 / 중고거래 사기 신고..." autocomplete="off">
           <button type="submit" class="search-btn">
-            <span>SI 법률 해답 검색</span>
+            <span>SI 법령·판례 정보 검색</span>
             <span>→</span>
           </button>
         </div>
