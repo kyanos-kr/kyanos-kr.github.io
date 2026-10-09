@@ -113,37 +113,35 @@
       </div>
     </div>
     <div class="card" style="--c:var(--art)">
-      <div class="role">글로벌 #2 · 인문·예술 한·영 큐레이션</div>
-      <h3>🎨 『파이튼의 예술세계』</h3>
+      <div class="role">글로벌 #2 · 초지능(SI) & 미래 과학 싱크탱크</div>
+      <h3>🤖 『파이튼의 초지능(SI) 미래 오디세이』</h3>
       <ul>
-        <li>네이버 원문을 그대로 옮기지 않음 → 발췌 + 해설 + 영역</li>
-        <li>스토리텔링 · 시조 · 자작시 · 애송시 · 고문진보 · Proverb</li>
-        <li>맨 아래에 네이버 원문 링크 카드</li>
+        <li>AI R&D · 미래 5대 산업 전망 · 과학적 이상향 · SI 윤리</li>
+        <li>현실적 산업 대안과 SF적 과학 상상력의 결합 청사진</li>
+        <li>Blogger "HTML 보기"에 클린 HTML 붙여넣기</li>
       </ul>
       <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
         <a class="btn" href="https://phaetonktb.blogspot.com" target="_blank" rel="noopener">블로그 열기</a>
         <a class="btn" href="https://www.blogger.com/blog/posts/4640767143667658473" target="_blank" rel="noopener" style="background:#3d2b56;color:#c58cff;border:1px solid #c58cff">글관리</a>
         <a class="btn" href="https://www.blogger.com/blog/post/edit/4640767143667658473" target="_blank" rel="noopener" style="background:#3d2b56;color:#c58cff;border:1px solid #c58cff">새글쓰기</a>
-        <a class="sub" href="templates/phaetonktb_post_template.html">원고 규격</a>
+        <a class="sub" href="templates/phaeton_si_future_template.html">원고 규격</a>
       </div>
     </div>
   </div>
 
-  <h2>중복 문서 방지 3대 철칙</h2>
+  <h2>중복 문서 방지 및 운영 원칙</h2>
   <div class="rules">
-    <b>1.</b> 원작 전문은 네이버에 한 번만. &nbsp; <b>2.</b> 구글 『예술세계』에는 발췌·해설·영역판과 원문 링크만. &nbsp; <b>3.</b> 한글(HWP)에서 블로그로 바로 붙여넣지 말고 아래 정화실을 거칠 것.
+    <b>1.</b> 순수 문학·수필은 네이버에 집중. &nbsp; <b>2.</b> 구글 #2는 오직 'AI & 초지능(SI) 미래 비전'만 전문 연재. &nbsp; <b>3.</b> 한글(HWP)에서 블로그로 바로 붙여넣지 말고 아래 정화실을 거칠 것.
   </div>
 
   <h2>② 블로그 원고 정화실</h2>
   <div class="targets" id="targets">
     <label style="--c:var(--naver)"><input type="radio" name="t" value="naver" checked><span>🖋️ 네이버 문학산책 (평문)</span></label>
     <label style="--c:var(--travel)"><input type="radio" name="t" value="travel"><span>✈️ Ant-Travel Korea (클린 HTML)</span></label>
-    <label style="--c:var(--art)"><input type="radio" name="t" value="art"><span>🎨 파이튼의 예술세계 (클린 HTML)</span></label>
+    <label style="--c:var(--art)"><input type="radio" name="t" value="art"><span>🤖 파이튼의 초지능(SI) 미래 오디세이 (클린 HTML)</span></label>
   </div>
   <div class="opts">
-    <span id="optArt" class="hidden">네이버 원문 글 주소:
-      <input type="text" id="naverUrl" placeholder="https://blog.naver.com/invision/..." /></span>
-    <label id="optFooter" class="hidden"><input type="checkbox" id="addFooter" checked> 블로그 서명·원문 링크 카드 붙이기</label>
+    <label id="optFooter" class="hidden"><input type="checkbox" id="addFooter" checked> 블로그 서명·공식 저작권 카드 부착</label>
   </div>
 
   <div class="studio">
@@ -367,12 +365,8 @@
     if (t === 'travel')
       return '<hr><p><small>Photos &amp; story by Python · <a href="https://antkoreatrip.blogspot.com">Ant-Travel Korea</a></small></p>';
     if (t === 'art'){
-      const u = $('naverUrl').value.trim();
-      const href = /^https?:\/\//.test(u) ? u : 'https://blog.naver.com/invision';
-      return '<hr><p>📖 <strong>전문 감상</strong>: 이 작품의 원문 전체는 파이튼 공식 작가 블로그 '
-           + '<a href="' + href.replace(/"/g,'&quot;') + '">『파이튼의 문학산책』</a>에서 읽으실 수 있습니다.<br>'
-           + '<em>Read the full original (Korean) on Python\'s official literary blog.</em></p>'
-           + '<p><small>© Python · 파이튼의 예술세계 | <a href="https://antnews.org">Ant News</a> · <a href="https://kyanos.kr">Kyanos</a></small></p>';
+      return '<hr><p style="color:#888;font-size:13.5px">🚀 <strong>Phaeton\'s Super Intelligence & Future Horizons</strong><br>'
+           + '초지능(SI)과 인류 문명의 미래 청사진 | © Python · <a href="https://phaetonktb.blogspot.com">파이튼의 초지능 미래 오디세이</a> · <a href="https://kyanos.kr">Kyanos</a></p>';
     }
     return '';
   }
@@ -412,7 +406,6 @@
 
   function syncOpts(){
     const t = target();
-    $('optArt').classList.toggle('hidden', t !== 'art');
     $('optFooter').classList.toggle('hidden', t === 'naver');
   }
 
