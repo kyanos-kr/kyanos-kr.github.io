@@ -222,26 +222,75 @@
 
   function looksLikeHtml(s){ return /<\s*(p|div|span|br|h[1-6]|table|img|a)\b/i.test(s) || /hwpjson|hwp_editor|mso-/i.test(s); }
 
-  function textToHtml(s){
-    const esc = t => t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  function textToHtml(s, t){
+    const esc = str => str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     s = s.replace(/\r\n?/g,'\n').trim();
     if (!s) return '';
     const parts = /\n\s*\n/.test(s) ? s.split(/\n\s*\n+/) : s.split('\n');
+    const pStyle = (t === 'travel' || t === 'art') 
+      ? ' style="margin-top:0; margin-bottom:1.6em; line-height:1.85; font-size:17px; color:#2c3e50;"' 
+      : '';
     return parts.map(p => p.trim()).filter(Boolean)
-                .map(p => '<p>' + esc(p).replace(/\n/g,'<br>') + '</p>').join('');
+                .map(p => '<p' + pStyle + '>' + esc(p).replace(/\n/g,'<br>') + '</p>').join('\n\n');
   }
 
-  function cleanHtml(raw){
+  function cleanHtml(raw, t){
     warnLocalImg = 0;
-    raw = raw.replace(/<!--[\s\S]*?-->/g,'')         // data-hwpjson 등 숨은 주석
+    // 1. HWP/Word 고유 숨은 코드 및 깨진 태그 제거
+    raw = raw.replace(/<!--[\s\S]*?-->/g,' ')         // 주석을 공백으로 치환하여 단어 이어짐 방지
              .replace(/<\/?o:p[^>]*>/gi,'')
              .replace(/<\?xml[^>]*>/gi,'')
-             .replace(/<\/?(v|w|m|st1):[^>]*>/gi,'');
+             .replace(/<\/?(v|w|m|st1):[^>]*>/gi,'')
+             .replace(/&nbsp;/gi, ' ')                 // 공백 정상화
+             .replace(/\u00a0/g, ' ');
+    
+    // HWP span 태그 사이 띄어쓰기 유실 방지
+    raw = raw.replace(/<\/span>\s*<span/gi, '</span> <span');
+
     const doc = new DOMParser().parseFromString(raw,'text/html');
     const box = document.createElement('div');
     walk(doc.body, box);
     tidy(box);
+    
+    // 블로그스팟(Blogger)용 인라인 스타일 자동 주입 (글 뭉침/단락 파괴 완벽 방지)
+    if (t === 'travel' || t === 'art') {
+      applyBloggerStyles(box, t);
+    }
+    
     return box.innerHTML;
+  }
+
+  function applyBloggerStyles(box, t){
+    const brandColor = (t === 'art') ? '#9b59b6' : '#3498db';
+    box.querySelectorAll('p').forEach(el => {
+      if (!el.getAttribute('style')) {
+        el.setAttribute('style', 'margin-top:0; margin-bottom:1.6em; line-height:1.85; font-size:17px; color:#2c3e50;');
+      }
+    });
+    box.querySelectorAll('h2').forEach(el => {
+      el.setAttribute('style', 'font-size:24px; font-weight:700; color:#1a252f; margin-top:2.2em; margin-bottom:0.8em; padding-bottom:8px; border-bottom:2px solid ' + brandColor + '; line-height:1.4;');
+    });
+    box.querySelectorAll('h3').forEach(el => {
+      el.setAttribute('style', 'font-size:20px; font-weight:600; color:' + brandColor + '; margin-top:1.6em; margin-bottom:0.6em; line-height:1.4;');
+    });
+    box.querySelectorAll('ul, ol').forEach(el => {
+      el.setAttribute('style', 'margin-top:0; margin-bottom:1.8em; padding-left:1.8em;');
+    });
+    box.querySelectorAll('li').forEach(el => {
+      el.setAttribute('style', 'margin-bottom:0.8em; line-height:1.75; font-size:16.5px; color:#2c3e50;');
+    });
+    box.querySelectorAll('blockquote').forEach(el => {
+      el.setAttribute('style', 'margin:1.8em 0; padding:16px 20px; background-color:#f8fafc; border-left:4px solid ' + brandColor + '; border-radius:4px; font-style:italic; color:#475569; line-height:1.8;');
+    });
+    box.querySelectorAll('table').forEach(el => {
+      el.setAttribute('style', 'width:100%; border-collapse:collapse; margin:1.8em 0; font-size:15px; border:1px solid #e2e8f0;');
+    });
+    box.querySelectorAll('th').forEach(el => {
+      el.setAttribute('style', 'background-color:#f1f5f9; padding:12px 14px; text-align:left; border:1px solid #e2e8f0; font-weight:600; color:#1e293b;');
+    });
+    box.querySelectorAll('td').forEach(el => {
+      el.setAttribute('style', 'padding:12px 14px; border:1px solid #e2e8f0; color:#334155; line-height:1.6;');
+    });
   }
 
   function hasBlockChild(el){
@@ -265,7 +314,11 @@
         continue;
       }
       const m = MAP[tag];
-      if (!m){ walk(n, to); continue; }       // span, font, u 등은 껍질만 벗김
+      if (!m){ 
+        // span 등 인라인 컨테이너 처리 시 단어 띄어쓰기 유지
+        walk(n, to); 
+        continue; 
+      }
 
       const el = document.createElement(m);
       if (m === 'A'){
@@ -278,6 +331,7 @@
         if (!/^https?:/i.test(s)){ warnLocalImg++; continue; }
         el.setAttribute('src', s);
         el.setAttribute('alt', (n.getAttribute('alt')||'').trim());
+        el.setAttribute('style', 'max-width:100%; height:auto; border-radius:8px;');
         to.appendChild(el); continue;
       }
       if (m === 'TD' || m === 'TH'){
@@ -310,7 +364,7 @@
         if (!txt && !e.querySelector('img,br')){ e.remove(); changed = true; }
       });
     }
-    // 문단 앞뒤 공백·&nbsp; 정리
+    // 문단 앞뒤 공백 정리
     box.querySelectorAll('p,li,h2,h3,h4,td,th').forEach(e => {
       const f = e.firstChild, l = e.lastChild;
       if (f && f.nodeType === 3) f.nodeValue = f.nodeValue.replace(/^[\s\u00a0]+/,'');
@@ -334,10 +388,10 @@
   }
 
   function pretty(html){
-    return html.replace(/<(p|h2|h3|h4|ul|ol|blockquote|table|thead|tbody|tr|hr|img)\b/g, '\n<$1')
+    return html.replace(/<(p|h2|h3|h4|ul|ol|blockquote|table|thead|tbody|tr|hr|img)\b/g, '\n\n<$1')
                .replace(/<li\b/g, '\n  <li')
                .replace(/<\/(ul|ol|table|tbody|thead|blockquote)>/g, '\n</$1>')
-               .replace(/\n{2,}/g,'\n').trim();
+               .replace(/\n{3,}/g,'\n\n').trim();
   }
 
   function toPlain(html){
@@ -363,10 +417,10 @@
   function footer(t){
     if (!$('addFooter').checked) return '';
     if (t === 'travel')
-      return '<hr><p><small>Photos &amp; story by Python · <a href="https://antkoreatrip.blogspot.com">Ant-Travel Korea</a></small></p>';
+      return '\n\n<hr style="border:none; border-top:1px solid #e2e8f0; margin:2.5em 0;" />\n<p style="margin-top:0; margin-bottom:1.6em; line-height:1.85; font-size:14px; color:#64748b;"><small>Photos &amp; narrative by <strong>Python</strong> · Curated by <a href="https://antkoreatrip.blogspot.com" style="color:#3498db; text-decoration:underline;">Ant-Travel Korea</a>. All practical logistics verified for 2026.</small></p>';
     if (t === 'art'){
-      return '<hr><p style="color:#888;font-size:13.5px">🚀 <strong>Phaeton\'s Super Intelligence & Future Horizons</strong><br>'
-           + '초지능(SI)과 인류 문명의 미래 청사진 | © Python · <a href="https://phaetonktb.blogspot.com">파이튼의 초지능 미래 오디세이</a> · <a href="https://kyanos.kr">Kyanos</a></p>';
+      return '\n\n<hr style="border:none; border-top:1px solid #e2e8f0; margin:2.5em 0;" />\n<p style="margin-top:0; margin-bottom:1.6em; line-height:1.85; font-size:14px; color:#888;">🚀 <strong>Phaeton\'s Super Intelligence &amp; Future Horizons</strong><br>'
+           + '초지능(SI)과 인류 문명의 미래 청사진 | © Python · <a href="https://phaetonktb.blogspot.com" style="color:#9b59b6; text-decoration:underline;">파이튼의 초지능 미래 오디세이</a> · <a href="https://kyanos.kr" style="color:#9b59b6; text-decoration:underline;">Kyanos</a></p>';
     }
     return '';
   }
@@ -377,10 +431,19 @@
     const input = rawHtml || src.value;
     if (!input.trim()){ out.value=''; $('stats').textContent=''; lastHtml=''; renderView(); return; }
     const isHtml = !!rawHtml || looksLikeHtml(input);
-    let html = isHtml ? cleanHtml(input) : textToHtml(input);
+    let html = isHtml ? cleanHtml(input, t) : textToHtml(input, t);
     let result;
-    if (t === 'naver'){ result = toPlain(html); lastHtml = html; }
-    else { html += footer(t); lastHtml = html; result = pretty(html); }
+    if (t === 'naver'){ 
+      result = toPlain(html); 
+      lastHtml = html; 
+    } else { 
+      html += footer(t); 
+      lastHtml = html; 
+      // 최상위 컨테이너로 감싸서 블로그스팟 테마 글꼴·간격 강제 보장
+      result = '<div style="font-family:-apple-system,BlinkMacSystemFont,\'Segoe UI\',Roboto,\'Noto Sans KR\',sans-serif; font-size:17px; line-height:1.85; color:#2c3e50; word-break:keep-all; word-wrap:break-word;">\n\n' 
+             + pretty(html) 
+             + '\n\n</div>';
+    }
     out.value = result;
 
     const size = s => new Blob([s]).size;
