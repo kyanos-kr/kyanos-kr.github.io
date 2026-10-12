@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>키아노스 미디어부 (Ministry of Media & AntNews) | 주권국 국정 포털</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Montserrat:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@300;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/kyanos_civic_treasury.css">
+  <link rel="stylesheet" href="assets/css/kyanos_i18n.css">
+
+  <style>
+    :root {
+      --bg-dark: #080912;
+      --bg-card: rgba(16, 20, 36, 0.88);
+      --red-accent: #ff4d6d;
+      --red-glow: rgba(255, 77, 109, 0.35);
+      --gold: #d4af37;
+      --gold-bright: #ffe066;
+      --cyan: #4cc9f0;
+      --emerald: #4ce89a;
+      --text-main: #f0f3fa;
+      --text-sub: #a6b1cb;
+      --border-accent: rgba(255, 77, 109, 0.3);
+      --border-gold: rgba(212, 175, 55, 0.4);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(255, 77, 109, 0.12) 0%, transparent 60%),
+        radial-gradient(circle at 15% 45%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 85% 65%, rgba(76, 201, 240, 0.08) 0%, transparent 50%);
+      color: var(--text-main);
+      font-family: 'Montserrat', 'Noto Serif KR', serif;
+      min-height: 100vh;
+      line-height: 1.7;
+    }
+
+    /* Top Navigation */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8, 9, 18, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-accent);
+      padding: 0.8rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo-icon {
+      font-size: 1.8rem;
+      filter: drop-shadow(0 0 10px rgba(255, 77, 109, 0.6));
+    }
+
+    .nav-title-box .en {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      display: block;
+    }
+
+    .nav-title-box .kr {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      display: block;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .nav-btn {
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.25s ease;
+    }
+
+    .nav-btn-red {
+      background: rgba(255, 77, 109, 0.15);
+      border: 1px solid var(--red-accent);
+      color: #fff;
+    }
+    .nav-btn-red:hover {
+      background: var(--red-accent);
+      box-shadow: 0 0 15px var(--red-glow);
+    }
+
+    .nav-btn-gold {
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--gold);
+      color: var(--gold-bright);
+    }
+    .nav-btn-gold:hover {
+      background: var(--gold);
+      color: #0b0517;
+    }
+
+    /* Container */
+    .gov-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 5rem 1.5rem;
+    }
+
+    /* Hero Section */
+    .gov-hero {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding: 2rem 1rem;
+    }
+
+    .gov-badge {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      padding: 4px 16px;
+      border-radius: 20px;
+      background: rgba(255, 77, 109, 0.15);
+      border: 1px solid var(--red-accent);
+      color: #ff859c;
+      margin-bottom: 1.2rem;
+      text-transform: uppercase;
+    }
+
+    .gov-hero-title {
+      font-family: 'Cinzel', 'Noto Serif KR', serif;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #ffffff;
+      text-shadow: 0 0 25px rgba(255, 77, 109, 0.4);
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+    }
+
+    .gov-hero-desc {
+      max-width: 820px;
+      margin: 0 auto;
+      color: var(--text-sub);
+      font-size: 1.02rem;
+      line-height: 1.8;
+    }
+
+    /* Storage Standby Alert Box */
+    .storage-banner {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.12), rgba(255, 77, 109, 0.08));
+      border: 1px solid var(--gold);
+      border-radius: 14px;
+      padding: 1.2rem 1.8rem;
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.1);
+      flex-wrap: wrap;
+    }
+
+    .storage-banner-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .storage-icon {
+      font-size: 2rem;
+    }
+
+    .storage-text h4 {
+      font-size: 0.98rem;
+      color: var(--gold-bright);
+      margin-bottom: 0.2rem;
+    }
+
+    .storage-text p {
+      font-size: 0.85rem;
+      color: var(--text-sub);
+    }
+
+    .storage-status-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      background: rgba(76, 232, 154, 0.15);
+      border: 1px solid var(--emerald);
+      color: var(--emerald);
+      border-radius: 8px;
+    }
+
+    /* Architecture Grid */
+    .architecture-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-accent);
+      border-radius: 16px;
+      padding: 2.2rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .architecture-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.8rem;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .architecture-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.3rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .architecture-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .arch-node {
+      background: rgba(12, 15, 28, 0.9);
+      border-radius: 12px;
+      padding: 1.3rem;
+      text-align: center;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+    .arch-node:hover { transform: translateY(-4px); }
+    .arch-node.red { border: 1px solid rgba(255, 77, 109, 0.5); box-shadow: 0 0 15px rgba(255, 77, 109, 0.15); }
+    .arch-node.gold { border: 1px solid rgba(212, 175, 55, 0.5); }
+    .arch-node.cyan { border: 1px solid rgba(76, 201, 240, 0.5); }
+    .arch-node.emerald { border: 1px solid rgba(76, 232, 154, 0.5); }
+
+    .arch-node .node-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+    .arch-node .node-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; color: #fff; }
+    .arch-node .node-desc { font-size: 0.8rem; color: var(--text-sub); line-height: 1.5; }
+
+    /* Bureau Cards Section */
+    .bureau-section {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .bureau-card {
+      background: var(--bg-card);
+      border-radius: 16px;
+      padding: 2.2rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      transition: border-color 0.3s ease;
+    }
+    .bureau-card:hover { border-color: var(--border-accent); }
+
+    .bureau-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.4rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .bureau-title-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .bureau-icon { font-size: 2.2rem; }
+    .bureau-name { font-family: 'Cinzel', serif; font-size: 1.35rem; font-weight: 700; color: #fff; }
+    .bureau-en { font-size: 0.76rem; color: var(--text-sub); letter-spacing: 0.08em; }
+
+    .bureau-tag {
+      font-size: 0.75rem;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-weight: 600;
+    }
+    .bureau-tag.red { background: rgba(255, 77, 109, 0.15); border: 1px solid var(--red-accent); color: #ff859c; }
+    .bureau-tag.gold { background: rgba(212, 175, 55, 0.15); border: 1px solid var(--gold); color: var(--gold-bright); }
+    .bureau-tag.cyan { background: rgba(76, 201, 240, 0.15); border: 1px solid var(--cyan); color: var(--cyan); }
+
+    .bureau-directive {
+      background: rgba(0, 0, 0, 0.25);
+      border-left: 3px solid var(--red-accent);
+      padding: 1rem 1.2rem;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 1.4rem;
+      font-size: 0.88rem;
+      color: #cfd9e8;
+    }
+
+    .bureau-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      padding-left: 0.5rem;
+    }
+
+    .bureau-list li {
+      position: relative;
+      padding-left: 1.5rem;
+      font-size: 0.88rem;
+      color: var(--text-sub);
+      line-height: 1.7;
+    }
+
+    .bureau-list li::before {
+      content: "✦";
+      position: absolute;
+      left: 0;
+      color: var(--red-accent);
+    }
+
+    /* Live Monitoring Terminal */
+    .terminal-box {
+      background: #05060b;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 1.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      color: #8ed0ff;
+      margin-top: 1.5rem;
+      line-height: 1.8;
+      position: relative;
+    }
+    .terminal-header {
+      color: #6c7d99;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Footer */
+    .gov-footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="top-nav">
+    <a href="main.html" class="nav-logo-group" title="키아노스 메인 포털로 이동">
+      <span class="nav-logo-icon">👑</span>
+      <div class="nav-title-box">
+        <span class="en">THE SOVEREIGN REALM OF KYANOS</span>
+        <span class="kr">미디어부 (Ministry of Media & AntNews)</span>
+      </div>
+    </a>
+    <div class="nav-actions">
+      <a href="antnews_landing.html" target="_blank" class="nav-btn nav-btn-red">
+        <span>📰</span> 앤트뉴스 라이브 ↗
+      </a>
+      <a href="main.html" class="nav-btn nav-btn-gold">
+        <span>🏠</span> 메인 포털
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="gov-container">
+
+    <!-- Hero Header -->
+    <section class="gov-hero">
+      <div class="gov-badge">Ministry of Media & Sovereign AntNews Intelligence</div>
+      <h1 class="gov-hero-title">📰 키아노스 미디어부</h1>
+      <p class="gov-hero-desc">
+        국가 최고통수권자 <strong>파이튼 국왕 님</strong>의 통치 철학과 덕치(德治) 정신을 세계에 선포하고, 
+        글로벌 팩트 탐사보도 및 <strong>초지능(SI) 데일리 인텔리전스</strong>를 진두지휘하는 국가 공식 미디어 총괄 부처입니다.
+      </p>
+    </section>
+
+    <!-- Storage Standby Status Banner -->
+    <section class="storage-banner">
+      <div class="storage-banner-left">
+        <span class="storage-icon">💾</span>
+        <div class="storage-text">
+          <h4>고속 대용량 외부 저장소 (1~2TB 메모리 확장) 연동 대기 모드</h4>
+          <p>파이튼 령에 따라 차세대 1~2TB 고속 외장 인프라 수혈 시까지 안티그래비티 국무부처 내 안전 대기(Standby) 중입니다.</p>
+        </div>
+      </div>
+      <span class="storage-status-tag">STANDBY · PRE-ALLOCATED</span>
+    </section>
+
+    <!-- 4대 핵심 미디어 축 아키텍처 -->
+    <section class="architecture-card">
+      <div class="architecture-header">
+        <h2 class="architecture-title">
+          <span>🌐</span> 미디어부 4대 전략 기관 통합 운영 체계
+        </h2>
+        <span style="font-size:0.75rem; color:var(--emerald); background:rgba(76,232,154,0.12); padding:4px 12px; border-radius:12px; border:1px solid var(--emerald);">
+          Tri-Engine Matrix 핵심 엔진
+        </span>
+      </div>
+
+      <div class="architecture-grid">
+        <div class="arch-node red">
+          <div class="node-icon">📰</div>
+          <div class="node-title">국가공식 앤트뉴스</div>
+          <p class="node-desc">글로벌 팩트 탐사보도 & HWPX 표준 보도문서 발행 (Zero Re-edit)</p>
+        </div>
+        <div class="arch-node gold">
+          <div class="node-icon">⚡</div>
+          <div class="node-title">데일리 인텔리전스</div>
+          <p class="node-desc">글로벌 금융·테크·산업 3분 모닝 브리프 및 VIP 리포트</p>
+        </div>
+        <div class="arch-node cyan">
+          <div class="node-icon">🎬</div>
+          <div class="node-title">유튜브 미디어 랩</div>
+          <p class="node-desc">Project MED-YTB-01 쇼츠 자동 렌더링 & 글로벌 트래픽 유입</p>
+        </div>
+        <div class="arch-node emerald">
+          <div class="node-icon">🏛️</div>
+          <div class="node-title">외신·칼럼 분석국</div>
+          <p class="node-desc">마이클 스나이더 심층 칼럼 독자 번역 & 글로벌 이슈 팩트체크</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 부서별 세부 직제 카드 -->
+    <section class="bureau-section">
+
+      <!-- 1. 앤트뉴스 보도국 -->
+      <article class="bureau-card">
+        <div class="bureau-header">
+          <div class="bureau-title-group">
+            <span class="bureau-icon">🖋️</span>
+            <div>
+              <h3 class="bureau-name">국가공식 앤트뉴스 보도국 (AntNews Editorial Bureau)</h3>
+              <span class="bureau-en">SUPREME EDITORIAL & REPORTING GOVERNANCE</span>
+            </div>
+          </div>
+          <span class="bureau-tag red">실시간 가동 중</span>
+        </div>
+        <div class="bureau-directive">
+          <strong>🎯 보도 4단계 원칙 및 저작권 엄수:</strong> 국내 언론사 인용을 100% 불허하며, 1차 공식 자료 및 해외 사실 확인을 바탕으로 앤트뉴스 고유의 독자적 문장으로 재서술합니다.
+        </div>
+        <ul class="bureau-list">
+          <li><strong>한컴오피스 2024(HWPX) 표준 서식 영구 적용:</strong> 한컴 윤고딕 740, 11pt, 줄간격 160% 완성형 문서 발행.</li>
+          <li><strong>보도 이미지 최적화 규격:</strong> 일반 시사·보도기사 가로 640px 기본 표준 및 기사명 일체형 자동 패키징.</li>
+          <li><strong>파이튼 문학 3대 블로그 연계:</strong> 네이버 『파이튼의 문학산책』, 구글 『Ant-Travel Korea』, 『초지능 미래오디세이』 미디어 공조.</li>
+        </ul>
+
+        <div class="terminal-box">
+          <div class="terminal-header">
+            <span>TERMINAL: ANTNEWS STORAGE ARCHIVE STATUS</span>
+            <span>STANDBY READY</span>
+          </div>
+          <div>[INFO] Active Storage Target : Standby Pre-allocation in Kyannos Gov Dept</div>
+          <div>[INFO] HWPX Format Engine   : Active (Hancom YoonGothic 740 / 11pt / 160%)</div>
+          <div>[INFO] External Drive Queue : 1~2 TB High-Speed Facility Expansion Expected</div>
+          <div>[STATUS] Ready to seamlessly link upon physical drive mount.</div>
+        </div>
+      </article>
+
+      <!-- 2. 데일리 인텔리전스 센터 -->
+      <article class="bureau-card">
+        <div class="bureau-header">
+          <div class="bureau-title-group">
+            <span class="bureau-icon">📊</span>
+            <div>
+              <h3 class="bureau-name">글로벌 데일리 인텔리전스 센터 (Morning Brief Center)</h3>
+              <span class="bureau-en">PREMIUM INTELLIGENCE & MACRO SIGNALS</span>
+            </div>
+          </div>
+          <span class="bureau-tag gold">구독 경제 엔진</span>
+        </div>
+        <div class="bureau-directive">
+          <strong>🎯 비즈니스 미션:</strong> 매일 아침 전 세계 핵심 외신·테크·지정학 시그널을 압축 분석하여 CEO와 투자자에게 3분 모닝 브리프를 제공합니다.
+        </div>
+        <ul class="bureau-list">
+          <li><strong>5대 미래 테크 산업 밀착 감시:</strong> 2차전지, EV, 반도체, 초지능(SI), 로봇산업 24/7 추적.</li>
+          <li><strong>키아노스 국부펀드(KSWF) 연계:</strong> 프리미엄 멤버십 구독 수익의 국고 적립 및 자립 재정 기여.</li>
+        </ul>
+      </article>
+
+      <!-- 3. 영상·유튜브 미디어 랩 -->
+      <article class="bureau-card">
+        <div class="bureau-header">
+          <div class="bureau-title-group">
+            <span class="bureau-icon">🎬</span>
+            <div>
+              <h3 class="bureau-name">유튜브 영상 랩 (Project MED-YTB-01)</h3>
+              <span class="bureau-en">AUTOMATED SHORTS & MULTIMEDIA PIPELINE</span>
+            </div>
+          </div>
+          <span class="bureau-tag cyan">차세대 확장</span>
+        </div>
+        <div class="bureau-directive">
+          <strong>🎯 영상 자동화 파이프라인:</strong> 보도기사 핵심 요약본을 유튜브 쇼츠 규격 영상으로 자동 렌더링하여 글로벌 트래픽을 유입합니다.
+        </div>
+        <ul class="bureau-list">
+          <li><strong>수혈 예정 대용량 저장소(1~2TB) 전담 영역:</strong> 4K/고해상도 영상 원본 및 렌더링 캐시 격리 보관.</li>
+          <li><strong>독립 분리 설계:</strong> 웹 경량성을 훼손하지 않도록 영상 데이터는 별도 외부 스토리지로 독립 라우팅.</li>
+        </ul>
+      </article>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="gov-footer">
+      <a href="main.html" class="nav-btn nav-btn-gold">🏠 키아노스 메인 포털</a>
+      <a href="antnews_landing.html" target="_blank" class="nav-btn nav-btn-red">📰 앤트뉴스 라이브</a>
+      <a href="gov_economy.html" class="nav-btn nav-btn-gold">💰 경제부</a>
+      <a href="gov_science.html" class="nav-btn nav-btn-gold">🔬 과학·SI부</a>
+      <a href="gov_culture.html" class="nav-btn nav-btn-gold">🎓 교육·문화부</a>
+    </footer>
+
+  </main>
+
+</body>
+</html>
