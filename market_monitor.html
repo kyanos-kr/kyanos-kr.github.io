@@ -947,6 +947,11 @@
     <div class="news-ticker-bar">
       <div class="ticker-badge">⚡ BREAKING PULSE</div>
       <div class="ticker-content" id="live-news-ticker">
+        <a href="#press-room" class="ticker-item">
+          <span class="ticker-source" style="background:#ef4444; color:#fff;">🚨 긴급진단</span>
+          <span style="color:#ffe066; font-weight:700;">휴림로봇 유상증자·오버행 급락 리스크 해부 & 율촌화학 2차전지 파우치 중장기 밸류에이션 점검</span>
+        </a>
+        <span style="color: rgba(255,255,255,0.2);">|</span>
         <a href="https://finance.naver.com/news/news_read.naver?article_id=0005400000" target="_blank" rel="noopener noreferrer" class="ticker-item">
           <span class="ticker-source">외신속보</span>
           <span>미 연준 파월 의장 발언 주목 속 글로벌 통화량 및 유동성 국면 전환 탐색</span>
@@ -1050,6 +1055,24 @@
       </div>
 
       <div class="intel-grid">
+        <!-- Intel Card 0: 긴급 주식 시장 분석 (휴림로봇 & 율촌화학) -->
+        <div class="intel-card" onclick="openIntelModal('stock-1')" style="border-color: rgba(239, 68, 68, 0.5); background: rgba(20, 10, 25, 0.85);">
+          <div>
+            <div class="intel-meta">
+              <span class="intel-cat-tag" style="background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4);">⚡ 실전자산 &amp; 5대 산업</span>
+              <span style="color:#ef4444; font-weight:700;">KYANOS-INTEL-STOCK-01</span>
+            </div>
+            <h4 class="intel-card-title" style="color: #ffe066;">[긴급진단] 휴림로봇 급락 해부 및 율촌화학 바닥 다지기 국면 정밀 점검</h4>
+            <p class="intel-card-lead">
+              휴림로봇의 유상증자 및 전환사채(CB) 남발에 따른 오버행 폭탄과 펀더멘털 괴리 현상을 정밀 분석합니다. 아울러 2차전지 알루미늄 파우치 필름의 국산화 주역인 율촌화학의 캐즘 장기화 영향과 중장기 실적 턴어라운드 타이밍 및 키아노스 국고 자산 운용 가이드를 제시합니다.
+            </p>
+          </div>
+          <div class="intel-card-bottom">
+            <span style="color:#34d399; font-weight:700;">2026.10.12 긴급 브리프 · 국고 자산 Action Plan</span>
+            <button class="btn-read-intel" onclick="event.stopPropagation(); openIntelModal('stock-1');" style="border-color:#ef4444; color:#fca5a5;">긴급 전문 열람 ↗</button>
+          </div>
+        </div>
+
         <!-- Intel Card 1: 지정학 & 안보 -->
         <div class="intel-card" onclick="openIntelModal('geo-1')">
           <div>
@@ -1119,6 +1142,26 @@
       </div>
 
       <div class="articles-grid">
+        <!-- Article 0: 2026.10.12 긴급 시장 브리프 (휴림로봇 & 율촌화학) -->
+        <article class="article-card" style="border: 1.5px solid rgba(239,68,68,0.5); background: rgba(22,12,32,0.9); box-shadow: 0 0 20px rgba(239,68,68,0.15);">
+          <div>
+            <div class="article-meta">
+              <span class="article-author-tag" style="background:rgba(239,68,68,0.2); border-color:rgba(239,68,68,0.5); color:#fca5a5;">🚨 경제부 긴급 인텔리전스</span>
+              <span style="color:#ef4444; font-weight:700;">2026.10.12</span>
+            </div>
+            <h4 class="article-title" style="color:#ffe066;">
+              "휴림로봇 급락의 이면과 율촌화학 바닥 다지기: 키아노스 국고 수익원 정밀 진단"
+            </h4>
+            <p class="article-snippet">
+              유상증자 및 전환사채(CB) 오버행에 직면한 휴림로봇의 구조적 투매 요인을 분석하고, 2차전지 파우치 국산화 주역인 율촌화학의 캐즘 과도기 실적 턴어라운드 전망을 제시합니다. 국고 자산 안전성을 위한 '신규 진입 유보' 및 '가치주 분할 매집' 2대 행동 강령을 발표합니다.
+            </p>
+          </div>
+          <div class="article-footer">
+            <span style="color:#a5b4cb;">소관: 키아노스 경제부 글로벌 금융 인텔리전스국</span>
+            <span class="article-link" style="color:#fca5a5; cursor:pointer;" onclick="openIntelModal('stock-1')">브리핑 전문 열람 ↗</span>
+          </div>
+        </article>
+
         <!-- Article 1: 경제부 권두 논평 -->
         <article class="article-card" style="border: 1px solid rgba(212,175,55,0.45); background: rgba(12,28,58,0.85);">
           <div>
@@ -1206,6 +1249,18 @@
   <script>
     // 키아노스 독자 인텔리전스 심층 리포트 데이터
     const intelReports = {
+      'stock-1': {
+        docNo: 'KYANOS-INTEL-2026-STOCK-001',
+        title: '[긴급 시장 진단] 휴림로봇 급락 원인 해부 및 율촌화학 바닥 다지기 국면 정밀 점검',
+        cat: '⚡ 실전자산 & 5대 산업',
+        date: '2026.10.12',
+        agency: '키아노스 정부 경제부 글로벌 금융 인텔리전스국 & 국무총리 직속 비상대책반',
+        clearance: '🏛️ 국가 최고원수 파이튼 님 보고 완료 (비준)',
+        summary: '휴림로봇의 장중 급락은 연속적인 일반공모/3자배정 유상증자 및 전환사채(CB) 재매각에 따른 극심한 오버행(잠재 매도 물량)과 영업적자 지속이라는 펀더멘털 괴리가 복합 작용한 결과입니다. 반면 율촌화학은 2차전지용 파우치 필름의 기술 장벽에도 불구하고 전방 전기차 수요 둔화(캐즘) 및 대규모 감가상각 부담으로 기간 조정을 거치고 있습니다.',
+        context: '1) 휴림로봇: 대기업 투자 소식 등에 편승한 테마성 랠리 이후 대주주 지분 매각, 주식 담보권 실행(반대매매) 우려, 계열사 감자 등 지배구조 리스크가 중첩되며 투매가 촉발되었습니다.<br>2) 율촌화학: DNP 등 일본 과점을 깬 국내 최초 알루미늄 파우치 필름 국산화 기업으로 기술 경쟁력은 확고하나, 완성차 업계의 파우치 배터리 채택 속도 조절 및 신공장 가동 초기 고정비 부담이 실적을 압박하고 있습니다.',
+        marketImpact: '로봇 테마 전반에 걸쳐 단순 기대감만으로 급등했던 종목군에 대한 옥석 가리기와 차익 실현 피로감이 가속화되고 있습니다. 반면 2차전지 소재 섹터는 바닥권에서 악재를 소화하며 밸류에이션 저평가 매력이 부각되는 분기점에 근접하고 있습니다.',
+        strategy: '1) [휴림로봇] 신규 진입 전면 유보: 유상증자 신주 상장 및 CB 오버행이 해소될 때까지 보수적 관망 유지 (떨어지는 칼날 매수 금지).<br>2) [율촌화학] 중장기 가치주 관점의 분할 매집 관심: ESS 공급 확대 및 2차전지 사이클 턴어라운드를 겨냥한 긴 호흡의 스케일인(Scale-in) 전략 유효.<br>3) 3대 자산(주식·XRP·금) 균형 포트폴리오를 통해 국가 자립 재정의 수익 안정성 수호.'
+      },
       'geo-1': {
         docNo: 'KYANOS-INTEL-2026-GEO-001',
         title: '호르무즈 해협과 중동 안보 지형: 글로벌 에너지 공급망의 병목과 인플레이션 임계점',
