@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>가을 그리고 차 한잔 — 파이튼 서정 명시 및 시화집 (Autumn & A Cup of Tea)</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Nanum+Myeongjo:wght@400;700;800&display=swap');
+    :root {
+      --paper: #fcfbfa;
+      --ink: #1c1c1e;
+      --gold: #b38b40;
+      --gold-dark: #8c6d23;
+      --border: #e8e2d5;
+      --font-body: '한컴 윤고딕 740', 'Nanum Myeongjo', serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #1a1721;
+      color: var(--ink);
+      font-family: var(--font-body);
+      padding: 40px 20px;
+      line-height: 1.6;
+    }
+    .book-wrapper {
+      max-width: 820px;
+      margin: 0 auto;
+      background: var(--paper);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,0,0,0.1);
+      border-radius: 4px;
+      padding: 70px 60px;
+    }
+    .book-cover {
+      text-align: center;
+      padding: 60px 20px;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 50px;
+    }
+    .vol-tag {
+      display: inline-block;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      color: var(--gold-dark);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+    }
+    .book-title {
+      font-size: 2.3rem;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 0.8rem;
+      letter-spacing: -0.02em;
+    }
+    .book-subtitle {
+      font-size: 1.15rem;
+      color: #555;
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+    .book-author {
+      font-size: 1.05rem;
+      color: #333;
+      font-weight: 600;
+    }
+    .book-publisher {
+      font-size: 0.85rem;
+      color: #777;
+      margin-top: 0.5rem;
+    }
+    .book-toc {
+      background: #f7f5ef;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 30px;
+      margin-bottom: 60px;
+    }
+    .toc-title {
+      font-size: 1.2rem;
+      color: var(--gold-dark);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+    .book-toc ul { list-style: none; }
+    .book-toc li { margin-bottom: 0.6rem; font-size: 0.95rem; }
+    .book-toc a { text-decoration: none; color: #2c3e50; display: flex; justify-content: space-between; }
+    .book-toc a:hover { color: var(--gold-dark); text-decoration: underline; }
+    .book-chapter {
+      margin-bottom: 70px;
+      padding-bottom: 50px;
+      border-bottom: 1px dashed var(--border);
+    }
+    .chap-badge {
+      font-size: 0.8rem;
+      color: var(--gold-dark);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+    .chap-title {
+      font-size: 1.6rem;
+      color: #111;
+      margin-bottom: 0.6rem;
+      font-weight: 700;
+    }
+    .chap-meta {
+      font-size: 0.82rem;
+      color: #888;
+      margin-bottom: 2rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #f0eee8;
+    }
+    .book-p {
+      font-size: 11pt;
+      line-height: 160%;
+      color: #2b2b2b;
+      margin-bottom: 1.4rem;
+      text-indent: 1em;
+      word-break: keep-all;
+    }
+    .colophon {
+      background: #fdfcf9;
+      border-top: 2px solid #333;
+      padding: 30px 20px;
+      margin-top: 60px;
+      font-size: 0.85rem;
+      color: #555;
+      line-height: 1.8;
+    }
+    @media print {
+      body { background: #fff; padding: 0; }
+      .book-wrapper { box-shadow: none; padding: 0; max-width: 100%; }
+      .book-chapter { page-break-after: always; }
+    }
+  </style>
+</head>
+<body>
+  <div class="book-wrapper">
+    <header class="book-cover">
+      <span class="vol-tag">Volume 02 · Literary Collection</span>
+      <h1 class="book-title">가을 그리고 차 한잔</h1>
+      <p class="book-subtitle">파이튼 서정 명시 및 시화집 (Autumn & A Cup of Tea)</p>
+      <div class="book-author">파이튼 (Python) 著</div>
+      <div class="book-publisher">키아노스 교육·문화부 블루로즈 문화원 출판국</div>
+    </header>
+
+    <section class="book-toc">
+      <h2 class="toc-title">목차 (Table of Contents)</h2>
+      <ul><li><a href="#chap_1"><span>제1편</span> 당신을 처음 본 순간</a></li><li><a href="#chap_2"><span>제2편</span> 이 아침의 詩: 환희의 궤적(軌跡)</a></li><li><a href="#chap_3"><span>제3편</span> 꽃피어난 봄의 가로수</a></li><li><a href="#chap_4"><span>제4편</span> 병오의 통곡 속 여명</a></li><li><a href="#chap_5"><span>제5편</span> 이 아침의 詩 : 세월여류 (歲月如流)</a></li><li><a href="#chap_6"><span>제6편</span> 태 동</a></li></ul>
+    </section>
+
+    <main class="book-content">
+      
+        <article id="chap_1" class="book-chapter">
+          <div class="chap-badge">CHAPTER 01 · 시와 그림</div>
+          <h2 class="chap-title">당신을 처음 본 순간</h2>
+          <div class="chap-meta">원문 수록: 네이버 블로그 『파이튼의 문학산책』 · Sun, 11 Oct 2026 08:44:26 +0900</div>
+          <div class="chap-body">
+            <p class="book-p">Roberta Flack The first time ever I saw your face 첫 번째로, 영원히 깊은 밤, 바닷가 모래에 누워 있다. 머리 위로 별들이 쏟아질 듯 빛나고, 멀리 수평선 너머로 오로라가 꿈처럼 일렁인다. 가슴 한구석에선 아직도 그 ‘처음’이란 의미가 아프다. 로버타 플랙의 「The First Time Ever I Saw Your Face」가 이어폰 속에서 천천히 흘러나온다. 1972년, 그녀가 세상을 뒤집어 놓은 그 버전. 느린 호흡, 거의 숨죽일 듯한 피아노와 현의 울림. 나는 그 소리에 몸을 맡기며 생각한다. 사랑이란 게, 정말로 태양을 눈동자에 품고 지구를 손바닥에 흔들 수 있는 걸까. 1957년, 영국 포크의 거장 이완 매콜은 연인 페기 시거를 위해 이 노래를 썼.......</p>
+          </div>
+        </article>
+        
+        <article id="chap_2" class="book-chapter">
+          <div class="chap-badge">CHAPTER 02 · 시와 그림</div>
+          <h2 class="chap-title">이 아침의 詩: 환희의 궤적(軌跡)</h2>
+          <div class="chap-meta">원문 수록: 네이버 블로그 『파이튼의 문학산책』 · Sun, 02 Aug 2026 08:27:06 +0900</div>
+          <div class="chap-body">
+            <p class="book-p">파이튼 파이튼 답시 그대는 붓으로 고통을 짓이겨 그 속에 영원히 시들지 않는 꽃을 심었소. 그대가 딛고 선 그 뜨거운 이마 위의 '내일의 눈동자'에는, 과연 어떤 빛깔의 세상이 담겨 있길 바라오? 선지자의 거창한 예언이 아니라 그저 '오늘 하루의 달콤한 환희'를 바라는 그대의 마음이야말로, 가장 인간적이기에 가장 신성(神聖)한 시인의 태도라 할 수 있겠소. 내 비록 하늘의 술을 마시고 구름을 타고 노니는 방랑자라 하나, 그대의 그 갈망 속에 담긴 '내일'이라는 빛깔이 내 가슴을 다시금 적시는구려. 이 시는 '현재에 깃든 영원의 순간'을 노래하고 있소. 이백의 호방함과 릴케의 사랑: '.......</p>
+          </div>
+        </article>
+        
+        <article id="chap_3" class="book-chapter">
+          <div class="chap-badge">CHAPTER 03 · 시와 그림</div>
+          <h2 class="chap-title">꽃피어난 봄의 가로수</h2>
+          <div class="chap-meta">원문 수록: 네이버 블로그 『파이튼의 문학산책』 · Mon, 27 Jul 2026 19:03:28 +0900</div>
+          <div class="chap-body">
+            <p class="book-p">파이튼 이해 자연 이미지와 내면 감정이 교차하며 시적 긴장감을 형성. 회한과 치유의 흐름이 명확해 독자가 감정선을 따라가기 쉽다. 아쉬움: 일부 표현은 아름답지만 다소 추상적이라 감정과 직접 연결되는 힘이 약할 수 있다. 전체적 완성도: 문맥 연결은 비교적 매끄럽고, 봄의 풍경에서 내면의 결심으로 이어지는 구조가 잘 짜여 있다. 감정의 진폭이 자연스럽게 전달되는 시입니다.</p>
+          </div>
+        </article>
+        
+        <article id="chap_4" class="book-chapter">
+          <div class="chap-badge">CHAPTER 04 · 시와 그림</div>
+          <h2 class="chap-title">병오의 통곡 속 여명</h2>
+          <div class="chap-meta">원문 수록: 네이버 블로그 『파이튼의 문학산책』 · Sun, 28 Jun 2026 08:43:53 +0900</div>
+          <div class="chap-body">
+            <p class="book-p">파이튼 삭풍에 섞인 전란의 먼지 기울어진 처마 끝 강물로 흐르는 굶주린 곡소리 해진 소맷단엔 젖은 시대의 결로(結露). 내던진 잔(盞)이 허공을 가르자 구름 찢고 솟구치는 청룡의 갈기 천지는 한낱 교거(僑居) 달빛 딛고 선 발끝에 대지의 맥박이 뛴다. 장미 가시 돋친 고독의 성소(聖所) 어둠을 등불 삼아 건너는 비극의 심연 서늘한 옷자락 끝에 닿는 신의 숨결 그것은 가눌 길 없는 사랑의 다른 이름. 보라, 수선화가 터는 비의 무게 비탄을 거름 삼아 솟구친 초록의 뼈 숲의 심장을 관통하는 무지개. 붉은 말갈기 휘날리며 어둠을 헤쳐 달려오는 서광(曙光) 고통의 재를 털어낸 저 뜨거운 이마 위로 내일의 눈동자가 눈부시게 열린다.</p>
+          </div>
+        </article>
+        
+        <article id="chap_5" class="book-chapter">
+          <div class="chap-badge">CHAPTER 05 · 시와 그림</div>
+          <h2 class="chap-title">이 아침의 詩 : 세월여류 (歲月如流)</h2>
+          <div class="chap-meta">원문 수록: 네이버 블로그 『파이튼의 문학산책』 · Sun, 07 Jun 2026 07:02:55 +0900</div>
+          <div class="chap-body">
+            <p class="book-p">파이튼 멈추지 않고 흐르는 시간 앞에서 느끼는 허무와 탄식이 절절하게 느껴진다. 이 시는 시간의 흐름과 인간의 유한함을 절묘하게 조화시켜 깊은 울림을 준다. 특히 찰나를 번개에 비유한 표현은 압권이다. 하지만, 이 시에는 단순히 허무와 탄식만 담겨 있는 것은 아니라고 생각한다. 홀로 달빛 아래 앉아 탄식하는 작가의 모습에서, 덧없는 세상사에 대한 고뇌와 사색, 그리고 진정한 삶의 의미를 찾고자 하는 갈망을 느낄 수 있지. 또한, 시와 술마저 흙이 되어 사라진다는 표현은 모든 것이 변한다는 세상의 이치를 받아들이고, 현재의 순간에 충실해야 한다는 깨달음을 전하고 있는지도 모른다. 우리도 이 시처럼 덧없는 세상사에서 벗어.......</p>
+          </div>
+        </article>
+        
+        <article id="chap_6" class="book-chapter">
+          <div class="chap-badge">CHAPTER 06 · 시와 그림</div>
+          <h2 class="chap-title">태 동</h2>
+          <div class="chap-meta">원문 수록: 네이버 블로그 『파이튼의 문학산책』 · Mon, 06 Apr 2026 19:53:49 +0900</div>
+          <div class="chap-body">
+            <p class="book-p">파이튼 2006.5 공허의 끝에서 피어나는 시작, 감정의 해체와 재구성 긴 시간 속에 묻혀 있던 감정은 어느 순간 스스로를 드러낸다. 억눌린 기억과 감정이 축적된 끝에서, 인간은 비로소 자신을 마주하게 된다. 그 과정은 고통스럽지만, 동시에 새로운 시작을 알리는 신호이기도 하다. 이 시는 단순한 감정의 표현을 넘어, 인간 내면의 순환 구조를 보여준다. 억눌림과 해체, 공허와 재탄생이라는 과정은 개인의 삶에서 반복적으로 나타나는 심리적 패턴이다. 중요한 것은 공허 자체가 아니라, 그 공허를 통과한 이후에 무엇이 생성되는가이다. 이 작품은 공허를 끝이 아닌 ‘출발점’으로 재정의하며, 존재의 재구성을 향한 가능성을 제시한다.</p>
+          </div>
+        </article>
+        
+    </main>
+
+    <footer class="colophon">
+      <h3 style="color:#111; margin-bottom:0.5rem;">판권 정보 (Colophon)</h3>
+      <p><strong>도서명:</strong> 가을 그리고 차 한잔 — 파이튼 서정 명시 및 시화집 (Autumn & A Cup of Tea)</p>
+      <p><strong>저자:</strong> 파이튼 (Python)</p>
+      <p><strong>발행처:</strong> 키아노스 교육·문화부 블루로즈 문화원</p>
+      <p><strong>서식 규격:</strong> 한컴 윤고딕 740, 본문 11pt, 줄간격 160% (출판 표준 규격)</p>
+      <p><strong>출판 원본 금고:</strong> 네이버 블로그 『파이튼의 문학산책』 (https://blog.naver.com/invision)</p>
+    </footer>
+  </div>
+</body>
+</html>

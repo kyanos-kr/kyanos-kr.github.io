@@ -1,0 +1,49 @@
+{
+  "system_name": "파이튼 문학 출판 연계 시스템 (Phaeton Literary Publishing System)",
+  "version": "1.0.0",
+  "base_source": {
+    "name": "네이버 블로그 『파이튼의 문학산책』",
+    "url": "https://blog.naver.com/invision",
+    "rss": "https://rss.blog.naver.com/invision.xml",
+    "role": "순수 문학 출판 원본 금고"
+  },
+  "standard_book_specs": {
+    "font": "한컴 윤고딕 740",
+    "font_size": "11pt",
+    "line_spacing": "160%",
+    "standard_format": "신국판 (152mm x 225mm) / 사륙판 (128mm x 188mm)",
+    "page_margins": "위 20mm, 아래 15mm, 안쪽 20mm, 바깥쪽 15mm, 머리말 10mm"
+  },
+  "series": [
+    {
+      "id": "vol_01_pop_story",
+      "title": "파이튼의 팝송 스토리텔링",
+      "subtitle": "인생을 노래하다 (Memories in Melody)",
+      "volume": 1,
+      "categories": ["팝송 스토리텔링", "팝송스토리텔링"],
+      "genre": "음악 에세이 / 스토리텔링",
+      "description": "반세기를 건너온 명곡들의 탄생 비화와 가사 속에 깃든 인생의 희로애락을 파이튼의 섬세하고 깊이 있는 시선으로 풀어낸 감성 음악 산문집.",
+      "target_pages": 260
+    },
+    {
+      "id": "vol_02_poetry",
+      "title": "가을 그리고 차 한잔",
+      "subtitle": "파이튼 서정 명시 및 시화집 (Autumn & A Cup of Tea)",
+      "volume": 2,
+      "categories": ["시와 그림", "시와그림"],
+      "genre": "순수 서정시 / 시화집",
+      "description": "삶의 찰나와 자연의 서정, 영혼의 떨림을 절제된 언어와 서정적 미학으로 담아낸 파이튼의 창작 명시 전집.",
+      "target_pages": 180
+    },
+    {
+      "id": "vol_03_essay",
+      "title": "사색의 숲에서 길을 묻다",
+      "subtitle": "파이튼 인생 철학 대작 수필집 (Inquiry in the Woods of Contemplation)",
+      "volume": 3,
+      "categories": ["파이튼의 글", "파이튼의글", "파이튼 생각", "파이튼생각", "파이튼 일기", "파이튼일기", "사진/여행"],
+      "genre": "인생 철학 / 사색 수필",
+      "description": "몽테뉴의 성찰과 동양적 지혜가 어우러진 깊은 사색을 통해 삶의 유한성과 존엄한 실존의 방향을 짚어내는 대작 인생 수필집.",
+      "target_pages": 320
+    }
+  ]
+}

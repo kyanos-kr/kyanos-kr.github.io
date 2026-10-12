@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>파이튼 문학 출판 관제실 — 키아노스 교육·문화부</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Noto+Serif+KR:wght@300;400;600;700;900&family=Pretendard:wght@300;400;500;600;700&display=swap');
+    :root {
+      --bg: #09060f;
+      --card-bg: rgba(22, 16, 36, 0.75);
+      --card-border: rgba(212, 175, 55, 0.25);
+      --gold: #d4af37;
+      --gold-bright: #ffe066;
+      --purple: #b894ff;
+      --purple-soft: rgba(184, 148, 255, 0.15);
+      --text: #f0edf6;
+      --text-sub: #a79fb8;
+      --font-serif: 'Noto Serif KR', serif;
+      --font-sans: 'Pretendard', -apple-system, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: radial-gradient(circle at top, #1d1333 0%, #09060f 70%);
+      color: var(--text);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      padding: 40px 20px 80px;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 30px;
+      background: linear-gradient(180deg, rgba(212, 175, 55, 0.1) 0%, rgba(0,0,0,0) 100%);
+      border-radius: 16px;
+      border: 1px solid var(--card-border);
+      position: relative;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 20px;
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--gold);
+      color: var(--gold-bright);
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    .title {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+    .title span { color: var(--gold-bright); }
+    .subtitle {
+      color: var(--text-sub);
+      font-size: 0.95rem;
+      max-width: 760px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    
+    /* Policy Banner */
+    .policy-box {
+      background: rgba(212, 175, 55, 0.08);
+      border-left: 4px solid var(--gold);
+      padding: 16px 20px;
+      border-radius: 0 10px 10px 0;
+      margin-bottom: 35px;
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+    .policy-box strong { color: var(--gold-bright); }
+    
+    /* Quick Actions */
+    .action-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, #d4af37, #aa8214);
+      color: #0d0914;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5); }
+    .btn-outline {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.2);
+      color: var(--text);
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: var(--gold);
+      color: var(--gold-bright);
+    }
+
+    /* Grid for Books */
+    .book-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 25px;
+      margin-bottom: 45px;
+    }
+    .book-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .book-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 4px;
+      background: linear-gradient(90deg, var(--gold), var(--purple));
+    }
+    .book-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+    }
+    .vol-badge {
+      font-size: 0.72rem;
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .book-title-main {
+      font-family: var(--font-serif);
+      font-size: 1.45rem;
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .book-subtitle-sub {
+      font-size: 0.85rem;
+      color: var(--text-sub);
+      font-style: italic;
+      margin-bottom: 15px;
+    }
+    .book-meta {
+      background: rgba(0,0,0,0.3);
+      padding: 12px 14px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      font-size: 0.8rem;
+      color: #cfc8de;
+      line-height: 1.6;
+    }
+    .book-desc {
+      font-size: 0.85rem;
+      color: var(--text-sub);
+      line-height: 1.65;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+    .card-actions {
+      display: flex;
+      gap: 10px;
+    }
+    .card-actions a {
+      flex: 1;
+      text-align: center;
+      padding: 9px 12px;
+      font-size: 0.82rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+    .action-preview {
+      background: rgba(212, 175, 55, 0.2);
+      border: 1px solid var(--gold);
+      color: var(--gold-bright);
+    }
+    .action-preview:hover { background: var(--gold); color: #0d0914; }
+    .action-md {
+      background: rgba(184, 148, 255, 0.15);
+      border: 1px solid var(--purple);
+      color: var(--purple);
+    }
+    .action-md:hover { background: var(--purple); color: #0d0914; }
+
+    /* Specification Section */
+    .spec-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 30px;
+      margin-bottom: 30px;
+    }
+    .spec-title {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      color: var(--gold-bright);
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    .spec-table th, .spec-table td {
+      padding: 12px 14px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .spec-table th {
+      color: var(--gold);
+      font-weight: 600;
+      width: 28%;
+    }
+    .spec-table td { color: #cfc8de; }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      color: var(--text-sub);
+      font-size: 0.78rem;
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <!-- Header -->
+    <header class="header">
+      <span class="badge">Kyannos Literary Publishing Architecture</span>
+      <h1 class="title">파이튼 문학 <span>출판 연계 관제실</span></h1>
+      <p class="subtitle">
+        네이버 공식 블로그 『파이튼의 문학산책』을 '출판 원본 금고'로 연계하여,
+        향후 종이책 및 전자책 정식 출간에 즉각 대응하는 표준 조판·아카이빙 시스템입니다.
+      </p>
+    </header>
+
+    <!-- Policy Banner -->
+    <div class="policy-box">
+      <strong>🏛️ 국왕 파이튼 님의 국정 철학 반영 (공사 분리 및 순수 문학 가치 제고):</strong><br>
+      국립 인류문명사 대도서관은 전 인류의 보편적 지혜를 모시는 공공 지식의 최고 성소로서 통치자 개인의 '특별서고' 편성을 전면 배제합니다. 파이튼 님의 문학 작품은 네이버 블로그를 본진으로 삼아 순수한 문학적 가치로서 독자들과 호흡하며, 본 출판 시스템을 통해 정식 출간물로 편찬된 후 [세계 문학관] 일반 서가에 품격 있게 배가됩니다.
+    </div>
+
+    <!-- Action Bar -->
+    <div class="action-bar">
+      <a href="https://blog.naver.com/invision" target="_blank" class="btn btn-outline">
+        🖋️ 네이버 『파이튼의 문학산책』 열람 ↗
+      </a>
+      <a href="https://admin.blog.naver.com/invision" target="_blank" class="btn btn-outline">
+        ⚙️ 블로그 관리자 홈 ↗
+      </a>
+      <a href="출판_원고_보관소/" class="btn btn-outline">
+        📁 출판 원고 보관소 폴더 열기
+      </a>
+    </div>
+
+    <!-- 3 Great Book Series Grid -->
+    <div class="book-grid">
+
+      <!-- Book 1 -->
+      <div class="book-card">
+        <div>
+          <div class="vol-badge">Volume 01 · Music Essay</div>
+          <h2 class="book-title-main">파이튼의 팝송 스토리텔링</h2>
+          <div class="book-subtitle-sub">인생을 노래하다 (Memories in Melody)</div>
+          <div class="book-meta">
+            • 수록 대상: 팝송 스토리텔링 명작선 (28편 완비)<br>
+            • 대표작: He ain't heavy, Desperado, Without you 등<br>
+            • 권차/판형: 제1권 / 신국판 (152x225mm)
+          </div>
+          <p class="book-desc">
+            반세기를 건너온 명곡들의 탄생 비화와 노랫말에 깃든 인생의 희로애락을 파이튼의 섬세하고 깊이 있는 시선으로 풀어낸 감성 음악 산문집.
+          </p>
+        </div>
+        <div class="card-actions">
+          <a href="출판_원고_보관소/제01권_파이튼의 팝송 스토리텔링_조판미리보기.html" target="_blank" class="action-preview">
+            📖 e-Book 조판 열람
+          </a>
+          <a href="출판_원고_보관소/제01권_파이튼의 팝송 스토리텔링_출판원고.md" target="_blank" class="action-md">
+            📄 원고 MD 열람
+          </a>
+        </div>
+      </div>
+
+      <!-- Book 2 -->
+      <div class="book-card">
+        <div>
+          <div class="vol-badge">Volume 02 · Lyric Poetry</div>
+          <h2 class="book-title-main">가을 그리고 차 한잔</h2>
+          <div class="book-subtitle-sub">파이튼 서정 명시 및 시화집 (Autumn & A Cup of Tea)</div>
+          <div class="book-meta">
+            • 수록 대상: 시와 그림, 자작 명시 (6편 완비)<br>
+            • 대표작: 가을 그리고 차 한잔, 당신을 처음 본 순간 등<br>
+            • 권차/판형: 제2권 / 사륙판 (128x188mm)
+          </div>
+          <p class="book-desc">
+            삶의 찰나와 자연의 서정, 영혼의 떨림을 절제된 언어와 서정적 미학으로 담아낸 파이튼의 창작 명시 및 시화 전집.
+          </p>
+        </div>
+        <div class="card-actions">
+          <a href="출판_원고_보관소/제02권_가을 그리고 차 한잔_조판미리보기.html" target="_blank" class="action-preview">
+            📖 e-Book 조판 열람
+          </a>
+          <a href="출판_원고_보관소/제02권_가을 그리고 차 한잔_출판원고.md" target="_blank" class="action-md">
+            📄 원고 MD 열람
+          </a>
+        </div>
+      </div>
+
+      <!-- Book 3 -->
+      <div class="book-card">
+        <div>
+          <div class="vol-badge">Volume 03 · Philosophical Essay</div>
+          <h2 class="book-title-main">사색의 숲에서 길을 묻다</h2>
+          <div class="book-subtitle-sub">파이튼 인생 철학 대작 수필집 (Inquiry in Contemplation)</div>
+          <div class="book-meta">
+            • 수록 대상: 파이튼의 글, 파이튼 생각, 일기 (16편 완비)<br>
+            • 대표작: 썰물이 지나간 자리, 찰나의 인연, 행복에 관하여 등<br>
+            • 권차/판형: 제3권 / 신국판 (152x225mm)
+          </div>
+          <p class="book-desc">
+            몽테뉴의 성찰과 동양적 지혜가 어우러진 깊은 사색을 통해 삶의 유한성과 존엄한 실존의 방향을 짚어내는 대작 인생 수필집.
+          </p>
+        </div>
+        <div class="card-actions">
+          <a href="출판_원고_보관소/제03권_사색의 숲에서 길을 묻다_조판미리보기.html" target="_blank" class="action-preview">
+            📖 e-Book 조판 열람
+          </a>
+          <a href="출판_원고_보관소/제03권_사색의 숲에서 길을 묻다_출판원고.md" target="_blank" class="action-md">
+            📄 원고 MD 열람
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Publishing Standards Specification -->
+    <div class="spec-card">
+      <h3 class="spec-title">🏛️ 한컴오피스 2024 & 출판사 인쇄 표준 규격표</h3>
+      <table class="spec-table">
+        <tr>
+          <th>본문 전용 글꼴</th>
+          <td><strong>한컴 윤고딕 740</strong> (한컴오피스 2024 공식 지정 서체)</td>
+        </tr>
+        <tr>
+          <th>글자 크기 & 자간</th>
+          <td>본문 <strong>11pt</strong> (height="1100") / 자간 0% (장평 100%)</td>
+        </tr>
+        <tr>
+          <th>줄 간격 (Line Spacing)</th>
+          <td><strong>160%</strong> (lineSpacing type="PERCENT" value="160")</td>
+        </tr>
+        <tr>
+          <th>권장 도서 판형</th>
+          <td>신국판 (152mm × 225mm, 수필·스토리텔링용) / 사륙판 (128mm × 188mm, 시집용)</td>
+        </tr>
+        <tr>
+          <th>출판 연계 프로세스</th>
+          <td>네이버 블로그 포스팅 ➔ <code>동기화_및_원고컴파일.bat</code> 원클릭 실행 ➔ 3대 시리즈 도서별 자동 조판 및 원고 갱신 ➔ 출판사(또는 POD) 내보내기</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      키아노스 교육·문화부 블루로즈 문화원 출판국 · Phaeton Literary Publishing Architecture System
+    </footer>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>파이튼의 팝송 스토리텔링 — 인생을 노래하다 (Memories in Melody)</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Nanum+Myeongjo:wght@400;700;800&display=swap');
+    :root {
+      --paper: #fcfbfa;
+      --ink: #1c1c1e;
+      --gold: #b38b40;
+      --gold-dark: #8c6d23;
+      --border: #e8e2d5;
+      --font-body: '한컴 윤고딕 740', 'Nanum Myeongjo', serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #1a1721;
+      color: var(--ink);
+      font-family: var(--font-body);
+      padding: 40px 20px;
+      line-height: 1.6;
+    }
+    .book-wrapper {
+      max-width: 820px;
+      margin: 0 auto;
+      background: var(--paper);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,0,0,0.1);
+      border-radius: 4px;
+      padding: 70px 60px;
+    }
+    .book-cover {
+      text-align: center;
+      padding: 60px 20px;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 50px;
+    }
+    .vol-tag {
+      display: inline-block;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      color: var(--gold-dark);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+    }
+    .book-title {
+      font-size: 2.3rem;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 0.8rem;
+      letter-spacing: -0.02em;
+    }
+    .book-subtitle {
+      font-size: 1.15rem;
+      color: #555;
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+    .book-author {
+      font-size: 1.05rem;
+      color: #333;
+      font-weight: 600;
+    }
+    .book-publisher {
+      font-size: 0.85rem;
+      color: #777;
+      margin-top: 0.5rem;
+    }
+    .book-toc {
+      background: #f7f5ef;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 30px;
+      margin-bottom: 60px;
+    }
+    .toc-title {
+      font-size: 1.2rem;
+      color: var(--gold-dark);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+    .book-toc ul { list-style: none; }
+    .book-toc li { margin-bottom: 0.6rem; font-size: 0.95rem; }
+    .book-toc a { text-decoration: none; color: #2c3e50; display: flex; justify-content: space-between; }
+    .book-toc a:hover { color: var(--gold-dark); text-decoration: underline; }
+    .book-chapter {
+      margin-bottom: 70px;
+      padding-bottom: 50px;
+      border-bottom: 1px dashed var(--border);
+    }
+    .chap-badge {
+      font-size: 0.8rem;
+      color: var(--gold-dark);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+    .chap-title {
+      font-size: 1.6rem;
+      color: #111;
+      margin-bottom: 0.6rem;
+      font-weight: 700;
+    }
+    .chap-meta {
+      font-size: 0.82rem;
+      color: #888;
+      margin-bottom: 2rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #f0eee8;
+    }
+    .book-p {
+      font-size: 11pt;
+      line-height: 160%;
+      color: #2b2b2b;
+      margin-bottom: 1.4rem;
+      text-indent: 1em;
+      word-break: keep-all;
+    }
+    .colophon {
+      background: #fdfcf9;
+      border-top: 2px solid #333;
+      padding: 30px 20px;
+      margin-top: 60px;
+      font-size: 0.85rem;
+      color: #555;
+      line-height: 1.8;
+    }
+    @media print {
+      body { background: #fff; padding: 0; }
+      .book-wrapper { box-shadow: none; padding: 0; max-width: 100%; }
+      .book-chapter { page-break-after: always; }
+    }
+  </style>
+</head>
+<body>
+  <div class="book-wrapper">
+    <header class="book-cover">
+      <span class="vol-tag">Volume 01 · Literary Collection</span>
+      <h1 class="book-title">파이튼의 팝송 스토리텔링</h1>
+      <p class="book-subtitle">인생을 노래하다 (Memories in Melody)</p>
+      <div class="book-author">파이튼 (Python) 著</div>
+      <div class="book-publisher">키아노스 교육·문화부 블루로즈 문화원 출판국</div>
+    </header>
+
+    <section class="book-toc">
+      <h2 class="toc-title">목차 (Table of Contents)</h2>
+      <ul><li><a href="#chap_1"><span>제1편</span> 엄마</a></li><li><a href="#chap_2"><span>제2편</span> 어제의 그림자</a></li><li><a href="#chap_3"><span>제3편</span> 다시 바보가 되어</a></li><li><a href="#chap_4"><span>제4편</span> 검은 옷의 여인</a></li><li><a href="#chap_5"><span>제5편</span> 난 다시 사랑에 빠져</a></li><li><a href="#chap_6"><span>제6편</span> 영웅</a></li><li><a href="#chap_7"><span>제7편</span> 어느 노인의 지혜</a></li><li><a href="#chap_8"><span>제8편</span> 그때 그 시절</a></li><li><a href="#chap_9"><span>제9편</span> 건너기 힘든 바다</a></li><li><a href="#chap_10"><span>제10편</span> 만약</a></li><li><a href="#chap_11"><span>제11편</span> 7월의 아침</a></li><li><a href="#chap_12"><span>제12편</span> 천국의 문 두드리기</a></li><li><a href="#chap_13"><span>제13편</span> 누구보다 강하게</a></li><li><a href="#chap_14"><span>제14편</span> 사랑의 상처</a></li><li><a href="#chap_15"><span>제15편</span> 세상의 정상</a></li><li><a href="#chap_16"><span>제16편</span> 세월이 흐른 뒤</a></li><li><a href="#chap_17"><span>제17편</span> 25분 늦었기에</a></li><li><a href="#chap_18"><span>제18편</span> 너와 함께해도, 그렇지 않다해도</a></li><li><a href="#chap_19"><span>제19편</span> 봄의 여왕</a></li><li><a href="#chap_20"><span>제20편</span> 시대를 떠도는 용병</a></li><li><a href="#chap_21"><span>제21편</span> 내 삶을 장식해준 당신</a></li><li><a href="#chap_22"><span>제22편</span> 어제</a></li><li><a href="#chap_23"><span>제23편</span> 너무 오래 떨어져있어</a></li><li><a href="#chap_24"><span>제24편</span> 이상한 놈</a></li><li><a href="#chap_25"><span>제25편</span> 무겁지 않아,내 동생이거든</a></li><li><a href="#chap_26"><span>제26편</span> 외로운 방랑자</a></li><li><a href="#chap_27"><span>제27편</span> 내 삶의 회상</a></li><li><a href="#chap_28"><span>제28편</span> 당신 없이는</a></li></ul>
+    </section>
+
+    <main class="book-content">
+      
+        <article id="chap_1" class="book-chapter">
+          <div class="chap-badge">CHAPTER 01 · 팝송 스토리텔링</div>
+          <h2 class="chap-title">엄마</h2>
+          <div class="chap-meta">원문 수록: 네이버 블로그 『파이튼의 문학산책』 · Sun, 04 Oct 2026 09:17:11 +0900</div>
+          <div class="chap-body">
+            <p class="book-p">Roger Water Mother 1979년, 영국의 Pink Floyd가 발표한 《The Wall》에 수록된 곡, 전쟁의 상처와 과잉보호, 그리고 그로부터 쌓아 올린 ‘벽’의 서사시였다. ‘Mother’는 주인공 핑크가 어머니와 나누는 대화 형식으로, 사랑이라는 이름으로 세워지는 심리적 장벽을 날카롭게 드러낸다. “Mother, do you think they'll drop the bomb?”라는 불안한 질문부터 “Of course mama's gonna help build the wall”이라는 답변까지. 어머니의 헌신이 아들의 고립을 강화하는 역설이 스며들어있다. 나는 40대 불혹의 나이, 여름 끝자락 폭서 속에서 어머니의 임종 소식을 들었다. 아버지 돌아가신 지 딱 3년. 새벽 병원 문을 나서 집으.......</p>
+          </div>
+        </article>
+        
+        <article id="chap_2" class="book-chapter">
+          <div class="chap-badge">CHAPTER 02 · 팝송 스토리텔링</div>
+          <h2 class="chap-title">어제의 그림자</h2>
+          <div class="chap-meta">원문 수록: 네이버 블로그 『파이튼의 문학산책』 · Sun, 13 Sep 2026 07:30:09 +0900</div>
+          <div class="chap-body">
+            <p class="book-p">Carpenters Only yesterday 패이튼은 먼지가 뽀얗게 내려앉은 턴테이블 바늘을 조심스레 들어 올렸다. 지익 하는 짧은 마찰음 뒤로 1975년의 공기가 습기 머금은 안개처럼 방 안을 채우기 시작했다. 카펜터스의 'Only Yesterday'가 흐르자 패이튼은 마치 타임머신을 탄 고고학자가 된 기분으로 창밖의 2026년 서울 도심을 바라보았다. 1975년의 미국은 베트남 전쟁의 패배감과 워터게이트 사건의 잔상이 가시지 않은 채 극심한 인플레이션과 경제적 불황의 늪을 지나고 있었다. 거대한 정치적 서사와 사회적 혼란 속에서 개인의 목소리는 너무나 작고 초라했다. 곡의 서두에서 묘사되는 어제의 슬픔은 단순한 개인의 이별 노래를 넘어.......</p>
+          </div>
+        </article>
+        
+        <article id="chap_3" class="book-chapter">
+          <div class="chap-badge">CHAPTER 03 · 팝송 스토리텔링</div>
+          <h2 class="chap-title">다시 바보가 되어</h2>
+          <div class="chap-meta">원문 수록: 네이버 블로그 『파이튼의 문학산책』 · Sun, 06 Sep 2026 07:25:34 +0900</div>
+          <div class="chap-body">
+            <p class="book-p">Westlife Fool again 2000년, 밀레니엄의 문턱을 넘으며 세상은 디지털의 물결에 휩싸였다. 아이돌 그룹의 시대가 본격화되던 그때, 아일랜드의 다섯 청년 Westlife는 첫 정규 앨범으로 순수한 발라드의 힘을 보여주었다. 《Fool Again》은 그중에서도 가장 아프고 솔직한 노래였다. 연인이 떠난 뒤, “I should’ve seen it coming”을 반복하며 스스로를 자책하는 가사는, 사랑에서 반복적으로 바보가 되는 인간의 나약함을 그대로 드러낸다. 얼굴에 드러난 배신을 뒤늦게 알아차린 후회와 탄식. 나는 20대 초반, 그 노래가 나올 무렵의 나를 떠올린다. 학업을 중단하고 군 복무를 앞둔 채 휴식기를 갖던 시절, 소개로 그녀를 만났다. 입대 전.......</p>
+          </div>
+        </article>
+        
+        <article id="chap_4" class="book-chapter">
+          <div class="chap-badge">CHAPTER 04 · 팝송 스토리텔링</div>
+          <h2 class="chap-title">검은 옷의 여인</h2>
+          <div class="chap-meta">원문 수록: 네이버 블로그 『파이튼의 문학산책』 · Sun, 23 Aug 2026 07:19:12 +0900</div>
+          <div class="chap-body">
+            <p class="book-p">Uriah Heep Lady in black 창밖으로 스며드는 차가운 바람이 가슴을 스친다. 1971년의 먼지 쌓인 레코드판에서 흘러나오던 그 노래가, 반세기 넘는 시간을 건너뛰어 오늘 우리의 귀에 다시 속삭인다. 유라이어 힙(Uriah Heep)의 「Lady in Black」. 검은 옷을 입은 여인이 전쟁의 잿더미 속에서 홀로 서 있는 한 남자에게 다가오는 이야기다. “She came to me one morning, one lonely Sunday morning…” 그 선율은 베트남의 정글을 뚫고 흘러나오던 포성처럼, 아니 그보다 더 깊이 파고들어 인간의 내면을 건드렸다. 1970년대 초, 세상은 피로 물들어 있었다. 베트남의 늪지에서 젊은이들이 명분 없는 전쟁에 스러져가고, 미국의 거리에서는 반.......</p>
+          </div>
+        </article>
+        
+        <article id="chap_5" class="book-chapter">
+          <div class="chap-badge">CHAPTER 05 · 팝송 스토리텔링</div>
+          <h2 class="chap-title">난 다시 사랑에 빠져</h2>
+          <div class="chap-meta">원문 수록: 네이버 블로그 『파이튼의 문학산책』 · Sun, 16 Aug 2026 06:30:52 +0900</div>
+          <div class="chap-body">
+            <p class="book-p">Carpenters I just fallen love again 1977년 가을, 로스앤젤레스의 한 스튜디오 안에는 부드러운 오보에 선율이 흘렀다. 카렌 카펜터의 목소리가 그 위에 살포시 내려앉았다. “Dreamin’, I must be dreamin’…” 그녀의 노래는 아직 세상에 나오지 않은 꿈처럼 조용히 피어났다. 리처드 카펜터는 이 곡이 동생의 목소리에 딱 맞는 옷이라고 믿었다. 그러나 레코드사는 “너무 길다”며 싱글을 내주지 않았다. 4분이 조금 넘는 그 시간은 당시 라디오에겐 사치였다. 그래서 이 노래는 앨범 Passage 속에 조용히 잠들었다. 그 시대의 사랑은 오늘날과는 다른 빛을 띠고 있었다. 1970년대 후반, 사람들은 아직 편지지에 향수를 뿌리고, 전화 통.......</p>
+          </div>
+        </article>
+        
+        <article id="chap_6" class="book-chapter">
+          <div class="chap-badge">CHAPTER 06 · 팝송 스토리텔링</div>
+          <h2 class="chap-title">영웅</h2>
+          <div class="chap-meta">원문 수록: 네이버 블로그 『파이튼의 문학산책』 · Sun, 09 Aug 2026 07:22:28 +0900</div>
+          <div class="chap-body">
+            <p class="book-p">David Bowie Heroes 오늘을 위한 「Heroes」 1977년 7월의 베를린은 여전히 차가웠다. 한사 스튜디오 창가에 선 한 남자의 눈에, 잿빛 하늘 아래 콘크리트 장벽이 서 있었다. 망루 위 총구가 빛나고, 경계견의 낮은 울음이 바람에 실려왔다. 그 모든 억압 속에서, 두 사람이 있었다. 그들은 서로를 향해 다가와 입을 맞췄다. 한 번, 또 한 번. 마치 세상이 그들을 용서하지 않을 것을 알면서도, 그 순간만큼은 모든 것을 잊어버린 듯. 그 연인은 이름이 있었다. 토니 비스콘티와 안토니아 마스. 토니는 이미 결혼한 몸이었고, 안토니아는 독일의 가수였다. 그들의 만남은 금기였다. 총알이 날아올 수도 있는 장소에서, 감시자의 시선이 찌르는 곳.......</p>
+          </div>
+        </article>
+        
+        <article id="chap_7" class="book-chapter">
+          <div class="chap-badge">CHAPTER 07 · 팝송 스토리텔링</div>
+          <h2 class="chap-title">어느 노인의 지혜</h2>
+          <div class="chap-meta">원문 수록: 네이버 블로그 『파이튼의 문학산책』 · Sun, 02 Aug 2026 08:32:54 +0900</div>
+          <div class="chap-body">
+            <p class="book-p">Alan Parsons Project Old and Wise 서울의 어느 고층 아파트, 창가에 놓인 낡은 안락의자에 그는 앉아 있었다. 패이튼. 이제는 거의 잊힌 이름이지만, 한때는 공장에서 기계를 돌리고, 시장통에서 장사를 하고, 아이들을 키우며 바쁘게 달려온 사람이었다. 창밖으로 안개가 자욱한 새벽 도시가 보였다. 멀리서 희미하게 들려오는 차 소리조차 그의 귀에는 이미 먼 메아리처럼 느껴졌다. 그는 손에 든 따뜻한 차 한 잔을 내려다보며 미소 지었다. 예전 같으면 이 시간에 벌써 공장으로 향하는 버스를 타고 있었을 터였다. 그때는 매일이 전쟁 같았다. 상사의 잔소리, 동료들의 뒷담화, 월급이 늦게 들어올 때의 한숨, 아내와의 사소한 다툼……. .......</p>
+          </div>
+        </article>
+        
+        <article id="chap_8" class="book-chapter">
+          <div class="chap-badge">CHAPTER 08 · 팝송 스토리텔링</div>
+          <h2 class="chap-title">그때 그 시절</h2>
+          <div class="chap-meta">원문 수록: 네이버 블로그 『파이튼의 문학산책』 · Sun, 26 Jul 2026 08:46:03 +0900</div>
+          <div class="chap-body">
+            <p class="book-p">Carpenters Yesterday Once More 커피가 식어가고 있었다. 그는 알면서도 잔을 내려놓지 않았다. 손바닥에 전해지는 온기가, 지금 이 순간 그에게 허락된 가장 솔직한 위안이었으므로. 서울의 오후 네 시. 빛이 기울어지는 각도가 언제부터인가 그를 감상적으로 만들었다. 직각으로 꽂히는 한낮의 햇살은 사람을 깨어 있게 만들지만, 이렇게 비스듬히 누운 빛은 다르다. 창유리를 비스듬히 통과해 먼지들을 금빛으로 띄워 올리는 이 각도의 빛은, 마치 오래된 필름 영사기처럼 기억의 벽면 위에 지난 장면들을 조용히 쏘아 올린다. 그는 손을 뻗어 낡은 트랜지스터 라디오의 다이얼을 돌렸다. 요즘 사람들은 이런 물건을 골동품이라 부른다. 스마.......</p>
+          </div>
+        </article>
+        
+        <article id="chap_9" class="book-chapter">
+          <div class="chap-badge">CHAPTER 09 · 팝송 스토리텔링</div>
+          <h2 class="chap-title">건너기 힘든 바다</h2>
+          <div class="chap-meta">원문 수록: 네이버 블로그 『파이튼의 문학산책』 · Sun, 19 Jul 2026 05:59:16 +0900</div>
+          <div class="chap-body">
+            <p class="book-p">Water is wide John Baez 물 너머의 속삭임: 사랑의 강을 건너는 여정 바람이 잎사귀를 속삭이듯 스치던 17세기 영국 시골 마을, 그곳에 한 젊은이가 살았다. 그의 이름은 에드윈, 평범한 농부의 아들이었다. 매일 아침, 그는 들판에서 밀을 베며 노래를 흥얼거렸다. 그 노래는 "The Water is Wide", 마을 어른들이 구전으로 전해 내려온 민요였다. 물이 넓은 강을 건너기 어려운 것처럼, 사랑도 때론 그만큼 멀고 아득하다는 가사. 에드윈은 그 노래를 부르며, 강 건너편 마을의 소녀, 로즈를 떠올렸다. 그녀는 영주의 딸, 계급의 벽이 가로막은 사랑의 상대였다. 그 시대의 영국은 계급과 종교의 그물이 촘촘히 드리워진 세상이었다.......</p>
+          </div>
+        </article>
+        
+        <article id="chap_10" class="book-chapter">
+          <div class="chap-badge">CHAPTER 10 · 팝송 스토리텔링</div>
+          <h2 class="chap-title">만약</h2>
+          <div class="chap-meta">원문 수록: 네이버 블로그 『파이튼의 문학산책』 · Sun, 12 Jul 2026 02:03:11 +0900</div>
+          <div class="chap-body">
+            <p class="book-p">If Bread 1971년, 미국의 라디오에서 부드럽게 흘러나오는 멜로디 하나가 있었다. Bread의 ‘If’. 베트남 전쟁의 포연이 아직 가시지 않은 그 해, 젊은이들은 거리로 나서 “평화를!”을 외쳤고, 부모들은 아들들의 징집 소식을 받으며 밤을 새웠다. 그런데 이 노래는 총소리나 시위 구호가 아니라, 아주 조용한 ‘만약’으로 시작했다. “If a picture paints a thousand words, then why can’t I paint you?” 그 한 마디가, 전쟁의 한복판에 선 한 청년의 가슴을 파고들었다. 이름은 제이크. 22살, 캘리포니아 출신의 평범한 대학생이었다. 그는 징집 영장을 받기 전, 여자친구 엠마와 함께 해변을 거닐며 “전쟁은 곧 끝날 거야”라고 속으.......</p>
+          </div>
+        </article>
+        
+        <article id="chap_11" class="book-chapter">
+          <div class="chap-badge">CHAPTER 11 · 팝송 스토리텔링</div>
+          <h2 class="chap-title">7월의 아침</h2>
+          <div class="chap-meta">원문 수록: 네이버 블로그 『파이튼의 문학산책』 · Sun, 05 Jul 2026 07:23:15 +0900</div>
+          <div class="chap-body">
+            <p class="book-p">July morning Uriah Heep 7월의 아침, 아직도 빛나는 이유 1970년대 초, 세상은 시끄러웠다. 베트남전의 먼지가 아직 가시지 않았고, 냉전의 긴장감은 공기처럼 무거웠다. 젊은이들은 기존의 모든 것에 지쳤다. 규칙, 가치, 어른들이 그려놓은 미래까지. 그때 Uriah Heep이라는 밴드가 조용히, 그러나 강렬하게 한 곡을 내놓았다. 제목은 ‘July Morning’. “7월의 아침에 서서 사랑을 찾고 있었지…” 얼핏 사랑 노래처럼 들리지만, 사실은 훨씬 더 깊은 내면 사회의 그늘이 드리워져있다. 폭풍과 밤을 뒤로하고 새벽을 향해 걸어 나가는 한 사람의 결심. 과거의 혼란을 떨쳐내고, 자기만의 길을 찾겠다는 다짐. 그 단순한 멜로디와 가사는 당.......</p>
+          </div>
+        </article>
+        
+        <article id="chap_12" class="book-chapter">
+          <div class="chap-badge">CHAPTER 12 · 팝송 스토리텔링</div>
+          <h2 class="chap-title">천국의 문 두드리기</h2>
+          <div class="chap-meta">원문 수록: 네이버 블로그 『파이튼의 문학산책』 · Sun, 28 Jun 2026 08:58:56 +0900</div>
+          <div class="chap-body">
+            <p class="book-p">Bob Dylan Knockin' on Heaven's Door 도시의 영웅, 마지막 커피 한 잔 아, 밥 딜런의 그 노래를 떠올리면 여전히 가슴이 저릿하다. "Knockin' on Heaven's Door" – 그 짧고 반복적인 가사가, 죽음을 앞둔 보안관의 내면을 얼마나 날카롭게 새겨놓았던가. 영화 속 그 장면, 총알에 맞아 쓰러진 보안관이 배지를 내려놓고 총을 땅에 묻으라며 중얼거리는 그 순간. 어둠이 짙어지고, 천국의 문을 두드리는 듯한 그 은유. 하지만 요즘 세상에서 보안관은 어디 있나? 서부 영화 속 카우보이 모자 대신, 우리는 스마트폰과 줌 미팅으로 무장한 도시 전사들로 산다. 만약 그 보안관의 이.......</p>
+          </div>
+        </article>
+        
+        <article id="chap_13" class="book-chapter">
+          <div class="chap-badge">CHAPTER 13 · 팝송 스토리텔링</div>
+          <h2 class="chap-title">누구보다 강하게</h2>
+          <div class="chap-meta">원문 수록: 네이버 블로그 『파이튼의 문학산책』 · Sun, 21 Jun 2026 05:57:40 +0900</div>
+          <div class="chap-body">
+            <p class="book-p">Tougher than the rest Bruce Springsteen 아, 사랑이란 녀석은 참으로 변덕스럽지 않나? 영화관 불빛 아래서 펼쳐지는 그 화려한 로맨스, 꽃잎이 흩날리는 키스 신, 완벽한 미소의 주인공들이 서로를 향해 달려가는 장면들. 우리는 그걸 보며 한숨을 쉬지만, 현실의 사랑은 좀 다르다. 브루스 스프링스틴의 "Tougher Than the Rest"처럼, 사랑은 때론 낡은 청바지처럼 편안하고, 폭풍우를 견뎌낸 오래된 나무처럼 단단한 법이다. 외모의 반짝임이나 달콤한 말솜씨가 아니라, 상처를 딛고 일어나는 강인함과 책임감이 진짜 사랑의 뼈대를 이룬다는 걸, 오늘은 한 이야기로 풀어볼까. 이건 그냥 픽션, 하지만 당신의 삶 어딘가에 스며들.......</p>
+          </div>
+        </article>
+        
+        <article id="chap_14" class="book-chapter">
+          <div class="chap-badge">CHAPTER 14 · 팝송 스토리텔링</div>
+          <h2 class="chap-title">사랑의 상처</h2>
+          <div class="chap-meta">원문 수록: 네이버 블로그 『파이튼의 문학산책』 · Sun, 14 Jun 2026 09:39:03 +0900</div>
+          <div class="chap-body">
+            <p class="book-p">Love Hurts Nazareth 그날의 멜로디, 영원한 상처의 달콤함 아, 1970년대 그 시절을 떠올리면, 세상이 아직 디지털의 속박에서 자유로웠던 때였지. 젊은이들은 록 음악의 거친 파도에 몸을 맡기고, 사랑을 이상화된 꿈이 아니라 피부에 와닿는 현실로 느꼈어. 나자레스의 "Love Hurts"가 라디오에서 흘러나오던 그 무렵, 스코틀랜드 출신의 이 하드 록 밴드가 에벌리 브라더스의 부드러운 컨트리 팝 원곡을 재해석한 버전은 단순한 히트곡이 아니었어. 이 곡은 사랑의 어두운 면을 직설적으로 드러내며 젊은 세대의 가슴을 울렸지. "사랑은 아프고, 상처 주고, 흔적을 남기네"라는 그 가사처럼, 낭만만 가득한 환상이 아니라.......</p>
+          </div>
+        </article>
+        
+        <article id="chap_15" class="book-chapter">
+          <div class="chap-badge">CHAPTER 15 · 팝송 스토리텔링</div>
+          <h2 class="chap-title">세상의 정상</h2>
+          <div class="chap-meta">원문 수록: 네이버 블로그 『파이튼의 문학산책』 · Sun, 07 Jun 2026 07:15:34 +0900</div>
+          <div class="chap-body">
+            <p class="book-p">Top of the world Carpenters 서울, 2026년 가을. 아침 7시 40분, 지하철 2호선이 신촌을 지나고 있다. 창밖은 아직 어두컴컴한데, 이어폰 속에서 Carpenters의 노래가 흐른다. “Such a feelin’s comin’ over me…” 그녀의 미소가 담긴 콘트랄토가, 지하철의 덜컹거림과 섞여 이상하게 포근하다. 서른한 살의 적지않은 나이의, 작은 출판사에서 에디터로 일하는 그녀. 요즘은 책 한 권 내는 데도 전쟁 같아서, 퇴근 후엔 대개 소파에 누워 넷플릭스를 보거나, 아니면 아무 생각 없이 창밖을 본다. 연애? 작년 겨울에 끝난 뒤로, 마음의 문은 살짝 잠가놓은 상태였다. “굳이 열 필요 없지” 하면서. 그날 아침은 달랐다. 어제 밤, 오랜만에 고.......</p>
+          </div>
+        </article>
+        
+        <article id="chap_16" class="book-chapter">
+          <div class="chap-badge">CHAPTER 16 · 팝송 스토리텔링</div>
+          <h2 class="chap-title">세월이 흐른 뒤</h2>
+          <div class="chap-meta">원문 수록: 네이버 블로그 『파이튼의 문학산책』 · Sun, 31 May 2026 06:38:08 +0900</div>
+          <div class="chap-body">
+            <p class="book-p">Journey After all these years 중년을 넘어, 이제 ‘늙은이’라는 타이틀을 조용히 받아들이는 우리에게도 사랑은 여전히 작은 떨림으로 남아 있다. Journey의 「After All These Years」는 바로 그 떨림을, 그러나 화려하지 않고 담백하게, 마치 오래된 사진 한 장을 꺼내 드는 듯한 방식으로 노래한다. faded wedding photograph, first dance. 그 한 구절만으로도 가슴 한구석이 저릿해지는 이유는, 우리가 이미 그 사진 속 주인공이 되어 버렸기 때문이다. 세대가 바뀌고, 디지털 사운드가 판을 치기 시작하던 때에, “사랑은 영원하다”는 로맨틱한 환상을 팔지 않았다. 대신 “시간이 지나도, 상처가 쌓여도, 여전히 너와 함께라면 매일이.......</p>
+          </div>
+        </article>
+        
+        <article id="chap_17" class="book-chapter">
+          <div class="chap-badge">CHAPTER 17 · 팝송 스토리텔링</div>
+          <h2 class="chap-title">25분 늦었기에</h2>
+          <div class="chap-meta">원문 수록: 네이버 블로그 『파이튼의 문학산책』 · Sun, 24 May 2026 07:32:20 +0900</div>
+          <div class="chap-body">
+            <p class="book-p">MLTR 25minutes 1993년, 덴마크의 MLTR의 ‘25 Minutes’는 단순한 이별 발라드가 아니다. 그것은 시간이라는 보이지 않는 시계가 사랑의 목줄을 쥐고 있다는, 잔인하면서도 서정적인 경고다. 오랜 고민 끝에 “She is the girl and I really want to make her mine”라고 마음을 굳힌 남자는 거리를 헤매며 과거의 잘못을 사과하려 한다. 그러나 그녀를 발견한 곳은 마을에서 유일하게 찾아보지 않았던 교회 앞. 웨딩드레스를 입은 그녀는 행복해 보이면서도 눈물을 글썽이며 속삭인다. 단 25분. 그 짧은 시간 차이가 영원한 이별을 만들어버린다. 후회로 물든 남자의 내면을 조용히 따라가지만, 듣는 이의 가슴에는 ‘만약 그때…’라는 메아리.......</p>
+          </div>
+        </article>
+        
+        <article id="chap_18" class="book-chapter">
+          <div class="chap-badge">CHAPTER 18 · 팝송 스토리텔링</div>
+          <h2 class="chap-title">너와 함께해도, 그렇지 않다해도</h2>
+          <div class="chap-meta">원문 수록: 네이버 블로그 『파이튼의 문학산책』 · Sun, 10 May 2026 08:12:22 +0900</div>
+          <div class="chap-body">
+            <p class="book-p">With or Without You U2 아, 아일랜드. 그 섬나라는 바람이 스치듯 슬픈 역사를 간직한 곳이야. 녹색 언덕과 안개 낀 절벽 아래로, 수백 년의 눈물과 투쟁이 스며들어 있지. 대기근의 그림자가 드리운 1840년대, 감자 작황 실패로 백만 명이 굶주림에 쓰러지고, 또 백만 명이 바다를 건너 미국으로 도망쳤던 그 시절. 영국의 무관심한 통치 아래, 아일랜드인들은 고향을 떠날 수밖에 없었어. 그런데 그 떠남조차 고통이었지. 고향 없이 사는 삶, 그건 'with or without you' 같은 딜레마였을 테니까. 함께 있어도 괴롭고, 떨어져도 아픈 그런 관계 말야. 19세기 중반, 더블린의 한 젊은이가 서 있는 풍경을. 그의 이름은 패이튼이라고.......</p>
+          </div>
+        </article>
+        
+        <article id="chap_19" class="book-chapter">
+          <div class="chap-badge">CHAPTER 19 · 팝송 스토리텔링</div>
+          <h2 class="chap-title">봄의 여왕</h2>
+          <div class="chap-meta">원문 수록: 네이버 블로그 『파이튼의 문학산책』 · Sun, 03 May 2026 08:10:41 +0900</div>
+          <div class="chap-body">
+            <p class="book-p">Bee Gees First of May 아, 1969년의 그 봄날, 비지스(Bee Gees)의 목소리가 라디오에서 흘러나오던 시절을 떠올려보니, 세상이 얼마나 달콤하게 흔들렸던가. 그때는 디스코의 열기가 아직 피어나기 전, 발라드의 부드러운 멜로디가 젊은이들의 가슴을 살짝 간질이던 시대였다. 비지스의 "First of May"는 그런 무거운 세상사를 피해, 개인적인 추억의 골목길로 우리를 데려간다. 이 노래는 단순한 사랑 노래가 아니라, 어린 시절의 순수함이 시간의 바람에 흩어지는 과정을 노래한다. 마치 푸쉬킨의 시처럼 로맨틱하게, 단테의 여정처럼 신비롭게. 오늘, 그 가사를 따라 어린아이에서 어른으로 자라는 이야기를 풀어보자. 가볍게, 마.......</p>
+          </div>
+        </article>
+        
+        <article id="chap_20" class="book-chapter">
+          <div class="chap-badge">CHAPTER 20 · 팝송 스토리텔링</div>
+          <h2 class="chap-title">시대를 떠도는 용병</h2>
+          <div class="chap-meta">원문 수록: 네이버 블로그 『파이튼의 문학산책』 · Sun, 26 Apr 2026 08:14:58 +0900</div>
+          <div class="chap-body">
+            <p class="book-p">Deep Purple Soldier of Fortune 용병의 노래, 그리고 1979년 명동의 어느 오후 Deep Purple의 ‘Soldier of Fortune’. 1974년 앨범 《Stormbringer》에 수록된 이 곡은, 하드록의 거센 파도 한가운데서 갑자기 조용히 흘러나오는 블루스 록 발라드다. 리치 블랙모어의 중세적인 코드와 데이비드 커버데일의 낮고 쓸쓸한 보컬이 맞물려, 마치 먼 길을 걸어온 사내가 모닥불 앞에서 홀로 중얼거리는 듯하다. 가사는 나는 늘 방랑자의 삶을 살았고, 언젠가 네 손을 잡고 노래를 불러주면 네가 “내 곁에 머물러 사랑해 줘”라고 말해 주기를 기다렸다고. 그러면 나는 분명히 머물렀을 것이라고. 그러나 나는 이미 늙어가고 있고, 내가 부르던 노래.......</p>
+          </div>
+        </article>
+        
+        <article id="chap_21" class="book-chapter">
+          <div class="chap-badge">CHAPTER 21 · 팝송 스토리텔링</div>
+          <h2 class="chap-title">내 삶을 장식해준 당신</h2>
+          <div class="chap-meta">원문 수록: 네이버 블로그 『파이튼의 문학산책』 · Sun, 19 Apr 2026 08:20:53 +0900</div>
+          <div class="chap-body">
+            <p class="book-p">Kenny Rogers You decorated my life 어스름한 가을 저녁, 1979년의 Kenny Rogers 목소리가 라디오에서 스며들던 그 순간, 내 삶은 정말로 ‘plain, pure and white’였다. 백지처럼 텅 빈, 아무도 그려주지 않은 종이. 아침에 눈을 뜨면 늘 같은 회색 도시가 창밖을 메웠고, 밤이 되면 피곤한 몸으로 소파에 누워 맥주 한 캔을 기울이는 게 전부였다. 꿈이라고 해봐야, 다음 달 월급으로 조금 더 좋은 고기를 사 먹는 정도. Kenny Rogers가 노래한 대로, “All my life was a paper once plain, pure and white” — 그 가사가 내 가슴을 정확히 찔렀다. 그러던 어느 날, 그녀가 조용히 들어왔다. 처음엔 그저 사무실 복도에서 스쳐 지나가는 미.......</p>
+          </div>
+        </article>
+        
+        <article id="chap_22" class="book-chapter">
+          <div class="chap-badge">CHAPTER 22 · 팝송 스토리텔링</div>
+          <h2 class="chap-title">어제</h2>
+          <div class="chap-meta">원문 수록: 네이버 블로그 『파이튼의 문학산책』 · Sun, 12 Apr 2026 08:13:16 +0900</div>
+          <div class="chap-body">
+            <p class="book-p">Yesterday Beatles 어느 가을 저녁, 서울의 오래된 공원 벤치에 한 남자가 앉아 있었다. 이름은 이제 거의 불리지 않는, 그냥 ‘그’라고 부르자. 손에는 낡은 어쿠스틱 기타 하나. 줄은 군데군데 녹이 슬어 있었지만, 여전히 따뜻한 음색을 기억하고 있었다. 그가 기타를 퉁기며 흥얼거리는 멜로디는 늘 똑같았다. Yesterday, all my troubles seemed so far away… 그 한 소절이 나오면 공원은 갑자기 12년 전으로 뒤바뀐다. 햇살이 아직 뜨거웠던 7월의 오후, 그녀가 아이스크림을 먹다 입가에 묻힌 크림을 손수건으로 닦아주던 장면. “너 진짜 애 같아” 하면서도 웃음이 멈추지 않던 그녀의 눈. 그때는 모든 게 멀리 있었다. 걱정도, 다툼.......</p>
+          </div>
+        </article>
+        
+        <article id="chap_23" class="book-chapter">
+          <div class="chap-badge">CHAPTER 23 · 팝송 스토리텔링</div>
+          <h2 class="chap-title">너무 오래 떨어져있어</h2>
+          <div class="chap-meta">원문 수록: 네이버 블로그 『파이튼의 문학산책』 · Sun, 05 Apr 2026 14:50:44 +0900</div>
+          <div class="chap-body">
+            <p class="book-p">George Baker Sellection I’ve been away too long 아, 1970년대라니. 그때 세상은 아직도 전쟁의 메아리가 울려 퍼지던 시절이었죠. 베트남의 비가 그치지 않고, 냉전의 그림자가 길게 드리워진 그 시대에, 사람들은 라디오를 켜고 노래를 통해 숨겨진 마음을 꺼내 들곤 했습니다. George Baker Selection의 "I’ve Been Away Too Long"이 흘러나오던 그 순간, 누군가는 창가에 기대어 눈물을 삼키고, 누군가는 손에 든 편지를 다시 펼쳐 보았을 거예요. 이 노래는 단순한 팝 발라드가 아니에요. 떨어진 거리와 솔직한 고백이 빚어낸, 사랑의 가장 부드러운 아픔을 속삭이는 이야기죠. 오늘, 이 멜로디를 빌려 한 편의 작은 소설을 풀.......</p>
+          </div>
+        </article>
+        
+        <article id="chap_24" class="book-chapter">
+          <div class="chap-badge">CHAPTER 24 · 팝송 스토리텔링</div>
+          <h2 class="chap-title">이상한 놈</h2>
+          <div class="chap-meta">원문 수록: 네이버 블로그 『파이튼의 문학산책』 · Sun, 29 Mar 2026 09:15:50 +0900</div>
+          <div class="chap-body">
+            <p class="book-p">Radiohead Creep 술 취한 골목길 모퉁이의 한 방황자. “I’m a creep, I’m a weirdo. What the hell am I doing here? I don’t belong here.” 이 반복되는 자조는 단순한 연애 실패담이 아니라, 더 근본적인 질문으로 이어진다. 나는 왜 이렇게 부족한가? 왜 저기 빛나는 누군가의 자리에 설 수 없는가? 90년대 초중반, 이 곡이 울려 퍼지던 시기는 전 세계적으로 ‘슬래커(slacker)’ 문화가 꽃피던 때였다. 니르바나의 「Smells Like Teen Spirit」이 분노를 터뜨렸다면, 「Creep」은 그 분노조차 내면으로 삼켜버린 채 조용히 속삭이는 버전이었다. 경제적으로는 냉전 종식 후의 낙관이 있었지만, 개인적으로는 아이러니하게도 더 큰 소외.......</p>
+          </div>
+        </article>
+        
+        <article id="chap_25" class="book-chapter">
+          <div class="chap-badge">CHAPTER 25 · 팝송 스토리텔링</div>
+          <h2 class="chap-title">무겁지 않아,내 동생이거든</h2>
+          <div class="chap-meta">원문 수록: 네이버 블로그 『파이튼의 문학산책』 · Sun, 22 Mar 2026 08:32:28 +0900</div>
+          <div class="chap-body">
+            <p class="book-p">The Hollies He ain’t heavy, He’s my brother 그의 짐은 곧 우리의 길 도시 변두리 골목, 비가 그친 뒤의 축축한 공기 속에서 노인은 여느 때처럼 천 가방 두 개와 봉투 하나를 들고 천천히 걸었다. 어깨는 내려앉았고, 발걸음은 땅에 붙어 미끄러지는 듯했다. 사람들은 여전했다. 스치며 지나가고, 속으로 한숨 쉬고, 아무도 말을 걸지 않았다. 그러나 그날은 달랐다. 열두 살 소년이, 풀린 운동화 끈을 대충 묶은 채 다가왔다. 목소리는 작았지만 분명했다. “할아버지… 제가 들어줄게요.” 노인이 고개를 들었다. 눈가에 주름이 깊게 패인 그 얼굴에, 아주 오래된 빛이 스쳤다. “…고맙구나.” 소년이 가방 하나를 받아 들자, 무게가 예.......</p>
+          </div>
+        </article>
+        
+        <article id="chap_26" class="book-chapter">
+          <div class="chap-badge">CHAPTER 26 · 팝송 스토리텔링</div>
+          <h2 class="chap-title">외로운 방랑자</h2>
+          <div class="chap-meta">원문 수록: 네이버 블로그 『파이튼의 문학산책』 · Sun, 15 Mar 2026 09:22:05 +0900</div>
+          <div class="chap-body">
+            <p class="book-p">Eagles Desperado 2026년의 서울은 잠들지 않는 거대한 서버실과 같다. 수만 개의 LED 간판이 내뿜는 인공적인 빛은 밤하늘의 별을 지워버렸고 사람들은 저마다 손바닥 안의 작은 사각형 화면에 영혼을 저당 잡힌 채 유령처럼 거리를 유영한다. 이 차가운 디지털 황무지 한복판을 페이튼이 걷고 있다. 그의 귀에 꽂힌 최신형 노이즈 캔슬링 이어폰은 세상의 소음을 완벽히 차단하지만 역설적으로 그를 지독한 정적 속에 가둔다. 그 적막을 깨고 흘러나오는 노래는 1973년의 먼지를 머금은 Eagles의 Desperado다. 50여 년 전 글렌 프레이와 돈 헨리가 로스앤젤레스의 뒷골목을 헤매며 노래했던 그 서부의 방랑자가 2026년의 스마트폰 화면 위로 겹.......</p>
+          </div>
+        </article>
+        
+        <article id="chap_27" class="book-chapter">
+          <div class="chap-badge">CHAPTER 27 · 팝송 스토리텔링</div>
+          <h2 class="chap-title">내 삶의 회상</h2>
+          <div class="chap-meta">원문 수록: 네이버 블로그 『파이튼의 문학산책』 · Sun, 15 Mar 2026 09:16:46 +0900</div>
+          <div class="chap-body">
+            <p class="book-p">Marmalade Reflections of My Life 1969년 가을, 글래스고의 좁은 거리에서 한 젊은 뮤지션이 기타 줄을 퉁기며 중얼거렸다. “Reflections of my life, oh how they fill my eyes…” 그 순간, 세상은 이미 너무 많은 눈물을 머금고 있었다. 베트남의 정글에서는 젊은이들이 총알과 진흙 속에서 고향을 그리워했고, 스코틀랜드의 작은 스튜디오에서는 그 그리움이 멜로디가 되어 흘러나왔다. Marmalade의 Dean Ford와 Junior Campbell은 전쟁을 직접 보지 않았지만, 라디오와 신문을 통해 전해지는 비명 같은 소식들을 느꼈다. 세상이 ‘terrible place’라는 가사는 누군가의 개인적인 슬픔이 아니라, 시대 전체가 삼킨 한숨이었다. 그들은 절.......</p>
+          </div>
+        </article>
+        
+        <article id="chap_28" class="book-chapter">
+          <div class="chap-badge">CHAPTER 28 · 팝송 스토리텔링</div>
+          <h2 class="chap-title">당신 없이는</h2>
+          <div class="chap-meta">원문 수록: 네이버 블로그 『파이튼의 문학산책』 · Sun, 15 Mar 2026 09:11:49 +0900</div>
+          <div class="chap-body">
+            <p class="book-p">Badfinger cover Harry Nilson without you 사랑이 사라진 자리에는 바람이 분다 서울에서, 창밖으로 비가 내리는 오후 누군가 떠난 저녁을 잊을 수 있을까. 그 사람이 문을 나서던 순간, 입가에는 여전히 미소가 걸려 있었지만 눈동자 깊숙이 슬픔이 고여 있었다는 걸, 우리는 다 안다. “You always smile but in your eyes your sorrow shows.” 그 한 줄이 가슴을 파고든다. 우리는 매일 그렇게 산다. 웃으며 인사하고, 괜찮다고 말하면서도 속으로는 무너져 내리는 그런 날들. 해리 닐슨의 목소리가 터져 나오는 순간, “I can’t live if living is without you”라는 외침은 과장이 아니다. 그것은 누군가에게 사랑이 공기처럼, 심장 박동.......</p>
+          </div>
+        </article>
+        
+    </main>
+
+    <footer class="colophon">
+      <h3 style="color:#111; margin-bottom:0.5rem;">판권 정보 (Colophon)</h3>
+      <p><strong>도서명:</strong> 파이튼의 팝송 스토리텔링 — 인생을 노래하다 (Memories in Melody)</p>
+      <p><strong>저자:</strong> 파이튼 (Python)</p>
+      <p><strong>발행처:</strong> 키아노스 교육·문화부 블루로즈 문화원</p>
+      <p><strong>서식 규격:</strong> 한컴 윤고딕 740, 본문 11pt, 줄간격 160% (출판 표준 규격)</p>
+      <p><strong>출판 원본 금고:</strong> 네이버 블로그 『파이튼의 문학산책』 (https://blog.naver.com/invision)</p>
+    </footer>
+  </div>
+</body>
+</html>
