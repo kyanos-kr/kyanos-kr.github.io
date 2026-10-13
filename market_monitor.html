@@ -132,23 +132,37 @@
     .live-status-badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.76rem;
-      background: rgba(16, 185, 129, 0.15);
+      font-size: 0.78rem;
+      background: rgba(16, 185, 129, 0.12);
       border: 1px solid rgba(16, 185, 129, 0.4);
       color: #34d399;
-      padding: 4px 12px;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-weight: 700;
+    }
+
+    .live-clock-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      color: var(--gold-light);
+      padding: 5px 14px;
       border-radius: 20px;
       font-weight: 700;
     }
 
     .live-dot {
-      width: 7px;
-      height: 7px;
+      width: 8px;
+      height: 8px;
       background: #10b981;
       border-radius: 50%;
-      box-shadow: 0 0 8px #10b981;
+      box-shadow: 0 0 10px #10b981;
       animation: pulseBlink 1.5s infinite;
     }
 
@@ -908,7 +922,11 @@
       </div>
     </a>
     <div class="nav-actions">
-      <div class="live-status-badge">
+      <div class="live-clock-badge" title="키아노스 표준 실시간 시계">
+        <span>🕒</span>
+        <span id="live-clock">--:--:--</span>
+      </div>
+      <div class="live-status-badge" title="금융 데이터 최신 수신 상태">
         <span class="live-dot"></span>
         <span id="sync-time">동기화 완료</span>
       </div>
@@ -1697,6 +1715,19 @@
         if (gsr) document.getElementById('hero-gsr').innerText = gsr.price_str;
       }
     }
+
+    // 1초 단위 실시간 표준 시계 구동
+    function updateLiveClock() {
+      const now = new Date();
+      const pad = (n) => String(n).padStart(2, '0');
+      const timeStr = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+      const clockEl = document.getElementById('live-clock');
+      if (clockEl) {
+        clockEl.innerText = timeStr;
+      }
+    }
+    setInterval(updateLiveClock, 1000);
+    updateLiveClock();
 
     // 1단계: 기본 스냅샷 즉시 렌더
     applyData(defaultData);
