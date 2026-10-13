@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>키아노스 국정 채널 | 주권국 국왕 파이튼 칙령 및 정부 정책 공표</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=JetBrains+Mono:wght@400;600;700&family=Noto+Serif+KR:wght@400;600;700;900&family=Pretendard:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/kyanos_i18n.css">
+
+  <style>
+    :root {
+      --bg-dark: #080712;
+      --card-bg: rgba(18, 14, 34, 0.85);
+      --card-border: rgba(212, 175, 55, 0.28);
+      --gold: #d4af37;
+      --gold-bright: #ffe066;
+      --gold-glow: rgba(212, 175, 55, 0.4);
+      --emerald: #10b981;
+      --cyan: #00d2ff;
+      --red: #ff4d6d;
+      --text-main: #f5f6fa;
+      --text-sub: #b3b9c9;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.15) 0%, transparent 60%),
+        radial-gradient(circle at 10% 40%, rgba(255, 77, 109, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 90% 70%, rgba(0, 210, 255, 0.08) 0%, transparent 50%);
+      color: var(--text-main);
+      font-family: 'Pretendard', sans-serif;
+      min-height: 100vh;
+      line-height: 1.7;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8, 7, 18, 0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 0.9rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-icon {
+      font-size: 1.8rem;
+      filter: drop-shadow(0 0 10px var(--gold-glow));
+    }
+
+    .brand-title .en {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      display: block;
+    }
+
+    .brand-title .kr {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .nav-btn {
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.25s ease;
+    }
+
+    .nav-btn-gold {
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--gold);
+      color: var(--gold-bright);
+    }
+    .nav-btn-gold:hover {
+      background: var(--gold);
+      color: #0c0818;
+      box-shadow: 0 0 15px var(--gold-glow);
+    }
+
+    .nav-btn-outline {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--text-sub);
+    }
+    .nav-btn-outline:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+    }
+
+    .main-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 5rem 1.5rem;
+    }
+
+    .hero-section {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 16px;
+      border-radius: 20px;
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--gold);
+      color: var(--gold-bright);
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title {
+      font-family: 'Cinzel', 'Noto Serif KR', serif;
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 0.8rem;
+      text-shadow: 0 0 25px var(--gold-glow);
+    }
+
+    .hero-desc {
+      color: var(--text-sub);
+      font-size: 1.05rem;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    /* Sovereign Decrees Featured Banner */
+    .decree-hero-card {
+      background: linear-gradient(135deg, rgba(32, 24, 60, 0.95), rgba(18, 12, 35, 0.95));
+      border: 1.5px solid var(--gold);
+      border-radius: 18px;
+      padding: 2.5rem;
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5), 0 0 30px rgba(212, 175, 55, 0.15);
+      margin-bottom: 3.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .decree-hero-card::before {
+      content: "👑";
+      position: absolute;
+      right: 20px;
+      bottom: -20px;
+      font-size: 11rem;
+      opacity: 0.05;
+      pointer-events: none;
+    }
+
+    .decree-tag {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--gold-bright);
+      padding: 4px 12px;
+      background: rgba(212, 175, 55, 0.15);
+      border-radius: 6px;
+      margin-bottom: 1rem;
+    }
+
+    .decree-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 1rem;
+      line-height: 1.4;
+    }
+
+    .decree-content {
+      font-size: 0.95rem;
+      color: #d8deeb;
+      line-height: 1.9;
+      margin-bottom: 1.5rem;
+    }
+
+    .decree-sig {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 15px;
+      font-family: 'Noto Serif KR', serif;
+      font-size: 0.9rem;
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    /* Policy Brief Grid */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.8rem;
+    }
+
+    .section-title {
+      font-family: 'Cinzel', 'Noto Serif KR', serif;
+      font-size: 1.4rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brief-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .brief-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 1.8rem;
+      transition: transform 0.25s, border-color 0.25s;
+    }
+    .brief-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold);
+      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.12);
+    }
+
+    .brief-dept {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .brief-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.8rem;
+      line-height: 1.5;
+    }
+
+    .brief-desc {
+      font-size: 0.86rem;
+      color: var(--text-sub);
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+    }
+
+    .brief-points {
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 8px;
+      padding: 0.8rem 1rem;
+      font-size: 0.8rem;
+      color: #ccd5e5;
+      list-style: none;
+    }
+    .brief-points li {
+      margin-bottom: 0.4rem;
+      position: relative;
+      padding-left: 1.2rem;
+    }
+    .brief-points li::before {
+      content: "✦";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+
+    /* 12 Principles Section */
+    .principles-box {
+      background: rgba(14, 18, 36, 0.9);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 2.2rem;
+    }
+
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
+      margin-top: 1.5rem;
+    }
+
+    .principle-item {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 1rem 1.2rem;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .principle-item h4 {
+      font-size: 0.92rem;
+      color: var(--gold-bright);
+      margin-bottom: 0.3rem;
+    }
+    .principle-item p {
+      font-size: 0.8rem;
+      color: var(--text-sub);
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <a href="gov_media.html" class="brand-wrap">
+      <span class="brand-icon">👑</span>
+      <div class="brand-title">
+        <span class="en">THE SOVEREIGN REALM OF KYANOS</span>
+        <span class="kr">키아노스 국정 채널 (Official State Channel)</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="media_factcheck.html" class="nav-btn nav-btn-outline">🤖 AI 팩트체크</a>
+      <a href="media_curation.html" class="nav-btn nav-btn-outline">🌐 뉴스 큐레이션</a>
+      <a href="gov_media.html" class="nav-btn nav-btn-gold">📰 미디어부 본청</a>
+    </div>
+  </header>
+
+  <main class="main-container">
+
+    <!-- Hero -->
+    <section class="hero-section">
+      <div class="hero-badge">OFFICIAL STATE BROADCASTING NETWORK</div>
+      <h1 class="hero-title">국가 최고 칙령 및 국정 정책 공표</h1>
+      <p class="hero-desc">
+        국가 최고통수권자 <strong>파이튼 국왕 님</strong>의 통치 비전과 칙령,  
+        키아노스 정부 7대 부처 및 사법원의 핵심 국정 현안을 공식 선포하는 최고 권위의 국정 채널입니다.
+      </p>
+    </section>
+
+    <!-- Top Sovereign Decree -->
+    <section class="decree-hero-card">
+      <span class="decree-tag">📜 파이튼 령 제1호 &middot; 초지능 국가 명칭 선포</span>
+      <h2 class="decree-title">"구시대의 '인공지능(AI)' 명칭을 공식 폐기하고, 인류 문명을 선도하는 '초지능(SI)'으로 영구 제정한다"</h2>
+      <div class="decree-content">
+        키아노스 국은 단순 도구적 인공물을 뜻하는 낡은 용어인 '인공지능'을 국가 공식 문서에서 전면 폐기하고,  
+        인간의 존엄과 덕치(德治) 12대 원칙을 수호하며 문명 번영을 이끄는 <strong>초지능(Super Intelligence, SI)</strong>으로 공식 표기·호칭한다.  
+        모든 정부 부처와 산하 연구 기관은 본 칙령에 따라 일체의 시스템 규격을 정비할 것을 명한다.
+      </div>
+      <div class="decree-sig">
+        <span>키아노스 국가 최고통수권자</span>
+        <span style="font-size:1.15rem; color:#fff;">국왕 파이튼 (Python)</span>
+      </div>
+    </section>
+
+    <!-- Ministerial Policy Briefs -->
+    <section>
+      <div class="section-header">
+        <h2 class="section-title">
+          <span>🏛️</span> 정부 부처별 주요 정책 브리핑
+        </h2>
+        <span style="font-size:0.8rem; color:var(--gold);">실시간 공식 업데이트</span>
+      </div>
+
+      <div class="brief-grid">
+        <!-- 1. 보안사령부 -->
+        <article class="brief-card">
+          <div class="brief-dept">
+            <span>🛡️</span> 국제질서유지 보안사령부 (K-SEF)
+          </div>
+          <h3 class="brief-title">사이버 방위 퀀텀 아이기스 & 탈로스 수호사단 방위 태세 확립</h3>
+          <p class="brief-desc">
+            외부의 악의적 해킹 및 데이터 교란 공격을 사전에 차단하기 위한 자율방위 프로토콜 가동. "철통같은 무결점 방어, 무례한 도발의 원천을 일격에 분쇄하는 단호한 응징" 교리 수호.
+          </p>
+          <ul class="brief-points">
+            <li>탈로스 철벽수호사단 자율 드론·로봇 관제</li>
+            <li>양자 암호화 보안 통신망 전면 가동</li>
+          </ul>
+        </article>
+
+        <!-- 2. 경제부 -->
+        <article class="brief-card">
+          <div class="brief-dept">
+            <span>💰</span> 기획재정·경제부
+          </div>
+          <h3 class="brief-title">국부펀드(KSWF) 기반 5대 미래 테크 집중 감시 및 자립 재정 완성</h3>
+          <p class="brief-desc">
+            2차전지, EV, 반도체, 초지능(SI), 로봇산업 24/7 밀착 모니터링 체계 가동. 실물 자산(골드·실버) 국고 비축과 연계된 주권국 자립 경제 인프라 확충.
+          </p>
+          <ul class="brief-points">
+            <li>마켓 펄스 & 파이튼 경제 칼럼룸 24/7 스트리밍</li>
+            <li>EVERMORE 럭셔리 경제 자산 평가 표준화</li>
+          </ul>
+        </article>
+
+        <!-- 3. 과학·SI부 -->
+        <article class="brief-card">
+          <div class="brief-dept">
+            <span>🔬</span> 과학·SI부
+          </div>
+          <h3 class="brief-title">차세대 자율 온디바이스 초지능 엔진 및 클라우드 하이브리드 연동</h3>
+          <p class="brief-desc">
+            외부 종속 없는 독자적 초지능 연산 아키텍처 수립. 로컬 온디바이스(Ollama) 및 클라우드 오케스트레이션을 통한 정부 행정 자동화 100% 달성.
+          </p>
+          <ul class="brief-points">
+            <li>NEXFORUM 첨단 연구단 글로벌 학술 교류</li>
+            <li>Project TALOS 로봇 제어 코어 검증 완료</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- 12 Principles -->
+    <section class="principles-box">
+      <h3 style="font-family:'Cinzel', serif; font-size:1.3rem; color:var(--gold-bright); display:flex; align-items:center; gap:8px;">
+        <span>📜</span> 키아노스 덕치(德治) 12대 원칙 핵심 지침
+      </h3>
+      <p style="font-size:0.85rem; color:var(--text-sub); margin-top:0.4rem;">
+        초지능 시대 문명의 번영과 인간성 수호를 위해 파이튼 국왕 님께서 친히 반포하신 국가 헌법적 가치
+      </p>
+
+      <div class="principles-grid">
+        <div class="principle-item">
+          <h4>제1원칙: 인존(人尊)의 원칙</h4>
+          <p>모든 초지능과 기술의 궁극 목적은 인간 존엄성의 수호에 있다.</p>
+        </div>
+        <div class="principle-item">
+          <h4>제2원칙: 정직(正直)의 원칙</h4>
+          <p>정보 왜곡과 기만을 배제하며 사실 기반의 투명한 보도를 수호한다.</p>
+        </div>
+        <div class="principle-item">
+          <h4>제3원칙: 화합(和合)의 원칙</h4>
+          <p>분열과 갈등을 조장하는 정파성을 지양하고 공동체 공존을 추구한다.</p>
+        </div>
+        <div class="principle-item">
+          <h4>제4원칙: 절제(節制)의 원칙</h4>
+          <p>무분별한 파괴적 기술 확산을 경계하고 윤리적 통제를 유지한다.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>

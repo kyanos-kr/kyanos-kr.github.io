@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>키아노스 글로벌 뉴스 큐레이션 | NEXFORUM 지식 네트워크</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=JetBrains+Mono:wght@400;600;700&family=Noto+Serif+KR:wght@400;600;700&family=Pretendard:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/kyanos_i18n.css">
+
+  <style>
+    :root {
+      --bg-dark: #060914;
+      --card-bg: rgba(12, 18, 38, 0.85);
+      --card-border: rgba(0, 210, 255, 0.22);
+      --gold: #d4af37;
+      --gold-light: #fbeea4;
+      --cyan: #00d2ff;
+      --cyan-glow: rgba(0, 210, 255, 0.35);
+      --emerald: #10b981;
+      --red: #ff4d6d;
+      --text-main: #f0f6fc;
+      --text-sub: #94a3b8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(0, 210, 255, 0.12) 0%, transparent 60%),
+        radial-gradient(circle at 10% 40%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 90% 70%, rgba(255, 77, 109, 0.08) 0%, transparent 50%);
+      color: var(--text-main);
+      font-family: 'Pretendard', sans-serif;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(6, 9, 20, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 0.9rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-icon {
+      font-size: 1.8rem;
+      filter: drop-shadow(0 0 10px var(--cyan-glow));
+    }
+
+    .brand-title .en {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      color: var(--gold);
+      display: block;
+    }
+
+    .brand-title .kr {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .nav-btn {
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.25s ease;
+    }
+
+    .nav-btn-cyan {
+      background: rgba(0, 210, 255, 0.15);
+      border: 1px solid var(--cyan);
+      color: #fff;
+    }
+    .nav-btn-cyan:hover {
+      background: var(--cyan);
+      color: #04101e;
+      box-shadow: 0 0 15px var(--cyan-glow);
+    }
+
+    .nav-btn-outline {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--text-sub);
+    }
+    .nav-btn-outline:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+    }
+
+    .main-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 5rem 1.5rem;
+    }
+
+    .hero-section {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 14px;
+      border-radius: 20px;
+      background: rgba(0, 210, 255, 0.12);
+      border: 1px solid var(--cyan);
+      color: #70e1ff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title {
+      font-family: 'Cinzel', 'Noto Serif KR', serif;
+      font-size: 2.3rem;
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 0.8rem;
+      text-shadow: 0 0 20px var(--cyan-glow);
+    }
+
+    .hero-desc {
+      color: var(--text-sub);
+      font-size: 1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Filter Bar */
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 8px 18px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--text-sub);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--cyan);
+      color: #051329;
+      border-color: var(--cyan);
+      box-shadow: 0 0 15px var(--cyan-glow);
+    }
+
+    /* News Grid */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .news-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 1.6rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+    }
+    .news-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--cyan);
+      box-shadow: 0 10px 30px rgba(0, 210, 255, 0.12);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .category-badge {
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+    .category-badge.tech { background: rgba(0, 210, 255, 0.15); color: var(--cyan); border: 1px solid rgba(0, 210, 255, 0.3); }
+    .category-badge.battery { background: rgba(16, 185, 129, 0.15); color: var(--emerald); border: 1px solid rgba(16, 185, 129, 0.3); }
+    .category-badge.macro { background: rgba(212, 175, 55, 0.15); color: var(--gold-light); border: 1px solid rgba(212, 175, 55, 0.3); }
+    .category-badge.geo { background: rgba(255, 77, 109, 0.15); color: #ff859c; border: 1px solid rgba(255, 77, 109, 0.3); }
+
+    .publish-time {
+      font-size: 0.74rem;
+      color: #64748b;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .news-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.8rem;
+      line-height: 1.5;
+    }
+
+    .news-summary {
+      font-size: 0.88rem;
+      color: var(--text-sub);
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+    }
+
+    .kyanos-take {
+      background: rgba(0, 0, 0, 0.35);
+      border-left: 3px solid var(--gold);
+      padding: 0.8rem 1rem;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 1.2rem;
+      font-size: 0.82rem;
+      color: #e2e8f0;
+      line-height: 1.6;
+    }
+    .kyanos-take strong {
+      color: var(--gold-light);
+    }
+
+    .card-footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.76rem;
+    }
+
+    .source-tag {
+      color: #818cf8;
+      font-weight: 600;
+    }
+
+    /* Michael Snyder Link Banner */
+    .snyder-banner {
+      margin-top: 4rem;
+      background: linear-gradient(135deg, rgba(255, 77, 109, 0.12), rgba(212, 175, 55, 0.08));
+      border: 1px solid rgba(255, 77, 109, 0.4);
+      border-radius: 16px;
+      padding: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .snyder-info h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.2rem;
+      color: #fff;
+      margin-bottom: 0.4rem;
+    }
+    .snyder-info p {
+      font-size: 0.86rem;
+      color: var(--text-sub);
+    }
+
+    .snyder-btn {
+      padding: 10px 22px;
+      border-radius: 8px;
+      background: rgba(255, 77, 109, 0.2);
+      border: 1px solid var(--red);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.88rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .snyder-btn:hover {
+      background: var(--red);
+      box-shadow: 0 0 15px rgba(255, 77, 109, 0.5);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <a href="gov_media.html" class="brand-wrap">
+      <span class="brand-icon">🌐</span>
+      <div class="brand-title">
+        <span class="en">NEXFORUM &middot; GLOBAL INTELLIGENCE</span>
+        <span class="kr">글로벌 뉴스 큐레이션 허브</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="media_factcheck.html" class="nav-btn nav-btn-outline">🤖 AI 팩트체크</a>
+      <a href="media_state.html" class="nav-btn nav-btn-outline">👑 국정 채널</a>
+      <a href="gov_media.html" class="nav-btn nav-btn-cyan">📰 미디어부 본청</a>
+    </div>
+  </header>
+
+  <main class="main-container">
+
+    <!-- Hero -->
+    <section class="hero-section">
+      <div class="hero-badge">🌐 NEXFORUM Global Think-Tank Aggregator</div>
+      <h1 class="hero-title">세계 주요 사안 큐레이션 센터</h1>
+      <p class="hero-desc">
+        국가 최고통수권자 파이튼 님의 중점 5대 미래 테크 산업 및 거시경제·지정학 흐름을  
+        키아노스 국익과 문명적 통찰의 시각으로 재배열하여 브리핑합니다.
+      </p>
+    </section>
+
+    <!-- Filter Buttons -->
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterNews('all')">전체 시그널 (All)</button>
+      <button class="filter-btn" onclick="filterNews('battery')">2차전지 &middot; 전기차</button>
+      <button class="filter-btn" onclick="filterNews('tech')">반도체 &middot; 초지능(SI) &middot; 로봇</button>
+      <button class="filter-btn" onclick="filterNews('macro')">글로벌 매크로 &middot; 자산</button>
+      <button class="filter-btn" onclick="filterNews('geo')">지정학 &middot; 안보</button>
+    </div>
+
+    <!-- News Grid -->
+    <div class="news-grid" id="newsGrid">
+
+      <!-- Item 1: 2차전지 -->
+      <article class="news-card" data-category="battery">
+        <div>
+          <div class="card-top">
+            <span class="category-badge battery">2차전지 &middot; 배터리</span>
+            <span class="publish-time">2026-10-13 08:30</span>
+          </div>
+          <h3 class="news-title">실리콘 음극재 20% 첨가 배터리 셀 실차 테스트 통과</h3>
+          <p class="news-summary">
+            글로벌 프리미엄 EV 라인업에 탑재될 4680 규격 실리콘 음극재 셀이 에너지 밀도 340Wh/kg을 달성하며 충전 시간 12분 돌파 실증을 마침.
+          </p>
+          <div class="kyanos-take">
+            <strong>👑 키아노스 관점:</strong> 에너지 밀도 혁신이 전기차 캐즘을 돌파하는 임계점에 진입. 키아노스 핵심 공급망 포트폴리오의 우선 편입 검토 필요.
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="source-tag">외신 분석: Bloomberg NEF / SAE 원문</span>
+          <span style="color:#64748b;">신뢰도 98%</span>
+        </div>
+      </article>
+
+      <!-- Item 2: 초지능 SI -->
+      <article class="news-card" data-category="tech">
+        <div>
+          <div class="card-top">
+            <span class="category-badge tech">초지능(SI) &middot; 반도체</span>
+            <span class="publish-time">2026-10-12 19:15</span>
+          </div>
+          <h3 class="news-title">차세대 광학 패키징(CPO) 기반 AI 가속 랙 글로벌 보급 가속</h3>
+          <p class="news-summary">
+            기존 구리 인터커넥트 한계를 극복하는 실리콘 포토닉스(Silicon Photonics) 가속기 모듈이 데이터센터 전력 소비를 35% 절감하는 것으로 공표됨.
+          </p>
+          <div class="kyanos-take">
+            <strong>👑 키아노스 관점:</strong> '초지능(SI)' 시대의 전력 인프라 병목을 해결할 기술적 분기점. K-SEF 사이버 사단 인프라와 즉각 기술 연계 추진.
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="source-tag">외신 분석: IEEE Spectrum / 공식 백서</span>
+          <span style="color:#64748b;">신뢰도 96%</span>
+        </div>
+      </article>
+
+      <!-- Item 3: 로봇산업 -->
+      <article class="news-card" data-category="tech">
+        <div>
+          <div class="card-top">
+            <span class="category-badge tech">로봇 &middot; 피지컬 AI</span>
+            <span class="publish-time">2026-10-12 14:00</span>
+          </div>
+          <h3 class="news-title">휴머노이드 로봇 파운드리 대량 생산 라인 1단계 가동 개시</h3>
+          <p class="news-summary">
+            자율 보행 및 5지 다관절 정밀 파지 능력을 갖춘 산업용 안드로이드 로봇이 자동차 조립 공정에 실질 배치되며 생산성 지표 18% 향상 기록.
+          </p>
+          <div class="kyanos-take">
+            <strong>👑 키아노스 관점:</strong> 키아노스 과학·SI부의 『Project TALOS』 자율방위 로봇 프레임워크와 직접 부합하는 산업적 척도.
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="source-tag">외신 분석: Robotics World Review</span>
+          <span style="color:#64748b;">신뢰도 95%</span>
+        </div>
+      </article>
+
+      <!-- Item 4: 매크로 자산 -->
+      <article class="news-card" data-category="macro">
+        <div>
+          <div class="card-top">
+            <span class="category-badge macro">글로벌 매크로 &middot; 자산</span>
+            <span class="publish-time">2026-10-11 22:40</span>
+          </div>
+          <h3 class="news-title">주요국 국채 금리 변동성 완화 및 실물 귀금속(금·은) 지지선 공고화</h3>
+          <p class="news-summary">
+            각국 중앙은행의 실물 금 매입세가 3개 분기 연속 역대 최고치를 경신함에 따라 통화 헤지 수단으로서의 골드 랠리가 구조적 안착 국면에 진입.
+          </p>
+          <div class="kyanos-take">
+            <strong>👑 키아노스 관점:</strong> 법정화폐 인플레이션 헷지와 키아노스 국고(Civic Treasury) 금 보유고의 절대적 가치 방어 입증.
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="source-tag">외신 분석: World Gold Council / BIS</span>
+          <span style="color:#64748b;">신뢰도 99%</span>
+        </div>
+      </article>
+
+      <!-- Item 5: 지정학 -->
+      <article class="news-card" data-category="geo">
+        <div>
+          <div class="card-top">
+            <span class="category-badge geo">지정학 &middot; 에너지</span>
+            <span class="publish-time">2026-10-11 11:20</span>
+          </div>
+          <h3 class="news-title">유라시아 천연가스 수송로 다변화 협정 체결 및 해상 운임 재편</h3>
+          <p class="news-summary">
+            중동 지정학 불안 장기화에 대응하여 유럽과 아시아를 연결하는 복합 육상·해상 물류 회랑 구축 프로젝트가 각국 외교 장관 회의에서 최종 비준됨.
+          </p>
+          <div class="kyanos-take">
+            <strong>👑 키아노스 관점:</strong> 지정학적 단절에 대비한 국가 자립 물류망과 에너지 안보 지침의 조기 수립 필요성 환기.
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="source-tag">외신 분석: Reuters / S&P Global Commodity</span>
+          <span style="color:#64748b;">신뢰도 97%</span>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Michael Snyder Exclusive Column Link -->
+    <section class="snyder-banner">
+      <div class="snyder-info">
+        <h3>🏛️ 마이클 스나이더(Michael Snyder) 심층 칼럼 아카이브</h3>
+        <p>
+          원작자의 1인칭 시점 엄격 유지 &bull; 의역 배제 직역 중심 요약 &bull; 미국 경제와 글로벌 붕괴 징후 분석
+        </p>
+      </div>
+      <a href="gov_media.html" class="snyder-btn">칼럼 리포트 열람 ↗</a>
+    </section>
+
+  </main>
+
+  <script>
+    function filterNews(category) {
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      const cards = document.querySelectorAll('.news-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
