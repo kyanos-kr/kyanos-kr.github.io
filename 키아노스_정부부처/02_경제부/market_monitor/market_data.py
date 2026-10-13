@@ -337,6 +337,19 @@ def get_all_market_data():
         'global': fetch_global_yahoo(),
         'metals': fetch_metals(usdkrw_val)
     }
+
+    # 스냅샷 자동 저장 (정적 브라우저 열람 및 깃허브 배포 동기화)
+    try:
+        import os
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        root_dir = os.path.abspath(os.path.join(current_dir, "..", "..", ".."))
+        snapshot_path = os.path.join(root_dir, "assets", "market_snapshot.json")
+        if os.path.exists(os.path.dirname(snapshot_path)):
+            with open(snapshot_path, "w", encoding="utf-8") as f:
+                json.dump(data, f, ensure_ascii=False, indent=2)
+    except Exception as e:
+        print(f"[Warning] Snapshot auto-save failed: {e}")
+
     return data
 
 if __name__ == '__main__':
