@@ -220,12 +220,13 @@
     .arch-node.blue { border: 1px solid rgba(0, 150, 255, 0.45); }
     .arch-node.green { border: 1px solid rgba(76, 232, 154, 0.45); }
     .arch-node.cyan { border: 1px solid rgba(0, 210, 255, 0.45); }
+    .arch-node.purple { border: 1px solid rgba(170, 100, 255, 0.45); }
 
     .arch-node .node-icon { font-size: 2rem; margin-bottom: 0.5rem; }
     .arch-node .node-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
     .arch-node .node-desc { font-size: 0.8rem; color: #a5b8d0; line-height: 1.6; }
 
-    /* 3대 국 세부 카드 섹션 */
+    /* 4대 국 세부 카드 섹션 */
     .bureau-section {
       display: flex;
       flex-direction: column;
@@ -284,6 +285,7 @@
     .bureau-tag.blue { background: rgba(0, 150, 255, 0.15); color: var(--blue-sub); border: 1px solid var(--blue); }
     .bureau-tag.green { background: rgba(76, 232, 154, 0.15); color: #4ce89a; border: 1px solid #4ce89a; }
     .bureau-tag.cyan { background: rgba(0, 210, 255, 0.15); color: var(--cyan); border: 1px solid var(--cyan); }
+    .bureau-tag.purple { background: rgba(170, 100, 255, 0.15); color: #d0a5ff; border: 1px solid #aa64ff; }
 
     .bureau-directive {
       background: rgba(0, 0, 0, 0.4);
@@ -297,6 +299,7 @@
     .bureau-directive.blue { border-left-color: var(--blue); }
     .bureau-directive.green { border-left-color: #4ce89a; }
     .bureau-directive.cyan { border-left-color: var(--cyan); }
+    .bureau-directive.purple { border-left-color: #aa64ff; }
 
     .bureau-list {
       list-style: none;
@@ -365,37 +368,42 @@
 
     <!-- Hero Header -->
     <section class="gov-hero">
-      <div class="gov-badge">Ministry of International Affairs · Global Peace & AGI Governance</div>
+      <div class="gov-badge">Ministry of International Affairs · Global Peace &amp; SI Governance</div>
       <h1 class="gov-hero-title">🌍 키아노스 국제부</h1>
       <p class="gov-hero-desc">
-        최고 통치자 파이튼 국왕의 덕치 제1·12조(천하위공·대동사회)에 기반한 <strong>3대 글로벌 축</strong>의 평화 외교, 세계 시민 연대 및 미래 문명 거버넌스를 총괄합니다.
+        최고 의사결정권자 파이튼 국왕의 덕치 제1·12조(천하위공·대동사회)에 기반한 <strong>4대 글로벌 축</strong>의 평화 외교, 세계 시민 연대, 미래 문명 SI 거버넌스 및 국가 대외 인텔리전스를 총괄합니다.
       </p>
     </section>
 
-    <!-- 3대 축 통합 아키텍처 박스 -->
+    <!-- 4대 축 통합 아키텍처 박스 -->
     <section class="architecture-card">
       <div class="architecture-header">
         <h2 class="architecture-title">
-          <span>🌐</span> 국제부 3대 글로벌 축 통합 개념도 (Conceptual Architecture)
+          <span>🌐</span> 국제부 4대 글로벌 축 통합 개념도 (Conceptual Architecture)
         </h2>
-        <span class="architecture-status">Phase 1 평화 외교 & AGI 국제 거버넌스</span>
+        <span class="architecture-status">Phase 1 평화 외교 &amp; 초지능(SI) 국제 거버넌스</span>
       </div>
 
-      <div class="architecture-grid">
+      <div class="architecture-grid" style="grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));">
         <div class="arch-node blue">
           <div class="node-icon">🕊️</div>
           <div class="node-title" style="color: var(--blue-sub);">[글로벌 외교] 평화 조약</div>
-          <p class="node-desc">주요국 영사 협약 & 덕치 중재 이니셔티브(상선약수) ➔ <strong>평화주의 주권 외교</strong></p>
+          <p class="node-desc">중립국 영사 협약 &amp; 덕치 중재 이니셔티브(상선약수) ➔ <strong>평화주의 주권 외교</strong></p>
         </div>
         <div class="arch-node green">
           <div class="node-icon">🤝</div>
           <div class="node-title" style="color: #4ce89a;">[세계 시민] 인류 연대</div>
-          <p class="node-desc">블록체인 글로벌 시민 여권(e-Passport) & 인도 구호 ➔ <strong>천하위공(天下爲公) 실천</strong></p>
+          <p class="node-desc">블록체인 DID 명예 여권(e-Passport) &amp; 인도 구호 ➔ <strong>천하위공(天下爲公) 실천</strong></p>
         </div>
         <div class="arch-node cyan">
           <div class="node-icon">🌐</div>
           <div class="node-title" style="color: var(--cyan);">[거버넌스] NEXFORUM</div>
-          <p class="node-desc">세계 AGI 안전·윤리 헌장 비준 & 연례 글로벌 서밋 ➔ <strong>미래 문명 거버넌스 주도</strong></p>
+          <p class="node-desc">세계 SI 안전·윤리 헌장 비준 &amp; 연례 글로벌 서밋 ➔ <strong>미래 문명 규범 주도</strong></p>
+        </div>
+        <div class="arch-node purple">
+          <div class="node-icon">🛰️</div>
+          <div class="node-title" style="color: #d0a5ff;">[인텔리전스] 대외 첩보</div>
+          <p class="node-desc">24/7 글로벌 리스크 모니터링 &amp; 5대 전략산업 ➔ <strong>국가 대외 안보·공급망 수호</strong></p>
         </div>
       </div>
 
@@ -404,7 +412,7 @@
       </div>
     </section>
 
-    <!-- 3대 국 세부 카드 섹션 -->
+    <!-- 4대 국 세부 카드 섹션 -->
     <section class="bureau-section">
 
       <!-- 1. 글로벌 외교·협력국 -->
@@ -414,18 +422,18 @@
             <span class="bureau-icon">🕊️</span>
             <div>
               <h3 class="bureau-name" style="color: var(--blue-sub);">1. 글로벌 외교·협력국</h3>
-              <span class="bureau-en">Bureau of Global Diplomacy & Strategic Treaties</span>
+              <span class="bureau-en">Bureau of Global Diplomacy &amp; Strategic Treaties</span>
             </div>
           </div>
-          <span class="bureau-tag blue">평화 외교 & 전략 조약</span>
+          <span class="bureau-tag blue">평화 외교 &amp; 전략 조약</span>
         </div>
         <div class="bureau-directive blue">
-          <strong>🎯 핵심 역할 및 지침:</strong> 키아노스 주권령의 독립성과 평화주의를 수호하며, 주요 중립국 및 테크 강국들과의 외교 관계 수립과 국제 분쟁의 평화적 중재를 총괄합니다.
+          <strong>🎯 핵심 역할 및 지침:</strong> 키아노스 주권령의 독립성과 평화주의를 수호하며, 스위스·싱가포르·UAE 등 주요 중립국 및 테크 강국들과의 외교 관계 수립과 국제 분쟁의 평화적 중재를 총괄합니다.
         </div>
         <ul class="bureau-list">
-          <li><strong>글로벌 재외 공관 및 영사 협정 체결:</strong> 스위스, 싱가포르, UAE 등 전략적 우호국과의 외교 사절단 파견 및 비자 면제 협정 비준.</li>
-          <li><strong>키아노스 평화 중재 이니셔티브:</strong> 덕치 제7조(상선약수)를 기반으로 다자간 분쟁과 무역 갈등을 화해로 이끄는 중재 회담 주최.</li>
-          <li><strong>무관세 자유무역구(FTZ) 외교 통상망:</strong> 경제부와 공조하여 입주 글로벌 테크·럭셔리 기업을 위한 다국적 외교 안전망 제공.</li>
+          <li><strong>글로벌 재외 공관 및 영사 협정 체결:</strong> 전략적 우호국과의 외교 사절단 파견 및 비자 면제 협정 비준.</li>
+          <li><strong>키아노스 평화 중재 이니셔티브(K-Peace):</strong> 덕치 제7조(상선약수)를 기반으로 다자간 분쟁과 글로벌 통상 갈등을 화해로 이끄는 중재 회담 주최.</li>
+          <li><strong>무관세 자유무역구(FTZ) 외교 통상망:</strong> 경제부(무역외교국)와 공조하여 입주 글로벌 테크·자산 운용 기업을 위한 다국적 외교 안전망 제공.</li>
         </ul>
       </article>
 
@@ -436,18 +444,18 @@
             <span class="bureau-icon">🤝</span>
             <div>
               <h3 class="bureau-name" style="color: #4ce89a;">2. 세계 시민 연대국</h3>
-              <span class="bureau-en">Bureau of World Citizens & Humanitarian Solidarity</span>
+              <span class="bureau-en">Bureau of World Citizens &amp; Humanitarian Solidarity</span>
             </div>
           </div>
-          <span class="bureau-tag green">인류 연대 & 글로벌 여권</span>
+          <span class="bureau-tag green">인류 연대 &amp; 글로벌 여권</span>
         </div>
         <div class="bureau-directive green">
-          <strong>🎯 핵심 역할 및 지침:</strong> 인종과 국경을 초월하여 전 세계 지성인들에게 명예 시민권을 부여하고, 국제적 인도주의 구호와 글로벌 청년 교류를 지휘합니다.
+          <strong>🎯 핵심 역할 및 지침:</strong> 인종과 국경을 초월하여 전 세계 지성인들에게 명예 시민권을 부여하고, 국제적 인도주의 구호와 글로벌 청년 인재 교류를 지휘합니다.
         </div>
         <ul class="bureau-list">
-          <li><strong>글로벌 시민 디지털 여권(e-Passport) 발급:</strong> 덕치 헌법과 평화 이념을 지지하는 전 세계 시민에게 블록체인 DID 명예 시민권 증명.</li>
-          <li><strong>국제 인도주의 구호 기금(Humanity Fund):</strong> 글로벌 재난 지역에 과학·AGI부의 무인 드론 물류 및 친환경 바이오 복구 패키지 긴급 무상 파견.</li>
-          <li><strong>세계 청년 평화 펠로우십 운영:</strong> 전 세계 미래 세대 청년들을 초청하여 인류 문명사, 덕치 철학, AGI 윤리 집중 교육.</li>
+          <li><strong>글로벌 시민 디지털 여권(e-Passport) 발급:</strong> 덕치 헌법과 평화 이념을 지지하는 전 세계 시민에게 블록체인 DID 명예 시민권 증명 부여.</li>
+          <li><strong>국제 인도주의 구호 기금(Humanity Fund):</strong> 글로벌 재난 및 기후 위기 지역에 과학·SI부의 무인 드론 물류 및 친환경 바이오 정화 솔루션 긴급 무상 파견.</li>
+          <li><strong>세계 청년 평화 펠로우십 운영:</strong> 전 세계 미래 세대 청년들을 초청하여 인류 문명사, 덕치 철학, 초지능(SI) 윤리 집중 교육.</li>
         </ul>
       </article>
 
@@ -458,18 +466,40 @@
             <span class="bureau-icon">🌐</span>
             <div>
               <h3 class="bureau-name" style="color: var(--cyan);">3. NEXFORUM 글로벌 거버넌스</h3>
-              <span class="bureau-en">Bureau of NEXFORUM Global Governance & AGI Policy</span>
+              <span class="bureau-en">Bureau of NEXFORUM Global Governance &amp; SI Policy</span>
             </div>
           </div>
-          <span class="bureau-tag cyan">AGI 글로벌 표준 제정</span>
+          <span class="bureau-tag cyan">초지능(SI) 글로벌 표준 제정</span>
         </div>
         <div class="bureau-directive cyan">
-          <strong>🎯 핵심 역할 및 지침:</strong> 키아노스 핵심 기둥인 NEXFORUM의 국제 정책 플랫폼으로서, 전 세계 정부와 빅테크가 준수해야 할 국제 AI 안전 표준 규범을 주도적으로 입안합니다.
+          <strong>🎯 핵심 역할 및 지침:</strong> 키아노스 핵심 기둥인 NEXFORUM의 국제 정책 플랫폼으로서, 전 세계 정부와 빅테크가 준수해야 할 국제 초지능(SI) 안전 규범과 상호운용 표준을 주도적으로 입안합니다.
         </div>
         <ul class="bureau-list">
-          <li><strong>세계 AGI 안전·윤리 헌장(Global Safety Accord) 비준:</strong> 인간 존엄성을 최우선으로 하는 국제 AI 통제 기준 수립 및 국제 본부 유치.</li>
-          <li><strong>연례 NEXFORUM 글로벌 서밋 정상회의 주관:</strong> 세계 정상, 빅테크 CEO, AGI 석학들이 한자리에 모여 인류의 미래를 설계하는 최고위 콘퍼런스.</li>
-          <li><strong>국가 인텔리전스 24/7 글로벌 시그널 브리핑:</strong> 전 세계 기술 패권, 통상 리스크, 지정학적 변화를 실시간 분석하여 국무회의에 직보.</li>
+          <li><strong>세계 SI 안전·윤리 헌장(Global Safety Accord) 비준:</strong> 인간 존엄성을 최우선으로 하는 초지능 윤리 통제 기준 수립 및 국제 본부 유치.</li>
+          <li><strong>연례 NEXFORUM 글로벌 서밋 정상회의 주관:</strong> 세계 정상, 빅테크 최고경영진, 글로벌 석학들이 한자리에 모여 인류 문명의 미래를 설계하는 최고위 회의 주최.</li>
+          <li><strong>다자간 글로벌 기술 표준화 공조:</strong> 주요 테크 허브 및 국제 표준화 기구와의 협력을 통해 개방형·안전형 차세대 SI 네트워크 규격 전파.</li>
+        </ul>
+      </article>
+
+      <!-- 4. 국가 인텔리전스 & 대외 리서치처 -->
+      <article class="bureau-card" style="border-color: rgba(170, 100, 255, 0.3);">
+        <div class="bureau-header">
+          <div class="bureau-title-group">
+            <span class="bureau-icon">🛰️</span>
+            <div>
+              <h3 class="bureau-name" style="color: #d0a5ff;">4. 국가 인텔리전스 &amp; 대외 리서치처</h3>
+              <span class="bureau-en">Bureau of National Intelligence &amp; Global Signals</span>
+            </div>
+          </div>
+          <span class="bureau-tag purple">24/7 글로벌 리스크 &amp; 5대 전략산업</span>
+        </div>
+        <div class="bureau-directive purple">
+          <strong>🎯 핵심 역할 및 지침:</strong> 24/7 글로벌 지정학 리스크와 거시경제 이상 징후를 감시하며, 파이튼 님의 5대 중점 전략 산업 공급망 첩보와 해외 정밀 칼럼 분석을 총괄합니다.
+        </div>
+        <ul class="bureau-list">
+          <li><strong>파이튼 님 5대 중점 전략 산업 공급망 첩보:</strong> 2차전지, 전기자동차(EV), 반도체, 초지능(SI), 로봇산업의 글로벌 밸류체인 및 지정학 리스크 실시간 모니터링.</li>
+          <li><strong>24/7 글로벌 시그널 조기경보:</strong> 주요국 통화 환율, 원자재·에너지 안보, 글로벌 유동성 위기 징후를 실시간 추적하여 국무회의 및 경제부와 즉시 공유.</li>
+          <li><strong>해외 심층 분석 칼럼·외신 룸:</strong> 마이클 스나이더(Michael Snyder) 등 유력 독립 싱크탱크 칼럼 원문 수집, 번역 및 국가 전략 함의 분석 보고서 발행.</li>
         </ul>
       </article>
 
