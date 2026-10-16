@@ -105,7 +105,21 @@ def safe_print(*args, **kwargs):
     except Exception:
         pass
 
+def background_snapshot_updater():
+    """백그라운드에서 60초마다 최신 시세를 수집하여 market_snapshot.json 자동 갱신"""
+    import time
+    while True:
+        try:
+            get_all_market_data()
+        except Exception:
+            pass
+        time.sleep(60)
+
 def start_server():
+    # 백그라운드 자동 스냅샷 갱신 데몬 스레드 가동
+    updater = threading.Thread(target=background_snapshot_updater, daemon=True)
+    updater.start()
+
     server_address = ('', PORT)
     with socketserver.TCPServer(server_address, MarketHandler) as httpd:
         safe_print(f"==================================================")
@@ -114,8 +128,9 @@ def start_server():
         safe_print(f" 브라우저 주소: http://localhost:{PORT}")
         safe_print(f"==================================================")
         
-        # 1초 후 브라우저 자동 오픈
-        threading.Timer(1.0, lambda: webbrowser.open(f"http://localhost:{PORT}")).start()
+        # --no-browser 옵션이 없을 때만 1초 후 브라우저 자동 오픈
+        if '--no-browser' not in sys.argv:
+            threading.Timer(1.0, lambda: webbrowser.open(f"http://localhost:{PORT}")).start()
         
         try:
             httpd.serve_forever()

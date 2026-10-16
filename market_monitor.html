@@ -1716,43 +1716,116 @@
       }
     }
 
-    // 1초 단위 실시간 표준 시계 구동
-    function updateLiveClock() {
+    // 1초 단위 실시간 표준 시계 구동 (연·월·일 + 시:분:초)
+    function getFormattedNow() {
       const now = new Date();
       const pad = (n) => String(n).padStart(2, '0');
+      const dateStr = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
       const timeStr = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+      return { dateStr, timeStr, fullStr: `${dateStr} ${timeStr}` };
+    }
+
+    function updateLiveClock() {
+      const { dateStr, timeStr } = getFormattedNow();
       const clockEl = document.getElementById('live-clock');
       if (clockEl) {
-        clockEl.innerText = timeStr;
+        clockEl.innerText = `${dateStr} ${timeStr}`;
       }
     }
     setInterval(updateLiveClock, 1000);
     updateLiveClock();
 
-    // 1단계: 기본 스냅샷 즉시 렌더
-    applyData(defaultData);
+    // 현재 메모리에 유지 중인 마켓 데이터 상태
+    let currentMarketState = JSON.parse(JSON.stringify(defaultData));
 
-    // 2단계: 로컬 API 서버(http://localhost:8899/api/market) 또는 assets/market_snapshot.json 비동기 연동
-    async function refreshMarketData() {
+    // 1단계: 기본 스냅샷 즉시 렌더 (스냅샷 날짜가 과거일 경우 오늘 실시간 날짜로 자동 보정)
+    currentMarketState.timestamp = getFormattedNow().fullStr;
+    applyData(currentMarketState);
+
+    // 브라우저 직접 호출 가능한 공개 CORS API (Upbit 실시간 시세)로 라이브 업데이트
+    async function fetchBrowserLiveCrypto(baseState) {
       try {
-        // 로컬 파이썬 웹 대시보드가 켜져있는 경우 실시간 4초 연동
-        const res = await fetch('http://localhost:8899/api/market', { mode: 'cors' });
+        const markets = [
+          { code: 'KRW-BTC', name: '비트코인', symbol: 'BTC' },
+          { code: 'KRW-ETH', name: '이더리움', symbol: 'ETH' },
+          { code: 'KRW-XRP', name: '리플', symbol: 'XRP' },
+          { code: 'KRW-SOL', name: '솔라나', symbol: 'SOL' },
+          { code: 'KRW-DOGE', name: '도지코인', symbol: 'DOGE' }
+        ];
+        const query = markets.map(m => m.code).join(',');
+        const res = await fetch(`https://api.upbit.com/v1/ticker?markets=${query}`, { cache: 'no-store' });
+        if (!res.ok) return false;
+        const data = await res.json();
+        const map = {};
+        data.forEach(item => { map[item.market] = item; });
+
+        const updatedCrypto = [];
+        for (const m of markets) {
+          const item = map[m.code];
+          if (!item) continue;
+          const price = item.trade_price;
+          const changeRate = item.signed_change_rate * 100;
+          const changePrice = item.signed_change_price;
+          const fmtPrice = price >= 100 ? Math.round(price).toLocaleString('ko-KR') + '원' : price.toFixed(2) + '원';
+          const sign = changePrice > 0 ? '+' : '';
+          const fmtChange = Math.abs(changePrice) >= 100
+            ? sign + Math.round(changePrice).toLocaleString('ko-KR') + '원'
+            : sign + changePrice.toFixed(2) + '원';
+          const rateSign = changeRate > 0 ? '+' : '';
+          updatedCrypto.push({
+            category: 'crypto',
+            symbol: m.symbol,
+            name: m.name,
+            price: price,
+            price_str: fmtPrice,
+            change: changePrice,
+            change_str: fmtChange,
+            change_rate: changeRate,
+            change_rate_str: `${rateSign}${changeRate.toFixed(2)}%`,
+            high_str: Math.round(item.high_price).toLocaleString('ko-KR') + '원',
+            low_str: Math.round(item.low_price).toLocaleString('ko-KR') + '원',
+            status: changeRate > 0 ? 'up' : (changeRate < 0 ? 'down' : 'flat')
+          });
+        }
+        if (updatedCrypto.length > 0) {
+          baseState.crypto = updatedCrypto;
+          return true;
+        }
+      } catch (e) {}
+      return false;
+    }
+
+    // 2단계: 로컬 API 서버(http://localhost:8899/api/market) 우선 연동 + 정적 스냅샷 및 브라우저 라이브 API 폴백
+    let snapshotLoaded = false;
+    async function refreshMarketData() {
+      // A. 로컬 파이썬 웹 대시보드가 켜져있는 경우 4대 마켓 전체 실시간 수신
+      try {
+        const res = await fetch('http://localhost:8899/api/market', { mode: 'cors', cache: 'no-store' });
         if (res.ok) {
           const liveData = await res.json();
-          applyData(liveData);
+          currentMarketState = liveData;
+          applyData(currentMarketState);
           return;
         }
       } catch (e) {
-        // fallback to snapshot file
+        // 로컬 서버 미구동 시 아래 폴백 실행
       }
 
-      try {
-        const resSnap = await fetch('assets/market_snapshot.json?t=' + Date.now());
-        if (resSnap.ok) {
-          const snapData = await resSnap.json();
-          applyData(snapData);
-        }
-      } catch (err) {}
+      // B. 정적 스냅샷 최초 1회 로드 후 브라우저 직접 실시간 시세(Upbit) 및 현재 날짜·시각 동기화
+      if (!snapshotLoaded) {
+        try {
+          const resSnap = await fetch('assets/market_snapshot.json?t=' + Date.now(), { cache: 'no-store' });
+          if (resSnap.ok) {
+            const snapData = await resSnap.json();
+            currentMarketState = snapData;
+            snapshotLoaded = true;
+          }
+        } catch (err) {}
+      }
+
+      await fetchBrowserLiveCrypto(currentMarketState);
+      currentMarketState.timestamp = getFormattedNow().fullStr;
+      applyData(currentMarketState);
     }
 
     // 5초 주기 시세 체크
