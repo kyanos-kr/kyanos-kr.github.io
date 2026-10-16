@@ -26,8 +26,13 @@
 
 ---
 
-## 📂 보관 핵심 문서 및 링크
+## 📂 보관 핵심 문서 및 독립 시행 웹 포털 링크
 - `국제부_하위조직설계안.md` (국제부 공식 편제 및 직제 세부 설계안)
-- `국제부_공식포털_열기.url` (국제부 독립 웹 국정 포털 `gov_international.html` 바로가기)
+- `국제부_공식포털_열기.url` (국제부 통합 웹 국정 포털 `gov_international.html` 바로가기)
+- **4대 직제별 독립 시행 웹 포털**:
+  1. 🕊️ [intl_diplomacy.html](../../intl_diplomacy.html) (평화 외교 & 전략 조약 시행 포털)
+  2. 🤝 [intl_citizens.html](../../intl_citizens.html) (세계 시민 연대 & 디지털 여권 시행 포털)
+  3. 🌐 [intl_governance.html](../../intl_governance.html) (NEXFORUM 글로벌 거버넌스 & SI 윤리 포털)
+  4. 🛰️ [intl_intelligence.html](../../intl_intelligence.html) (국가 인텔리전스 & 5대 전략산업 첩보처 포털)
 - `스나이더_번역원문/` (글로벌 지정학/경제 분석 칼럼 원문 아카이브)
 

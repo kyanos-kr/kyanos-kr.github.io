@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXFORUM 글로벌 거버넌스 &amp; 초지능(SI) 윤리 표준 포털</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=JetBrains+Mono:wght@400;600;700&family=Noto+Serif+KR:wght@400;600;700&family=Pretendard:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/kyanos_i18n.css">
+  <style>
+    :root {
+      --bg-dark: #030d1a;
+      --card-bg: rgba(5, 22, 44, 0.85);
+      --border-cyan: rgba(0, 210, 255, 0.35);
+      --cyan: #00d2ff;
+      --cyan-glow: rgba(0, 210, 255, 0.4);
+      --gold: #d4af37;
+      --gold-light: #f3e5ab;
+      --text-main: #f0f6ff;
+      --text-sub: #a5b8d0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-dark);
+      background-image:
+        radial-gradient(circle at 50% 0%, rgba(0, 210, 255, 0.18) 0%, transparent 60%),
+        radial-gradient(circle at 10% 60%, rgba(0, 150, 255, 0.1) 0%, transparent 50%);
+      color: var(--text-main);
+      font-family: 'Pretendard', sans-serif;
+      min-height: 100vh;
+      line-height: 1.7;
+    }
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(3, 13, 26, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-cyan);
+      padding: 0.9rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .brand-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand-icon { font-size: 1.8rem; }
+    .brand-title .en { font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.14em; color: var(--gold); display: block; }
+    .brand-title .kr { font-size: 1.05rem; font-weight: 700; color: #fff; }
+    .nav-actions { display: flex; gap: 10px; align-items: center; }
+    .nav-btn {
+      padding: 6px 14px; border-radius: 20px; font-size: 0.82rem; font-weight: 600;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: all 0.25s ease;
+    }
+    .nav-btn-cyan { background: rgba(0, 210, 255, 0.15); border: 1px solid var(--cyan); color: var(--cyan); }
+    .nav-btn-cyan:hover { background: var(--cyan); color: #030d1a; box-shadow: 0 0 15px var(--cyan-glow); }
+    .nav-btn-gold { background: rgba(212, 175, 55, 0.15); border: 1px solid var(--gold); color: var(--gold-light); }
+    .nav-btn-gold:hover { background: var(--gold); color: #000; box-shadow: 0 0 15px rgba(212,175,55,0.4); }
+    .container { max-width: 1200px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+    .hero { text-align: center; margin-bottom: 3rem; }
+    .hero-badge {
+      display: inline-block; font-size: 0.75rem; color: var(--cyan); letter-spacing: 0.2em;
+      text-transform: uppercase; font-weight: 700; background: rgba(0, 210, 255, 0.12);
+      border: 1px solid var(--border-cyan); padding: 4px 14px; border-radius: 20px; margin-bottom: 0.8rem;
+    }
+    .hero-title { font-family: 'Cinzel', serif; font-size: 2.4rem; color: #fff; margin-bottom: 0.6rem; }
+    .hero-desc { font-size: 1rem; color: var(--text-sub); max-width: 780px; margin: 0 auto; }
+
+    /* Accord Box */
+    .accord-box {
+      background: rgba(4, 18, 38, 0.9); border: 1.5px solid var(--cyan); border-radius: 16px; padding: 2.2rem;
+      margin-bottom: 3rem; box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    }
+    .accord-box h2 { font-family: 'Cinzel', serif; color: var(--cyan); font-size: 1.4rem; margin-bottom: 1rem; }
+    .accord-box p { font-size: 0.94rem; color: #e2e8f0; line-height: 1.8; margin-bottom: 1.2rem; }
+    .accord-principles { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; }
+    .principle-card {
+      background: rgba(2, 9, 20, 0.75); border: 1px solid rgba(0, 210, 255, 0.2); border-radius: 10px; padding: 1.2rem;
+    }
+    .principle-card h4 { font-size: 0.95rem; color: var(--cyan); margin-bottom: 0.4rem; }
+    .principle-card p { font-size: 0.82rem; color: var(--text-sub); line-height: 1.6; margin-bottom: 0; }
+
+    /* Summit Timeline Grid */
+    .summit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+    .summit-card {
+      background: var(--card-bg); border: 1px solid var(--border-cyan); border-radius: 14px; padding: 1.8rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    }
+    .summit-card h4 { font-size: 1.2rem; color: #fff; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 8px; }
+    .summit-card p { font-size: 0.88rem; color: var(--text-sub); line-height: 1.7; margin-bottom: 1rem; }
+    .summit-list { list-style: none; font-size: 0.84rem; color: #cfd9e8; display: flex; flex-direction: column; gap: 0.5rem; }
+    .summit-list li { padding-left: 1.2rem; position: relative; }
+    .summit-list li::before { content: "✦"; position: absolute; left: 0; color: var(--cyan); }
+    footer { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="gov_international.html" class="brand-wrap">
+      <span class="brand-icon">🌐</span>
+      <div class="brand-title">
+        <span class="en">NEXFORUM GLOBAL GOVERNANCE &amp; SI POLICY</span>
+        <span class="kr">키아노스 NEXFORUM 글로벌 거버넌스</span>
+      </div>
+    </a>
+    <div class="nav-actions">
+      <a href="gov_international.html" class="nav-btn nav-btn-cyan"><span>🌍</span> 국제부 포털</a>
+      <a href="main.html" class="nav-btn nav-btn-gold"><span>👑</span> 키아노스 메인</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-badge">Global AI/SI Standards &amp; Ethical Accord</div>
+      <h1 class="hero-title">🌐 NEXFORUM 글로벌 거버넌스 회의</h1>
+      <p class="hero-desc">
+        키아노스 2대 핵심 기둥인 NEXFORUM의 국제 외교 플랫폼으로서, 전 세계 정부와 빅테크가 참여하는 국제 초지능(SI) 안전 윤리 헌장 제정과 글로벌 기술 표준을 주도합니다.
+      </p>
+    </section>
+
+    <!-- 세계 SI 안전·윤리 헌장 -->
+    <section class="accord-box">
+      <h2>📜 세계 초지능(SI) 안전·윤리 헌장 (Global SI Safety Accord)</h2>
+      <p>
+        인간의 존엄성과 덕치 철학을 훼손하지 않는 안전한 초지능 문명을 위해 키아노스가 주도적으로 입안한 국제 3대 안전 원칙입니다.
+      </p>
+      <div class="accord-principles">
+        <div class="principle-card">
+          <h4>1. 인간 존엄 및 생명 최우선 원칙</h4>
+          <p>어떠한 초지능 시스템도 인간의 생명권을 위협하거나 비인도적 군사 무기화의 자율 결정을 내릴 수 없다.</p>
+        </div>
+        <div class="principle-card">
+          <h4>2. 완전 투명성 및 검증 가능성</h4>
+          <p>모든 고위험 SI 모델은 덕치 사법원 및 국제 감사단의 알고리즘 안정성 검증을 거쳐야 한다.</p>
+        </div>
+        <div class="principle-card">
+          <h4>3. 보편적 공영 및 천하위공(天下爲公)</h4>
+          <p>초지능으로 발생하는 막대한 경제적 잉여와 기술 혜택은 특정 독점 기업이 아닌 전 인류에게 배분된다.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 글로벌 서밋 및 다자간 표준 회의 -->
+    <section class="summit-grid">
+      <div class="summit-card">
+        <h4><span>🏛️</span> 연례 NEXFORUM 글로벌 서밋 정상회의</h4>
+        <p>세계 주요국 정상, 글로벌 빅테크 최고경영자(CEO), AGI 최고 석학들이 모여 미래 인류 문명 아키텍처를 토론하는 최고위 국제회의입니다.</p>
+        <ul class="summit-list">
+          <li>키아노스 주최 제1회 글로벌 SI 거버넌스 서밋 기획</li>
+          <li>국제 AI 안전 통제 협약(Multilateral Accord) 공동 성명 발표</li>
+          <li>초지능 시대 노동과 분배 정의에 관한 다자간 협의체 가동</li>
+        </ul>
+      </div>
+
+      <div class="summit-card">
+        <h4><span>⚡</span> 글로벌 상호운용 테크 표준화 회의</h4>
+        <p>미국, 유럽연합(EU), 아시아 테크 허브와 연계하여 국가 간 AI 인프라 상호운용성과 양자 보안 규격을 조율하는 실무 표준 기구입니다.</p>
+        <ul class="summit-list">
+          <li>개방형 차세대 SI 네트워크 프로토콜 국제 표준화 주도</li>
+          <li>국경 간 데이터 주권 및 개인정보 암호화 통신 규약 비준</li>
+          <li>Project TALOS 로봇·드론의 국제 안전 인증 프레임워크 수립</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      <a href="gov_international.html" class="nav-btn nav-btn-cyan" style="padding: 0.8rem 2rem;">
+        <span>⬅️</span> 국제부 통합 포털로 돌아가기
+      </a>
+    </footer>
+  </main>
+  <script src="assets/js/kyanos_i18n.js"></script>
+</body>
+</html>

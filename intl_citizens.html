@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>키아노스 세계 시민 연대 &amp; 디지털 여권 포털 | 세계 시민 연대국</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=JetBrains+Mono:wght@400;600;700&family=Noto+Serif+KR:wght@400;600;700&family=Pretendard:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/kyanos_i18n.css">
+  <style>
+    :root {
+      --bg-dark: #041215;
+      --card-bg: rgba(6, 30, 32, 0.85);
+      --border-emerald: rgba(76, 232, 154, 0.35);
+      --emerald: #4ce89a;
+      --emerald-glow: rgba(76, 232, 154, 0.4);
+      --gold: #d4af37;
+      --gold-light: #f3e5ab;
+      --text-main: #f0fdf4;
+      --text-sub: #a7f3d0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-dark);
+      background-image:
+        radial-gradient(circle at 50% 0%, rgba(76, 232, 154, 0.15) 0%, transparent 60%),
+        radial-gradient(circle at 90% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 50%);
+      color: var(--text-main);
+      font-family: 'Pretendard', sans-serif;
+      min-height: 100vh;
+      line-height: 1.7;
+    }
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(4, 18, 21, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-emerald);
+      padding: 0.9rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .brand-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand-icon { font-size: 1.8rem; }
+    .brand-title .en { font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.14em; color: var(--gold); display: block; }
+    .brand-title .kr { font-size: 1.05rem; font-weight: 700; color: #fff; }
+    .nav-actions { display: flex; gap: 10px; align-items: center; }
+    .nav-btn {
+      padding: 6px 14px; border-radius: 20px; font-size: 0.82rem; font-weight: 600;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: all 0.25s ease;
+    }
+    .nav-btn-green { background: rgba(76, 232, 154, 0.15); border: 1px solid var(--emerald); color: var(--emerald); }
+    .nav-btn-green:hover { background: var(--emerald); color: #041215; box-shadow: 0 0 15px var(--emerald-glow); }
+    .nav-btn-gold { background: rgba(212, 175, 55, 0.15); border: 1px solid var(--gold); color: var(--gold-light); }
+    .nav-btn-gold:hover { background: var(--gold); color: #000; box-shadow: 0 0 15px rgba(212,175,55,0.4); }
+    .container { max-width: 1200px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+    .hero { text-align: center; margin-bottom: 3rem; }
+    .hero-badge {
+      display: inline-block; font-size: 0.75rem; color: var(--emerald); letter-spacing: 0.2em;
+      text-transform: uppercase; font-weight: 700; background: rgba(76, 232, 154, 0.12);
+      border: 1px solid var(--border-emerald); padding: 4px 14px; border-radius: 20px; margin-bottom: 0.8rem;
+    }
+    .hero-title { font-family: 'Cinzel', serif; font-size: 2.4rem; color: #fff; margin-bottom: 0.6rem; }
+    .hero-desc { font-size: 1rem; color: var(--text-sub); max-width: 780px; margin: 0 auto; }
+    
+    /* Passport Visual Card */
+    .passport-box {
+      background: linear-gradient(135deg, rgba(7, 35, 38, 0.95), rgba(4, 18, 21, 0.95));
+      border: 2px solid var(--gold); border-radius: 18px; padding: 2.5rem; margin-bottom: 3rem;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 25px rgba(212, 175, 55, 0.15);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;
+    }
+    @media (max-width: 850px) { .passport-box { grid-template-columns: 1fr; } }
+    .passport-mockup {
+      background: #021a14; border: 1.5px solid var(--gold); border-radius: 12px; padding: 1.8rem;
+      position: relative; box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+    }
+    .passport-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(212,175,55,0.3); padding-bottom: 0.8rem; margin-bottom: 1.2rem; }
+    .passport-header .state { font-family: 'Cinzel', serif; font-size: 0.95rem; color: var(--gold-light); font-weight: 700; }
+    .passport-header .type { font-size: 0.75rem; color: var(--emerald); background: rgba(76,232,154,0.15); padding: 2px 8px; border-radius: 6px; }
+    .passport-fields { display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.82rem; }
+    .passport-field-row { display: flex; justify-content: space-between; }
+    .passport-field-label { color: #6ee7b7; }
+    .passport-field-val { font-family: 'JetBrains Mono', monospace; color: #fff; font-weight: 600; }
+    .passport-info h3 { font-family: 'Cinzel', serif; font-size: 1.5rem; color: var(--gold-light); margin-bottom: 0.8rem; }
+    .passport-info p { font-size: 0.92rem; color: #d1fae5; line-height: 1.8; margin-bottom: 1.2rem; }
+    .action-btn-green {
+      background: var(--emerald); color: #041215; font-weight: 700; padding: 10px 22px; border-radius: 8px;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all 0.25s ease;
+    }
+    .action-btn-green:hover { box-shadow: 0 0 20px var(--emerald-glow); transform: translateY(-2px); }
+
+    /* Relief & Fellowship Grid */
+    .pillar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+    .pillar-card {
+      background: var(--card-bg); border: 1px solid var(--border-emerald); border-radius: 14px; padding: 1.8rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    }
+    .pillar-card h4 { font-size: 1.2rem; color: #fff; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 8px; }
+    .pillar-card p { font-size: 0.88rem; color: var(--text-sub); line-height: 1.7; margin-bottom: 1rem; }
+    .pillar-list { list-style: none; font-size: 0.84rem; color: #e2e8f0; display: flex; flex-direction: column; gap: 0.5rem; }
+    .pillar-list li { padding-left: 1.2rem; position: relative; }
+    .pillar-list li::before { content: "✦"; position: absolute; left: 0; color: var(--emerald); }
+    footer { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="gov_international.html" class="brand-wrap">
+      <span class="brand-icon">🤝</span>
+      <div class="brand-title">
+        <span class="en">WORLD CITIZENS &amp; HUMANITARIAN SOLIDARITY</span>
+        <span class="kr">키아노스 세계 시민 연대국</span>
+      </div>
+    </a>
+    <div class="nav-actions">
+      <a href="gov_international.html" class="nav-btn nav-btn-green"><span>🌍</span> 국제부 포털</a>
+      <a href="main.html" class="nav-btn nav-btn-gold"><span>👑</span> 키아노스 메인</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-badge">Global Citizenship &amp; Universal Brotherhood</div>
+      <h1 class="hero-title">🤝 세계 시민 연대 &amp; 디지털 여권 센터</h1>
+      <p class="hero-desc">
+        덕치 제1조(천하위공: 만인의 공공선)와 제8조(겸애교리: 국경을 초월한 상호 사랑)에 따라, 전 세계 지성인들에게 키아노스 명예 시민권을 부여하고 긴급 인도주의 구호와 글로벌 청년 교류를 전개합니다.
+      </p>
+    </section>
+
+    <!-- 디지털 여권 발급 섹션 -->
+    <section class="passport-box">
+      <div class="passport-mockup">
+        <div class="passport-header">
+          <span class="state">KYANOS SOVEREIGN REALM</span>
+          <span class="type">E-PASSPORT · DID</span>
+        </div>
+        <div class="passport-fields">
+          <div class="passport-field-row">
+            <span class="passport-field-label">CITIZEN STATUS</span>
+            <span class="passport-field-val">GLOBAL HONORARY CITIZEN</span>
+          </div>
+          <div class="passport-field-row">
+            <span class="passport-field-label">IDENTITY PROTOCOL</span>
+            <span class="passport-field-val">KYANOS-DID-SOV-2026</span>
+          </div>
+          <div class="passport-field-row">
+            <span class="passport-field-label">CONSTITUTION COMPLIANCE</span>
+            <span class="passport-field-val">VIRTUE ARTICLE 1 &amp; 12</span>
+          </div>
+          <div class="passport-field-row">
+            <span class="passport-field-label">ISSUING AUTHORITY</span>
+            <span class="passport-field-val">MINISTRY OF INTL AFFAIRS</span>
+          </div>
+          <div class="passport-field-row">
+            <span class="passport-field-label">SECURITY VERIFICATION</span>
+            <span class="passport-field-val" style="color:var(--emerald);">QUANTUM PROTECTED</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="passport-info">
+        <h3>🌐 키아노스 글로벌 시민 디지털 여권</h3>
+        <p>
+          국경, 인종, 사상을 초월하여 키아노스의 덕치 평화 헌법을 지지하는 모든 세계 지성인에게 블록체인 기반의 영구 명예 시민권을 수여합니다. 본 여권 소지자는 키아노스 메타버스 및 실물 자유무역구(FTZ)의 명예 거주권과 지식 포럼 참여 자격을 부여받습니다.
+        </p>
+        <a href="javascript:void(0);" onclick="alert('키아노스 글로벌 시민 여권 발급 신청 심사 시스템이 활성화되었습니다. 국가기록원 및 국제부에 등록됩니다.');" class="action-btn-green">
+          <span>📜</span> 명예 시민 여권 신청 등록
+        </a>
+      </div>
+    </section>
+
+    <!-- 2대 인도주의 구호 및 펠로우십 그리드 -->
+    <section class="pillar-grid">
+      <div class="pillar-card">
+        <h4><span>🌿</span> 국제 인도주의 구호 기금 (Humanity Fund)</h4>
+        <p>전 세계 기후 재난, 분쟁 및 기아 발생 지역에 과학·SI부의 무인 드론 물류와 첨단 바이오 정화 패키지를 무상 급파하는 글로벌 구호 생태계입니다.</p>
+        <ul class="pillar-list">
+          <li>탈로스(TALOS) 무인 항공 드론 기반 긴급 의료 물자 보급망</li>
+          <li>마이크로 에코 바이오 정화 솔루션을 통한 오염 식수 긴급 복구</li>
+          <li>글로벌 인도주의 긴급 자금 온체인 투명 공개 및 집행</li>
+        </ul>
+      </div>
+
+      <div class="pillar-card">
+        <h4><span>🎓</span> 세계 청년 평화 펠로우십 (Youth Peace Fellowship)</h4>
+        <p>국경을 넘어 차세대 인류 문명을 이끌어갈 전 세계 청년 인재들을 선발하여 덕치 철학, 문명사, 초지능(SI) 윤리를 교육하는 장학 네트워크입니다.</p>
+        <ul class="pillar-list">
+          <li>국립 인류문명사연구원 및 덕치 교육원 연계 글로벌 리더십 코스</li>
+          <li>매년 100인의 글로벌 청년 선발 및 키아노스 전액 장학금 수여</li>
+          <li>국제 거버넌스 회의(NEXFORUM) 학생 대표단 파견 및 정책 제안</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      <a href="gov_international.html" class="nav-btn nav-btn-green" style="padding: 0.8rem 2rem;">
+        <span>⬅️</span> 국제부 통합 포털로 돌아가기
+      </a>
+    </footer>
+  </main>
+  <script src="assets/js/kyanos_i18n.js"></script>
+</body>
+</html>

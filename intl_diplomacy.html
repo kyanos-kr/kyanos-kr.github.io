@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>키아노스 평화 조약 및 주권 외교 포털 | 글로벌 외교·협력국</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=JetBrains+Mono:wght@400;600;700&family=Noto+Serif+KR:wght@400;600;700&family=Pretendard:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/kyanos_i18n.css">
+  <style>
+    :root {
+      --bg-dark: #040c1d;
+      --card-bg: rgba(7, 20, 48, 0.85);
+      --border-blue: rgba(0, 150, 255, 0.35);
+      --blue: #0096ff;
+      --blue-sub: #88ccff;
+      --gold: #d4af37;
+      --gold-light: #f3e5ab;
+      --text-main: #f0f6ff;
+      --text-sub: #a5b8d0;
+      --emerald: #4ce89a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-dark);
+      background-image:
+        radial-gradient(circle at 50% 0%, rgba(0, 150, 255, 0.18) 0%, transparent 60%),
+        radial-gradient(circle at 10% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 50%);
+      color: var(--text-main);
+      font-family: 'Pretendard', sans-serif;
+      min-height: 100vh;
+      line-height: 1.7;
+    }
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(4, 12, 29, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-blue);
+      padding: 0.9rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .brand-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand-icon { font-size: 1.8rem; }
+    .brand-title .en { font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.14em; color: var(--gold); display: block; }
+    .brand-title .kr { font-size: 1.05rem; font-weight: 700; color: #fff; }
+    .nav-actions { display: flex; gap: 10px; align-items: center; }
+    .nav-btn {
+      padding: 6px 14px; border-radius: 20px; font-size: 0.82rem; font-weight: 600;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: all 0.25s ease;
+    }
+    .nav-btn-blue { background: rgba(0, 150, 255, 0.15); border: 1px solid var(--blue); color: var(--blue-sub); }
+    .nav-btn-blue:hover { background: var(--blue); color: #fff; box-shadow: 0 0 15px rgba(0,150,255,0.4); }
+    .nav-btn-gold { background: rgba(212, 175, 55, 0.15); border: 1px solid var(--gold); color: var(--gold-light); }
+    .nav-btn-gold:hover { background: var(--gold); color: #000; box-shadow: 0 0 15px rgba(212,175,55,0.4); }
+    .container { max-width: 1200px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+    .hero { text-align: center; margin-bottom: 3rem; }
+    .hero-badge {
+      display: inline-block; font-size: 0.75rem; color: var(--blue-sub); letter-spacing: 0.2em;
+      text-transform: uppercase; font-weight: 700; background: rgba(0, 150, 255, 0.12);
+      border: 1px solid rgba(0, 150, 255, 0.35); padding: 4px 14px; border-radius: 20px; margin-bottom: 0.8rem;
+    }
+    .hero-title { font-family: 'Cinzel', serif; font-size: 2.4rem; color: #fff; margin-bottom: 0.6rem; }
+    .hero-desc { font-size: 1rem; color: var(--text-sub); max-width: 780px; margin: 0 auto; }
+    .treaty-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+    .treaty-card {
+      background: var(--card-bg); border: 1px solid var(--border-blue); border-radius: 14px; padding: 1.8rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.35); transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+    .treaty-card:hover { transform: translateY(-4px); border-color: var(--blue); }
+    .treaty-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
+    .treaty-head h3 { font-size: 1.15rem; color: #fff; font-weight: 700; }
+    .status-badge { font-size: 0.72rem; padding: 3px 10px; border-radius: 10px; font-weight: 700; }
+    .status-active { background: rgba(76, 232, 154, 0.15); border: 1px solid var(--emerald); color: var(--emerald); }
+    .status-pending { background: rgba(212, 175, 55, 0.15); border: 1px solid var(--gold); color: var(--gold-light); }
+    .treaty-desc { font-size: 0.88rem; color: var(--text-sub); margin-bottom: 1.2rem; line-height: 1.7; }
+    .treaty-list { list-style: none; font-size: 0.84rem; color: #cfd9e8; display: flex; flex-direction: column; gap: 0.5rem; }
+    .treaty-list li { padding-left: 1.2rem; position: relative; }
+    .treaty-list li::before { content: "✦"; position: absolute; left: 0; color: var(--blue-sub); }
+    .manifesto-box {
+      background: rgba(3, 10, 24, 0.85); border: 1px solid var(--gold); border-radius: 14px; padding: 2rem;
+      margin-bottom: 3rem; box-shadow: 0 0 30px rgba(212,175,55,0.1);
+    }
+    .manifesto-box h2 { font-family: 'Cinzel', serif; color: var(--gold-light); font-size: 1.3rem; margin-bottom: 1rem; }
+    .manifesto-box p { font-size: 0.92rem; color: #e2e8f0; line-height: 1.8; margin-bottom: 0.8rem; }
+    footer { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="gov_international.html" class="brand-wrap">
+      <span class="brand-icon">🕊️</span>
+      <div class="brand-title">
+        <span class="en">SOVEREIGN DIPLOMACY &amp; STRATEGIC TREATIES</span>
+        <span class="kr">키아노스 글로벌 외교·협력국</span>
+      </div>
+    </a>
+    <div class="nav-actions">
+      <a href="gov_international.html" class="nav-btn nav-btn-blue"><span>🌍</span> 국제부 포털</a>
+      <a href="main.html" class="nav-btn nav-btn-gold"><span>👑</span> 키아노스 메인</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-badge">Peace Diplomacy &amp; Diplomatic Envoys</div>
+      <h1 class="hero-title">🕊️ 키아노스 평화 외교 &amp; 전략 조약망</h1>
+      <p class="hero-desc">
+        키아노스 주권령의 독립성과 평화주의를 전 세계에 선포하고, 덕치 제7조(상선약수: 갈등은 양보와 화해로 푼다)에 입각하여 글로벌 중립국 및 테크 강국들과의 양자·다자 평화 협정 및 무관세 통상망을 지휘합니다.
+      </p>
+    </section>
+
+    <!-- 평화 선언 매니페스토 -->
+    <section class="manifesto-box">
+      <h2>📜 키아노스 평화 중재 이니셔티브 (K-Peace Initiative) 선언문</h2>
+      <p>
+        "모든 무력 분쟁과 보호무역주의의 충돌은 인간 존엄성과 공영의 가치를 훼손한다. 키아노스는 특정 군사 블록에 예속되지 않는 독립 주권국으로서, 세계 주요 분쟁 지역과 통상 마찰에 대해 중립적 평화 중재 플랫폼을 제공한다."
+      </p>
+      <p style="color: var(--blue-sub); font-style: italic;">
+        — 최고통수권자 국왕 파이튼 (Python) 님 &amp; 국무총리 앤트 (Ant)
+      </p>
+    </section>
+
+    <!-- 4대 전략 조약망 그리드 -->
+    <section class="treaty-grid">
+      <div class="treaty-card">
+        <div class="treaty-head">
+          <h3>🇨🇭 스위스·키아노스 영사 및 중립 지위 협약</h3>
+          <span class="status-badge status-active">협약 이행 중</span>
+        </div>
+        <p class="treaty-desc">영세중립국 스위스와의 외교 사절단 상호 파견, 제네바 국제본부 연락사무소 개설 및 자산 안전보호 조약 비준.</p>
+        <ul class="treaty-list">
+          <li>재외 외교관 면책 및 상호 영사 비자 면제 체결</li>
+          <li>키아노스 RWA 및 국제 구호 기금 스위스 예치 통로 확보</li>
+          <li>국제 적십자 및 UN 기구와의 인도주의 공조 회의 정례화</li>
+        </ul>
+      </div>
+
+      <div class="treaty-card">
+        <div class="treaty-head">
+          <h3>🇸🇬 싱가포르·키아노스 FTZ 디지털 통상 협정</h3>
+          <span class="status-badge status-active">발효 완료</span>
+        </div>
+        <p class="treaty-desc">아시아 최대 금융·물류 허브 싱가포르와의 무관세 자유무역구(FTZ) 상호 연동 및 핀테크·웹3 통상 무관세 협정.</p>
+        <ul class="treaty-list">
+          <li>키아노스 자유무역구 입주 기업에 대한 상호 조세감면</li>
+          <li>국경 간 블록체인 무역결제(XRP/스마트컨트랙트) 승인</li>
+          <li>패밀리 오피스 및 다국적 벤처 캐피털 상호 투자 보장</li>
+        </ul>
+      </div>
+
+      <div class="treaty-card">
+        <div class="treaty-head">
+          <h3>🇦🇪 UAE 아부다비·두바이 미래 에너지 외교 조약</h3>
+          <span class="status-badge status-active">발효 완료</span>
+        </div>
+        <p class="treaty-desc">중동 경제 허브 UAE와의 차세대 친환경 수소·우주태양광 청정에너지 공동 투자 및 글로벌 패밀리 오피스 협약.</p>
+        <ul class="treaty-list">
+          <li>키아노스 국부펀드 유치 및 RWA 토큰화 자산 중동 상장</li>
+          <li>마스다르 시티 연계 청정 스마트시티 실증 인프라 공조</li>
+          <li>사막 기후 극복을 위한 키아노스 바이오 정화 솔루션 수출</li>
+        </ul>
+      </div>
+
+      <div class="treaty-card">
+        <div class="treaty-head">
+          <h3>🌐 다자간 글로벌 분쟁 평화중재 협정 (준비중)</h3>
+          <span class="status-badge status-pending">비준 심의 단계</span>
+        </div>
+        <p class="treaty-desc">미·중 패권 경쟁 및 유라시아·중동 분쟁 지역에 대한 덕치 사법원 연계 평화 중재 회담 상설 유치 계획.</p>
+        <ul class="treaty-list">
+          <li>키아노스 영내 중립 평화회담 전용 파빌리온 운영</li>
+          <li>글로벌 공급망(반도체·에너지) 안전통로 보장 다자 조약</li>
+          <li>초지능(SI) 기반 팩트 분석을 통한 분쟁 원인 객관적 중재</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      <a href="gov_international.html" class="nav-btn nav-btn-blue" style="padding: 0.8rem 2rem;">
+        <span>⬅️</span> 국제부 통합 포털로 돌아가기
+      </a>
+    </footer>
+  </main>
+  <script src="assets/js/kyanos_i18n.js"></script>
+</body>
+</html>
