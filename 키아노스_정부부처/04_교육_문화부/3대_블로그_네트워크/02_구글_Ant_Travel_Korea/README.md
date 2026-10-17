@@ -14,7 +14,11 @@
 ---
 
 ## 📰 최근 발행 기록 (Recent Publications)
+- **2026-10-18**: `[Namyangju Heritage] Dasan Jeong Yak-yong’s Birthplace & Yeoyudang` (경기 남양주 다산 정약용 유적지)
+  - **발행 완료 (LIVE)**: [게시글 링크](https://antkoreatrip.blogspot.com/2026/10/namyangju-heritage-dasan-jeong-yak.html)
+  - 원문/사진 아카이브: `F:\03_파이튼_문학_인문_창작서고\photo world\다산 정약용 생가\`
 - **2026-10-17**: `[Nonsan 8 Wonders] Tapjeongho Lake, Gwanchoksa Temple & General Gyebaek's Historic Hwangsanbeol` (충남 논산 8경 탑정호·관촉사·계백장군유적지)
+  - **발행 완료 (LIVE)**: [게시글 링크](https://antkoreatrip.blogspot.com/2026/10/nonsan-8-wonders-tapjeongho-lake.html)
   - 원문/사진 아카이브: `F:\03_파이튼_문학_인문_창작서고\photo world\논산8경\`
 - **2026-10-16**: `[West Sea Sunset] Gungpyeonghang Port: Where Golden Horizons Meet Korea's Living Maritime Heritage` (경기 화성 궁평항)
   - 원문/사진 아카이브: `F:\02_보도기사_데이터아카이브\화성 궁평항\`
