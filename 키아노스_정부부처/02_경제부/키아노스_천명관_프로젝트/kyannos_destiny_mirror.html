@@ -675,9 +675,12 @@
         </div>
       </div>
 
-      <button type="button" class="btn-primary" onclick="runFullDestinyMirror()">
+      <button type="button" id="btnRunMirror" class="btn-primary" onclick="handleRunClick()">
         ☯️ 천명(天命) 거울 통합 감응 실행 (사주·주역·성명·천문 동시 해독)
       </button>
+      <div id="runNotice" style="display:none; margin-top:8px; text-align:center; color:var(--cyan-glow); font-size:0.86rem; font-weight:600; padding:6px; background:rgba(56,189,248,0.12); border-radius:6px; border:1px solid rgba(56,189,248,0.3);">
+        ✨ 사주 4기둥·주역 64괘·천궁도·명심보감 연산이 완료되었습니다! 아래 탭에서 상세 결과를 확인하십시오.
+      </div>
     </div>
 
     <!-- 우측: 주역 청동전 6효 직접 투척기 -->
@@ -1651,6 +1654,38 @@ function loadPreset(type) {
   resize();
   animate();
 })();
+
+function handleRunClick() {
+  const btn = document.getElementById('btnRunMirror');
+  const notice = document.getElementById('runNotice');
+  if (btn) {
+    btn.style.transform = 'scale(0.98)';
+    btn.textContent = '⏳ 천문 및 4기둥 감응 연산 중...';
+  }
+  
+  setTimeout(() => {
+    try {
+      runFullDestinyMirror();
+      if (notice) {
+        notice.style.display = 'block';
+        setTimeout(() => { notice.style.display = 'none'; }, 4000);
+      }
+      // 결과 탭 위치로 부드럽게 스크롤
+      const target = document.getElementById('pillarsContainer') || document.querySelector('.nav-tabs');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    } catch(err) {
+      console.error(err);
+      alert('연산 도중 오류가 발생했습니다: ' + err.message);
+    } finally {
+      if (btn) {
+        btn.style.transform = 'scale(1)';
+        btn.textContent = '☯️ 천명(天命) 거울 통합 감응 실행 (사주·주역·성명·천문 동시 해독)';
+      }
+    }
+  }, 250);
+}
 
 // 초기 실행
 updateLiveAstroHeader();
