@@ -2,6 +2,12 @@
 *.ps1
 inspect_site.py
 categories_extracted.txt
+mail_filenames.txt
+mail_metadata.csv
+stage_candidate_mails.py
+
+# Tools & Local MCP Engines
+tools/
 
 # IDE & Config
 .vscode/
