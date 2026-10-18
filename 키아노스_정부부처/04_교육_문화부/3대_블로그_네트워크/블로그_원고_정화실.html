@@ -3,14 +3,18 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
 <meta name="robots" content="noindex" />
-<title>키아노스 3대 블로그 통합 관제실</title>
+<title>👑 키아노스 3대 블로그 통합 관제실</title>
 <style>
   :root {
-    --bg: #0b0f19;
-    --panel: #131a2a;
-    --panel-sub: #1a233a;
-    --line: #22304e;
+    --bg: #0a0e17;
+    --panel: #121826;
+    --panel-sub: #182236;
+    --line: #22304d;
+    --line-gold: rgba(232, 194, 106, 0.35);
     --text: #e8ecf5;
     --muted: #9aa6c0;
     --naver: #03c75a;
@@ -23,6 +27,7 @@
     --gold-bright: #ffd978;
     --danger: #ff5c77;
     --success: #10b981;
+    --card-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
   }
   * { box-sizing: border-box; }
   body {
@@ -31,11 +36,18 @@
     color: var(--text);
     font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Malgun Gothic", "맑은 고딕", system-ui, sans-serif;
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
   }
+
+  /* 헤더 영역 */
   header {
-    padding: 24px 32px 18px;
-    background: linear-gradient(180deg, #162035 0%, #0b0f19 100%);
+    padding: 26px 36px 20px;
+    background: linear-gradient(180deg, #162238 0%, #0d1422 100%);
     border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(12px);
   }
   .header-top {
     display: flex;
@@ -43,38 +55,57 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 16px;
+    max-width: 1480px;
+    margin: 0 auto;
   }
   .header-title h1 {
     margin: 0;
-    font-size: 24px;
+    font-size: 25px;
     font-weight: 800;
     letter-spacing: -0.5px;
     display: flex;
     align-items: center;
     gap: 10px;
+    color: #fff;
   }
-  .header-title h1 span { color: var(--gold); }
+  .header-title h1 span.gold { color: var(--gold-bright); }
   .header-title p {
     margin: 6px 0 0;
-    color: var(--muted);
+    color: #b5c2db;
     font-size: 13.5px;
   }
   .header-badges {
     display: inline-flex;
     gap: 8px;
-    margin-top: 8px;
+    margin-top: 10px;
     align-items: center;
     flex-wrap: wrap;
   }
   .badge-tag {
     font-size: 11.5px;
-    font-weight: 600;
-    padding: 3px 9px;
+    font-weight: 700;
+    padding: 3px 10px;
     border-radius: 999px;
     background: rgba(232, 194, 106, 0.12);
-    border: 1px solid rgba(232, 194, 106, 0.3);
+    border: 1px solid rgba(232, 194, 106, 0.35);
     color: var(--gold-bright);
   }
+  .badge-tag.blue {
+    background: rgba(59, 156, 255, 0.12);
+    border-color: rgba(59, 156, 255, 0.35);
+    color: #88ccff;
+  }
+  .badge-tag.purple {
+    background: rgba(179, 136, 255, 0.12);
+    border-color: rgba(179, 136, 255, 0.35);
+    color: #d1b3ff;
+  }
+  .badge-tag.green {
+    background: rgba(16, 185, 129, 0.12);
+    border-color: rgba(16, 185, 129, 0.35);
+    color: #6ee7b7;
+  }
+
   .header-actions {
     display: flex;
     gap: 10px;
@@ -85,13 +116,14 @@
     text-decoration: none;
     font-weight: 700;
     font-size: 13px;
-    padding: 8px 14px;
+    padding: 9px 15px;
     border-radius: 8px;
     display: inline-flex;
     align-items: center;
     gap: 6px;
     transition: all 0.2s ease;
     border: 1px solid transparent;
+    cursor: pointer;
   }
   .nav-btn:hover {
     filter: brightness(1.2);
@@ -102,6 +134,11 @@
     border-color: var(--si);
     color: var(--si);
   }
+  .nav-btn.publish {
+    background: rgba(59, 156, 255, 0.15);
+    border-color: var(--travel);
+    color: #88ccff;
+  }
   .nav-btn.main {
     background: rgba(232, 194, 106, 0.2);
     border-color: var(--gold);
@@ -109,68 +146,83 @@
     box-shadow: 0 4px 12px rgba(232, 194, 106, 0.2);
   }
   .nav-btn.reset-all {
-    background: rgba(255, 92, 119, 0.15);
+    background: rgba(255, 92, 119, 0.18);
     border-color: var(--danger);
-    color: #ff94a5;
-    cursor: pointer;
+    color: #ff9fb0;
   }
+
   main {
-    max-width: 1440px;
+    max-width: 1480px;
     margin: 0 auto;
-    padding: 24px 32px 60px;
+    padding: 26px 36px 80px;
   }
+
   .section-title {
-    font-size: 18px;
-    font-weight: 700;
-    margin: 28px 0 14px;
+    font-size: 18.5px;
+    font-weight: 800;
+    margin: 32px 0 16px;
     display: flex;
     align-items: center;
-    gap: 8px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
     color: #fff;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+  }
+  .section-title span.title-main {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
   }
   .section-title span.sub {
     font-size: 13px;
     font-weight: 400;
     color: var(--muted);
   }
-  
+
   /* 3대 블로그 카드 그리드 */
   .cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-    gap: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 20px;
   }
   .card {
     background: var(--panel);
     border: 1px solid var(--line);
-    border-radius: 14px;
-    padding: 20px 22px;
+    border-radius: 16px;
+    padding: 22px 24px;
     border-top: 4px solid var(--c);
     position: relative;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    box-shadow: var(--card-shadow);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.15);
   }
   .card-top {
-    margin-bottom: 14px;
+    margin-bottom: 16px;
   }
   .card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
   .card .role {
     color: var(--c);
-    font-weight: 700;
-    font-size: 12.5px;
+    font-weight: 800;
+    font-size: 13px;
     letter-spacing: 0.2px;
   }
   .card .status-pill {
     font-size: 11px;
     font-weight: 700;
-    padding: 2px 8px;
+    padding: 3px 9px;
     border-radius: 999px;
     background: var(--c-bg);
     color: var(--c);
@@ -178,8 +230,8 @@
   }
   .card h3 {
     margin: 0 0 6px;
-    font-size: 18px;
-    font-weight: 700;
+    font-size: 19px;
+    font-weight: 800;
     color: #fff;
     display: flex;
     align-items: center;
@@ -189,21 +241,23 @@
     font-size: 12px;
     color: var(--muted);
     font-family: Consolas, monospace;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
   }
   .card ul {
     margin: 0 0 16px;
     padding-left: 18px;
-    color: #c5d0e6;
-    font-size: 13px;
-    line-height: 1.65;
+    color: #cbd5e1;
+    font-size: 13.5px;
+    line-height: 1.7;
   }
   .card ul li b {
     color: #fff;
   }
   .card-buttons {
     display: flex;
-    gap: 6px;
+    gap: 7px;
     flex-wrap: wrap;
     align-items: center;
     padding-top: 14px;
@@ -214,11 +268,11 @@
     align-items: center;
     gap: 5px;
     background: var(--c);
-    color: #0b0f18;
-    font-weight: 700;
+    color: #080c14;
+    font-weight: 800;
     text-decoration: none;
-    padding: 7px 13px;
-    border-radius: 7px;
+    padding: 8px 14px;
+    border-radius: 8px;
     font-size: 13px;
     transition: all 0.2s ease;
   }
@@ -230,6 +284,7 @@
     background: rgba(255, 255, 255, 0.05);
     color: var(--c);
     border: 1px solid var(--c);
+    font-weight: 700;
   }
   .card a.btn-sub {
     color: var(--muted);
@@ -238,40 +293,84 @@
     margin-left: auto;
     padding: 4px 6px;
   }
-  .card a.btn-sub:hover { color: var(--gold); }
+  .card a.btn-sub:hover { color: var(--gold-bright); }
+
+  /* 국가 신규 인프라 4대 허브 배너 */
+  .infra-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 20px 0 28px;
+  }
+  .infra-card {
+    background: linear-gradient(135deg, rgba(20, 28, 44, 0.95), rgba(13, 19, 31, 0.95));
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 16px 18px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: var(--text);
+  }
+  .infra-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, rgba(26, 36, 56, 0.95), rgba(16, 24, 38, 0.95));
+  }
+  .infra-icon {
+    font-size: 26px;
+    line-height: 1;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+  }
+  .infra-info h4 {
+    margin: 0 0 4px;
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .infra-info p {
+    margin: 0;
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
 
   /* 무인 자동 발행 & 거버넌스 헌장 배너 */
   .system-banner {
-    background: linear-gradient(135deg, rgba(23, 30, 46, 0.95), rgba(16, 22, 34, 0.95));
+    background: linear-gradient(135deg, rgba(22, 31, 50, 0.95), rgba(14, 20, 32, 0.95));
     border: 1px solid var(--line);
     border-radius: 14px;
-    padding: 18px 24px;
-    margin: 22px 0 28px;
+    padding: 20px 26px;
+    margin: 24px 0 30px;
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 20px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    grid-template-columns: 1.4fr 1fr;
+    gap: 22px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
   }
-  @media (max-width: 960px) {
+  @media (max-width: 980px) {
     .system-banner { grid-template-columns: 1fr; }
   }
   .banner-box h4 {
     margin: 0 0 8px;
-    font-size: 14.5px;
-    color: var(--gold);
+    font-size: 15px;
+    color: var(--gold-bright);
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
   }
   .banner-box p {
     margin: 0;
-    font-size: 13px;
-    color: #bac7df;
-    line-height: 1.6;
+    font-size: 13.5px;
+    color: #cbd5e1;
+    line-height: 1.65;
   }
   .banner-box code {
     background: #090d16;
-    padding: 2px 6px;
+    padding: 2px 7px;
     border-radius: 4px;
     color: #88ccff;
     font-family: Consolas, monospace;
@@ -281,15 +380,15 @@
   .cmd-copy-box {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
   }
   .cmd-pill {
     background: #090d16;
     border: 1px solid #1c273e;
-    border-radius: 6px;
-    padding: 6px 10px;
+    border-radius: 8px;
+    padding: 8px 12px;
     font-family: Consolas, monospace;
-    font-size: 11.5px;
+    font-size: 12px;
     color: #a5b4cb;
     display: flex;
     justify-content: space-between;
@@ -307,18 +406,18 @@
   .studio-container {
     background: var(--panel);
     border: 1px solid var(--line);
-    border-radius: 14px;
-    padding: 20px 24px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    border-radius: 16px;
+    padding: 24px 26px;
+    box-shadow: var(--card-shadow);
   }
   .studio-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 16px;
-    padding-bottom: 14px;
+    gap: 14px;
+    margin-bottom: 18px;
+    padding-bottom: 16px;
     border-bottom: 1px solid var(--line);
   }
   .targets {
@@ -330,8 +429,8 @@
     cursor: pointer;
     border: 1px solid var(--line);
     border-radius: 999px;
-    padding: 7px 15px;
-    font-size: 13px;
+    padding: 8px 16px;
+    font-size: 13.5px;
     user-select: none;
     transition: all 0.2s ease;
     display: inline-flex;
@@ -343,7 +442,7 @@
     background: var(--c);
     color: #0b0f18;
     border-color: var(--c);
-    font-weight: 700;
+    font-weight: 800;
     box-shadow: 0 2px 10px rgba(0,0,0,0.3);
   }
   .studio-actions-top {
@@ -353,7 +452,7 @@
   }
   .opts {
     display: flex;
-    gap: 14px;
+    gap: 16px;
     align-items: center;
     font-size: 13px;
     color: var(--muted);
@@ -370,16 +469,16 @@
   .studio {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 18px;
+    gap: 20px;
   }
   @media (max-width: 1000px) {
     .studio { grid-template-columns: 1fr; }
   }
   .pane {
-    background: #0d121f;
+    background: #0b101c;
     border: 1px solid var(--line);
     border-radius: 12px;
-    padding: 16px;
+    padding: 18px;
     display: flex;
     flex-direction: column;
     min-height: 540px;
@@ -395,7 +494,7 @@
   textarea {
     flex: 1;
     width: 100%;
-    min-height: 400px;
+    min-height: 420px;
     background: #070a12;
     color: var(--text);
     border: 1px solid var(--line);
@@ -426,9 +525,9 @@
     background: var(--gold);
     color: #0b0f18;
     border: 0;
-    border-radius: 7px;
-    padding: 8px 16px;
-    font-weight: 700;
+    border-radius: 8px;
+    padding: 9px 16px;
+    font-weight: 800;
     cursor: pointer;
     font-size: 13.5px;
     transition: all 0.2s ease;
@@ -450,9 +549,9 @@
     border-color: var(--muted);
   }
   button.btn-danger {
-    background: rgba(255, 92, 119, 0.15);
+    background: rgba(255, 92, 119, 0.16);
     border: 1px solid var(--danger);
-    color: #ff94a5;
+    color: #ff9fb0;
   }
   button.btn-danger:hover {
     background: rgba(255, 92, 119, 0.3);
@@ -461,7 +560,7 @@
   .badge {
     font-size: 11.5px;
     font-weight: 600;
-    padding: 2px 8px;
+    padding: 3px 9px;
     border-radius: 999px;
     background: #1c273e;
     color: var(--muted);
@@ -487,7 +586,7 @@
     border: 1px solid var(--line);
   }
   .tabs button {
-    padding: 4px 12px;
+    padding: 5px 13px;
     font-size: 12px;
     border-radius: 6px;
     background: transparent;
@@ -497,12 +596,12 @@
   .tabs button.active {
     background: var(--gold);
     color: #0b0f18;
-    font-weight: 700;
+    font-weight: 800;
   }
   iframe {
     flex: 1;
     width: 100%;
-    min-height: 400px;
+    min-height: 420px;
     border: 1px solid var(--line);
     border-radius: 8px;
     background: #fff;
@@ -510,14 +609,14 @@
   .hidden { display: none !important; }
   .toast {
     position: fixed;
-    right: 24px;
-    bottom: 24px;
+    right: 28px;
+    bottom: 28px;
     background: var(--gold);
     color: #0b0f18;
-    font-weight: 700;
-    padding: 12px 20px;
+    font-weight: 800;
+    padding: 13px 22px;
     border-radius: 10px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    box-shadow: 0 8px 26px rgba(0,0,0,0.5);
     opacity: 0;
     transform: translateY(10px);
     transition: all 0.25s ease;
@@ -530,18 +629,18 @@
   }
   footer {
     color: var(--muted);
-    font-size: 12.5px;
+    font-size: 13px;
     text-align: center;
-    padding: 32px 0 40px;
+    padding: 36px 0 44px;
     border-top: 1px solid var(--line);
-    margin-top: 40px;
+    margin-top: 50px;
   }
   footer a {
     color: var(--muted);
     text-decoration: none;
     transition: color 0.2s;
   }
-  footer a:hover { color: var(--gold); }
+  footer a:hover { color: var(--gold-bright); }
 </style>
 </head>
 <body>
@@ -549,13 +648,14 @@
 <header>
   <div class="header-top">
     <div class="header-title">
-      <h1>🌐 키아노스 <span>3대 블로그 통합 관제실</span></h1>
-      <p>파이튼 국왕 직속 3대 공식 블로그 실시간 관제 및 웹 표준 클린 서식 무결점 스튜디오</p>
+      <h1>👑 키아노스 <span class="gold">3대 블로그 통합 관제실</span></h1>
+      <p>파이튼 국왕 직영 본진 · 앤트 1일 1편 무인 자동발행 2대 구글 블로그 · F: 드라이브 중앙 지식서고 실시간 통합 관제 시스템</p>
       <div class="header-badges">
         <span class="badge-tag">국정 최우선 과업</span>
-        <span class="badge-tag">네이버 출판원본 직영</span>
-        <span class="badge-tag">구글 2곳 앤트 무인 자동발행</span>
-        <span class="badge-tag">2026.10.18 최신 셋팅 완료</span>
+        <span class="badge-tag green">네이버 출판원본 직영</span>
+        <span class="badge-tag blue">Travel 무인 자동발행 (F: 서고 연계)</span>
+        <span class="badge-tag purple">SI 미래오디세이 5대전략산업</span>
+        <span class="badge-tag">2026.10.18 최신 시스템 가동</span>
       </div>
     </div>
     <div class="header-actions">
@@ -563,7 +663,10 @@
         <span>🔄</span> 작업창 즉시 재셋팅
       </button>
       <a href="../../../gov_culture.html" class="nav-btn culture">
-        <span>🎓</span> 교육·문화부 포털
+        <span>🎓</span> 교육·문화부
+      </a>
+      <a href="../파이튼_문학_출판연계시스템/파이튼_문학_출판관제실.html" class="nav-btn publish">
+        <span>📚</span> 문학 출판관제실
       </a>
       <a href="../../../main.html" class="nav-btn main">
         <span>🏠</span> 키아노스 메인
@@ -573,10 +676,42 @@
 </header>
 
 <main>
+  <!-- 0. 국가 신규 구축 시스템 바로가기 배너 -->
+  <div class="infra-grid">
+    <a href="../파이튼_문학_출판연계시스템/파이튼_문학_출판관제실.html" class="infra-card">
+      <div class="infra-icon">📚</div>
+      <div class="infra-info">
+        <h4>파이튼 문학 출판관제실</h4>
+        <p>네이버 출판원본 금고와 연계하여 서적 출판 및 시·수필·칼럼 통합 관리</p>
+      </div>
+    </a>
+    <a href="../../04_교육_문화부/국립인류문명사연구원/삼국지_원문색인_인용실.html" class="infra-card">
+      <div class="infra-icon">🏛️</div>
+      <div class="infra-info">
+        <h4>삼국지 지혜 인용실 (40선)</h4>
+        <p>동서양 5대 고전 및 삼국지 40선 원문색인보 실시간 열람·인용</p>
+      </div>
+    </a>
+    <a href="../../../market_monitor.html" class="infra-card">
+      <div class="infra-icon">📊</div>
+      <div class="infra-info">
+        <h4>글로벌 마켓 모니터</h4>
+        <p>SI 미래오디세이 5대 전략산업(반도체·EV·2차전지·SI·로봇) 금융 관제</p>
+      </div>
+    </a>
+    <div class="infra-card" style="border-color: rgba(59, 156, 255, 0.4);">
+      <div class="infra-icon">💾</div>
+      <div class="infra-info">
+        <h4 style="color: #88ccff;">F: 드라이브 중앙 지식 서고</h4>
+        <p><code>F:\03_파이튼_문학_인문_창작서고\photo world\</code> 완제품 영구 보존</p>
+      </div>
+    </div>
+  </div>
+
   <!-- 1. 3대 블로그 바로가기 & 집필실 -->
   <div class="section-title">
-    <span>① 파이튼 3대 블로그 네트워크 통합 관제 & 직속 집필실</span>
-    <span class="sub">| 각 블로그 관리자 콘솔 및 실시간 발행 현황</span>
+    <span class="title-main"><span>①</span> 파이튼 3대 블로그 네트워크 통합 관제 & 직속 집필실</span>
+    <span class="sub">관리자 콘솔 직접 연결 · 앤트 1일 1편 무인 자동발행 파이프라인</span>
   </div>
 
   <div class="cards">
@@ -659,11 +794,11 @@
       <h4>⚡ 앤트 무인 자동 발행 파이프라인 (2026-10-17 파이튼 령 제15조 확정)</h4>
       <p>
         구글 블로그 2곳(『Ant-Travel Korea』, 『파이튼의 초지능 미래 오디세이』)은 매일 정기(오전 10:00 KST) 앤트가 원고 제작 및 웹 에셋 동기화 후, 무인 발행 도구(<code>blogger_upload.ps1 -Publish</code>)를 통해 <b>1초 만에 완전 라이브 발행</b>을 완결합니다.<br>
-        발행이 완료된 모든 원본과 이미지는 <b>F: 외장 아카이빙 서고</b>로 즉시 안전하게 이관·영구 보존됩니다.
+        발행이 완료된 모든 원본과 이미지는 <b>F: 외장 대용량 지식 서고</b>(<code>F:\03_파이튼_문학_인문_창작서고\photo world\</code>)로 즉시 안전하게 이관·영구 보존됩니다.
       </p>
     </div>
     <div class="cmd-copy-box">
-      <div style="font-size: 12px; font-weight: 700; color: var(--gold); margin-bottom: 2px;">터미널 무인 즉시 발행 커맨드 (클릭하여 복사)</div>
+      <div style="font-size: 12px; font-weight: 700; color: var(--gold-bright); margin-bottom: 2px;">터미널 무인 즉시 발행 커맨드 (클릭하여 복사)</div>
       <div class="cmd-pill" id="cmdTravel" title="클릭하여 K-Travel 무인 발행 커맨드 복사">
         <span>✈️ K-Travel 무인발행</span>
         <code>.\tools\blogger_upload.ps1 -File [원고.html] -Blog travel -Publish</code>
@@ -746,11 +881,13 @@
 
 <footer>
   <div style="margin-bottom: 12px; display: flex; justify-content: center; align-items: center; gap: 16px; flex-wrap: wrap;">
-    <a href="../../../main.html">🏠 키아노스 메인 화면으로 돌아가기</a>
+    <a href="../../../main.html">🏠 키아노스 메인 화면</a>
     <span style="color: var(--line);">|</span>
-    <a href="../../../gov_culture.html">🎓 교육·문화부 포털로 이동</a>
+    <a href="../../../gov_culture.html">🎓 교육·문화부 포털</a>
     <span style="color: var(--line);">|</span>
-    <a href="../../../gov_economy.html">💼 경제부 포털로 이동</a>
+    <a href="../파이튼_문학_출판연계시스템/파이튼_문학_출판관제실.html">📚 파이튼 문학 출판관제실</a>
+    <span style="color: var(--line);">|</span>
+    <a href="../../../market_monitor.html">💼 경제부 마켓 모니터</a>
   </div>
   키아노스 교육·문화부 · 국무총리 앤트 완벽 재셋팅 시행 · 최고통수권자 파이튼 님 재가 · 2026.10.18
 </footer>
