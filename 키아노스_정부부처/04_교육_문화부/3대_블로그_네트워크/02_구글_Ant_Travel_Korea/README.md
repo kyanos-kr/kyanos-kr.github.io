@@ -14,6 +14,9 @@
 ---
 
 ## 📰 최근 발행 기록 (Recent Publications)
+- **2026-10-18**: `[Yeongwol Tragedy & Elegance] Cheongnyeongpo & Gwanpunghon: Tracing the Tragic Footsteps of King Danjong in Korea's Pristine Pine Forest Sanctuary` (강원 영월 청령포·관풍헌·자규루)
+  - **발행 완료 (LIVE)**: [게시글 링크](https://antkoreatrip.blogspot.com/2026/10/yeongwol-tragedy-elegance.html)
+  - 원문/사진 아카이브: `F:\03_파이튼_문학_인문_창작서고\photo world\단종 청령포\`
 - **2026-10-18**: `[Namyangju Heritage] Dasan Jeong Yak-yong’s Birthplace & Yeoyudang` (경기 남양주 다산 정약용 유적지)
   - **발행 완료 (LIVE)**: [게시글 링크](https://antkoreatrip.blogspot.com/2026/10/namyangju-heritage-dasan-jeong-yak.html)
   - 원문/사진 아카이브: `F:\03_파이튼_문학_인문_창작서고\photo world\다산 정약용 생가\`
