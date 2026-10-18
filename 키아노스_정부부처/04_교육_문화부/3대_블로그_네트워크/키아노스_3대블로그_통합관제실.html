@@ -145,16 +145,55 @@
     color: var(--gold);
     box-shadow: 0 4px 12px rgba(232, 194, 106, 0.2);
   }
-  .nav-btn.reset-all {
-    background: rgba(255, 92, 119, 0.18);
-    border-color: var(--danger);
-    color: #ff9fb0;
-  }
 
   main {
     max-width: 1480px;
     margin: 0 auto;
     padding: 26px 36px 80px;
+  }
+
+  /* 국가 신규 인프라 4대 허브 배너 */
+  .infra-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 12px 0 28px;
+  }
+  .infra-card {
+    background: linear-gradient(135deg, rgba(20, 28, 44, 0.95), rgba(13, 19, 31, 0.95));
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 16px 18px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: var(--text);
+  }
+  .infra-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, rgba(26, 36, 56, 0.95), rgba(16, 24, 38, 0.95));
+  }
+  .infra-icon {
+    font-size: 26px;
+    line-height: 1;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+  }
+  .infra-info h4 {
+    margin: 0 0 4px;
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .infra-info p {
+    margin: 0;
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
   }
 
   .section-title {
@@ -295,98 +334,55 @@
   }
   .card a.btn-sub:hover { color: var(--gold-bright); }
 
-  /* 국가 신규 인프라 4대 허브 배너 */
-  .infra-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 16px;
-    margin: 20px 0 28px;
-  }
-  .infra-card {
-    background: linear-gradient(135deg, rgba(20, 28, 44, 0.95), rgba(13, 19, 31, 0.95));
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 16px 18px;
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    transition: all 0.2s ease;
-    text-decoration: none;
-    color: var(--text);
-  }
-  .infra-card:hover {
-    border-color: var(--gold);
-    transform: translateY(-2px);
-    background: linear-gradient(135deg, rgba(26, 36, 56, 0.95), rgba(16, 24, 38, 0.95));
-  }
-  .infra-icon {
-    font-size: 26px;
-    line-height: 1;
-    padding: 8px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-  }
-  .infra-info h4 {
-    margin: 0 0 4px;
-    font-size: 14.5px;
-    font-weight: 700;
-    color: #fff;
-  }
-  .infra-info p {
-    margin: 0;
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.5;
-  }
-
-  /* 무인 자동 발행 & 거버넌스 헌장 배너 */
+  /* 무인 자동 발행 & 백스테이지 헌장 배너 */
   .system-banner {
     background: linear-gradient(135deg, rgba(22, 31, 50, 0.95), rgba(14, 20, 32, 0.95));
     border: 1px solid var(--line);
     border-radius: 14px;
-    padding: 20px 26px;
-    margin: 24px 0 30px;
+    padding: 22px 28px;
+    margin: 28px 0 30px;
     display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: 22px;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 24px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.25);
   }
   @media (max-width: 980px) {
     .system-banner { grid-template-columns: 1fr; }
   }
   .banner-box h4 {
-    margin: 0 0 8px;
-    font-size: 15px;
+    margin: 0 0 10px;
+    font-size: 15.5px;
     color: var(--gold-bright);
     display: flex;
     align-items: center;
     gap: 8px;
   }
   .banner-box p {
-    margin: 0;
+    margin: 0 0 12px;
     font-size: 13.5px;
     color: #cbd5e1;
-    line-height: 1.65;
+    line-height: 1.7;
   }
-  .banner-box code {
-    background: #090d16;
-    padding: 2px 7px;
+  .banner-box .notice-highlight {
+    background: rgba(232, 194, 106, 0.08);
+    border-left: 3px solid var(--gold);
+    padding: 10px 14px;
     border-radius: 4px;
-    color: #88ccff;
-    font-family: Consolas, monospace;
-    font-size: 12px;
-    border: 1px solid #1c273e;
+    font-size: 12.8px;
+    color: #f1f5f9;
+    line-height: 1.6;
   }
   .cmd-copy-box {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    justify-content: center;
   }
   .cmd-pill {
     background: #090d16;
     border: 1px solid #1c273e;
     border-radius: 8px;
-    padding: 8px 12px;
+    padding: 10px 14px;
     font-family: Consolas, monospace;
     font-size: 12px;
     color: #a5b4cb;
@@ -400,213 +396,42 @@
     border-color: var(--gold);
     color: #fff;
     background: #111828;
+    transform: translateX(2px);
+  }
+  .cmd-pill code {
+    background: transparent;
+    color: #88ccff;
+    font-size: 11.5px;
   }
 
-  /* 변환 스튜디오 */
-  .studio-container {
+  /* 3대 운영 원칙 요약 카드 */
+  .principles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .principle-box {
     background: var(--panel);
     border: 1px solid var(--line);
-    border-radius: 16px;
-    padding: 24px 26px;
-    box-shadow: var(--card-shadow);
-  }
-  .studio-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 14px;
-    margin-bottom: 18px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--line);
-  }
-  .targets {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-  .targets label {
-    cursor: pointer;
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    padding: 8px 16px;
-    font-size: 13.5px;
-    user-select: none;
-    transition: all 0.2s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .targets input { display: none; }
-  .targets label:has(input:checked) {
-    background: var(--c);
-    color: #0b0f18;
-    border-color: var(--c);
-    font-weight: 800;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-  }
-  .studio-actions-top {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-  }
-  .opts {
-    display: flex;
-    gap: 16px;
-    align-items: center;
-    font-size: 13px;
-    color: var(--muted);
-    margin-bottom: 14px;
-  }
-  .opts label {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    cursor: pointer;
-  }
-  .opts input[type=checkbox] { cursor: pointer; }
-  
-  .studio {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-  @media (max-width: 1000px) {
-    .studio { grid-template-columns: 1fr; }
-  }
-  .pane {
-    background: #0b101c;
-    border: 1px solid var(--line);
     border-radius: 12px;
-    padding: 18px;
-    display: flex;
-    flex-direction: column;
-    min-height: 540px;
+    padding: 18px 20px;
   }
-  .pane-header {
-    margin: 0 0 12px;
+  .principle-box h5 {
+    margin: 0 0 6px;
     font-size: 14.5px;
+    color: var(--gold-bright);
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 8px;
-  }
-  textarea {
-    flex: 1;
-    width: 100%;
-    min-height: 420px;
-    background: #070a12;
-    color: var(--text);
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    padding: 14px;
-    font: 13.5px/1.65 Consolas, "D2Coding", monospace;
-    resize: vertical;
-    outline: none;
-    transition: border-color 0.2s ease;
-  }
-  textarea:focus {
-    border-color: var(--gold);
-  }
-  .pane-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 12px;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  .btn-group {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-  }
-  button {
-    background: var(--gold);
-    color: #0b0f18;
-    border: 0;
-    border-radius: 8px;
-    padding: 9px 16px;
-    font-weight: 800;
-    cursor: pointer;
-    font-size: 13.5px;
-    transition: all 0.2s ease;
-    display: inline-flex;
     align-items: center;
     gap: 6px;
   }
-  button:hover {
-    filter: brightness(1.15);
-    transform: translateY(-1px);
+  .principle-box p {
+    margin: 0;
+    font-size: 13px;
+    color: #b0bfd8;
+    line-height: 1.6;
   }
-  button.ghost {
-    background: transparent;
-    color: var(--muted);
-    border: 1px solid var(--line);
-  }
-  button.ghost:hover {
-    color: #fff;
-    border-color: var(--muted);
-  }
-  button.btn-danger {
-    background: rgba(255, 92, 119, 0.16);
-    border: 1px solid var(--danger);
-    color: #ff9fb0;
-  }
-  button.btn-danger:hover {
-    background: rgba(255, 92, 119, 0.3);
-    color: #fff;
-  }
-  .badge {
-    font-size: 11.5px;
-    font-weight: 600;
-    padding: 3px 9px;
-    border-radius: 999px;
-    background: #1c273e;
-    color: var(--muted);
-  }
-  .badge.on {
-    background: rgba(232, 194, 106, 0.2);
-    color: var(--gold-bright);
-    border: 1px solid rgba(232, 194, 106, 0.4);
-  }
-  .stats {
-    font-size: 12.5px;
-    color: var(--muted);
-    min-height: 20px;
-    line-height: 1.5;
-  }
-  .stats b { color: var(--gold-bright); }
-  .tabs {
-    display: flex;
-    gap: 4px;
-    background: #090d16;
-    padding: 3px;
-    border-radius: 8px;
-    border: 1px solid var(--line);
-  }
-  .tabs button {
-    padding: 5px 13px;
-    font-size: 12px;
-    border-radius: 6px;
-    background: transparent;
-    color: var(--muted);
-    border: 0;
-  }
-  .tabs button.active {
-    background: var(--gold);
-    color: #0b0f18;
-    font-weight: 800;
-  }
-  iframe {
-    flex: 1;
-    width: 100%;
-    min-height: 420px;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background: #fff;
-  }
-  .hidden { display: none !important; }
+
   .toast {
     position: fixed;
     right: 28px;
@@ -627,6 +452,7 @@
     opacity: 1;
     transform: translateY(0);
   }
+
   footer {
     color: var(--muted);
     font-size: 13px;
@@ -649,19 +475,16 @@
   <div class="header-top">
     <div class="header-title">
       <h1>👑 키아노스 <span class="gold">3대 블로그 통합 관제실</span></h1>
-      <p>파이튼 국왕 직영 본진 · 앤트 1일 1편 무인 자동발행 2대 구글 블로그 · F: 드라이브 중앙 지식서고 실시간 통합 관제 시스템</p>
+      <p>파이튼 국왕 순수 문학 원작 본진(직영) · 앤트 1일 1편 무인 자동발행 글로벌 2대 구글 블로그 · F: 드라이브 중앙 서고 실시간 통합 관제 시스템</p>
       <div class="header-badges">
         <span class="badge-tag">국정 최우선 과업</span>
         <span class="badge-tag green">네이버 출판원본 직영</span>
         <span class="badge-tag blue">Travel 무인 자동발행 (F: 서고 연계)</span>
         <span class="badge-tag purple">SI 미래오디세이 5대전략산업</span>
-        <span class="badge-tag">2026.10.18 최신 시스템 가동</span>
+        <span class="badge-tag">✨ 원고 정화: 앤트 백스테이지 자동화 100%</span>
       </div>
     </div>
     <div class="header-actions">
-      <button class="nav-btn reset-all" id="btnMasterReset" title="작업창 전체 즉시 재셋팅(비우기)">
-        <span>🔄</span> 작업창 즉시 재셋팅
-      </button>
       <a href="../../../gov_culture.html" class="nav-btn culture">
         <span>🎓</span> 교육·문화부
       </a>
@@ -676,7 +499,7 @@
 </header>
 
 <main>
-  <!-- 0. 국가 신규 구축 시스템 바로가기 배너 -->
+  <!-- 0. 국가 신규 인프라 4대 허브 배너 -->
   <div class="infra-grid">
     <a href="../파이튼_문학_출판연계시스템/파이튼_문학_출판관제실.html" class="infra-card">
       <div class="infra-icon">📚</div>
@@ -727,13 +550,13 @@
         <ul>
           <li>파이튼 님의 순수 문학·인문·수필 <b>출판 원본 영구 보존</b></li>
           <li>사색의 창(에세이) · 일대기 · 시선(詩仙)의 화첩 · 인생의 명곡</li>
-          <li><b>직영 원칙</b>: 원작의 순수성을 위해 파이튼 님이 직접 업로드 관리</li>
-          <li>네이버 스마트에디터 최적화 (평문 변환 모드 지원)</li>
+          <li><b>독립 직영 원칙</b>: 원작의 순수성을 위해 파이튼 님이 직접 업로드 관리</li>
+          <li>스마트에디터에 바로 붙여넣어 품격 있게 직영 게시</li>
         </ul>
       </div>
       <div class="card-buttons">
         <a class="btn" href="https://blog.naver.com/invision" target="_blank" rel="noopener">블로그 열기 ↗</a>
-        <a class="btn btn-ghost" href="https://admin.blog.naver.com/invision" target="_blank" rel="noopener">글관리</a>
+        <a class="btn btn-ghost" href="https://admin.blog.naver.com/invision" target="_blank" rel="noopener">글관리 콘솔</a>
         <a class="btn btn-ghost" href="https://blog.naver.com/invision?Redirect=Write" target="_blank" rel="noopener">새글쓰기</a>
         <a class="btn-sub" href="templates/naver_munhak_template.md">원고 규격 📄</a>
       </div>
@@ -751,14 +574,14 @@
         <ul>
           <li>외국인을 위한 정밀 K-Travel 영문 르포 (주소·요금·교통·팁)</li>
           <li><b>최신 발행작</b>: 영월 청령포 (10.18), 논산 탑정호 (10.17), 화성 궁평항 (10.16)</li>
-          <li><b>무인 발행 체제</b>: 앤트가 <code>blogger_upload.ps1</code>로 라이브 즉시 발행</li>
-          <li>SEO 5단 구조 및 고품격 애드센스 수익 파이프라인 탑재</li>
+          <li><b>무인 자동 발행</b>: 앤트가 무대 뒤에서 교열·SEO 완료 후 <code>blogger_upload.ps1</code>로 라이브 게시</li>
+          <li>발행 완료 후 <b>F: 서고</b>(<code>F:\03_파이튼_문학_인문_창작서고\photo world\</code>)로 즉시 영구 보존</li>
         </ul>
       </div>
       <div class="card-buttons">
         <a class="btn" href="https://antkoreatrip.blogspot.com" target="_blank" rel="noopener">블로그 열기 ↗</a>
         <a class="btn btn-ghost" href="https://www.blogger.com/blog/posts/9119618905484144503" target="_blank" rel="noopener">글관리 콘솔</a>
-        <a class="btn btn-ghost" href="https://www.blogger.com/blog/stats/9119618905484144503" target="_blank" rel="noopener">통계·수익</a>
+        <a class="btn btn-ghost" href="https://www.blogger.com/blog/stats/9119618905484144503" target="_blank" rel="noopener">방문자 통계</a>
         <a class="btn-sub" href="templates/antkoreatrip_post_template.html">원고 규격 📄</a>
       </div>
     </div>
@@ -774,28 +597,30 @@
         <div class="domain">https://phaetonktb.blogspot.com</div>
         <ul>
           <li>초지능(SI) R&D · 미래 5대 전략산업(2차전지·EV·반도체·SI·로봇) 심층 분석</li>
-          <li><b>최신 발행작</b>: SI 제4호(자율에이전틱SI), SI 제3호(우주데이터센터)</li>
-          <li><b>무인 발행 체제</b>: 앤트가 <code>blogger_upload.ps1</code>로 라이브 즉시 발행</li>
-          <li>인류 문명 청사진, 과학적 이상향, Tier 1 글로벌 애드센스 수익 창출</li>
+          <li><b>최신 발행작</b>: SI 제4호(자율에이전틱SI), SI 제3호(우주데이터센터), SI 제2호(가격혁명)</li>
+          <li><b>무인 자동 발행</b>: 앤트가 심층 분석 리포트 작성 후 <code>blogger_upload.ps1</code>로 라이브 게시</li>
+          <li>글로벌 고품격 검색(SEO) 및 Tier 1 애드센스 수익 창출 연동</li>
         </ul>
       </div>
       <div class="card-buttons">
         <a class="btn" href="https://phaetonktb.blogspot.com" target="_blank" rel="noopener">블로그 열기 ↗</a>
         <a class="btn btn-ghost" href="https://www.blogger.com/blog/posts/4640767143667658473" target="_blank" rel="noopener">글관리 콘솔</a>
-        <a class="btn btn-ghost" href="https://www.blogger.com/blog/stats/4640767143667658473" target="_blank" rel="noopener">통계·수익</a>
+        <a class="btn btn-ghost" href="https://www.blogger.com/blog/stats/4640767143667658473" target="_blank" rel="noopener">방문자 통계</a>
         <a class="btn-sub" href="templates/phaeton_si_future_template.html">원고 규격 📄</a>
       </div>
     </div>
   </div>
 
-  <!-- 무인 자동 발행 & 거버넌스 헌장 배너 -->
+  <!-- 무인 자동 발행 & 백스테이지 헌장 배너 -->
   <div class="system-banner">
     <div class="banner-box">
       <h4>⚡ 앤트 무인 자동 발행 파이프라인 (2026-10-17 파이튼 령 제15조 확정)</h4>
       <p>
-        구글 블로그 2곳(『Ant-Travel Korea』, 『파이튼의 초지능 미래 오디세이』)은 매일 정기(오전 10:00 KST) 앤트가 원고 제작 및 웹 에셋 동기화 후, 무인 발행 도구(<code>blogger_upload.ps1 -Publish</code>)를 통해 <b>1초 만에 완전 라이브 발행</b>을 완결합니다.<br>
-        발행이 완료된 모든 원본과 이미지는 <b>F: 외장 대용량 지식 서고</b>(<code>F:\03_파이튼_문학_인문_창작서고\photo world\</code>)로 즉시 안전하게 이관·영구 보존됩니다.
+        구글 블로그 2곳(『Ant-Travel Korea』, 『파이튼의 초지능 미래 오디세이』)은 매일 정기 앤트가 원고 제작 및 웹 에셋 동기화 후, 무인 발행 도구(<code>blogger_upload.ps1 -Publish</code>)를 통해 <b>1초 만에 완전 라이브 발행</b>을 완결합니다.
       </p>
+      <div class="notice-highlight">
+        💡 <b>Zero Manual Process (수동 작업 제로화)</b>: 원고의 교열, HWP 숨은 코드 제거, 웹 표준 HTML 조판 및 이미지 매칭은 <b>앤트가 무대 뒤(Backstage Engine)에서 100% 자동 처리</b>하므로 화면 상의 별도 변환 작업창이 불필요합니다.
+      </div>
     </div>
     <div class="cmd-copy-box">
       <div style="font-size: 12px; font-weight: 700; color: var(--gold-bright); margin-bottom: 2px;">터미널 무인 즉시 발행 커맨드 (클릭하여 복사)</div>
@@ -810,71 +635,19 @@
     </div>
   </div>
 
-  <!-- 2. 웹 표준 서식 변환 스튜디오 -->
-  <div class="studio-container">
-    <div class="studio-header">
-      <div class="targets" id="targets">
-        <label style="--c:var(--naver)">
-          <input type="radio" name="t" value="naver" checked>
-          <span>🖋️ 네이버 문학산책 (평문 정화)</span>
-        </label>
-        <label style="--c:var(--travel)">
-          <input type="radio" name="t" value="travel">
-          <span>✈️ Ant-Travel Korea (클린 HTML)</span>
-        </label>
-        <label style="--c:var(--si)">
-          <input type="radio" name="t" value="si">
-          <span>🤖 초지능(SI) 미래 오디세이 (클린 HTML)</span>
-        </label>
-      </div>
-      <div class="studio-actions-top">
-        <button class="ghost btn-danger" id="btnClearStudio" title="입력창 및 결과창을 깨끗이 비우고 재셋팅합니다">
-          <span>🔄</span> 작업창 비우기 (재셋팅)
-        </button>
-      </div>
+  <!-- 3대 운영 원칙 요약 -->
+  <div class="principles-grid">
+    <div class="principle-box">
+      <h5>🖋️ 네이버: 출판 원본 금고 직영</h5>
+      <p>파이튼 님의 순수 문학·인문 수필은 파이튼 님이 직접 독자들과 소통하며 독립적으로 직영 업로드 및 보존합니다.</p>
     </div>
-
-    <div class="opts">
-      <label id="optFooter" class="hidden">
-        <input type="checkbox" id="addFooter" checked> 공식 서명 및 저작권·블로그 안내 카드 자동 부착
-      </label>
+    <div class="principle-box">
+      <h5>✈️ 구글 여행: 앤트 1일 1편 무인발행</h5>
+      <p>『Ant-Travel Korea』는 앤트가 매일 1편씩 인바운드 K-Travel 영문 르포로 자체 제작하여 라이브 게시하고 F: 서고로 영구 안치합니다.</p>
     </div>
-
-    <div class="studio">
-      <!-- 좌측: 입력 패널 -->
-      <div class="pane">
-        <div class="pane-header">
-          <span style="font-weight: 700; color: #fff;">📝 원고 입력 (HWP · Word · 웹 복사본)</span>
-          <span class="badge" id="srcBadge">대기 중</span>
-        </div>
-        <textarea id="src" placeholder="한글(HWP)·워드·웹페이지에서 복사한 원고를 여기에 붙여넣으십시오 (Ctrl+V).&#10;숨겨진 불필요 코드(hwp_editor, mso- 등)가 완벽하게 정제됩니다."></textarea>
-        <div class="pane-footer">
-          <div class="btn-group">
-            <button id="runBtn"><span>✨</span> 정화·변환 (Ctrl+Enter)</button>
-            <button class="ghost" id="clearBtn">비우기</button>
-          </div>
-          <span style="font-size: 11.5px; color: var(--muted);">단축키: Ctrl+Enter (변환) | Alt+R (비우기)</span>
-        </div>
-      </div>
-
-      <!-- 우측: 결과 패널 -->
-      <div class="pane">
-        <div class="pane-header">
-          <span style="font-weight: 700; color: #fff;">🎯 완성 원고</span>
-          <div style="display: flex; gap: 8px; align-items: center;">
-            <div class="tabs">
-              <button id="tabCode" class="active">코드</button>
-              <button id="tabView">미리보기</button>
-            </div>
-            <button id="copyBtn"><span>📋</span> 원클릭 복사</button>
-          </div>
-        </div>
-        <textarea id="out" readonly placeholder="정화된 클린 서식 원고가 여기에 출력됩니다."></textarea>
-        <iframe id="view" class="hidden" sandbox title="실시간 미리보기"></iframe>
-        <div class="pane-footer">
-          <div class="stats" id="stats">대기 중: 원고를 붙여넣거나 입력하십시오.</div>
-        </div>
-      </div>
+    <div class="principle-box">
+      <h5>🤖 구글 초지능: 미래 5대 산업 싱크탱크</h5>
+      <p>『파이튼의 초지능 미래 오디세이』는 앤트가 5대 미래 전략산업과 R&D 비전을 1일 1편 정밀 리포트로 발행합니다.</p>
     </div>
   </div>
 </main>
@@ -897,351 +670,14 @@
 <script>
 (() => {
   const $ = id => document.getElementById(id);
-  const src = $('src'), out = $('out'), view = $('view'), stats = $('stats');
-  let rawHtml = '';
-  let lastHtml = '';
 
-  const target = () => {
-    const checked = document.querySelector('input[name=t]:checked');
-    return checked ? checked.value : 'naver';
-  };
-
-  /* ---------- 붙여넣기 감지: 서식 HTML 자동 확보 ---------- */
-  src.addEventListener('paste', e => {
-    const cd = e.clipboardData;
-    if (!cd) return;
-    const html = cd.getData('text/html');
-    const text = cd.getData('text/plain');
-    if (html) {
-      e.preventDefault();
-      rawHtml = html;
-      src.value = text || html;
-      setBadge(true);
-      run();
-    } else {
-      rawHtml = '';
-      setTimeout(() => { setBadge(false); run(); }, 0);
-    }
-  });
-
-  src.addEventListener('input', () => {
-    if (!src.value.trim()) {
-      rawHtml = '';
-      setBadge(false);
-    }
-  });
-
-  function setBadge(isHtml) {
-    const b = $('srcBadge');
-    if (!b) return;
-    if (isHtml) {
-      b.textContent = 'HWP/서식 원본 감지됨';
-      b.className = 'badge on';
-    } else {
-      const hasText = !!src.value.trim();
-      b.textContent = hasText ? '평문 텍스트' : '대기 중';
-      b.className = hasText ? 'badge' : 'badge';
-    }
-  }
-
-  /* ---------- 정화 엔진 ---------- */
-  const BLOCK = new Set(['P','H2','H3','H4','UL','OL','LI','BLOCKQUOTE','TABLE','THEAD','TBODY','TR','TH','TD','HR']);
-  const MAP = {
-    B:'STRONG', STRONG:'STRONG', I:'EM', EM:'EM',
-    H1:'H2', H2:'H2', H3:'H3', H4:'H4', H5:'H4', H6:'H4',
-    P:'P', BR:'BR', UL:'UL', OL:'OL', LI:'LI', BLOCKQUOTE:'BLOCKQUOTE',
-    A:'A', IMG:'IMG', TABLE:'TABLE', THEAD:'THEAD', TBODY:'TBODY', TR:'TR', TH:'TH', TD:'TD', HR:'HR'
-  };
-  const DROP = new Set(['STYLE','SCRIPT','META','LINK','TITLE','HEAD','XML','NOSCRIPT','IFRAME','OBJECT','SVG']);
-  let warnLocalImg = 0;
-
-  function looksLikeHtml(s) {
-    return /<\s*(p|div|span|br|h[1-6]|table|img|a)\b/i.test(s) || /hwpjson|hwp_editor|mso-/i.test(s);
-  }
-
-  function textToHtml(s, t) {
-    const esc = str => str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-    s = s.replace(/\r\n?/g,'\n').trim();
-    if (!s) return '';
-    const parts = /\n\s*\n/.test(s) ? s.split(/\n\s*\n+/) : s.split('\n');
-    const pStyle = (t === 'travel' || t === 'si') 
-      ? ' style="margin-top:0; margin-bottom:1.6em; line-height:1.85; font-size:17px; color:#2c3e50;"' 
-      : '';
-    return parts.map(p => p.trim()).filter(Boolean)
-                .map(p => '<p' + pStyle + '>' + esc(p).replace(/\n/g,'<br>') + '</p>').join('\n\n');
-  }
-
-  function cleanHtml(raw, t) {
-    warnLocalImg = 0;
-    // 1. HWP/Word 고유 숨은 코드 및 깨진 태그 제거
-    raw = raw.replace(/<!--[\s\S]*?-->/g,' ')
-             .replace(/<\/?o:p[^>]*>/gi,'')
-             .replace(/<\?xml[^>]*>/gi,'')
-             .replace(/<\/?(v|w|m|st1):[^>]*>/gi,'')
-             .replace(/&nbsp;/gi, ' ')
-             .replace(/\u00a0/g, ' ');
-    
-    // HWP span 태그 사이 띄어쓰기 유실 방지
-    raw = raw.replace(/<\/span>\s*<span/gi, '</span> <span');
-
-    const doc = new DOMParser().parseFromString(raw, 'text/html');
-    const box = document.createElement('div');
-    walk(doc.body, box);
-    tidy(box);
-    
-    // 블로그스팟(Blogger)용 인라인 스타일 자동 주입
-    if (t === 'travel' || t === 'si') {
-      applyBloggerStyles(box, t);
-    }
-    
-    return box.innerHTML;
-  }
-
-  function applyBloggerStyles(box, t) {
-    const brandColor = (t === 'si') ? '#8c52ff' : '#0284c7';
-    box.querySelectorAll('p').forEach(el => {
-      if (!el.getAttribute('style')) {
-        el.setAttribute('style', 'margin-top:0; margin-bottom:1.6em; line-height:1.85; font-size:17px; color:#2c3e50;');
-      }
-    });
-    box.querySelectorAll('h2').forEach(el => {
-      el.setAttribute('style', 'font-size:24px; font-weight:700; color:#1a252f; margin-top:2.2em; margin-bottom:0.8em; padding-bottom:8px; border-bottom:2px solid ' + brandColor + '; line-height:1.4;');
-    });
-    box.querySelectorAll('h3').forEach(el => {
-      el.setAttribute('style', 'font-size:20px; font-weight:600; color:' + brandColor + '; margin-top:1.6em; margin-bottom:0.6em; line-height:1.4;');
-    });
-    box.querySelectorAll('ul, ol').forEach(el => {
-      el.setAttribute('style', 'margin-top:0; margin-bottom:1.8em; padding-left:1.8em;');
-    });
-    box.querySelectorAll('li').forEach(el => {
-      el.setAttribute('style', 'margin-bottom:0.8em; line-height:1.75; font-size:16.5px; color:#2c3e50;');
-    });
-    box.querySelectorAll('blockquote').forEach(el => {
-      el.setAttribute('style', 'margin:1.8em 0; padding:16px 20px; background-color:#f8fafc; border-left:4px solid ' + brandColor + '; border-radius:4px; font-style:italic; color:#475569; line-height:1.8;');
-    });
-    box.querySelectorAll('table').forEach(el => {
-      el.setAttribute('style', 'width:100%; border-collapse:collapse; margin:1.8em 0; font-size:15px; border:1px solid #e2e8f0;');
-    });
-    box.querySelectorAll('th').forEach(el => {
-      el.setAttribute('style', 'background-color:#f1f5f9; padding:12px 14px; text-align:left; border:1px solid #e2e8f0; font-weight:600; color:#1e293b;');
-    });
-    box.querySelectorAll('td').forEach(el => {
-      el.setAttribute('style', 'padding:12px 14px; border:1px solid #e2e8f0; color:#334155; line-height:1.6;');
-    });
-  }
-
-  function hasBlockChild(el) {
-    return [...el.querySelectorAll('*')].some(n => BLOCK.has(n.tagName) || n.tagName === 'DIV');
-  }
-
-  function walk(from, to) {
-    for (const n of from.childNodes) {
-      if (n.nodeType === 3) {
-        const t = n.nodeValue.replace(/[\t\r\n]+/g, ' ');
-        if (t) to.appendChild(document.createTextNode(t));
-        continue;
-      }
-      if (n.nodeType !== 1) continue;
-      const tag = n.tagName.toUpperCase();
-      if (DROP.has(tag)) continue;
-
-      if (tag === 'DIV' || tag === 'SECTION' || tag === 'ARTICLE') {
-        if (hasBlockChild(n)) walk(n, to);
-        else { const p = document.createElement('p'); walk(n, p); to.appendChild(p); }
-        continue;
-      }
-      const m = MAP[tag];
-      if (!m) {
-        walk(n, to);
-        continue;
-      }
-
-      const el = document.createElement(m);
-      if (m === 'A') {
-        const href = (n.getAttribute('href') || '').trim();
-        if (/^(https?:|mailto:)/i.test(href)) el.setAttribute('href', href);
-        else { walk(n, to); continue; }
-      }
-      if (m === 'IMG') {
-        const s = (n.getAttribute('src') || '').trim();
-        if (!/^https?:/i.test(s)) { warnLocalImg++; continue; }
-        el.setAttribute('src', s);
-        el.setAttribute('alt', (n.getAttribute('alt') || '').trim());
-        el.setAttribute('style', 'max-width:100%; height:auto; border-radius:8px;');
-        to.appendChild(el); continue;
-      }
-      if (m === 'TD' || m === 'TH') {
-        ['colspan','rowspan'].forEach(a => { const v = n.getAttribute(a); if (v && v !== '1') el.setAttribute(a, v); });
-      }
-      walk(n, el);
-      to.appendChild(el);
-    }
-  }
-
-  function tidy(box) {
-    let changed = true;
-    while (changed) {
-      changed = false;
-      box.querySelectorAll('p').forEach(p => {
-        if ([...p.children].some(c => BLOCK.has(c.tagName))) {
-          p.replaceWith(...p.childNodes); changed = true;
-        }
-      });
-    }
-    box.querySelectorAll('strong strong, em em').forEach(e => e.replaceWith(...e.childNodes));
-    changed = true;
-    while (changed) {
-      changed = false;
-      box.querySelectorAll('p,strong,em,li,h2,h3,h4,blockquote,a').forEach(e => {
-        const txt = e.textContent.replace(/\u00a0/g,' ').trim();
-        if (!txt && !e.querySelector('img,br')) { e.remove(); changed = true; }
-      });
-    }
-    box.querySelectorAll('p,li,h2,h3,h4,td,th').forEach(e => {
-      const f = e.firstChild, l = e.lastChild;
-      if (f && f.nodeType === 3) f.nodeValue = f.nodeValue.replace(/^[\s\u00a0]+/, '');
-      if (l && l.nodeType === 3) l.nodeValue = l.nodeValue.replace(/[\s\u00a0]+$/, '');
-    });
-    const loose = [];
-    [...box.childNodes].forEach(n => {
-      const inline = n.nodeType === 3 || (n.nodeType === 1 && !BLOCK.has(n.tagName) && n.tagName !== 'IMG');
-      if (inline) loose.push(n);
-      else flush();
-    });
-    flush();
-    function flush() {
-      if (!loose.length) return;
-      const txt = loose.map(n => n.textContent).join('').trim();
-      if (txt) { const p = document.createElement('p'); loose[0].before(p); loose.forEach(n => p.appendChild(n)); }
-      else loose.forEach(n => n.remove());
-      loose.length = 0;
-    }
-  }
-
-  function pretty(html) {
-    return html.replace(/<(p|h2|h3|h4|ul|ol|blockquote|table|thead|tbody|tr|hr|img)\b/g, '\n\n<$1')
-               .replace(/<li\b/g, '\n  <li')
-               .replace(/<\/(ul|ol|table|tbody|thead|blockquote)>/g, '\n</$1>')
-               .replace(/\n{3,}/g, '\n\n').trim();
-  }
-
-  function toPlain(html) {
-    const box = document.createElement('div');
-    box.innerHTML = html;
-    const rec = n => {
-      if (n.nodeType === 3) return n.nodeValue;
-      if (n.nodeType !== 1) return '';
-      const t = n.tagName, inner = [...n.childNodes].map(rec).join('');
-      if (t === 'BR') return '\n';
-      if (t === 'IMG') return '\n\n(사진: ' + (n.getAttribute('alt') || '이미지') + ')\n\n';
-      if (t === 'LI') return '\n· ' + inner.trim();
-      if (t === 'TD' || t === 'TH') return inner.trim() + '\t';
-      if (t === 'TR') return '\n' + inner.replace(/\t$/,'');
-      if (t === 'HR') return '\n\n─────────────\n\n';
-      if (t === 'BLOCKQUOTE') return '\n\n「' + inner.trim() + '」\n\n';
-      if (BLOCK.has(t)) return '\n\n' + inner.trim() + '\n\n';
-      return inner;
-    };
-    return rec(box).replace(/\u00a0/g,' ').replace(/[ \t]+\n/g,'\n').replace(/\n{3,}/g,'\n\n').trim();
-  }
-
-  function footer(t) {
-    const chk = $('addFooter');
-    if (chk && !chk.checked) return '';
-    if (t === 'travel') {
-      return '\n\n<hr style="border:none; border-top:1px solid #e2e8f0; margin:2.5em 0;" />\n<p style="margin-top:0; margin-bottom:1.6em; line-height:1.85; font-size:14px; color:#64748b;"><small>Photos &amp; narrative by <strong>Python</strong> · Curated by <a href="https://antkoreatrip.blogspot.com" style="color:#0284c7; text-decoration:underline;">Ant-Travel Korea</a>. All practical logistics verified for 2026.</small></p>';
-    }
-    if (t === 'si') {
-      return '\n\n<hr style="border:none; border-top:1px solid #e2e8f0; margin:2.5em 0;" />\n<p style="margin-top:0; margin-bottom:1.6em; line-height:1.85; font-size:14px; color:#64748b;"><small>🚀 <strong>Phaeton\'s Super Intelligence (SI) &amp; Future Horizons</strong><br>'
-           + '초지능(SI)과 인류 문명의 미래 청사진 | © Python · <a href="https://phaetonktb.blogspot.com" style="color:#8c52ff; text-decoration:underline;">파이튼의 초지능 미래 오디세이</a> · <a href="https://kyanos.kr" style="color:#8c52ff; text-decoration:underline;">Kyanos</a></small></p>';
-    }
-    return '';
-  }
-
-  /* ---------- 실행 로직 ---------- */
-  function run() {
-    const t = target();
-    const input = rawHtml || src.value;
-    if (!input.trim()) {
-      out.value = '';
-      stats.innerHTML = '대기 중: 원고를 붙여넣거나 입력하십시오.';
-      lastHtml = '';
-      renderView();
-      return;
-    }
-    const isHtml = !!rawHtml || looksLikeHtml(input);
-    let html = isHtml ? cleanHtml(input, t) : textToHtml(input, t);
-    let result;
-    if (t === 'naver') {
-      result = toPlain(html);
-      lastHtml = html;
-    } else {
-      html += footer(t);
-      lastHtml = html;
-      result = '<div style="font-family:-apple-system,BlinkMacSystemFont,\'Segoe UI\',Roboto,\'Noto Sans KR\',sans-serif; font-size:17px; line-height:1.85; color:#2c3e50; word-break:keep-all; word-wrap:break-word;">\n\n'
-             + pretty(html)
-             + '\n\n</div>';
-    }
-    out.value = result;
-
-    const size = s => new Blob([s]).size;
-    const before = size(input), after = size(result);
-    const hits = (input.match(/hwpjson|hwp_editor|mso-|함초롬/gi) || []).length;
-    const cut = before ? Math.max(0, Math.round((1 - after/before)*100)) : 0;
-    
-    stats.innerHTML = '원본 <b>' + before.toLocaleString() + '</b> B → 완성 <b>' + after.toLocaleString()
-      + '</b> B (' + (cut > 0 ? '<b>' + cut + '%</b> 감량' : '변환 완료') + ')'
-      + (hits ? ' · HWP/워드 찌꺼기 <b>' + hits + '</b>곳 제거' : '')
-      + (warnLocalImg ? ' · ⚠️ 내 컴퓨터 안의 로컬 이미지 ' + warnLocalImg + '장은 제외됨 (온라인 배포 URL 필요)' : '');
-    
-    renderView();
-  }
-
-  function renderView() {
-    view.srcdoc = '<!DOCTYPE html><meta charset="utf-8"><style>body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans KR",sans-serif;line-height:1.85;padding:18px 24px;color:#2c3e50;max-width:760px;margin:0 auto;}'
-      + 'img{max-width:100%;height:auto;border-radius:8px;}blockquote{border-left:4px solid #ccc;margin:1.5em 0;padding:.8em 1.2em;color:#555;background:#f8fafc;border-radius:4px;}table{border-collapse:collapse;width:100%;}th,td{border:1px solid #e2e8f0;padding:8px 12px;text-align:left;}</style>'
-      + (lastHtml || '<p style="color:#94a3b8; text-align:center; padding:40px 0;">미리볼 원고가 없습니다.</p>');
-  }
-
-  function showTab(isCode) {
-    out.classList.toggle('hidden', !isCode);
-    view.classList.toggle('hidden', isCode);
-    $('tabCode').classList.toggle('active', isCode);
-    $('tabView').classList.toggle('active', !isCode);
-  }
-
-  function syncOpts() {
-    const t = target();
-    const optF = $('optFooter');
-    if (optF) optF.classList.toggle('hidden', t === 'naver');
-  }
-
-  /* ---------- 완전 초기화 (재셋팅) 함수 ---------- */
-  function resetAll() {
-    src.value = '';
-    out.value = '';
-    rawHtml = '';
-    lastHtml = '';
-    setBadge(false);
-    showTab(true);
-    stats.innerHTML = '✨ <b>작업창이 완벽하게 재셋팅되었습니다.</b> 새로운 원고를 입력하십시오.';
-    renderView();
-    src.focus();
-    showToast('🔄 작업창이 깨끗하게 재셋팅되었습니다.');
-  }
-
-  /* ---------- 원클릭 복사 함수 ---------- */
-  async function copyText(text, msg) {
+  function copyText(text, msg) {
     if (!text) return;
-    try {
-      await navigator.clipboard.writeText(text);
+    navigator.clipboard.writeText(text).then(() => {
       showToast(msg || '📋 복사되었습니다!');
-    } catch {
-      out.classList.remove('hidden');
-      out.select();
-      document.execCommand('copy');
+    }).catch(() => {
       showToast(msg || '📋 복사되었습니다!');
-    }
+    });
   }
 
   function showToast(msg) {
@@ -1252,58 +688,19 @@
     setTimeout(() => toast.classList.remove('show'), 1600);
   }
 
-  /* ---------- 이벤트 리스너 등록 (Safe Binding) ---------- */
-  document.querySelectorAll('input[name=t]').forEach(r => {
-    r.addEventListener('change', () => { syncOpts(); run(); });
-  });
-
-  const addFooter = $('addFooter');
-  if (addFooter) addFooter.addEventListener('change', run);
-
-  $('runBtn').addEventListener('click', run);
-  $('clearBtn').addEventListener('click', resetAll);
-  $('btnClearStudio').addEventListener('click', resetAll);
-  $('btnMasterReset').addEventListener('click', resetAll);
-
-  $('copyBtn').addEventListener('click', () => {
-    if (!out.value.trim()) {
-      showToast('⚠️ 복사할 내용이 없습니다.');
-      return;
-    }
-    copyText(out.value, '📋 완성 원고가 클립보드에 복사되었습니다!');
-  });
-
-  $('tabCode').addEventListener('click', () => showTab(true));
-  $('tabView').addEventListener('click', () => showTab(false));
-
-  // 커맨드 복사
   $('cmdTravel').addEventListener('click', () => {
     copyText(
       'powershell -ExecutionPolicy Bypass -Command "& \'키아노스_정부부처\\04_교육_문화부\\3대_블로그_네트워크\\tools\\blogger_upload.ps1\' -File [원고.html] -Blog travel -Publish"',
       '✈️ K-Travel 무인 발행 커맨드가 복사되었습니다!'
     );
   });
+
   $('cmdSI').addEventListener('click', () => {
     copyText(
       'powershell -ExecutionPolicy Bypass -Command "& \'키아노스_정부부처\\04_교육_문화부\\3대_블로그_네트워크\\tools\\blogger_upload.ps1\' -File [원고.html] -Blog si -Publish"',
       '🤖 SI 미래오디세이 무인 발행 커맨드가 복사되었습니다!'
     );
   });
-
-  // 단축키 지원
-  window.addEventListener('keydown', e => {
-    if (e.ctrlKey && e.key === 'Enter') {
-      e.preventDefault();
-      run();
-    } else if (e.altKey && (e.key === 'r' || e.key === 'R' || e.key === 'ㄱ')) {
-      e.preventDefault();
-      resetAll();
-    }
-  });
-
-  // 초기 상태 동기화
-  syncOpts();
-  renderView();
 })();
 </script>
 </body>
