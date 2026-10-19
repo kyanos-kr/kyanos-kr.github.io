@@ -217,21 +217,35 @@
         }
       };
 
-      // 2. Hidden Div for Google Translate
-      if (!document.getElementById('google_translate_element')) {
-        const div = document.createElement('div');
-        div.id = 'google_translate_element';
-        div.style.display = 'none';
-        document.body.appendChild(div);
-      }
-
-      // 3. Load Script
-      if (!document.getElementById('google-translate-script')) {
+      const loadScript = () => {
+        if (document.getElementById('google-translate-script')) return;
+        // Hidden Div for Google Translate
+        if (!document.getElementById('google_translate_element')) {
+          const div = document.createElement('div');
+          div.id = 'google_translate_element';
+          div.style.display = 'none';
+          document.body.appendChild(div);
+        }
         const script = document.createElement('script');
         script.id = 'google-translate-script';
         script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
         script.async = true;
         document.head.appendChild(script);
+      };
+
+      this.loadGoogleTranslate = loadScript;
+
+      // 다국어가 선택된 경우 즉시 로드, 기본 한국어는 유휴 시간에 지연 로드
+      if (this.currentLang && this.currentLang !== 'ko') {
+        loadScript();
+      } else {
+        if ('requestIdleCallback' in window) {
+          window.requestIdleCallback(() => {
+            setTimeout(loadScript, 2500);
+          });
+        } else {
+          setTimeout(loadScript, 3500);
+        }
       }
     }
 
@@ -299,6 +313,7 @@
     }
 
     applyLanguage(langCode) {
+      if (this.loadGoogleTranslate) this.loadGoogleTranslate();
       if (langCode === 'ko') {
         // 한국어 원문 복구: 구글 번역 쿠키 및 세션 완전 초기화 후 원본 복원
         this.resetGoogleTranslate();

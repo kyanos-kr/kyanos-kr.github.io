@@ -3,16 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>키아노스 | The Sovereign Realm of Kyanos</title>
-  <meta name="description" content="키아노스 공식 포털 인트로">
-  
-  <!-- Google Fonts: Cinzel & Noto Serif KR / Montserrat -->
+  <title>키아노스 포털 | The Sovereign Realm of Kyanos</title>
+  <meta name="description" content="덕치와 초지능(SI)의 주권 국가 키아노스 공식 포털 — 정부 부처, 경제, 사법, 문화, 앤트뉴스 종합 허브">
+  <meta name="keywords" content="키아노스, Kyanos, 포털, 파이튼, 앤트, 정부부처, 앤트뉴스, AntNews, Sovereign Realm">
+  <meta name="author" content="Kyanos Sovereign Realm">
+  <meta name="theme-color" content="#030814">
+  <link rel="canonical" href="https://kyanos-kr.github.io/main.html">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kyanos-kr.github.io/main.html">
+  <meta property="og:title" content="키아노스 포털 | The Sovereign Realm of Kyanos">
+  <meta property="og:description" content="덕치와 초지능(SI)의 주권 국가 키아노스 공식 포털">
+  <meta property="og:image" content="https://kyanos-kr.github.io/assets/Kyanos_flag.webp">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="키아노스 포털 | The Sovereign Realm of Kyanos">
+  <meta name="twitter:description" content="덕치와 초지능(SI)의 주권 국가 키아노스 공식 포털">
+  <meta name="twitter:image" content="https://kyanos-kr.github.io/assets/Kyanos_flag.webp">
+
+  <!-- Google Fonts: Non-render-blocking with font-display swap -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Montserrat:wght@300;400;600;700&family=Noto+Serif+KR:wght@300;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/kyanos_civic_treasury.css">
-  <link rel="stylesheet" href="assets/css/kyanos_i18n.css">
-  <link rel="stylesheet" href="assets/css/kyanos_notice_popup.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Montserrat:wght@300;400;600;700&family=Noto+Serif+KR:wght@300;500;700;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Montserrat:wght@300;400;600;700&family=Noto+Serif+KR:wght@300;500;700;900&display=swap">
+  </noscript>
+
+  <!-- Async Stylesheets for Non-blocking Rendering -->
+  <link rel="stylesheet" href="assets/css/kyanos_civic_treasury.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="assets/css/kyanos_i18n.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="assets/css/kyanos_notice_popup.css" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="assets/css/kyanos_civic_treasury.css">
+    <link rel="stylesheet" href="assets/css/kyanos_i18n.css">
+    <link rel="stylesheet" href="assets/css/kyanos_notice_popup.css">
+  </noscript>
 
   <style>
     :root {
@@ -2081,11 +2111,11 @@
   </script>
 <script>(function(){var d=new Date(),e=document.getElementById("brief-today");if(e)e.textContent=String(d.getMonth()+1).padStart(2,"0")+"."+String(d.getDate()).padStart(2,"0");})();</script>
   <!-- 키아노스 국민 방문 경험치 & 자립 재정 스크립트 -->
-  <script src="assets/js/kyanos_citizen_xp.js"></script>
-  <script src="assets/js/kyanos_treasury.js"></script>
+  <script src="assets/js/kyanos_citizen_xp.js" defer></script>
+  <script src="assets/js/kyanos_treasury.js" defer></script>
   <!-- 키아노스 글로벌 다국어 실시간 번역기 -->
-  <script src="assets/js/kyanos_i18n.js"></script>
+  <script src="assets/js/kyanos_i18n.js" defer></script>
   <!-- 키아노스 시스템 개편 안내 팝업 -->
-  <script src="assets/js/kyanos_notice_popup.js"></script>
+  <script src="assets/js/kyanos_notice_popup.js" defer></script>
 </body>
 </html>

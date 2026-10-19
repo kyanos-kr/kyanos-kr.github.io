@@ -5,19 +5,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>키아노스 | The Sovereign Realm of Kyanos</title>
   <meta name="description" content="키아노스 공식 인트로 포털 — 덕치와 인텔리전스의 주권 국가">
+  <meta name="keywords" content="키아노스, Kyanos, The Sovereign Realm of Kyanos, 파이튼, 앤트, 앤트뉴스, AntNews">
+  <meta name="author" content="Kyanos Sovereign Realm">
+  <meta name="theme-color" content="#030814">
+  <link rel="canonical" href="https://kyanos-kr.github.io/">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+
   <!-- Open Graph / Meta -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://kyanos-kr.github.io/">
   <meta property="og:title" content="키아노스 | The Sovereign Realm of Kyanos">
   <meta property="og:description" content="덕치와 인텔리전스의 주권 국가, 키아노스 공식 포털">
-  <meta property="og:image" content="https://kyanos-kr.github.io/assets/kyanos_seal.png">
+  <meta property="og:image" content="https://kyanos-kr.github.io/assets/Kyanos_flag.webp">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="키아노스 | The Sovereign Realm of Kyanos">
+  <meta name="twitter:description" content="덕치와 인텔리전스의 주권 국가, 키아노스 공식 포털">
+  <meta name="twitter:image" content="https://kyanos-kr.github.io/assets/Kyanos_flag.webp">
+
   <link rel="alternate" type="application/rss+xml" title="앤트뉴스 RSS 피드" href="https://kyanos-kr.github.io/rss.xml">
 
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "키아노스 (Kyanos)",
+    "alternateName": "The Sovereign Realm of Kyanos",
+    "url": "https://kyanos-kr.github.io/",
+    "description": "덕치와 인텔리전스의 주권 국가 키아노스 공식 포털",
+    "inLanguage": "ko"
+  }
+  </script>
 
-  <!-- Google Fonts: Cinzel & Montserrat & Noto Sans KR -->
+  <!-- Preload LCP Image -->
+  <link rel="preload" href="assets/Kyanos_flag.webp" as="image" type="image/webp" fetchpriority="high">
+
+  <!-- Google Fonts: Streamlined weights with display optional -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Montserrat:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@400;600&family=Noto+Sans+KR:wght@700&display=optional" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@400;600&family=Noto+Sans+KR:wght@700&display=optional">
+  </noscript>
+
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="assets/css/kyanos_civic_treasury.css">
   <link rel="stylesheet" href="assets/css/kyanos_i18n.css">
   <link rel="stylesheet" href="assets/css/kyanos_notice_popup.css">
@@ -145,14 +180,14 @@
       width: 100%;
       max-width: 680px;
       margin: auto 0;
-      opacity: 0;
-      animation: introFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      opacity: 1;
     }
 
     /* Golden Title Above Flag */
     .realm-title-area {
       text-align: center;
       margin-bottom: 1.4rem;
+      min-height: 115px;
     }
 
     .realm-badge-top {
@@ -167,7 +202,7 @@
     }
 
     .realm-gold-title {
-      font-family: 'Cinzel', 'Noto Serif KR', serif;
+      font-family: 'Cinzel', 'Times New Roman', serif;
       font-size: clamp(2.1rem, 4.5vw, 3.2rem);
       font-weight: 900;
       letter-spacing: 0.16em;
@@ -180,7 +215,7 @@
     }
 
     .realm-kr-sub {
-      font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+      font-family: 'Noto Sans KR', 'Pretendard', 'Malgun Gothic', sans-serif;
       font-size: clamp(1.4rem, 2.8vw, 1.95rem);
       font-weight: 800;
       letter-spacing: 0.38em;
@@ -197,6 +232,7 @@
     .flag-card-wrap {
       max-width: 380px;
       width: 80vw;
+      aspect-ratio: 380 / 253;
       border-radius: 14px;
       overflow: hidden;
       box-shadow: 0 15px 45px rgba(0, 0, 0, 0.85), 0 0 35px var(--cyan-glow), 0 0 25px rgba(212, 175, 55, 0.2);
@@ -216,9 +252,10 @@
 
     .flag-card-img {
       width: 100%;
-      height: auto;
+      height: 100%;
+      aspect-ratio: 380 / 253;
       display: block;
-      object-fit: contain;
+      object-fit: cover;
     }
 
     /* SKIP Button Area */
@@ -416,12 +453,12 @@
     /* Fade Transition */
     @keyframes introFadeIn {
       0% {
-        opacity: 0;
-        transform: translateY(14px) scale(0.98);
+        opacity: 0.85;
+        transform: translateY(8px);
       }
       100% {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translateY(0);
       }
     }
 
@@ -471,8 +508,8 @@
   <div class="background-glow"></div>
 
   <!-- Top-Left Official National Emblem & Realm Title -->
-  <a href="main.html" class="top-brand-emblem notranslate" id="topEmblem" translate="no" title="키아노스 메인 포털로 이동">
-    <div class="emblem-icon">👑</div>
+  <a href="main.html" class="top-brand-emblem notranslate" id="topEmblem" translate="no" title="KYANOS The Sovereign Realm 메인 포털로 이동" aria-label="KYANOS The Sovereign Realm">
+    <div class="emblem-icon" aria-hidden="true">👑</div>
     <div class="emblem-text-group notranslate" translate="no">
       <span class="emblem-main notranslate" translate="no">KYANOS</span>
       <span class="emblem-sub notranslate" translate="no">The Sovereign Realm</span>
@@ -490,31 +527,37 @@
     </div>
 
     <!-- National Flag -->
-    <a href="main.html" class="flag-card-wrap" id="flagLink" title="클릭하여 키아노스 왕국으로 진입">
-      <img src="assets/Kyanos flag.png" alt="키아노스 국기 (National Flag of Kyanos)" class="flag-card-img">
+    <a href="main.html" class="flag-card-wrap" id="flagLink" title="키아노스 국기 클릭하여 왕국으로 진입" aria-label="키아노스 국기 (National Flag of Kyanos)">
+      <picture>
+        <source srcset="assets/Kyanos_flag.webp" type="image/webp">
+        <img src="assets/Kyanos_flag_opt.png" alt="키아노스 국기 (National Flag of Kyanos)" class="flag-card-img" width="380" height="253" fetchpriority="high" decoding="async">
+      </picture>
     </a>
 
     <!-- SKIP Button -->
     <div class="skip-section">
-      <a href="main.html" class="skip-btn" id="skipBtn" title="메인 페이지로 진입">
+      <a href="main.html" class="skip-btn" id="skipBtn" title="메인 페이지로 진입" aria-label="SKIP">
         <span>SKIP</span>
-        <span class="arrow-icon">&rarr;</span>
+        <span class="arrow-icon" aria-hidden="true">&rarr;</span>
       </a>
     </div>
 
     <!-- Brand Promotion Showcase Below SKIP -->
-    <section class="brand-promo-container">
+    <section class="brand-promo-container" aria-label="국가 핵심 브랜드 쇼케이스">
       <div class="promo-divider">
         <div class="promo-line"></div>
-        <span class="promo-label">National Core Brands</span>
+        <h2 class="promo-label">National Core Brands</h2>
         <div class="promo-line"></div>
       </div>
 
       <div class="brand-cards-row">
         <!-- Brand 1: EVERMORE -->
-        <a href="gov_overview.html#pillars" class="brand-mini-card evermore" title="EVERMORE - 키아노스 공식 럭셔리 & 헤리티지 브랜드 (왕국개요관)" target="_blank">
+        <a href="gov_overview.html#pillars" class="brand-mini-card evermore" title="EVERMORE - 키아노스 공식 럭셔리 & 헤리티지 브랜드 (왕국개요관)" aria-label="EVERMORE The Luxury Pillar" target="_blank" rel="noopener noreferrer">
           <div class="brand-logo-circle">
-            <img src="assets/brands/evermore.png" alt="EVERMORE Logo" onerror="this.src='assets/banners/kyanos270x80.png'">
+            <picture>
+              <source srcset="assets/brands/evermore.webp" type="image/webp">
+              <img src="assets/brands/evermore_opt.png" alt="EVERMORE Logo" width="44" height="44" loading="lazy" decoding="async" onerror="this.src='assets/banners/kyanos270x80.png'">
+            </picture>
           </div>
           <div class="brand-info">
             <span class="brand-title">EVERMORE</span>
@@ -523,9 +566,12 @@
         </a>
 
         <!-- Brand 2: NEXFORUM -->
-        <a href="gov_overview.html#pillars" class="brand-mini-card nexforum" title="NEXFORUM - 키아노스 첨단 테크 & 미래 포럼 브랜드 (왕국개요관)" target="_blank">
+        <a href="gov_overview.html#pillars" class="brand-mini-card nexforum" title="NEXFORUM - 키아노스 첨단 테크 & 미래 포럼 브랜드 (왕국개요관)" aria-label="NEXFORUM Future Tech Pillar" target="_blank" rel="noopener noreferrer">
           <div class="brand-logo-circle">
-            <img src="assets/brands/nexforum.png" alt="NEXFORUM Logo" onerror="this.src='assets/banners/kyanos270x80.png'">
+            <picture>
+              <source srcset="assets/brands/nexforum.webp" type="image/webp">
+              <img src="assets/brands/nexforum_opt.png" alt="NEXFORUM Logo" width="44" height="44" loading="lazy" decoding="async" onerror="this.src='assets/banners/kyanos270x80.png'">
+            </picture>
           </div>
           <div class="brand-info">
             <span class="brand-title">NEXFORUM</span>
@@ -534,9 +580,9 @@
         </a>
 
         <!-- Brand 3: ANTNEWS & MINISTRY OF MEDIA -->
-        <a href="gov_media.html" target="_blank" class="brand-mini-card antnews" title="키아노스 미디어부 & 앤트뉴스 공식 포털" style="border-color: rgba(255,77,109,0.5);">
+        <a href="gov_media.html" target="_blank" rel="noopener noreferrer" class="brand-mini-card antnews" title="키아노스 미디어부 & 앤트뉴스 공식 포털" aria-label="미디어부 앤트뉴스 국정 포털" style="border-color: rgba(255,77,109,0.5);">
           <div class="brand-logo-circle" style="background: radial-gradient(circle, #ff4d6d 0%, #080816 70%);">
-            <span style="font-size: 1.2rem;">📰</span>
+            <span style="font-size: 1.2rem;" aria-hidden="true">📰</span>
           </div>
           <div class="brand-info">
             <span class="brand-title" style="color: #ff859c;">미디어부</span>
@@ -545,9 +591,9 @@
         </a>
 
         <!-- Brand 4: KYANOS MARKET PULSE -->
-        <a href="market_monitor.html" target="_blank" class="brand-mini-card market" title="키아노스 마켓 펄스 - 실시간 주식·XRP·금 시장 모니터" style="border-color: rgba(16,185,129,0.4);">
+        <a href="market_monitor.html" target="_blank" rel="noopener noreferrer" class="brand-mini-card market" title="키아노스 마켓 펄스 - 실시간 주식·XRP·금 시장 모니터" aria-label="마켓 펄스 실시간 금융 센터" style="border-color: rgba(16,185,129,0.4);">
           <div class="brand-logo-circle" style="background: radial-gradient(circle, #10b981 0%, #06152d 70%);">
-            <span style="font-size: 1.2rem;">📊</span>
+            <span style="font-size: 1.2rem;" aria-hidden="true">📊</span>
           </div>
           <div class="brand-info">
             <span class="brand-title" style="color: #34d399;">마켓 펄스</span>
@@ -556,9 +602,9 @@
         </a>
 
         <!-- Brand 5: KYANOS SOVEREIGN TREASURY -->
-        <a href="treasury_hub.html" class="brand-mini-card treasury" title="키아노스 자립 재정 센터 - 국가 자립 재원 확충 & 시민 후원 허브" style="border-color: rgba(255,224,102,0.4);">
+        <a href="treasury_hub.html" class="brand-mini-card treasury" title="키아노스 자립 재정 센터 - 국가 자립 재원 확충 & 시민 후원 허브" aria-label="자립 재정 허브 국가 재원 확충" style="border-color: rgba(255,224,102,0.4);">
           <div class="brand-logo-circle" style="background: radial-gradient(circle, #ffe066 0%, #06152d 70%);">
-            <span style="font-size: 1.2rem;">💎</span>
+            <span style="font-size: 1.2rem;" aria-hidden="true">💎</span>
           </div>
           <div class="brand-info">
             <span class="brand-title" style="color: #ffe066;">자립 재정 허브</span>
@@ -567,9 +613,9 @@
         </a>
 
         <!-- Brand 6: LEX-KYANOS (법률 나침반) -->
-        <a href="lex_kyanos.html" class="brand-mini-card lex" title="키아노스 시민 법률 나침반 - 덕치사법원 나홀로 법률 해결 솔루션" style="border-color: rgba(212,175,55,0.5);">
+        <a href="lex_kyanos.html" class="brand-mini-card lex" title="키아노스 시민 법률 나침반 - 덕치사법원 나홀로 법률 해결 솔루션" aria-label="법률 나침반 덕치사법원 대민 SI" style="border-color: rgba(212,175,55,0.5);">
           <div class="brand-logo-circle" style="background: radial-gradient(circle, #d4af37 0%, #06152d 70%);">
-            <span style="font-size: 1.2rem;">⚖️</span>
+            <span style="font-size: 1.2rem;" aria-hidden="true">⚖️</span>
           </div>
           <div class="brand-info">
             <span class="brand-title" style="color: #ffe066;">법률 나침반</span>
@@ -578,9 +624,9 @@
         </a>
 
         <!-- Brand 7: MED-KYANOS (생명케어) -->
-        <a href="med_kyanos.html" class="brand-mini-card med" title="키아노스 시민 생명케어 가이드 - 복지부 의료 사각지대 해소 솔루션" style="border-color: rgba(16,185,129,0.5);">
+        <a href="med_kyanos.html" class="brand-mini-card med" title="키아노스 시민 생명케어 가이드 - 복지부 의료 사각지대 해소 솔루션" aria-label="생명케어 가이드 복지부 대민 SI" style="border-color: rgba(16,185,129,0.5);">
           <div class="brand-logo-circle" style="background: radial-gradient(circle, #10b981 0%, #03150e 70%);">
-            <span style="font-size: 1.2rem;">🩺</span>
+            <span style="font-size: 1.2rem;" aria-hidden="true">🩺</span>
           </div>
           <div class="brand-info">
             <span class="brand-title" style="color: #34d399;">생명케어 가이드</span>
@@ -601,7 +647,7 @@
       container.classList.add('fade-out');
       setTimeout(() => {
         window.location.href = targetHref;
-      }, 400);
+      }, 350);
     }
 
     document.getElementById('skipBtn').addEventListener('click', handleNavigation);
@@ -621,11 +667,11 @@
     });
   </script>
   <!-- 키아노스 국민 방문 경험치 & 자립 재정 스크립트 -->
-  <script src="assets/js/kyanos_citizen_xp.js"></script>
-  <script src="assets/js/kyanos_treasury.js"></script>
+  <script src="assets/js/kyanos_citizen_xp.js" defer></script>
+  <script src="assets/js/kyanos_treasury.js" defer></script>
   <!-- 키아노스 글로벌 다국어 실시간 번역기 -->
-  <script src="assets/js/kyanos_i18n.js"></script>
+  <script src="assets/js/kyanos_i18n.js" defer></script>
   <!-- 키아노스 시스템 개편 안내 팝업 -->
-  <script src="assets/js/kyanos_notice_popup.js"></script>
+  <script src="assets/js/kyanos_notice_popup.js" defer></script>
 </body>
 </html>
