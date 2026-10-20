@@ -7,7 +7,7 @@
   <meta name="description" content="키아노스 공식 인트로 포털 — 덕치와 인텔리전스의 주권 국가">
   <meta name="keywords" content="키아노스, Kyanos, The Sovereign Realm of Kyanos, 파이튼, 앤트, 앤트뉴스, AntNews">
   <meta name="author" content="Kyanos Sovereign Realm">
-  <meta name="theme-color" content="#030814">
+  <meta name="theme-color" content="#19223c">
   <link rel="canonical" href="https://kyanos-kr.github.io/">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="icon" type="image/png" href="favicon.png">
@@ -59,15 +59,16 @@
 
   <style>
     :root {
-      --bg-color: #030814;
-      --gold-bright: #ffe066;
-      --gold: #d4af37;
-      --gold-light: #fbeea4;
-      --gold-dark: #8c6d1f;
-      --text-sub: #94a3b8;
-      --cyan-glow: rgba(0, 210, 255, 0.35);
-      --glass-card: rgba(8, 22, 48, 0.55);
-      --glass-border: rgba(212, 175, 55, 0.22);
+      --bg-color: #19223c;
+      --bg-secondary: #28365c;
+      --gold-bright: #fde68a;
+      --gold: #f59e0b;
+      --gold-light: #fef3c7;
+      --gold-dark: #d97706;
+      --text-sub: #cbd5e1;
+      --cyan-glow: rgba(251, 191, 36, 0.32);
+      --glass-card: rgba(34, 46, 79, 0.68);
+      --glass-border: rgba(251, 191, 36, 0.36);
     }
 
     * {
@@ -77,7 +78,7 @@
     }
 
     body {
-      background-color: var(--bg-color);
+      background: radial-gradient(circle at 50% 22%, var(--bg-secondary) 0%, var(--bg-color) 78%);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -98,7 +99,7 @@
       transform: translate(-50%, -50%);
       width: 750px;
       height: 750px;
-      background: radial-gradient(circle, rgba(12, 60, 120, 0.28) 0%, rgba(3, 8, 20, 0) 72%);
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.22) 0%, rgba(99, 102, 241, 0.24) 45%, rgba(25, 34, 60, 0) 72%);
       pointer-events: none;
       z-index: 1;
     }
@@ -113,7 +114,7 @@
       gap: 14px;
       text-decoration: none;
       z-index: 50;
-      background: rgba(3, 8, 20, 0.6);
+      background: rgba(34, 46, 79, 0.72);
       padding: 8px 18px;
       border-radius: 40px;
       border: 1px solid rgba(212, 175, 55, 0.25);
@@ -279,7 +280,7 @@
       padding: 11px 32px;
       border-radius: 30px;
       border: 1.5px solid var(--gold);
-      background: linear-gradient(135deg, rgba(8, 28, 60, 0.85) 0%, rgba(3, 10, 25, 0.95) 100%);
+      background: linear-gradient(135deg, #b45309 0%, #78350f 100%);
       backdrop-filter: blur(12px);
       box-shadow: 0 6px 25px rgba(0, 0, 0, 0.6), 0 0 18px rgba(212, 175, 55, 0.3);
       transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -391,7 +392,7 @@
       transform: translateY(-3px);
       border-color: rgba(212, 175, 55, 0.45);
       box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6);
-      background: rgba(12, 32, 68, 0.7);
+      background: rgba(45, 60, 102, 0.88);
     }
 
     .brand-mini-card.nexforum:hover {

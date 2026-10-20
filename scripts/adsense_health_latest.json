@@ -1,16 +1,16 @@
 {
-  "timestamp": "2026-10-08 22:34:09",
+  "timestamp": "2026-10-20 19:46:19",
   "domain": "https://www.antnews.org",
   "checks": [
     [
       "HTTP->HTTPS 리다이렉트",
       true,
-      "HTTP 301 정상 전환"
+      "상태 200"
     ],
     [
       "메인 페이지 접속 및 응답",
       true,
-      "29.54ms"
+      "50.05ms"
     ],
     [
       "ads.txt 단독 ID 무결성",
@@ -40,7 +40,7 @@
     [
       "구글 CDN 라이브러리 응답",
       true,
-      "112.91ms"
+      "144.78ms"
     ]
   ],
   "all_passed": true,
