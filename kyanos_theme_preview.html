@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>키아노스 국정 컬러 테마 품격 비교관 | Kyanos Regal Color Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Montserrat:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700;800&family=Noto+Serif+KR:wght@500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Default: Theme A (Royal Serenity & Champagne Gold) */
+      --bg-primary: #0d2240;
+      --bg-secondary: #163863;
+      --bg-glow-1: rgba(56, 189, 248, 0.32);
+      --bg-glow-2: rgba(229, 193, 88, 0.16);
+      --text-main: #f8fafc;
+      --text-sub: #cbd5e1;
+      --text-muted: #94a3b8;
+      --gold-primary: #e5c158;
+      --gold-bright: #ffe885;
+      --gold-gradient: linear-gradient(135deg, #ffffff 0%, #fff3b8 35%, #e5c158 75%, #b88b28 100%);
+      --accent-cyan: #38bdf8;
+      --accent-emerald: #34d399;
+      --card-bg: rgba(19, 47, 84, 0.65);
+      --card-hover-bg: rgba(26, 63, 110, 0.82);
+      --card-border: rgba(229, 193, 88, 0.32);
+      --card-shadow: 0 12px 32px rgba(5, 15, 32, 0.45);
+      --header-bg: rgba(13, 34, 64, 0.82);
+      --btn-bg: linear-gradient(135deg, rgba(22, 58, 107, 0.9) 0%, rgba(13, 34, 64, 0.95) 100%);
+      --btn-text: #ffffff;
+      --flag-shadow: 0 18px 48px rgba(6, 18, 38, 0.65), 0 0 40px rgba(56, 189, 248, 0.38);
+      --badge-bg: rgba(56, 189, 248, 0.15);
+      --badge-border: rgba(56, 189, 248, 0.4);
+    }
+
+    /* Theme 0: Original Dark (#030814) */
+    body[data-theme="original"] {
+      --bg-primary: #030814;
+      --bg-secondary: #06152d;
+      --bg-glow-1: rgba(12, 60, 120, 0.28);
+      --bg-glow-2: rgba(0, 0, 0, 0);
+      --text-main: #f0f6fc;
+      --text-sub: #94a3b8;
+      --text-muted: #64748b;
+      --gold-primary: #d4af37;
+      --gold-bright: #ffe066;
+      --gold-gradient: linear-gradient(135deg, #ffffff 0%, #fbeea4 30%, #d4af37 70%, #8c6d1f 100%);
+      --accent-cyan: #00d2ff;
+      --accent-emerald: #10b981;
+      --card-bg: rgba(8, 22, 48, 0.55);
+      --card-hover-bg: rgba(12, 32, 68, 0.75);
+      --card-border: rgba(212, 175, 55, 0.22);
+      --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.75);
+      --header-bg: rgba(3, 8, 20, 0.85);
+      --btn-bg: linear-gradient(135deg, rgba(8, 28, 60, 0.85) 0%, rgba(3, 10, 25, 0.95) 100%);
+      --btn-text: #ffffff;
+      --flag-shadow: 0 15px 45px rgba(0, 0, 0, 0.85), 0 0 35px rgba(0, 210, 255, 0.35);
+      --badge-bg: rgba(212, 175, 55, 0.12);
+      --badge-border: rgba(212, 175, 55, 0.35);
+    }
+
+    /* Theme A: Royal Serenity & Champagne Gold (추천 1순위 - 밝은 황실 세레니티 블루) */
+    body[data-theme="serenity"] {
+      --bg-primary: #0f2747;
+      --bg-secondary: #1b4375;
+      --bg-glow-1: rgba(56, 189, 248, 0.38);
+      --bg-glow-2: rgba(243, 209, 110, 0.18);
+      --text-main: #f8fafc;
+      --text-sub: #dbeafe;
+      --text-muted: #93c5fd;
+      --gold-primary: #ebd07a;
+      --gold-bright: #fff0a8;
+      --gold-gradient: linear-gradient(135deg, #ffffff 0%, #fff4bd 35%, #e5c158 75%, #c2952d 100%);
+      --accent-cyan: #38bdf8;
+      --accent-emerald: #34d399;
+      --card-bg: rgba(23, 55, 99, 0.65);
+      --card-hover-bg: rgba(30, 70, 122, 0.85);
+      --card-border: rgba(235, 208, 122, 0.36);
+      --card-shadow: 0 12px 32px rgba(7, 19, 38, 0.4);
+      --header-bg: rgba(15, 39, 71, 0.82);
+      --btn-bg: linear-gradient(135deg, #1d4ed8 0%, #1e3a8a 100%);
+      --btn-text: #ffffff;
+      --flag-shadow: 0 18px 48px rgba(7, 19, 38, 0.55), 0 0 45px rgba(56, 189, 248, 0.45);
+      --badge-bg: rgba(56, 189, 248, 0.18);
+      --badge-border: rgba(56, 189, 248, 0.48);
+    }
+
+    /* Theme B: Imperial Silk Ivory & Royal Sapphire (추천 2순위 - 황실 실크 아이보리 & 로열 사파이어) */
+    body[data-theme="ivory"] {
+      --bg-primary: #f6f3ec;
+      --bg-secondary: #ebe5d8;
+      --bg-glow-1: rgba(14, 116, 144, 0.10);
+      --bg-glow-2: rgba(180, 134, 24, 0.12);
+      --text-main: #0f2542;
+      --text-sub: #334e68;
+      --text-muted: #627d98;
+      --gold-primary: #9c7316;
+      --gold-bright: #b8860b;
+      --gold-gradient: linear-gradient(135deg, #0f2542 0%, #1d3f6e 45%, #9c7316 85%, #b8860b 100%);
+      --accent-cyan: #0284c7;
+      --accent-emerald: #059669;
+      --card-bg: rgba(255, 255, 255, 0.82);
+      --card-hover-bg: rgba(255, 255, 255, 0.98);
+      --card-border: rgba(184, 134, 11, 0.35);
+      --card-shadow: 0 12px 32px rgba(15, 37, 66, 0.08);
+      --header-bg: rgba(246, 243, 236, 0.88);
+      --btn-bg: linear-gradient(135deg, #0f2542 0%, #1e3a5f 100%);
+      --btn-text: #fbeea4;
+      --flag-shadow: 0 20px 50px rgba(15, 37, 66, 0.22), 0 0 30px rgba(184, 134, 11, 0.25);
+      --badge-bg: rgba(15, 37, 66, 0.07);
+      --badge-border: rgba(184, 134, 11, 0.45);
+    }
+
+    /* Theme C: Aurora Teal & Celestial Gold (시안 C - 비취빛 오로라 & 셀레스티얼 골드) */
+    body[data-theme="aurora"] {
+      --bg-primary: #0d2b36;
+      --bg-secondary: #154552;
+      --bg-glow-1: rgba(45, 212, 191, 0.30);
+      --bg-glow-2: rgba(234, 179, 8, 0.16);
+      --text-main: #f0fdfa;
+      --text-sub: #ccfbf1;
+      --text-muted: #5eead4;
+      --gold-primary: #ebd07a;
+      --gold-bright: #fef08a;
+      --gold-gradient: linear-gradient(135deg, #ffffff 0%, #fef08a 35%, #eab308 75%, #ca8a04 100%);
+      --accent-cyan: #2dd4bf;
+      --accent-emerald: #34d399;
+      --card-bg: rgba(19, 64, 77, 0.65);
+      --card-hover-bg: rgba(25, 82, 97, 0.85);
+      --card-border: rgba(235, 208, 122, 0.35);
+      --card-shadow: 0 12px 32px rgba(5, 20, 26, 0.45);
+      --header-bg: rgba(13, 43, 54, 0.85);
+      --btn-bg: linear-gradient(135deg, #0f766e 0%, #115e59 100%);
+      --btn-text: #ffffff;
+      --flag-shadow: 0 18px 48px rgba(5, 22, 28, 0.6), 0 0 42px rgba(45, 212, 191, 0.4);
+      --badge-bg: rgba(45, 212, 191, 0.16);
+      --badge-border: rgba(45, 212, 191, 0.45);
+    }
+
+    /* Theme D: Velvet Dawn & Warm Amber (시안 D - 새벽 여명 벨벳 인디고 & 웜 앰버 골드) */
+    body[data-theme="dawn"] {
+      --bg-primary: #19223c;
+      --bg-secondary: #28365c;
+      --bg-glow-1: rgba(245, 158, 11, 0.22);
+      --bg-glow-2: rgba(99, 102, 241, 0.25);
+      --text-main: #fffbeb;
+      --text-sub: #e2e8f0;
+      --text-muted: #cbd5e1;
+      --gold-primary: #f59e0b;
+      --gold-bright: #fde68a;
+      --gold-gradient: linear-gradient(135deg, #ffffff 0%, #fde68a 35%, #f59e0b 75%, #d97706 100%);
+      --accent-cyan: #60a5fa;
+      --accent-emerald: #34d399;
+      --card-bg: rgba(34, 46, 79, 0.68);
+      --card-hover-bg: rgba(45, 60, 102, 0.88);
+      --card-border: rgba(251, 191, 36, 0.36);
+      --card-shadow: 0 12px 32px rgba(10, 14, 28, 0.45);
+      --header-bg: rgba(25, 34, 60, 0.85);
+      --btn-bg: linear-gradient(135deg, #b45309 0%, #78350f 100%);
+      --btn-text: #ffffff;
+      --flag-shadow: 0 18px 48px rgba(10, 14, 28, 0.6), 0 0 42px rgba(251, 191, 36, 0.32);
+      --badge-bg: rgba(251, 191, 36, 0.15);
+      --badge-border: rgba(251, 191, 36, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: radial-gradient(circle at 50% 22%, var(--bg-secondary) 0%, var(--bg-primary) 78%);
+      color: var(--text-main);
+      font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
+      min-height: 100vh;
+      transition: background 0.5s ease, color 0.4s ease;
+      overflow-x: hidden;
+      padding-bottom: 4rem;
+    }
+
+    /* Ambient Glows */
+    .ambient-glow-1 {
+      position: fixed;
+      top: 15%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 850px;
+      height: 550px;
+      background: radial-gradient(circle, var(--bg-glow-1) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+      transition: background 0.5s ease;
+    }
+
+    .ambient-glow-2 {
+      position: fixed;
+      bottom: 10%;
+      right: 15%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, var(--bg-glow-2) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+      transition: background 0.5s ease;
+    }
+
+    /* Sticky Theme Control Dock at Top */
+    .theme-control-dock {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--header-bg);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 0.9rem 1.5rem;
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+      transition: all 0.4s ease;
+    }
+
+    .dock-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .dock-title-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .dock-badge {
+      background: var(--badge-bg);
+      border: 1px solid var(--badge-border);
+      color: var(--gold-primary);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.08em;
+    }
+
+    .dock-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .theme-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .theme-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 15px;
+      border-radius: 30px;
+      border: 1.5px solid var(--card-border);
+      background: var(--card-bg);
+      color: var(--text-main);
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .theme-btn:hover {
+      transform: translateY(-2px);
+      border-color: var(--gold-primary);
+    }
+
+    .theme-btn.active {
+      background: var(--gold-primary);
+      color: #091326;
+      border-color: #ffffff;
+      font-weight: 800;
+      box-shadow: 0 0 18px rgba(229, 193, 88, 0.5);
+    }
+
+    .swatch-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,0.7);
+      display: inline-block;
+    }
+
+    /* Current Theme Analysis Banner */
+    .theme-info-bar {
+      max-width: 1060px;
+      margin: 1.5rem auto 0;
+      padding: 1.1rem 1.6rem;
+      border-radius: 16px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      box-shadow: var(--card-shadow);
+      backdrop-filter: blur(12px);
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      transition: all 0.4s ease;
+    }
+
+    .info-left h2 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--gold-primary);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .info-left p {
+      font-size: 0.9rem;
+      color: var(--text-sub);
+      line-height: 1.5;
+    }
+
+    .palette-chips {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .color-chip {
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-family: 'Montserrat', monospace;
+      font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    /* Simulated Kyanos Portal Stage */
+    .portal-stage {
+      position: relative;
+      z-index: 10;
+      max-width: 1060px;
+      margin: 2rem auto 0;
+      padding: 0 1.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Top Brand Emblem Bar */
+    .stage-top-bar {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .top-brand-emblem {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      background: var(--card-bg);
+      padding: 8px 18px;
+      border-radius: 40px;
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--card-shadow);
+      transition: all 0.3s ease;
+    }
+
+    .emblem-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold-primary);
+      box-shadow: 0 0 12px var(--bg-glow-1);
+      background: radial-gradient(circle, var(--accent-cyan) 0%, var(--bg-primary) 80%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
+    }
+
+    .emblem-main {
+      font-family: 'Cinzel', serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .emblem-sub {
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      color: var(--text-sub);
+      display: block;
+    }
+
+    /* Central Title & Flag */
+    .realm-title-area {
+      text-align: center;
+      margin-bottom: 1.4rem;
+    }
+
+    .realm-badge-top {
+      font-size: 0.75rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold-primary);
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .realm-gold-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 3px 12px rgba(212, 175, 55, 0.28));
+    }
+
+    .realm-kr-sub {
+      font-family: 'Noto Serif KR', serif;
+      font-size: clamp(1.4rem, 2.8vw, 1.9rem);
+      font-weight: 900;
+      letter-spacing: 0.38em;
+      text-indent: 0.38em;
+      margin-top: 0.4rem;
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .flag-card-wrap {
+      max-width: 360px;
+      width: 80vw;
+      aspect-ratio: 380 / 253;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--flag-shadow);
+      border: 2px solid var(--gold-primary);
+      background: #06152d;
+      transition: all 0.4s ease;
+    }
+
+    .flag-card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .skip-section {
+      margin-top: 1.3rem;
+    }
+
+    .skip-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--btn-text);
+      font-family: 'Cinzel', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      padding: 11px 32px;
+      border-radius: 30px;
+      border: 1.5px solid var(--gold-primary);
+      background: var(--btn-bg);
+      box-shadow: var(--card-shadow);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    /* Core Brand Showcase Cards */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      width: 100%;
+      max-width: 460px;
+      margin: 2.2rem 0 1.2rem;
+    }
+
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--card-border), transparent);
+    }
+
+    .divider-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.24em;
+      color: var(--text-sub);
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .brand-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      width: 100%;
+    }
+
+    .brand-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 1rem 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      backdrop-filter: blur(12px);
+      box-shadow: var(--card-shadow);
+      transition: all 0.3s ease;
+    }
+
+    .brand-card:hover {
+      transform: translateY(-4px);
+      background: var(--card-hover-bg);
+      border-color: var(--gold-primary);
+    }
+
+    .brand-icon-box {
+      width: 46px;
+      height: 46px;
+      border-radius: 10px;
+      background: rgba(15, 37, 66, 0.35);
+      border: 1px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      flex-shrink: 0;
+    }
+
+    .brand-card-title {
+      font-family: 'Cinzel', 'Noto Sans KR', sans-serif;
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 2px;
+    }
+
+    .brand-card-sub {
+      font-size: 0.75rem;
+      color: var(--gold-primary);
+      font-weight: 600;
+    }
+
+    /* Portal Content Sample Row (Ministry & News Preview) */
+    .sample-portal-row {
+      margin-top: 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      width: 100%;
+    }
+
+    .sample-panel {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 1.4rem;
+      box-shadow: var(--card-shadow);
+      backdrop-filter: blur(12px);
+      transition: all 0.3s ease;
+    }
+
+    .panel-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: var(--accent-cyan);
+      background: var(--badge-bg);
+      border: 1px solid var(--badge-border);
+      padding: 3px 10px;
+      border-radius: 12px;
+      margin-bottom: 0.6rem;
+    }
+
+    .sample-panel h3 {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.2rem;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+    }
+
+    .sample-panel p {
+      font-size: 0.9rem;
+      color: var(--text-sub);
+      line-height: 1.65;
+    }
+
+    @media (max-width: 768px) {
+      .sample-portal-row {
+        grid-template-columns: 1fr;
+      }
+      .dock-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body data-theme="serenity">
+
+  <div class="ambient-glow-1"></div>
+  <div class="ambient-glow-2"></div>
+
+  <!-- Top Interactive Theme Switcher Dock -->
+  <header class="theme-control-dock">
+    <div class="dock-inner">
+      <div class="dock-title-box">
+        <span class="dock-badge">국가 브랜드 품격 심의</span>
+        <span class="dock-title">키아노스 컬러 테마 실시간 비교 샘플관</span>
+      </div>
+      <div class="theme-buttons">
+        <button class="theme-btn active" onclick="setTheme('serenity', this)">
+          <span class="swatch-dot" style="background: linear-gradient(135deg, #1b4375, #38bdf8);"></span>
+          시안 A: 로열 세레니티 블루 (추천 1순위)
+        </button>
+        <button class="theme-btn" onclick="setTheme('ivory', this)">
+          <span class="swatch-dot" style="background: linear-gradient(135deg, #f6f3ec, #b8860b);"></span>
+          시안 B: 황실 실크 아이보리 (추천 2순위)
+        </button>
+        <button class="theme-btn" onclick="setTheme('aurora', this)">
+          <span class="swatch-dot" style="background: linear-gradient(135deg, #154552, #2dd4bf);"></span>
+          시안 C: 오로라 에메랄드
+        </button>
+        <button class="theme-btn" onclick="setTheme('dawn', this)">
+          <span class="swatch-dot" style="background: linear-gradient(135deg, #28365c, #f59e0b);"></span>
+          시안 D: 새벽 여명 & 웜 골드
+        </button>
+        <button class="theme-btn" onclick="setTheme('original', this)">
+          <span class="swatch-dot" style="background: #030814;"></span>
+          기존(현재): 칠흑 다크 네이비
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Dynamic Theme Explanation Banner -->
+  <section class="theme-info-bar" id="themeInfoBar">
+    <div class="info-left">
+      <h2 id="themeName">👑 시안 A [추천 1순위]: 로열 세레니티 블루 & 샴페인 골드 (Royal Serenity & Champagne Gold)</h2>
+      <p id="themeDesc">칠흑 같은 암흑(#030814)을 걷어내고, 지중해의 깊고 맑은 황실 코발트 블루(#0F2747~#1B4375)와 스카이 시안 광채를 조화시켰습니다. 왕국의 황금 문장과 기품을 100% 보존하면서 가슴이 탁 트이는 해방감과 심리적 안정감을 선사합니다.</p>
+    </div>
+    <div class="palette-chips" id="themeChips">
+      <span class="color-chip" style="background:#0F2747; color:#fff;">#0F2747</span>
+      <span class="color-chip" style="background:#1B4375; color:#fff;">#1B4375</span>
+      <span class="color-chip" style="background:#38BDF8; color:#091326;">#38BDF8</span>
+      <span class="color-chip" style="background:#EBD07A; color:#091326;">#EBD07A</span>
+    </div>
+  </section>
+
+  <!-- Simulated Live Portal UI -->
+  <main class="portal-stage">
+    <div class="stage-top-bar">
+      <div class="top-brand-emblem">
+        <div class="emblem-icon">👑</div>
+        <div>
+          <span class="emblem-main">KYANOS</span>
+          <span class="emblem-sub">The Sovereign Realm</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="realm-title-area">
+      <div class="realm-badge-top">THE SOVEREIGN REALM OF</div>
+      <h1 class="realm-gold-title">KYANOS</h1>
+      <p class="realm-kr-sub">키아노스</p>
+    </div>
+
+    <div class="flag-card-wrap">
+      <picture>
+        <source srcset="assets/Kyanos_flag.webp" type="image/webp">
+        <img src="assets/Kyanos_flag_opt.png" alt="키아노스 국기" class="flag-card-img">
+      </picture>
+    </div>
+
+    <div class="skip-section">
+      <a href="#preview" class="skip-btn" onclick="return false;">
+        <span>ENTER REALM</span>
+        <span>&rarr;</span>
+      </a>
+    </div>
+
+    <div class="section-divider">
+      <div class="divider-line"></div>
+      <span class="divider-label">National Core Brands & Ministries</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <div class="brand-cards-grid">
+      <div class="brand-card">
+        <div class="brand-icon-box">👑</div>
+        <div>
+          <div class="brand-card-title">EVERMORE</div>
+          <div class="brand-card-sub">The Luxury & Heritage Pillar</div>
+        </div>
+      </div>
+      <div class="brand-card">
+        <div class="brand-icon-box">🌐</div>
+        <div>
+          <div class="brand-card-title">NEXFORUM</div>
+          <div class="brand-card-sub">Super Intelligence & Future Tech</div>
+        </div>
+      </div>
+      <div class="brand-card">
+        <div class="brand-icon-box">📰</div>
+        <div>
+          <div class="brand-card-title">미디어부 · 앤트뉴스</div>
+          <div class="brand-card-sub">진실과 성찰의 글로벌 저널리즘</div>
+        </div>
+      </div>
+      <div class="brand-card">
+        <div class="brand-icon-box">⚖️</div>
+        <div>
+          <div class="brand-card-title">덕치사법원 · 법률 나침반</div>
+          <div class="brand-card-sub">인간 존엄과 도덕적 양심의 수호</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Typography & Reading Comfort Preview -->
+    <div class="sample-portal-row">
+      <div class="sample-panel">
+        <span class="panel-tag">GOVERNANCE & DIGNITY</span>
+        <h3>격조 높은 품격과 심리적 평온의 조화</h3>
+        <p>
+          키아노스 왕국의 인터페이스는 단순한 정보 전달 창구를 넘어, 방문하는 모든 시민의 마음을 맑게 정화하고 희망과 긍정의 에너지를 불어넣는 디지털 성소(Sanctuary)를 지향합니다.
+        </p>
+      </div>
+      <div class="sample-panel">
+        <span class="panel-tag">POSITIVE CIRCUITRY</span>
+        <h3>눈의 피로를 덜어내는 최적의 명도·채도 설계</h3>
+        <p>
+          지나치게 어두운 칠흑색의 압박감을 해소하고, 고급스러운 색채 심리학 기반의 조명을 배치하여 장시간 독서와 국정 업무 시에도 편안한 시각적 안정감을 유지합니다.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const themeMeta = {
+      serenity: {
+        name: "👑 시안 A [추천 1순위]: 로열 세레니티 블루 & 샴페인 골드 (Royal Serenity & Champagne Gold)",
+        desc: "칠흑 같은 암흑(#030814)을 걷어내고, 지중해의 깊고 맑은 황실 코발트 블루(#0F2747~#1B4375)와 스카이 시안 광채를 조화시켰습니다. 왕국의 황금 문장과 기품을 100% 보존하면서 가슴이 탁 트이는 해방감과 심리적 안정감을 선사합니다.",
+        chips: [
+          { hex: "#0F2747", text: "#fff" },
+          { hex: "#1B4375", text: "#fff" },
+          { hex: "#38BDF8", text: "#091326" },
+          { hex: "#EBD07A", text: "#091326" }
+        ]
+      },
+      ivory: {
+        name: "🏛️ 시안 B [추천 2순위]: 황실 실크 아이보리 & 로열 사파이어 (Imperial Silk Ivory & Sapphire)",
+        desc: "유럽 왕실의 대리석 궁전과 실크 양피지(#F6F3EC) 바탕 위에 로열 사파이어 네이비(#0F2542)와 앤티크 골드(#9C7316)로 품격을 새긴 하이엔드 라이트 테마입니다. 눈부심이 전혀 없으며 가장 밝고 따뜻한 긍정 에너지를 자아냅니다.",
+        chips: [
+          { hex: "#F6F3EC", text: "#0F2542" },
+          { hex: "#EBE5D8", text: "#0F2542" },
+          { hex: "#0F2542", text: "#fff" },
+          { hex: "#B8860B", text: "#fff" }
+        ]
+      },
+      aurora: {
+        name: "🌿 시안 C: 오로라 에메랄드 & 셀레스티얼 골드 (Aurora Teal & Celestial Gold)",
+        desc: "심리 치유와 평온함의 상징인 비취빛 오로라 그린-블루(#0D2B36~#154552)에 에메랄드 민트(#2DD4BF)와 골드를 매치했습니다. 자연의 생명력과 초지능 문명의 청정함을 동시에 느끼며 뇌파를 안정시킵니다.",
+        chips: [
+          { hex: "#0D2B36", text: "#fff" },
+          { hex: "#154552", text: "#fff" },
+          { hex: "#2DD4BF", text: "#052026" },
+          { hex: "#EBD07A", text: "#052026" }
+        ]
+      },
+      dawn: {
+        name: "🌅 시안 D: 벨벳 새벽 여명 & 웜 앰버 골드 (Velvet Dawn & Warm Amber)",
+        desc: "동트기 직전 새벽하늘의 온화한 벨벳 인디고(#19223C~#28365C)에 따뜻한 햇살 같은 웜 앰버 골드(#F59E0B) 조명을 더했습니다. 차가운 느낌 없이 아늑하고 중후한 긍정의 온기를 전달합니다.",
+        chips: [
+          { hex: "#19223C", text: "#fff" },
+          { hex: "#28365C", text: "#fff" },
+          { hex: "#F59E0B", text: "#091326" },
+          { hex: "#FDE68A", text: "#091326" }
+        ]
+      },
+      original: {
+        name: "🌑 기존(현재): 칠흑 다크 네이비 (#030814)",
+        desc: "현재 적용 중인 테마입니다. 금빛 대비는 강렬하나 배경이 거의 완전한 흑색(#030814)에 가까워 다소 무겁고 어두운(보수적인) 인상을 줄 수 있습니다.",
+        chips: [
+          { hex: "#030814", text: "#fff" },
+          { hex: "#06152D", text: "#fff" },
+          { hex: "#00D2FF", text: "#030814" },
+          { hex: "#D4AF37", text: "#030814" }
+        ]
+      }
+    };
+
+    function setTheme(themeKey, btnEl) {
+      document.body.setAttribute('data-theme', themeKey);
+      document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+      if (btnEl) btnEl.classList.add('active');
+
+      const meta = themeMeta[themeKey];
+      document.getElementById('themeName').textContent = meta.name;
+      document.getElementById('themeDesc').textContent = meta.desc;
+      const chipsContainer = document.getElementById('themeChips');
+      chipsContainer.innerHTML = meta.chips.map(c =>
+        `<span class="color-chip" style="background:${c.hex}; color:${c.text};">${c.hex}</span>`
+      ).join('');
+    }
+  </script>
+</body>
+</html>
