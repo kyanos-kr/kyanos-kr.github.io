@@ -26,6 +26,10 @@
       --border-amber: rgba(255, 170, 50, 0.35);
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
@@ -213,13 +217,50 @@
       border-radius: 12px;
       padding: 1.4rem;
       text-align: center;
-      transition: transform 0.3s ease, border-color 0.3s ease;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      text-decoration: none;
+      color: inherit;
     }
 
-    .arch-node:hover { transform: translateY(-4px); }
+    .arch-node:hover { transform: translateY(-5px); }
+
+    .arch-node .sub-action {
+      margin-top: 10px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      opacity: 0.85;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .arch-node:hover .sub-action {
+      opacity: 1;
+      transform: translateY(2px);
+    }
+
     .arch-node.amber { border: 1px solid rgba(255, 170, 50, 0.45); }
+    .arch-node.amber:hover {
+      border-color: #ffaa32;
+      box-shadow: 0 8px 25px rgba(255, 170, 50, 0.3);
+    }
     .arch-node.cyan { border: 1px solid rgba(0, 210, 255, 0.45); }
+    .arch-node.cyan:hover {
+      border-color: #00d2ff;
+      box-shadow: 0 8px 25px rgba(0, 210, 255, 0.3);
+    }
     .arch-node.green { border: 1px solid rgba(76, 232, 154, 0.45); }
+    .arch-node.green:hover {
+      border-color: #4ce89a;
+      box-shadow: 0 8px 25px rgba(76, 232, 154, 0.3);
+    }
 
     .arch-node .node-icon { font-size: 2rem; margin-bottom: 0.5rem; }
     .arch-node .node-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
@@ -238,10 +279,52 @@
       padding: 2.2rem;
       border: 1px solid rgba(255, 255, 255, 0.08);
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-      transition: border-color 0.3s ease;
+      transition: border-color 0.3s ease, box-shadow 0.5s ease;
+      scroll-margin-top: 90px;
     }
 
     .bureau-card:hover { border-color: rgba(255, 170, 50, 0.5); }
+
+    .bureau-card:target {
+      border-color: #ffaa32 !important;
+      box-shadow: 0 0 35px rgba(255, 170, 50, 0.45) !important;
+      animation: cardPulse 2s ease-out 1;
+    }
+
+    @keyframes cardPulse {
+      0% { transform: scale(1); }
+      30% { transform: scale(1.015); }
+      100% { transform: scale(1); }
+    }
+
+    /* Back to Top Floating Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(22, 10, 4, 0.85);
+      border: 1px solid var(--amber);
+      color: var(--amber);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      cursor: pointer;
+      z-index: 99;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    .back-to-top:hover {
+      background: var(--amber);
+      color: #000;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(255, 170, 50, 0.4);
+    }
 
     .bureau-header {
       display: flex;
@@ -382,21 +465,30 @@
       </div>
 
       <div class="architecture-grid">
-        <div class="arch-node amber">
-          <div class="node-icon">🏡</div>
-          <div class="node-title" style="color: var(--amber);">[공동체 화합] 자율 조정</div>
-          <p class="node-desc">처벌 대신 상호 화해(Peace Circle) & 성숙한 시민 아고라 ➔ <strong>화이부동(和而不同) 사회</strong></p>
-        </div>
-        <div class="arch-node cyan">
-          <div class="node-icon">⚖️</div>
-          <div class="node-title" style="color: var(--cyan);">[시민 권익] 신뢰 평판 자산</div>
-          <p class="node-desc">자기주권 신원(DID) & 선행이 명예가 되는 신뢰 평판 헤리티지 ➔ <strong>투명한 데이터 주권</strong></p>
-        </div>
-        <div class="arch-node green">
-          <div class="node-icon">🌱</div>
-          <div class="node-title" style="color: var(--emerald);">[지속가능 발전] 순환 생태계</div>
-          <p class="node-desc">100% 무탄소 넷제로 & 자원 순환 루프(지족상족) ➔ <strong>영구 청정 미래 유토피아</strong></p>
-        </div>
+        <a href="#bureau-1" class="arch-node amber" title="공동체 화합·조정국 세부 실무 지침으로 이동">
+          <div>
+            <div class="node-icon">🏡</div>
+            <div class="node-title" style="color: var(--amber);">[공동체 화합] 자율 조정</div>
+            <p class="node-desc">처벌 대신 상호 화해(Peace Circle) & 성숙한 시민 아고라 ➔ <strong>화이부동(和而不同) 사회</strong></p>
+          </div>
+          <span class="sub-action" style="color: var(--amber);">▼ 세부 실무 지침 열람</span>
+        </a>
+        <a href="#bureau-2" class="arch-node cyan" title="시민 권익 보호국 세부 실무 지침으로 이동">
+          <div>
+            <div class="node-icon">⚖️</div>
+            <div class="node-title" style="color: var(--cyan);">[시민 권익] 신뢰 평판 자산</div>
+            <p class="node-desc">자기주권 신원(DID) & 선행이 명예가 되는 신뢰 평판 헤리티지 ➔ <strong>투명한 데이터 주권</strong></p>
+          </div>
+          <span class="sub-action" style="color: var(--cyan);">▼ 세부 실무 지침 열람</span>
+        </a>
+        <a href="#bureau-3" class="arch-node green" title="지속가능 발전 위원회 세부 실무 지침으로 이동">
+          <div>
+            <div class="node-icon">🌱</div>
+            <div class="node-title" style="color: var(--emerald);">[지속가능 발전] 순환 생태계</div>
+            <p class="node-desc">100% 무탄소 넷제로 & 자원 순환 루프(지족상족) ➔ <strong>영구 청정 미래 유토피아</strong></p>
+          </div>
+          <span class="sub-action" style="color: var(--emerald);">▼ 세부 실무 지침 열람</span>
+        </a>
       </div>
 
       <div style="text-align: center; margin-top: 1.5rem; font-size: 0.85rem; color: var(--amber); font-style: italic;">
@@ -408,7 +500,7 @@
     <section class="bureau-section">
 
       <!-- 1. 공동체 화합·조정국 -->
-      <article class="bureau-card">
+      <article class="bureau-card" id="bureau-1">
         <div class="bureau-header">
           <div class="bureau-title-group">
             <span class="bureau-icon">🏡</span>
@@ -430,7 +522,7 @@
       </article>
 
       <!-- 2. 시민 권익 보호국 -->
-      <article class="bureau-card">
+      <article class="bureau-card" id="bureau-2">
         <div class="bureau-header">
           <div class="bureau-title-group">
             <span class="bureau-icon">⚖️</span>
@@ -452,7 +544,7 @@
       </article>
 
       <!-- 3. 지속가능 발전 위원회 -->
-      <article class="bureau-card">
+      <article class="bureau-card" id="bureau-3">
         <div class="bureau-header">
           <div class="bureau-title-group">
             <span class="bureau-icon">🌱</span>
@@ -489,6 +581,9 @@
     </footer>
 
   </main>
+
+  <!-- 상단 이동 플로팅 버튼 -->
+  <a href="#" class="back-to-top" title="최상단으로 이동">▲</a>
 
   <!-- 키아노스 글로벌 다국어 실시간 번역기 -->
   <script src="assets/js/kyanos_i18n.js"></script>

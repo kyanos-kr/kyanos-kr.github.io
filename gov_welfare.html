@@ -25,6 +25,10 @@
       --border-emerald: rgba(76, 232, 154, 0.35);
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
@@ -212,13 +216,50 @@
       border-radius: 12px;
       padding: 1.4rem;
       text-align: center;
-      transition: transform 0.3s ease, border-color 0.3s ease;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      text-decoration: none;
+      color: inherit;
     }
 
-    .arch-node:hover { transform: translateY(-4px); }
+    .arch-node:hover { transform: translateY(-5px); }
+
+    .arch-node .sub-action {
+      margin-top: 10px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      opacity: 0.85;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .arch-node:hover .sub-action {
+      opacity: 1;
+      transform: translateY(2px);
+    }
+
     .arch-node.emerald { border: 1px solid rgba(76, 232, 154, 0.45); }
+    .arch-node.emerald:hover {
+      border-color: #4ce89a;
+      box-shadow: 0 8px 25px rgba(76, 232, 154, 0.3);
+    }
     .arch-node.cyan { border: 1px solid rgba(0, 210, 255, 0.45); }
+    .arch-node.cyan:hover {
+      border-color: #00d2ff;
+      box-shadow: 0 8px 25px rgba(0, 210, 255, 0.3);
+    }
     .arch-node.gold { border: 1px solid rgba(255, 224, 102, 0.45); }
+    .arch-node.gold:hover {
+      border-color: #ffe066;
+      box-shadow: 0 8px 25px rgba(255, 224, 102, 0.3);
+    }
 
     .arch-node .node-icon { font-size: 2rem; margin-bottom: 0.5rem; }
     .arch-node .node-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
@@ -237,10 +278,52 @@
       padding: 2.2rem;
       border: 1px solid rgba(255, 255, 255, 0.08);
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-      transition: border-color 0.3s ease;
+      transition: border-color 0.3s ease, box-shadow 0.5s ease;
+      scroll-margin-top: 90px;
     }
 
     .bureau-card:hover { border-color: rgba(76, 232, 154, 0.5); }
+
+    .bureau-card:target {
+      border-color: #4ce89a !important;
+      box-shadow: 0 0 35px rgba(76, 232, 154, 0.45) !important;
+      animation: cardPulse 2s ease-out 1;
+    }
+
+    @keyframes cardPulse {
+      0% { transform: scale(1); }
+      30% { transform: scale(1.015); }
+      100% { transform: scale(1); }
+    }
+
+    /* Back to Top Floating Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(5, 20, 15, 0.85);
+      border: 1px solid var(--emerald);
+      color: var(--emerald);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      cursor: pointer;
+      z-index: 99;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    .back-to-top:hover {
+      background: var(--emerald);
+      color: #000;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(76, 232, 154, 0.4);
+    }
 
     .bureau-header {
       display: flex;
@@ -404,21 +487,30 @@
       </div>
 
       <div class="architecture-grid">
-        <div class="arch-node emerald">
-          <div class="node-icon">🏥</div>
-          <div class="node-title" style="color: var(--emerald);">[시민 복지] 보편 서비스</div>
-          <p class="node-desc">요람에서 무덤까지 생애주기 무상 케어 & 안심 주거 인프라 ➔ <strong>사각지대 제로 사회</strong></p>
-        </div>
-        <div class="arch-node cyan">
-          <div class="node-icon">🛡️</div>
-          <div class="node-title" style="color: var(--cyan);">[인간 보호] AGI시대 인권 헌장</div>
-          <p class="node-desc">인간 소외 원천 차단 & 노동 해방 후 고차원 창작·자아실현 지원 ➔ <strong>인간 존엄 최고 권리</strong></p>
-        </div>
-        <div class="arch-node gold">
-          <div class="node-icon">🌿</div>
-          <div class="node-title" style="color: var(--gold-bright);">[생명 윤리] 바이오·장수 케어</div>
-          <p class="node-desc">유전자·AI 의료 윤리 심의 & 수명연장(Longevity) 보편 분배 ➔ <strong>생명 존중 복지</strong></p>
-        </div>
+        <a href="#bureau-1" class="arch-node emerald" title="시민 복지 서비스국 세부 실무 지침으로 이동">
+          <div>
+            <div class="node-icon">🏥</div>
+            <div class="node-title" style="color: var(--emerald);">[시민 복지] 보편 서비스</div>
+            <p class="node-desc">요람에서 무덤까지 생애주기 무상 케어 & 안심 주거 인프라 ➔ <strong>사각지대 제로 사회</strong></p>
+          </div>
+          <span class="sub-action" style="color: var(--emerald);">▼ 세부 실무 지침 열람</span>
+        </a>
+        <a href="#bureau-2" class="arch-node cyan" title="AGI시대 인간 보호국 세부 실무 지침으로 이동">
+          <div>
+            <div class="node-icon">🛡️</div>
+            <div class="node-title" style="color: var(--cyan);">[인간 보호] AGI시대 인권 헌장</div>
+            <p class="node-desc">인간 소외 원천 차단 & 노동 해방 후 고차원 창작·자아실현 지원 ➔ <strong>인간 존엄 최고 권리</strong></p>
+          </div>
+          <span class="sub-action" style="color: var(--cyan);">▼ 세부 실무 지침 열람</span>
+        </a>
+        <a href="#bureau-3" class="arch-node gold" title="바이오·윤리 위원회 세부 실무 지침으로 이동">
+          <div>
+            <div class="node-icon">🌿</div>
+            <div class="node-title" style="color: var(--gold-bright);">[생명 윤리] 바이오·장수 케어</div>
+            <p class="node-desc">유전자·AI 의료 윤리 심의 & 수명연장(Longevity) 보편 분배 ➔ <strong>생명 존중 복지</strong></p>
+          </div>
+          <span class="sub-action" style="color: var(--gold-bright);">▼ 세부 실무 지침 열람</span>
+        </a>
       </div>
 
       <div style="text-align: center; margin-top: 1.5rem; font-size: 0.85rem; color: var(--emerald); font-style: italic;">
@@ -430,7 +522,7 @@
     <section class="bureau-section">
 
       <!-- 1. 시민 복지 서비스국 -->
-      <article class="bureau-card">
+      <article class="bureau-card" id="bureau-1">
         <div class="bureau-header">
           <div class="bureau-title-group">
             <span class="bureau-icon">🏥</span>
@@ -452,7 +544,7 @@
       </article>
 
       <!-- 2. AGI시대 인간 보호국 -->
-      <article class="bureau-card">
+      <article class="bureau-card" id="bureau-2">
         <div class="bureau-header">
           <div class="bureau-title-group">
             <span class="bureau-icon">🛡️</span>
@@ -474,7 +566,7 @@
       </article>
 
       <!-- 3. 바이오·윤리 위원회 -->
-      <article class="bureau-card">
+      <article class="bureau-card" id="bureau-3">
         <div class="bureau-header">
           <div class="bureau-title-group">
             <span class="bureau-icon">🌿</span>
@@ -511,6 +603,9 @@
     </footer>
 
   </main>
+
+  <!-- 상단 이동 플로팅 버튼 -->
+  <a href="#" class="back-to-top" title="최상단으로 이동">▲</a>
 
   <!-- 키아노스 글로벌 다국어 실시간 번역기 -->
   <script src="assets/js/kyanos_i18n.js"></script>
