@@ -128,7 +128,7 @@ for p in all_persons:
     items_in_p = [it for it in processed_items if p in it['persons']]
     md_lines.append(f'- **{p}** ({len(items_in_p)}편): ' + ', '.join([f"[{it['title']}](#{it['id'].lower()})" for it in items_in_p]))
 
-md_lines.append('\n---\n\n## 📜 [3] 삼국지 지혜 원문 인용 카드 (49선 전재)\n')
+md_lines.append(f'\n---\n\n## 📜 [3] 삼국지 지혜 원문 인용 카드 ({len(processed_items)}선 전재)\n')
 
 for it in processed_items:
     md_lines.append(f"### <a id=\"{it['id'].lower()}\"></a>[{it['id']}] {it['title']}")
@@ -411,7 +411,7 @@ html_template = f'''<!DOCTYPE html>
     <div class="header-top">
       <div class="header-title">
         <h1>🏛️ 키아노스 삼국지 지혜 인용실 (Wisdom Index Vault)</h1>
-        <p>파이튼(Python) 총재 편찬 · 이문열 평역 삼국지 10권 순서 완전 보존 서고 (총 49선 완비)</p>
+        <p>파이튼(Python) 총재 편찬 · 이문열 평역 삼국지 10권 순서 완전 보존 서고 (총 {len(processed_items)}선 완비)</p>
       </div>
       <div>
         <span class="badge">평역 10권 연동 보관소</span>
