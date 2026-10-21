@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>앤트 취재 인텔리전스 브리핑 룸 | AntNews Intelligence Briefing Room</title>
+    <meta name="description" content="키아노스 미디어부 · 앤트뉴스 국내외 핵심 헤드라인 및 세상만평 취재 원석 브리핑 룸">
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #0b1120;
+            --bg-panel: #151f32;
+            --bg-card: #1e293b;
+            --bg-card-hover: #26354d;
+            --bg-angle: rgba(15, 23, 42, 0.75);
+            --accent-cyan: #38bdf8;
+            --accent-blue: #2563eb;
+            --accent-gold: #f59e0b;
+            --accent-purple: #c084fc;
+            --accent-emerald: #10b981;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Market Ticker Bar */
+        .ticker-bar {
+            background-color: #060a12;
+            border-bottom: 1px solid #1e293b;
+            padding: 6px 2rem;
+            font-size: 0.82rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-muted);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .ticker-items {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .ticker-item strong {
+            color: #e2e8f0;
+            margin-right: 4px;
+        }
+
+        .up { color: #34d399; font-weight: 700; }
+        .down { color: #f87171; font-weight: 700; }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 60;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .brand-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-logo {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #38bdf8, #6366f1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+        }
+
+        .brand-title h1 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: -0.4px;
+            background: linear-gradient(to right, #38bdf8, #a5b4fc, #f8fafc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .brand-title p {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .badge-live {
+            background-color: #ef4444;
+            color: #fff;
+            font-size: 0.7rem;
+            padding: 3px 8px;
+            border-radius: 999px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.45; }
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .meta-pill {
+            background-color: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-color);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+        }
+
+        .btn-drawer-toggle {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: #0f172a;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 0.85rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 0 12px rgba(245, 158, 11, 0.35);
+            transition: transform 0.15s ease;
+        }
+
+        .btn-drawer-toggle:hover {
+            transform: translateY(-1px);
+        }
+
+        /* Main Layout */
+        .main-wrapper {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1.5rem 1.25rem 3rem;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 1024px) {
+            .main-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Toolbar: Search & Mode Filter */
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 240px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            background-color: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 10px 14px 10px 36px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .search-box input:focus {
+            border-color: var(--accent-cyan);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .mode-switch {
+            display: flex;
+            background-color: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .mode-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 8px 14px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .mode-btn.active {
+            background-color: #334155;
+            color: #fff;
+        }
+
+        /* Category Navigation */
+        .category-nav {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 1.25rem;
+            overflow-x: auto;
+            padding-bottom: 6px;
+        }
+
+        .nav-btn {
+            background-color: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 9px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.88rem;
+            font-weight: 600;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--bg-card);
+            border-color: #64748b;
+        }
+
+        .nav-btn.active {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: #fff;
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 12px rgba(37, 99, 235, 0.45);
+        }
+
+        .nav-count {
+            background-color: rgba(0, 0, 0, 0.35);
+            padding: 1px 7px;
+            border-radius: 99px;
+            font-size: 0.75rem;
+        }
+
+        /* Messenger Feed Stream */
+        .feed-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .feed-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--accent-cyan);
+            border-radius: 14px;
+            padding: 1.25rem 1.4rem;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .feed-card:hover {
+            background-color: var(--bg-card-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+        }
+
+        .feed-card.cat-politics { border-left-color: #38bdf8; }
+        .feed-card.cat-world { border-left-color: #60a5fa; }
+        .feed-card.cat-tech { border-left-color: #f59e0b; }
+        .feed-card.cat-economy { border-left-color: #10b981; }
+        .feed-card.cat-cartoons {
+            border-left-color: #c084fc;
+            background: linear-gradient(145deg, rgba(192, 132, 252, 0.08), var(--bg-card));
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .badge-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .cat-badge {
+            font-size: 0.76rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 6px;
+        }
+
+        .badge-politics { background: rgba(56, 189, 248, 0.18); color: #38bdf8; }
+        .badge-world { background: rgba(96, 165, 250, 0.18); color: #60a5fa; }
+        .badge-tech { background: rgba(245, 158, 11, 0.18); color: #fbbf24; }
+        .badge-economy { background: rgba(16, 185, 129, 0.18); color: #34d399; }
+        .badge-cartoons { background: rgba(192, 132, 252, 0.22); color: #d8b4fe; }
+
+        .sub-badge {
+            font-size: 0.75rem;
+            color: #e2e8f0;
+            background-color: rgba(255, 255, 255, 0.08);
+            padding: 2px 8px;
+            border-radius: 5px;
+        }
+
+        .time-badge {
+            font-size: 0.73rem;
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        .source-label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            line-height: 1.45;
+            color: #f8fafc;
+            margin-bottom: 10px;
+        }
+
+        .card-summary {
+            font-size: 0.94rem;
+            line-height: 1.65;
+            color: var(--text-secondary);
+            white-space: pre-line;
+            margin-bottom: 12px;
+            background-color: rgba(15, 23, 42, 0.45);
+            padding: 10px 14px;
+            border-radius: 8px;
+        }
+
+        .card-angle {
+            font-size: 0.86rem;
+            line-height: 1.5;
+            color: #fde68a;
+            background-color: rgba(245, 158, 11, 0.1);
+            border: 1px dashed rgba(245, 158, 11, 0.35);
+            padding: 8px 12px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 10px;
+        }
+
+        .tag-list {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .tag-pill {
+            font-size: 0.74rem;
+            color: var(--text-muted);
+            background-color: rgba(15, 23, 42, 0.6);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .action-group {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .btn-action {
+            background-color: #334155;
+            border: 1px solid #475569;
+            color: #f1f5f9;
+            padding: 6px 12px;
+            border-radius: 7px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.15s ease;
+        }
+
+        .btn-action:hover {
+            background-color: #475569;
+        }
+
+        .btn-copy-prompt {
+            background-color: rgba(56, 189, 248, 0.15);
+            border-color: rgba(56, 189, 248, 0.4);
+            color: #7dd3fc;
+        }
+
+        .btn-copy-prompt:hover {
+            background-color: rgba(56, 189, 248, 0.28);
+        }
+
+        .btn-pick {
+            background: linear-gradient(135deg, #0284c7, #2563eb);
+            border-color: #38bdf8;
+            color: #fff;
+        }
+
+        .btn-pick.picked {
+            background: linear-gradient(135deg, #059669, #10b981);
+            border-color: #34d399;
+        }
+
+        /* Right Side: Picked Issues Basket */
+        .pick-sidebar {
+            background-color: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 1.25rem;
+            height: fit-content;
+            position: sticky;
+            top: 88px;
+        }
+
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-bottom: 12px;
+        }
+
+        .sidebar-header h2 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--accent-gold);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .pick-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 420px;
+            overflow-y: auto;
+            margin-bottom: 14px;
+        }
+
+        .pick-empty {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-align: center;
+            padding: 2rem 0.5rem;
+            line-height: 1.5;
+        }
+
+        .pick-item {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 10px;
+            font-size: 0.84rem;
+            position: relative;
+        }
+
+        .pick-item-title {
+            font-weight: 700;
+            color: #f1f5f9;
+            margin-bottom: 4px;
+            padding-right: 22px;
+            line-height: 1.35;
+        }
+
+        .pick-item-cat {
+            font-size: 0.72rem;
+            color: var(--accent-cyan);
+        }
+
+        .btn-remove-pick {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: none;
+            border: none;
+            color: #94a3b8;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .btn-remove-pick:hover {
+            color: #ef4444;
+        }
+
+        .sidebar-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .btn-export {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            border: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-export-cmd {
+            background: linear-gradient(135deg, #2563eb, #4f46e5);
+            color: #fff;
+        }
+
+        .btn-export-file {
+            background-color: #334155;
+            color: #e2e8f0;
+            border: 1px solid #475569;
+        }
+
+        .info-note {
+            margin-top: 12px;
+            font-size: 0.76rem;
+            color: var(--text-muted);
+            line-height: 1.45;
+            background-color: rgba(0, 0, 0, 0.25);
+            padding: 8px 10px;
+            border-radius: 6px;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: linear-gradient(135deg, #059669, #10b981);
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 200;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Live Market Ticker -->
+    <div class="ticker-bar">
+        <div class="ticker-items" id="marketTicker">
+            <span>📊 실시간 시장 지표 로딩 중...</span>
+        </div>
+        <div>
+            <span>📁 자동 동기화 경로: <strong>E:\편집 기사\오늘편집\취재원석\</strong></span>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="brand-box">
+            <div class="brand-logo">📡</div>
+            <div class="brand-title">
+                <div style="display:flex; align-items:center; gap:8px;">
+                    <h1>앤트 취재 인텔리전스 브리핑 룸</h1>
+                    <span class="badge-live">LIVE</span>
+                </div>
+                <p>파이튼 님 전용 정통 보도(정치·국제·5대테크·경제) 취재 레이더 & 세상만평 출판 원석 보관소</p>
+            </div>
+        </div>
+        <div class="header-controls">
+            <span class="meta-pill" id="updateTime">업데이트: -</span>
+            <span class="meta-pill" id="totalCountBadge">총 0건</span>
+            <button class="btn-drawer-toggle" onclick="copyAllPickedCommand()">
+                📌 픽(Pick) 일괄 기사화 지시 복사 (<span id="headerPickCount">0</span>)
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content + Sidebar -->
+    <div class="main-wrapper">
+        <main>
+            <!-- Search & Mode Switch -->
+            <div class="toolbar">
+                <div class="search-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="searchInput" placeholder="키워드 검색 (예: 국정감사, 엔비디아, 로봇, 만평, 반도체...)" oninput="renderFeed()">
+                </div>
+                <div class="mode-switch">
+                    <button class="mode-btn active" id="modeAll" onclick="setMode('all')">📡 전체 브리핑 (데스크+실시간)</button>
+                    <button class="mode-btn" id="modeDesk" onclick="setMode('desk')">⭐ 데스크 핵심 선별만</button>
+                </div>
+            </div>
+
+            <!-- 5 Category Tabs -->
+            <div class="category-nav" id="categoryNav">
+                <!-- Populated dynamically -->
+            </div>
+
+            <!-- Messenger Feed List -->
+            <div class="feed-container" id="feedList">
+                <!-- Cards rendered here -->
+            </div>
+        </main>
+
+        <!-- Right Sidebar: Picked Basket -->
+        <aside class="pick-sidebar">
+            <div class="sidebar-header">
+                <h2>📌 오늘의 취재 픽(Pick) 보관함</h2>
+                <span class="sub-badge" id="sidebarPickCount">0건 선택됨</span>
+            </div>
+            <div class="pick-list" id="pickList">
+                <div class="pick-empty">
+                    왼쪽 브리핑 카드에서 <strong>[📌 취재원석 픽]</strong> 버튼을 누르시면 이곳에 기사·만평 후보가 담깁니다.
+                </div>
+            </div>
+            <div class="sidebar-actions">
+                <button class="btn-export btn-export-cmd" onclick="copyAllPickedCommand()">
+                    📋 선택 항목 앤트 기사작성 지시문 복사
+                </button>
+                <button class="btn-export btn-export-file" onclick="downloadPickedMarkdown()">
+                    💾 취재원석 마크다운(.md) 파일 저장
+                </button>
+                <button class="btn-export btn-export-file" onclick="clearAllPicks()" style="font-size:0.78rem; padding:7px;">
+                    🗑️ 보관함 비우기
+                </button>
+            </div>
+            <div class="info-note">
+                💡 <strong>자동 보관 안내</strong><br>
+                매일 생성되는 전체 브리핑 원석은 파이튼 님이 따로 저장하지 않으셔도 <code>E:\편집 기사\오늘편집\취재원석\</code> 폴더에 마크다운 문서로 자동 대기합니다.
+            </div>
+        </aside>
+    </div>
+
+    <div id="toast" class="toast">복사되었습니다!</div>
+
+    <!-- Zero-CORS Local & Web Data Script -->
+    <script src="briefing_data.js"></script>
+    <script>
+        let briefingData = window.ANT_BRIEFING_DATA || null;
+        let currentCategory = 'all';
+        let currentMode = 'all'; // 'all' or 'desk'
+        let pickedItems = JSON.parse(localStorage.getItem('antnews_picked_items_v2') || '[]');
+
+        const categoryBadgeClass = {
+            'politics': 'badge-politics',
+            'world': 'badge-world',
+            'tech': 'badge-tech',
+            'economy': 'badge-economy',
+            'cartoons': 'badge-cartoons'
+        };
+
+        async function initBriefingRoom() {
+            if (!briefingData) {
+                try {
+                    const res = await fetch('briefing_data.json');
+                    briefingData = await res.json();
+                } catch (e) {
+                    console.error('브리핑 데이터 로드 실패:', e);
+                    return;
+                }
+            }
+
+            document.getElementById('updateTime').innerText = '최신 수집: ' + briefingData.updated_at;
+            document.getElementById('totalCountBadge').innerText = `총 ${briefingData.items.length}건 브리핑`;
+
+            renderTicker();
+            renderCategoryTabs();
+            renderFeed();
+            renderPickSidebar();
+        }
+
+        function renderTicker() {
+            const tickerEl = document.getElementById('marketTicker');
+            const indicators = briefingData.market_indicators || [];
+            if (!indicators.length) {
+                tickerEl.innerHTML = '<span>📊 키아노스 글로벌 인텔리전스 레이더 정상 가동 중</span>';
+                return;
+            }
+            tickerEl.innerHTML = indicators.map(m => `
+                <span class="ticker-item">
+                    <strong>${m.symbol}</strong> ${m.price}
+                    <span class="${m.is_up ? 'up' : 'down'}">(${m.change})</span>
+                </span>
+            `).join('');
+        }
+
+        function renderCategoryTabs() {
+            const nav = document.getElementById('categoryNav');
+            const items = getFilteredByModeItems();
+
+            let html = `
+                <button class="nav-btn ${currentCategory === 'all' ? 'active' : ''}" onclick="selectCategory('all')">
+                    📋 전체 브리핑 <span class="nav-count">${items.length}</span>
+                </button>
+            `;
+
+            briefingData.categories.forEach(cat => {
+                const count = items.filter(i => i.category === cat.id).length;
+                html += `
+                    <button class="nav-btn ${currentCategory === cat.id ? 'active' : ''}" onclick="selectCategory('${cat.id}')">
+                        ${cat.icon} ${cat.short_name} <span class="nav-count">${count}</span>
+                    </button>
+                `;
+            });
+
+            nav.innerHTML = html;
+        }
+
+        function getFilteredByModeItems() {
+            if (!briefingData || !briefingData.items) return [];
+            if (currentMode === 'desk') {
+                return briefingData.items.filter(item => item.id.includes('_desk_'));
+            }
+            return briefingData.items;
+        }
+
+        function selectCategory(catId) {
+            currentCategory = catId;
+            renderCategoryTabs();
+            renderFeed();
+        }
+
+        function setMode(mode) {
+            currentMode = mode;
+            document.getElementById('modeAll').classList.toggle('active', mode === 'all');
+            document.getElementById('modeDesk').classList.toggle('active', mode === 'desk');
+            renderCategoryTabs();
+            renderFeed();
+        }
+
+        function renderFeed() {
+            const list = document.getElementById('feedList');
+            const query = (document.getElementById('searchInput').value || '').trim().toLowerCase();
+            const catMap = {};
+            briefingData.categories.forEach(c => catMap[c.id] = c);
+
+            const filtered = getFilteredByModeItems().filter(item => {
+                if (currentCategory !== 'all' && item.category !== currentCategory) return false;
+                if (query) {
+                    const hay = `${item.title} ${item.summary} ${item.sub_tag || ''} ${(item.tags || []).join(' ')}`.toLowerCase();
+                    return hay.includes(query);
+                }
+                return true;
+            });
+
+            if (!filtered.length) {
+                list.innerHTML = `<div class="pick-empty" style="padding:3rem; background:var(--bg-card); border-radius:12px;">조건에 맞는 브리핑 헤드라인이 없습니다.</div>`;
+                return;
+            }
+
+            list.innerHTML = filtered.map(item => {
+                const cat = catMap[item.category] || { name: item.category, icon: '📰' };
+                const badgeCls = categoryBadgeClass[item.category] || 'badge-politics';
+                const isPicked = pickedItems.some(p => p.id === item.id);
+
+                return `
+                    <article class="feed-card cat-${item.category}">
+                        <div class="card-header">
+                            <div class="badge-group">
+                                <span class="cat-badge ${badgeCls}">${cat.icon} ${cat.short_name || cat.name}</span>
+                                ${item.sub_tag ? `<span class="sub-badge">${item.sub_tag}</span>` : ''}
+                                ${item.time_badge ? `<span class="time-badge">⚡ ${item.time_badge}</span>` : ''}
+                            </div>
+                            <span class="source-label">출처: ${item.source}</span>
+                        </div>
+                        <h3 class="card-title">${item.title}</h3>
+                        <div class="card-summary">${item.summary}</div>
+                        ${item.editorial_angle ? `<div class="card-angle">${item.editorial_angle}</div>` : ''}
+                        <div class="card-footer">
+                            <div class="tag-list">
+                                ${(item.tags || []).map(t => `<span class="tag-pill">#${t}</span>`).join('')}
+                            </div>
+                            <div class="action-group">
+                                ${item.url && item.url !== '#' ? `<a href="${item.url}" target="_blank" rel="noopener" class="btn-action">🔗 원문/출처 확인</a>` : ''}
+                                <button class="btn-action btn-copy-prompt" onclick="copySinglePrompt('${item.id}')">
+                                    📋 기사화 지시문 복사
+                                </button>
+                                <button class="btn-action btn-pick ${isPicked ? 'picked' : ''}" onclick="togglePick('${item.id}')">
+                                    ${isPicked ? '✅ 픽(Pick) 완료' : '📌 취재원석 픽(Pick)'}
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                `;
+            }).join('');
+        }
+
+        function togglePick(itemId) {
+            const item = briefingData.items.find(i => i.id === itemId);
+            if (!item) return;
+
+            const idx = pickedItems.findIndex(p => p.id === itemId);
+            if (idx >= 0) {
+                pickedItems.splice(idx, 1);
+                showToast('보관함에서 제외되었습니다.');
+            } else {
+                pickedItems.push({
+                    id: item.id,
+                    category: item.category,
+                    sub_tag: item.sub_tag || '',
+                    title: item.title,
+                    summary: item.summary,
+                    editorial_angle: item.editorial_angle || '',
+                    source: item.source
+                });
+                showToast('📌 취재원석 보관함에 담겼습니다!');
+            }
+
+            localStorage.setItem('antnews_picked_items_v2', JSON.stringify(pickedItems));
+            renderFeed();
+            renderPickSidebar();
+        }
+
+        function renderPickSidebar() {
+            const count = pickedItems.length;
+            document.getElementById('headerPickCount').innerText = count;
+            document.getElementById('sidebarPickCount').innerText = `${count}건 선택됨`;
+
+            const listEl = document.getElementById('pickList');
+            if (!count) {
+                listEl.innerHTML = `
+                    <div class="pick-empty">
+                        왼쪽 브리핑 카드에서 <strong>[📌 취재원석 픽]</strong> 버튼을 누르시면 이곳에 기사·만평 후보가 담깁니다.
+                    </div>
+                `;
+                return;
+            }
+
+            listEl.innerHTML = pickedItems.map(p => `
+                <div class="pick-item">
+                    <button class="btn-remove-pick" onclick="togglePick('${p.id}')" title="제외">✕</button>
+                    <div class="pick-item-cat">[${p.sub_tag || p.category}]</div>
+                    <div class="pick-item-title">${p.title}</div>
+                </div>
+            `).join('');
+        }
+
+        function copySinglePrompt(itemId) {
+            const item = briefingData.items.find(i => i.id === itemId);
+            if (!item) return;
+
+            const isCartoon = item.category === 'cartoons';
+            const cmdText = isCartoon
+                ? `앤트, 브리핑 룸의 다음 만평 소재로 한컴 표준 만평 기사(HWPX)와 풍자 만평 이미지를 제작해 오늘편집에 저장하세:\n- 제목: ${item.title}\n- 풍자 구도: ${item.summary}`
+                : `앤트, 브리핑 룸의 다음 이슈를 취재하여 한컴 윤고딕 740 (11pt) 규격의 정식 보도기사(HWPX)로 작성해 오늘편집에 대기시키세:\n- 헤드라인 주제: ${item.title}\n- 핵심 팩트: ${item.summary}\n- 취재 각도: ${item.editorial_angle}`;
+
+            navigator.clipboard.writeText(cmdText).then(() => {
+                showToast('📋 앤트 기사작성 지시문이 복사되었습니다! 채팅창에 붙여넣기만 하십시오.');
+            });
+        }
+
+        function copyAllPickedCommand() {
+            if (!pickedItems.length) {
+                showToast('먼저 [📌 취재원석 픽] 버튼으로 기사화할 항목을 선택해 주십시오.');
+                return;
+            }
+
+            const lines = ['앤트, 오늘 브리핑 룸에서 픽(Pick)한 아래 주제들로 정식 보도기사(HWPX) 및 만평 작업을 진행해 오늘편집 폴더에 준비하세:\n'];
+            pickedItems.forEach((p, idx) => {
+                lines.push(`${idx + 1}. [${p.sub_tag || p.category}] ${p.title}`);
+                lines.push(`   - 요약: ${p.summary.replace(/\n/g, ' ')}`);
+            });
+
+            navigator.clipboard.writeText(lines.join('\n')).then(() => {
+                showToast(`📋 선택된 ${pickedItems.length}건의 일괄 지시문이 복사되었습니다!`);
+            });
+        }
+
+        function downloadPickedMarkdown() {
+            if (!pickedItems.length) {
+                showToast('저장할 선택 항목이 없습니다.');
+                return;
+            }
+
+            const dateKey = briefingData.date_key || 'today';
+            const lines = [
+                `# 📌 파이튼 님 픽(Pick) 취재원석 리스트 (${briefingData.updated_at})`,
+                '',
+                `총 선택 건수: ${pickedItems.length}건`,
+                '---',
+                ''
+            ];
+
+            pickedItems.forEach((p, idx) => {
+                lines.push(`## ${idx + 1}. ${p.title}`);
+                lines.push(`- **분류**: ${p.sub_tag || p.category}`);
+                lines.push(`- **핵심 내용**:\n${p.summary}`);
+                if (p.editorial_angle) lines.push(`- **취재·출판 포인트**: ${p.editorial_angle}`);
+                lines.push(`- **출처**: ${p.source}`);
+                lines.push('');
+            });
+
+            const blob = new Blob([lines.join('\n')], { type: 'text/markdown;charset=utf-8' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = `파이튼_픽_취재원석_${dateKey}.md`;
+            a.click();
+            showToast('💾 취재원석 마크다운 파일이 다운로드되었습니다!');
+        }
+
+        function clearAllPicks() {
+            pickedItems = [];
+            localStorage.setItem('antnews_picked_items_v2', '[]');
+            renderFeed();
+            renderPickSidebar();
+            showToast('보관함을 비웠습니다.');
+        }
+
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.innerText = msg;
+            t.style.display = 'block';
+            clearTimeout(window._toastTimer);
+            window._toastTimer = setTimeout(() => {
+                t.style.display = 'none';
+            }, 3200);
+        }
+
+        initBriefingRoom();
+    </script>
+</body>
+</html>
