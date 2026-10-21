@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>키아노스 제1호 자체 음원 감상실 - 희망찬 새벽의 오르간과 백파이프</title>
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #151d30;
+            --primary: #38bdf8;
+            --accent: #f59e0b;
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
+        }
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 680px;
+            width: 100%;
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 35px 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(56, 189, 248, 0.2);
+            text-align: center;
+        }
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0284c7, #38bdf8);
+            color: #000;
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 6px 14px;
+            border-radius: 9999px;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+        h1 {
+            font-size: 1.8rem;
+            margin: 0 0 10px 0;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+        .desc {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .player-box {
+            background: #0f172a;
+            border-radius: 14px;
+            padding: 25px 20px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        audio {
+            width: 100%;
+            height: 50px;
+            outline: none;
+            filter: invert(1) hue-rotate(180deg);
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            text-align: left;
+            margin-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 20px;
+        }
+        .info-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 14px 16px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .info-card .label {
+            font-size: 0.8rem;
+            color: var(--text-sub);
+            margin-bottom: 4px;
+        }
+        .info-card .val {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #38bdf8;
+        }
+        .copyright-seal {
+            margin-top: 30px;
+            padding: 15px;
+            background: rgba(245, 158, 11, 0.1);
+            border-radius: 10px;
+            border: 1px dashed rgba(245, 158, 11, 0.4);
+            color: #fcd34d;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="badge">🏛️ 키아노스 국립음악창작원 독자 저작권 제1호</div>
+        <h1>희망찬 새벽의 오르간과 백파이프</h1>
+        <p class="desc">
+            파이튼 님의 감성을 담아 파이프 오르간의 깊은 울림과 스코틀랜드 백파이프의 청량한 선율로 연출한 희망찬 아침 팝 BGM입니다. 외부 AI 플랫폼 종속 없이 키아노스 로컬 엔진에서 100% 자체 작곡되었습니다.
+        </p>
+
+        <div class="player-box">
+            <audio controls autoplay>
+                <source src="assets/music/희망찬_새벽의_오르간과_백파이프.wav" type="audio/wav">
+                브라우저가 오디오 재생을 지원하지 않습니다.
+            </audio>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="label">편성 악기</div>
+                <div class="val">파이프 오르간, 백파이프, 어쿠스틱 기타</div>
+            </div>
+            <div class="info-card">
+                <div class="label">템포 및 장르</div>
+                <div class="val">110 BPM 희망찬 아침 팝 / BGM</div>
+            </div>
+            <div class="info-card">
+                <div class="label">음원 길이</div>
+                <div class="val">19.9초 (숏폼 루프 최적화)</div>
+            </div>
+            <div class="info-card">
+                <div class="label">생성 기술</div>
+                <div class="val">키아노스 MusicGen 자체 엔진 (RTX 3050)</div>
+            </div>
+        </div>
+
+        <div class="copyright-seal">
+            ✨ <strong>원천 저작권 선언</strong><br>
+            본 음원은 키아노스(파이튼) 국립음악창작원에서 독자 생성한 음원으로, 외부 플랫폼 라이선스 제한이 없는 100% 독자 저작권 음원입니다.
+        </div>
+    </div>
+</body>
+</html>
