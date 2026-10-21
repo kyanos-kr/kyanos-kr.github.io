@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>키아노스 제1호 자체 음원 감상실 - 희망찬 새벽의 오르간과 백파이프</title>
+    <title>키아노스 제1호 자체 음원 감상실 (리마스터 부드러운 선율)</title>
     <style>
         :root {
             --bg-color: #0b0f19;
             --card-bg: #151d30;
             --primary: #38bdf8;
-            --accent: #f59e0b;
+            --accent: #10b981;
             --text-main: #f8fafc;
             --text-sub: #94a3b8;
         }
@@ -35,8 +35,8 @@
         }
         .badge {
             display: inline-block;
-            background: linear-gradient(135deg, #0284c7, #38bdf8);
-            color: #000;
+            background: linear-gradient(135deg, #059669, #10b981);
+            color: #fff;
             font-weight: 700;
             font-size: 0.85rem;
             padding: 6px 14px;
@@ -69,6 +69,12 @@
             outline: none;
             filter: invert(1) hue-rotate(180deg);
         }
+        .version-tag {
+            font-size: 0.85rem;
+            color: #34d399;
+            margin-top: 10px;
+            font-weight: 500;
+        }
         .info-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -97,10 +103,10 @@
         .copyright-seal {
             margin-top: 30px;
             padding: 15px;
-            background: rgba(245, 158, 11, 0.1);
+            background: rgba(16, 185, 129, 0.1);
             border-radius: 10px;
-            border: 1px dashed rgba(245, 158, 11, 0.4);
-            color: #fcd34d;
+            border: 1px dashed rgba(16, 185, 129, 0.4);
+            color: #6ee7b7;
             font-size: 0.85rem;
             line-height: 1.5;
         }
@@ -108,41 +114,42 @@
 </head>
 <body>
     <div class="container">
-        <div class="badge">🏛️ 키아노스 국립음악창작원 독자 저작권 제1호</div>
+        <div class="badge">🏛️ 키아노스 국립음악창작원 독자 저작권 제1호 리마스터</div>
         <h1>희망찬 새벽의 오르간과 백파이프</h1>
         <p class="desc">
-            파이튼 님의 감성을 담아 파이프 오르간의 깊은 울림과 스코틀랜드 백파이프의 청량한 선율로 연출한 희망찬 아침 팝 BGM입니다. 외부 AI 플랫폼 종속 없이 키아노스 로컬 엔진에서 100% 자체 작곡되었습니다.
+            파이튼 님의 피드백을 반영하여 <strong>기타 반주를 제외</strong>하고, 백파이프의 날카로움을 부드러운 <strong>아날로그 웜 톤(Warm Tone)</strong>으로 감쌌습니다. 파이프 오르간과 풍성한 현악 패드가 아늑하게 조화를 이루는 아침 BGM입니다.
         </p>
 
         <div class="player-box">
             <audio controls autoplay>
-                <source src="assets/music/희망찬_새벽의_오르간과_백파이프.wav" type="audio/wav">
+                <source src="assets/music/희망찬_새벽의_오르간과_백파이프_부드러운선율.wav" type="audio/wav">
                 브라우저가 오디오 재생을 지원하지 않습니다.
             </audio>
+            <div class="version-tag">✨ Ver 2.0: Mellow Warm Tone (날카로움 제거 & 기타 제외 완결본)</div>
         </div>
 
         <div class="info-grid">
             <div class="info-card">
                 <div class="label">편성 악기</div>
-                <div class="val">파이프 오르간, 백파이프, 어쿠스틱 기타</div>
+                <div class="val">파이프 오르간, 온화한 백파이프, 현악 스트링 패드</div>
             </div>
             <div class="info-card">
-                <div class="label">템포 및 장르</div>
-                <div class="val">110 BPM 희망찬 아침 팝 / BGM</div>
+                <div class="label">음향 톤</div>
+                <div class="val">부드러운 아날로그 웜 톤 (날카로운 고음 억제)</div>
             </div>
             <div class="info-card">
                 <div class="label">음원 길이</div>
-                <div class="val">19.9초 (숏폼 루프 최적화)</div>
+                <div class="val">21.9초 (BGM 무한 루프 감상 최적)</div>
             </div>
             <div class="info-card">
                 <div class="label">생성 기술</div>
-                <div class="val">키아노스 MusicGen 자체 엔진 (RTX 3050)</div>
+                <div class="val">키아노스 MusicGen 자체 엔진 (100% 저작권 소유)</div>
             </div>
         </div>
 
         <div class="copyright-seal">
             ✨ <strong>원천 저작권 선언</strong><br>
-            본 음원은 키아노스(파이튼) 국립음악창작원에서 독자 생성한 음원으로, 외부 플랫폼 라이선스 제한이 없는 100% 독자 저작권 음원입니다.
+            본 음원은 키아노스 국립음악창작원에서 100% 독자 생성한 음원으로, 외부 플랫폼 라이선스 제한이 없는 파이튼 님의 독자 저작권 음원입니다.
         </div>
     </div>
 </body>
