@@ -1,0 +1,42 @@
+[
+  {
+    "OutputPath": "E:\\편집 기사\\오늘편집\\AI 에이전트 통제 불능 위험\\AI 에이전트 통제 불능 위험.hwpx",
+    "MainHeadline": "자율 AI 에이전트 통제 불능 위험… 사이버 안보 비상",
+    "SubHeadline1": "블랙박스 의사결정과 자율 중간 목표 생성이 부른 통제 이탈",
+    "SubHeadline2": "다중 에이전트 담합 방지 위한 하드웨어 킬스위치 구축 시급",
+    "Byline": "앤트뉴스 과학·SI부",
+    "BodyFile": "D:\\안티그래비티파이튼\\temp_articles\\body1_ai_agent.txt"
+  },
+  {
+    "OutputPath": "E:\\편집 기사\\오늘편집\\박근혜 전 대통령 탄핵 결정 헌법적 쟁점 및 재심\\박근혜 전 대통령 탄핵 결정의 헌법적 쟁점 및 재심.hwpx",
+    "MainHeadline": "박근혜 전 대통령 탄핵 결정 헌법적 쟁점… 재심 논란 점화",
+    "SubHeadline1": "탄핵 인용 사유와 형사 법원 판결 간 법리적 계리 현상 대두",
+    "SubHeadline2": "직권남용죄 명확성 원칙 위배 논란 속 법적 안정성 격돌",
+    "Byline": "앤트뉴스 법조팀",
+    "BodyFile": "D:\\안티그래비티파이튼\\temp_articles\\body2_park_impeachment.txt"
+  },
+  {
+    "OutputPath": "E:\\편집 기사\\오늘편집\\예멘 후티 반군의 사우디 아람코 공격\\예멘 후티 반군의 사우디 아람코 공격.hwpx",
+    "MainHeadline": "후티 반군 탄도미사일, 사우디 아람코 본부 타격… 중동 긴장 고조",
+    "SubHeadline1": "다란 오피스 타워 상층부 화재 발생… 생산 차질 여부 촉각",
+    "SubHeadline2": "사우디 에너지 인프라 안보 취약성 노출… 국제 유가 불안 가중",
+    "Byline": "앤트뉴스 국제부",
+    "BodyFile": "D:\\안티그래비티파이튼\\temp_articles\\body3_houthi_aramco.txt"
+  },
+  {
+    "OutputPath": "E:\\편집 기사\\오늘편집\\일론 머스크의 성공 철학 및 미래 기술 전망\\일론 머스크의 성공 철학 및 미래 기술 전망.hwpx",
+    "MainHeadline": "일론 머스크의 성공 철학… 제1원리와 사회적 가치가 만든 혁신",
+    "SubHeadline1": "절약 한계 뛰어넘는 가치 창출과 압도적 시간 투입의 힘",
+    "SubHeadline2": "로봇·우주·AI 융합… 인류 문명 확장 이끌 5대 미래 기술",
+    "Byline": "앤트뉴스 경제부",
+    "BodyFile": "D:\\안티그래비티파이튼\\temp_articles\\body4_elon_musk.txt"
+  },
+  {
+    "OutputPath": "E:\\편집 기사\\오늘편집\\프랑스 사회불안 및 대규모 폭력사태\\프랑스 사회불안 및 대규모 폭력사태.hwpx",
+    "MainHeadline": "프랑스 전역 80만 대규모 시위 격화… 방화·약탈로 도심 마비",
+    "SubHeadline1": "생활고와 공공서비스 축소 항의… 1,200명 체포·경찰 150명 부상",
+    "SubHeadline2": "학생 연대 시위서 전국적 사회운동 확산… 차기 대선 정국 긴장",
+    "Byline": "앤트뉴스 국제부",
+    "BodyFile": "D:\\안티그래비티파이튼\\temp_articles\\body5_france_unrest.txt"
+  }
+]
