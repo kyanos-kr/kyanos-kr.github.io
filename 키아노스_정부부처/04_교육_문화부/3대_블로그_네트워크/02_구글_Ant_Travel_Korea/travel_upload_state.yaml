@@ -1,8 +1,8 @@
-# 🏛️ Ant-Travel Korea 일일 1편 자동 업로드 관리 로그 (State Log)
+# 🌐 Ant-Travel Korea 일일 1편 자동 업로드 관리 로그 (State Log)
 # 매일 1회만 정확히 실행되며, 하루에 2편 이상 중복 업로드되지 않습니다.
 
-last_uploaded_date: 2026-10-21
-last_uploaded_spot: 대명포구 (경기 김포)
+last_uploaded_date: 2026-10-23
+last_uploaded_spot: 문산자유시장 DMZ 평화관광 (경기 파주)
 daily_quota: 1
 history:
   - date: 2026-10-20
@@ -11,3 +11,6 @@ history:
   - date: 2026-10-21
     spot: 대명포구 (경기 김포)
     post_id: "8887407082394215604"
+  - date: 2026-10-23
+    spot: 문산자유시장 DMZ 평화관광 (경기 파주)
+    post_id: "8372117252415399820"
