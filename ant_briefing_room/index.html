@@ -724,9 +724,21 @@
         };
 
         async function initBriefingRoom() {
+            // 웹 호스팅(HTTP/HTTPS) 접속 시 브라우저 캐시를 완전히 무력화하고 항상 최신 JSON을 1순위로 즉시 패치
+            if (window.location.protocol.startsWith('http')) {
+                try {
+                    const res = await fetch('briefing_data.json?t=' + Date.now(), { cache: 'no-store' });
+                    if (res.ok) {
+                        briefingData = await res.json();
+                    }
+                } catch (e) {
+                    console.warn('캐시 무력화 패치 대기, 로컬 데이터 사용:', e);
+                }
+            }
+
             if (!briefingData) {
                 try {
-                    const res = await fetch('briefing_data.json');
+                    const res = await fetch('briefing_data.json?t=' + Date.now(), { cache: 'no-store' });
                     briefingData = await res.json();
                 } catch (e) {
                     console.error('브리핑 데이터 로드 실패:', e);
