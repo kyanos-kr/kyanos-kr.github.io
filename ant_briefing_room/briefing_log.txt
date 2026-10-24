@@ -43,3 +43,16 @@
   - 오늘편집 취재원석 리포트: E:\편집 기사\오늘편집\취재원석\오늘의_취재원석_브리핑_20261024.md
   [Git] GitHub Pages 라이브 배포 완료: https://kyanos-kr.github.io/ant_briefing_room/ (2026-10-24 16:49)
 [2026-10-24 16:49:37.85] AntNews Briefing Room Update Completed (Code: 0) 
+====================================================== 
+[2026-10-25  7:05:12.70] AntNews Briefing Room Auto-Update Start 
+====================================================== 
+Traceback (most recent call last):
+  File "D:\안티그래비티파이튼\ant_briefing_room\collector.py", line 518, in <module>
+    generate_curated_briefing()
+  File "D:\안티그래비티파이튼\ant_briefing_room\collector.py", line 463, in generate_curated_briefing
+    os.makedirs(TODAY_EDIT_RAW_DIR, exist_ok=True)
+  File "<frozen os>", line 215, in makedirs
+  File "<frozen os>", line 215, in makedirs
+  File "<frozen os>", line 215, in makedirs
+  File "<frozen os>", line 225, in makedirs
+FileNotFoundError: [WinError 3] 지정된 경로를 찾을 수 없습니다: 'E:\\'
