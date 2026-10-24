@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 """
 Generate the two Ant Editorial Columns from 파이튼컬럼 source texts.
 1. 재판의 정당성과 피고인의 방어권 보장 (이 명박 전 대통령 재판 관련)
@@ -8,7 +8,7 @@ Generate the two Ant Editorial Columns from 파이튼컬럼 source texts.
 import os
 from make_editorial_hwpx import build_editorial_hwpx
 
-TARGET_DIR = r"E:\편집 기사\오늘편집\파이튼컬럼"
+TARGET_DIR = r"D:\b\편집 기사\오늘편집\파이튼컬럼"
 
 def create_article_1():
     headline = "재판의 정당성과 피고인의 방어권 보장"

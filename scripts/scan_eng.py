@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 import sys
 import io
 import re
@@ -9,9 +9,9 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 
 files = [
-    r'E:\편집 기사\오늘편집\대규모 긴장 고조가 임박해 이란 군의 경계 태세가 가능한 최고 수준으로 상향 조정되었다.hwpx',
-    r'E:\편집 기사\오늘편집\네 노아의방주는 역사적사실.hwpx',
-    r'E:\편집 기사\오늘편집\러시아 폐페스트 발병 은폐.hwpx'
+    r'D:\b\편집 기사\오늘편집\대규모 긴장 고조가 임박해 이란 군의 경계 태세가 가능한 최고 수준으로 상향 조정되었다.hwpx',
+    r'D:\b\편집 기사\오늘편집\네 노아의방주는 역사적사실.hwpx',
+    r'D:\b\편집 기사\오늘편집\러시아 폐페스트 발병 은폐.hwpx'
 ]
 
 for p in files:

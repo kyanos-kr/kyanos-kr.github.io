@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 import sys
 import io
 import os
@@ -9,7 +9,7 @@ import xml.etree.ElementTree as ET
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 
-ref_path = r'E:\RPT DB\보도 기사 정보\1마이클스나이더\프랑스 연료 부족 위기에 처함.hwpx'
+ref_path = r'D:\b\RPT DB\보도 기사 정보\1마이클스나이더\프랑스 연료 부족 위기에 처함.hwpx'
 with zipfile.ZipFile(ref_path, 'r') as z:
     hdr_xml = z.read('Contents/header.xml')
 
@@ -17,7 +17,7 @@ articles = [
     {
         'key': 'fuel',
         'raw_txt': r'd:\안티그래비티파이튼\키아노스_정부부처\07_국제부\스나이더_번역원문\fuel.txt',
-        'base_hwpx': r'E:\편집 기사\오늘편집\전 세계 연료 시위 발생.hwpx',
+        'base_hwpx': r'D:\b\편집 기사\오늘편집\전 세계 연료 시위 발생.hwpx',
         'out_name': '전 세계 연료 시위 발생_수정본.hwpx',
         'orig_title': '전 세계 연료 시위 발생: 시리아 타이어 소각 도로 차단과 연쇄 소요',
         'main_title': '글로벌 유류 대란, 세계 각국 연쇄 폭동',
@@ -28,7 +28,7 @@ articles = [
     {
         'key': 'nuclear',
         'raw_txt': r'd:\안티그래비티파이튼\키아노스_정부부처\07_국제부\스나이더_번역원문\nuclear.txt',
-        'base_hwpx': r'E:\편집 기사\오늘편집\러시아와의 핵전쟁의 유령이 떠오르다.hwpx',
+        'base_hwpx': r'D:\b\편집 기사\오늘편집\러시아와의 핵전쟁의 유령이 떠오르다.hwpx',
         'out_name': '러시아와의 핵전쟁의 유령이 떠오르다_수정본.hwpx',
         'orig_title': '러시아와의 핵전쟁의 유령이 떠오르다',
         'main_title': '우크라 장거리 공습, 미러 핵충돌 위기',
@@ -39,7 +39,7 @@ articles = [
     {
         'key': 'houthi',
         'raw_txt': r'd:\안티그래비티파이튼\키아노스_정부부처\07_국제부\스나이더_번역원문\houthi.txt',
-        'base_hwpx': r'E:\편집 기사\오늘편집\후티 소탕전 개시.hwpx',
+        'base_hwpx': r'D:\b\편집 기사\오늘편집\후티 소탕전 개시.hwpx',
         'out_name': '후티 소탕전 개시_수정본.hwpx',
         'orig_title': '후티 소탕전 개시: 예멘 통제권 탈환을 위한 10만 병력의 새로운 군사 작전',
         'main_title': '예멘 10만 대군 집결, 후티 전면 소탕전',
@@ -50,7 +50,7 @@ articles = [
     {
         'key': 'bioweapon',
         'raw_txt': r'd:\안티그래비티파이튼\키아노스_정부부처\07_국제부\스나이더_번역원문\bioweapon.txt',
-        'base_hwpx': r'E:\편집 기사\오늘편집\소련은 공격적 생물무기 프로그램을 보유.hwpx',
+        'base_hwpx': r'D:\b\편집 기사\오늘편집\소련은 공격적 생물무기 프로그램을 보유.hwpx',
         'out_name': '소련은 공격적 생물무기 프로그램을 보유_수정본.hwpx',
         'orig_title': '소련은 공격적 생물무기 프로그램을 보유했고, 흑사병을 무기화했다',
         'main_title': '소련 생물무기 악몽, 유전자 변형 흑사병',
@@ -60,7 +60,7 @@ articles = [
     }
 ]
 
-today_edit_dir = r'E:\편집 기사\오늘편집'
+today_edit_dir = r'D:\b\편집 기사\오늘편집'
 
 def clean_and_convert(text):
     # 1. Strip promo / advert
@@ -335,7 +335,7 @@ for art in articles:
     ] + cleaned_body
     file_map['Preview/PrvText.txt'] = '\n'.join(prv_lines).encode('utf-8')
 
-    # Save to E:\편집 기사\오늘편집\
+    # Save to D:\b\편집 기사\오늘편집\
     out_path = os.path.join(today_edit_dir, art['out_name'])
     with zipfile.ZipFile(out_path, 'w', compression=zipfile.ZIP_DEFLATED) as zout:
         if 'mimetype' in file_map:

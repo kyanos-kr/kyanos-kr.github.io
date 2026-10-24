@@ -1,10 +1,10 @@
-import os
+﻿import os
 import sys
 import shutil
 import zipfile
 import xml.etree.ElementTree as ET
 
-TEMPLATE_PATH = r'E:\RPT DB\보도 기사 정보\AI 에이전트 통제 불능 위험\AI 에이전트 통제 불능 위험.hwpx'
+TEMPLATE_PATH = r'D:\b\RPT DB\보도 기사 정보\AI 에이전트 통제 불능 위험\AI 에이전트 통제 불능 위험.hwpx'
 
 def create_standard_hwpx(output_hwpx_path, headline, sub1, sub2, byline, paragraphs):
     temp_dir = os.path.join(os.path.dirname(output_hwpx_path), '_temp_hwpx_build')

@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 import sys
 import io
 
@@ -10,8 +10,8 @@ import glob
 import zipfile
 import xml.etree.ElementTree as ET
 
-source_dir = r"E:\편집 기사\오늘편집"
-dest_dir = r"E:\RPT DB\보도 기사 정보\1마이클스나이더"
+source_dir = r"D:\b\편집 기사\오늘편집"
+dest_dir = r"D:\b\RPT DB\보도 기사 정보\1마이클스나이더"
 
 files = glob.glob(os.path.join(source_dir, "*.hwpx"))
 print(f"Found {len(files)} files in {source_dir}")

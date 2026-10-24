@@ -1,9 +1,9 @@
-import os
+﻿import os
 import shutil
 from make_article_hwpx import build_hwpx
 
-TEMPLATE_PATH = r'E:\RPT DB\보도 기사 정보\중국산공유기백도어발결\중국산공유기백도어발견.hwpx'
-BASE_TARGET_DIR = r'E:\RPT DB\보도 기사 정보'
+TEMPLATE_PATH = r'D:\b\RPT DB\보도 기사 정보\중국산공유기백도어발결\중국산공유기백도어발견.hwpx'
+BASE_TARGET_DIR = r'D:\b\RPT DB\보도 기사 정보'
 
 articles = [
     {
@@ -117,4 +117,4 @@ for art in articles:
     shutil.copy2(src_img, dest_img1)
     print(f"Image Packaged: {dest_img1}")
 
-print("All 5 articles successfully generated and packaged in E:\\RPT DB\\보도 기사 정보\\!")
+print("All 5 articles successfully generated and packaged in D:\\b\\RPT DB\\보도 기사 정보\\!")
