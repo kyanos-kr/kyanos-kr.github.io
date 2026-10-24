@@ -922,13 +922,9 @@
       </div>
     </a>
     <div class="nav-actions">
-      <div class="live-clock-badge" title="키아노스 표준 실시간 시계">
-        <span>🕒</span>
-        <span id="live-clock">--:--:--</span>
-      </div>
-      <div class="live-status-badge" title="금융 데이터 최신 수신 상태">
+      <div class="live-status-badge" id="unified-market-time" title="실시간 금융 동기화 및 표준 시각">
         <span class="live-dot"></span>
-        <span id="sync-time">동기화 완료</span>
+        <span id="sync-time">LIVE 동기화 --:--:--</span>
       </div>
       <a href="main.html" class="btn-portal-back">🏛️ 메인 포털</a>
       <a href="main.html#gov-economy" class="btn-portal-back">💰 경제부</a>
@@ -1695,7 +1691,10 @@
 
     function applyData(data) {
       if (!data) return;
-      document.getElementById('sync-time').innerText = '기준: ' + (data.timestamp || '실시간');
+      // 단일 통합 시간 표시 (실시간 시각 및 동기화 상태)
+      const displayTime = (data.timestamp || getFormattedNow().fullStr);
+      const syncEl = document.getElementById('sync-time');
+      if (syncEl) syncEl.innerText = 'LIVE ' + displayTime;
       renderList('crypto-items', data.crypto);
       renderList('domestic-items', data.domestic);
       renderList('global-items', data.global);
@@ -1726,10 +1725,10 @@
     }
 
     function updateLiveClock() {
-      const { dateStr, timeStr } = getFormattedNow();
-      const clockEl = document.getElementById('live-clock');
-      if (clockEl) {
-        clockEl.innerText = `${dateStr} ${timeStr}`;
+      const { fullStr } = getFormattedNow();
+      const syncEl = document.getElementById('sync-time');
+      if (syncEl) {
+        syncEl.innerText = 'LIVE ' + fullStr;
       }
     }
     setInterval(updateLiveClock, 1000);
