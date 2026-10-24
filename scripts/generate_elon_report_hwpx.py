@@ -133,8 +133,8 @@ def build_hwpx(template_hwpx_path, output_hwpx_path, headline, sub1, sub2, parag
     print("HWPX successfully created at:", output_hwpx_path)
 
 if __name__ == '__main__':
-    template = r'D:\b\RPT DB\보도 기사 정보\중국산공유기백도어발결\중국산공유기백도어발견.hwpx'
-    out = r'D:\b\편집 기사\오늘편집\일론머스크_미래예측7가지_내면의진실과_실현가능성_심층리포트.hwpx'
+    template = r'D:\DATA CENTER\RPT DB\보도 기사 정보\중국산공유기백도어발결\중국산공유기백도어발견.hwpx'
+    out = r'D:\DATA CENTER\편집 기사\오늘편집\일론머스크_미래예측7가지_내면의진실과_실현가능성_심층리포트.hwpx'
     
     headline = "머스크가 예고한 7대 미래… 문명적 도약인가 자본의 환상인가"
     sub1 = "AGI·로봇·화성·BCI 등 7대 예측 심층 분석"

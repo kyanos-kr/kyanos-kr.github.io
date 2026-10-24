@@ -2,8 +2,8 @@
 import shutil
 from make_article_hwpx import build_hwpx
 
-TEMPLATE_PATH = r'D:\b\RPT DB\보도 기사 정보\중국산공유기백도어발결\중국산공유기백도어발견.hwpx'
-BASE_TARGET_DIR = r'D:\b\RPT DB\보도 기사 정보'
+TEMPLATE_PATH = r'D:\DATA CENTER\RPT DB\보도 기사 정보\중국산공유기백도어발결\중국산공유기백도어발견.hwpx'
+BASE_TARGET_DIR = r'D:\DATA CENTER\RPT DB\보도 기사 정보'
 
 articles = [
     {

@@ -10,7 +10,7 @@ Strictly following Python standard specs:
   - Body: 11pt, normal, blank line between paragraphs
   - Byline: 9.5pt, normal, right-aligned
 - Line spacing: 160%
-- Destination: D:\b\편집 기사\오늘편집\파이튼컬럼\
+- Destination: D:\DATA CENTER\편집 기사\오늘편집\파이튼컬럼\
 """
 
 import os
@@ -19,7 +19,7 @@ import zipfile
 import xml.etree.ElementTree as ET
 
 def build_editorial_hwpx(output_hwpx_path, headline, sub1, sub2, byline_text, body_elements):
-    template_hwpx_path = r'D:\b\편집 기사\오늘편집\손영일컬럼\국민들의 염장을 그만 질러라 206 .hwpx'
+    template_hwpx_path = r'D:\DATA CENTER\편집 기사\오늘편집\손영일컬럼\국민들의 염장을 그만 질러라 206 .hwpx'
     temp_dir = r'D:\안티그래비티파이튼\temp_editorial_build'
     if os.path.exists(temp_dir):
         shutil.rmtree(temp_dir)

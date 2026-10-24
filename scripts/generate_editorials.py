@@ -8,7 +8,7 @@ Generate the two Ant Editorial Columns from 파이튼컬럼 source texts.
 import os
 from make_editorial_hwpx import build_editorial_hwpx
 
-TARGET_DIR = r"D:\b\편집 기사\오늘편집\파이튼컬럼"
+TARGET_DIR = r"D:\DATA CENTER\편집 기사\오늘편집\파이튼컬럼"
 
 def create_article_1():
     headline = "재판의 정당성과 피고인의 방어권 보장"

@@ -56,3 +56,21 @@ Traceback (most recent call last):
   File "<frozen os>", line 215, in makedirs
   File "<frozen os>", line 225, in makedirs
 FileNotFoundError: [WinError 3] 지정된 경로를 찾을 수 없습니다: 'E:\\'
+  [Notice] git pull rebase 참고: Git 오류: warning: fetch updated the current branch head.
+fast-forwarding your working tree from
+commit b16ec8aee9b3ea69a3e81bb6ef48c210c17ea03b.
+error: Your local changes to the following files would be overwritten by merge:
+	antnews_auto/output/index.html
+Please commit your changes or stash them before you merge.
+error: The following untracked working tree files would be overwritten by merge:
+	antnews_auto/output/antnews_20261025.html
+Please move or remove them before you merge.
+Aborting
+fatal: Cannot fast-forward your working tree.
+After making sure that you saved anything precious from
+$ git diff b16ec8aee9b3ea69a3e81bb6ef48c210c17ea03b
+output, run
+$ git reset --hard
+to recover.
+  [Git] GitHub Pages 라이브 배포 완료: https://kyanos-kr.github.io/ant_briefing_room/ (2026-10-25 07:05)
+[2026-10-25  7:05:18.83] AntNews Briefing Room Update Completed (Code: 0) 

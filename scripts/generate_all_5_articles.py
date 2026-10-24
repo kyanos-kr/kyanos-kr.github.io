@@ -123,8 +123,8 @@ articles = [
 ]
 
 # Generate both in 오늘편집 and RPT DB
-TODAY_DIR = r'D:\b\편집 기사\오늘편집'
-RPT_ROOT = r'D:\b\RPT DB\보도 기사 정보'
+TODAY_DIR = r'D:\DATA CENTER\편집 기사\오늘편집'
+RPT_ROOT = r'D:\DATA CENTER\RPT DB\보도 기사 정보'
 
 for art in articles:
     # 1. Path in 오늘편집

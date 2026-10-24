@@ -142,8 +142,8 @@ def build_hwpx_perfect(template_hwpx, output_hwpx, headline, sub1, sub2, paragra
     print("HWPX successfully created:", output_hwpx)
 
 if __name__ == '__main__':
-    template = r'D:\b\편집 기사\오늘편집\파이튼컬럼\재판의 정당성과 피고인의 방어권 보장.hwpx'
-    out_file = r'D:\b\편집 기사\오늘편집\오세훈_서울시장_항소심_무죄_판결_보도기사.hwpx'
+    template = r'D:\DATA CENTER\편집 기사\오늘편집\파이튼컬럼\재판의 정당성과 피고인의 방어권 보장.hwpx'
+    out_file = r'D:\DATA CENTER\편집 기사\오늘편집\오세훈_서울시장_항소심_무죄_판결_보도기사.hwpx'
     
     headline = "오세훈 서울시장, '여론조사 대납 의혹' 항소심 무죄 선고"
     sub1 = "서울고법 '핵심 증인 진술 번복·신빙성 결여… 범죄 증명 부족'"

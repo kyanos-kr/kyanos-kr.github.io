@@ -9,7 +9,7 @@ import xml.etree.ElementTree as ET
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 
-ref_path = r'D:\b\RPT DB\보도 기사 정보\1마이클스나이더\프랑스 연료 부족 위기에 처함.hwpx'
+ref_path = r'D:\DATA CENTER\RPT DB\보도 기사 정보\1마이클스나이더\프랑스 연료 부족 위기에 처함.hwpx'
 with zipfile.ZipFile(ref_path, 'r') as z:
     hdr_xml = z.read('Contents/header.xml')
 
@@ -17,7 +17,7 @@ with zipfile.ZipFile(ref_path, 'r') as z:
 articles = [
     {
         'key': 'fuel',
-        'src': r'D:\b\편집 기사\오늘편집\전 세계 연료 시위 발생.hwpx',
+        'src': r'D:\DATA CENTER\편집 기사\오늘편집\전 세계 연료 시위 발생.hwpx',
         'out_name': '전 세계 연료 시위 발생.hwpx',
         'orig_title': '전 세계 연료 시위 발생: 시리아 타이어 소각 도로 차단과 연쇄 소요',
         'main_title': '글로벌 유류 대란, 세계 각국 연쇄 폭동',
@@ -27,7 +27,7 @@ articles = [
     },
     {
         'key': 'nuclear',
-        'src': r'D:\b\편집 기사\오늘편집\러시아와의 핵전쟁의 유령이 떠오르다.hwpx',
+        'src': r'D:\DATA CENTER\편집 기사\오늘편집\러시아와의 핵전쟁의 유령이 떠오르다.hwpx',
         'out_name': '러시아와의 핵전쟁의 유령이 떠오르다.hwpx',
         'orig_title': '러시아와의 핵전쟁의 유령이 떠오르다',
         'main_title': '우크라 장거리 공습, 미러 핵충돌 위기',
@@ -37,7 +37,7 @@ articles = [
     },
     {
         'key': 'houthi',
-        'src': r'D:\b\편집 기사\오늘편집\후티 소탕전 개시.hwpx',
+        'src': r'D:\DATA CENTER\편집 기사\오늘편집\후티 소탕전 개시.hwpx',
         'out_name': '후티 소탕전 개시.hwpx',
         'orig_title': '후티 소탕전 개시: 예멘 통제권 탈환을 위한 10만 병력의 새로운 군사 작전',
         'main_title': '예멘 10만 대군 집결, 후티 전면 소탕전',
@@ -47,7 +47,7 @@ articles = [
     },
     {
         'key': 'bioweapon',
-        'src': r'D:\b\편집 기사\오늘편집\소련은 공격적 생물무기 프로그램을 보유.hwpx',
+        'src': r'D:\DATA CENTER\편집 기사\오늘편집\소련은 공격적 생물무기 프로그램을 보유.hwpx',
         'out_name': '소련은 공격적 생물무기 프로그램을 보유.hwpx',
         'orig_title': '소련은 공격적 생물무기 프로그램을 보유했고, 흑사병을 무기화했다',
         'main_title': '소련 생물무기 악몽, 유전자 변형 흑사병',
@@ -57,8 +57,8 @@ articles = [
     }
 ]
 
-dest_dir = r'D:\b\RPT DB\보도 기사 정보\1마이클스나이더'
-today_edit_dir = r'D:\b\편집 기사\오늘편집'
+dest_dir = r'D:\DATA CENTER\RPT DB\보도 기사 정보\1마이클스나이더'
+today_edit_dir = r'D:\DATA CENTER\편집 기사\오늘편집'
 
 def to_haera(text):
     # Remove subscription / Substack promo lines
@@ -393,8 +393,8 @@ for art in articles:
     file_map['Preview/PrvText.txt'] = '\n'.join(prv_lines).encode('utf-8')
 
     # Save to both destinations:
-    # 1. D:\b\편집 기사\오늘편집\
-    # 2. D:\b\RPT DB\보도 기사 정보\1마이클스나이더\
+    # 1. D:\DATA CENTER\편집 기사\오늘편집\
+    # 2. D:\DATA CENTER\RPT DB\보도 기사 정보\1마이클스나이더\
     for target_dir in [today_edit_dir, dest_dir]:
         out_file = os.path.join(target_dir, art['out_name'])
         with zipfile.ZipFile(out_file, 'w', compression=zipfile.ZIP_DEFLATED) as zout:

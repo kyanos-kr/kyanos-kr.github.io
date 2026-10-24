@@ -9,14 +9,14 @@ import xml.etree.ElementTree as ET
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 
-ref_path = r'D:\b\RPT DB\보도 기사 정보\1마이클스나이더\프랑스 연료 부족 위기에 처함.hwpx'
+ref_path = r'D:\DATA CENTER\RPT DB\보도 기사 정보\1마이클스나이더\프랑스 연료 부족 위기에 처함.hwpx'
 with zipfile.ZipFile(ref_path, 'r') as z:
     hdr_xml = z.read('Contents/header.xml')
 
 # The 3 articles in chronological order
 articles = [
     {
-        'src': r'D:\b\편집 기사\오늘편집\대규모 긴장 고조가 임박해 이란 군의 경계 태세가 가능한 최고 수준으로 상향 조정되었다.hwpx',
+        'src': r'D:\DATA CENTER\편집 기사\오늘편집\대규모 긴장 고조가 임박해 이란 군의 경계 태세가 가능한 최고 수준으로 상향 조정되었다.hwpx',
         'out_name': '대규모 긴장 고조가 임박해 이란 군의 경계 태세가 가능한 최고 수준으로 상향 조정되었다.hwpx',
         'main_title': '중동 전면전 초읽기, 이란 최고 경계령',
         'sub_title1': '미사일 보복 위협과 호르무즈 전운 고조',
@@ -30,7 +30,7 @@ articles = [
         }
     },
     {
-        'src': r'D:\b\편집 기사\오늘편집\네 노아의방주는 역사적사실.hwpx',
+        'src': r'D:\DATA CENTER\편집 기사\오늘편집\네 노아의방주는 역사적사실.hwpx',
         'out_name': '네 노아의방주는 역사적사실.hwpx',
         'main_title': '노아의 방주 안식처와 역사적 실체 규명',
         'sub_title1': '터키 두루피나르 지층서 지하 탐사 진행',
@@ -39,7 +39,7 @@ articles = [
         'translations': {}
     },
     {
-        'src': r'D:\b\편집 기사\오늘편집\러시아 폐페스트 발병 은폐.hwpx',
+        'src': r'D:\DATA CENTER\편집 기사\오늘편집\러시아 폐페스트 발병 은폐.hwpx',
         'out_name': '러시아 폐페스트 발병 은폐.hwpx',
         'main_title': '러시아 폐페스트 의혹과 전염병 공포',
         'sub_title1': '연구소 조교 사망과 병원 5곳 전격 봉쇄',
@@ -49,7 +49,7 @@ articles = [
     }
 ]
 
-dest_dir = r'D:\b\RPT DB\보도 기사 정보\1마이클스나이더'
+dest_dir = r'D:\DATA CENTER\RPT DB\보도 기사 정보\1마이클스나이더'
 
 for art in articles:
     print(f"Processing: {os.path.basename(art['src'])}")

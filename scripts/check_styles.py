@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 
-ref_path = r'D:\b\RPT DB\보도 기사 정보\1마이클스나이더\프랑스 연료 부족 위기에 처함.hwpx'
+ref_path = r'D:\DATA CENTER\RPT DB\보도 기사 정보\1마이클스나이더\프랑스 연료 부족 위기에 처함.hwpx'
 with zipfile.ZipFile(ref_path, 'r') as z:
     hdr_xml = z.read('Contents/header.xml').decode('utf-8')
 

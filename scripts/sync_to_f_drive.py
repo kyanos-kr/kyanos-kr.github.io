@@ -8,8 +8,8 @@ def main():
     print("=" * 60)
 
     tasks = [
-        ("1. RPT DB 보도기사 완제품 백업", r"D:\b\RPT DB", r"F:\02_보도기사_데이터아카이브\RPT DB", False),
-        ("2. 편집 기사 작업실 백업", r"D:\b\편집 기사", r"F:\02_보도기사_데이터아카이브\편집 기사", False),
+        ("1. RPT DB 보도기사 완제품 백업", r"D:\DATA CENTER\RPT DB", r"F:\02_보도기사_데이터아카이브\RPT DB", False),
+        ("2. 편집 기사 작업실 백업", r"D:\DATA CENTER\편집 기사", r"F:\02_보도기사_데이터아카이브\편집 기사", False),
         ("3. 안티그래비티 국정 엔진룸 백업", r"D:\안티그래비티파이튼", r"F:\00_키아노스_국가기록보관소\안티그래비티파이튼", True),
     ]
 
@@ -25,7 +25,7 @@ def main():
             cmd.extend(["/XD", ".git", "__pycache__"])
 
         # robocopy exit codes 0-7 are success
-        res = subprocess.run(cmd, capture_output=True, text=True)
+        res = subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         if res.returncode <= 7:
             print(f"   [성공] 동기화 완료: {dst}")
         else:

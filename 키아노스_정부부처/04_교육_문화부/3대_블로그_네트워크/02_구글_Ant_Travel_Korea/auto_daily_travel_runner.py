@@ -13,7 +13,7 @@ TRAVEL_DIR = os.path.join(BASE_DIR, r"키아노스_정부부처\04_교육_문화
 TOOLS_DIR = os.path.join(BASE_DIR, r"키아노스_정부부처\04_교육_문화부\3대_블로그_네트워크\tools")
 UPLOAD_SCRIPT = os.path.join(TOOLS_DIR, "blogger_upload.ps1")
 STATE_FILE = os.path.join(TRAVEL_DIR, "travel_upload_state.yaml")
-SRC_ROOT = r"E:\편집 기사\오늘편집\국내"
+SRC_ROOT = r"D:\DATA CENTER\편집 기사\오늘편집\국내"
 WEB_IMG_ROOT = os.path.join(BASE_DIR, r"assets\images\travel")
 PIPELINE_MD = os.path.join(TRAVEL_DIR, "DAILY_TRAVEL_AUTO_PIPELINE.md")
 

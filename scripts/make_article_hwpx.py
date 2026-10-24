@@ -145,7 +145,7 @@ def build_hwpx(template_hwpx_path, output_hwpx_path, headline, sub1, sub2, parag
     print("HWPX successfully created:", output_hwpx_path)
 
 if __name__ == '__main__':
-    template = r'D:\b\RPT DB\보도 기사 정보\중국산공유기백도어발결\중국산공유기백도어발견.hwpx'
+    template = r'D:\DATA CENTER\RPT DB\보도 기사 정보\중국산공유기백도어발결\중국산공유기백도어발견.hwpx'
     out = r'd:\안티그래비티파이튼\test_output.hwpx'
     headline = '파라마운트, 워너·CNN 인수… 거대 미디어 공룡 탄생'
     sub1 = '1110억弗 반독점 소송 종결… 154조 원 빅딜 확정'

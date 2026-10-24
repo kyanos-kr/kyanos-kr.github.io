@@ -3,11 +3,11 @@ import shutil
 from make_article_hwpx import build_hwpx
 
 # Target directory
-target_dir = r'D:\b\RPT DB\보도 기사 정보\파라마운트 워너브라더스 CNN 인수'
+target_dir = r'D:\DATA CENTER\RPT DB\보도 기사 정보\파라마운트 워너브라더스 CNN 인수'
 os.makedirs(target_dir, exist_ok=True)
 
 # 1. HWPX output path
-template = r'D:\b\RPT DB\보도 기사 정보\중국산공유기백도어발결\중국산공유기백도어발견.hwpx'
+template = r'D:\DATA CENTER\RPT DB\보도 기사 정보\중국산공유기백도어발결\중국산공유기백도어발견.hwpx'
 output_hwpx = os.path.join(target_dir, '파라마운트 워너브라더스 CNN 인수.hwpx')
 
 headline = '파라마운트, 워너·CNN 인수… 거대 미디어 공룡 탄생'

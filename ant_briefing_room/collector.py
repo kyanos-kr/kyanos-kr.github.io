@@ -26,7 +26,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ARCHIVE_DIR = os.path.join(BASE_DIR, "archive")
 OUTPUT_JSON = os.path.join(BASE_DIR, "briefing_data.json")
 OUTPUT_JS = os.path.join(BASE_DIR, "briefing_data.js")
-TODAY_EDIT_RAW_DIR = r"E:\편집 기사\오늘편집\취재원석"
+TODAY_EDIT_RAW_DIR = r"D:\DATA CENTER\편집 기사\오늘편집\취재원석"
 
 # ──────────────────────────────────────────────────────────
 # 1. 공식 5대 취재 카테고리 정의 (파이튼 님 확정 서열)
@@ -502,7 +502,7 @@ def generate_curated_briefing():
     with open(OUTPUT_JS, "w", encoding="utf-8") as f:
         f.write(js_content)
 
-    # 3) 로컬 아카이브 및 E:\편집 기사\오늘편집\취재원석\ 자동 동기화 저장
+    # 3) 로컬 아카이브 및 D:\DATA CENTER\편집 기사\오늘편집\취재원석\ 자동 동기화 저장
     archive_md = os.path.join(ARCHIVE_DIR, f"briefing_{date_key}.md")
     today_edit_md = os.path.join(TODAY_EDIT_RAW_DIR, f"오늘의_취재원석_브리핑_{date_key}.md")
     export_markdown_briefing(data, archive_md)
