@@ -1,9 +1,27 @@
-# Robots.txt for Kyannos & Ant News
-# https://kyanos-kr.github.io/
+# Robots.txt for The Sovereign Realm of Kyanos & Ant News
+# Official Portal: https://kyanos-kr.github.io/
 
 User-agent: *
+Allow: /
+Crawl-delay: 1
+
+# Specific Search Engine Crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /assets/
+
+User-agent: Yeti
+Allow: /
+
+User-agent: Daumoa
+Allow: /
+
+User-agent: Bingbot
 Allow: /
 
 # Sitemaps
 Sitemap: https://kyanos-kr.github.io/sitemap.xml
-Sitemap: https://antnews.org/sitemap.xml
+Sitemap: https://kyanos-kr.github.io/rss.xml
+
