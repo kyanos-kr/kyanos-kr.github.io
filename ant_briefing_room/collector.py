@@ -14,6 +14,10 @@ import urllib.request
 import urllib.parse
 import xml.etree.ElementTree as ET
 from typing import List, Dict
+import socket
+
+# 네트워크 타임아웃 및 무한 대기(hang) 방지
+socket.setdefaulttimeout(10)
 
 if sys.platform.startswith("win"):
     try:
