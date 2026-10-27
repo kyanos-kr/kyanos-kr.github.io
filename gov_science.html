@@ -411,6 +411,82 @@
       color: var(--cyan);
     }
 
+    /* 2026-10-27 실질 연구데이터 & 핵심 기술서 섹션 스타일 */
+    .research-update-card {
+      background: linear-gradient(135deg, rgba(10, 25, 47, 0.95), rgba(15, 30, 60, 0.85));
+      border: 1px solid rgba(0, 210, 255, 0.45);
+      border-radius: 16px;
+      padding: 2.2rem;
+      margin-bottom: 3.5rem;
+      box-shadow: 0 12px 45px rgba(0, 210, 255, 0.12);
+      position: relative;
+    }
+    .research-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+      margin-bottom: 0.8rem;
+    }
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.4rem;
+      margin-top: 1.5rem;
+    }
+    .research-item {
+      background: rgba(4, 16, 35, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+    }
+    .research-item:hover {
+      transform: translateY(-4px);
+      border-color: var(--cyan);
+      box-shadow: 0 8px 25px rgba(0, 210, 255, 0.25);
+    }
+    .research-item-icon { font-size: 2.2rem; margin-bottom: 0.6rem; }
+    .research-item-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem; color: #fff; }
+    .research-item-spec {
+      font-size: 0.8rem;
+      color: #94a3b8;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      flex-grow: 1;
+    }
+    .research-item-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 8px;
+      display: inline-block;
+      margin-bottom: 0.8rem;
+    }
+    .tag-cyan { background: rgba(0, 210, 255, 0.15); color: var(--cyan); border: 1px solid rgba(0, 210, 255, 0.3); }
+    .tag-amber { background: rgba(255, 170, 50, 0.15); color: #ffaa32; border: 1px solid rgba(255, 170, 50, 0.3); }
+    .tag-emerald { background: rgba(76, 232, 154, 0.15); color: #4ce89a; border: 1px solid rgba(76, 232, 154, 0.3); }
+    .tag-gold { background: rgba(245, 158, 11, 0.15); color: var(--gold-light); border: 1px solid rgba(245, 158, 11, 0.3); }
+    .research-meta-box {
+      background: rgba(0, 0, 0, 0.35);
+      border-radius: 8px;
+      padding: 0.6rem 0.8rem;
+      font-size: 0.75rem;
+      color: #cbd5e1;
+      margin-bottom: 0.8rem;
+      border-left: 2px solid var(--cyan);
+    }
+
     /* Footer */
     .gov-footer {
       margin-top: 4rem;
@@ -508,6 +584,109 @@
 
       <div style="text-align: center; margin-top: 1.5rem; font-size: 0.85rem; color: var(--cyan); font-style: italic;">
         “사이버 지능(NEXFORUM)과 물리적 로봇(TALOS), 우주와 생명이 하나로 맞물리는 전방위 기술 주권”
+      </div>
+    </section>
+
+    <!-- [2026-10-27 실질적 연구데이터 및 핵심 하드웨어 기술서 업데이트 모듈] -->
+    <section class="research-update-card">
+      <div class="architecture-header">
+        <div>
+          <span class="research-badge">⚡ 2026-10-27 실질 연구데이터 &amp; 핵심 기술서 집적 완료</span>
+          <h2 class="architecture-title">
+            <span>🔬</span> AGI 진입 연구데이터 &amp; 3대 핵심 국방·생산 기술서
+          </h2>
+        </div>
+        <span class="architecture-status" style="border-color: var(--gold); color: var(--gold-light);">국가 표준 기술 규격서 승인</span>
+      </div>
+
+      <p style="font-size: 0.88rem; color: var(--text-sub); line-height: 1.7; margin-bottom: 0.5rem;">
+        파이튼 국왕 최고통수권자의 령에 따라, AI의 AGI/초지능(SI) 진입을 위한 실질적 연구데이터 로드맵과 국가 방위 및 생산 주권을 지탱할 <strong>레이저 건(DEW)·자율 군집드론·휴머노이드 로봇 양산</strong> 3대 핵심 기술서를 집적하여 공식 반영합니다.
+      </p>
+
+      <div class="research-grid">
+        <!-- 1. AGI/SI 연구데이터 로드맵 -->
+        <div class="research-item">
+          <div>
+            <div class="research-item-icon">🧠</div>
+            <span class="research-item-tag tag-cyan">초지능 연구 코어</span>
+            <h3 class="research-item-title">AGI/SI 진입 연구데이터 로드맵</h3>
+            <p class="research-item-spec">
+              단순 LLM 스케일링을 넘어선 <strong>System 2 추론 시점 연산(MCTS/PRM)</strong>, Lean 4 형식 검증 기반 무결점 합성데이터, Graphify 영구 지식그래프(LTM), 그리고 JEPA 기반 시공간 월드 모델 구축 규격.
+            </p>
+          </div>
+          <div>
+            <div class="research-meta-box">
+              문서 번호: KYANOS-SCI-AGI-2026-001<br>
+              핵심 축: 추론 연산 · 합성데이터 · 월드모델
+            </div>
+            <a href="키아노스_정부부처/03_과학_SI부/AGI_SI_진입_핵심연구데이터_및_기술로드맵.md" class="nav-btn nav-btn-cyan" style="width: 100%; justify-content: center; font-size: 0.75rem;">
+              <span>📄</span> 기술 로드맵 열람
+            </a>
+          </div>
+        </div>
+
+        <!-- 2. 레이저 건(DEW) 핵심기술서 -->
+        <div class="research-item">
+          <div>
+            <div class="research-item-icon">⚡</div>
+            <span class="research-item-tag tag-gold">고에너지 방위무기</span>
+            <h3 class="research-item-title">레이저 건(DEW) 핵심기술서</h3>
+            <p class="research-item-spec">
+              $1,070\text{nm}$ 이테르븀(Yb) 파이버 레이저 모듈, 스펙트럼 빔 결합(SBC $M^2 \le 1.3$), 마이크로채널 액체 냉각 및 상변화 물질(PCM) 열관리, $0.05\text{mrad}$ 정밀 빔 디렉터 및 휴대/차량형 규격.
+            </p>
+          </div>
+          <div>
+            <div class="research-meta-box">
+              문서 번호: KYANOS-DEF-LWS-2026-002<br>
+              출력/사정: 10kW~50kW / 유효 1~4km
+            </div>
+            <a href="키아노스_정부부처/03_과학_SI부/고에너지_지향성에너지무기_레이저건_핵심기술서.md" class="nav-btn nav-btn-gold" style="width: 100%; justify-content: center; font-size: 0.75rem;">
+              <span>⚡</span> 레이저 기술서 열람
+            </a>
+          </div>
+        </div>
+
+        <!-- 3. 차세대 자율 군집드론 기술서 -->
+        <div class="research-item">
+          <div>
+            <div class="research-item-icon">🛸</div>
+            <span class="research-item-tag tag-blue">비GPS 자율비행</span>
+            <h3 class="research-item-title">자율 군집드론 엔지니어링 기술서</h3>
+            <p class="research-item-spec">
+              T1000 카본 모노코크 경량 프레임, 360° 옴니비전 솔리드스테이트 라이다 + 4축 스테레오 VIO 융합 항법, 탈중앙 메시 네트워크 기반 인공전위장(APF) 군집 충돌회피 및 PEMFC 하이브리드 파워팩.
+            </p>
+          </div>
+          <div>
+            <div class="research-meta-box">
+              문서 번호: KYANOS-SCI-TALOS-DRONE-2026-003<br>
+              체공/반경: 60분~4시간 / 100km+
+            </div>
+            <a href="키아노스_정부부처/03_과학_SI부/차세대_자율비행_군집드론_제작_엔지니어링_기술서.md" class="nav-btn nav-btn-cyan" style="width: 100%; justify-content: center; font-size: 0.75rem;">
+              <span>🛸</span> 드론 기술서 열람
+            </a>
+          </div>
+        </div>
+
+        <!-- 4. 탈로스 휴머노이드 로봇 양산기술서 -->
+        <div class="research-item">
+          <div>
+            <div class="research-item-icon">🦾</div>
+            <span class="research-item-tag tag-amber">피지컬 AI 양산</span>
+            <h3 class="research-item-title">탈로스 휴머노이드 로봇 생산기술서</h3>
+            <p class="research-item-spec">
+              38자유도 생체모사 골격, 저감속비 준다이렉트 드라이브(QDD) 일체형 스마트 액추에이터, 실시간 1,000Hz 전신 역학 제어(WBC), E2E VLA 지능 온보드 칩셋 및 스마트 파운드리 5단계 무인 양산 공정.
+            </p>
+          </div>
+          <div>
+            <div class="research-meta-box">
+              문서 번호: KYANOS-SCI-TALOS-ROBOT-2026-004<br>
+              자유도/양산: 38-DOF / 연 10,000대 체제
+            </div>
+            <a href="키아노스_정부부처/03_과학_SI부/탈로스_휴머노이드_로봇_대량양산_생산기술서.md" class="nav-btn nav-btn-gold" style="width: 100%; justify-content: center; font-size: 0.75rem;">
+              <span>🦾</span> 로봇 양산서 열람
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 
