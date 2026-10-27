@@ -575,12 +575,19 @@
     </a>
 
     <!-- SKIP Button -->
-    <div class="skip-section">
-      <a href="main.html" class="skip-btn" id="skipBtn" title="메인 페이지로 진입" aria-label="SKIP">
-        <span>SKIP</span>
-        <span class="arrow-icon" aria-hidden="true">&rarr;</span>
-      </a>
-    </div>
+    <div class="skip-section" style="display:flex; flex-direction:column; align-items:center; gap:14px;">
+        <!-- 키아노스 공식 비디오 스튜디오 직통 버튼 -->
+        <a href="video_studio.html" target="_blank" style="display:inline-flex; align-items:center; gap:10px; padding:10px 24px; border-radius:30px; background:linear-gradient(135deg, rgba(0, 173, 181, 0.9), rgba(2, 132, 199, 0.9)); color:#fff; text-decoration:none; font-weight:700; font-size:1rem; box-shadow:0 4px 20px rgba(0, 173, 181, 0.5); border:1px solid #38bdf8; transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          <span style="font-size:1.2rem;">🎬</span>
+          <span>키아노스 공식 영상관 (비디오 스튜디오) 바로가기</span>
+          <span style="color:#fde68a;">↗</span>
+        </a>
+
+        <a href="main.html" class="skip-btn" id="skipBtn" title="메인 페이지로 진입" aria-label="SKIP">
+          <span>SKIP</span>
+          <span class="arrow-icon" aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
 
     <!-- Brand Promotion Showcase Below SKIP -->
     <section class="brand-promo-container" aria-label="국가 핵심 브랜드 쇼케이스">
