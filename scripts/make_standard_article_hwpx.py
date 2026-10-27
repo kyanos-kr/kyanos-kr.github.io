@@ -30,13 +30,14 @@ def create_standard_hwpx(output_hwpx_path, headline, sub1, sub2, byline, paragra
         for font in ff.iter(f'{{{ns_hh}}}font'):
             font.attrib['face'] = '한컴 윤고딕 740'
 
-    # Ensure lineSpacing is 160% on all paraPr
+    # Ensure lineSpacing is 160% on all paraPr (including nested switch/case/default)
     for p in root_hdr.iter(f'{{{ns_hh}}}paraPr'):
-        ls = p.find(f'{{{ns_hh}}}lineSpacing')
-        if ls is not None:
+        found_ls = False
+        for ls in p.iter(f'{{{ns_hh}}}lineSpacing'):
             ls.attrib['type'] = 'PERCENT'
             ls.attrib['value'] = '160'
-        else:
+            found_ls = True
+        if not found_ls:
             new_ls = ET.Element(f'{{{ns_hh}}}lineSpacing', {'type': 'PERCENT', 'value': '160', 'unit': 'PERCENT'})
             p.append(new_ls)
 
