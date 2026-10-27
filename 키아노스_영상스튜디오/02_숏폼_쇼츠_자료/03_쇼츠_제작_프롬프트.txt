@@ -1,0 +1,31 @@
+================================================================================
+[AI 비디오/이미지 생성용 영문 프롬프트 - 숏폼 9:16 세로 화면]
+세로형 영상(유튜브 쇼츠, 릴스, 틱톡)에 최적화된 프롬프트입니다.
+================================================================================
+
+[컷 01 - 3초 시각적 충격 훅]
+Vertical video, 9:16 format, dramatic cinematic tilt-down from clouds high above the ocean to an astonishing, hyper-futuristic floating ocean city with glistening cyan bio-structures, surrounded by pristine turquoise sea, ultra-detailed architectural concept, cinematic lighting, 8k --ar 9:16
+
+[컷 02 - 국가 엠블럼 홀로그램]
+Vertical video, 9:16 format, sleek floating 3D holographic crest of Kyanos pulsating with bright cyan and gold light particles over a dark blue oceanic backdrop, futuristic digital interface elements spinning, sharp focus, 8k --ar 9:16
+
+[컷 03A - 청정에너지와 해류 터빈]
+Vertical video, 9:16 format, dynamic low-angle shot of futuristic kinetic tidal turbines rotating gracefully underwater with glowing blue LEDs, crystalline solar panels glistening on the sea surface above, hyper-realistic, 8k --ar 9:16
+
+[컷 03B - 해저 연구 포드]
+Vertical video, 9:16 format, sleek glass underwater research pod gliding through deep turquoise ocean alongside bioluminescent manta rays, high-tech ocean laboratory, cinematic depth of field, 8k --ar 9:16
+
+[컷 04A - 초지능 퀀텀 코어 펄스]
+Vertical video, 9:16 format, fast zoom into a massive glowing quantum core inside a sci-fi server room, vibrant cyan light beams bursting outward through glass circuitry, intense energy pulse, 8k --ar 9:16
+
+[컷 04B - 덕치 사법원 전경]
+Vertical video, 9:16 format, grand vertical shot of neoclassical pillars integrated with floating cyan constitutional holograms, solemn, prestigious, majestic lighting, 8k --ar 9:16
+
+[컷 05 - 5대 테크 주권 빠른 전환]
+Vertical video, 9:16 format, rapid montage sequence of a glowing solid-state battery cell morphing into a futuristic electric hypercar cockpit, transitioning to a luminous silicon semiconductor chip, high-energy cinematic motion blur, 8k --ar 9:16
+
+[컷 06 - 최고통수권자 파이튼과 디지털 여권]
+Vertical video, 9:16 format, majestic silhouette of a visionary statesman standing in a luxury panoramic office looking at the sunset over the ocean, a glowing 3D holographic digital passport spinning in mid-air in front, inspiring, epic lighting, 8k --ar 9:16
+
+[컷 07 - 콜투액션 (CTA) 엔딩]
+Vertical video, 9:16 format, minimalist deep navy screen with luminous cyan animated arrow pointing downward toward comment section, elegant typography 'JOIN KYANOS', smooth motion graphics, clean 8k --ar 9:16

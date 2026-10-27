@@ -1,0 +1,40 @@
+================================================================================
+[AI 비디오/이미지 생성용 영문 프롬프트 - 롱폼 16:9 가로 화면]
+Midjourney, Kling AI, Runway Gen-3 등 영상 제작 툴에 그대로 복사해서 넣는 프롬프트입니다.
+================================================================================
+
+[장면 01 - 심해의 푸른 빛]
+Cinematic shot, macro close-up slowly pulling back into a vast deep ocean trench, glowing cyan bioluminescent particles pulsating rhythmically, illuminating ancient underwater geological structures, atmospheric volumetric light beams, photorealistic 8k, IMAX documentary style, Unreal Engine 5 render, cinematic lighting --ar 16:9 --style raw
+
+[장면 02 - 황혼의 메가시티]
+Cinematic drone shot slowly orbiting a dense, hazy futuristic metropolis at sunset, concrete skyscrapers, heavy aerial haze, chaotic traffic lights, gloomy amber and grey color grade, melancholic dusk lighting, photorealistic, cinematic depth of field, 8k --ar 16:9
+
+[장면 03 - 대양의 서광과 일출]
+Slow cinematic tilt-up from rough ocean waves becoming calm, radiant golden and emerald dawn breaking over the distant sea horizon, crisp morning mist, brilliant sunrays piercing through sea spray, hyper-realistic, 8k resolution, National Geographic documentary aesthetic --ar 16:9
+
+[장면 04 - 키아노스 해양 부유 도시 전경]
+Breathtaking FPV drone shot descending smoothly from clouds toward a majestic, utopian floating ocean city named Kyanos, sleek white aerodynamic bio-architecture, solar glass domes, kinetic sea-current turbines gently rotating in crystal turquoise ocean, clean blue sky, awe-inspiring scale, hyper-realistic architectural concept, 8k --ar 16:9
+
+[장면 05 - 초지능 퀀텀 데이터 코어]
+Cinematic tracking shot moving down a high-tech subterranean quantum datacenter inside an ocean base, glowing cyan fiber-optic neural cables pulsing with radiant light, liquid cooling glass chambers, massive holographic data interfaces rotating smoothly, pristine sci-fi laboratory, 8k --ar 16:9
+
+[장면 06 - 유리 돔 속 평화로운 정원과 시민]
+Beautiful cinematic eye-level tracking shot inside a transparent biodome on the ocean, diverse happy citizens walking peacefully in lush botanical gardens, autonomous sleek electric pods gliding silently on glass bridges, soft natural morning sunlight, utopian harmony between nature and high technology, photorealistic --ar 16:9
+
+[장면 07 - 덕치 사법원과 헌법 홀로그램]
+Majestic low-angle interior shot of the Hall of Virtue Court, grand neoclassical marble columns seamlessly fused with sleek floating cyan holographic legal scrolls and constitutional glyphs, dramatic cathedral lighting, solemn, dignified, cinematic, 8k --ar 16:9
+
+[장면 08 - 5대 첨단 기술 (전지, 차, 반도체, 로봇)]
+Macro industrial shot inside a high-tech laboratory, glowing solid-state battery cells transitioning to a sleek futuristic autonomous vehicle, iridescent silicon wafer with 3D circuits, and an elegant white humanoid robot working harmoniously, clean lighting, 8k --ar 16:9
+
+[장면 09 - 최고통수권자 파이튼의 혜안]
+Cinematic silhouette shot from behind of a visionary leader standing in front of a floor-to-ceiling panoramic glass window inside a luxurious penthouse office, gazing out at the vast ocean and floating city of Kyanos at golden hour, minimalist mahogany desk with holographic globe, dignified, contemplative, epic cinematic lighting --ar 16:9
+
+[장면 10 - 전 세계로 연결되는 디지털 시민권]
+Holographic 3D digital Earth spinning gently in a dark conference hall, thousands of glowing golden and cyan data threads connecting continents directly to the ocean city Kyanos, sophisticated digital sovereignty interface, cinematic depth of field, 8k --ar 16:9
+
+[장면 11 - 찬란하게 빛나는 키아노스 도시 야경]
+Epic cinematic wide aerial view of the floating ocean city Kyanos at twilight, shimmering like a jewel on the dark blue ocean, glowing cyan architectural light ribbons, illuminated bioluminescent marina, gentle ocean waves reflecting warm city lights, starry night sky, masterpiece, 8k --ar 16:9
+
+[장면 12 - 키아노스 공식 국장 엠블럼]
+Clean minimalist motion graphic background, deep royal navy canvas, an elegant metallic cyan and platinum emblem of stylized ocean waves intertwined with an omniscient diamond core, subtle light glinting across the metallic edge, premium luxury typography reading 'KYANOS', 8k --ar 16:9

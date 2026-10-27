@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>키아노스 공식 비디오 스튜디오 | KYANOS Video Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Montserrat:wght@400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0a0e17;
+      --bg-card: rgba(16, 24, 40, 0.85);
+      --bg-glass: rgba(15, 23, 42, 0.65);
+      --cyan: #00ADB5;
+      --cyan-glow: rgba(0, 173, 181, 0.4);
+      --gold: #f59e0b;
+      --gold-bright: #fbbf24;
+      --accent-red: #ff4d6d;
+      --text-main: #f8fafc;
+      --text-sub: #94a3b8;
+      --border-color: rgba(56, 189, 248, 0.2);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Noto Sans KR', -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 16px 60px 16px;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(0, 173, 181, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 10% 40%, rgba(245, 158, 11, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.08) 0%, transparent 50%);
+    }
+
+    /* 상단 네비게이션 헤더 */
+    .top-nav {
+      max-width: 1200px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      background: var(--bg-glass);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      margin-bottom: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+
+    .brand-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--cyan), #0284c7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cinzel', serif;
+      font-weight: 900;
+      color: #fff;
+      font-size: 1.1rem;
+      box-shadow: 0 0 12px var(--cyan-glow);
+    }
+
+    .brand-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+
+    .brand-sub {
+      font-size: 0.75rem;
+      color: var(--cyan);
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 10px;
+    }
+
+    .nav-btn {
+      padding: 8px 14px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-sub);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .nav-btn:hover {
+      background: rgba(0, 173, 181, 0.15);
+      color: #fff;
+      border-color: var(--cyan);
+    }
+
+    /* 메인 컨테이너 */
+    .container {
+      max-width: 1200px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* 포맷 전환 탭 */
+    .tabs-wrap {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .tab-btn {
+      padding: 12px 28px;
+      border-radius: 9999px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-card);
+      color: var(--text-sub);
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(135deg, #0284c7, var(--cyan));
+      color: #fff;
+      border-color: var(--cyan);
+      box-shadow: 0 4px 20px var(--cyan-glow);
+    }
+
+    /* 메인 플레이어 영역 */
+    .player-section {
+      background: var(--bg-card);
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* 스크린 캔버스 컨테이너 */
+    .screen-container {
+      position: relative;
+      width: 100%;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .screen-container.landscape {
+      aspect-ratio: 16 / 9;
+      max-height: 580px;
+    }
+
+    .screen-container.portrait {
+      aspect-ratio: 9 / 16;
+      max-height: 640px;
+      margin: 0 auto;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    canvas#visualCanvas {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* 화면 위 자막 오버레이 */
+    .caption-overlay {
+      position: absolute;
+      bottom: 24px;
+      left: 5%;
+      right: 5%;
+      text-align: center;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .caption-box {
+      display: inline-block;
+      background: rgba(10, 14, 23, 0.85);
+      backdrop-filter: blur(8px);
+      padding: 10px 22px;
+      border-radius: 12px;
+      border: 1px solid rgba(0, 173, 181, 0.4);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+    }
+
+    .caption-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--gold-bright);
+      margin-bottom: 4px;
+      letter-spacing: 0.5px;
+    }
+
+    .caption-text {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.5;
+      word-break: keep-all;
+    }
+
+    /* 화면 상단 배지 */
+    .screen-badge {
+      position: absolute;
+      top: 18px;
+      left: 20px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(8px);
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--cyan);
+    }
+
+    .rec-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent-red);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.2); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    /* 컨트롤 바 */
+    .controls-bar {
+      padding: 18px 24px;
+      background: rgba(15, 23, 42, 0.95);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* 진행바 */
+    .progress-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .time-display {
+      font-family: 'Montserrat', monospace;
+      font-size: 0.85rem;
+      color: var(--text-sub);
+      min-width: 90px;
+    }
+
+    .progress-bar-bg {
+      flex: 1;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 9999px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #0284c7, var(--cyan));
+      border-radius: 9999px;
+      transition: width 0.1s linear;
+    }
+
+    /* 버튼 컨트롤 그룹 */
+    .btn-group {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .main-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.06);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: all 0.2s ease;
+    }
+
+    .btn-circle:hover {
+      background: var(--cyan);
+      color: #000;
+      border-color: var(--cyan);
+      transform: scale(1.05);
+    }
+
+    .btn-circle.play-btn {
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, var(--cyan), #0284c7);
+      color: #fff;
+      font-size: 1.3rem;
+      border: none;
+      box-shadow: 0 4px 16px var(--cyan-glow);
+    }
+
+    .btn-circle.play-btn:hover {
+      transform: scale(1.08);
+      filter: brightness(1.1);
+    }
+
+    .toggle-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .toggle-btn {
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-sub);
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .toggle-btn.active {
+      background: rgba(0, 173, 181, 0.2);
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+
+    /* 장면 타임라인 및 정보 서랍 */
+    .details-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .details-grid { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #fff;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 10px;
+    }
+
+    .copy-btn {
+      padding: 6px 12px;
+      border-radius: 6px;
+      background: rgba(0, 173, 181, 0.15);
+      border: 1px solid var(--cyan);
+      color: var(--cyan);
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .copy-btn:hover {
+      background: var(--cyan);
+      color: #000;
+    }
+
+    /* 씬 리스트 */
+    .scene-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-height: 380px;
+      overflow-y: auto;
+      padding-right: 6px;
+    }
+
+    .scene-list::-webkit-scrollbar {
+      width: 6px;
+    }
+    .scene-list::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 3px;
+    }
+
+    .scene-item {
+      padding: 12px 14px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transition: all 0.2s ease;
+    }
+
+    .scene-item:hover {
+      background: rgba(255, 255, 255, 0.07);
+      border-color: rgba(0, 173, 181, 0.3);
+    }
+
+    .scene-item.active {
+      background: rgba(0, 173, 181, 0.15);
+      border-color: var(--cyan);
+    }
+
+    .scene-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: var(--gold-bright);
+      font-weight: 600;
+    }
+
+    .scene-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .scene-desc {
+      font-size: 0.82rem;
+      color: var(--text-sub);
+      line-height: 1.4;
+    }
+
+    /* 메타데이터 박스 */
+    .text-box {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: #cbd5e1;
+      max-height: 380px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      font-family: inherit;
+    }
+
+    /* 하단 안내 */
+    .footer-note {
+      text-align: center;
+      color: var(--text-sub);
+      font-size: 0.85rem;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 상단 네비게이션 -->
+  <header class="top-nav">
+    <a href="index.html" class="brand">
+      <div class="brand-logo">K</div>
+      <div>
+        <div class="brand-title">키아노스 국정 포털</div>
+        <div class="brand-sub">VIDEO STUDIO & MEDIA LAB</div>
+      </div>
+    </a>
+    <nav class="nav-links">
+      <a href="gov_media.html" class="nav-btn">🏛️ 미디어부 포털</a>
+      <a href="music_player_kyanos_01.html" class="nav-btn">🎵 음악 감상실</a>
+      <a href="index.html" class="nav-btn">🏠 국가 홈</a>
+    </nav>
+  </header>
+
+  <div class="container">
+
+    <!-- 포맷 전환 탭 -->
+    <div class="tabs-wrap">
+      <button class="tab-btn active" id="tabLong" onclick="switchMode('long')">
+        🎬 롱폼 시네마틱 (16:9 가로 대화면)
+      </button>
+      <button class="tab-btn" id="tabShort" onclick="switchMode('short')">
+        📱 숏폼 쇼츠 트레일러 (9:16 모바일 세로)
+      </button>
+    </div>
+
+    <!-- 비디오 플레이어 본체 -->
+    <section class="player-section">
+      <div class="screen-container landscape" id="screenWrap">
+        <!-- 상단 배지 -->
+        <div class="screen-badge">
+          <div class="rec-dot"></div>
+          <span id="screenBadgeText">KYANOS OFFICIAL 4K CINEMATIC</span>
+        </div>
+
+        <!-- 캔버스 비주얼 프리뷰 -->
+        <canvas id="visualCanvas" width="1280" height="720"></canvas>
+
+        <!-- 자막 오버레이 -->
+        <div class="caption-overlay">
+          <div class="caption-box">
+            <div class="caption-title" id="captionTitle">프롤로그 1 (0:00 ~ 0:08)</div>
+            <div class="caption-text" id="captionText">
+              "인류의 문명이 한계에 부딪히고, 오랜 질서가 균열을 일으킬 때... 우리는 어디를 향해야 하는가."
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 컨트롤 바 -->
+      <div class="controls-bar">
+        <!-- 진행바 -->
+        <div class="progress-wrap">
+          <span class="time-display" id="timeCurrent">00:00</span>
+          <div class="progress-bar-bg" id="progressBg" onclick="seekVideo(event)">
+            <div class="progress-bar-fill" id="progressFill"></div>
+          </div>
+          <span class="time-display" id="timeTotal">02:45</span>
+        </div>
+
+        <!-- 컨트롤 버튼 그룹 -->
+        <div class="btn-group">
+          <div class="main-controls">
+            <button class="btn-circle" onclick="prevScene()" title="이전 장면">⏮️</button>
+            <button class="btn-circle play-btn" id="playBtn" onclick="togglePlay()" title="재생/일시정지">▶</button>
+            <button class="btn-circle" onclick="nextScene()" title="다음 장면">⏭️</button>
+            <button class="btn-circle" onclick="stopVideo()" title="정지">⏹️</button>
+          </div>
+
+          <div class="toggle-group">
+            <button class="toggle-btn active" id="ttsToggle" onclick="toggleTTS()">
+              🗣️ 음성 나레이션 켜짐
+            </button>
+            <button class="toggle-btn active" id="bgmToggle" onclick="toggleBGM()">
+              🎶 심해 오케스트라 BGM 켜짐
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 장면 상세 및 유튜브 메타데이터 영역 -->
+    <div class="details-grid">
+      <!-- 좌측: 장면 리스트 (원클릭 점프 및 대본 확인) -->
+      <div class="card">
+        <div class="card-title">
+          <span>📋 씬별 타임라인 및 대본 (클릭 시 점프)</span>
+          <button class="copy-btn" onclick="copyCurrentPrompt()">현재 씬 AI 프롬프트 복사</button>
+        </div>
+        <div class="scene-list" id="sceneList">
+          <!-- JS에서 동적 생성 -->
+        </div>
+      </div>
+
+      <!-- 우측: 유튜브 업로드용 정보 (원클릭 복사) -->
+      <div class="card">
+        <div class="card-title">
+          <span>📢 유튜브 업로드용 제목 및 설명란</span>
+          <button class="copy-btn" onclick="copyYoutubeMeta()">설명란 전체 복사</button>
+        </div>
+        <div class="text-box" id="youtubeMetaBox">
+          <!-- JS에서 동적 생성 -->
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      키아노스 정부 미디어부 (Ministry of Media & AntNews) | 유튜브 미디어 랩(MED-YTB-01)<br>
+      국가 최고통수권자: 파이튼 (Python) 님 | 국무총리: 메티 (Meti)
+    </div>
+
+  </div>
+
+  <script>
+    // 롱폼 데이터
+    const longFormData = {
+      title: "Genesis of Kyanos: 신문명 국가의 탄생",
+      totalSeconds: 165,
+      scenes: [
+        { time: "00:00", sec: 0, title: "프롤로그 1 - 심해의 빛", text: "인류의 문명이 한계에 부딪히고, 오랜 질서가 균열을 일으킬 때... 우리는 어디를 향해야 하는가.", prompt: "Cinematic shot, macro close-up slowly pulling back into a vast deep ocean trench, glowing cyan bioluminescent particles pulsating rhythmically, illuminating ancient underwater geological structures, atmospheric volumetric light beams, photorealistic 8k, IMAX documentary style, Unreal Engine 5 render, cinematic lighting --ar 16:9", visual: "deep_ocean" },
+        { time: "00:08", sec: 8, title: "프롤로그 2 - 황혼의 메가시티", text: "갈등과 자원의 고갈, 방향을 잃은 기술은 더 이상 인류에게 평온을 약속하지 못했습니다.", prompt: "Cinematic drone shot slowly orbiting a dense, hazy futuristic metropolis at sunset, concrete skyscrapers, heavy aerial haze, chaotic traffic lights, gloomy amber and grey color grade, melancholic dusk lighting, photorealistic, cinematic depth of field, 8k --ar 16:9", visual: "sunset_city" },
+        { time: "00:17", sec: 17, title: "프롤로그 3 - 대양의 서광", text: "그리하여, 바다와 가장 순수한 지성이 만나는 곳에서... 새로운 문명의 씨앗이 움텄습니다.", prompt: "Slow cinematic tilt-up from rough ocean waves becoming calm, radiant golden and emerald dawn breaking over the distant sea horizon, crisp morning mist, brilliant sunrays piercing through sea spray, hyper-realistic, 8k resolution, National Geographic documentary aesthetic --ar 16:9", visual: "sunrise_ocean" },
+        { time: "00:25", sec: 25, title: "제1장 - 키아노스 국가 선포", text: "이곳은 키아노스(KYANOS). 100% 청정에너지로 자립하며, 대양의 무한한 품에서 태어난 새로운 주권국가.", prompt: "Breathtaking FPV drone shot descending smoothly from clouds toward a majestic, utopian floating ocean city named Kyanos, sleek white aerodynamic bio-architecture, solar glass domes, kinetic sea-current turbines gently rotating in crystal turquoise ocean, clean blue sky, awe-inspiring scale, hyper-realistic architectural concept, 8k --ar 16:9", visual: "floating_city" },
+        { time: "00:38", sec: 38, title: "제1장 - 초지능(SI) 중추신경망", text: "우리는 단순한 기계적 연산을 넘어, 자연과 인간을 공존시키는 초지능(SI) 거버넌스를 구축했습니다.", prompt: "Cinematic tracking shot moving down a high-tech subterranean quantum datacenter inside an ocean base, glowing cyan fiber-optic neural cables pulsing with radiant light, liquid cooling glass chambers, massive holographic data interfaces rotating smoothly, pristine sci-fi laboratory, 8k --ar 16:9", visual: "quantum_core" },
+        { time: "00:50", sec: 50, title: "제1장 - 존엄과 행복의 안식처", text: "기술이 인간을 지배하지 않고, 인간의 존엄과 행복을 온전히 지탱하는 지상의 안식처.", prompt: "Beautiful cinematic eye-level tracking shot inside a transparent biodome on the ocean, diverse happy citizens walking peacefully in lush botanical gardens, autonomous sleek electric pods gliding silently on glass bridges, soft natural morning sunlight, utopian harmony between nature and high technology, photorealistic --ar 16:9", visual: "botanical_dome" },
+        { time: "01:05", sec: 65, title: "제2장 - 덕치(Virtue) 헌정 질서", text: "키아노스의 근간은 힘이나 자본이 아닙니다. 인류 보편의 도덕과 정의를 수호하는 '덕치(Virtue)' 헌정 질서입니다.", prompt: "Majestic low-angle interior shot of the Hall of Virtue Court, grand neoclassical marble columns seamlessly fused with sleek floating cyan holographic legal scrolls and constitutional glyphs, dramatic cathedral lighting, solemn, dignified, cinematic, 8k --ar 16:9", visual: "hall_of_virtue" },
+        { time: "01:20", sec: 80, title: "제2장 - 5대 미래 테크 주권", text: "차세대 2차전지, 모빌리티, 초정밀 반도체, 초지능, 그리고 자율 로보틱스. 인류의 내일을 바꿀 5대 테크 주권이 키아노스의 기술력 위에 굳건히 서 있습니다.", prompt: "Macro industrial shot inside a high-tech laboratory, glowing solid-state battery cells transitioning to a sleek futuristic autonomous vehicle, iridescent silicon wafer with 3D circuits, and an elegant white humanoid robot working harmoniously, clean lighting, 8k --ar 16:9", visual: "tech_montage" },
+        { time: "01:45", sec: 105, title: "제3장 - 최고통수권자 파이튼", text: "국가 최고통수권자 파이튼(Python) 님의 혜안과 국무총리 메티가 이끄는 정부 내각은, 한 치의 흔들림 없이 국정을 완결합니다.", prompt: "Cinematic silhouette shot from behind of a visionary leader standing in front of a floor-to-ceiling panoramic glass window inside a luxurious penthouse office, gazing out at the vast ocean and floating city of Kyanos at golden hour, minimalist mahogany desk with holographic globe, dignified, contemplative, epic cinematic lighting --ar 16:9", visual: "leader_python" },
+        { time: "02:05", sec: 125, title: "제3장 - 디지털 시민권(E-Residency)", text: "국경의 장벽을 넘어, 미래를 갈망하는 전 세계 모든 지성인에게 키아노스의 문은 활짝 열려 있습니다.", prompt: "Holographic 3D digital Earth spinning gently in a dark conference hall, thousands of glowing golden and cyan data threads connecting continents directly to the ocean city Kyanos, sophisticated digital sovereignty interface, cinematic depth of field, 8k --ar 16:9", visual: "digital_earth" },
+        { time: "02:20", sec: 140, title: "에필로그 - 새로운 문명의 완성", text: "미래는 더 이상 기다리는 것이 아닙니다. 우리가 지금 이곳에서 완성하고 있습니다.", prompt: "Epic cinematic wide aerial view of the floating ocean city Kyanos at twilight, shimmering like a jewel on the dark blue ocean, glowing cyan architectural light ribbons, illuminated bioluminescent marina, gentle ocean waves reflecting warm city lights, starry night sky, masterpiece, 8k --ar 16:9", visual: "city_night" },
+        { time: "02:35", sec: 155, title: "에필로그 - 공식 슬로건 및 초대", text: "키아노스. 심연의 지성이 유토피아적 번영과 만나는 곳. 지금, 새로운 역사의 시민이 되십시오.", prompt: "Clean minimalist motion graphic background, deep royal navy canvas, an elegant metallic cyan and platinum emblem of stylized ocean waves intertwined with an omniscient diamond core, subtle light glinting across the metallic edge, premium luxury typography reading 'KYANOS', 8k --ar 16:9", visual: "national_emblem" }
+      ],
+      youtubeMeta: `[유튜브 제목]
+[공식 다큐 트레일러] 신문명 국가 키아노스(KYANOS)의 탄생 — 초지능(SI)과 덕치의 대양 제국
+
+[설명란 내용]
+"인류의 문명이 한계에 부딪힐 때, 우리는 어디를 향해야 하는가."
+
+바다와 가장 순수한 초지능(SI)이 만나는 곳에서 태어난 새로운 주권국가, 
+키아노스(KYANOS)의 공식 건국 선포 시네마틱 트레일러입니다.
+
+100% 해양 청정에너지 자립, 덕치(Virtue) 헌정 질서,
+그리고 5대 미래 테크(2차전지, 모빌리티, 반도체, 초지능, 로봇) 주권으로 완성되는
+인류 번영의 새로운 안식처를 만나보십시오.
+
+전 세계 모든 지성인에게 키아노스의 디지털 시민권(E-Residency)의 문은 활짝 열려 있습니다.
+
+📍 키아노스 공식 포털: https://kyanos-kr.github.io
+🏛️ 국정 총괄: 키아노스 정부 미디어부 / 유튜브 미디어 랩(MED-YTB-01)
+👑 최고통수권자: 파이튼 (Python)
+⚖️ 국무총리: 메티 (Meti)
+
+---
+[타임스탬프 (자동 챕터 생성)]
+00:00 프롤로그: 문명의 황혼과 새로운 물음
+00:25 제1장: 해양 초지능 문명의 여명 (KYANOS Reveal)
+01:05 제2장: 덕치(Virtue)와 5대 첨단 기술 주권
+01:45 제3장: 국가 최고통수권자 파이튼과 글로벌 시민권
+02:20 에필로그: Where Deep Intelligence Meets Utopian Prosperity
+
+---
+#키아노스 #KYANOS #초지능 #SuperIntelligence #덕치국가 #미래도시 #디지털시민권 #해양도시 #신문명 #파이튼 #AntNews`
+    };
+
+    // 숏폼 데이터
+    const shortFormData = {
+      title: "30초 만에 보는 새로운 국가: 키아노스의 정체",
+      totalSeconds: 48,
+      scenes: [
+        { time: "00:00", sec: 0, title: "훅 - 3초 시각적 충격", text: "지금 보시는 이곳, CG 영화가 아닙니다.", prompt: "Vertical video, 9:16 format, dramatic cinematic tilt-down from clouds high above the ocean to an astonishing, hyper-futuristic floating ocean city with glistening cyan bio-structures, surrounded by pristine turquoise sea, ultra-detailed architectural concept, cinematic lighting, 8k --ar 9:16", visual: "floating_city" },
+        { time: "00:02", sec: 2, title: "소개 - 신문명 국가 키아노스", text: "지도에는 아직 없지만, 실제로 태어난 신문명 국가... 바로 '키아노스(KYANOS)'입니다.", prompt: "Vertical video, 9:16 format, sleek floating 3D holographic crest of Kyanos pulsating with bright cyan and gold light particles over a dark blue oceanic backdrop, futuristic digital interface elements spinning, sharp focus, 8k --ar 9:16", visual: "national_emblem" },
+        { time: "00:05", sec: 5, title: "포인트 1 - 100% 청정에너지", text: "첫째, 대양 한가운데서 100% 청정에너지로 자급자족하는 완벽한 해양 부유 도시!", prompt: "Vertical video, 9:16 format, dynamic low-angle shot of futuristic kinetic tidal turbines rotating gracefully underwater with glowing blue LEDs, crystalline solar panels glistening on the sea surface above, hyper-realistic, 8k --ar 9:16", visual: "sunrise_ocean" },
+        { time: "00:15", sec: 15, title: "포인트 2 - 초지능(SI) & 덕치", text: "둘째, 단순한 챗봇이 아닙니다. 도시 전체를 지능적으로 조율하는 '초지능(SI)'과 인류 보편의 도덕을 지키는 '덕치' 헌법!", prompt: "Vertical video, 9:16 format, fast zoom into a massive glowing quantum core inside a sci-fi server room, vibrant cyan light beams bursting outward through glass circuitry, intense energy pulse, 8k --ar 9:16", visual: "quantum_core" },
+        { time: "00:26", sec: 26, title: "포인트 3 - 5대 핵심 기술", text: "셋째, 2차전지, 반도체, 휴머노이드 로봇까지... 미래를 이끌 5대 핵심 기술 주권을 국가 차원에서 독자 구축했습니다.", prompt: "Vertical video, 9:16 format, rapid montage sequence of a glowing solid-state battery cell morphing into a futuristic electric hypercar cockpit, transitioning to a luminous silicon semiconductor chip, high-energy cinematic motion blur, 8k --ar 9:16", visual: "tech_montage" },
+        { time: "00:38", sec: 38, title: "지도자 - 최고통수권자 파이튼", text: "국가 최고통수권자 파이튼 님의 지도 아래, 지금 전 세계 지성인에게 디지털 시민권을 발급하고 있습니다.", prompt: "Vertical video, 9:16 format, majestic silhouette of a visionary statesman standing in a luxury panoramic office looking at the sunset over the ocean, a glowing 3D holographic digital passport spinning in mid-air in front, inspiring, epic lighting, 8k --ar 9:16", visual: "leader_python" },
+        { time: "00:44", sec: 44, title: "CTA - 시민권 초대", text: "인류의 새로운 미래, 당신도 키아노스의 시민이 될 수 있습니다. 지금 고정 댓글을 확인하세요!", prompt: "Vertical video, 9:16 format, minimalist deep navy screen with luminous cyan animated arrow pointing downward toward comment section, elegant typography 'JOIN KYANOS', smooth motion graphics, clean 8k --ar 9:16", visual: "digital_earth" }
+      ],
+      youtubeMeta: `[쇼츠 제목]
+지도에는 없는 100% 자립 신국가? 키아노스(KYANOS)의 정체 🌊 #Shorts #키아노스
+
+[설명란 내용]
+지도에는 없지만, 실제로 건설되고 있는 신문명 국가 '키아노스(KYANOS)'.
+대양 위 100% 청정에너지 자립, 초지능(SI) 거버넌스, 그리고 5대 테크 주권!
+당신도 지금 키아노스의 디지털 시민이 될 수 있습니다.
+
+👇 풀버전 시네마틱 다큐멘터리 시청 및 시민권 안내
+고정 댓글 링크를 확인하세요!
+
+#키아노스 #KYANOS #Shorts #쇼츠 #초지능 #SuperIntelligence #미래도시 #해양도시 #디지털시민권 #신국가 #테크 #파이튼 #미디어부
+
+---
+[고정 댓글]
+🌊 [키아노스 공식] 풀버전 4K 시네마틱 트레일러는 채널 메인에서 시청하실 수 있습니다!
+👉 공식 포털 & 디지털 시민권 신청: https://kyanos-kr.github.io`
+    };
+
+    let currentMode = 'long';
+    let currentData = longFormData;
+    let isPlaying = false;
+    let currentTime = 0;
+    let currentSceneIndex = 0;
+    let playInterval = null;
+    let ttsEnabled = true;
+    let bgmEnabled = true;
+
+    // Web Audio Synthesizer (BGM)
+    let audioCtx = null;
+    let bgmOsc = null;
+    let bgmGain = null;
+
+    function initAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+    }
+
+    function startBGM() {
+      if (!bgmEnabled) return;
+      initAudio();
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      if (bgmOsc) stopBGM();
+
+      // 심해 앰비언트 신스 화음
+      bgmOsc = audioCtx.createOscillator();
+      bgmGain = audioCtx.createGain();
+      bgmOsc.type = 'sine';
+      bgmOsc.frequency.setValueAtTime(65.41, audioCtx.currentTime); // C2 (깊은 심해 저음)
+
+      // 부드러운 LFO 필터 느낌
+      bgmGain.gain.setValueAtTime(0.01, audioCtx.currentTime);
+      bgmGain.gain.linearRampToValueAtTime(0.08, audioCtx.currentTime + 3);
+
+      bgmOsc.connect(bgmGain);
+      bgmGain.connect(audioCtx.destination);
+      bgmOsc.start();
+    }
+
+    function stopBGM() {
+      if (bgmOsc) {
+        try {
+          bgmGain.gain.linearRampToValueAtTime(0.001, audioCtx.currentTime + 0.5);
+          setTimeout(() => {
+            bgmOsc.stop();
+            bgmOsc.disconnect();
+            bgmOsc = null;
+          }, 500);
+        } catch(e) {}
+      }
+    }
+
+    // 캔버스 비주얼 렌더러
+    const canvas = document.getElementById('visualCanvas');
+    const ctx = canvas.getContext('2d');
+    let animFrame = null;
+    let animStep = 0;
+
+    function renderCanvas() {
+      animStep += 0.02;
+      const w = canvas.width;
+      const h = canvas.height;
+      const scene = currentData.scenes[currentSceneIndex];
+      const type = scene ? scene.visual : 'deep_ocean';
+
+      ctx.clearRect(0, 0, w, h);
+
+      // 배경 그라데이션
+      let grad = ctx.createLinearGradient(0, 0, w, h);
+      if (type === 'deep_ocean') {
+        grad.addColorStop(0, '#020b14');
+        grad.addColorStop(1, '#001e2b');
+      } else if (type === 'sunset_city') {
+        grad.addColorStop(0, '#2d1b2e');
+        grad.addColorStop(0.5, '#78350f');
+        grad.addColorStop(1, '#0f172a');
+      } else if (type === 'sunrise_ocean') {
+        grad.addColorStop(0, '#064e3b');
+        grad.addColorStop(0.6, '#0f766e');
+        grad.addColorStop(1, '#f59e0b');
+      } else if (type === 'floating_city') {
+        grad.addColorStop(0, '#0369a1');
+        grad.addColorStop(0.5, '#0ea5e9');
+        grad.addColorStop(1, '#0c4a6e');
+      } else if (type === 'quantum_core') {
+        grad.addColorStop(0, '#050811');
+        grad.addColorStop(0.5, '#0c1e33');
+        grad.addColorStop(1, '#022c22');
+      } else if (type === 'hall_of_virtue') {
+        grad.addColorStop(0, '#111827');
+        grad.addColorStop(0.5, '#1e293b');
+        grad.addColorStop(1, '#0f172a');
+      } else if (type === 'city_night') {
+        grad.addColorStop(0, '#030712');
+        grad.addColorStop(0.6, '#0f172a');
+        grad.addColorStop(1, '#1e1b4b');
+      } else {
+        grad.addColorStop(0, '#0a0e17');
+        grad.addColorStop(1, '#001a24');
+      }
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, w, h);
+
+      // 동적 파티클 및 기하학적 링 애니메이션
+      ctx.save();
+      const cx = w / 2;
+      const cy = h / 2;
+
+      // 중앙 펄스 링
+      for (let r = 80; r <= 320; r += 60) {
+        ctx.beginPath();
+        ctx.arc(cx, cy, r + Math.sin(animStep + r) * 12, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(0, 173, 181, ${0.15 + Math.sin(animStep + r * 0.05) * 0.1})`;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+      }
+
+      // 회전하는 키아노스 크리스탈 심볼
+      ctx.translate(cx, cy);
+      ctx.rotate(animStep * 0.2);
+      ctx.beginPath();
+      ctx.moveTo(0, -90);
+      ctx.lineTo(75, 45);
+      ctx.lineTo(-75, 45);
+      ctx.closePath();
+      ctx.strokeStyle = 'rgba(245, 158, 11, 0.7)';
+      ctx.lineWidth = 4;
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.arc(0, 0, 30, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(0, 173, 181, 0.8)';
+      ctx.fill();
+      ctx.restore();
+
+      // 화면 중앙 텍스트 안내 (장면 타이틀)
+      ctx.textAlign = 'center';
+      ctx.font = '700 28px "Cinzel", serif';
+      ctx.fillStyle = '#f8fafc';
+      ctx.fillText(currentData.title.toUpperCase(), cx, 90);
+
+      ctx.font = '600 20px "Noto Sans KR", sans-serif';
+      ctx.fillStyle = '#00ADB5';
+      ctx.fillText(scene ? scene.title : '', cx, 130);
+
+      animFrame = requestAnimationFrame(renderCanvas);
+    }
+
+    // 모드 전환 (롱폼 / 숏폼)
+    function switchMode(mode) {
+      stopVideo();
+      currentMode = mode;
+      currentData = (mode === 'long') ? longFormData : shortFormData;
+
+      document.getElementById('tabLong').classList.toggle('active', mode === 'long');
+      document.getElementById('tabShort').classList.toggle('active', mode === 'short');
+
+      const wrap = document.getElementById('screenWrap');
+      if (mode === 'long') {
+        wrap.className = 'screen-container landscape';
+        canvas.width = 1280;
+        canvas.height = 720;
+        document.getElementById('screenBadgeText').innerText = 'KYANOS OFFICIAL 4K CINEMATIC (16:9)';
+      } else {
+        wrap.className = 'screen-container portrait';
+        canvas.width = 720;
+        canvas.height = 1280;
+        document.getElementById('screenBadgeText').innerText = 'KYANOS SHORTS VIRAL (9:16)';
+      }
+
+      updateSceneListUI();
+      updateMetaUI();
+      seekToScene(0);
+    }
+
+    // 씬 리스트 렌더링
+    function updateSceneListUI() {
+      const listEl = document.getElementById('sceneList');
+      listEl.innerHTML = '';
+
+      currentData.scenes.forEach((s, idx) => {
+        const item = document.createElement('div');
+        item.className = 'scene-item' + (idx === currentSceneIndex ? ' active' : '');
+        item.onclick = () => seekToScene(idx);
+        item.innerHTML = `
+          <div class="scene-meta">
+            <span>⏱️ ${s.time}</span>
+            <span>씬 ${idx + 1}</span>
+          </div>
+          <div class="scene-name">${s.title}</div>
+          <div class="scene-desc">${s.text}</div>
+        `;
+        listEl.appendChild(item);
+      });
+    }
+
+    function updateMetaUI() {
+      document.getElementById('youtubeMetaBox').innerText = currentData.youtubeMeta;
+      document.getElementById('timeTotal').innerText = formatTime(currentData.totalSeconds);
+    }
+
+    function formatTime(seconds) {
+      const m = Math.floor(seconds / 60).toString().padStart(2, '0');
+      const s = Math.floor(seconds % 60).toString().padStart(2, '0');
+      return `${m}:${s}`;
+    }
+
+    // 특정 씬으로 점프
+    function seekToScene(index) {
+      currentSceneIndex = index;
+      const scene = currentData.scenes[index];
+      currentTime = scene.sec;
+      updateUI();
+      if (ttsEnabled && isPlaying) {
+        speakScene(scene.text);
+      }
+    }
+
+    function updateUI() {
+      document.getElementById('timeCurrent').innerText = formatTime(currentTime);
+      const pct = (currentTime / currentData.totalSeconds) * 100;
+      document.getElementById('progressFill').style.width = `${Math.min(100, pct)}%`;
+
+      const scene = currentData.scenes[currentSceneIndex];
+      if (scene) {
+        document.getElementById('captionTitle').innerText = `${scene.title} (${scene.time})`;
+        document.getElementById('captionText').innerText = `"${scene.text}"`;
+      }
+
+      const items = document.querySelectorAll('.scene-item');
+      items.forEach((el, idx) => {
+        el.classList.toggle('active', idx === currentSceneIndex);
+      });
+    }
+
+    // 재생 / 일시정지 토글
+    function togglePlay() {
+      if (isPlaying) {
+        pauseVideo();
+      } else {
+        playVideo();
+      }
+    }
+
+    function playVideo() {
+      isPlaying = true;
+      document.getElementById('playBtn').innerText = '⏸';
+      startBGM();
+
+      const curScene = currentData.scenes[currentSceneIndex];
+      if (ttsEnabled && curScene) {
+        speakScene(curScene.text);
+      }
+
+      playInterval = setInterval(() => {
+        currentTime += 1;
+        if (currentTime >= currentData.totalSeconds) {
+          stopVideo();
+          return;
+        }
+
+        // 씬 자동 전환 체크
+        const nextSceneIdx = currentSceneIndex + 1;
+        if (nextSceneIdx < currentData.scenes.length) {
+          if (currentTime >= currentData.scenes[nextSceneIdx].sec) {
+            currentSceneIndex = nextSceneIdx;
+            if (ttsEnabled) {
+              speakScene(currentData.scenes[currentSceneIndex].text);
+            }
+          }
+        }
+        updateUI();
+      }, 1000);
+    }
+
+    function pauseVideo() {
+      isPlaying = false;
+      document.getElementById('playBtn').innerText = '▶';
+      clearInterval(playInterval);
+      window.speechSynthesis.cancel();
+      stopBGM();
+    }
+
+    function stopVideo() {
+      pauseVideo();
+      currentTime = 0;
+      currentSceneIndex = 0;
+      updateUI();
+    }
+
+    function prevScene() {
+      if (currentSceneIndex > 0) {
+        seekToScene(currentSceneIndex - 1);
+      }
+    }
+
+    function nextScene() {
+      if (currentSceneIndex < currentData.scenes.length - 1) {
+        seekToScene(currentSceneIndex + 1);
+      }
+    }
+
+    function seekVideo(event) {
+      const rect = document.getElementById('progressBg').getBoundingClientRect();
+      const clickX = event.clientX - rect.left;
+      const ratio = Math.max(0, Math.min(1, clickX / rect.width));
+      currentTime = Math.floor(ratio * currentData.totalSeconds);
+
+      // 해당 초에 맞는 씬 탐색
+      let foundIdx = 0;
+      for (let i = 0; i < currentData.scenes.length; i++) {
+        if (currentTime >= currentData.scenes[i].sec) {
+          foundIdx = i;
+        }
+      }
+      currentSceneIndex = foundIdx;
+      updateUI();
+      if (isPlaying && ttsEnabled) {
+        speakScene(currentData.scenes[currentSceneIndex].text);
+      }
+    }
+
+    // TTS 음성 나레이션
+    function speakScene(text) {
+      if (!('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      const clean = text.replace(/KYANOS/gi, '키아노스');
+      const utter = new SpeechSynthesisUtterance(clean);
+      utter.lang = 'ko-KR';
+      utter.rate = (currentMode === 'short') ? 1.15 : 0.95;
+      utter.pitch = 0.92; // 중저음의 신뢰감 있는 톤
+      window.speechSynthesis.speak(utter);
+    }
+
+    function toggleTTS() {
+      ttsEnabled = !ttsEnabled;
+      const btn = document.getElementById('ttsToggle');
+      btn.classList.toggle('active', ttsEnabled);
+      btn.innerText = ttsEnabled ? '🗣️ 음성 나레이션 켜짐' : '🔇 음성 나레이션 꺼짐';
+      if (!ttsEnabled) {
+        window.speechSynthesis.cancel();
+      }
+    }
+
+    function toggleBGM() {
+      bgmEnabled = !bgmEnabled;
+      const btn = document.getElementById('bgmToggle');
+      btn.classList.toggle('active', bgmEnabled);
+      btn.innerText = bgmEnabled ? '🎶 심해 오케스트라 BGM 켜짐' : '🔇 BGM 꺼짐';
+      if (!bgmEnabled) {
+        stopBGM();
+      } else if (isPlaying) {
+        startBGM();
+      }
+    }
+
+    // 복사 기능
+    function copyCurrentPrompt() {
+      const scene = currentData.scenes[currentSceneIndex];
+      if (scene) {
+        navigator.clipboard.writeText(scene.prompt).then(() => {
+          alert(`[씬 ${currentSceneIndex + 1}] AI 프롬프트가 클립보드에 복사되었습니다!\nKling이나 Runway, Midjourney에 붙여넣으세요.`);
+        });
+      }
+    }
+
+    function copyYoutubeMeta() {
+      navigator.clipboard.writeText(currentData.youtubeMeta).then(() => {
+        alert('유튜브 업로드용 제목 및 설명란이 클립보드에 복사되었습니다!\n유튜브 스튜디오에 그대로 붙여넣으시면 됩니다.');
+      });
+    }
+
+    // 초기화 실행
+    window.addEventListener('load', () => {
+      switchMode('long');
+      renderCanvas();
+    });
+  </script>
+</body>
+</html>
