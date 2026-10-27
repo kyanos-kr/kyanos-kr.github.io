@@ -142,3 +142,5 @@ to recover.
   - 총 브리핑 아이템: 31건 (데스크 심층 13건 + 실시간 RSS 18건)
   - 웹 데이터(JS/JSON): D:\안티그래비티파이튼\ant_briefing_room\briefing_data.js
   - 오늘편집 취재원석 리포트: D:\DATA CENTER\편집 기사\오늘편집\취재원석\오늘의_취재원석_브리핑_20261027.md
+  [Git] GitHub Pages 라이브 배포 완료: https://kyanos-kr.github.io/ant_briefing_room/ (2026-10-27 10:15)
+[2026-10-27 10:15:48.28] AntNews Briefing Room Update Completed (Code: 0) 
