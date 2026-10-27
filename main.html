@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
@@ -38,6 +38,7 @@
   <link rel="stylesheet" href="assets/css/kyanos_civic_treasury.css" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="assets/css/kyanos_i18n.css" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="assets/css/kyanos_notice_popup.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="assets/css/kyanos_omni_dialogue.css">
   <noscript>
     <link rel="stylesheet" href="assets/css/kyanos_civic_treasury.css">
     <link rel="stylesheet" href="assets/css/kyanos_i18n.css">
@@ -1411,6 +1412,21 @@
 
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(340px, 1fr)); gap:1.6rem; width:100%;">
 
+        <!-- 0. 키아노스 초지능(SI) 옴니 통합 검색 배너 -->
+        <div style="grid-column: 1 / -1; background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%); border: 1.5px solid rgba(245, 158, 11, 0.6); border-radius: 16px; padding: 1.4rem 1.8rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; box-shadow: 0 8px 30px rgba(0,0,0,0.5), 0 0 20px rgba(245, 158, 11, 0.15);">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <div style="font-size: 2.2rem; line-height: 1; filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.5));">🏛️</div>
+            <div>
+              <div style="font-family: 'Cinzel', serif; font-size: 1.15rem; font-weight: 700; color: #fde68a; letter-spacing: 0.05em;">키아노스 옴니 다이얼로그 (AI 통합 검색 지능창)</div>
+              <div style="font-size: 0.84rem; color: #cbd5e1; margin-top: 2px;">법률·의료·금융·뉴스·헌법 등 왕국 내 모든 지식과 외부 클라우드 실시간 통합 검색</div>
+            </div>
+          </div>
+          <button onclick="document.getElementById('kyanos-omni-launcher').click()" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: #0f172a; border: none; padding: 10px 22px; border-radius: 25px; font-weight: 700; font-size: 0.88rem; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.35); transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            <span>💬 AI 통합 검색창 열기</span>
+            <span>➔</span>
+          </button>
+        </div>
+
         <!-- 1. 독립 사법원 소관: 키아노스 시민 법률 나침반 (Lex-Kyanos) -->
         <div style="background:linear-gradient(150deg, rgba(12, 26, 56, 0.92) 0%, rgba(5, 11, 24, 0.96) 100%); border:1.5px solid rgba(212, 175, 55, 0.55); border-radius:20px; padding:2rem; box-shadow:0 12px 40px rgba(0,0,0,0.65), 0 0 25px rgba(212,175,55,0.12); position:relative; overflow:hidden; display:flex; flex-direction:column; justify-content:space-between;">
           <div style="position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg, transparent, #ffe066, #00d2ff, transparent);"></div>
@@ -2115,5 +2131,7 @@
   <script src="assets/js/kyanos_i18n.js" defer></script>
   <!-- 키아노스 시스템 개편 안내 팝업 -->
   <script src="assets/js/kyanos_notice_popup.js" defer></script>
+  <!-- 키아노스 옴니 다이얼로그 (AI 통합 검색 지능창) -->
+  <script src="assets/js/kyanos_omni_dialogue.js" defer></script>
 </body>
 </html>

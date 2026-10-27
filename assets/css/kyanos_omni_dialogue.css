@@ -1,0 +1,348 @@
+/* ==========================================================================
+   키아노스 옴니 다이얼로그 (Kyanos Omni Dialogue - SI 통합 검색 & 지능 안내소)
+   디스크/시스템 부하 0MB (전화기형 순수 클라우드 연동 & 경량 프론트엔드 UI)
+   ========================================================================== */
+
+/* 플로팅 런처 버튼 */
+#kyanos-omni-launcher {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9998;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  border: 1.5px solid rgba(245, 158, 11, 0.6);
+  padding: 10px 18px;
+  border-radius: 40px;
+  cursor: pointer;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(245, 158, 11, 0.35);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  color: #fff;
+  font-family: 'Cinzel', 'Noto Serif KR', serif;
+  user-select: none;
+}
+
+#kyanos-omni-launcher:hover {
+  transform: translateY(-4px) scale(1.03);
+  border-color: #fde68a;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.75), 0 0 28px rgba(245, 158, 11, 0.55);
+}
+
+.omni-launcher-icon {
+  font-size: 1.35rem;
+  line-height: 1;
+  animation: omni-pulse 3s infinite;
+}
+
+.omni-launcher-text {
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #fde68a;
+}
+
+.omni-launcher-badge {
+  font-size: 0.68rem;
+  padding: 2px 7px;
+  border-radius: 12px;
+  background: rgba(96, 165, 250, 0.25);
+  border: 1px solid #60a5fa;
+  color: #93c5fd;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
+@keyframes omni-pulse {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 4px rgba(245, 158, 11, 0.6)); }
+  50% { transform: scale(1.12); filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.9)); }
+}
+
+/* 대화창 모달 오버레이 */
+#kyanos-omni-modal {
+  position: fixed;
+  bottom: 85px;
+  right: 28px;
+  width: 420px;
+  max-width: calc(100vw - 40px);
+  height: 560px;
+  max-height: calc(100vh - 120px);
+  background: rgba(15, 23, 42, 0.92);
+  backdrop-filter: blur(20px);
+  border: 1.5px solid rgba(245, 158, 11, 0.45);
+  border-radius: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75), 0 0 35px rgba(245, 158, 11, 0.2);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px) scale(0.96);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#kyanos-omni-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+/* 모달 헤더 */
+.omni-modal-header {
+  padding: 14px 18px;
+  background: rgba(30, 41, 59, 0.7);
+  border-bottom: 1px solid rgba(245, 158, 11, 0.25);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.omni-header-title-box {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.omni-header-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fde68a;
+  letter-spacing: 0.06em;
+}
+
+.omni-header-sub {
+  font-size: 0.72rem;
+  color: #94a3b8;
+  margin-top: 1px;
+}
+
+.omni-close-btn {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.omni-close-btn:hover {
+  color: #fde68a;
+}
+
+/* 메시지 대화 본문 */
+.omni-chat-body {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  scroll-behavior: smooth;
+}
+
+.omni-msg {
+  display: flex;
+  gap: 10px;
+  max-width: 88%;
+}
+
+.omni-msg.bot {
+  align-self: flex-start;
+}
+
+.omni-msg.user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.omni-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+.omni-msg.bot .omni-avatar {
+  background: linear-gradient(135deg, #f59e0b 0%, #b45309 100%);
+  border: 1px solid #fde68a;
+}
+
+.omni-msg.user .omni-avatar {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  border: 1px solid #93c5fd;
+}
+
+.omni-bubble {
+  padding: 10px 14px;
+  border-radius: 14px;
+  word-break: break-word;
+}
+
+.omni-msg.bot .omni-bubble {
+  background: rgba(30, 41, 59, 0.85);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  color: #f1f5f9;
+}
+
+.omni-msg.user .omni-bubble {
+  background: rgba(37, 99, 235, 0.85);
+  border: 1px solid rgba(147, 197, 253, 0.3);
+  color: #ffffff;
+}
+
+/* 직통 라우팅 카드 (검색 결과/내비게이션) */
+.omni-action-card {
+  margin-top: 8px;
+  padding: 10px 12px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.omni-action-title {
+  font-weight: 700;
+  font-size: 0.84rem;
+  color: #fde68a;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.omni-action-desc {
+  font-size: 0.76rem;
+  color: #cbd5e1;
+}
+
+.omni-action-btn {
+  margin-top: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: #0f172a;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.78rem;
+  border-radius: 6px;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.omni-action-btn:hover {
+  transform: translateY(-1px);
+  background: linear-gradient(135deg, #fde68a 0%, #f59e0b 100%);
+}
+
+/* 퀵 추천 태그 칩 */
+.omni-chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px 14px 4px 14px;
+  background: rgba(15, 23, 42, 0.5);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.omni-chip {
+  font-size: 0.74rem;
+  padding: 4px 10px;
+  border-radius: 15px;
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: #cbd5e1;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.omni-chip:hover {
+  border-color: #fde68a;
+  color: #fde68a;
+  background: rgba(245, 158, 11, 0.15);
+}
+
+/* 입력 바 */
+.omni-input-bar {
+  padding: 12px 14px;
+  background: rgba(30, 41, 59, 0.9);
+  border-top: 1px solid rgba(245, 158, 11, 0.2);
+  display: flex;
+  gap: 8px;
+}
+
+.omni-input {
+  flex: 1;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-radius: 20px;
+  padding: 8px 14px;
+  color: #fff;
+  font-size: 0.86rem;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+.omni-input:focus {
+  border-color: #f59e0b;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.25);
+}
+
+.omni-input::placeholder {
+  color: #64748b;
+  font-size: 0.8rem;
+}
+
+.omni-send-btn {
+  background: linear-gradient(135deg, #f59e0b 0%, #b45309 100%);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0f172a;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+  flex-shrink: 0;
+}
+
+.omni-send-btn:hover {
+  transform: scale(1.08);
+  background: linear-gradient(135deg, #fde68a 0%, #f59e0b 100%);
+}
+
+/* 모바일 반응형 */
+@media (max-width: 480px) {
+  #kyanos-omni-modal {
+    right: 12px;
+    bottom: 80px;
+    width: calc(100vw - 24px);
+    height: 75vh;
+  }
+  #kyanos-omni-launcher {
+    right: 16px;
+    bottom: 20px;
+    padding: 8px 14px;
+  }
+  .omni-launcher-text {
+    font-size: 0.8rem;
+  }
+}
