@@ -166,3 +166,25 @@ to recover.
   - 총 브리핑 아이템: 32건 (데스크 심층 13건 + 실시간 RSS 19건)
   - 웹 데이터(JS/JSON): D:\안티그래비티파이튼\ant_briefing_room\briefing_data.js
   - 오늘편집 취재원석 리포트: D:\DATA CENTER\편집 기사\오늘편집\취재원석\오늘의_취재원석_브리핑_20261028.md
+  [Notice] git pull rebase 참고: Git 오류: fatal: Cannot rebase onto multiple branches.
+Traceback (most recent call last):
+  File "D:\안티그래비티파이튼\ant_briefing_room\git_publisher.py", line 47, in <module>
+    publish_briefing_to_github()
+  File "D:\안티그래비티파이튼\ant_briefing_room\git_publisher.py", line 42, in publish_briefing_to_github
+    run_git(["git", "push", "origin", "main"], REPO_ROOT)
+  File "D:\안티그래비티파이튼\ant_briefing_room\git_publisher.py", line 25, in run_git
+    raise RuntimeError(f"Git 오류: {err}")
+RuntimeError: Git 오류: To https://github.com/kyanos-kr/kyanos-kr.github.io.git
+ ! [remote rejected] main -> main (cannot lock ref 'refs/heads/main': is at 91cbbecce7895952e4e2c1c0c3e18be0744ddc58 but expected f3adb4a8e5c8653d9e476677d399af4285b039df)
+error: failed to push some refs to 'https://github.com/kyanos-kr/kyanos-kr.github.io.git'
+[2026-10-28  8:08:04.47] AntNews Briefing Room Update Completed (Code: 1) 
+====================================================== 
+[2026-10-28 19:40:57.18] AntNews Briefing Room Auto-Update Start 
+====================================================== 
+[1/4] 앤트 데스크 핵심 기획 브리핑 및 세상만평 원석 로드 중...
+[2/4] 국내외 실시간 RSS 헤드라인 수집 중 (정치·국제·5대테크·경제)...
+[3/4] 실시간 공개 시장 지표 수집 중...
+[4/4] 브리핑 데이터 생성 완료!
+  - 총 브리핑 아이템: 32건 (데스크 심층 13건 + 실시간 RSS 19건)
+  - 웹 데이터(JS/JSON): D:\안티그래비티파이튼\ant_briefing_room\briefing_data.js
+  - 오늘편집 취재원석 리포트: D:\DATA CENTER\편집 기사\오늘편집\취재원석\오늘의_취재원석_브리핑_20261028.md
