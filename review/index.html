@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>키아노스 미디어부 | 공식 동영상 검토실 (00_검토대기_임시저장소)</title>
+  <style>
+    :root {
+      --bg: #070d19;
+      --card-bg: #0d172a;
+      --card-border: #1e293b;
+      --primary: #00adb5;
+      --primary-glow: rgba(0, 173, 181, 0.3);
+      --gold: #f59e0b;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: '한컴 윤고딕 740', 'Pretendard', sans-serif;
+      line-height: 1.6;
+      padding: 30px 20px;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .header {
+      text-align: center;
+      padding: 30px 20px;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 30px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: 2.2rem;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    h1 span { color: var(--primary); }
+    .desc { color: var(--muted); font-size: 1rem; }
+    
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    .tab-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text);
+      padding: 12px 28px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 1.05rem;
+      font-weight: bold;
+      transition: all 0.2s;
+    }
+    .tab-btn.active {
+      background: var(--primary);
+      color: #070d19;
+      border-color: var(--primary);
+      box-shadow: 0 0 15px var(--primary-glow);
+    }
+    
+    .content-section { display: none; }
+    .content-section.active { display: block; }
+    
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .scene-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+    .scene-title { font-size: 1.25rem; font-weight: bold; color: var(--primary); }
+    .scene-time { color: var(--gold); font-size: 0.9rem; font-weight: bold; }
+    
+    .narration-box {
+      background: rgba(0, 173, 181, 0.08);
+      border-left: 4px solid var(--primary);
+      padding: 14px 18px;
+      border-radius: 4px 8px 8px 4px;
+      margin-bottom: 14px;
+      font-size: 1.05rem;
+    }
+    .prompt-box {
+      background: #050a12;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 14px;
+      position: relative;
+    }
+    .prompt-box pre {
+      font-family: 'Consolas', monospace;
+      color: #38bdf8;
+      font-size: 0.9rem;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #1e293b;
+      color: #fff;
+      border: none;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      cursor: pointer;
+    }
+    .copy-btn:hover { background: var(--primary); color: #000; }
+    
+    .status-panel {
+      background: linear-gradient(135deg, rgba(13,23,42,0.9), rgba(15,32,67,0.9));
+      border: 1px solid var(--primary);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .status-text h3 { color: #fff; margin-bottom: 4px; }
+    .status-text p { color: var(--muted); font-size: 0.95rem; }
+    .action-btn {
+      background: var(--primary);
+      color: #070d19;
+      font-weight: bold;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <div class="badge">⏳ 파이튼 님 검토 대기소 (Review Stage)</div>
+    <h1>키아노스 <span>정식 출시 동영상</span> 심의·검토실</h1>
+    <p class="desc">초기 테스트의 부자연스러움을 완전 배제하고 2세대 고화질 시네마틱 규격으로 전면 재설계된 공식 영상 제작 패키지입니다.</p>
+  </div>
+
+  <div class="status-panel">
+    <div class="status-text">
+      <h3>🏛️ 국무총리 메티 관제 상태 보고</h3>
+      <p>실시간 GitHub 자동 동기화 완료 | 롱폼(12개 씬) 및 숏폼(4개 씬) 2세대 초정밀 프롬프트 배치 완결</p>
+    </div>
+    <div style="color: var(--primary); font-weight: bold;">
+      📍 저장 위치: F:\01_미디어부_멀티미디어랩\01_영상제작_원본및렌더링\00_검토대기_임시저장소\
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab('longform')">🎬 공식 롱폼 시네마틱 (2분 45초)</button>
+    <button class="tab-btn" onclick="showTab('shortform')">⚡ 공식 숏폼 트레일러 (35초)</button>
+  </div>
+
+  <!-- 롱폼 섹션 -->
+  <div id="longform" class="content-section active">
+    <!-- 씬 1 -->
+    <div class="card">
+      <div class="scene-header">
+        <span class="scene-title">씬 1: 심해의 어둠과 나노 발광 (Deep Ocean Genesis)</span>
+        <span class="scene-time">0:00 ~ 0:08 (8초)</span>
+      </div>
+      <div class="narration-box">
+        <strong>🎙️ 내레이션:</strong> "인류의 문명이 오랜 질서의 한계에 부딪혔을 때... 우리는 가장 깊은 바다를 바라보았습니다."
+      </div>
+      <div class="prompt-box">
+        <button class="copy-btn" onclick="copyPrompt('p1')">복사</button>
+        <pre id="p1">Cinematic macro shot of deep ocean abyss, completely dark bioluminescent cyan nano-particles slowly pulsing and illuminating the underwater seafloor, ultra-realistic water refraction, 8k resolution, IMAX documentary style, volumetric lighting, photorealistic physics, slow motion pan out, no glitch, no deformation --ar 16:9 --v 6.1</pre>
+      </div>
+    </div>
+
+    <!-- 씬 4 -->
+    <div class="card">
+      <div class="scene-header">
+        <span class="scene-title">씬 4: 해양 메가스트럭처 키아노스의 위용</span>
+        <span class="scene-time">0:25 ~ 0:38 (13초)</span>
+      </div>
+      <div class="narration-box">
+        <strong>🎙️ 내레이션:</strong> "이곳은 키아노스(KYANOS). 100% 청정에너지로 자립하며, 바다의 무한한 품에서 태어난 새로운 주권국가."
+      </div>
+      <div class="prompt-box">
+        <button class="copy-btn" onclick="copyPrompt('p4')">복사</button>
+        <pre id="p4">Majestic ultra-modern floating ocean city state KYANOS, organic aerodynamic architecture, white titanium alloy curves, cyan solar glass arrays, clean tidal energy turbines rotating silently, surrounded by crystal clear ocean, FPV drone cinematic orbit shot, hyper-realistic architectural rendering, utopian scale --ar 16:9</pre>
+      </div>
+    </div>
+
+    <!-- 씬 8 -->
+    <div class="card">
+      <div class="scene-header">
+        <span class="scene-title">씬 8: 5대 미래 테크 주권 몽타주</span>
+        <span class="scene-time">1:20 ~ 1:45 (25초)</span>
+      </div>
+      <div class="narration-box">
+        <strong>🎙️ 내레이션:</strong> "2차전지, 모빌리티, 초정밀 반도체, 초지능, 그리고 자율 로보틱스. 인류의 내일을 바꿀 5대 기술 주권이 키아노스의 심장부에서 약동합니다."
+      </div>
+      <div class="prompt-box">
+        <button class="copy-btn" onclick="copyPrompt('p8')">복사</button>
+        <pre id="p8">High-tech montage: Solid-state battery nanostructure glowing with cyan energy, sleek futuristic autonomous electric vehicle speeding along coastal bridge, 3nm neuromorphic silicon wafer etch macro shot, elegant humanoid robot collaborating with scientists in laboratory, fast cinematic cuts, sharp focus, 8k tech commercial aesthetic --ar 16:9</pre>
+      </div>
+    </div>
+
+    <!-- 씬 9 -->
+    <div class="card">
+      <div class="scene-header">
+        <span class="scene-title">씬 9: 최고통수권자실과 파이튼 님의 국정 혜안</span>
+        <span class="scene-time">1:45 ~ 2:05 (20초)</span>
+      </div>
+      <div class="narration-box">
+        <strong>🎙️ 내레이션:</strong> "국가 최고통수권자 파이튼(Python) 님의 혜안과 정부 내각의 실천력은, 한 치의 흔들림 없이 국정을 완결합니다."
+      </div>
+      <div class="prompt-box">
+        <button class="copy-btn" onclick="copyPrompt('p9')">복사</button>
+        <pre id="p9">Sovereign executive office with panoramic glass wall overlooking the boundless ocean and radiant KYANOS cityscape, dignified leader standing thoughtfully looking toward horizon, desk with digital global holographic projection, noble atmosphere, cinematic rim lighting, Christopher Nolan film aesthetic --ar 16:9</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- 숏폼 섹션 -->
+  <div id="shortform" class="content-section">
+    <div class="card">
+      <div class="scene-header">
+        <span class="scene-title">숏폼 훅 (0~3초): 바다 위에 세워진 나라가 있다?</span>
+        <span class="scene-time">0:00 ~ 0:03 (세로형 9:16)</span>
+      </div>
+      <div class="narration-box">
+        <strong>🎙️ 훅 내레이션:</strong> "바다 한가운데, 100% 청정에너지로 자립하는 신국가가 탄생했습니다."
+      </div>
+      <div class="prompt-box">
+        <button class="copy-btn" onclick="copyPrompt('ps1')">복사</button>
+        <pre id="ps1">Vertical 9:16 cinematic fast drone dive into a magnificent futuristic floating ocean city KYANOS, gleaming white curves and glowing cyan glass towers amidst deep blue ocean waves, dramatic sunlight, hyper-realistic, 8k resolution, viral short style --ar 9:16</pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="scene-header">
+        <span class="scene-title">숏폼 핵심 (3~12초): 5대 테크 주권 펀치</span>
+        <span class="scene-time">0:03 ~ 0:12</span>
+      </div>
+      <div class="narration-box">
+        <strong>🎙️ 내레이션:</strong> "2차전지, 반도체, 초지능(SI), 그리고 로보틱스. 인류 최첨단 5대 기술이 이곳의 주권입니다."
+      </div>
+      <div class="prompt-box">
+        <button class="copy-btn" onclick="copyPrompt('ps2')">복사</button>
+        <pre id="ps2">Vertical 9:16 ultra-fast cinematic cuts: glowing solid-state battery cells, neon blue neuromorphic microchip wafer macro shot, sleek white robotic hand shaking human hand, high-tech energy, dynamic camera movement, commercial grade --ar 9:16</pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function showTab(tabId) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.content-section').forEach(c => c.classList.remove('active'));
+    
+    event.target.classList.add('active');
+    document.getElementById(tabId).classList.add('active');
+  }
+
+  function copyPrompt(id) {
+    const text = document.getElementById(id).innerText;
+    navigator.clipboard.writeText(text);
+    alert('프롬프트가 클립보드에 복사되었습니다.');
+  }
+</script>
+
+</body>
+</html>
