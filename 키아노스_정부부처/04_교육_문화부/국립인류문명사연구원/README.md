@@ -4,7 +4,7 @@
 > **총재 및 지침**: 파이튼 (Python) 님  
 > **총괄 관리**: 키아노스 정부 국무총리 메티 (Meti)  
 > **소속 부처**: `키아노스_정부부처/04_교육_문화부/`  
-> **공식 온라인 옴니포털**: [키아노스 동서양 7대 철학명저 연구포털](https://kyanos-kr.github.io/philosophy_classics_portal.html)  
+> **공식 온라인 옴니포털**: [키아노스 동서양 7대 철학명저 연구포털](https://kyanos-kr.github.io/gov_culture.html#philosophy-hall)  
 > **영구 불멸 실물 서고**: `F:\03_파이튼_문학_인문_창작서고\02_역사_사상_철학서고\`  
 
 ---
@@ -26,5 +26,5 @@
 ---
 
 ## 🏛️ 바로가기 및 포털 연동
-- [키아노스_동서양_7대철학명저_연구포털.url](https://kyanos-kr.github.io/philosophy_classics_portal.html)
+- [키아노스_동서양_7대철학명저_연구포털.url](https://kyanos-kr.github.io/gov_culture.html#philosophy-hall)
 - [키아노스_인류문명사_포털.url](https://kyanos-kr.github.io/human_civilization_portal.html)
