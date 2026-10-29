@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>키아노스 국립 인류문명사연구원 | 동서양 7대 철학 명저 연구포털</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Noto+Serif+KR:wght@300;500;700;900&family=Pretendard:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0a0e17;
+      --bg-card: #121826;
+      --bg-card-hover: #1a2236;
+      --gold-primary: #d4af37;
+      --gold-light: #f3e5ab;
+      --gold-dark: #aa820a;
+      --accent-blue: #3b82f6;
+      --accent-cyan: #06b6d4;
+      --accent-crimson: #e11d48;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border-subtle: rgba(212, 175, 55, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      font-family: 'Pretendard', sans-serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: linear-gradient(180deg, rgba(18, 24, 38, 0.95) 0%, rgba(10, 14, 23, 0.95) 100%);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 3rem 1.5rem 2rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .badge-gov {
+      display: inline-block;
+      padding: 0.35rem 1rem;
+      border: 1px solid var(--gold-primary);
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--gold-light);
+      background: rgba(212, 175, 55, 0.1);
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    h1 {
+      font-family: 'Cinzel', 'Noto Serif KR', serif;
+      font-size: 2.6rem;
+      font-weight: 900;
+      color: var(--gold-light);
+      letter-spacing: 0.02em;
+      margin-bottom: 0.75rem;
+      text-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+    }
+
+    .subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 850px;
+      margin: 0 auto 1.5rem;
+      font-family: 'Noto Serif KR', serif;
+    }
+
+    .meta-box {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+      color: var(--gold-light);
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+      padding-top: 1rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .nav-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 1.5rem 1rem 0.5rem;
+      background: var(--bg-primary);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+    }
+
+    .tab-btn {
+      padding: 0.75rem 1.5rem;
+      border: 1px solid var(--border-subtle);
+      background: rgba(18, 24, 38, 0.7);
+      color: var(--text-muted);
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.25s ease;
+    }
+
+    .tab-btn:hover {
+      background: var(--bg-card-hover);
+      color: var(--gold-light);
+      border-color: var(--gold-primary);
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(135deg, #aa820a 0%, #d4af37 100%);
+      color: #0a0e17;
+      font-weight: 700;
+      border-color: var(--gold-light);
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.35);
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 2rem auto;
+      padding: 0 1.5rem 5rem;
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Cards Grid */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 1.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 1.75rem;
+      position: relative;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      background: var(--bg-card-hover);
+      border-color: var(--gold-primary);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(212, 175, 55, 0.2);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 0.75rem;
+    }
+
+    .card-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--gold-light);
+    }
+
+    .card-era {
+      font-size: 0.85rem;
+      color: var(--accent-cyan);
+      background: rgba(6, 182, 212, 0.1);
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    .book-title {
+      font-size: 1.15rem;
+      color: #93c5fd;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      background: rgba(212, 175, 55, 0.15);
+      color: var(--gold-light);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    .quote-box {
+      background: rgba(10, 14, 23, 0.8);
+      border-left: 3px solid var(--gold-primary);
+      padding: 0.85rem 1rem;
+      border-radius: 0 8px 8px 0;
+      font-style: italic;
+      color: #e2e8f0;
+      margin-bottom: 1rem;
+      font-family: 'Noto Serif KR', serif;
+      font-size: 0.95rem;
+    }
+
+    .summary-text {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+    }
+
+    .storage-path {
+      font-size: 0.78rem;
+      color: #64748b;
+      word-break: break-all;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+      border: 1px dashed rgba(255, 255, 255, 0.1);
+    }
+
+    /* Overview Section */
+    .overview-hero {
+      background: linear-gradient(135deg, rgba(18, 24, 38, 0.9) 0%, rgba(30, 41, 59, 0.8) 100%);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 2.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .table-container {
+      overflow-x: auto;
+      margin-top: 1.5rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.92rem;
+    }
+
+    th, td {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    th {
+      background: rgba(212, 175, 55, 0.15);
+      color: var(--gold-light);
+      font-family: 'Noto Serif KR', serif;
+      font-weight: 700;
+    }
+
+    tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .accent-tag {
+      font-weight: 600;
+      color: var(--gold-primary);
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      color: #64748b;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="badge-gov">🏛️ 키아노스 정부 교육·문화부 | 국립 인류문명사연구원</div>
+    <h1>동서양 7대 철학 명저 연구포털</h1>
+    <p class="subtitle">인류 문명사에 빛나는 동양 4대 성현(공자·맹자·노자·장자)과 서양 3대 거인(소크라테스·플라톤·아리스토텔레스)의 불멸의 저서와 철학적 성찰</p>
+    <div class="meta-box">
+      <div><strong>국가 최고원수</strong>: 파이튼 (Python) 님</div>
+      <div><strong>총괄 관리</strong>: 국무총리 메티 (Meti)</div>
+      <div><strong>영구 보관 서고</strong>: F:\03_파이튼_문학_인문_창작서고\02_역사_사상_철학서고</div>
+      <div><strong>등록 일자</strong>: 2026.10.29</div>
+    </div>
+  </header>
+
+  <nav class="nav-tabs">
+    <button class="tab-btn active" onclick="switchTab('overview')">🏛️ 문명사적 비교 총람</button>
+    <button class="tab-btn" onclick="switchTab('eastern')">📜 동양 4대 성현 (공·맹·노·장)</button>
+    <button class="tab-btn" onclick="switchTab('western')">🏛️ 서양 3대 거인 (소·플·아)</button>
+    <button class="tab-btn" onclick="switchTab('insights')">💡 현대적 시사점 & 명언록</button>
+  </nav>
+
+  <main class="container">
+    <!-- TAB 1: OVERVIEW -->
+    <section id="overview" class="tab-content active">
+      <div class="overview-hero">
+        <h2 style="font-family: 'Noto Serif KR', serif; color: var(--gold-light); margin-bottom: 1rem; font-size: 1.8rem;">
+          축의 시대(Axial Age) : 인류 지성사의 두 개의 거대한 심장
+        </h2>
+        <p style="color: #cbd5e1; font-size: 1.05rem; margin-bottom: 1.25rem;">
+          기원전 6세기부터 4세기에 이르기까지, 인류는 동서양에서 동시에 문명사적 대도약을 이루었습니다. 
+          전란과 혼란 속에서 <strong>동양</strong>은 인간의 도덕적 본성과 공동체적 질서(유가), 그리고 대자연의 순리와 절대적 해방(도가)을 탐구하였고, 
+          <strong>서양</strong>은 아테네 광장에서 비판적 이성과 보편적 진리, 정의로운 이상국가와 행복(에우다이모니아)을 체계화하였습니다.
+        </p>
+      </div>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>권역</th>
+              <th>인물</th>
+              <th>대표 저서</th>
+              <th>핵심 사상 체계</th>
+              <th>이상적 인간상</th>
+              <th>불멸의 대표 명구</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="accent-tag">동양 (유가)</td>
+              <td><strong>공자 (孔子)</strong></td>
+              <td>《논어(論語)》</td>
+              <td>인(仁)과 예(禮), 덕치(德治), 정명(正名)</td>
+              <td>군자 (君子)</td>
+              <td>"학이시습지 불역열호", "군자화이부동"</td>
+            </tr>
+            <tr>
+              <td class="accent-tag">동양 (유가)</td>
+              <td><strong>맹자 (孟子)</strong></td>
+              <td>《맹자(孟子)》</td>
+              <td>성선설(性善), 사단(四端), 왕도정치, 역성혁명</td>
+              <td>대장부 (大丈夫)</td>
+              <td>"민위귀 사직차지 군위경", "사생취의"</td>
+            </tr>
+            <tr>
+              <td class="accent-tag">동양 (도가)</td>
+              <td><strong>노자 (老子)</strong></td>
+              <td>《도덕경(道德經)》</td>
+              <td>도(道), 무위자연(無爲), 상선약수(上善若水)</td>
+              <td>성인 (聖人)</td>
+              <td>"도가도 비상도", "상선약수"</td>
+            </tr>
+            <tr>
+              <td class="accent-tag">동양 (도가)</td>
+              <td><strong>장자 (莊子)</strong></td>
+              <td>《장자(莊子)》</td>
+              <td>소요유(逍遙遊), 제물론(齊物), 호접지몽</td>
+              <td>진인 (眞人) / 지인</td>
+              <td>"구만리를 나는 대붕", "상망어강호"</td>
+            </tr>
+            <tr>
+              <td class="accent-tag">서양 (고전)</td>
+              <td><strong>소크라테스</strong></td>
+              <td>《변명·크리톤·파이돈》</td>
+              <td>무지의 지(知), 산파술, 영혼의 돌봄</td>
+              <td>참된 철학자</td>
+              <td>"검토되지 않은 삶은 살 가치가 없다"</td>
+            </tr>
+            <tr>
+              <td class="accent-tag">서양 (고전)</td>
+              <td><strong>플라톤</strong></td>
+              <td>《국가(Politeia)》</td>
+              <td>이데아론(Idea), 동굴의 비유, 철인통치론</td>
+              <td>철인 (Philosopher King)</td>
+              <td>"정의는 각자의 본분에 맞는 일을 행하는 것"</td>
+            </tr>
+            <tr>
+              <td class="accent-tag">서양 (고전)</td>
+              <td><strong>아리스토텔레스</strong></td>
+              <td>《니코마코스 윤리학》</td>
+              <td>에우다이모니아(행복), 중용(Mesotes), 습관</td>
+              <td>탁월한 시민</td>
+              <td>"인간은 본성적으로 폴리스적 동물이다"</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- TAB 2: EASTERN -->
+    <section id="eastern" class="tab-content">
+      <h2 style="font-family: 'Noto Serif KR', serif; color: var(--gold-light); margin-bottom: 0.5rem; font-size: 1.8rem;">
+        📜 동양 4대 성현 : 유가(儒家)와 도가(道家)의 조화
+      </h2>
+      <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+        입세(入世)의 정의로 세상을 바로잡는 유가(공자·맹자)와, 출세(出世)의 자유로 영혼을 정화하는 도가(노자·장자)의 2,500년 대화
+      </p>
+
+      <div class="grid-2">
+        <!-- 1. 공자 -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">공자 (孔子, BC 551~479)</div>
+              <div class="book-title">《논어(論語)》 20편</div>
+            </div>
+            <span class="card-era">춘추시대 말기</span>
+          </div>
+          <div class="tags">
+            <span class="tag">인(仁)과 사랑</span>
+            <span class="tag">극기복례(克己復禮)</span>
+            <span class="tag">충서(忠恕)</span>
+            <span class="tag">덕치(德治)</span>
+            <span class="tag">군자화이부동</span>
+          </div>
+          <div class="quote-box">
+            "사람이 되어 인(仁)하지 못하면 예는 차려서 무엇하겠는가? 배우고 때맞추어 익히니 또한 기쁘지 아니한가!"
+          </div>
+          <div class="summary-text">
+            인간에 대한 본원적 사랑인 '인(仁)'과 사회적 배려의 형식인 '예(禮)'를 통해 무너진 춘추의 질서를 바로잡고자 한 유학의 창시자. 형벌이 아닌 덕과 부끄러움으로 다스리는 덕치(德治) 거버넌스의 원형을 제시했습니다.
+          </div>
+          <div class="storage-path">
+            📁 F:\03_파이튼_문학_인문_창작서고\02_역사_사상_철학서고\02_동양_역사사상관\01_공자_논어\
+          </div>
+        </div>
+
+        <!-- 2. 맹자 -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">맹자 (孟子, BC 372~289)</div>
+              <div class="book-title">《맹자(孟子)》 7편 14권</div>
+            </div>
+            <span class="card-era">전국시대 중기</span>
+          </div>
+          <div class="tags">
+            <span class="tag">성선설(性善說)</span>
+            <span class="tag">사단(四端)</span>
+            <span class="tag">호연지기(浩然之氣)</span>
+            <span class="tag">민위귀(民爲貴)</span>
+            <span class="tag">역성혁명(易姓革命)</span>
+          </div>
+          <div class="quote-box">
+            "백성이 가장 귀하고 사직이 다음이며 군주는 가볍다. 의(義)를 위해서라면 생명도 기꺼이 바치리라(捨生取義)."
+          </div>
+          <div class="summary-text">
+            우물에 빠지려는 아이를 볼 때 우러나오는 측은지심을 바탕으로 인간 본성의 선함을 증명했습니다. 백성의 경제적 토대(항산)를 최우선으로 여기고, 폭군을 내쫓을 수 있다는 혁명적인 민본주의를 완성했습니다.
+          </div>
+          <div class="storage-path">
+            📁 F:\03_파이튼_문학_인문_창작서고\02_역사_사상_철학서고\02_동양_역사사상관\02_맹자_맹자\
+          </div>
+        </div>
+
+        <!-- 3. 노자 -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">노자 (老子, BC 6세기경)</div>
+              <div class="book-title">《도덕경(道德經)》 81장</div>
+            </div>
+            <span class="card-era">주나라 말기</span>
+          </div>
+          <div class="tags">
+            <span class="tag">도가도비상도</span>
+            <span class="tag">무위자연(無爲自然)</span>
+            <span class="tag">상선약수(上善若水)</span>
+            <span class="tag">유약승강강</span>
+            <span class="tag">무용지용(無用之用)</span>
+          </div>
+          <div class="quote-box">
+            "가장 좋은 선은 물과 같다. 물은 만물을 이롭게 하면서도 다투지 아니하고 가장 낮은 곳으로 흐른다."
+          </div>
+          <div class="summary-text">
+            인위적인 작위와 탐욕을 비우고 우주의 근원적인 '도(道)'와 하나 되는 무위자연을 노래했습니다. 부드러움이 강함을 이기며(유약승강강), 비어 있음(無)이 온전한 쓰임새(有)를 낳는다는 심오한 역설의 철학입니다.
+          </div>
+          <div class="storage-path">
+            📁 F:\03_파이튼_문학_인문_창작서고\02_역사_사상_철학서고\02_동양_역사사상관\03_노자_도덕경\
+          </div>
+        </div>
+
+        <!-- 4. 장자 -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">장자 (莊子, BC 369~286)</div>
+              <div class="book-title">《장자(莊子)》 33편</div>
+            </div>
+            <span class="card-era">전국시대 중기</span>
+          </div>
+          <div class="tags">
+            <span class="tag">소요유(逍遙遊)</span>
+            <span class="tag">제물론(齊物論)</span>
+            <span class="tag">호접지몽(胡蝶之夢)</span>
+            <span class="tag">포정해우</span>
+            <span class="tag">물아일체(物化)</span>
+          </div>
+          <div class="quote-box">
+            "도(道)의 눈으로 보면 만물에 귀천이 없다. 구만리 장공을 날아오르는 대붕처럼 세속의 잣대를 훌훌 벗어던져라."
+          </div>
+          <div class="summary-text">
+            인간이 만든 좁은 언어와 시비(是非)의 감옥을 산산조각 내고, 대자연과 함께 노니는 절대적인 정신의 자유(소요유)를 우화와 예술적 상상력으로 펼쳐낸 동양 미학과 자유정신의 최고봉입니다.
+          </div>
+          <div class="storage-path">
+            📁 F:\03_파이튼_문학_인문_창작서고\02_역사_사상_철학서고\02_동양_역사사상관\04_장자_장자\
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: WESTERN -->
+    <section id="western" class="tab-content">
+      <h2 style="font-family: 'Noto Serif KR', serif; color: var(--gold-light); margin-bottom: 0.5rem; font-size: 1.8rem;">
+        🏛️ 서양 3대 거인 : 아테네 고전철학의 황금 사제(師弟)
+      </h2>
+      <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+        소크라테스의 영혼의 성찰에서 플라톤의 이데아를 거쳐 아리스토텔레스의 현실적 에우다이모니아로 이어진 서양 지성의 원형
+      </p>
+
+      <div class="grid-2">
+        <!-- 1. 소크라테스 -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">소크라테스 (BC 470~399)</div>
+              <div class="book-title">《변명 · 크리톤 · 파이돈》</div>
+            </div>
+            <span class="card-era">고대 아테네 황금기</span>
+          </div>
+          <div class="tags">
+            <span class="tag">무지의 지(知)</span>
+            <span class="tag">산파술 / 문답법</span>
+            <span class="tag">영혼의 돌봄</span>
+            <span class="tag">아테네의 등에</span>
+            <span class="tag">검토되지 않은 삶</span>
+          </div>
+          <div class="quote-box">
+            "검토되지 않은 삶은 살 가치가 없다. 너 자신을 알라! 나는 내가 아무것도 모른다는 사실을 알고 있을 뿐이다."
+          </div>
+          <div class="summary-text">
+            물질적 부와 명예에 눈먼 아테네 시민들의 영혼을 깨우기 위해 평생 질문을 던졌던 거리의 철학자. 배심원들의 사형 선고 앞에서도 타협하지 않고 독배를 마시며 진리와 영혼의 불멸을 몸소 증명했습니다.
+          </div>
+          <div class="storage-path">
+            📁 F:\03_파이튼_문학_인문_창작서고\02_역사_사상_철학서고\01_서양_역사사상관\02_소크라테스_변명_크리톤_파이돈\
+          </div>
+        </div>
+
+        <!-- 2. 플라톤 -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">플라톤 (BC 427~347)</div>
+              <div class="book-title">《국가(Politeia)》 10권</div>
+            </div>
+            <span class="card-era">아테네 아카데미아</span>
+          </div>
+          <div class="tags">
+            <span class="tag">이데아론(Theory of Ideas)</span>
+            <span class="tag">동굴의 비유</span>
+            <span class="tag">선의 이데아</span>
+            <span class="tag">영혼삼분설(지혜·용기·절제)</span>
+            <span class="tag">철인통치론</span>
+          </div>
+          <div class="quote-box">
+            "철학자가 왕이 되거나 왕이 철학자가 되지 않는 한, 국가들의 불행은 결코 끝나지 않을 것이다."
+          </div>
+          <div class="summary-text">
+            감각적 그림자에 불과한 현상계 너머에 이성으로 파악하는 완전한 본질의 세계(이데아)를 정초했습니다. 영혼의 세 부분이 조화를 이룰 때 나타나는 '정의(Dikaiosyne)'와 철인이 통치하는 이상국가를 설계했습니다.
+          </div>
+          <div class="storage-path">
+            📁 F:\03_파이튼_문학_인문_창작서고\02_역사_사상_철학서고\01_서양_역사사상관\03_플라톤_국가\
+          </div>
+        </div>
+
+        <!-- 3. 아리스토텔레스 -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">아리스토텔레스 (BC 384~322)</div>
+              <div class="book-title">《니코마코스 윤리학 · 정치학》</div>
+            </div>
+            <span class="card-era">아테네 리케이온</span>
+          </div>
+          <div class="tags">
+            <span class="tag">에우다이모니아 (행복)</span>
+            <span class="tag">중용 (Mesotes)</span>
+            <span class="tag">실천적 지혜 (Phronesis)</span>
+            <span class="tag">습관화 (Habit)</span>
+            <span class="tag">정치적 동물 (Zoon Politikon)</span>
+          </div>
+          <div class="quote-box">
+            "우리가 반복해서 행하는 것이 곧 우리 자신이다. 그러므로 탁월함은 하나의 행동이 아니라 습관이다."
+          </div>
+          <div class="summary-text">
+            초월적 천상의 이데아를 현실 사물 안으로 끌어내려 만학의 기틀을 확립했습니다. 삶의 최고선인 에우다이모니아(행복)와 지나침과 모자람의 조화인 중용(Mesotes), 그리고 공동체적 동물의 완성을 설파했습니다.
+          </div>
+          <div class="storage-path">
+            📁 F:\03_파이튼_문학_인문_창작서고\02_역사_사상_철학서고\01_서양_역사사상관\04_아리스토텔레스_니코마코스_윤리학\
+          </div>
+        </div>
+
+        <!-- 4. 니체 (기존 소장) -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">프리드리히 니체 (1844~1900)</div>
+              <div class="book-title">《차라투스트라는 이렇게 말했다》</div>
+            </div>
+            <span class="card-era">19세기 독일 철학</span>
+          </div>
+          <div class="tags">
+            <span class="tag">신의 죽음</span>
+            <span class="tag">위버멘쉬 (초인)</span>
+            <span class="tag">영원회귀 (Ewige Wiederkunft)</span>
+            <span class="tag">아모르 파티 (운명애)</span>
+            <span class="tag">권력에의 의지</span>
+          </div>
+          <div class="quote-box">
+            "인간은 극복되어야 할 그 무엇이다! 대지에 충실하라. 나를 죽이지 못하는 고통은 나를 더욱 강하게 만들 뿐이다."
+          </div>
+          <div class="summary-text">
+            서구 2천 년 형이상학과 도덕의 붕괴를 선언하고, 스스로 삶의 입법자가 되어 매 순간을 영원처럼 긍정하는 새로운 인간상인 위버멘쉬의 탄생을 사자후로 알렸습니다.
+          </div>
+          <div class="storage-path">
+            📁 F:\03_파이튼_문학_인문_창작서고\02_역사_사상_철학서고\01_서양_역사사상관\01_프리드리히_니체_...\
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: INSIGHTS -->
+    <section id="insights" class="tab-content">
+      <div class="overview-hero">
+        <h2 style="font-family: 'Noto Serif KR', serif; color: var(--gold-light); margin-bottom: 1rem; font-size: 1.8rem;">
+          💡 초지능(SI) 시대와 키아노스 국정을 비추는 영원한 등대
+        </h2>
+        <p style="color: #cbd5e1; font-size: 1.05rem;">
+          기술의 발전과 연산 능력의 폭증 속에서도, 인간이 던져야 할 근본 질문—<strong>"무엇이 참된 인간다움인가? 어떻게 살아야 정의롭고 행복한가?"</strong>—은 변하지 않습니다. 
+          키아노스는 고대 성현들의 7대 지혜를 덕치 12대 원칙의 초석으로 삼아 문명사적 비전을 열어갑니다.
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title" style="color: var(--gold-light); margin-bottom: 0.75rem;">1. 지적 겸손과 질문의 힘 (소크라테스 & 노자)</div>
+          <p class="summary-text">
+            SI가 아무리 방대한 지식을 쏟아내더라도 "내가 진정으로 무엇을 모르는가?"를 묻는 소크라테스적 성찰과, 언어의 한계를 알고 비움(無)을 지키는 노자의 지혜가 있을 때 기술의 폭주를 막을 수 있습니다.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-title" style="color: var(--gold-light); margin-bottom: 0.75rem;">2. 인간 중심과 복지의 기초 (맹자 & 아리스토텔레스)</div>
+          <p class="summary-text">
+            맹자의 '항산(恒産)이 있어야 항심(恒心)이 있다'는 통찰과 아리스토텔레스의 '폴리스적 동물' 명제는, 경제적 기본 안전망과 공동체적 유대가 뒷받침될 때 비로소 도덕과 인간적 번영이 가능하다는 국가 경영의 절대 원칙을 보여줍니다.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-title" style="color: var(--gold-light); margin-bottom: 0.75rem;">3. 덕치와 이상적 가치의 조화 (공자 & 플라톤)</div>
+          <p class="summary-text">
+            기계적 법률과 처벌에 의존하지 않고 내면의 도덕적 감화를 이루는 공자의 덕치(德治)와, 사욕을 배제하고 전체 공공선을 직관하는 플라톤의 철인정치는 키아노스 거버넌스의 지향점입니다.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-title" style="color: var(--gold-light); margin-bottom: 0.75rem;">4. 창의적 비상과 운명의 긍정 (장자 & 니체)</div>
+          <p class="summary-text">
+            좁은 상식과 편견의 틀을 깨고 구만리 장공을 나는 장자의 대붕처럼 시야를 넓히며, 어떤 역경도 춤추듯 끌어안고 극복하는 니체의 아모르 파티는 파이튼 님과 키아노스가 개척할 창조적 미래의 연료입니다.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>KYANOS GOVERNMENT | MINISTRY OF EDUCATION & CULTURE · NATIONAL INSTITUTE OF HUMAN CIVILIZATION HISTORY</p>
+    <p style="margin-top: 0.5rem; color: #475569;">총재: 파이튼 님 | 통제 및 검수: 국무총리 메티 | 영구보존: F:\03_파이튼_문학_인문_창작서고\02_역사_사상_철학서고</p>
+  </footer>
+
+  <script>
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+      
+      event.currentTarget.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+      window.scrollTo({ top: 120, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
