@@ -713,6 +713,7 @@
   <script>
     // Smooth Page Transition
     function handleNavigation(e) {
+      if (this.getAttribute('target') === '_blank') return;
       e.preventDefault();
       const targetHref = this.getAttribute('href') || 'main.html';
       const container = document.getElementById('introContainer');
