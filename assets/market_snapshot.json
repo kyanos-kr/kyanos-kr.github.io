@@ -1,7 +1,261 @@
 {
-  "timestamp": "2026-10-29 21:11:34",
-  "crypto": [],
-  "domestic": [],
-  "global": [],
-  "metals": []
+  "timestamp": "2026-10-29 21:41:44",
+  "crypto": [
+    {
+      "category": "crypto",
+      "symbol": "BTC",
+      "name": "비트코인",
+      "price": 107511000.0,
+      "price_str": "107,511,000원",
+      "change": -1471000.0,
+      "change_str": "-1,471,000원",
+      "change_rate": -1.34976418,
+      "change_rate_str": "-1.35%",
+      "high_str": "109,067,000원",
+      "low_str": "106,900,000원",
+      "status": "down"
+    },
+    {
+      "category": "crypto",
+      "symbol": "ETH",
+      "name": "이더리움",
+      "price": 3116000.0,
+      "price_str": "3,116,000원",
+      "change": -46000.0,
+      "change_str": "-46,000원",
+      "change_rate": -1.45477546,
+      "change_rate_str": "-1.45%",
+      "high_str": "3,164,000원",
+      "low_str": "3,076,000원",
+      "status": "down"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP",
+      "name": "리플",
+      "price": 1733.0,
+      "price_str": "1,733원",
+      "change": -43.0,
+      "change_str": "-43.00원",
+      "change_rate": -2.42117117,
+      "change_rate_str": "-2.42%",
+      "high_str": "1,778원",
+      "low_str": "1,727원",
+      "status": "down"
+    },
+    {
+      "category": "crypto",
+      "symbol": "SOL",
+      "name": "솔라나",
+      "price": 134900.0,
+      "price_str": "134,900원",
+      "change": -2300.0,
+      "change_str": "-2,300원",
+      "change_rate": -1.6763848399999999,
+      "change_rate_str": "-1.68%",
+      "high_str": "137,400원",
+      "low_str": "133,100원",
+      "status": "down"
+    },
+    {
+      "category": "crypto",
+      "symbol": "DOGE",
+      "name": "도지코인",
+      "price": 105.0,
+      "price_str": "105원",
+      "change": -1.0,
+      "change_str": "-1.00원",
+      "change_rate": -0.94339623,
+      "change_rate_str": "-0.94%",
+      "high_str": "107원",
+      "low_str": "103원",
+      "status": "down"
+    }
+  ],
+  "domestic": [
+    {
+      "category": "domestic",
+      "symbol": "KOSPI",
+      "name": "코스피",
+      "price": 5937.66,
+      "price_str": "5,937.66pt",
+      "change": -74.78,
+      "change_str": "-74.78",
+      "change_rate": -1.24,
+      "change_rate_str": "-1.24%",
+      "status": "down"
+    },
+    {
+      "category": "domestic",
+      "symbol": "KOSDAQ",
+      "name": "코스닥",
+      "price": 753.23,
+      "price_str": "753.23pt",
+      "change": -18.05,
+      "change_str": "-18.05",
+      "change_rate": -2.34,
+      "change_rate_str": "-2.34%",
+      "status": "down"
+    },
+    {
+      "category": "domestic",
+      "symbol": "005930",
+      "name": "삼성전자",
+      "price": 230500.0,
+      "price_str": "230,500원",
+      "change": -11500.0,
+      "change_str": "-11,500원",
+      "change_rate": -4.75,
+      "change_rate_str": "-4.75%",
+      "status": "down"
+    },
+    {
+      "category": "domestic",
+      "symbol": "000660",
+      "name": "SK하이닉스",
+      "price": 1516000.0,
+      "price_str": "1,516,000원",
+      "change": 29000.0,
+      "change_str": "+29,000원",
+      "change_rate": 1.95,
+      "change_rate_str": "+1.95%",
+      "status": "up"
+    },
+    {
+      "category": "forex",
+      "symbol": "USD/KRW",
+      "name": "원/달러 환율",
+      "price": 1338.3,
+      "price_str": "1,338.30원",
+      "change": -5.2,
+      "change_str": "-5.20원",
+      "change_rate": -0.39,
+      "change_rate_str": "-0.39%",
+      "status": "down"
+    }
+  ],
+  "global": [
+    {
+      "category": "global",
+      "symbol": "IXIC",
+      "name": "나스닥 종합",
+      "price": 26549.852,
+      "price_str": "26,549.85pt",
+      "change": 72.04199999999764,
+      "change_str": "+72.04pt",
+      "change_rate": 0.2720844359861999,
+      "change_rate_str": "+0.27%",
+      "status": "up"
+    },
+    {
+      "category": "global",
+      "symbol": "GSPC",
+      "name": "S&P 500",
+      "price": 7743.98,
+      "price_str": "7,743.98pt",
+      "change": 21.3799999999992,
+      "change_str": "+21.38pt",
+      "change_rate": 0.27684976562296637,
+      "change_rate_str": "+0.28%",
+      "status": "up"
+    },
+    {
+      "category": "global",
+      "symbol": "NVDA",
+      "name": "엔비디아",
+      "price": 215.38,
+      "price_str": "$215.38",
+      "change": -2.5600000000000023,
+      "change_str": "$-2.56",
+      "change_rate": -1.174635220702947,
+      "change_rate_str": "-1.17%",
+      "status": "down"
+    },
+    {
+      "category": "global",
+      "symbol": "TSLA",
+      "name": "테슬라",
+      "price": 404.22,
+      "price_str": "$404.22",
+      "change": -3.2399999999999523,
+      "change_str": "$-3.24",
+      "change_rate": -0.795170078044459,
+      "change_rate_str": "-0.80%",
+      "status": "down"
+    },
+    {
+      "category": "global",
+      "symbol": "AAPL",
+      "name": "애플",
+      "price": 343.83,
+      "price_str": "$343.83",
+      "change": -3.2700000000000387,
+      "change_str": "$-3.27",
+      "change_rate": -0.9420916162489307,
+      "change_rate_str": "-0.94%",
+      "status": "down"
+    }
+  ],
+  "metals": [
+    {
+      "category": "metals_kr",
+      "symbol": "24K-BUY",
+      "name": "국내 순금(24K) 살 때 (1돈)",
+      "price": 682150.2,
+      "price_str": "682,150원",
+      "change": -8758.3875,
+      "change_str": "-8,758원",
+      "change_rate": -1.33,
+      "change_rate_str": "-1.33%",
+      "status": "down"
+    },
+    {
+      "category": "metals_kr",
+      "symbol": "24K-SELL",
+      "name": "국내 순금(24K) 팔 때 (1돈)",
+      "price": 617183.55,
+      "price_str": "617,184원",
+      "change": -8758.3875,
+      "change_str": "-8,758원",
+      "change_rate": -1.33,
+      "change_rate_str": "-1.33%",
+      "status": "down"
+    },
+    {
+      "category": "metals_global",
+      "symbol": "GC",
+      "name": "국제 금 선물 (COMEX)",
+      "price": 4038.5,
+      "price_str": "$4,038.50",
+      "change": -13.099999999999909,
+      "change_str": "$-13.10",
+      "change_rate": -0.32332905518807165,
+      "change_rate_str": "-0.32%",
+      "status": "down"
+    },
+    {
+      "category": "metals_global",
+      "symbol": "SI",
+      "name": "국제 은 선물 (COMEX)",
+      "price": 52.605,
+      "price_str": "$52.60",
+      "change": -1.061,
+      "change_str": "$-1.06",
+      "change_rate": -1.9770431930831438,
+      "change_rate_str": "-1.98%",
+      "status": "down"
+    },
+    {
+      "category": "metals_global",
+      "symbol": "GSR",
+      "name": "금/은 교환비율 (GSR)",
+      "price": 76.77026898583786,
+      "price_str": "76.77배",
+      "change": 0,
+      "change_str": "국제 자산배분",
+      "change_rate": 0,
+      "change_rate_str": "적정 60~80",
+      "status": "flat"
+    }
+  ]
 }
