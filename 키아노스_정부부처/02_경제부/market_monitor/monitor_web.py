@@ -105,14 +105,39 @@ def safe_print(*args, **kwargs):
     except Exception:
         pass
 
+def auto_git_sync(workspace_root):
+    """정기적으로 최신 시세 스냅샷을 GitHub origin/main에 자동 커밋 및 푸시"""
+    import subprocess
+    try:
+        status = subprocess.run(['git', 'status', '--porcelain', 'assets/market_snapshot.json'], cwd=workspace_root, capture_output=True, text=True, timeout=10)
+        if status.stdout.strip():
+            subprocess.run(['git', 'add', 'assets/market_snapshot.json'], cwd=workspace_root, check=True, timeout=15)
+            subprocess.run(['git', 'commit', '-m', 'chore(market): 자율 감시 엔진 4대 마켓 실시간 스냅샷 자동 동기화'], cwd=workspace_root, check=True, timeout=15)
+            subprocess.run(['git', 'push', 'origin', 'main'], cwd=workspace_root, check=True, timeout=30)
+            safe_print("[Market Sentinel] GitHub Pages 실시간 자동 동기화 완결")
+    except Exception as e:
+        safe_print(f"[Market Sentinel] Git 자동 푸시 대기: {e}")
+
 def background_snapshot_updater():
-    """백그라운드에서 60초마다 최신 시세를 수집하여 market_snapshot.json 자동 갱신"""
+    """백그라운드에서 60초마다 최신 시세를 수집하고 정기적으로 GitHub에 자율 배포"""
     import time
+    import datetime
+    last_git_push = time.time()
+    
     while True:
         try:
             get_all_market_data()
-        except Exception:
-            pass
+            now = datetime.datetime.now()
+            # 30분 주기(1800초) 또는 장 마감 직후(15:35), 장 개장 직후(09:05) 자율 동기화
+            is_market_close = (now.hour == 15 and 33 <= now.minute <= 36)
+            is_market_open = (now.hour == 9 and 5 <= now.minute <= 8)
+            time_elapsed = time.time() - last_git_push
+            
+            if time_elapsed >= 1800 or ((is_market_close or is_market_open) and time_elapsed >= 300):
+                auto_git_sync(WORKSPACE_ROOT)
+                last_git_push = time.time()
+        except Exception as e:
+            safe_print(f"[Market Sentinel Updater Error] {e}")
         time.sleep(60)
 
 def start_server():

@@ -2014,8 +2014,8 @@
       return false;
     }
 
-    // 2단계: 로컬 API 서버(http://localhost:8899/api/market) 우선 연동 + 정적 스냅샷 및 브라우저 라이브 API 폴백
-    let snapshotLoaded = false;
+    // 2단계: 로컬 API 서버(http://localhost:8899/api/market) 우선 연동 + 정적 스냅샷(30초 주기 자동 재수신) 및 브라우저 라이브 API 폴백
+    let lastSnapshotTime = 0;
     async function refreshMarketData() {
       // A. 로컬 파이썬 웹 대시보드가 켜져있는 경우 4대 마켓 전체 실시간 수신
       try {
@@ -2030,14 +2030,15 @@
         // 로컬 서버 미구동 시 아래 폴백 실행
       }
 
-      // B. 정적 스냅샷 최초 1회 로드 후 브라우저 직접 실시간 시세(Upbit) 및 현재 날짜·시각 동기화
-      if (!snapshotLoaded) {
+      // B. 정적 스냅샷 30초 주기 자동 재수신 (로컬 서버 미구동 시에도 GitHub Pages 등에서 4대 마켓 최신 상태 상시 유지)
+      const nowTs = Date.now();
+      if (nowTs - lastSnapshotTime > 30000) {
         try {
-          const resSnap = await fetch('assets/market_snapshot.json?t=' + Date.now(), { cache: 'no-store' });
+          const resSnap = await fetch('assets/market_snapshot.json?t=' + nowTs, { cache: 'no-store' });
           if (resSnap.ok) {
             const snapData = await resSnap.json();
             currentMarketState = snapData;
-            snapshotLoaded = true;
+            lastSnapshotTime = nowTs;
           }
         } catch (err) {}
       }
