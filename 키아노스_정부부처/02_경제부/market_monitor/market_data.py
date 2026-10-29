@@ -173,93 +173,60 @@ def fetch_global_yahoo():
     return results
 
 def fetch_metals(usdkrw=1350.0):
-    """국내 실물 금/은 시세(한국금거래소 살때/팔때) 및 글로벌 국제 시세 통합 수집"""
+    """국내 실물 금 시세(네이버 금융 공식 연동) 및 글로벌 국제 금/은 시세 통합 수집"""
     results = []
     
-    # ── 1. 국내 한국금거래소 공식 고시 시세 (실제 살 때 / 팔 때) ──
+    # ── 1. 국내 공식 고시 금 시세 (네이버 금융 공식 연동) ──
     try:
-        url_kr = 'https://m.koreagoldx.co.kr/api/main'
-        req_kr = urllib.request.Request(url_kr, headers={
-            'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X)',
-            'Referer': 'https://m.koreagoldx.co.kr/'
-        })
-        with urllib.request.urlopen(req_kr, timeout=4) as res:
-            kdata = json.loads(res.read().decode('utf-8'))
-            op = kdata.get('officialPrice4', {})
-            
-            # ① 순금 24K (3.75g 1돈) 내가 살 때 (소비자 구입가)
-            s_pure = op.get('s_pure', 0)
-            diff_s = op.get('turm_s_pure', 0)
-            rate_s = op.get('per_s_pure', 0.0)
-            if s_pure:
+        url_gold = "https://m.stock.naver.com/front-api/marketIndex/prices?category=metals&reutersCode=CMDT_GD"
+        req_gold = urllib.request.Request(url_gold, headers=HEADERS)
+        with urllib.request.urlopen(req_gold, timeout=4) as res:
+            gdata = json.loads(res.read().decode('utf-8'))
+            if gdata.get('result'):
+                row = gdata['result'][0]
+                price_1g = float(row.get('closePrice', '0').replace(',', ''))
+                change_1g = float(row.get('fluctuations', '0').replace(',', ''))
+                rate_1g = float(row.get('fluctuationsRatio', '0'))
+                
+                # 1돈(3.75g) 환산 기준
+                price_don = price_1g * 3.75
+                change_don = change_1g * 3.75
+                
+                # 내가 살 때 (buyVal 1g -> 1돈)
+                buy_val_str = row.get('buyVal', '0').replace(',', '')
+                buy_val_don = float(buy_val_str) * 3.75 if buy_val_str else price_don * 1.05
+                
+                # 내가 팔 때 (sellVal 1g -> 1돈)
+                sell_val_str = row.get('sellVal', '0').replace(',', '')
+                sell_val_don = float(sell_val_str) * 3.75 if sell_val_str else price_don * 0.95
+                
                 results.append({
                     'category': 'metals_kr',
                     'symbol': '24K-BUY',
-                    'name': '순금(24K) 내가 살 때 (1돈)',
-                    'price': s_pure,
-                    'price_str': f"{s_pure:,.0f}원",
-                    'change': diff_s,
-                    'change_str': f"{diff_s:+,.0f}원",
-                    'change_rate': rate_s,
-                    'change_rate_str': f"{rate_s:+.2f}%",
-                    'status': 'up' if diff_s > 0 else ('down' if diff_s < 0 else 'flat')
+                    'name': '국내 순금(24K) 살 때 (1돈)',
+                    'price': buy_val_don,
+                    'price_str': f"{buy_val_don:,.0f}원",
+                    'change': change_don,
+                    'change_str': f"{change_don:+,.0f}원",
+                    'change_rate': rate_1g,
+                    'change_rate_str': f"{rate_1g:+.2f}%",
+                    'status': 'up' if change_1g > 0 else ('down' if change_1g < 0 else 'flat')
                 })
                 
-            # ② 순금 24K (3.75g 1돈) 내가 팔 때 (금은방 매입가)
-            p_pure = op.get('p_pure', 0)
-            diff_p = op.get('turm_p_pure', 0)
-            rate_p = op.get('per_p_pure', 0.0)
-            if p_pure:
                 results.append({
                     'category': 'metals_kr',
                     'symbol': '24K-SELL',
-                    'name': '순금(24K) 내가 팔 때 (1돈)',
-                    'price': p_pure,
-                    'price_str': f"{p_pure:,.0f}원",
-                    'change': diff_p,
-                    'change_str': f"{diff_p:+,.0f}원",
-                    'change_rate': rate_p,
-                    'change_rate_str': f"{rate_p:+.2f}%",
-                    'status': 'up' if diff_p > 0 else ('down' if diff_p < 0 else 'flat')
-                })
-                
-            # ③ 국내 실물 은(Silver 3.75g) 살 때 / 팔 때
-            s_silver = op.get('s_silver', 0)
-            p_silver = op.get('p_silver', 0)
-            diff_silver = op.get('turm_s_silver', 0)
-            rate_silver = op.get('per_s_silver', 0.0)
-            if s_silver:
-                results.append({
-                    'category': 'metals_kr',
-                    'symbol': 'AG-KR',
-                    'name': '실물 은(Silver 3.75g)',
-                    'price': s_silver,
-                    'price_str': f"살때 {s_silver:,.0f}원",
-                    'change': p_silver,
-                    'change_str': f"팔때 {p_silver:,.0f}원",
-                    'change_rate': rate_silver,
-                    'change_rate_str': f"{rate_silver:+.2f}%",
-                    'status': 'up' if diff_silver > 0 else ('down' if diff_silver < 0 else 'flat')
-                })
-                
-            # ④ 18K / 14K 금 팔 때
-            p_18k = op.get('p_18k', 0)
-            p_14k = op.get('p_14k', 0)
-            if p_18k and p_14k:
-                results.append({
-                    'category': 'metals_kr',
-                    'symbol': '18K-14K',
-                    'name': '18K / 14K 내가 팔 때 (1돈)',
-                    'price': p_18k,
-                    'price_str': f"18K: {p_18k:,.0f}원",
-                    'change': p_14k,
-                    'change_str': f"14K: {p_14k:,.0f}원",
-                    'change_rate': 0,
-                    'change_rate_str': '한국금거래소',
-                    'status': 'flat'
+                    'name': '국내 순금(24K) 팔 때 (1돈)',
+                    'price': sell_val_don,
+                    'price_str': f"{sell_val_don:,.0f}원",
+                    'change': change_don,
+                    'change_str': f"{change_don:+,.0f}원",
+                    'change_rate': rate_1g,
+                    'change_rate_str': f"{rate_1g:+.2f}%",
+                    'status': 'up' if change_1g > 0 else ('down' if change_1g < 0 else 'flat')
                 })
     except Exception as e:
-        print(f"[Error] KoreaGoldX fetch failed: {e}")
+        print(f"[Warning] Naver Gold fetch failed: {e}")
         
     # ── 2. 글로벌 국제 선물 시세 (COMEX) ──
     targets = [
