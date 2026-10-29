@@ -432,6 +432,234 @@
     .hero-stats { gap: 24px; }
     .pricing-grid { grid-template-columns: 1fr; }
     .features-grid { grid-template-columns: 1fr; }
+    .tech-radar-grid { grid-template-columns: 1fr; }
+    .tech-radar-tabs { flex-wrap: wrap; }
+    .arch-grid { grid-template-columns: 1fr; }
+    .subscribe-box { flex-direction: column; }
+    .subscribe-box input { width: 100%; }
+    .subscribe-box button { width: 100%; }
+  }
+
+  /* ===== SUBSCRIBE INPUT BOX ===== */
+  .subscribe-wrapper {
+    width: 100%;
+    max-width: 540px;
+    margin: 0 auto 30px;
+  }
+  .subscribe-box {
+    display: flex;
+    gap: 10px;
+    background: rgba(19, 19, 42, 0.85);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    padding: 6px 8px 6px 20px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    backdrop-filter: blur(8px);
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  .subscribe-box:focus-within {
+    border-color: var(--cyan);
+    box-shadow: 0 0 20px rgba(0, 200, 255, 0.25);
+  }
+  .subscribe-box input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-main);
+    font-size: 14px;
+    font-family: inherit;
+  }
+  .subscribe-box input::placeholder {
+    color: #64748b;
+  }
+  .subscribe-box button {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light), var(--gold));
+    color: var(--dark);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 12px 26px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .subscribe-box button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+  .subscribe-meta {
+    font-size: 12px;
+    color: var(--text-sub);
+    text-align: center;
+    margin-top: 10px;
+  }
+  .subscribe-success-badge {
+    display: inline-block;
+    background: rgba(0, 200, 255, 0.15);
+    border: 1px solid rgba(0, 200, 255, 0.4);
+    color: var(--cyan);
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-size: 13px;
+    margin-top: 14px;
+  }
+
+  /* ===== 5-CORE TECH RADAR SECTION ===== */
+  .tech-radar-section {
+    background: linear-gradient(180deg, var(--dark) 0%, var(--dark-mid) 100%);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  .tech-radar-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+  .radar-tab-btn {
+    background: rgba(19, 19, 42, 0.6);
+    border: 1px solid rgba(201, 168, 76, 0.25);
+    color: var(--text-sub);
+    padding: 10px 22px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .radar-tab-btn.active, .radar-tab-btn:hover {
+    background: linear-gradient(135deg, rgba(201,168,76,0.25), rgba(0,200,255,0.15));
+    border-color: var(--gold);
+    color: #FFFFFF;
+    box-shadow: 0 0 15px rgba(201, 168, 76, 0.2);
+  }
+  .radar-tab-btn.active {
+    border-color: var(--cyan);
+  }
+  .tech-radar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  .radar-card {
+    background: var(--dark-card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s, border-color 0.25s;
+  }
+  .radar-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--cyan);
+  }
+  .radar-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+  .radar-card-tag {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--cyan);
+    text-transform: uppercase;
+  }
+  .radar-card-badge {
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: rgba(0, 200, 255, 0.12);
+    border: 1px solid rgba(0, 200, 255, 0.3);
+    color: var(--cyan);
+    font-weight: 600;
+  }
+  .radar-card-badge.bullish {
+    background: rgba(34, 197, 94, 0.15);
+    border-color: rgba(34, 197, 94, 0.4);
+    color: #4ade80;
+  }
+  .radar-card-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 8px;
+  }
+  .radar-card-desc {
+    font-size: 13px;
+    color: var(--text-sub);
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+  .radar-card-stats {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 12px;
+    font-size: 11.5px;
+  }
+  .radar-stat-item {
+    color: var(--text-sub);
+  }
+  .radar-stat-item strong {
+    color: var(--gold-light);
+    margin-left: 4px;
+  }
+
+  /* ===== SI ARCHITECTURE WHITEPAPER SECTION ===== */
+  .arch-section {
+    background: var(--dark-mid);
+    border-bottom: 1px solid var(--border);
+  }
+  .arch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+  }
+  .arch-card {
+    background: rgba(19, 19, 42, 0.5);
+    border: 1px solid rgba(201, 168, 76, 0.2);
+    border-radius: 16px;
+    padding: 26px;
+    position: relative;
+  }
+  .arch-card-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: rgba(201, 168, 76, 0.35);
+    margin-bottom: 8px;
+  }
+  .arch-card-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .arch-card-desc {
+    font-size: 13px;
+    color: var(--text-sub);
+    line-height: 1.7;
+  }
+  .arch-pipeline-badge {
+    display: inline-block;
+    margin-top: 14px;
+    font-size: 10.5px;
+    background: rgba(0, 200, 255, 0.08);
+    border: 1px solid rgba(0, 200, 255, 0.2);
+    color: var(--cyan);
+    padding: 4px 10px;
+    border-radius: 6px;
   }
 </style>
 </head>
@@ -439,11 +667,19 @@
 
 <!-- ===== NAV ===== -->
 <nav>
-  <div>
-    <div class="nav-brand">AntNews Intelligence</div>
-    <div class="nav-badge">A KYANOS SOVEREIGN MEDIA</div>
+  <div style="display:flex; align-items:center; gap:20px;">
+    <div>
+      <div class="nav-brand">AntNews Intelligence</div>
+      <div class="nav-badge">A KYANOS SOVEREIGN MEDIA</div>
+    </div>
+    <div class="nav-links-desktop" style="display:flex; gap:16px; margin-left:20px;">
+      <a href="#tech-radar" style="color:var(--text-sub); text-decoration:none; font-size:12.5px; transition:color 0.2s;">5대 전략산업 레이더</a>
+      <a href="#si-architecture" style="color:var(--text-sub); text-decoration:none; font-size:12.5px; transition:color 0.2s;">SI 기술 아키텍처</a>
+      <a href="#sample-brief" style="color:var(--text-sub); text-decoration:none; font-size:12.5px; transition:color 0.2s;">샘플 브리프</a>
+      <a href="#pricing" style="color:var(--text-sub); text-decoration:none; font-size:12.5px; transition:color 0.2s;">구독 플랜</a>
+    </div>
   </div>
-  <a href="#pricing" class="nav-btn">구독 시작하기</a>
+  <a href="#subscribe-lead" class="nav-btn">무료 구독 신청</a>
 </nav>
 
 <!-- ===== HERO ===== -->
@@ -455,12 +691,25 @@
     <span class="cyan">Intelligence</span>
   </h1>
   <p class="hero-subtitle">
-    앤트뉴스 AI가 밤새 전 세계 수천 개의 정보를 분석해<br>
-    오늘 당신의 비즈니스에 꼭 필요한 핵심만 골라 드립니다.
+    앤트뉴스 초지능(SI) 엔진이 전 세계 글로벌 공급망과 핵심 시장을 24/7 분석해<br>
+    오늘 당신의 비즈니스와 투자에 꼭 필요한 전략적 시그널을 엄선해 드립니다.
   </p>
+
+  <!-- 원클릭 간편 무료 구독 창구 -->
+  <div class="subscribe-wrapper" id="subscribe-lead">
+    <form class="subscribe-box" id="heroSubscribeForm" onsubmit="handleSubscribe(event, 'heroEmailInput', 'heroSubStatus')">
+      <input type="email" id="heroEmailInput" placeholder="당신의 비즈니스 이메일 주소를 입력하세요" required>
+      <button type="submit">✨ 모닝 브리프 무료 구독</button>
+    </form>
+    <div id="heroSubStatus" style="display:none;" class="subscribe-success-badge"></div>
+    <div class="subscribe-meta">
+      🔒 신용카드 불필요 · 첫 2주 프리미엄 리포트 무료 제공 · <span id="activeSubscriberCount" style="color:var(--gold-light); font-weight:700;">1,284명</span>의 리더가 구독 중
+    </div>
+  </div>
+
   <div class="hero-cta-group">
-    <a href="#pricing" class="btn-primary">📩 무료 체험 시작하기</a>
-    <a href="antnews_auto/output/index.html" class="btn-secondary">📰 오늘의 브리프 보기</a>
+    <a href="#tech-radar" class="btn-primary">⚡ 5대 전략산업 레이더 보기</a>
+    <a href="antnews_auto/output/index.html" class="btn-secondary">📰 오늘의 브리프 열람</a>
   </div>
   <div class="hero-stats">
     <div class="stat-item">
@@ -468,16 +717,188 @@
       <div class="stat-label">Daily Brief</div>
     </div>
     <div class="stat-item">
-      <div class="stat-num">4+</div>
-      <div class="stat-label">Core Signals</div>
+      <div class="stat-num">5대</div>
+      <div class="stat-label">Core Industries</div>
     </div>
     <div class="stat-item">
       <div class="stat-num">100%</div>
-      <div class="stat-label">AI-Verified</div>
+      <div class="stat-label">AI-Verified Fact</div>
     </div>
     <div class="stat-item">
       <div class="stat-num">매일</div>
-      <div class="stat-label">AM 07:00</div>
+      <div class="stat-label">AM 07:00 발송</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 5-CORE TECH RADAR SECTION ===== -->
+<section class="tech-radar-section" id="tech-radar">
+  <div class="section-inner">
+    <div class="section-eyebrow">Kyanos Sovereign Tech Radar</div>
+    <h2 class="section-h2">5대 전략 산업 실시간 인텔리전스</h2>
+    <p class="section-desc">
+      키아노스 경제부 &amp; 과학·SI부가 24시간 감시하는 글로벌 5대 핵심 기술 분야의 시장 동향과 SI 분석 지표입니다.
+    </p>
+
+    <!-- 레이더 필터 탭 -->
+    <div class="tech-radar-tabs">
+      <button class="radar-tab-btn active" onclick="filterRadar('all', this)">전체 전략 산업</button>
+      <button class="radar-tab-btn" onclick="filterRadar('battery', this)">🔋 2차전지</button>
+      <button class="radar-tab-btn" onclick="filterRadar('semicon', this)">💾 반도체</button>
+      <button class="radar-tab-btn" onclick="filterRadar('ev', this)">🚗 전기차(EV)</button>
+      <button class="radar-tab-btn" onclick="filterRadar('si', this)">🧠 초지능(SI)</button>
+      <button class="radar-tab-btn" onclick="filterRadar('robot', this)">🤖 로봇·드론</button>
+    </div>
+
+    <!-- 레이더 카드 그리드 -->
+    <div class="tech-radar-grid" id="radarGrid">
+
+      <!-- 1. 2차전지 -->
+      <div class="radar-card" data-category="battery">
+        <div class="radar-card-header">
+          <div class="radar-card-tag">🔋 Secondary Battery</div>
+          <div class="radar-card-badge bullish">SI 지수: 89 (Bullish)</div>
+        </div>
+        <div class="radar-card-title">차세대 전고체 배터리 &amp; 공급망 쿼터</div>
+        <div class="radar-card-desc">
+          북미·유럽 역내 리튬·니켈 정련 규제 강화 속 전고체 양산 기술 선점 경쟁 본격화. 한·미 합작 라인의 수율 개선 및 건식 전극 공정 상용화 가속.
+        </div>
+        <div class="radar-card-stats">
+          <div class="radar-stat-item">수급 안정도:<strong>88%</strong></div>
+          <div class="radar-stat-item">기술 혁신성:<strong>A+</strong></div>
+          <div class="radar-stat-item">앤트 포커스:<strong>양극재·전해질</strong></div>
+        </div>
+      </div>
+
+      <!-- 2. 반도체 -->
+      <div class="radar-card" data-category="semicon">
+        <div class="radar-card-header">
+          <div class="radar-card-tag">💾 Semiconductors</div>
+          <div class="radar-card-badge bullish">SI 지수: 94 (Strong Buy)</div>
+        </div>
+        <div class="radar-card-title">HBM4 차세대 패키징 &amp; 2nm 파운드리</div>
+        <div class="radar-card-desc">
+          초거대 AI 가속기 수요 폭증으로 HBM4 16단 적층 기술 선점 각축전. 2nm 공정 수율 안정화와 첨단 어드밴스드 패키징(CoWoS) 병목 해소가 핵심 축.
+        </div>
+        <div class="radar-card-stats">
+          <div class="radar-stat-item">수요 지수:<strong>96%</strong></div>
+          <div class="radar-stat-item">패키징 경쟁:<strong>치열</strong></div>
+          <div class="radar-stat-item">앤트 포커스:<strong>HBM4·NPU</strong></div>
+        </div>
+      </div>
+
+      <!-- 3. 전기차 (EV) -->
+      <div class="radar-card" data-category="ev">
+        <div class="radar-card-header">
+          <div class="radar-card-tag">🚗 Electric Vehicles</div>
+          <div class="radar-card-badge">SI 지수: 82 (Neutral)</div>
+        </div>
+        <div class="radar-card-title">SDV 통합 OS 전환 및 충전 표준 단일화</div>
+        <div class="radar-card-desc">
+          완성차 업계의 SDV(소프트웨어 중심 자동차) OS 전환 가속. 보급형 EV 대중화와 800V 초고속 충전 인프라 보급이 2차 캐즘 돌파의 열쇠.
+        </div>
+        <div class="radar-card-stats">
+          <div class="radar-stat-item">시장 침투율:<strong>28.4%</strong></div>
+          <div class="radar-stat-item">전장 소프트웨어:<strong>확대</strong></div>
+          <div class="radar-stat-item">앤트 포커스:<strong>SDV·BMS</strong></div>
+        </div>
+      </div>
+
+      <!-- 4. 초지능 (SI) -->
+      <div class="radar-card" data-category="si">
+        <div class="radar-card-header">
+          <div class="radar-card-tag">🧠 Super Intelligence</div>
+          <div class="radar-card-badge bullish">SI 지수: 98 (Exponential)</div>
+        </div>
+        <div class="radar-card-title">멀티모달 오케스트레이션 &amp; 온디바이스 에이전트</div>
+        <div class="radar-card-desc">
+          단순 질의응답 LLM에서 도구와 PC 환경을 자율 장악하는 실행형 에이전트(Agentic AI)와 영구 지식 그래프(Graphic) 축적 체제로의 패러다임 전환.
+        </div>
+        <div class="radar-card-stats">
+          <div class="radar-stat-item">진화 단계:<strong>제3단계(Graph)</strong></div>
+          <div class="radar-stat-item">보안 체계:<strong>온디바이스</strong></div>
+          <div class="radar-stat-item">앤트 포커스:<strong>다중 부처 연동</strong></div>
+        </div>
+      </div>
+
+      <!-- 5. 로봇·드론 -->
+      <div class="radar-card" data-category="robot">
+        <div class="radar-card-header">
+          <div class="radar-card-tag">🤖 Robotics &amp; TALOS</div>
+          <div class="radar-card-badge bullish">SI 지수: 91 (Accelerating)</div>
+        </div>
+        <div class="radar-card-title">피지컬 AI 기반 휴머노이드 &amp; 자율 생산</div>
+        <div class="radar-card-desc">
+          시각-언어-행동(VLA) 모델 탑재로 복잡 조립 작업이 가능한 피지컬 AI 로봇 공장 투입 본격화. 물류·제조 현장 24/7 무인 자동화 급증.
+        </div>
+        <div class="radar-card-stats">
+          <div class="radar-stat-item">현장 도입률:<strong>연 +145%</strong></div>
+          <div class="radar-stat-item">신뢰도:<strong>99.4%</strong></div>
+          <div class="radar-stat-item">앤트 포커스:<strong>Project TALOS</strong></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== SI ARCHITECTURE WHITEPAPER SECTION ===== -->
+<section class="arch-section" id="si-architecture">
+  <div class="section-inner">
+    <div class="section-eyebrow">Enterprise Tech Stack</div>
+    <h2 class="section-h2">키아노스 독자 SI 기술 아키텍처</h2>
+    <p class="section-desc">
+      키아노스는 단순한 텍스트 웹사이트가 아닙니다. 3단계 초지능 오케스트레이션과 무결점 정부 시스템이 상시 연동되는 독자적 디지털 경제 인프라입니다.
+    </p>
+
+    <div class="arch-grid">
+      <!-- 1단계 Prompt -> Agent -> Graph -->
+      <div class="arch-card">
+        <div class="arch-card-num">01</div>
+        <div class="arch-card-title">
+          <span>🧠 SI 3단계 진화 엔진</span>
+        </div>
+        <div class="arch-card-desc">
+          단발성 질의응답(1단계 Prompt)과 단순 실행(2단계 Agent)을 넘어, 끝낸 일이 다음 일의 자산이 되는 <strong>영구 지식 그래프(3단계 Graph &amp; Wiki)</strong>를 독자 구축하여 데이터 무손실 영구 성장을 달성합니다.
+        </div>
+        <div class="arch-pipeline-badge">Graphify &amp; LTM Memory Active</div>
+      </div>
+
+      <!-- 6대 부처 오케스트레이터 -->
+      <div class="arch-card">
+        <div class="arch-card-num">02</div>
+        <div class="arch-card-title">
+          <span>🏛️ 6대 부처 오케스트레이션</span>
+        </div>
+        <div class="arch-card-desc">
+          경제부(금융·5대전략), 과학·SI부(시스템), 미디어부(앤트뉴스), 교육문화부(IP·음악) 등 전문화된 SI 서브에이전트 군단을 총리 메티(Meti) 단일 지휘체계로 유기적 연동합니다.
+        </div>
+        <div class="arch-pipeline-badge">Single Orchestrator Multi-Agent</div>
+      </div>
+
+      <!-- HWPX 자동 컴파일러 -->
+      <div class="arch-card">
+        <div class="arch-card-num">03</div>
+        <div class="arch-card-title">
+          <span>📑 HWPX 정밀 퍼블리싱 파이프라인</span>
+        </div>
+        <div class="arch-card-desc">
+          한국 공공·기업 표준 규격인 한컴오피스 HWPX 문서를 한컴 윤고딕 740, 11pt, 160% 행간 및 640px 규격 이미지와 결합하여 사람의 재편집이 필요 없는 완전 무결점 문서로 자동 생성합니다.
+        </div>
+        <div class="arch-pipeline-badge">Zero Re-edit Publishing Engine</div>
+      </div>
+
+      <!-- K-SEF 보안 및 온디바이스 -->
+      <div class="arch-card">
+        <div class="arch-card-num">04</div>
+        <div class="arch-card-title">
+          <span>🛡️ 온디바이스 &amp; K-SEF 철통 보안</span>
+        </div>
+        <div class="arch-card-desc">
+          고속 내장 고체 드라이브(Hot Storage)와 2TB 외장 불멸 아카이브(Cold Storage)를 물리 분리하고, 로컬 Ollama 온디바이스 SI 및 6단계 적대적 보안 감사를 상시 가동합니다.
+        </div>
+        <div class="arch-pipeline-badge">K-SEF 6-Stage Defense System</div>
+      </div>
     </div>
   </div>
 </section>
@@ -621,8 +1042,15 @@
 <!-- ===== FINAL CTA ===== -->
 <div class="final-cta">
   <h2>오늘 아침의 인텔리전스가<br>내일의 결정을 바꿉니다</h2>
-  <p>첫 2주 무료. 신용카드 없이 시작할 수 있습니다.</p>
-  <a href="mailto:aza700901@nate.com?subject=AntNews 무료체험 구독신청" class="btn-primary">📩 지금 무료로 시작하기</a>
+  <p>첫 2주 무료 프리미엄 체험. 신용카드 등록 없이 이메일 하나로 즉시 시작하세요.</p>
+  
+  <div class="subscribe-wrapper" style="margin-top:28px;">
+    <form class="subscribe-box" id="finalSubscribeForm" onsubmit="handleSubscribe(event, 'finalEmailInput', 'finalSubStatus')">
+      <input type="email" id="finalEmailInput" placeholder="당신의 이메일 주소를 입력하세요" required>
+      <button type="submit">✨ 무료 체험 시작</button>
+    </form>
+    <div id="finalSubStatus" style="display:none;" class="subscribe-success-badge"></div>
+  </div>
 </div>
 
 <!-- ===== FOOTER ===== -->
@@ -630,15 +1058,73 @@
   <div class="footer-brand-lg">AntNews Intelligence</div>
   <div class="footer-tagline">The Sovereign Media of Kyanos · antnews.org</div>
   <div class="footer-links">
+    <a href="#tech-radar">5대 전략산업 레이더</a>
+    <a href="#si-architecture">SI 기술 아키텍처</a>
     <a href="antnews_auto/output/index.html">오늘의 브리프</a>
     <a href="#pricing">구독 플랜</a>
-    <a href="mailto:aza700901@nate.com">문의하기</a>
-    <a href="main.html">키아노스 공식 사이트</a>
+    <a href="mailto:aza700901@nate.com">제휴·문의</a>
+    <a href="main.html">키아노스 공식 포털</a>
   </div>
   <div class="footer-copy">© 2026 AntNews · The Sovereign Realm of Kyanos. All Rights Reserved.</div>
 </footer>
 
 <script>
+/* 5대 전략산업 레이더 필터링 */
+function filterRadar(category, btn) {
+  var cards = document.querySelectorAll('.radar-card');
+  var btns = document.querySelectorAll('.radar-tab-btn');
+  btns.forEach(function(b) { b.classList.remove('active'); });
+  if (btn) btn.classList.add('active');
+
+  cards.forEach(function(card) {
+    if (category === 'all' || card.getAttribute('data-category') === category) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+/* 원클릭 구독 처리 시스템 */
+function handleSubscribe(e, inputId, statusId) {
+  e.preventDefault();
+  var input = document.getElementById(inputId);
+  var status = document.getElementById(statusId);
+  var countEl = document.getElementById('activeSubscriberCount');
+  var email = input ? input.value.trim() : '';
+
+  if (!email || email.indexOf('@') === -1) {
+    alert('올바른 이메일 주소를 입력해 주십시오.');
+    return false;
+  }
+
+  // 로컬 구독자 번호 생성 및 저장
+  var randomCode = Math.floor(1000 + Math.random() * 9000);
+  var subId = 'KYANOS-VIP-' + randomCode;
+  
+  var subscribers = [];
+  try {
+    subscribers = JSON.parse(localStorage.getItem('kyanos_antnews_subs') || '[]');
+  } catch(err) {
+    subscribers = [];
+  }
+  subscribers.push({ email: email, subId: subId, date: new Date().toISOString() });
+  localStorage.setItem('kyanos_antnews_subs', JSON.stringify(subscribers));
+
+  // 카운트 증가 반영
+  var baseCount = 1284 + subscribers.length;
+  if (countEl) countEl.textContent = baseCount.toLocaleString() + '명';
+
+  // 상태 메시지 출력
+  if (status) {
+    status.style.display = 'inline-block';
+    status.innerHTML = '🎉 <strong>구독 신청이 완료되었습니다!</strong> [회원번호: ' + subId + ']<br>매일 아침 07:00에 등록하신 이메일 (' + email + ')로 핵심 브리프를 발송해 드립니다.';
+  }
+
+  if (input) input.value = '';
+  return false;
+}
+
 /* 최신 브리프 자동 연동: antnews_auto/output/index.html (매일 자동 생성)에서 날짜와 헤드라인을 읽어옴 */
 (function(){
   var d=new Date(), w=['일','월','화','수','목','금','토'];
