@@ -944,15 +944,15 @@
       <div class="hero-stats-strip">
         <div class="hero-stat-box">
           <div class="hero-stat-label">핵심 전략 코인</div>
-          <div class="hero-stat-val" id="hero-xrp">XRP 2,034원</div>
+          <div class="hero-stat-val" id="hero-xrp">XRP 1,736원</div>
         </div>
         <div class="hero-stat-box" style="border-left: 1px solid rgba(255,255,255,0.1); padding-left: 1.2rem;">
           <div class="hero-stat-label">원/달러 환율</div>
-          <div class="hero-stat-val" id="hero-fx">1,349.0원</div>
+          <div class="hero-stat-val" id="hero-fx">1,336.6원</div>
         </div>
         <div class="hero-stat-box" style="border-left: 1px solid rgba(255,255,255,0.1); padding-left: 1.2rem;">
           <div class="hero-stat-label">금/은 교환비 (GSR)</div>
-          <div class="hero-stat-val" id="hero-gsr" style="color: var(--gold-light);">68.90배</div>
+          <div class="hero-stat-val" id="hero-gsr" style="color: var(--gold-light);">76.44배</div>
         </div>
       </div>
     </section>
@@ -962,8 +962,8 @@
       <div class="ticker-badge">⚡ BREAKING PULSE</div>
       <div class="ticker-content" id="live-news-ticker">
         <a href="#kyanos-intel-room" class="ticker-item" onclick="openIntelModal('stock-1')">
-          <span class="ticker-source" style="background:#ef4444; color:#fff;">🚨 10.26 긴급진단</span>
-          <span style="color:#ffe066; font-weight:700;">12대 핵심 재원(에코앤드림·대주전자재료) 투매 대응 &amp; 양자·광통신(CPO) 전략주 집중 점검</span>
+          <span class="ticker-source" style="background:#ef4444; color:#fff;">🚨 10.29 긴급진단</span>
+          <span style="color:#ffe066; font-weight:700;">12대 핵심 재원(대주전자재료 92,700원 지지·에코앤드림·피엔티) 저점 수호 &amp; 양자·광통신(CPO) 미래 전략주 심층 점검</span>
         </a>
         <span style="color: rgba(255,255,255,0.2);">|</span>
         <a href="https://www.federalreserve.gov/monetarypolicy.htm" target="_blank" rel="noopener noreferrer" class="ticker-item">
@@ -1003,10 +1003,232 @@
 
     <!-- 4대 마켓 실시간 시세 섹션 -->
     <div class="tabs-nav">
-      <button class="tab-btn active">⚡ 실시간 4대 금융 마켓 (Live Pulse)</button>
+      <button class="tab-btn active" id="tab-pulse-btn" onclick="switchMarketTab('pulse')">⚡ 실시간 4대 금융 마켓 (Live Pulse)</button>
+      <button class="tab-btn" id="tab-treasury-btn" onclick="switchMarketTab('treasury')">🏛️ 실전자산 12대 핵심 국고 재원 &amp; 양자·광통신 관제탑</button>
     </div>
 
-    <section class="market-grid">
+    <!-- 12대 재원 & 양자/광통신 실시간 관제탑 (Tab 2) -->
+    <section id="treasury-grid-section" style="display: none; margin-bottom: 3rem;">
+      <div style="background: rgba(13, 24, 48, 0.9); border: 1.5px solid rgba(212, 175, 55, 0.45); border-radius: 14px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 8px 30px rgba(0,0,0,0.5);">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1rem; margin-bottom: 1.2rem;">
+          <div>
+            <div style="font-size: 1.15rem; font-weight: 800; color: var(--gold-light); display: flex; align-items: center; gap: 8px;">
+              <span>🏛️</span> 키아노스 국고 12대 핵심 전략 재원 실시간 전광판
+            </div>
+            <div style="font-size: 0.8rem; color: #94a3b8; margin-top: 4px;">
+              파이튼 님 최고 통제 국고 포트폴리오 · 2026.10.29 장중 실시간 시세 및 1차 매수가 방어선 관제
+            </div>
+          </div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <span style="font-size: 0.75rem; background: rgba(52, 211, 153, 0.15); border: 1px solid rgba(52, 211, 153, 0.4); color: #6ee7b7; padding: 4px 10px; border-radius: 8px; font-weight: 700;">대주전자재료: 92,700원 (국고 1차 매수가 수호)</span>
+            <span style="font-size: 0.75rem; background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); color: #fca5a5; padding: 4px 10px; border-radius: 8px; font-weight: 700;">KOSPI 5,929.98 (-1.37%)</span>
+            <span style="font-size: 0.75rem; background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); color: #fca5a5; padding: 4px 10px; border-radius: 8px; font-weight: 700;">KOSDAQ 752.73 (-2.41%)</span>
+          </div>
+        </div>
+
+        <!-- 12대 재원 종목 그리드 -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+          <!-- 1. 대주전자재료 (보유주) -->
+          <div style="background: rgba(212, 175, 55, 0.08); border: 1.5px solid rgba(212, 175, 55, 0.6); border-radius: 10px; padding: 1rem; position: relative;">
+            <div style="position: absolute; top: 10px; right: 10px; font-size: 0.68rem; background: var(--gold); color: #000; font-weight: 800; padding: 2px 7px; border-radius: 5px;">★ 국고 보유주</div>
+            <div style="font-size: 0.75rem; color: #94a3b8;">078600 · 실리콘 음극재 독점 대장</div>
+            <div style="font-size: 1.05rem; font-weight: 800; color: #fff; margin: 3px 0;">대주전자재료</div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 6px;">
+              <span style="font-size: 1.2rem; font-weight: 900; color: #ffe066;">92,700원</span>
+              <span style="font-size: 0.85rem; font-weight: 700; color: #60a5fa;">▼ -5.12% (-5,000)</span>
+            </div>
+            <div style="margin-top: 8px; font-size: 0.72rem; color: #cbd5e1; border-top: 1px dashed rgba(255,255,255,0.15); padding-top: 6px;">
+              <strong>운용 전략:</strong> 1차 매수가(92,700원) 사수 공방. 90,000~92,000원 강력 지지선 유효.
+            </div>
+          </div>
+
+          <!-- 2. 에코앤드림 -->
+          <div style="background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 10px; padding: 1rem;">
+            <div style="font-size: 0.75rem; color: #94a3b8;">101360 · 하이니켈 전구체 증설</div>
+            <div style="font-size: 1.05rem; font-weight: 800; color: #fff; margin: 3px 0;">에코앤드림</div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 6px;">
+              <span style="font-size: 1.2rem; font-weight: 900; color: #fff;">9,470원</span>
+              <span style="font-size: 0.85rem; font-weight: 700; color: #60a5fa;">▼ -7.16% (-730)</span>
+            </div>
+            <div style="margin-top: 8px; font-size: 0.72rem; color: #94a3b8; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 6px;">
+              <strong>운용 전략:</strong> 지수 연동 조정 후 하이니켈 5세대 전구체 장기수주 모멘텀 반등 대기.
+            </div>
+          </div>
+
+          <!-- 3. 피엔티 -->
+          <div style="background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 10px; padding: 1rem;">
+            <div style="font-size: 0.75rem; color: #94a3b8;">137400 · 롤투롤 전극공정 글로벌 최강</div>
+            <div style="font-size: 1.05rem; font-weight: 800; color: #fff; margin: 3px 0;">피엔티</div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 6px;">
+              <span style="font-size: 1.2rem; font-weight: 900; color: #fff;">26,650원</span>
+              <span style="font-size: 0.85rem; font-weight: 700; color: #60a5fa;">▼ -4.31% (-1,200)</span>
+            </div>
+            <div style="margin-top: 8px; font-size: 0.72rem; color: #94a3b8; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 6px;">
+              <strong>운용 전략:</strong> 압도적 수주 잔고 기반 25,000~26,000원 바닥 지지력 시험.
+            </div>
+          </div>
+
+          <!-- 4. 율촌화학 -->
+          <div style="background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 10px; padding: 1rem;">
+            <div style="font-size: 0.75rem; color: #94a3b8;">008730 · 파우치필름 국산화</div>
+            <div style="font-size: 1.05rem; font-weight: 800; color: #fff; margin: 3px 0;">율촌화학</div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 6px;">
+              <span style="font-size: 1.2rem; font-weight: 900; color: #fff;">12,250원</span>
+              <span style="font-size: 0.85rem; font-weight: 700; color: #60a5fa;">▼ -4.67% (-600)</span>
+            </div>
+            <div style="margin-top: 8px; font-size: 0.72rem; color: #94a3b8; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 6px;">
+              <strong>운용 전략:</strong> 알루미늄 파우치 필름 공급망 재평가 구간, 12,000원 바닥권.
+            </div>
+          </div>
+
+          <!-- 5. PKC -->
+          <div style="background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 10px; padding: 1rem;">
+            <div style="font-size: 0.75rem; color: #94a3b8;">001340 · 전해액 핵심소재(PCl3/5)</div>
+            <div style="font-size: 1.05rem; font-weight: 800; color: #fff; margin: 3px 0;">PKC</div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 6px;">
+              <span style="font-size: 1.2rem; font-weight: 900; color: #fff;">4,455원</span>
+              <span style="font-size: 0.85rem; font-weight: 700; color: #60a5fa;">▼ -5.91% (-280)</span>
+            </div>
+            <div style="margin-top: 8px; font-size: 0.72rem; color: #94a3b8; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 6px;">
+              <strong>운용 전략:</strong> 4,200~4,400원선 하방 지지력 확인. 전해액 국산화 핵심주.
+            </div>
+          </div>
+
+          <!-- 6. 휴림로봇 -->
+          <div style="background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 10px; padding: 1rem;">
+            <div style="font-size: 0.75rem; color: #94a3b8;">090710 · 지능형/산업용 로봇</div>
+            <div style="font-size: 1.05rem; font-weight: 800; color: #fff; margin: 3px 0;">휴림로봇</div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 6px;">
+              <span style="font-size: 1.2rem; font-weight: 900; color: #fff;">5,040원</span>
+              <span style="font-size: 0.85rem; font-weight: 700; color: #60a5fa;">▼ -5.62% (-300)</span>
+            </div>
+            <div style="margin-top: 8px; font-size: 0.72rem; color: #94a3b8; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 6px;">
+              <strong>운용 전략:</strong> 5,000원 정수 지지선 사수 공방. 로봇 테마 정책 모멘텀 주시.
+            </div>
+          </div>
+
+          <!-- 7. 이랜시스 -->
+          <div style="background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 10px; padding: 1rem;">
+            <div style="font-size: 0.75rem; color: #94a3b8;">264850 · 로봇 감속기/모터</div>
+            <div style="font-size: 1.05rem; font-weight: 800; color: #fff; margin: 3px 0;">이랜시스</div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 6px;">
+              <span style="font-size: 1.2rem; font-weight: 900; color: #fff;">5,170원</span>
+              <span style="font-size: 0.85rem; font-weight: 700; color: #60a5fa;">▼ -8.01% (-450)</span>
+            </div>
+            <div style="margin-top: 8px; font-size: 0.72rem; color: #94a3b8; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 6px;">
+              <strong>운용 전략:</strong> 5,000원 지지선 방어 및 삼성 웨어러블 로봇 밸류체인 수혜 유효.
+            </div>
+          </div>
+
+          <!-- 8. SFA넥셀 -->
+          <div style="background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 10px; padding: 1rem;">
+            <div style="font-size: 0.75rem; color: #94a3b8;">222080 · 전극공정/전고체 장비</div>
+            <div style="font-size: 1.05rem; font-weight: 800; color: #fff; margin: 3px 0;">SFA넥셀</div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 6px;">
+              <span style="font-size: 1.2rem; font-weight: 900; color: #fff;">7,170원</span>
+              <span style="font-size: 0.85rem; font-weight: 700; color: #60a5fa;">▼ -3.89% (-290)</span>
+            </div>
+            <div style="margin-top: 8px; font-size: 0.72rem; color: #94a3b8; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 6px;">
+              <strong>운용 전략:</strong> 구 씨아이에스, 전고체 라인 증설 수혜 및 7,000원 지지선 확인.
+            </div>
+          </div>
+
+          <!-- 9. 신흥에스이씨 -->
+          <div style="background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 10px; padding: 1rem;">
+            <div style="font-size: 0.75rem; color: #94a3b8;">243840 · 배터리 캔/안전 부품</div>
+            <div style="font-size: 1.05rem; font-weight: 800; color: #fff; margin: 3px 0;">신흥에스이씨</div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 6px;">
+              <span style="font-size: 1.2rem; font-weight: 900; color: #fff;">6,120원</span>
+              <span style="font-size: 0.85rem; font-weight: 700; color: #60a5fa;">▼ -3.47% (-220)</span>
+            </div>
+            <div style="margin-top: 8px; font-size: 0.72rem; color: #94a3b8; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 6px;">
+              <strong>운용 전략:</strong> 각형·원통형 캡어셈블리 안전부품 독점력, 6,000원 바닥권.
+            </div>
+          </div>
+
+          <!-- 10. 레이크머티리얼즈 -->
+          <div style="background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 10px; padding: 1rem;">
+            <div style="font-size: 0.75rem; color: #94a3b8;">281740 · 전고체 황화리튬/TMA</div>
+            <div style="font-size: 1.05rem; font-weight: 800; color: #fff; margin: 3px 0;">레이크머티리얼즈</div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 6px;">
+              <span style="font-size: 1.2rem; font-weight: 900; color: #fff;">11,000원</span>
+              <span style="font-size: 0.85rem; font-weight: 700; color: #60a5fa;">▼ -3.17% (-360)</span>
+            </div>
+            <div style="margin-top: 8px; font-size: 0.72rem; color: #94a3b8; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 6px;">
+              <strong>운용 전략:</strong> 11,000원 수호 공방. 황화리튬 상용화 로드맵 집중 모니터링.
+            </div>
+          </div>
+
+          <!-- 11. 나인테크 -->
+          <div style="background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 10px; padding: 1rem;">
+            <div style="font-size: 0.75rem; color: #94a3b8;">267320 · 라미네이션&스태킹</div>
+            <div style="font-size: 1.05rem; font-weight: 800; color: #fff; margin: 3px 0;">나인테크</div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 6px;">
+              <span style="font-size: 1.2rem; font-weight: 900; color: #fff;">2,380원</span>
+              <span style="font-size: 0.85rem; font-weight: 700; color: #60a5fa;">▼ -4.99% (-125)</span>
+            </div>
+            <div style="margin-top: 8px; font-size: 0.72rem; color: #94a3b8; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 6px;">
+              <strong>운용 전략:</strong> 2차전지 스태킹 장비 및 열전소자 밸류에이션 저점권.
+            </div>
+          </div>
+
+          <!-- 12. 제이오 -->
+          <div style="background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 10px; padding: 1rem;">
+            <div style="font-size: 0.75rem; color: #94a3b8;">418550 · 탄소나노튜브(CNT) 도전재</div>
+            <div style="font-size: 1.05rem; font-weight: 800; color: #fff; margin: 3px 0;">제이오</div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 6px;">
+              <span style="font-size: 1.2rem; font-weight: 900; color: #fff;">4,145원</span>
+              <span style="font-size: 0.85rem; font-weight: 700; color: #60a5fa;">▼ -5.58% (-245)</span>
+            </div>
+            <div style="margin-top: 8px; font-size: 0.72rem; color: #94a3b8; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 6px;">
+              <strong>운용 전략:</strong> CNT 도전재 수요 확대 수혜 대기. 4,000원 바닥 지지력 관찰.
+            </div>
+          </div>
+        </div>
+
+        <!-- 파이튼 님 단독 특별 지정: 양자(Quantum) & 광통신(CPO) 종목군 -->
+        <div style="margin-top: 1.8rem; border-top: 1px solid rgba(255, 255, 255, 0.12); padding-top: 1.2rem;">
+          <div style="font-size: 0.95rem; font-weight: 800; color: #67e8f9; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 8px;">
+            <span>🔮</span> 파이튼 님 특별 지정: 양자(Quantum) &amp; 광통신(CPO) 미래 패러다임 전략주
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.8rem;">
+            <div style="background: rgba(0, 210, 255, 0.06); border: 1px solid rgba(0, 210, 255, 0.25); border-radius: 8px; padding: 0.8rem;">
+              <div style="font-size: 0.72rem; color: #94a3b8;">046970 · KOSDAQ</div>
+              <div style="font-weight: 700; color: #fff;">우리로 (양자암호 SPAD)</div>
+              <div style="font-size: 0.72rem; color: #67e8f9; margin-top: 4px;">단일광자 검출기 칩 보유, 양자암호 대표주</div>
+            </div>
+            <div style="background: rgba(0, 210, 255, 0.06); border: 1px solid rgba(0, 210, 255, 0.25); border-radius: 8px; padding: 0.8rem;">
+              <div style="font-size: 0.72rem; color: #94a3b8;">356680 · KOSDAQ</div>
+              <div style="font-weight: 700; color: #fff;">엑스게이트 (양자 VPN)</div>
+              <div style="font-size: 0.72rem; color: #67e8f9; margin-top: 4px;">QRNG 기반 초소형 양자 VPN 공공·금융 상용화</div>
+            </div>
+            <div style="background: rgba(0, 210, 255, 0.06); border: 1px solid rgba(0, 210, 255, 0.25); border-radius: 8px; padding: 0.8rem;">
+              <div style="font-size: 0.72rem; color: #94a3b8;">115500 · KOSDAQ</div>
+              <div style="font-weight: 700; color: #fff;">케이씨에스 (양자 보안칩)</div>
+              <div style="font-size: 0.72rem; color: #67e8f9; margin-top: 4px;">SKT 협력 양자암호칩(Q-HSM), 결제/교통 인프라 보안</div>
+            </div>
+            <div style="background: rgba(168, 85, 247, 0.06); border: 1px solid rgba(168, 85, 247, 0.25); border-radius: 8px; padding: 0.8rem;">
+              <div style="font-size: 0.72rem; color: #94a3b8;">NASDAQ: LITE</div>
+              <div style="font-weight: 700; color: #fff;">루멘텀 (Lumentum)</div>
+              <div style="font-size: 0.72rem; color: #d8b4fe; margin-top: 4px;">CPO 실리콘 포토닉스 레이저 광트랜시버 독보적 기술</div>
+            </div>
+            <div style="background: rgba(168, 85, 247, 0.06); border: 1px solid rgba(168, 85, 247, 0.25); border-radius: 8px; padding: 0.8rem;">
+              <div style="font-size: 0.72rem; color: #94a3b8;">NASDAQ: AVGO</div>
+              <div style="font-weight: 700; color: #fff;">브로드컴 (Broadcom)</div>
+              <div style="font-size: 0.72rem; color: #d8b4fe; margin-top: 4px;">AI 데이터센터 CPO 광통신 스위칭 플랫폼 글로벌 1위</div>
+            </div>
+            <div style="background: rgba(245, 158, 11, 0.06); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 8px; padding: 0.8rem;">
+              <div style="font-size: 0.72rem; color: #94a3b8;">NYSE: IONQ</div>
+              <div style="font-weight: 700; color: #fff;">아이온큐 (IonQ)</div>
+              <div style="font-size: 0.72rem; color: #fde047; margin-top: 4px;">이온트랩 기반 상용 양자컴퓨터 선도 글로벌 기업</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4대 마켓 실시간 시세 (Tab 1) -->
+    <section class="market-grid" id="market-grid-section">
       <!-- 1. 암호화폐 (XRP 중심) -->
       <div class="market-card">
         <div class="market-card-header">
@@ -1069,61 +1291,61 @@
       </div>
 
       <div class="intel-grid">
-        <!-- Intel Card 0: 긴급 주식 시장 분석 (10.26 최신 12대 재원 및 양자/광통신 전략) -->
+        <!-- Intel Card 0: 긴급 주식 시장 분석 (10.29 최신 12대 재원 및 양자/광통신 전략) -->
         <div class="intel-card" onclick="openIntelModal('stock-1')" style="border-color: rgba(239, 68, 68, 0.5); background: rgba(20, 10, 25, 0.85);">
           <div>
             <div class="intel-meta">
               <span class="intel-cat-tag" style="background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4);">⚡ 실전자산 &amp; 12대 재원</span>
-              <span style="color:#ef4444; font-weight:700;">KYANOS-INTEL-STOCK-02</span>
+              <span style="color:#ef4444; font-weight:700;">KYANOS-INTEL-STOCK-03</span>
             </div>
-            <h4 class="intel-card-title" style="color: #ffe066;">[긴급진단] 코스닥 지수 급락 속 12대 핵심 재원 대응 및 양자·광통신 전략주 정밀 점검</h4>
+            <h4 class="intel-card-title" style="color: #ffe066;">[긴급진단] 코스닥 750선 공방 속 12대 핵심 재원 저점 지지력 및 양자·광통신(CPO) 전략주 정밀 점검</h4>
             <p class="intel-card-lead">
-              코스닥 지수 급락 및 매크로 변동성 심화에 따른 12대 핵심 국고 재원(에코앤드림 역주행 양봉, 대주전자재료 저점 과매도 구간, 율촌화학·휴림로봇 바닥 지지력)의 실전 매매 대응 강령을 점검합니다. 아울러 파이튼 님이 특별 지정하신 양자(우리로·엑스게이트) 및 AI 광통신(CPO·루멘텀) 전략 관리 종목군의 편제 가이드를 제시합니다.
+              코스닥 750선 조정 및 대외 매크로 변동성 속에서 12대 핵심 국고 재원(대주전자재료 92,700원 매수가 수호 공방, 에코앤드림 전구체 수주 신뢰, 피엔티·율촌화학·휴림로봇 바닥 지지력)의 실전 매매 대응 강령을 점검합니다. 아울러 파이튼 님이 특별 지정하신 양자(우리로·엑스게이트) 및 AI 광통신(CPO·루멘텀) 전략 관리 종목군의 실전 가이드를 제시합니다.
             </p>
           </div>
           <div class="intel-card-bottom">
-            <span style="color:#34d399; font-weight:700;">2026.10.26 긴급 브리프 · 국고 자산 Action Plan</span>
+            <span style="color:#34d399; font-weight:700;">2026.10.29 긴급 브리프 · 국고 자산 Action Plan</span>
             <button class="btn-read-intel" onclick="event.stopPropagation(); openIntelModal('stock-1');" style="border-color:#ef4444; color:#fca5a5;">긴급 전문 열람 ↗</button>
           </div>
         </div>
 
-        <!-- Intel Card 1: 지정학 & 안보 -->
+        <!-- Intel Card 1: 지정학 & 안보 (메뉴 1) -->
         <div class="intel-card" onclick="openIntelModal('geo-1')">
           <div>
             <div class="intel-meta">
               <span class="intel-cat-tag cat-geo">🌐 지정학 &amp; 안보 역학</span>
               <span style="color:#94a3b8;">KYANOS-INTEL-01</span>
             </div>
-            <h4 class="intel-card-title">이스라엘 지도부의 대이란 정권 축출 구상과 호르무즈·홍해 에너지 회랑의 임계 압력</h4>
+            <h4 class="intel-card-title">중동 전운 심화와 호르무즈·홍해 에너지 회랑의 임계 압력: 원유 공급망 병목과 인플레이션 전이 경로</h4>
             <p class="intel-card-lead">
-              이스라엘 지도부의 대이란 강경 대응과 예멘 후티 반군의 홍해·아람코 타격 위협이 중동 지정학 지형을 전면 재편하고 있습니다. 원유 수송로인 호르무즈 해협의 긴장 고조와 글로벌 에너지 공급망 병목이 국제 원자재 인플레이션 및 환율 변동성에 미치는 전이 경로를 입체적으로 추적합니다.
+              이스라엘-이란 군사적 긴장과 예멘 후티 반군의 해상 운송로 위협이 호르무즈 해협과 홍해의 해상 운임 및 원유 공급망에 구조적 병목을 초래하고 있습니다. 국제 유가 변동성과 원/달러 환율(1,336원선) 및 국내 제조업 공급망에 미치는 파급 효과를 입체적으로 분석합니다.
             </p>
           </div>
           <div class="intel-card-bottom">
-            <span>2026.10.26 전략 브리프 · 7,800자 심층 분석</span>
+            <span>2026.10.29 전략 브리프 · 8,100자 심층 분석</span>
             <button class="btn-read-intel" onclick="event.stopPropagation(); openIntelModal('geo-1');">심층 전문 열람 ↗</button>
           </div>
         </div>
 
-        <!-- Intel Card 2: 통화 패권 & XRPL -->
+        <!-- Intel Card 2: 통화 패권 & XRPL (메뉴 2) -->
         <div class="intel-card" onclick="openIntelModal('curr-1')">
           <div>
             <div class="intel-meta">
               <span class="intel-cat-tag cat-curr">🪙 통화 패권 &amp; RWA 결제망</span>
               <span style="color:#94a3b8;">KYANOS-INTEL-02</span>
             </div>
-            <h4 class="intel-card-title">탈달러화 가속과 글로벌 채권 균열: XRPL 기반 도매 청산망과 실물 금·은의 국부 헤지 전략</h4>
+            <h4 class="intel-card-title">탈달러화 가속과 글로벌 채권 균열: XRPL 기반 도매 청산망과 실물 금·은($4,036)의 국부 헤지 전략</h4>
             <p class="intel-card-lead">
-              서방 은행권의 잠재 부실 채권 위기와 프랑스·유럽발 공공 부채 불안 속에서 중앙은행들의 실물 금·은 무제한 매집이 가속화되고 있습니다. 노후화된 SWIFT 체제를 대체할 XRPL 기반 도매 CBDC 및 실물자산(RWA) 토큰화 청산망의 실체와 국부 자산 방어 메커니즘을 심층 분석합니다.
+              서방 은행권의 잠재 부실 채권 리스크와 공공 부채 불안 속에서 중앙은행들의 실물 금·은($4,036/oz) 무제한 매집이 지속되고 있습니다. 노후 SWIFT 체제를 대체할 XRPL 기반 도매 CBDC 및 실물자산(RWA) 토큰화 청산망의 실체와 국부 자산 방어 메커니즘을 심층 분석합니다.
             </p>
           </div>
           <div class="intel-card-bottom">
-            <span>2026.10.26 전략 브리프 · 8,400자 심층 분석</span>
+            <span>2026.10.29 전략 브리프 · 8,600자 심층 분석</span>
             <button class="btn-read-intel" onclick="event.stopPropagation(); openIntelModal('curr-1');">심층 전문 열람 ↗</button>
           </div>
         </div>
 
-        <!-- Intel Card 3: 기술 주권 & 5대 산업 -->
+        <!-- Intel Card 3: 기술 주권 & 5대 산업 (메뉴 3) -->
         <div class="intel-card" onclick="openIntelModal('tech-1')">
           <div>
             <div class="intel-meta">
@@ -1132,11 +1354,11 @@
             </div>
             <h4 class="intel-card-title">미·중 기술 패권 전쟁과 초지능(SI) 인프라: HBM4·CPO 광통신·2차전지 가치사슬 재편</h4>
             <p class="intel-card-lead">
-              초지능(SI) AI 데이터센터의 전력 병목을 극복할 CPO 실리콘 포토닉스 광통신과 차세대 HBM4 양산 경쟁, 그리고 테슬라 로보택시·휴머노이드 생태계가 주도하는 기술 주권 재편을 분석합니다. 공급망 블록화 속 한국 핵심 5대 전략 산업의 생존 방정식과 국부 확충 로드맵을 제시합니다.
+              초지능(SI) AI 데이터센터의 전력 병목을 극복할 CPO 실리콘 포토닉스 광통신과 SK하이닉스 주도의 차세대 HBM4 양산 경쟁, 그리고 테슬라 로보택시·휴머노이드 생태계가 주도하는 기술 주권 재편을 분석합니다. 공급망 블록화 속 한국 핵심 5대 전략 산업의 생존 방정식과 국부 확충 로드맵을 제시합니다.
             </p>
           </div>
           <div class="intel-card-bottom">
-            <span>2026.10.26 전략 브리프 · 7,500자 심층 분석</span>
+            <span>2026.10.29 전략 브리프 · 7,900자 심층 분석</span>
             <button class="btn-read-intel" onclick="event.stopPropagation(); openIntelModal('tech-1');">심층 전문 열람 ↗</button>
           </div>
         </div>
@@ -1156,18 +1378,18 @@
       </div>
 
       <div class="articles-grid">
-        <!-- Article 0: 2026.10.26 긴급 시장 브리프 (12대 핵심 재원 & 양자/광통신) -->
+        <!-- Article 0: 2026.10.29 긴급 시장 브리프 (12대 핵심 재원 & 양자/광통신) -->
         <article class="article-card" style="border: 1.5px solid rgba(239,68,68,0.5); background: rgba(22,12,32,0.9); box-shadow: 0 0 20px rgba(239,68,68,0.15); cursor:pointer;" onclick="openIntelModal('stock-1')">
           <div>
             <div class="article-meta">
               <span class="article-author-tag" style="background:rgba(239,68,68,0.2); border-color:rgba(239,68,68,0.5); color:#fca5a5;">🚨 경제부 긴급 인텔리전스</span>
-              <span style="color:#ef4444; font-weight:700;">2026.10.26</span>
+              <span style="color:#ef4444; font-weight:700;">2026.10.29</span>
             </div>
             <h4 class="article-title" style="color:#ffe066;">
-              "지수 투매 장세 속 12대 핵심 재원 대응 수칙과 양자·광통신 미래 가치사슬 점검"
+              "코스닥 750선 공방 속 12대 핵심 재원 대응 수칙과 양자·광통신 미래 가치사슬 점검"
             </h4>
             <p class="article-snippet">
-              코스닥 지수 급락(-3.2%) 국면에서 에코앤드림의 역주행 매수세와 대주전자재료의 과매도 밸류에이션 매력을 긴급 분석합니다. 파이튼 님이 특별 지정하신 양자암호(우리로·엑스게이트) 및 실리콘 포토닉스(CPO·루멘텀) 종목군의 감시 로드맵을 발표합니다.
+              코스닥 752선 조정 속 대주전자재료(92,700원 지지 공방)와 에코앤드림, 피엔티 등 핵심 소재·장비주의 하방 경직성을 긴급 분석합니다. 파이튼 님이 특별 지정하신 양자암호(우리로·엑스게이트) 및 실리콘 포토닉스(CPO·루멘텀) 종목군의 감시 로드맵을 10월 29일 기준으로 최신 갱신합니다.
             </p>
           </div>
           <div class="article-footer">
@@ -1181,13 +1403,13 @@
           <div>
             <div class="article-meta">
               <span class="article-author-tag">🏛️ 경제부 수석 정책 제언</span>
-              <span style="color:var(--gold-light); font-weight:700;">2026.10.26</span>
+              <span style="color:var(--gold-light); font-weight:700;">2026.10.29</span>
             </div>
             <h4 class="article-title">
               "실물과 디지털의 대전환기, 왜 XRP와 금·은의 결합에 주목해야 하는가"
             </h4>
             <p class="article-snippet">
-              글로벌 부채 위기와 달러 패권의 지정학적 균열 속에서, 실물 가치 저장 수단인 금(Gold)과 초고속 국경 간 청산 레일인 XRPL의 가치는 상호 보완적입니다. 키아노스 경제부가 추진하는 RWA 토큰화와 국부 유동성 구축의 본질적 의미를 고찰합니다.
+              글로벌 부채 위기와 달러 패권의 지정학적 균열 속에서, 실물 가치 저장 수단인 금(Gold $4,036)과 초고속 국경 간 청산 레일인 XRPL의 가치는 상호 보완적입니다. 키아노스 경제부가 추진하는 RWA 토큰화와 국부 유동성 구축의 본질적 의미를 고찰합니다.
             </p>
           </div>
           <div class="article-footer">
@@ -1201,13 +1423,13 @@
           <div>
             <div class="article-meta">
               <span class="article-author-tag" style="background:rgba(0,210,255,0.15); border-color:rgba(0,210,255,0.35); color:var(--cyan);">📊 총리 메티 시장 브리프</span>
-              <span style="color:var(--cyan); font-weight:700;">2026.10.26</span>
+              <span style="color:var(--cyan); font-weight:700;">2026.10.29</span>
             </div>
             <h4 class="article-title">
               "글로벌 AI 데이터센터 전력망과 차세대 광통신(CPO)·HBM4 수급 분석"
             </h4>
             <p class="article-snippet">
-              엔비디아, SK하이닉스 및 국내외 핵심 파운드리 공급망의 수급 변곡점을 점검합니다. 초지능(SI) 시대를 뒷받침할 CPO 광통신 패키징과 국가 5대 미래 전략 핵심 산업 섹터를 중심으로 시장의 밸류에이션 왜곡 요인을 분석합니다.
+              엔비디아, SK하이닉스(+2.22%) 및 국내외 핵심 공급망의 수급 변곡점을 점검합니다. 초지능(SI) 시대를 뒷받침할 CPO 광통신 패키징과 국가 5대 미래 전략 핵심 산업 섹터를 중심으로 시장의 밸류에이션 왜곡 요인을 분석합니다.
             </p>
           </div>
           <div class="article-footer">
@@ -1221,13 +1443,13 @@
           <div>
             <div class="article-meta">
               <span class="article-author-tag" style="background:rgba(239,68,68,0.15); border-color:rgba(239,68,68,0.35); color:#ff6b7a;">🌎 마이클 스나이더 정밀 직역</span>
-              <span style="color:#ff6b7a; font-weight:700;">2026.10.26</span>
+              <span style="color:#ff6b7a; font-weight:700;">2026.10.29</span>
             </div>
             <h4 class="article-title">
               "글로벌 금융 위기 대폭발 조짐: 채권 수익률 폭등·은행권 도산 위기와 프랑스 재정 파탄"
             </h4>
             <p class="article-snippet">
-              미국 10년·30년물 국채 수익률의 24년 만의 최고치 폭등과 프랑스 재정 위기 경고를 직역 위주로 정리. 원작자의 1인칭 시점을 그대로 유지한 단정한 해라체 평문으로 글로벌 채권 시장의 붕괴 위기를 고발합니다.
+              미국 10년·30년물 국채 수익률의 수십 년 만의 최고치 폭등과 프랑스 재정 위기 경고를 직역 위주로 정리. 원작자의 1인칭 시점을 그대로 유지한 단정한 해라체 평문으로 글로벌 채권 시장의 붕괴 위기를 고발합니다.
             </p>
           </div>
           <div class="article-footer">
@@ -1264,35 +1486,35 @@
     // 키아노스 독자 인텔리전스 심층 리포트 데이터
     const intelReports = {
       'stock-1': {
-        docNo: 'KYANOS-INTEL-2026-STOCK-002',
-        title: '[긴급 시장 진단] 코스닥 지수 급락 속 12대 핵심 재원 대응 수칙 및 양자·광통신 전략주 정밀 점검',
+        docNo: 'KYANOS-INTEL-2026-STOCK-003',
+        title: '[긴급 시장 진단] 코스닥 750선 공방 속 12대 핵심 재원 저점 지지력 및 양자·광통신 전략주 정밀 점검',
         cat: '⚡ 실전자산 & 12대 재원',
-        date: '2026.10.26',
+        date: '2026.10.29',
         agency: '키아노스 정부 경제부 글로벌 금융 인텔리전스국 & 국무총리 직속 비상대책반',
-        summary: '코스닥 지수가 -3.2%대 하락하며 시장 전반에 패시브 매도 물량이 출회되었으나, 키아노스 12대 핵심 재원 중 에코앤드림은 장중 역주행 양봉을 시현하며 독보적 매수세를 입증했습니다. 대주전자재료는 10만원 하회 후 과매도 구간에 진입하여 기술적 반등 대기 상태이며, 파이튼 님이 특별 지정하신 양자(우리로·엑스게이트) 및 실리콘 포토닉스(CPO·루멘텀) 종목군의 감시 체계를 본격 가동합니다.',
-        context: '1) 12대 핵심 재원: 에코앤드림(하이니켈 전구체 수주 신뢰), 대주전자재료(실리콘 음극재 독점력 대비 지수 연동 과매도), PKC·율촌화학(소재 국산화 바닥 지지력 시험), 피엔티·SFA넥셀(전극공정 장비 수주 잔고), 이랜시스·휴림로봇(로봇 감속기 및 전저점 지지력 공방).<br>2) 파이튼 님 특별 지정 양자 & 광통신: 우리로·엑스게이트·케이씨에스 등 양자암호·보안칩 선도주와 루멘텀·코히런트·브로드컴 등 AI 데이터센터 CPO 광트랜시버 생태계를 1차 관리군으로 편제 완료.',
-        marketImpact: '지수 급락은 개별 기업의 펀더멘털 훼손이 아닌 글로벌 매크로 및 지수 추종 물량 출회에 기인합니다. 지수 바닥 통과 시 펀더멘털과 수주 잔고가 탄탄한 2차전지 소재·장비주 및 차세대 AI 광통신 인프라 수혜주로의 가장 빠른 V자 수급 쏠림이 전망됩니다.',
-        strategy: '1) 지수 투매 국면 뇌동 매도 절대 금지: 패닉 셀링에 동참하지 않고 바닥 지지선(도지형/양봉 전환) 확인 후 선별 대응.<br>2) 에코앤드림: 역주행 탄력 유지 시 홀딩 및 분할 차익 관리, 무리한 추격 매수 자제.<br>3) 대주전자재료 & 율촌화학: 과매도권 분할 매집 관심 유지.<br>4) 양자·광통신 관리 종목군: 정책 수혜 및 글로벌 테크 수주 발표 시 즉각 특보 발령 연계.'
+        summary: '코스닥 지수가 752.73pt(-2.41%)선에서 공방을 벌이며 시장 전반에 패시브 매도 물량이 출회되었으나, 키아노스 12대 핵심 재원 중 대주전자재료는 92,700원(국고 1차 매수가 구간)을 사수하며 강력한 하방 경직성을 입증하고 있습니다. 에코앤드림(9,470원), 피엔티(26,650원), 휴림로봇(5,040원), 이랜시스(5,170원)의 바닥 지지력을 재확인하고, 파이튼 님이 특별 지정하신 양자암호(우리로·엑스게이트) 및 실리콘 포토닉스(CPO·루멘텀) 종목군의 감시 체계를 지속 가동합니다.',
+        context: '1) 12대 핵심 국고 재원: 대주전자재료(92,700원, 실리콘 음극재 글로벌 1위 및 1차 매수가 지지 공방), 에코앤드림(9,470원, 하이니켈 전구체 수주 모멘텀), 피엔티(26,650원, 전극공정 글로벌 최강 수주 잔고), 율촌화학(12,250원, 파우치 필름 국산화), PKC(4,455원, 전해액 원료 국산화), 휴림로봇(5,040원, 지능형 로봇 생태계), 이랜시스(5,170원, 로봇 감속기 모터), SFA넥셀(7,170원, 전고체 장비), 신흥에스이씨(6,120원, 배터리 캔 안전부품), 레이크머티리얼즈(11,000원, 황화리튬), 나인테크(2,380원, 스태킹 장비), 제이오(4,145원, CNT 도전재).<br>2) 파이튼 님 특별 지정 양자 & 광통신: 우리로(046970)·엑스게이트(356680)·케이씨에스(115500) 등 양자암호 표준화 선도주와 루멘텀(LITE)·코히런트(COHR)·브로드컴(AVGO) 등 AI 데이터센터 CPO 광트랜시버 생태계 집중 감시.',
+        marketImpact: '지수 조정은 대외 매크로 및 지수 추종 패시브 수급 출회에 기인한 일시적 변동성입니다. 코스닥 740~750선은 중장기 밸류에이션 바닥 영역으로 평가되며, 지수 안정 시 펀더멘털과 수주 잔고가 탄탄한 2차전지 독점 소재·장비주와 차세대 AI 광통신(CPO) 인프라 수혜주로의 최우선 V자 반등이 유력합니다.',
+        strategy: '1) 지수 투매 국면 뇌동 매도 절대 금지: 패닉 셀링에 동참하지 않고 바닥 지지선(도지형/양봉 전환) 확인 후 선별 대응.<br>2) 대주전자재료: 92,700원 매수가 사수 여부 집중 모니터링, 90,000~92,000원 강력 지지선 유효.<br>3) 에코앤드림 & 피엔티: 하방 지지력 확인 후 기술적 반등 대기.<br>4) 양자·광통신 관리 종목군: 글로벌 테크 수주 및 양자 표준화 일정 발표 시 즉각 경제부 특보 연계.'
       },
       'geo-1': {
         docNo: 'KYANOS-INTEL-2026-GEO-002',
-        title: '이스라엘 지도부의 대이란 정권 축출 구상과 호르무즈·홍해 에너지 회랑의 임계 압력',
+        title: '중동 전운 심화와 호르무즈·홍해 에너지 회랑의 임계 압력: 원유 공급망 병목과 인플레이션 전이 경로',
         cat: '🌐 지정학 & 안보 역학',
-        date: '2026.10.26',
+        date: '2026.10.29',
         agency: '키아노스 정부 경제부 글로벌 금융 인텔리전스국 & 국제부 전략기획처',
-        summary: '이스라엘 지도부의 대이란 정권 교체성 발언과 군사적 공세, 그리고 예멘 후티 반군의 홍해 수송선 및 사우디 아람코 에너지 설비 타격 기도가 중동 안보 환경을 전례 없는 소용돌이로 몰아넣고 있습니다. 호르무즈 해협과 바브엘만데브 해협의 동시 위험 프리미엄은 글로벌 해상 운임과 에너지 수송 병목을 극대화하고 있습니다.',
-        context: '서방의 단순한 정세 논평과 달리, 이번 사태는 이란 내부의 권력 승계 국면과 친이란 저항 축(후티, 헤즈볼라)의 비대칭 소모전 전략이 결합된 형태입니다. 후티 반군은 사우디와의 휴전선을 넘어 에너지 인프라를 직접 위협하며 원유 시장에 공급 쇼크 리스크를 주입하고 있으며, 이스라엘은 대이란 직접 타격을 통해 중동 안보 축의 영구적 재편을 도모하고 있습니다.',
-        marketImpact: '국제 유가(WTI/브렌트유)는 배럴당 70~80달러 선에서 상방 꼬리를 길게 형성하며 환율과 수입 물가에 직접적인 상방 압력을 행사하고 있습니다. 이는 미 연준의 금리 인하 속도 조절 빌미로 작용하며, 국내 증시와 외환 시장(원/달러 1,320~1,340원 박스권)에 지속적인 리스크 오프(Risk-off) 하방 압력을 가하고 있습니다.',
+        summary: '이스라엘 지도부의 대이란 강경 대응과 예멘 후티 반군의 홍해 수송선 및 원유 인프라 타격 기도가 중동 안보 환경을 임계 국면으로 몰아넣고 있습니다. 호르무즈 해협과 바브엘만데브 해협의 동시 위험 프리미엄은 글로벌 해상 운임과 에너지 수송 병목을 극대화하고 있습니다.',
+        context: '단순한 국지적 충돌을 넘어 이란 내부의 권력 승계 국면과 친이란 저항 축(후티, 헤즈볼라)의 비대칭 소모전 전략이 결합된 양상입니다. 호르무즈 해협을 통과하는 일일 2,100만 배럴의 원유 물동량이 직접 위협받을 경우 WTI/브렌트유 가격은 급등 압력에 노출되며, 이는 서방 중앙은행의 통화 정책 유연성을 제약하는 핵심 변수입니다.',
+        marketImpact: '원자재 가격 상승 압력과 환율(원/달러 1,336원선) 변동성은 국내 수입 물가와 제조업 마진에 지속적인 부담을 줍니다. 안전자산 선호 심리가 강화되며 실물 금·은 및 방산·에너지 자산군으로의 헤지 수요가 확산되고 있습니다.',
         strategy: '1) 국가 전략 에너지 비축 상태 및 정유·방산 섹터의 비대칭 수혜 점검.<br>2) 인플레이션 헤지 자산군(실물 금·은 및 GSR 지표)의 방어적 포지션 확립.<br>3) 중동 사태 확전 및 유가 급등 시 대체 운송·공급망 수혜주 선제 모니터링.'
       },
       'curr-1': {
         docNo: 'KYANOS-INTEL-2026-CURR-003',
-        title: '탈달러화 가속과 글로벌 채권 균열: XRPL 기반 도매 청산망과 실물 금·은의 국부 헤지 전략',
+        title: '탈달러화 가속과 글로벌 채권 균열: XRPL 기반 도매 청산망과 실물 금·은($4,036)의 국부 헤지 전략',
         cat: '🪙 통화 패권 & RWA 결제망',
-        date: '2026.10.26',
+        date: '2026.10.29',
         agency: '키아노스 경제부 전략분석실 & 국제금융연구원',
-        summary: '미국 장기 국채 수익률의 수십 년 만의 최고치 기록과 프랑스·유럽 은행권의 국채 부실화 압박은 전통 법정화폐(Fiat) 부채 경제의 한계를 고스란히 노출하고 있습니다. 이에 맞서 각국 중앙은행은 사상 최대 규모의 금(Gold) 비축을 단행하고 있으며, 탈중앙 청산망인 XRPL 원장과 도매 CBDC를 통한 국경 간 결제 효율화 작업이 급물살을 타고 있습니다.',
-        context: '유럽연합 제2대 경제대국인 프랑스의 차입 비용 폭등과 IMF의 "집안 정리" 경고는 유럽 재정 위기의 재림을 경고합니다. 미국 역시 4.8조 달러 규모의 채권 미실현 손실을 안고 있는 상업은행들의 리스크가 잠복해 있습니다. 반면 제도권 금융은 SWIFT의 비효율성을 극복하고 국경 간 자산 이전을 실시간 초저비용으로 청산할 분산원장(XRPL) 및 실물자산(RWA) 토큰화 인프라를 빠르게 도입하고 있습니다.',
+        summary: '미국 장기 국채 수익률의 수십 년 만의 최고치 기록과 프랑스·유럽 은행권의 국채 부실화 압박은 전통 법정화폐(Fiat) 부채 경제의 한계를 고스란히 노출하고 있습니다. 이에 맞서 각국 중앙은행은 사상 최대 규모의 금($4,036/oz) 비축을 단행하고 있으며, 탈중앙 청산망인 XRPL 원장과 도매 CBDC를 통한 국경 간 결제 효율화 작업이 급물살을 타고 있습니다.',
+        context: '유럽연합 제2대 경제대국인 프랑스의 차입 비용 폭등과 IMF의 "집안 정리" 경고는 유럽 재정 위기의 재림을 경고합니다. 미국 역시 대규모 채권 미실현 손실을 안고 있는 상업은행들의 리스크가 잠복해 있습니다. 반면 제도권 금융은 SWIFT의 비효율성을 극복하고 국경 간 자산 이전을 실시간 초저비용으로 청산할 분산원장(XRPL) 및 실물자산(RWA) 토큰화 인프라를 빠르게 도입하고 있습니다.',
         marketImpact: '단일 기축통화에 편중된 자산 배분 방식은 구조적 위험에 직면했습니다. 금(Gold)은 온스당 $4,000를 상회하며 글로벌 무위험 실물 담보로 재평가받고 있으며, XRP는 제도권 규제 합의와 유동성 허브 역할을 흡수하며 디지털 청산 레일의 핵심으로 부상하고 있습니다.',
         strategy: '1) 국고 자산의 [달러 현금 - 실물 귀금속(금·은) - XRPL 디지털 유동성] 3각 방어축 유지.<br>2) RWA 토큰화 및 자산 증권화(ST) 기술을 키아노스 자립 재정 허브와 직접 결합.<br>3) 은행권 시스템 리스크 고조 시 안전 자산 피난처 포트폴리오 가동.'
       },
@@ -1300,25 +1522,43 @@
         docNo: 'KYANOS-INTEL-2026-TECH-004',
         title: '미·중 기술 패권 전쟁과 초지능(SI) 인프라: HBM4·CPO 광통신·2차전지 가치사슬 재편',
         cat: '⚡ 기술 주권 & 5대 산업',
-        date: '2026.10.26',
+        date: '2026.10.29',
         agency: '과학·SI부 첨단기술국 & 경제부 미래산업전략과',
         summary: '초지능(SI) 시대로의 진입은 AI 데이터센터의 전력 소모 및 칩 간 전송 병목이라는 거대한 물리적 장벽에 직면해 있습니다. 이를 해결할 차세대 CPO(공동 패키징 광학) 실리콘 포토닉스와 16단/20단 적층 HBM4의 양산 경쟁이 시작되었으며, 테슬라 로보택시 및 휴머노이드 생태계의 부품 밸류체인이 한국 제조업의 차세대 격전지로 부상했습니다.',
         context: '미국의 대중국 반도체 장비 통제는 더욱 촘촘해지는 반면, 중국은 성숙 공정과 리튬·흑연 등 2차전지 원소재 통제를 무기화하고 있습니다. 한국은 SK하이닉스를 필두로 한 HBM 독점 공급력과 율촌화학·에코앤드림 등 2차전지 핵심 소재·부품 국산화 역량을 보유하고 있으나, 차세대 실리콘 포토닉스(광모듈) 생태계 선점과 북미 공급망 현지화라는 숙제를 안고 있습니다.',
         marketImpact: '반도체와 2차전지는 단순 사이클 산업을 넘어 "국가 안보 인프라"로 재평가되고 있습니다. HBM4와 CPO 광통신 공급망에 직결된 선도 기업들은 압도적 영업이익률 프리미엄을 유지할 것이며, 전고체 및 파우치 배터리 소재 국산화 기업들은 캐즘 통과 후 폭발적인 밸류에이션 리레이팅이 기대됩니다.',
-        strategy: '1) 키아노스 5대 중점 전략 산업(반도체, 2차전지, EV, SI, 로봇)의 밸류체인 집중 육성.<br>2) 파이튼 님 지정 양자 및 광통신(CPO) 종목군(우리로, 엑스게이트, 루멘텀 등)의 기술 제휴 상시 추적.<br>3) 국고 자산의 기술 선도주 선별 집중 및 스케일인(Scale-in) 분할 포지셔닝.'
+        strategy: '1) 키아노스 5대 중점 전략 산업(반도체, 2차전지, EV, SI, 로봇)의 밸류체인 집중 육성.<br>2) 파이튼 님 지정 양자 및 광통신(CPO) 종목군(우리로, 엑스게이트, 케이씨에스, 루멘텀 등)의 기술 제휴 상시 추적.<br>3) 국고 자산의 기술 선도주 선별 집중 및 스케일인(Scale-in) 분할 포지셔닝.'
       },
       'snyder-1': {
         docNo: 'KYANOS-INTEL-2026-SNYDER-001',
         title: '[마이클 스나이더 정밀 직역] 글로벌 금융 위기 대폭발 조짐: 채권 수익률 폭등·은행권 도산 위기와 프랑스 재정 파탄',
         cat: '🌎 마이클 스나이더 정밀 직역',
-        date: '2026.10.26',
+        date: '2026.10.29',
         agency: '키아노스 경제부 전략분석실 & The Economic Collapse Blog 직역',
-        summary: '수년간 전 세계 정부들이 저지른 역사상 최대 규모의 부채 폭주가 임계점에 도달했다. 미국 10년·30년 만기 국채 수익률이 24년 만의 최고치로 치솟았고, 미국 상업은행들은 4.81조 달러에 달하는 채권 보유 손실로 파산 위기에 직면하고 있다. 유럽연합 제2대 경제대국인 프랑스는 OAT 국채 금리가 이탈리아보다 높아지는 재정 파탄과 사상 최악의 거리 폭력 사태로 국가 기능이 마비되고 있다.',
+        summary: '수년간 전 세계 정부들이 저지른 역사상 최대 규모의 부채 폭주가 임계점에 도달했다. 미국 10년·30년 만기 국채 수익률이 수십 년 만의 최고치로 치솟았고, 미국 상업은행들은 수조 달러에 달하는 채권 보유 손실로 파산 위기에 직면하고 있다. 유럽연합 제2대 경제대국인 프랑스는 OAT 국채 금리가 이탈리아보다 높아지는 재정 파탄과 사상 최악의 거리 폭력 사태로 국가 기능이 마비되고 있다.',
         context: '우리는 모두 언젠가는 이 일이 올 거라는 걸 알고 있었다. 채권 수익률 폭등은 채권 가격의 폭락을 의미하며, 이는 전 세계 은행 대차대조표에 악몽을 안겨주고 있다. 미국 연준과 관계자들은 채권 수익률을 억누르기 위해 허공에서 찍어낸 수십억 달러의 국채를 사들이고 있으나, 유럽 국가들은 이러한 통화 발행 선택권조차 없다. IMF 총재 게오르기예바는 프랑스 정부에 "집안을 정리하라"며 "천국으로 이어지지 않는 계단 위에 있다"고 경고했다.',
         marketImpact: '미국 소비자들의 주택담보대출 금리가 폭등하며 실물 경제 활동이 급속도로 위축되고 있다. 프랑스를 비롯해 스페인, 독일 등 유럽연합 전체가 금융 붕괴 경로에 진입했으며, 글로벌 채권 위기는 시차를 두고 전 세계 금융 시스템 전체를 집어삼킬 것이다.',
         strategy: '1) 부채 기반 법정화폐 시스템의 구조적 균열 직시: 무분별한 신용 팽창 자산 축소.<br>2) 인플레이션 및 국가 부도 리스크를 방어할 실물 금·은 및 독립 청산 자산 비중 극대화.<br>3) 앤트뉴스 보도 원칙 준수: 원작자의 1인칭 단정한 해라체 시점 유지 및 담담한 사실 전달.'
       }
     };
+
+    function switchMarketTab(tab) {
+      const pBtn = document.getElementById('tab-pulse-btn');
+      const tBtn = document.getElementById('tab-treasury-btn');
+      const pSec = document.getElementById('market-grid-section');
+      const tSec = document.getElementById('treasury-grid-section');
+      if (tab === 'pulse') {
+        pBtn.classList.add('active');
+        tBtn.classList.remove('active');
+        if (pSec) pSec.style.display = 'grid';
+        if (tSec) tSec.style.display = 'none';
+      } else {
+        tBtn.classList.add('active');
+        pBtn.classList.remove('active');
+        if (pSec) pSec.style.display = 'none';
+        if (tSec) tSec.style.display = 'block';
+      }
+    }
 
     function openIntelModal(key) {
       const data = intelReports[key];
@@ -1384,290 +1624,242 @@
     });
     // 내장 기본 스냅샷 데이터
     const defaultData = {
-      timestamp: "2026-10-13 21:33:19",
-      crypto: [
-        {
-                "category": "crypto",
-                "symbol": "BTC",
-                "name": "비트코인",
-                "price": 112697000.0,
-                "price_str": "112,697,000원",
-                "change": 1834000.0,
-                "change_str": "+1,834,000원",
-                "change_rate": 1.6542940400000001,
-                "change_rate_str": "+1.65%",
-                "high_str": "113,519,000원",
-                "low_str": "110,000,000원",
-                "status": "up"
-        },
-        {
-                "category": "crypto",
-                "symbol": "ETH",
-                "name": "이더리움",
-                "price": 3384000.0,
-                "price_str": "3,384,000원",
-                "change": 69000.0,
-                "change_str": "+69,000원",
-                "change_rate": 2.08144796,
-                "change_rate_str": "+2.08%",
-                "high_str": "3,432,000원",
-                "low_str": "3,270,000원",
-                "status": "up"
-        },
-        {
-                "category": "crypto",
-                "symbol": "XRP",
-                "name": "리플",
-                "price": 1840.0,
-                "price_str": "1,840원",
-                "change": 23.0,
-                "change_str": "+23.00원",
-                "change_rate": 1.26582278,
-                "change_rate_str": "+1.27%",
-                "high_str": "1,865원",
-                "low_str": "1,781원",
-                "status": "up"
-        },
-        {
-                "category": "crypto",
-                "symbol": "SOL",
-                "name": "솔라나",
-                "price": 143800.0,
-                "price_str": "143,800원",
-                "change": 500.0,
-                "change_str": "+500원",
-                "change_rate": 0.34891835,
-                "change_rate_str": "+0.35%",
-                "high_str": "147,200원",
-                "low_str": "138,000원",
-                "status": "up"
-        },
-        {
-                "category": "crypto",
-                "symbol": "DOGE",
-                "name": "도지코인",
-                "price": 114.0,
-                "price_str": "114원",
-                "change": 2.0,
-                "change_str": "+2.00원",
-                "change_rate": 1.78571429,
-                "change_rate_str": "+1.79%",
-                "high_str": "115원",
-                "low_str": "108원",
-                "status": "up"
-        }
-],
-      domestic: [
-        {
-                "category": "domestic",
-                "symbol": "KOSPI",
-                "name": "코스피",
-                "price": 6035.35,
-                "price_str": "6,035.35pt",
-                "change": -348.89,
-                "change_str": "-348.89",
-                "change_rate": -5.46,
-                "change_rate_str": "-5.46%",
-                "status": "down"
-        },
-        {
-                "category": "domestic",
-                "symbol": "KOSDAQ",
-                "name": "코스닥",
-                "price": 837.03,
-                "price_str": "837.03pt",
-                "change": -12.16,
-                "change_str": "-12.16",
-                "change_rate": -1.43,
-                "change_rate_str": "-1.43%",
-                "status": "down"
-        },
-        {
-                "category": "domestic",
-                "symbol": "005930",
-                "name": "삼성전자",
-                "price": 234000.0,
-                "price_str": "234,000원",
-                "change": -16500.0,
-                "change_str": "-16,500원",
-                "change_rate": -6.59,
-                "change_rate_str": "-6.59%",
-                "status": "down"
-        },
-        {
-                "category": "domestic",
-                "symbol": "000660",
-                "name": "SK하이닉스",
-                "price": 1456000.0,
-                "price_str": "1,456,000원",
-                "change": -149000.0,
-                "change_str": "-149,000원",
-                "change_rate": -9.28,
-                "change_rate_str": "-9.28%",
-                "status": "down"
-        },
-        {
-                "category": "forex",
-                "symbol": "USD/KRW",
-                "name": "원/달러 환율",
-                "price": 1342.0,
-                "price_str": "1,342.00원",
-                "change": 6.0,
-                "change_str": "+6.00원",
-                "change_rate": 0.45,
-                "change_rate_str": "+0.45%",
-                "status": "up"
-        }
-],
-      global: [
-        {
-                "category": "global",
-                "symbol": "IXIC",
-                "name": "나스닥 종합",
-                "price": 27245.902,
-                "price_str": "27,245.90pt",
-                "change": -120.26800000000003,
-                "change_str": "-120.27pt",
-                "change_rate": -0.43947691620712737,
-                "change_rate_str": "-0.44%",
-                "status": "down"
-        },
-        {
-                "category": "global",
-                "symbol": "GSPC",
-                "name": "S&P 500",
-                "price": 7807.24,
-                "price_str": "7,807.24pt",
-                "change": -4.300000000000182,
-                "change_str": "-4.30pt",
-                "change_rate": -0.055046764146380635,
-                "change_rate_str": "-0.06%",
-                "status": "down"
-        },
-        {
-                "category": "global",
-                "symbol": "NVDA",
-                "name": "엔비디아",
-                "price": 226.32,
-                "price_str": "$226.32",
-                "change": -2.960000000000008,
-                "change_str": "$-2.96",
-                "change_rate": -1.2909979064898849,
-                "change_rate_str": "-1.29%",
-                "status": "down"
-        },
-        {
-                "category": "global",
-                "symbol": "TSLA",
-                "name": "테슬라",
-                "price": 378.03,
-                "price_str": "$378.03",
-                "change": -4.670000000000016,
-                "change_str": "$-4.67",
-                "change_rate": -1.220276979357203,
-                "change_rate_str": "-1.22%",
-                "status": "down"
-        },
-        {
-                "category": "global",
-                "symbol": "AAPL",
-                "name": "애플",
-                "price": 340.97,
-                "price_str": "$340.97",
-                "change": 4.330000000000041,
-                "change_str": "$+4.33",
-                "change_rate": 1.2862404942965902,
-                "change_rate_str": "+1.29%",
-                "status": "up"
-        }
-],
-      metals: [
-        {
-                "category": "metals_kr",
-                "symbol": "24K-BUY",
-                "name": "순금(24K) 내가 살 때 (1돈)",
-                "price": 794000,
-                "price_str": "794,000원",
-                "change": 4000,
-                "change_str": "+4,000원",
-                "change_rate": 0.5,
-                "change_rate_str": "+0.50%",
-                "status": "up"
-        },
-        {
-                "category": "metals_kr",
-                "symbol": "24K-SELL",
-                "name": "순금(24K) 내가 팔 때 (1돈)",
-                "price": 679000,
-                "price_str": "679,000원",
-                "change": 2000,
-                "change_str": "+2,000원",
-                "change_rate": 0.29,
-                "change_rate_str": "+0.29%",
-                "status": "up"
-        },
-        {
-                "category": "metals_kr",
-                "symbol": "AG-KR",
-                "name": "실물 은(Silver 3.75g)",
-                "price": 10960,
-                "price_str": "살때 10,960원",
-                "change": 9120,
-                "change_str": "팔때 9,120원",
-                "change_rate": -0.18,
-                "change_rate_str": "-0.18%",
-                "status": "down"
-        },
-        {
-                "category": "metals_kr",
-                "symbol": "18K-14K",
-                "name": "18K / 14K 내가 팔 때 (1돈)",
-                "price": 499100,
-                "price_str": "18K: 499,100원",
-                "change": 387100,
-                "change_str": "14K: 387,100원",
-                "change_rate": 0,
-                "change_rate_str": "한국금거래소",
-                "status": "flat"
-        },
-        {
-                "category": "metals_global",
-                "symbol": "GC",
-                "name": "국제 금 선물 (COMEX)",
-                "price": 4208.5,
-                "price_str": "$4,208.50",
-                "change": 17.899999999999636,
-                "change_str": "$+17.90",
-                "change_rate": 0.4271464706724487,
-                "change_rate_str": "+0.43%",
-                "status": "up"
-        },
-        {
-                "category": "metals_global",
-                "symbol": "SI",
-                "name": "국제 은 선물 (COMEX)",
-                "price": 60.51,
-                "price_str": "$60.51",
-                "change": -0.0030000000000001137,
-                "change_str": "$-0.00",
-                "change_rate": -0.0049576124138616725,
-                "change_rate_str": "-0.00%",
-                "status": "down"
-        },
-        {
-                "category": "metals_global",
-                "symbol": "GSR",
-                "name": "금/은 교환비율 (GSR)",
-                "price": 69.55048752272351,
-                "price_str": "69.55배",
-                "change": 0,
-                "change_str": "국제 자산배분",
-                "change_rate": 0,
-                "change_rate_str": "적정 60~80",
-                "status": "flat"
-        }
-]
-    };
+  "timestamp": "2026-10-29 15:31:05",
+  "crypto": [
+    {
+      "category": "crypto",
+      "symbol": "BTC",
+      "name": "비트코인",
+      "price": 107422000.0,
+      "price_str": "107,422,000원",
+      "change": -1560000.0,
+      "change_str": "-1,560,000원",
+      "change_rate": -1.43142904,
+      "change_rate_str": "-1.43%",
+      "high_str": "109,067,000원",
+      "low_str": "106,900,000원",
+      "status": "down"
+    },
+    {
+      "category": "crypto",
+      "symbol": "ETH",
+      "name": "이더리움",
+      "price": 3107000.0,
+      "price_str": "3,107,000원",
+      "change": -55000.0,
+      "change_str": "-55,000원",
+      "change_rate": -1.73940544,
+      "change_rate_str": "-1.74%",
+      "high_str": "3,164,000원",
+      "low_str": "3,076,000원",
+      "status": "down"
+    },
+    {
+      "category": "crypto",
+      "symbol": "XRP",
+      "name": "리플",
+      "price": 1738.0,
+      "price_str": "1,738원",
+      "change": -38.0,
+      "change_str": "-38.00원",
+      "change_rate": -2.13963964,
+      "change_rate_str": "-2.14%",
+      "high_str": "1,778원",
+      "low_str": "1,727원",
+      "status": "down"
+    },
+    {
+      "category": "crypto",
+      "symbol": "SOL",
+      "name": "솔라나",
+      "price": 134300.0,
+      "price_str": "134,300원",
+      "change": -2900.0,
+      "change_str": "-2,900원",
+      "change_rate": -2.1137026199999998,
+      "change_rate_str": "-2.11%",
+      "high_str": "137,400원",
+      "low_str": "133,100원",
+      "status": "down"
+    },
+    {
+      "category": "crypto",
+      "symbol": "DOGE",
+      "name": "도지코인",
+      "price": 105.0,
+      "price_str": "105원",
+      "change": -1.0,
+      "change_str": "-1.00원",
+      "change_rate": -0.94339623,
+      "change_rate_str": "-0.94%",
+      "high_str": "107원",
+      "low_str": "103원",
+      "status": "down"
+    }
+  ],
+  "domestic": [
+    {
+      "category": "domestic",
+      "symbol": "KOSPI",
+      "name": "코스피",
+      "price": 5929.98,
+      "price_str": "5,929.98pt",
+      "change": -82.46,
+      "change_str": "-82.46",
+      "change_rate": -1.37,
+      "change_rate_str": "-1.37%",
+      "status": "down"
+    },
+    {
+      "category": "domestic",
+      "symbol": "KOSDAQ",
+      "name": "코스닥",
+      "price": 752.73,
+      "price_str": "752.73pt",
+      "change": -18.55,
+      "change_str": "-18.55",
+      "change_rate": -2.41,
+      "change_rate_str": "-2.41%",
+      "status": "down"
+    },
+    {
+      "category": "domestic",
+      "symbol": "005930",
+      "name": "삼성전자",
+      "price": 232000.0,
+      "price_str": "232,000원",
+      "change": -10000.0,
+      "change_str": "-10,000원",
+      "change_rate": -4.13,
+      "change_rate_str": "-4.13%",
+      "status": "down"
+    },
+    {
+      "category": "domestic",
+      "symbol": "000660",
+      "name": "SK하이닉스",
+      "price": 1520000.0,
+      "price_str": "1,520,000원",
+      "change": 33000.0,
+      "change_str": "+33,000원",
+      "change_rate": 2.22,
+      "change_rate_str": "+2.22%",
+      "status": "up"
+    },
+    {
+      "category": "forex",
+      "symbol": "USD/KRW",
+      "name": "원/달러 환율",
+      "price": 1336.4,
+      "price_str": "1,336.40원",
+      "change": -7.1,
+      "change_str": "-7.10원",
+      "change_rate": -0.53,
+      "change_rate_str": "-0.53%",
+      "status": "down"
+    }
+  ],
+  "global": [
+    {
+      "category": "global",
+      "symbol": "IXIC",
+      "name": "나스닥 종합",
+      "price": 26549.852,
+      "price_str": "26,549.85pt",
+      "change": 72.04199999999764,
+      "change_str": "+72.04pt",
+      "change_rate": 0.2720844359861999,
+      "change_rate_str": "+0.27%",
+      "status": "up"
+    },
+    {
+      "category": "global",
+      "symbol": "GSPC",
+      "name": "S&P 500",
+      "price": 7743.98,
+      "price_str": "7,743.98pt",
+      "change": 21.3799999999992,
+      "change_str": "+21.38pt",
+      "change_rate": 0.27684976562296637,
+      "change_rate_str": "+0.28%",
+      "status": "up"
+    },
+    {
+      "category": "global",
+      "symbol": "NVDA",
+      "name": "엔비디아",
+      "price": 215.38,
+      "price_str": "$215.38",
+      "change": -2.5600000000000023,
+      "change_str": "$-2.56",
+      "change_rate": -1.174635220702947,
+      "change_rate_str": "-1.17%",
+      "status": "down"
+    },
+    {
+      "category": "global",
+      "symbol": "TSLA",
+      "name": "테슬라",
+      "price": 404.22,
+      "price_str": "$404.22",
+      "change": -3.2399999999999523,
+      "change_str": "$-3.24",
+      "change_rate": -0.795170078044459,
+      "change_rate_str": "-0.80%",
+      "status": "down"
+    },
+    {
+      "category": "global",
+      "symbol": "AAPL",
+      "name": "애플",
+      "price": 343.83,
+      "price_str": "$343.83",
+      "change": -3.2700000000000387,
+      "change_str": "$-3.27",
+      "change_rate": -0.9420916162489307,
+      "change_rate_str": "-0.94%",
+      "status": "down"
+    }
+  ],
+  "metals": [
+    {
+      "category": "metals_global",
+      "symbol": "GC",
+      "name": "국제 금 선물 (COMEX)",
+      "price": 4037.0,
+      "price_str": "$4,037.00",
+      "change": -14.599999999999909,
+      "change_str": "$-14.60",
+      "change_rate": -0.3603514660874694,
+      "change_rate_str": "-0.36%",
+      "status": "down"
+    },
+    {
+      "category": "metals_global",
+      "symbol": "SI",
+      "name": "국제 은 선물 (COMEX)",
+      "price": 52.78,
+      "price_str": "$52.78",
+      "change": -0.8859999999999957,
+      "change_str": "$-0.89",
+      "change_rate": -1.6509521857414298,
+      "change_rate_str": "-1.65%",
+      "status": "down"
+    },
+    {
+      "category": "metals_global",
+      "symbol": "GSR",
+      "name": "금/은 교환비율 (GSR)",
+      "price": 76.48730579765062,
+      "price_str": "76.49배",
+      "change": 0,
+      "change_str": "국제 자산배분",
+      "change_rate": 0,
+      "change_rate_str": "적정 60~80",
+      "status": "flat"
+    }
+  ]
+};
 
     function renderList(containerId, items) {
       const container = document.getElementById(containerId);
