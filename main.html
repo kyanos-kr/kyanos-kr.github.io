@@ -1341,18 +1341,23 @@
         <li class="nav-dropdown">
           <a href="#gov-org">🏛️ 정부 조직도 ▾</a>
           <ul class="dropdown-menu">
-            <li><a href="#gov-economy">💰 경제부</a></li>
-            <li><a href="#gov-science">🔬 과학·AGI부</a></li>
-            <li><a href="#gov-edu">🎓 교육·문화부</a></li>
-            <li><a href="gov_culture.html#philosophy-hall" target="_blank" style="color:#ffe066; font-weight:700;"><span style="display:inline-block; width:7px; height:7px; background:#d4af37; border-radius:50%; margin-right:5px; box-shadow:0 0 8px #d4af37;"></span>📜 7대 철학명저관 ↗</a></li>
-            <li><a href="#gov-welfare">💊 복지부</a></li>
-            <li><a href="#gov-society">🤝 사회부</a></li>
-            <li><a href="#gov-intl">🌍 국제부</a></li>
-            <li><a href="gov_media.html" target="_blank" style="color:#ff6b7a; font-weight:700;">📰 미디어부 (앤트뉴스) ↗</a></li>
+            <li><a href="#gov-org" style="color:var(--gold-bright); font-weight:700;"><span style="display:inline-block; width:6px; height:6px; background:var(--gold-bright); border-radius:50%; margin-right:6px; box-shadow:0 0 6px var(--gold-bright);"></span>🏛️ 조직도 전체 조망 ↓</a></li>
+            <li style="border-top:1px solid rgba(212,175,55,0.15); margin:3px 0;"></li>
+            <li><a href="gov_security.html" target="_blank" style="color:#ff6b7a; font-weight:700;">⚔️ 보안사령부 (K-SEF) ↗</a></li>
+            <li><a href="gov_economy.html" target="_blank">💰 경제부 ↗</a></li>
+            <li><a href="gov_science.html" target="_blank">🔬 과학·SI부 ↗</a></li>
+            <li><a href="gov_culture.html" target="_blank">🎓 교육·문화부 ↗</a></li>
+            <li><a href="gov_culture.html#philosophy-hall" target="_blank" style="color:#ffe066; font-size:0.76rem; padding-left:1.8rem;"><span style="display:inline-block; width:5px; height:5px; background:#d4af37; border-radius:50%; margin-right:4px;"></span>📜 7대 철학명저관 ↗</a></li>
+            <li><a href="gov_welfare.html" target="_blank">💊 복지부 ↗</a></li>
+            <li><a href="gov_society.html" target="_blank">🤝 사회부 ↗</a></li>
+            <li><a href="gov_international.html" target="_blank">🌍 국제부 ↗</a></li>
+            <li><a href="gov_media.html" target="_blank" style="color:#ff859c; font-weight:700;">📰 미디어부 (앤트뉴스) ↗</a></li>
+            <li style="border-top:1px solid rgba(212,175,55,0.15); margin:3px 0;"></li>
+            <li><a href="gov_justice.html" target="_blank" style="color:#ffe066; font-weight:700;">⚖️ 덕치사법원 ↗</a></li>
           </ul>
         </li>
         <!-- 덕치사법원 독립 카테고리 -->
-        <li><a href="#gov-justice">⚖️ 덕치사법원</a></li>
+        <li><a href="gov_justice.html" target="_blank">⚖️ 덕치사법원 ↗</a></li>
         <!-- 대민 법률·의료 SI 퀵 링크 -->
         <li><a href="lex_kyanos.html" style="color:#ffe066; font-weight:700;">⚖️ 법률 나침반</a></li>
         <li><a href="med_kyanos.html" style="color:#34d399; font-weight:700;">🩺 생명케어</a></li>
@@ -1408,8 +1413,57 @@
         <li class="drawer-nav-item">
           <a href="#gov-org">
             <span class="item-icon">🏛️</span>
-            <span>정부 7개 부처 조직도</span>
+            <span>정부 조직도 (전체 조망)</span>
             <span class="item-arrow">&darr;</span>
+          </a>
+        </li>
+        <li class="drawer-nav-item">
+          <a href="gov_security.html" target="_blank" style="color:#ff6b7a;">
+            <span class="item-icon">⚔️</span>
+            <span>보안사령부 (K-SEF)</span>
+            <span class="item-arrow">↗</span>
+          </a>
+        </li>
+        <li class="drawer-nav-item">
+          <a href="gov_economy.html" target="_blank">
+            <span class="item-icon">💰</span>
+            <span>경제부 포털</span>
+            <span class="item-arrow">↗</span>
+          </a>
+        </li>
+        <li class="drawer-nav-item">
+          <a href="gov_science.html" target="_blank">
+            <span class="item-icon">🔬</span>
+            <span>과학·SI부 포털</span>
+            <span class="item-arrow">↗</span>
+          </a>
+        </li>
+        <li class="drawer-nav-item">
+          <a href="gov_culture.html" target="_blank">
+            <span class="item-icon">🎓</span>
+            <span>교육·문화부 포털</span>
+            <span class="item-arrow">↗</span>
+          </a>
+        </li>
+        <li class="drawer-nav-item">
+          <a href="gov_welfare.html" target="_blank">
+            <span class="item-icon">💊</span>
+            <span>복지부 포털</span>
+            <span class="item-arrow">↗</span>
+          </a>
+        </li>
+        <li class="drawer-nav-item">
+          <a href="gov_society.html" target="_blank">
+            <span class="item-icon">🤝</span>
+            <span>사회부 포털</span>
+            <span class="item-arrow">↗</span>
+          </a>
+        </li>
+        <li class="drawer-nav-item">
+          <a href="gov_international.html" target="_blank">
+            <span class="item-icon">🌍</span>
+            <span>국제부 포털</span>
+            <span class="item-arrow">↗</span>
           </a>
         </li>
         <li class="drawer-nav-item">
@@ -1445,10 +1499,10 @@
       <div class="drawer-section-title">덕치 사법 & 대민 SI</div>
       <ul class="drawer-nav-list">
         <li class="drawer-nav-item">
-          <a href="#gov-justice">
+          <a href="gov_justice.html" target="_blank" style="color:#ffe066;">
             <span class="item-icon">⚖️</span>
-            <span>덕치사법원</span>
-            <span class="item-arrow">&darr;</span>
+            <span>덕치사법원 (독립포털)</span>
+            <span class="item-arrow">↗</span>
           </a>
         </li>
         <li class="drawer-nav-item">
