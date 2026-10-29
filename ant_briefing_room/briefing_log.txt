@@ -234,3 +234,13 @@ error: failed to push some refs to 'https://github.com/kyanos-kr/kyanos-kr.githu
   - 총 브리핑 아이템: 31건 (데스크 심층 13건 + 실시간 RSS 18건)
   - 웹 데이터(JS/JSON): D:\안티그래비티파이튼\ant_briefing_room\briefing_data.js
   - 오늘편집 취재원석 리포트: D:\DATA CENTER\편집 기사\오늘편집\취재원석\오늘의_취재원석_브리핑_20261030.md
+  [Notice] git pull rebase 참고: Git 오류: fatal: It seems that there is already a rebase-merge directory, and
+I wonder if you are in the middle of another rebase.  If that is the
+case, please try
+	git rebase (--continue | --abort | --skip)
+If that is not the case, please
+	rm -fr ".git/rebase-merge"
+and run me again.  I am stopping in case you still have something
+valuable there.
+  [Git] GitHub Pages 라이브 배포 완료: https://kyanos-kr.github.io/ant_briefing_room/ (2026-10-30 08:07)
+[2026-10-30  8:07:40.89] AntNews Briefing Room Update Completed (Code: 0) 
