@@ -506,6 +506,241 @@
     margin-top: 14px;
   }
 
+  
+  /* ===== INTELLIGENCE VAULT SECTION ===== */
+  .vault-section {
+    background: linear-gradient(180deg, var(--dark-mid) 0%, #0d1124 100%);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 80px 24px;
+  }
+  .vault-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+  }
+  .vault-card {
+    background: rgba(19, 19, 42, 0.7);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.25s, border-color 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .vault-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--gold);
+    box-shadow: 0 10px 30px rgba(201, 168, 76, 0.15);
+  }
+  .vault-tag-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+  .vault-format-badge {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gold-light);
+    background: rgba(201, 168, 76, 0.12);
+    border: 1px solid rgba(201, 168, 76, 0.35);
+    padding: 4px 10px;
+    border-radius: 6px;
+    letter-spacing: 1px;
+  }
+  .vault-card-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+  .vault-card-summary {
+    font-size: 13.5px;
+    color: var(--text-sub);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .vault-points {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 24px;
+    font-size: 12.5px;
+    color: #cbd5e1;
+  }
+  .vault-points li {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .vault-points li::before {
+    content: "✓";
+    color: var(--cyan);
+    font-weight: 700;
+  }
+  .vault-btn-group {
+    display: flex;
+    gap: 10px;
+  }
+  .vault-btn-view {
+    flex: 1;
+    background: rgba(0, 200, 255, 0.1);
+    border: 1px solid rgba(0, 200, 255, 0.3);
+    color: var(--cyan);
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .vault-btn-view:hover {
+    background: var(--cyan);
+    color: var(--dark);
+  }
+  .vault-btn-vip {
+    flex: 1;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border: none;
+    color: var(--dark);
+    font-size: 12.5px;
+    font-weight: 700;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: opacity 0.2s;
+  }
+  .vault-btn-vip:hover { opacity: 0.9; }
+
+  /* ===== CHECKOUT & REPORT MODAL ===== */
+  .ant-modal-backdrop {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(4, 6, 15, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .ant-modal-box {
+    background: #0E1226;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    max-width: 520px;
+    width: 100%;
+    padding: 32px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  .ant-modal-close {
+    position: absolute;
+    top: 20px; right: 20px;
+    background: transparent;
+    border: none;
+    color: var(--text-sub);
+    font-size: 24px;
+    cursor: pointer;
+    line-height: 1;
+  }
+  .ant-modal-close:hover { color: #fff; }
+  .checkout-tier-header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .checkout-tier-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--gold-light);
+  }
+  .checkout-price-tag {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    margin: 8px 0;
+  }
+  .checkout-free-badge {
+    display: inline-block;
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    color: #4ade80;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+  .checkout-form-group {
+    margin-bottom: 16px;
+  }
+  .checkout-label {
+    display: block;
+    font-size: 12px;
+    color: var(--text-sub);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .checkout-input {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 10px;
+    padding: 12px 14px;
+    color: #fff;
+    font-size: 13.5px;
+    font-family: inherit;
+    outline: none;
+  }
+  .checkout-input:focus { border-color: var(--cyan); }
+  .checkout-pay-methods {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .pay-btn-opt {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-sub);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .pay-btn-opt.active, .pay-btn-opt:hover {
+    border-color: var(--cyan);
+    color: #fff;
+    background: rgba(0, 200, 255, 0.12);
+  }
+  .checkout-submit-btn {
+    width: 100%;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light), var(--gold));
+    color: var(--dark);
+    font-size: 14.5px;
+    font-weight: 700;
+    padding: 14px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(201, 168, 76, 0.3);
+  }
+  .checkout-submit-btn:hover { opacity: 0.92; }
+
   /* ===== 5-CORE TECH RADAR SECTION ===== */
   .tech-radar-section {
     background: linear-gradient(180deg, var(--dark) 0%, var(--dark-mid) 100%);
@@ -675,6 +910,8 @@
     <div class="nav-links-desktop" style="display:flex; gap:16px; margin-left:20px;">
       <a href="#tech-radar" style="color:var(--text-sub); text-decoration:none; font-size:12.5px; transition:color 0.2s;">5대 전략산업 레이더</a>
       <a href="#si-architecture" style="color:var(--text-sub); text-decoration:none; font-size:12.5px; transition:color 0.2s;">SI 기술 아키텍처</a>
+      <a href="#intelligence-vault" style="color:var(--text-sub); text-decoration:none; font-size:12.5px; transition:color 0.2s;">심층 리포트</a>
+      <a href="b2b_estimator.html" target="_blank" style="color:var(--cyan); text-decoration:none; font-size:12.5px; font-weight:700; transition:color 0.2s;">💼 B2B 견적기 ↗</a>
       <a href="#sample-brief" style="color:var(--text-sub); text-decoration:none; font-size:12.5px; transition:color 0.2s;">샘플 브리프</a>
       <a href="#pricing" style="color:var(--text-sub); text-decoration:none; font-size:12.5px; transition:color 0.2s;">구독 플랜</a>
     </div>
@@ -980,6 +1217,88 @@
   </div>
 </section>
 
+<!-- ===== PREMIUM INTELLIGENCE VAULT ===== -->
+<section class="vault-section" id="intelligence-vault">
+  <div class="section-inner">
+    <div class="section-eyebrow">Enterprise Intelligence Vault</div>
+    <h2 class="section-h2">5대 전략 산업 주간 심층 리포트</h2>
+    <p class="section-desc">
+      공공·기업 표준 HWPX 및 PDF로 자동 컴파일되는 키아노스 고유의 독점 인텔리전스 분석서입니다. Business 회원 이상 전용 아카이브를 제공합니다.
+    </p>
+
+    <div class="vault-grid">
+      <!-- Report 1: 배터리 -->
+      <div class="vault-card">
+        <div>
+          <div class="vault-tag-row">
+            <span class="radar-card-tag">🔋 2차전지 전략보고서</span>
+            <span class="vault-format-badge">HWPX / PDF</span>
+          </div>
+          <h3 class="vault-card-title">차세대 전고체 배터리 양산 로드맵 및 글로벌 핵심광물 쿼터 분석</h3>
+          <p class="vault-card-summary">
+            북미 IRA 및 EU 핵심원자재법(CRMA) 개정에 따른 한·중·미 배터리 밸류체인 재편과 고체 전해질/실리콘 음극재 양산 단가 추정 분석.
+          </p>
+          <ul class="vault-points">
+            <li>2026-2030 전고체 셀 공정 수율 및 단가 비교표</li>
+            <li>글로벌 리튬·니켈 정련 독점도 및 대체 공급망 지도</li>
+            <li>앤트뉴스 SI 공급망 리스크 인덱스(SRI) 수록</li>
+          </ul>
+        </div>
+        <div class="vault-btn-group">
+          <button class="vault-btn-view" onclick="openReportPreview('battery')">📄 요약본 열람</button>
+          <button class="vault-btn-vip" onclick="openCheckoutModal('Business', 49000)">👑 전문 다운로드</button>
+        </div>
+      </div>
+
+      <!-- Report 2: 반도체 -->
+      <div class="vault-card">
+        <div>
+          <div class="vault-tag-row">
+            <span class="radar-card-tag">💾 차세대 반도체</span>
+            <span class="vault-format-badge">HWPX / PDF</span>
+          </div>
+          <h3 class="vault-card-title">HBM4 16단 적층 패키징과 2nm 파운드리 수율 주도권 평가</h3>
+          <p class="vault-card-summary">
+            빅테크 자체 NPU 도입 확대에 따른 HBM4 커스텀 사양 요구와 TSMC-삼성 파운드리 2nm 공정의 기술적 분기점 정밀 해부.
+          </p>
+          <ul class="vault-points">
+            <li>CoWoS 및 어드밴스드 패키징 CAPA 확장 전망</li>
+            <li>주요 AI 팹리스 기업별 커스텀 칩 발주 쿼터 분석</li>
+            <li>윤고딕 740 규격 완제품 HWPX 원본 패키지 포함</li>
+          </ul>
+        </div>
+        <div class="vault-btn-group">
+          <button class="vault-btn-view" onclick="openReportPreview('semicon')">📄 요약본 열람</button>
+          <button class="vault-btn-vip" onclick="openCheckoutModal('Business', 49000)">👑 전문 다운로드</button>
+        </div>
+      </div>
+
+      <!-- Report 3: 초지능 및 로봇 -->
+      <div class="vault-card">
+        <div>
+          <div class="vault-tag-row">
+            <span class="radar-card-tag">🤖 SI &amp; TALOS 로봇</span>
+            <span class="vault-format-badge">HWPX / PDF</span>
+          </div>
+          <h3 class="vault-card-title">피지컬 AI 휴머노이드 생산 현장 배치율과 자율제조 ROI</h3>
+          <p class="vault-card-summary">
+            시각-언어-행동(VLA) 모델이 실제 제조 라인에 미치는 생산성 혁신과 키아노스 Project TALOS 기반 무인화 타당성 평가 보고서.
+          </p>
+          <ul class="vault-points">
+            <li>글로벌 스마트 팩토리 휴머노이드 ROI 3개년 추정</li>
+            <li>초지능 3단계(Graphify) 지식 축적 아키텍처 연동</li>
+            <li>K-SEF 적대적 사이버 방위 검증 필증 탑재</li>
+          </ul>
+        </div>
+        <div class="vault-btn-group">
+          <button class="vault-btn-view" onclick="openReportPreview('robot')">📄 요약본 열람</button>
+          <button class="vault-btn-vip" onclick="openCheckoutModal('Business', 49000)">👑 전문 다운로드</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== PRICING ===== -->
 <section class="pricing-section" id="pricing">
   <div class="section-inner">
@@ -1001,7 +1320,7 @@
           <li>앤트의 원포인트 인사이트</li>
           <li>개인·직장인 대상</li>
         </ul>
-        <a href="mailto:aza700901@nate.com?subject=AntNews Standard 구독 신청" class="pricing-btn outline">무료 체험 시작</a>
+        <button class="pricing-btn outline" onclick="openCheckoutModal('Standard', 9900)">무료 체험 시작</button>
       </div>
 
       <!-- BUSINESS (FEATURED) -->
@@ -1017,7 +1336,7 @@
           <li>PDF 리포트 다운로드 아카이브</li>
           <li>CEO · 투자자 · 기획자 대상</li>
         </ul>
-        <a href="mailto:aza700901@nate.com?subject=AntNews Business 구독 신청" class="pricing-btn gold">무료 체험 시작</a>
+        <button class="pricing-btn gold" onclick="openCheckoutModal('Business', 49000)">무료 체험 시작</button>
       </div>
 
       <!-- ENTERPRISE -->
@@ -1032,7 +1351,7 @@
           <li>기업 전략 맞춤형 데일리 브리프</li>
           <li>전담 인텔리전스 어드바이저 배정</li>
         </ul>
-        <a href="mailto:aza700901@nate.com?subject=AntNews Enterprise 구독 상담" class="pricing-btn outline">도입 상담 신청</a>
+        <a href="b2b_estimator.html" target="_blank" class="pricing-btn outline" style="text-decoration:none; display:block; text-align:center;">💼 스마트 견적 & ROI 산출 ↗</a>
       </div>
 
     </div>
@@ -1148,5 +1467,162 @@ function handleSubscribe(e, inputId, statusId) {
     });
   }).catch(function(){});
 })();
-</script></body>
+</script>
+<!-- ===== CHECKOUT MODAL ===== -->
+<div id="checkoutModal" class="ant-modal-backdrop" onclick="closeModalOnBackdrop(event, 'checkoutModal')">
+  <div class="ant-modal-box">
+    <button class="ant-modal-close" onclick="closeAntModal('checkoutModal')">&times;</button>
+    <div class="checkout-tier-header">
+      <div class="checkout-tier-name" id="modalTierName">Business Plan</div>
+      <div class="checkout-price-tag" id="modalPriceTag">₩49,000 <span style="font-size:14px; color:var(--text-sub); font-weight:normal;">/월</span></div>
+      <div class="checkout-free-badge">🎉 첫 2주 무료 체험 (언제든 취소 가능)</div>
+    </div>
+    
+    <form id="checkoutForm" onsubmit="handleCheckoutSubmit(event)">
+      <div class="checkout-form-group">
+        <label class="checkout-label">수신 이메일 주소</label>
+        <input type="email" id="checkoutEmail" class="checkout-input" placeholder="name@company.com" required>
+      </div>
+
+      <div class="checkout-form-group">
+        <label class="checkout-label">소속 기업 / 직함 (선택)</label>
+        <input type="text" id="checkoutOrg" class="checkout-input" placeholder="키아노스 파트너스 / 수석 연구원">
+      </div>
+
+      <div class="checkout-form-group">
+        <label class="checkout-label">결제 방식 선택</label>
+        <div class="checkout-pay-methods">
+          <div class="pay-btn-opt active" onclick="selectPayOpt(this)">신용/체크카드</div>
+          <div class="pay-btn-opt" onclick="selectPayOpt(this)">네이버페이</div>
+          <div class="pay-btn-opt" onclick="selectPayOpt(this)">카카오페이</div>
+        </div>
+      </div>
+
+      <div id="checkoutReceiptNotice" style="display:none; margin-bottom:16px; font-size:12.5px; background:rgba(0,200,255,0.1); border:1px solid rgba(0,200,255,0.3); padding:12px; border-radius:10px; color:var(--cyan);"></div>
+
+      <button type="submit" id="checkoutSubmitBtn" class="checkout-submit-btn">✨ 첫 2주 0원으로 구독 승인</button>
+    </form>
+  </div>
+</div>
+
+<!-- ===== REPORT PREVIEW MODAL ===== -->
+<div id="reportModal" class="ant-modal-backdrop" onclick="closeModalOnBackdrop(event, 'reportModal')">
+  <div class="ant-modal-box" style="max-width:620px;">
+    <button class="ant-modal-close" onclick="closeAntModal('reportModal')">&times;</button>
+    <div style="font-size:11px; letter-spacing:2px; color:var(--cyan); font-weight:700; text-transform:uppercase; margin-bottom:8px;">KYANOS EXECUTIVE REPORT PREVIEW</div>
+    <h3 id="reportModalTitle" style="font-family:'Noto Serif KR', serif; font-size:20px; color:#fff; margin-bottom:16px; line-height:1.4;"></h3>
+    <div id="reportModalBody" style="font-size:13.5px; color:#cbd5e1; line-height:1.8; margin-bottom:24px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:18px; border-radius:12px;"></div>
+    
+    <div style="display:flex; gap:12px;">
+      <button class="pricing-btn outline" style="flex:1;" onclick="closeAntModal('reportModal')">닫기</button>
+      <button class="pricing-btn gold" style="flex:1;" onclick="closeAntModal('reportModal'); openCheckoutModal('Business', 49000);">👑 정식 전문 HWPX 받기</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* 모달 제어 로직 */
+function openCheckoutModal(tier, price) {
+  var modal = document.getElementById('checkoutModal');
+  var nameEl = document.getElementById('modalTierName');
+  var priceEl = document.getElementById('modalPriceTag');
+  var notice = document.getElementById('checkoutReceiptNotice');
+  var submitBtn = document.getElementById('checkoutSubmitBtn');
+  
+  if (nameEl) nameEl.textContent = tier + ' Plan';
+  if (priceEl) priceEl.innerHTML = '₩' + price.toLocaleString() + ' <span style="font-size:14px; color:var(--text-sub); font-weight:normal;">/월</span>';
+  if (notice) notice.style.display = 'none';
+  if (submitBtn) {
+    submitBtn.style.display = 'block';
+    submitBtn.textContent = '✨ 첫 2주 0원으로 구독 승인';
+  }
+  if (modal) modal.style.display = 'flex';
+}
+
+function closeAntModal(id) {
+  var modal = document.getElementById(id);
+  if (modal) modal.style.display = 'none';
+}
+
+function closeModalOnBackdrop(e, id) {
+  if (e.target.id === id) closeAntModal(id);
+}
+
+function selectPayOpt(btn) {
+  var opts = document.querySelectorAll('.pay-btn-opt');
+  opts.forEach(function(o) { o.classList.remove('active'); });
+  btn.classList.add('active');
+}
+
+function handleCheckoutSubmit(e) {
+  e.preventDefault();
+  var email = document.getElementById('checkoutEmail').value.trim();
+  var org = document.getElementById('checkoutOrg').value.trim() || '일반 독자';
+  var tier = document.getElementById('modalTierName').textContent;
+  var notice = document.getElementById('checkoutReceiptNotice');
+  var submitBtn = document.getElementById('checkoutSubmitBtn');
+
+  var key = 'KYANOS-' + Math.random().toString(36).substring(2, 8).toUpperCase() + '-VIP';
+  
+  // 로컬 스토리지에 가입 및 라이선스 키 영구 등록
+  var subscriptions = [];
+  try {
+    subscriptions = JSON.parse(localStorage.getItem('kyanos_vip_members') || '[]');
+  } catch(err) {
+    subscriptions = [];
+  }
+  subscriptions.push({ email: email, org: org, tier: tier, licenseKey: key, date: new Date().toISOString() });
+  localStorage.setItem('kyanos_vip_members', JSON.stringify(subscriptions));
+
+  if (notice) {
+    notice.style.display = 'block';
+    notice.innerHTML = '🎉 <strong>' + tier + ' 2주 무료체험이 즉시 승인되었습니다!</strong><br>' +
+                       '• VIP 라이선스 키: <strong>' + key + '</strong><br>' +
+                       '• 첫 결제일: 14일 후 0원 청구 후 자동 연장 (언제든 취소 가능)<br>' +
+                       '• 등록된 이메일 (' + email + ')로 VIP 브리핑 및 HWPX 리포트 다운로드 링크를 즉시 발송하였습니다.';
+  }
+  if (submitBtn) submitBtn.style.display = 'none';
+}
+
+/* 리포트 미리보기 데이터 */
+var reportData = {
+  battery: {
+    title: "🔋 차세대 전고체 배터리 양산 로드맵 및 글로벌 핵심광물 쿼터 분석 (HWPX / PDF)",
+    body: "<strong>[Executive Summary]</strong><br>" +
+          "본 보고서는 2026년 하반기 전고체 배터리 파일럿 라인 가동과 북미·유럽 역내 공급망 규제에 대응하는 종합 인텔리전스 분석서입니다.<br><br>" +
+          "<strong>1. 핵심 포인트:</strong> 건식 전극 공정 도입에 따른 에너지 밀도 450Wh/kg 달성 및 제조원가 18% 절감 효과 검증.<br>" +
+          "<strong>2. 지정학적 리스크:</strong> 인도네시아 니켈 수출 쿼터제 및 남미 리튬 카르텔 동향 전수 조사.<br>" +
+          "<strong>3. 포맷 규격:</strong> 한컴 윤고딕 740, 11pt, 160% 행간 정밀 HWPX 표준 문서 및 고해상도 PDF 동봉."
+  },
+  semicon: {
+    title: "💾 HBM4 16단 적층 패키징과 2nm 파운드리 수율 주도권 평가 (HWPX / PDF)",
+    body: "<strong>[Executive Summary]</strong><br>" +
+          "초거대 AI 가속기 시장의 핵심 병목인 고대역폭 메모리(HBM4)와 2nm 첨단 미세공정의 글로벌 공급망 주도권을 분석합니다.<br><br>" +
+          "<strong>1. 핵심 포인트:</strong> HBM4 16단 하이브리드 본딩 도입 시기 및 TSMC-삼성 파운드리 진영 간 수율 격차 추정.<br>" +
+          "<strong>2. 빅테크 수요 분석:</strong> 엔비디아, 메타, 구글의 차세대 자체 실리콘 발주 물량 비교.<br>" +
+          "<strong>3. 정부 공문서 규격:</strong> 키아노스 과학·SI부 검수 완료 및 인쇄 최적화 서식."
+  },
+  robot: {
+    title: "🤖 피지컬 AI 휴머노이드 생산 현장 배치율과 자율제조 ROI (HWPX / PDF)",
+    body: "<strong>[Executive Summary]</strong><br>" +
+          "피지컬 AI 모델이 실제 산업 현장에 미치는 경제적 파급효과와 키아노스 Project TALOS 기반 자율 생산 라인의 ROI를 도출합니다.<br><br>" +
+          "<strong>1. 핵심 포인트:</strong> 24시간 연속 가동 기준 인건비 대비 생산성 2.8배 혁신 수치 입증.<br>" +
+          "<strong>2. 안전 및 보안 규격:</strong> 키아노스 K-SEF 보안사령부 6단계 적대적 방위 프로토콜 탑재.<br>" +
+          "<strong>3. 부처 패키징:</strong> 비즈니스 구독 시 즉시 전용 클라우드 볼트에서 HWPX 원본 열람 가능."
+  }
+};
+
+function openReportPreview(type) {
+  var data = reportData[type];
+  if (!data) return;
+  var titleEl = document.getElementById('reportModalTitle');
+  var bodyEl = document.getElementById('reportModalBody');
+  var modal = document.getElementById('reportModal');
+  if (titleEl) titleEl.innerHTML = data.title;
+  if (bodyEl) bodyEl.innerHTML = data.body;
+  if (modal) modal.style.display = 'flex';
+}
+</script>
+
+</body>
 </html>
