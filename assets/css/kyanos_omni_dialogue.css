@@ -1,9 +1,9 @@
 /* ==========================================================================
-   키아노스 옴니 다이얼로그 (Kyanos Omni Dialogue - SI 통합 검색 & 보이스 스튜디오)
-   디스크/시스템 부하 0MB (단일 런처 + 일체형 통합 지능 콘솔)
+   키아노스 옴니 다이얼로그 (Kyanos Omni Dialogue - SI 통합 검색 & 지능 안내소)
+   디스크/시스템 부하 0MB (전화기형 순수 클라우드 연동 & 경량 프론트엔드 UI)
    ========================================================================== */
 
-/* 플로팅 런처 그룹 (단일 런처) */
+/* 플로팅 런처 그룹 */
 .kyanos-floating-hub {
   position: fixed;
   bottom: 24px;
@@ -11,9 +11,53 @@
   z-index: 9998;
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 
-/* 키아노스 SI 지능창 단일 런처 버튼 */
+/* 키아노스 보이스 런처 버튼 */
+#kyanos-voice-launcher {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #fef08a 0%, #fde047 100%);
+  border: 1.5px solid #eab308;
+  padding: 10px 16px;
+  border-radius: 40px;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 16px rgba(250, 204, 21, 0.4);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  color: #78350f;
+  font-family: 'Cinzel', 'Noto Serif KR', sans-serif;
+  user-select: none;
+}
+
+#kyanos-voice-launcher:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 24px rgba(250, 204, 21, 0.7);
+}
+
+.voice-launcher-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.voice-launcher-text {
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: #854d0e;
+}
+
+.voice-launcher-badge {
+  font-size: 0.65rem;
+  padding: 2px 7px;
+  border-radius: 12px;
+  background: #1e3a8a;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* 플로팅 런처 버튼 */
 #kyanos-omni-launcher {
   display: flex;
   align-items: center;
@@ -51,7 +95,7 @@
 
 .omni-launcher-badge {
   font-size: 0.68rem;
-  padding: 2px 8px;
+  padding: 2px 7px;
   border-radius: 12px;
   background: rgba(96, 165, 250, 0.25);
   border: 1px solid #60a5fa;
@@ -138,57 +182,6 @@
 
 .omni-close-btn:hover {
   color: #fde68a;
-}
-
-/* 상단 모드 전환 탭 (SI 대화·검색 ⟷ 보이스 스튜디오) */
-.omni-modal-tabs {
-  display: flex;
-  background: rgba(15, 23, 42, 0.95);
-  border-bottom: 1px solid rgba(245, 158, 11, 0.3);
-  padding: 4px 14px 0;
-  gap: 8px;
-}
-
-.omni-modal-tab {
-  flex: 1;
-  padding: 10px 12px;
-  background: transparent;
-  border: none;
-  border-bottom: 2.5px solid transparent;
-  font-size: 0.84rem;
-  font-weight: 700;
-  color: #94a3b8;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  border-radius: 8px 8px 0 0;
-  font-family: inherit;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-}
-
-.omni-modal-tab:hover {
-  color: #fde68a;
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.omni-modal-tab.active {
-  color: #fde68a;
-  border-bottom-color: #f59e0b;
-  background: rgba(245, 158, 11, 0.12);
-}
-
-/* 패널 전환 */
-.omni-tab-panel {
-  display: none;
-  flex: 1;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.omni-tab-panel.active {
-  display: flex;
 }
 
 /* 메시지 대화 본문 */
@@ -388,66 +381,178 @@
 
 /* 모바일 반응형 */
 @media (max-width: 480px) {
-  #kyanos-omni-modal {
+  #kyanos-omni-modal, #kyanos-voice-modal {
     right: 12px;
     bottom: 80px;
     width: calc(100vw - 24px);
-    height: 78vh;
+    height: 75vh;
   }
   .kyanos-floating-hub {
     right: 12px;
     bottom: 16px;
+    gap: 6px;
   }
-  #kyanos-omni-launcher {
-    padding: 8px 14px;
+  #kyanos-omni-launcher, #kyanos-voice-launcher {
+    padding: 8px 12px;
   }
-  .omni-launcher-text {
-    font-size: 0.78rem;
+  .omni-launcher-text, .voice-launcher-text {
+    font-size: 0.75rem;
   }
 }
 
 /* ==========================================================================
-   보이스 스튜디오 패널 (일체형 음성 인식 & PC 전역 F9 안내)
+   키아노스 보이스 인터랙티브 창 모달 (실시간 음성 대화 & PC 사용법 듀얼 콘솔)
    ========================================================================== */
-.omni-voice-body {
-  padding: 16px;
+#kyanos-voice-modal {
+  position: fixed;
+  bottom: 85px;
+  right: 28px;
+  width: 420px;
+  max-width: calc(100vw - 36px);
+  max-height: calc(100vh - 110px);
+  background: linear-gradient(135deg, #fffdf5 0%, #fef9c3 100%);
+  border: 2px solid #eab308;
+  border-radius: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), 0 0 30px rgba(250, 204, 21, 0.4);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px) scale(0.95);
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  color: #0f172a;
+  font-family: 'Pretendard', sans-serif;
+}
+
+#kyanos-voice-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.voice-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 18px;
+  background: #fde047;
+  border-bottom: 1.5px solid #eab308;
+}
+
+.voice-modal-title {
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: #78350f;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.voice-close-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #78350f;
+  cursor: pointer;
+  padding: 3px 7px;
+  border-radius: 6px;
+  line-height: 1;
+  transition: all 0.2s;
+}
+
+.voice-close-btn:hover {
+  background: #facc15;
+  color: #000;
+}
+
+/* 상단 탭 네비게이션 */
+.voice-nav-tabs {
+  display: flex;
+  background: rgba(254, 240, 138, 0.6);
+  border-bottom: 1px solid rgba(234, 179, 8, 0.4);
+  padding: 4px 10px 0;
+  gap: 6px;
+}
+
+.voice-nav-tab {
+  flex: 1;
+  padding: 8px 10px;
+  background: transparent;
+  border: none;
+  border-bottom: 2.5px solid transparent;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #854d0e;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 8px 8px 0 0;
+}
+
+.voice-nav-tab:hover {
+  background: rgba(255, 255, 255, 0.4);
+  color: #713f12;
+}
+
+.voice-nav-tab.active {
+  background: #ffffff;
+  color: #1e3a8a;
+  border-bottom-color: #2563eb;
+  font-weight: 800;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.voice-modal-body {
+  padding: 14px 18px 18px;
   display: flex;
   flex-direction: column;
   gap: 12px;
   overflow-y: auto;
-  flex: 1;
 }
 
-/* 실시간 마이크 영역 */
+/* 탭 패널 전환 */
+.voice-view-panel {
+  display: none;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.voice-view-panel.active {
+  display: flex;
+}
+
+/* 실시간 마이크 제어 영역 */
 .voice-live-mic-box {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 16px 12px 12px;
-  background: rgba(30, 41, 59, 0.65);
-  border: 1px solid rgba(245, 158, 11, 0.3);
+  padding: 14px 12px 10px;
+  background: #ffffff;
+  border: 1.5px solid rgba(234, 179, 8, 0.4);
   border-radius: 14px;
-  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
 }
 
 .voice-mic-main-btn {
-  width: 70px;
-  height: 70px;
+  position: relative;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
-  border: 2.5px solid rgba(245, 158, 11, 0.6);
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  border: 3px solid #60a5fa;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(37, 99, 235, 0.4);
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
   transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .voice-mic-main-btn:hover {
   transform: scale(1.06);
-  border-color: #fde68a;
-  box-shadow: 0 8px 25px rgba(245, 158, 11, 0.5);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.5);
 }
 
 .voice-mic-main-btn .mic-icon {
@@ -455,31 +560,31 @@
   line-height: 1;
 }
 
-/* 녹음 중 상태 애니메이션 */
+/* 마이크 녹음 중 상태 */
 .voice-mic-main-btn.recording {
-  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
-  border-color: #f87171;
-  box-shadow: 0 0 25px rgba(220, 38, 38, 0.8);
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  border-color: #fca5a5;
+  box-shadow: 0 0 25px rgba(239, 68, 68, 0.7);
   animation: mic-listening-pulse 1.3s infinite;
 }
 
 @keyframes mic-listening-pulse {
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); }
-  50% { transform: scale(1.08); box-shadow: 0 0 0 16px rgba(220, 38, 38, 0); }
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+  50% { transform: scale(1.08); box-shadow: 0 0 0 16px rgba(239, 68, 68, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
 }
 
 .voice-mic-status {
   font-size: 0.92rem;
-  font-weight: 700;
-  color: #fde68a;
+  font-weight: 800;
+  color: #78350f;
   margin-top: 10px;
   text-align: center;
 }
 
 .voice-mic-substatus {
   font-size: 0.74rem;
-  color: #94a3b8;
+  color: #64748b;
   margin-top: 2px;
   text-align: center;
 }
@@ -497,26 +602,26 @@
   align-items: center;
   font-size: 0.78rem;
   font-weight: 700;
-  color: #cbd5e1;
+  color: #475569;
 }
 
 .voice-char-count {
   font-size: 0.72rem;
-  color: #60a5fa;
-  font-weight: 700;
+  color: #2563eb;
+  font-weight: 800;
 }
 
 .voice-result-textarea {
   width: 100%;
-  height: 105px;
+  height: 110px;
   box-sizing: border-box;
   padding: 10px 12px;
-  background: rgba(15, 23, 42, 0.8);
-  border: 1px solid rgba(245, 158, 11, 0.35);
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
   border-radius: 10px;
   font-size: 0.88rem;
   line-height: 1.5;
-  color: #f8fafc;
+  color: #0f172a;
   resize: vertical;
   font-family: inherit;
   outline: none;
@@ -524,22 +629,22 @@
 }
 
 .voice-result-textarea:focus {
-  border-color: #fde68a;
-  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
 /* 액션 툴바 */
 .voice-action-toolbar {
   display: flex;
-  gap: 8px;
+  gap: 6px;
 }
 
 .voice-action-btn {
   flex: 1;
-  padding: 9px 10px;
+  padding: 8px 10px;
   border-radius: 8px;
   border: none;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 700;
   cursor: pointer;
   display: flex;
@@ -547,47 +652,42 @@
   justify-content: center;
   gap: 4px;
   transition: all 0.2s;
-  font-family: inherit;
 }
 
 .voice-action-btn.copy {
-  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  background: #1e3a8a;
   color: #ffffff;
 }
 
 .voice-action-btn.copy:hover {
-  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-  transform: translateY(-1px);
+  background: #1d4ed8;
 }
 
 .voice-action-btn.send-omni {
-  background: #1e3a8a;
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
   color: #ffffff;
-  border: 1px solid #3b82f6;
 }
 
 .voice-action-btn.send-omni:hover {
-  background: #1d4ed8;
-  transform: translateY(-1px);
+  background: #b45309;
 }
 
 .voice-action-btn.clear {
   flex: 0 0 auto;
-  background: rgba(51, 65, 85, 0.7);
-  color: #94a3b8;
-  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: #f1f5f9;
+  color: #64748b;
 }
 
 .voice-action-btn.clear:hover {
-  background: rgba(71, 85, 105, 0.9);
-  color: #f1f5f9;
+  background: #e2e8f0;
+  color: #334155;
 }
 
 /* 토스트 메시지 */
 .voice-toast-msg {
-  min-height: 16px;
-  font-size: 0.76rem;
-  color: #34d399;
+  min-height: 18px;
+  font-size: 0.75rem;
+  color: #059669;
   font-weight: 700;
   text-align: center;
   opacity: 0;
@@ -598,49 +698,71 @@
   opacity: 1;
 }
 
-/* PC 전역 F9 사용법 일체형 미니 카드 */
-.voice-pc-guide-card {
-  background: rgba(30, 41, 59, 0.6);
-  border: 1px solid rgba(245, 158, 11, 0.25);
+/* F9 가이드 탭 내부 카드 */
+.voice-step-card {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(234, 179, 8, 0.5);
   border-radius: 10px;
   padding: 10px 14px;
 }
 
-.voice-pc-guide-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: #fde68a;
-  margin-bottom: 4px;
+.voice-step-card.highlight {
+  background: #ffffff;
+  border: 2px solid #2563eb;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
 }
 
-.voice-mini-link {
-  color: #60a5fa;
-  text-decoration: none;
+.voice-step-num {
   font-size: 0.72rem;
+  font-weight: 800;
+  color: #2563eb;
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
 }
 
-.voice-mini-link:hover {
-  text-decoration: underline;
-}
-
-.voice-pc-guide-desc {
-  font-size: 0.78rem;
-  color: #cbd5e1;
-  line-height: 1.45;
+.voice-step-text {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #0f172a;
 }
 
 .voice-key-badge {
   display: inline-block;
-  background: #0f172a;
-  border: 1px solid rgba(245, 158, 11, 0.5);
-  color: #fde68a;
+  background: #1e293b;
+  color: #fff;
   font-weight: 800;
+  font-size: 0.78rem;
+  padding: 2px 7px;
+  border-radius: 5px;
+}
+
+.voice-traffic-lights {
+  display: flex;
+  gap: 6px;
   font-size: 0.75rem;
-  padding: 1px 6px;
-  border-radius: 4px;
+  font-weight: 700;
+  padding: 8px 10px;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  justify-content: space-around;
+}
+
+.voice-full-link-btn {
+  display: block;
+  text-align: center;
+  background: #1e3a8a;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 9px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.voice-full-link-btn:hover {
+  background: #1d4ed8;
 }
 
 /* 옴니 다이얼로그 입력창 내부 마이크 버튼 */

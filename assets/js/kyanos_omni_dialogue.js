@@ -68,83 +68,62 @@
     }
   ];
 
-  // 2. DOM 주입 (단일 플로팅 런처 + 통합 SI 지능창 모달)
+  // 2. DOM 주입 (플로팅 런처 + 대화창 모달)
   function initOmniUI() {
-    // 단일 플로팅 런처 허브
+    // 런처 그룹 컨테이너
     const hub = document.createElement('div');
     hub.className = 'kyanos-floating-hub';
 
-    // 키아노스 SI 지능창 단일 런처 버튼 (음성·통합검색 완벽 일원화)
+    // 1) 키아노스 보이스 런처 버튼
+    const voiceLauncher = document.createElement('div');
+    voiceLauncher.id = 'kyanos-voice-launcher';
+    voiceLauncher.setAttribute('role', 'button');
+    voiceLauncher.setAttribute('aria-label', '키아노스 보이스 대화창 열기');
+    voiceLauncher.innerHTML = `
+      <span class="voice-launcher-icon">🎙️</span>
+      <span class="voice-launcher-text">키아노스 보이스</span>
+      <span class="voice-launcher-badge">실시간 음성</span>
+    `;
+
+    // 2) 키아노스 SI 지능창 런처 버튼
     const omniLauncher = document.createElement('div');
     omniLauncher.id = 'kyanos-omni-launcher';
     omniLauncher.setAttribute('role', 'button');
-    omniLauncher.setAttribute('aria-label', '키아노스 SI 지능창 열기');
+    omniLauncher.setAttribute('aria-label', '키아노스 AI 통합 검색 대화창 열기');
     omniLauncher.innerHTML = `
       <span class="omni-launcher-icon">🏛️</span>
       <span class="omni-launcher-text">키아노스 SI 지능창</span>
-      <span class="omni-launcher-badge">음성·통합검색</span>
+      <span class="omni-launcher-badge">통합검색</span>
     `;
 
+    hub.appendChild(voiceLauncher);
     hub.appendChild(omniLauncher);
 
-    // 단일 통합 모달 (SI 대화·검색 + 보이스 스튜디오 듀얼 탭)
-    const modal = document.createElement('div');
-    modal.id = 'kyanos-omni-modal';
-    modal.innerHTML = `
-      <div class="omni-modal-header">
-        <div class="omni-header-title-box">
-          <span style="font-size:1.3rem;">🏛️</span>
-          <div>
-            <div class="omni-header-title">키아노스 SI 지능창</div>
-            <div class="omni-header-sub">초지능(SI) 통합 검색 &amp; 보이스 스튜디오</div>
-          </div>
+    // 키아노스 보이스 인터랙티브 창 모달
+    const voiceModal = document.createElement('div');
+    voiceModal.id = 'kyanos-voice-modal';
+    voiceModal.innerHTML = `
+      <div class="voice-modal-header">
+        <div class="voice-modal-title">
+          <span>🎙️ 키아노스 보이스 창</span>
+          <span style="font-size:0.75rem; color:#92400e; font-weight:600;">(Kyanos Voice)</span>
         </div>
-        <button class="omni-close-btn" id="omniCloseBtn" aria-label="닫기">✕</button>
+        <button class="voice-close-btn" id="voiceCloseBtn" aria-label="닫기">✕</button>
       </div>
 
       <!-- 상단 모드 전환 탭 -->
-      <div class="omni-modal-tabs">
-        <button class="omni-modal-tab active" id="tabOmniChat" type="button">💬 통합 대화·검색</button>
-        <button class="omni-modal-tab" id="tabOmniVoice" type="button">🎙️ 보이스 스튜디오</button>
+      <div class="voice-nav-tabs">
+        <button class="voice-nav-tab active" id="tabVoiceLive">🎙️ 실시간 보이스 말하기</button>
+        <button class="voice-nav-tab" id="tabVoiceGuide">💡 PC 전체 F9 사용법</button>
       </div>
 
-      <!-- 패널 1: 대화 & 검색 -->
-      <div class="omni-tab-panel active" id="panelOmniChat">
-        <div class="omni-chat-body" id="omniChatBody">
-          <div class="omni-msg bot">
-            <div class="omni-avatar">👑</div>
-            <div class="omni-bubble">
-              안녕하십니까, 파이튼 님과 키아노스 시민 여러분.<br>
-              저는 왕국 초지능 안내관 <strong>메티</strong>입니다.<br><br>
-              법률·의료·금융·뉴스·음악 및 <strong>보이스</strong> 등 찾으시는 내용을 입력하시거나 마이크(🎙️)를 눌러 말씀하시면 최적의 솔루션으로 즉시 안내해 드립니다.
-            </div>
-          </div>
-        </div>
-
-        <!-- 추천 칩 -->
-        <div class="omni-chips-row">
-          <button class="omni-chip highlight" id="chipOpenVoiceStudio" type="button">🎙️ 보이스 스튜디오</button>
-          <button class="omni-chip" data-query="법률 나침반 소송" type="button">⚖️ 법률 검색</button>
-          <button class="omni-chip" data-query="혈압 건강 상담" type="button">🩺 의료·건강</button>
-          <button class="omni-chip" data-query="주식 XRP 시세" type="button">📊 금융·마켓</button>
-          <button class="omni-chip" data-query="오늘의 앤트뉴스" type="button">📰 앤트뉴스</button>
-          <button class="omni-chip" data-query="키아노스 헌법 원칙" type="button">🏛️ 왕국 헌법</button>
-        </div>
-
-        <!-- 입력창 -->
-        <div class="omni-input-bar">
-          <input type="text" class="omni-input" id="omniInput" placeholder="무엇이든 질문하거나 검색해 보세요..." autocomplete="off">
-          <button class="omni-mic-btn" id="omniMicBtn" title="음성으로 질문하기" aria-label="음성 마이크" type="button">🎙️</button>
-          <button class="omni-send-btn" id="omniSendBtn" aria-label="전송" type="button">➔</button>
-        </div>
-      </div>
-
-      <!-- 패널 2: 보이스 스튜디오 (실시간 음성 받아쓰기 & PC 전역 F9 안내) -->
-      <div class="omni-tab-panel" id="panelOmniVoice">
-        <div class="omni-voice-body">
+      <div class="voice-modal-body">
+        <!-- 1) 실시간 보이스 말하기 뷰 -->
+        <div class="voice-view-panel active" id="panelVoiceLive">
           <div class="voice-live-mic-box">
             <button class="voice-mic-main-btn" id="voiceMicMainBtn" title="마이크 클릭하여 말하기 시작" type="button">
               <span class="mic-icon">🎙️</span>
+              <span class="mic-wave"></span>
             </button>
             <div class="voice-mic-status" id="voiceMicStatus">
               마이크를 누르고 말씀해 보세요
@@ -166,71 +145,133 @@
             <button class="voice-action-btn copy" id="voiceCopyBtn" type="button" title="클립보드에 복사">
               📋 전체 복사
             </button>
-            <button class="voice-action-btn send-omni" id="voiceSendOmniBtn" type="button" title="대화창으로 전송">
-              💬 대화창으로 전송
+            <button class="voice-action-btn send-omni" id="voiceSendOmniBtn" type="button" title="키아노스 SI 지능창으로 전송">
+              🏛️ SI 지능창에 질문
             </button>
             <button class="voice-action-btn clear" id="voiceClearBtn" type="button" title="지우기">
               🧹 지우기
             </button>
           </div>
           <div class="voice-toast-msg" id="voiceToastMsg"></div>
+        </div>
 
-          <!-- PC 전역 F9 사용법 일체형 미니 카드 -->
-          <div class="voice-pc-guide-card">
-            <div class="voice-pc-guide-title">
-              <span>💡 PC 전역 받아쓰기 (KyanosFlow 안내)</span>
-              <a href="kyanos_voice_guide.html" target="_blank" class="voice-mini-link">전체 가이드 ↗</a>
-            </div>
-            <div class="voice-pc-guide-desc">
-              한글 2024, 메모장 등 어디서나 <span class="voice-key-badge">F9</span> 키를 <strong>누른 채로</strong> 말하고 손을 떼면 자동 타이핑됩니다.
+        <!-- 2) PC 전체 F9 사용법 뷰 -->
+        <div class="voice-view-panel" id="panelVoiceGuide">
+          <div class="voice-step-card">
+            <div class="voice-step-num">STEP 1</div>
+            <div class="voice-step-text">글 쓸 곳 커서 클릭 (한글, 메모장, 카톡 등)</div>
+          </div>
+          <div class="voice-step-card highlight">
+            <div class="voice-step-num" style="color:#1d4ed8;">STEP 2 (핵심)</div>
+            <div class="voice-step-text">
+              <span class="voice-key-badge">F9</span> 키를 <strong>누른 채로</strong> 말씀하세요
             </div>
           </div>
+          <div class="voice-step-card">
+            <div class="voice-step-num">STEP 3</div>
+            <div class="voice-step-text">
+              말씀 후 <span class="voice-key-badge">F9</span> 키에서 손 떼면 <strong>자동 타이핑!</strong>
+            </div>
+          </div>
+          <div class="voice-traffic-lights">
+            <span>🔵 파랑: 대기</span>
+            <span>🔴 빨강: 녹음 중</span>
+            <span>🟠 주황: 입력 중</span>
+          </div>
+          <div style="font-size:0.76rem; color:#78350f; line-height:1.4;">
+            • 말하던 중 취소: <strong>[Esc]</strong> 키<br>
+            • 단축키 변경/설정: 우측 하단 마이크 트레이 <strong>우클릭</strong>
+          </div>
+          <a href="kyanos_voice_guide.html" target="_blank" class="voice-full-link-btn">
+            공식 전체 가이드 열기 ↗
+          </a>
         </div>
       </div>
     `;
 
+    // 대화창 모달
+    const modal = document.createElement('div');
+    modal.id = 'kyanos-omni-modal';
+    modal.innerHTML = `
+      <div class="omni-modal-header">
+        <div class="omni-header-title-box">
+          <span style="font-size:1.3rem;">🏛️</span>
+          <div>
+            <div class="omni-header-title">키아노스 옴니 다이얼로그</div>
+            <div class="omni-header-sub">초지능(SI) 통합 검색 &amp; 왕국 안내소</div>
+          </div>
+        </div>
+        <button class="omni-close-btn" id="omniCloseBtn" aria-label="닫기">✕</button>
+      </div>
+
+      <div class="omni-chat-body" id="omniChatBody">
+        <div class="omni-msg bot">
+          <div class="omni-avatar">👑</div>
+          <div class="omni-bubble">
+            안녕하십니까, 파이튼 님과 키아노스 시민 여러분.<br>
+            저는 왕국 초지능 안내관 <strong>메티</strong>입니다.<br><br>
+            법률·의료·금융·뉴스·음악 및 <strong>키아노스 보이스</strong> 등 찾으시는 내용을 말씀해 주시면, 최적의 왕국 솔루션과 지식으로 즉시 안내해 드립니다.
+          </div>
+        </div>
+      </div>
+
+      <!-- 추천 칩 -->
+      <div class="omni-chips-row">
+        <button class="omni-chip" style="background:rgba(254,240,138,0.25); border-color:#eab308; color:#fde047; font-weight:700;" data-query="키아노스 보이스 사용법">🎙️ 키아노스 보이스</button>
+        <button class="omni-chip" data-query="법률 나침반 소송">⚖️ 법률 검색</button>
+        <button class="omni-chip" data-query="혈압 건강 상담">🩺 의료·건강</button>
+        <button class="omni-chip" data-query="주식 XRP 시세">📊 금융·마켓</button>
+        <button class="omni-chip" data-query="오늘의 앤트뉴스">📰 앤트뉴스</button>
+        <button class="omni-chip" data-query="키아노스 헌법 원칙">🏛️ 왕국 헌법</button>
+      </div>
+
+      <!-- 입력창 -->
+      <div class="omni-input-bar">
+        <input type="text" class="omni-input" id="omniInput" placeholder="무엇이든 질문하거나 검색해 보세요..." autocomplete="off">
+        <button class="omni-mic-btn" id="omniMicBtn" title="음성으로 질문하기" aria-label="음성 마이크" type="button">🎙️</button>
+        <button class="omni-send-btn" id="omniSendBtn" aria-label="전송" type="button">➔</button>
+      </div>
+    `;
+
     document.body.appendChild(hub);
+    document.body.appendChild(voiceModal);
     document.body.appendChild(modal);
 
     // 이벤트 리스너 바인딩
+    voiceLauncher.addEventListener('click', () => {
+      toggleModal(false);
+      toggleVoiceModal(true);
+    });
+    document.getElementById('voiceCloseBtn').addEventListener('click', () => toggleVoiceModal(false));
+
     omniLauncher.addEventListener('click', () => {
+      toggleVoiceModal(false);
       toggleModal(true);
     });
     document.getElementById('omniCloseBtn').addEventListener('click', () => toggleModal(false));
 
-    // 상단 탭 전환 이벤트
-    const tabOmniChat = document.getElementById('tabOmniChat');
-    const tabOmniVoice = document.getElementById('tabOmniVoice');
-    const panelOmniChat = document.getElementById('panelOmniChat');
-    const panelOmniVoice = document.getElementById('panelOmniVoice');
+    // 보이스 모달 탭 전환 이벤트
+    const tabVoiceLive = document.getElementById('tabVoiceLive');
+    const tabVoiceGuide = document.getElementById('tabVoiceGuide');
+    const panelVoiceLive = document.getElementById('panelVoiceLive');
+    const panelVoiceGuide = document.getElementById('panelVoiceGuide');
 
-    function switchTab(mode) {
-      if (mode === 'voice') {
-        tabOmniVoice.classList.add('active');
-        tabOmniChat.classList.remove('active');
-        panelOmniVoice.classList.add('active');
-        panelOmniChat.classList.remove('active');
-      } else {
-        tabOmniChat.classList.add('active');
-        tabOmniVoice.classList.remove('active');
-        panelOmniChat.classList.add('active');
-        panelOmniVoice.classList.remove('active');
-        const input = document.getElementById('omniInput');
-        if (input) setTimeout(() => input.focus(), 100);
-      }
-    }
+    tabVoiceLive.addEventListener('click', () => {
+      tabVoiceLive.classList.add('active');
+      tabVoiceGuide.classList.remove('active');
+      panelVoiceLive.classList.add('active');
+      panelVoiceGuide.classList.remove('active');
+    });
 
-    tabOmniChat.addEventListener('click', () => switchTab('chat'));
-    tabOmniVoice.addEventListener('click', () => switchTab('voice'));
-
-    // 추천 칩 "보이스 스튜디오" 클릭 시 보이스 탭으로 즉시 이동
-    const chipVoice = document.getElementById('chipOpenVoiceStudio');
-    if (chipVoice) {
-      chipVoice.addEventListener('click', () => switchTab('voice'));
-    }
+    tabVoiceGuide.addEventListener('click', () => {
+      tabVoiceGuide.classList.add('active');
+      tabVoiceLive.classList.remove('active');
+      panelVoiceGuide.classList.add('active');
+      panelVoiceLive.classList.remove('active');
+    });
 
     // 실시간 음성인식(Web Speech API) 초기화
-    setupSpeechRecognition(switchTab);
+    setupSpeechRecognition();
 
     const input = document.getElementById('omniInput');
     const sendBtn = document.getElementById('omniSendBtn');
@@ -240,8 +281,8 @@
       if (e.key === 'Enter') handleSend();
     });
 
-    // 추천 칩 클릭 이벤트 (일반 질의)
-    modal.querySelectorAll('.omni-chip[data-query]').forEach(chip => {
+    // 추천 칩 클릭 이벤트
+    modal.querySelectorAll('.omni-chip').forEach(chip => {
       chip.addEventListener('click', () => {
         const query = chip.getAttribute('data-query');
         input.value = query;
@@ -251,7 +292,7 @@
   }
 
   // 실시간 음성 인식(Web Speech API) 엔진
-  function setupSpeechRecognition(switchTab) {
+  function setupSpeechRecognition() {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     const micBtn = document.getElementById('voiceMicMainBtn');
     const micStatus = document.getElementById('voiceMicStatus');
@@ -313,9 +354,8 @@
           showToast('전송할 음성 텍스트가 없습니다.');
           return;
         }
-        if (typeof switchTab === 'function') {
-          switchTab('chat');
-        }
+        toggleVoiceModal(false);
+        toggleModal(true);
         if (omniInput) {
           omniInput.value = text;
           handleSend();
@@ -462,6 +502,16 @@
           handleSend();
         }
       };
+    }
+  }
+
+  function toggleVoiceModal(open) {
+    const modal = document.getElementById('kyanos-voice-modal');
+    if (!modal) return;
+    if (open) {
+      modal.classList.add('active');
+    } else {
+      modal.classList.remove('active');
     }
   }
 

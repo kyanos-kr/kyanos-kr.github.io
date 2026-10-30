@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
@@ -801,6 +801,7 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="assets/css/kyanos_omni_dialogue.css">
 </head>
 <body>
 
@@ -1627,7 +1628,8 @@
       win.document.write(`
         <html><head><title>키아노스 법률 서식 인쇄</title>
         <style>body{font-family:'Batang','Noto Serif KR',serif;padding:40px;white-space:pre-wrap;line-height:1.8;font-size:14px;}</style>
-        </head><body>${text.replace(/</g, '&lt;')}</body></html>
+          <link rel="stylesheet" href="assets/css/kyanos_omni_dialogue.css">
+</head><body>${text.replace(/</g, '&lt;')}</body></html>
       `);
       win.document.close();
       win.focus();
@@ -1719,5 +1721,6 @@
     });
   </script>
   <script src="assets/js/kyanos_i18n.js"></script>
+  <script src="assets/js/kyanos_omni_dialogue.js" defer></script>
 </body>
 </html>
