@@ -15,8 +15,8 @@
     { level: 2, minXp: 100, maxXp: 299, name: "덕치의 탐구자", titleEn: "Novice Resident", icon: "📜" },
     { level: 3, minXp: 300, maxXp: 699, name: "키아노스 정시민", titleEn: "Official Citizen", icon: "🏛️" },
     { level: 4, minXp: 700, maxXp: 1499, name: "넥스포럼 지성인", titleEn: "Scholar Citizen", icon: "🌐" },
-    { level: 5, minXp: 1500, maxXp: 2999, name: "에버모어 기사단", titleEn: "Virtue Elder", icon: "👑" },
-    { level: 6, minXp: 3000, maxXp: 999999, name: "주권 수호 기사", titleEn: "Guardian of Kyanos", icon: "⚡" }
+    { level: 5, minXp: 1500, maxXp: 2999, name: "덕치 원로 시민", titleEn: "Virtue Elder Citizen", icon: "👑" },
+    { level: 6, minXp: 3000, maxXp: 999999, name: "최고 명예 시민", titleEn: "Honorary State Citizen", icon: "🏛️" }
   ];
 
   // 2. 업적 정의
@@ -223,7 +223,8 @@
     }
 
     renderHeaderWidget() {
-      if (document.getElementById("kyanosCivicWidget")) return;
+      // 상단 헤더 메뉴의 산만함 방지를 위해 위젯 비활성화 (경제부 내부 소관으로 일원화)
+      return;
 
       const widget = document.createElement("div");
       widget.id = "kyanosCivicWidget";
@@ -365,7 +366,7 @@
       const nextRank = CIVIC_RANKS.find(r => r.level === currentRank.level + 1);
 
       let pct = 100;
-      let nextText = "최고 등급 도달 (수호 기사)";
+      let nextText = "최고 등급 달성 (명예 시민)";
       if (nextRank) {
         const range = nextRank.minXp - currentRank.minXp;
         const currentInRank = this.profile.xp - currentRank.minXp;
