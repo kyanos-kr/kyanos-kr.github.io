@@ -3,12 +3,62 @@
    디스크/시스템 부하 0MB (전화기형 순수 클라우드 연동 & 경량 프론트엔드 UI)
    ========================================================================== */
 
+/* 플로팅 런처 그룹 */
+.kyanos-floating-hub {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9998;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 키아노스 보이스 런처 버튼 */
+#kyanos-voice-launcher {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #fef08a 0%, #fde047 100%);
+  border: 1.5px solid #eab308;
+  padding: 10px 16px;
+  border-radius: 40px;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 16px rgba(250, 204, 21, 0.4);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  color: #78350f;
+  font-family: 'Cinzel', 'Noto Serif KR', sans-serif;
+  user-select: none;
+}
+
+#kyanos-voice-launcher:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 24px rgba(250, 204, 21, 0.7);
+}
+
+.voice-launcher-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.voice-launcher-text {
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: #854d0e;
+}
+
+.voice-launcher-badge {
+  font-size: 0.65rem;
+  padding: 2px 7px;
+  border-radius: 12px;
+  background: #1e3a8a;
+  color: #ffffff;
+  font-weight: 700;
+}
+
 /* 플로팅 런처 버튼 */
 #kyanos-omni-launcher {
-  position: fixed;
-  bottom: 28px;
-  right: 28px;
-  z-index: 9998;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -331,18 +381,160 @@
 
 /* 모바일 반응형 */
 @media (max-width: 480px) {
-  #kyanos-omni-modal {
+  #kyanos-omni-modal, #kyanos-voice-modal {
     right: 12px;
     bottom: 80px;
     width: calc(100vw - 24px);
     height: 75vh;
   }
-  #kyanos-omni-launcher {
-    right: 16px;
-    bottom: 20px;
-    padding: 8px 14px;
+  .kyanos-floating-hub {
+    right: 12px;
+    bottom: 16px;
+    gap: 6px;
   }
-  .omni-launcher-text {
-    font-size: 0.8rem;
+  #kyanos-omni-launcher, #kyanos-voice-launcher {
+    padding: 8px 12px;
   }
+  .omni-launcher-text, .voice-launcher-text {
+    font-size: 0.75rem;
+  }
+}
+
+/* ==========================================================================
+   키아노스 보이스 포스트잇 팝업 모달
+   ========================================================================== */
+#kyanos-voice-modal {
+  position: fixed;
+  bottom: 85px;
+  right: 28px;
+  width: 380px;
+  max-width: calc(100vw - 36px);
+  background: linear-gradient(135deg, #fffbeb 0%, #fef08a 100%);
+  border: 2px solid #eab308;
+  border-radius: 18px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 25px rgba(250, 204, 21, 0.4);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px) scale(0.95);
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  color: #0f172a;
+  font-family: 'Pretendard', sans-serif;
+}
+
+#kyanos-voice-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.voice-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background: #fde047;
+  border-bottom: 1.5px solid #eab308;
+}
+
+.voice-modal-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #78350f;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.voice-close-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #78350f;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 6px;
+  line-height: 1;
+}
+
+.voice-close-btn:hover {
+  background: #facc15;
+  color: #000;
+}
+
+.voice-modal-body {
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.voice-step-card {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(234, 179, 8, 0.5);
+  border-radius: 10px;
+  padding: 10px 14px;
+}
+
+.voice-step-card.highlight {
+  background: #ffffff;
+  border: 2px solid #2563eb;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+
+.voice-step-num {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #2563eb;
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.voice-step-text {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.voice-key-badge {
+  display: inline-block;
+  background: #1e293b;
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.78rem;
+  padding: 2px 7px;
+  border-radius: 5px;
+}
+
+.voice-traffic-lights {
+  display: flex;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 8px 10px;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  justify-content: space-around;
+}
+
+.voice-full-link-btn {
+  display: block;
+  text-align: center;
+  background: #1e3a8a;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 9px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.voice-full-link-btn:hover {
+  background: #1d4ed8;
 }

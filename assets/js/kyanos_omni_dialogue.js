@@ -11,6 +11,13 @@
   // 1. 내부 인텔리전스 라우팅 맵 (용량 2KB 미만, 디스크 부하 0)
   const KYANOS_SERVICES = [
     {
+      keywords: ['보이스', 'voice', '음성', '받아쓰기', '입력', 'f9', '마이크', '위스퍼'],
+      title: '🎙️ 키아노스 보이스 (KyanosFlow v1.0)',
+      desc: 'PC 전용 무제한 로컬 음성 받아쓰기 (F9 누르고 말하기 → 손 떼면 자동 입력)',
+      url: 'kyanos_voice_guide.html',
+      badge: '소프트웨어연구원'
+    },
+    {
       keywords: ['법률', '소송', '내용증명', '고소', '판결', '재판', '변호사', '덕치사법원', '법'],
       title: '⚖️ 키아노스 시민 법률 나침반 (Lex-Kyanos)',
       desc: '덕치사법원 나홀로 소송·내용증명 작성 및 법률 인텔리전스',
@@ -63,15 +70,76 @@
 
   // 2. DOM 주입 (플로팅 런처 + 대화창 모달)
   function initOmniUI() {
-    // 런처 버튼
-    const launcher = document.createElement('div');
-    launcher.id = 'kyanos-omni-launcher';
-    launcher.setAttribute('role', 'button');
-    launcher.setAttribute('aria-label', '키아노스 AI 통합 검색 대화창 열기');
-    launcher.innerHTML = `
+    // 런처 그룹 컨테이너
+    const hub = document.createElement('div');
+    hub.className = 'kyanos-floating-hub';
+
+    // 1) 키아노스 보이스 런처 버튼 (신규)
+    const voiceLauncher = document.createElement('div');
+    voiceLauncher.id = 'kyanos-voice-launcher';
+    voiceLauncher.setAttribute('role', 'button');
+    voiceLauncher.setAttribute('aria-label', '키아노스 보이스 사용법 가이드 열기');
+    voiceLauncher.innerHTML = `
+      <span class="voice-launcher-icon">🎙️</span>
+      <span class="voice-launcher-text">키아노스 보이스</span>
+      <span class="voice-launcher-badge">사용법</span>
+    `;
+
+    // 2) 키아노스 SI 지능창 런처 버튼
+    const omniLauncher = document.createElement('div');
+    omniLauncher.id = 'kyanos-omni-launcher';
+    omniLauncher.setAttribute('role', 'button');
+    omniLauncher.setAttribute('aria-label', '키아노스 AI 통합 검색 대화창 열기');
+    omniLauncher.innerHTML = `
       <span class="omni-launcher-icon">🏛️</span>
       <span class="omni-launcher-text">키아노스 SI 지능창</span>
       <span class="omni-launcher-badge">통합검색</span>
+    `;
+
+    hub.appendChild(voiceLauncher);
+    hub.appendChild(omniLauncher);
+
+    // 키아노스 보이스 포스트잇 팝업 모달
+    const voiceModal = document.createElement('div');
+    voiceModal.id = 'kyanos-voice-modal';
+    voiceModal.innerHTML = `
+      <div class="voice-modal-header">
+        <div class="voice-modal-title">
+          <span>🎙️ 키아노스 보이스</span>
+          <span style="font-size:0.75rem; color:#92400e; font-weight:600;">(KyanosFlow)</span>
+        </div>
+        <button class="voice-close-btn" id="voiceCloseBtn" aria-label="닫기">✕</button>
+      </div>
+      <div class="voice-modal-body">
+        <div class="voice-step-card">
+          <div class="voice-step-num">STEP 1</div>
+          <div class="voice-step-text">글 쓸 곳 커서 클릭 (한글, 메모장, 카톡 등)</div>
+        </div>
+        <div class="voice-step-card highlight">
+          <div class="voice-step-num" style="color:#1d4ed8;">STEP 2 (핵심)</div>
+          <div class="voice-step-text">
+            <span class="voice-key-badge">F9</span> 키를 <strong>누른 채로</strong> 말씀하세요
+          </div>
+        </div>
+        <div class="voice-step-card">
+          <div class="voice-step-num">STEP 3</div>
+          <div class="voice-step-text">
+            말씀 후 <span class="voice-key-badge">F9</span> 키에서 손 떼면 <strong>자동 타이핑!</strong>
+          </div>
+        </div>
+        <div class="voice-traffic-lights">
+          <span>🔵 파랑: 대기</span>
+          <span>🔴 빨강: 녹음 중</span>
+          <span>🟠 주황: 입력 중</span>
+        </div>
+        <div style="font-size:0.76rem; color:#78350f; line-height:1.4;">
+          • 말하던 중 취소: <strong>[Esc]</strong> 키<br>
+          • 단축키 변경/설정: 우측 하단 마이크 트레이 <strong>우클릭</strong>
+        </div>
+        <a href="kyanos_voice_guide.html" target="_blank" class="voice-full-link-btn">
+          공식 전체 가이드 열기 ↗
+        </a>
+      </div>
     `;
 
     // 대화창 모달
@@ -95,13 +163,14 @@
           <div class="omni-bubble">
             안녕하십니까, 파이튼 님과 키아노스 시민 여러분.<br>
             저는 왕국 초지능 안내관 <strong>메티</strong>입니다.<br><br>
-            법률·의료·금융·뉴스·음악 등 찾으시는 내용을 말씀해 주시면, 최적의 왕국 솔루션과 지식으로 즉시 안내해 드립니다.
+            법률·의료·금융·뉴스·음악 및 <strong>키아노스 보이스</strong> 등 찾으시는 내용을 말씀해 주시면, 최적의 왕국 솔루션과 지식으로 즉시 안내해 드립니다.
           </div>
         </div>
       </div>
 
       <!-- 추천 칩 -->
       <div class="omni-chips-row">
+        <button class="omni-chip" style="background:rgba(254,240,138,0.25); border-color:#eab308; color:#fde047; font-weight:700;" data-query="키아노스 보이스 사용법">🎙️ 키아노스 보이스</button>
         <button class="omni-chip" data-query="법률 나침반 소송">⚖️ 법률 검색</button>
         <button class="omni-chip" data-query="혈압 건강 상담">🩺 의료·건강</button>
         <button class="omni-chip" data-query="주식 XRP 시세">📊 금융·마켓</button>
@@ -116,11 +185,21 @@
       </div>
     `;
 
-    document.body.appendChild(launcher);
+    document.body.appendChild(hub);
+    document.body.appendChild(voiceModal);
     document.body.appendChild(modal);
 
     // 이벤트 리스너 바인딩
-    launcher.addEventListener('click', () => toggleModal(true));
+    voiceLauncher.addEventListener('click', () => {
+      toggleModal(false);
+      toggleVoiceModal(true);
+    });
+    document.getElementById('voiceCloseBtn').addEventListener('click', () => toggleVoiceModal(false));
+
+    omniLauncher.addEventListener('click', () => {
+      toggleVoiceModal(false);
+      toggleModal(true);
+    });
     document.getElementById('omniCloseBtn').addEventListener('click', () => toggleModal(false));
 
     const input = document.getElementById('omniInput');
@@ -139,6 +218,16 @@
         handleSend();
       });
     });
+  }
+
+  function toggleVoiceModal(open) {
+    const modal = document.getElementById('kyanos-voice-modal');
+    if (!modal) return;
+    if (open) {
+      modal.classList.add('active');
+    } else {
+      modal.classList.remove('active');
+    }
   }
 
   function toggleModal(open) {
