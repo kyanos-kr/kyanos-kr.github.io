@@ -74,15 +74,15 @@
     const hub = document.createElement('div');
     hub.className = 'kyanos-floating-hub';
 
-    // 1) 키아노스 보이스 런처 버튼 (신규)
+    // 1) 키아노스 보이스 런처 버튼
     const voiceLauncher = document.createElement('div');
     voiceLauncher.id = 'kyanos-voice-launcher';
     voiceLauncher.setAttribute('role', 'button');
-    voiceLauncher.setAttribute('aria-label', '키아노스 보이스 사용법 가이드 열기');
+    voiceLauncher.setAttribute('aria-label', '키아노스 보이스 대화창 열기');
     voiceLauncher.innerHTML = `
       <span class="voice-launcher-icon">🎙️</span>
       <span class="voice-launcher-text">키아노스 보이스</span>
-      <span class="voice-launcher-badge">사용법</span>
+      <span class="voice-launcher-badge">실시간 음성</span>
     `;
 
     // 2) 키아노스 SI 지능창 런처 버튼
@@ -99,46 +99,93 @@
     hub.appendChild(voiceLauncher);
     hub.appendChild(omniLauncher);
 
-    // 키아노스 보이스 포스트잇 팝업 모달
+    // 키아노스 보이스 인터랙티브 창 모달
     const voiceModal = document.createElement('div');
     voiceModal.id = 'kyanos-voice-modal';
     voiceModal.innerHTML = `
       <div class="voice-modal-header">
         <div class="voice-modal-title">
-          <span>🎙️ 키아노스 보이스</span>
-          <span style="font-size:0.75rem; color:#92400e; font-weight:600;">(KyanosFlow)</span>
+          <span>🎙️ 키아노스 보이스 창</span>
+          <span style="font-size:0.75rem; color:#92400e; font-weight:600;">(Kyanos Voice)</span>
         </div>
         <button class="voice-close-btn" id="voiceCloseBtn" aria-label="닫기">✕</button>
       </div>
+
+      <!-- 상단 모드 전환 탭 -->
+      <div class="voice-nav-tabs">
+        <button class="voice-nav-tab active" id="tabVoiceLive">🎙️ 실시간 보이스 말하기</button>
+        <button class="voice-nav-tab" id="tabVoiceGuide">💡 PC 전체 F9 사용법</button>
+      </div>
+
       <div class="voice-modal-body">
-        <div class="voice-step-card">
-          <div class="voice-step-num">STEP 1</div>
-          <div class="voice-step-text">글 쓸 곳 커서 클릭 (한글, 메모장, 카톡 등)</div>
-        </div>
-        <div class="voice-step-card highlight">
-          <div class="voice-step-num" style="color:#1d4ed8;">STEP 2 (핵심)</div>
-          <div class="voice-step-text">
-            <span class="voice-key-badge">F9</span> 키를 <strong>누른 채로</strong> 말씀하세요
+        <!-- 1) 실시간 보이스 말하기 뷰 -->
+        <div class="voice-view-panel active" id="panelVoiceLive">
+          <div class="voice-live-mic-box">
+            <button class="voice-mic-main-btn" id="voiceMicMainBtn" title="마이크 클릭하여 말하기 시작" type="button">
+              <span class="mic-icon">🎙️</span>
+              <span class="mic-wave"></span>
+            </button>
+            <div class="voice-mic-status" id="voiceMicStatus">
+              마이크를 누르고 말씀해 보세요
+            </div>
+            <div class="voice-mic-substatus" id="voiceMicSubstatus">
+              (한국어 음성을 실시간으로 정확하게 글자로 적어드립니다)
+            </div>
           </div>
-        </div>
-        <div class="voice-step-card">
-          <div class="voice-step-num">STEP 3</div>
-          <div class="voice-step-text">
-            말씀 후 <span class="voice-key-badge">F9</span> 키에서 손 떼면 <strong>자동 타이핑!</strong>
+
+          <div class="voice-result-box">
+            <div class="voice-result-header">
+              <span>📝 실시간 인식 텍스트</span>
+              <span class="voice-char-count" id="voiceCharCount">0자</span>
+            </div>
+            <textarea class="voice-result-textarea" id="voiceResultArea" placeholder="마이크를 누르고 말씀하시면 여기에 실시간으로 글자가 작성됩니다..."></textarea>
           </div>
+
+          <div class="voice-action-toolbar">
+            <button class="voice-action-btn copy" id="voiceCopyBtn" type="button" title="클립보드에 복사">
+              📋 전체 복사
+            </button>
+            <button class="voice-action-btn send-omni" id="voiceSendOmniBtn" type="button" title="키아노스 SI 지능창으로 전송">
+              🏛️ SI 지능창에 질문
+            </button>
+            <button class="voice-action-btn clear" id="voiceClearBtn" type="button" title="지우기">
+              🧹 지우기
+            </button>
+          </div>
+          <div class="voice-toast-msg" id="voiceToastMsg"></div>
         </div>
-        <div class="voice-traffic-lights">
-          <span>🔵 파랑: 대기</span>
-          <span>🔴 빨강: 녹음 중</span>
-          <span>🟠 주황: 입력 중</span>
+
+        <!-- 2) PC 전체 F9 사용법 뷰 -->
+        <div class="voice-view-panel" id="panelVoiceGuide">
+          <div class="voice-step-card">
+            <div class="voice-step-num">STEP 1</div>
+            <div class="voice-step-text">글 쓸 곳 커서 클릭 (한글, 메모장, 카톡 등)</div>
+          </div>
+          <div class="voice-step-card highlight">
+            <div class="voice-step-num" style="color:#1d4ed8;">STEP 2 (핵심)</div>
+            <div class="voice-step-text">
+              <span class="voice-key-badge">F9</span> 키를 <strong>누른 채로</strong> 말씀하세요
+            </div>
+          </div>
+          <div class="voice-step-card">
+            <div class="voice-step-num">STEP 3</div>
+            <div class="voice-step-text">
+              말씀 후 <span class="voice-key-badge">F9</span> 키에서 손 떼면 <strong>자동 타이핑!</strong>
+            </div>
+          </div>
+          <div class="voice-traffic-lights">
+            <span>🔵 파랑: 대기</span>
+            <span>🔴 빨강: 녹음 중</span>
+            <span>🟠 주황: 입력 중</span>
+          </div>
+          <div style="font-size:0.76rem; color:#78350f; line-height:1.4;">
+            • 말하던 중 취소: <strong>[Esc]</strong> 키<br>
+            • 단축키 변경/설정: 우측 하단 마이크 트레이 <strong>우클릭</strong>
+          </div>
+          <a href="kyanos_voice_guide.html" target="_blank" class="voice-full-link-btn">
+            공식 전체 가이드 열기 ↗
+          </a>
         </div>
-        <div style="font-size:0.76rem; color:#78350f; line-height:1.4;">
-          • 말하던 중 취소: <strong>[Esc]</strong> 키<br>
-          • 단축키 변경/설정: 우측 하단 마이크 트레이 <strong>우클릭</strong>
-        </div>
-        <a href="kyanos_voice_guide.html" target="_blank" class="voice-full-link-btn">
-          공식 전체 가이드 열기 ↗
-        </a>
       </div>
     `;
 
@@ -181,7 +228,8 @@
       <!-- 입력창 -->
       <div class="omni-input-bar">
         <input type="text" class="omni-input" id="omniInput" placeholder="무엇이든 질문하거나 검색해 보세요..." autocomplete="off">
-        <button class="omni-send-btn" id="omniSendBtn" aria-label="전송">➔</button>
+        <button class="omni-mic-btn" id="omniMicBtn" title="음성으로 질문하기" aria-label="음성 마이크" type="button">🎙️</button>
+        <button class="omni-send-btn" id="omniSendBtn" aria-label="전송" type="button">➔</button>
       </div>
     `;
 
@@ -202,6 +250,29 @@
     });
     document.getElementById('omniCloseBtn').addEventListener('click', () => toggleModal(false));
 
+    // 보이스 모달 탭 전환 이벤트
+    const tabVoiceLive = document.getElementById('tabVoiceLive');
+    const tabVoiceGuide = document.getElementById('tabVoiceGuide');
+    const panelVoiceLive = document.getElementById('panelVoiceLive');
+    const panelVoiceGuide = document.getElementById('panelVoiceGuide');
+
+    tabVoiceLive.addEventListener('click', () => {
+      tabVoiceLive.classList.add('active');
+      tabVoiceGuide.classList.remove('active');
+      panelVoiceLive.classList.add('active');
+      panelVoiceGuide.classList.remove('active');
+    });
+
+    tabVoiceGuide.addEventListener('click', () => {
+      tabVoiceGuide.classList.add('active');
+      tabVoiceLive.classList.remove('active');
+      panelVoiceGuide.classList.add('active');
+      panelVoiceLive.classList.remove('active');
+    });
+
+    // 실시간 음성인식(Web Speech API) 초기화
+    setupSpeechRecognition();
+
     const input = document.getElementById('omniInput');
     const sendBtn = document.getElementById('omniSendBtn');
 
@@ -218,6 +289,220 @@
         handleSend();
       });
     });
+  }
+
+  // 실시간 음성 인식(Web Speech API) 엔진
+  function setupSpeechRecognition() {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const micBtn = document.getElementById('voiceMicMainBtn');
+    const micStatus = document.getElementById('voiceMicStatus');
+    const micSubstatus = document.getElementById('voiceMicSubstatus');
+    const resultArea = document.getElementById('voiceResultArea');
+    const charCount = document.getElementById('voiceCharCount');
+    const copyBtn = document.getElementById('voiceCopyBtn');
+    const clearBtn = document.getElementById('voiceClearBtn');
+    const sendOmniBtn = document.getElementById('voiceSendOmniBtn');
+    const toastMsg = document.getElementById('voiceToastMsg');
+    const omniMicBtn = document.getElementById('omniMicBtn');
+    const omniInput = document.getElementById('omniInput');
+
+    function showToast(msg) {
+      if (!toastMsg) return;
+      toastMsg.textContent = msg;
+      toastMsg.classList.add('show');
+      setTimeout(() => toastMsg.classList.remove('show'), 2500);
+    }
+
+    function updateCharCount() {
+      if (charCount && resultArea) {
+        charCount.textContent = `${resultArea.value.length}자`;
+      }
+    }
+
+    if (resultArea) {
+      resultArea.addEventListener('input', updateCharCount);
+    }
+
+    if (clearBtn && resultArea) {
+      clearBtn.addEventListener('click', () => {
+        resultArea.value = '';
+        updateCharCount();
+        showToast('텍스트가 지워졌습니다.');
+      });
+    }
+
+    if (copyBtn && resultArea) {
+      copyBtn.addEventListener('click', () => {
+        if (!resultArea.value.trim()) {
+          showToast('복사할 내용이 없습니다.');
+          return;
+        }
+        navigator.clipboard.writeText(resultArea.value).then(() => {
+          showToast('📋 복사 완료! 한글/메모장에 Ctrl+V 하세요.');
+        }).catch(() => {
+          resultArea.select();
+          document.execCommand('copy');
+          showToast('📋 복사되었습니다.');
+        });
+      });
+    }
+
+    if (sendOmniBtn && resultArea) {
+      sendOmniBtn.addEventListener('click', () => {
+        const text = resultArea.value.trim();
+        if (!text) {
+          showToast('전송할 음성 텍스트가 없습니다.');
+          return;
+        }
+        toggleVoiceModal(false);
+        toggleModal(true);
+        if (omniInput) {
+          omniInput.value = text;
+          handleSend();
+        }
+      });
+    }
+
+    if (!SpeechRecognition) {
+      if (micStatus) {
+        micStatus.textContent = '현재 브라우저가 음성 인식을 지원하지 않습니다.';
+      }
+      if (micSubstatus) {
+        micSubstatus.textContent = 'Microsoft Edge 또는 Chrome 브라우저에서 이용해 주십시오.';
+      }
+      if (micBtn) {
+        micBtn.disabled = true;
+        micBtn.style.opacity = '0.5';
+      }
+      if (omniMicBtn) {
+        omniMicBtn.style.display = 'none';
+      }
+      return;
+    }
+
+    // 보이스 모달 전용 음성 인식기
+    const recognition = new SpeechRecognition();
+    recognition.lang = 'ko-KR';
+    recognition.interimResults = true;
+    recognition.continuous = true;
+
+    let isRecording = false;
+    let baseTranscript = '';
+
+    micBtn.addEventListener('click', () => {
+      if (isRecording) {
+        recognition.stop();
+      } else {
+        try {
+          baseTranscript = resultArea.value ? resultArea.value + (resultArea.value.endsWith(' ') || resultArea.value.endsWith('\n') ? '' : ' ') : '';
+          recognition.start();
+        } catch (e) {
+          console.warn('Recognition start error:', e);
+        }
+      }
+    });
+
+    recognition.onstart = () => {
+      isRecording = true;
+      micBtn.classList.add('recording');
+      micStatus.textContent = '🔴 듣고 있습니다... 편하게 말씀하세요!';
+      micStatus.style.color = '#dc2626';
+      micSubstatus.textContent = '말씀이 끝나면 마이크 버튼을 다시 눌러 완료하세요.';
+    };
+
+    recognition.onresult = (event) => {
+      let interim = '';
+      let final = '';
+
+      for (let i = event.resultIndex; i < event.results.length; ++i) {
+        if (event.results[i].isFinal) {
+          final += event.results[i][0].transcript;
+        } else {
+          interim += event.results[i][0].transcript;
+        }
+      }
+
+      if (final) {
+        baseTranscript += final + ' ';
+      }
+
+      resultArea.value = baseTranscript + interim;
+      resultArea.scrollTop = resultArea.scrollHeight;
+      updateCharCount();
+    };
+
+    recognition.onerror = (event) => {
+      console.warn('Speech recognition error:', event.error);
+      if (event.error === 'not-allowed') {
+        micStatus.textContent = '마이크 권한이 차단되었습니다.';
+        micSubstatus.textContent = '브라우저 주소창 좌측 마이크 아이콘에서 권한을 허용해 주세요.';
+      } else {
+        micStatus.textContent = `음성 인식 안내: ${event.error}`;
+      }
+      isRecording = false;
+      micBtn.classList.remove('recording');
+    };
+
+    recognition.onend = () => {
+      isRecording = false;
+      micBtn.classList.remove('recording');
+      micStatus.textContent = '마이크를 누르고 말씀해 보세요';
+      micStatus.style.color = '#78350f';
+      micSubstatus.textContent = '말씀하신 내용이 아래 텍스트 창에 완성되었습니다.';
+    };
+
+    // 옴니 다이얼로그 전용 인라인 음성 검색
+    if (omniMicBtn && omniInput) {
+      const omniRecognition = new SpeechRecognition();
+      omniRecognition.lang = 'ko-KR';
+      omniRecognition.interimResults = true;
+      omniRecognition.continuous = false;
+      let isOmniRec = false;
+
+      omniMicBtn.addEventListener('click', () => {
+        if (isOmniRec) {
+          omniRecognition.stop();
+        } else {
+          try {
+            omniRecognition.start();
+          } catch (e) {
+            console.warn(e);
+          }
+        }
+      });
+
+      omniRecognition.onstart = () => {
+        isOmniRec = true;
+        omniMicBtn.classList.add('recording');
+        omniMicBtn.textContent = '🔴';
+        omniInput.placeholder = '말씀하세요... (음성 듣는 중)';
+      };
+
+      omniRecognition.onresult = (event) => {
+        let transcript = '';
+        for (let i = event.resultIndex; i < event.results.length; ++i) {
+          transcript += event.results[i][0].transcript;
+        }
+        omniInput.value = transcript;
+      };
+
+      omniRecognition.onerror = () => {
+        isOmniRec = false;
+        omniMicBtn.classList.remove('recording');
+        omniMicBtn.textContent = '🎙️';
+        omniInput.placeholder = '무엇이든 질문하거나 검색해 보세요...';
+      };
+
+      omniRecognition.onend = () => {
+        isOmniRec = false;
+        omniMicBtn.classList.remove('recording');
+        omniMicBtn.textContent = '🎙️';
+        omniInput.placeholder = '무엇이든 질문하거나 검색해 보세요...';
+        if (omniInput.value.trim()) {
+          handleSend();
+        }
+      };
+    }
   }
 
   function toggleVoiceModal(open) {

@@ -401,22 +401,23 @@
 }
 
 /* ==========================================================================
-   키아노스 보이스 포스트잇 팝업 모달
+   키아노스 보이스 인터랙티브 창 모달 (실시간 음성 대화 & PC 사용법 듀얼 콘솔)
    ========================================================================== */
 #kyanos-voice-modal {
   position: fixed;
   bottom: 85px;
   right: 28px;
-  width: 380px;
+  width: 420px;
   max-width: calc(100vw - 36px);
-  background: linear-gradient(135deg, #fffbeb 0%, #fef08a 100%);
+  max-height: calc(100vh - 110px);
+  background: linear-gradient(135deg, #fffdf5 0%, #fef9c3 100%);
   border: 2px solid #eab308;
-  border-radius: 18px;
+  border-radius: 20px;
   z-index: 9999;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 25px rgba(250, 204, 21, 0.4);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), 0 0 30px rgba(250, 204, 21, 0.4);
   opacity: 0;
   pointer-events: none;
   transform: translateY(20px) scale(0.95);
@@ -435,13 +436,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 18px;
+  padding: 13px 18px;
   background: #fde047;
   border-bottom: 1.5px solid #eab308;
 }
 
 .voice-modal-title {
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   font-weight: 800;
   color: #78350f;
   display: flex;
@@ -452,13 +453,14 @@
 .voice-close-btn {
   background: transparent;
   border: none;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 800;
   color: #78350f;
   cursor: pointer;
-  padding: 2px 6px;
+  padding: 3px 7px;
   border-radius: 6px;
   line-height: 1;
+  transition: all 0.2s;
 }
 
 .voice-close-btn:hover {
@@ -466,13 +468,237 @@
   color: #000;
 }
 
-.voice-modal-body {
-  padding: 16px 18px;
+/* 상단 탭 네비게이션 */
+.voice-nav-tabs {
   display: flex;
+  background: rgba(254, 240, 138, 0.6);
+  border-bottom: 1px solid rgba(234, 179, 8, 0.4);
+  padding: 4px 10px 0;
+  gap: 6px;
+}
+
+.voice-nav-tab {
+  flex: 1;
+  padding: 8px 10px;
+  background: transparent;
+  border: none;
+  border-bottom: 2.5px solid transparent;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #854d0e;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 8px 8px 0 0;
+}
+
+.voice-nav-tab:hover {
+  background: rgba(255, 255, 255, 0.4);
+  color: #713f12;
+}
+
+.voice-nav-tab.active {
+  background: #ffffff;
+  color: #1e3a8a;
+  border-bottom-color: #2563eb;
+  font-weight: 800;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.voice-modal-body {
+  padding: 14px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+}
+
+/* 탭 패널 전환 */
+.voice-view-panel {
+  display: none;
   flex-direction: column;
   gap: 12px;
 }
 
+.voice-view-panel.active {
+  display: flex;
+}
+
+/* 실시간 마이크 제어 영역 */
+.voice-live-mic-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 14px 12px 10px;
+  background: #ffffff;
+  border: 1.5px solid rgba(234, 179, 8, 0.4);
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.voice-mic-main-btn {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  border: 3px solid #60a5fa;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.voice-mic-main-btn:hover {
+  transform: scale(1.06);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.5);
+}
+
+.voice-mic-main-btn .mic-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+/* 마이크 녹음 중 상태 */
+.voice-mic-main-btn.recording {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  border-color: #fca5a5;
+  box-shadow: 0 0 25px rgba(239, 68, 68, 0.7);
+  animation: mic-listening-pulse 1.3s infinite;
+}
+
+@keyframes mic-listening-pulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+  50% { transform: scale(1.08); box-shadow: 0 0 0 16px rgba(239, 68, 68, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+.voice-mic-status {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: #78350f;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.voice-mic-substatus {
+  font-size: 0.74rem;
+  color: #64748b;
+  margin-top: 2px;
+  text-align: center;
+}
+
+/* 실시간 텍스트 결과 영역 */
+.voice-result-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.voice-result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #475569;
+}
+
+.voice-char-count {
+  font-size: 0.72rem;
+  color: #2563eb;
+  font-weight: 800;
+}
+
+.voice-result-textarea {
+  width: 100%;
+  height: 110px;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: #0f172a;
+  resize: vertical;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.voice-result-textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+/* 액션 툴바 */
+.voice-action-toolbar {
+  display: flex;
+  gap: 6px;
+}
+
+.voice-action-btn {
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: none;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  transition: all 0.2s;
+}
+
+.voice-action-btn.copy {
+  background: #1e3a8a;
+  color: #ffffff;
+}
+
+.voice-action-btn.copy:hover {
+  background: #1d4ed8;
+}
+
+.voice-action-btn.send-omni {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: #ffffff;
+}
+
+.voice-action-btn.send-omni:hover {
+  background: #b45309;
+}
+
+.voice-action-btn.clear {
+  flex: 0 0 auto;
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+.voice-action-btn.clear:hover {
+  background: #e2e8f0;
+  color: #334155;
+}
+
+/* 토스트 메시지 */
+.voice-toast-msg {
+  min-height: 18px;
+  font-size: 0.75rem;
+  color: #059669;
+  font-weight: 700;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.voice-toast-msg.show {
+  opacity: 1;
+}
+
+/* F9 가이드 탭 내부 카드 */
 .voice-step-card {
   background: rgba(255, 255, 255, 0.85);
   border: 1px solid rgba(234, 179, 8, 0.5);
@@ -537,4 +763,34 @@
 
 .voice-full-link-btn:hover {
   background: #1d4ed8;
+}
+
+/* 옴니 다이얼로그 입력창 내부 마이크 버튼 */
+.omni-mic-btn {
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  color: #fde68a;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.omni-mic-btn:hover {
+  background: rgba(245, 158, 11, 0.3);
+  border-color: #fde68a;
+  transform: scale(1.05);
+}
+
+.omni-mic-btn.recording {
+  background: #dc2626;
+  border-color: #f87171;
+  color: #fff;
+  animation: mic-listening-pulse 1.3s infinite;
 }
