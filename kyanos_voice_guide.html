@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>키아노스 보이스 (Kyanos Voice) — 초간편 사용 가이드</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0f172a;
+      --card-yellow: #fef08a;
+      --card-yellow-border: #facc15;
+      --accent-blue: #2563eb;
+      --accent-red: #ef4444;
+      --accent-amber: #f59e0b;
+      --text-main: #0f172a;
+      --text-sub: #334155;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #1e293b 0%, #0a0f1d 100%);
+      color: #f8fafc;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 680px;
+      width: 100%;
+    }
+
+    /* 포스트잇 카드 스타일 */
+    .postit-card {
+      background: linear-gradient(135deg, #fffbeb 0%, #fef08a 100%);
+      color: var(--text-main);
+      border-radius: 16px;
+      padding: 36px 32px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(250, 204, 21, 0.4);
+      position: relative;
+      transform: rotate(-0.5deg);
+      transition: transform 0.2s ease;
+    }
+
+    .postit-card:hover {
+      transform: rotate(0deg);
+    }
+
+    /* 상단 핀 장식 */
+    .pin {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 28px;
+      height: 28px;
+      background: radial-gradient(circle at 35% 35%, #ef4444, #991b1b);
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px dashed #e2e8f0;
+      padding-bottom: 18px;
+      margin-bottom: 24px;
+    }
+
+    .header-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: #78350f;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .badge-live {
+      background: #10b981;
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+    }
+
+    /* 3단계 다이렉트 가이드 */
+    .direct-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(253, 224, 71, 0.8);
+      padding: 16px 20px;
+      border-radius: 12px;
+      backdrop-filter: blur(4px);
+    }
+
+    .step-num {
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+      background: #1e3a8a;
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 800;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 4px rgba(30, 58, 138, 0.3);
+    }
+
+    .step-content {
+      flex: 1;
+    }
+
+    .step-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 4px;
+    }
+
+    .step-desc {
+      font-size: 14px;
+      color: var(--text-sub);
+      line-height: 1.5;
+    }
+
+    .key-badge {
+      display: inline-block;
+      background: #1e293b;
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 13px;
+      padding: 3px 9px;
+      border-radius: 6px;
+      box-shadow: 0 2px 0 #000000;
+      letter-spacing: 0.5px;
+      margin: 0 2px;
+    }
+
+    /* 신호등 상태 안내 */
+    .status-section {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 18px 20px;
+      border: 1px solid #e2e8f0;
+      margin-bottom: 24px;
+    }
+
+    .section-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: #475569;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .status-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .status-card {
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .status-card.blue {
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+    }
+
+    .status-card.red {
+      background: #fef2f2;
+      color: #dc2626;
+      border: 1px solid #fecaca;
+    }
+
+    .status-card.amber {
+      background: #fffbeb;
+      color: #d97706;
+      border: 1px solid #fde68a;
+    }
+
+    /* 하단 꿀팁 */
+    .tips-box {
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .tip-line {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* 브라우저 마이크 체험 테스트 */
+    .test-zone {
+      margin-top: 28px;
+      background: #0f172a;
+      border-radius: 16px;
+      padding: 24px;
+      border: 1px solid #334155;
+      text-align: center;
+    }
+
+    .test-btn {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #ffffff;
+      border: none;
+      padding: 14px 28px;
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: 10px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+    }
+
+    .test-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.6);
+    }
+
+    .test-result {
+      margin-top: 14px;
+      font-size: 14px;
+      color: #94a3b8;
+      min-height: 24px;
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 12px;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- 포스트잇 카드 -->
+    <div class="postit-card">
+      <div class="pin"></div>
+      
+      <div class="header">
+        <div class="header-title">
+          <span>🎙️ 키아노스 보이스</span>
+          <span style="font-size: 16px; font-weight: 600; color: #92400e;">(KyanosFlow)</span>
+        </div>
+        <div class="badge-live">무제한 · 로컬 전용</div>
+      </div>
+
+      <!-- 다이렉트 3단계 -->
+      <div class="direct-steps">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-title">글 쓸 곳 커서 클릭</div>
+            <div class="step-desc">한글2024, 메모장, 카카오톡, 인터넷 검색창 등 글을 입력하고 싶은 곳을 마우스로 클릭합니다.</div>
+          </div>
+        </div>
+
+        <div class="step-item" style="background: rgba(254, 240, 138, 0.9); border: 2px solid #eab308;">
+          <div class="step-num" style="background: #2563eb;">2</div>
+          <div class="step-content">
+            <div class="step-title" style="color: #1d4ed8; font-size: 18px;">
+              <span class="key-badge">F9</span> 키를 누른 채로 말씀하세요
+            </div>
+            <div class="step-desc" style="font-weight: 600; color: #1e293b;">
+              키보드의 <strong>[F9]</strong> 키를 꾹 누르고 있는 동안 말씀하시면 마이크가 실시간으로 음성을 듣습니다.
+            </div>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-title"><span class="key-badge">F9</span> 키를 떼면 자동 입력!</div>
+            <div class="step-desc">말씀이 끝나고 손을 떼는 순간, 1초 만에 깔끔한 문장으로 정제되어 커서 위치에 바로 타이핑됩니다.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 트레이 아이콘 색상 신호등 -->
+      <div class="status-section">
+        <div class="section-title">🚦 화면 우측 하단 트레이 아이콘 색상</div>
+        <div class="status-grid">
+          <div class="status-card blue">
+            🔵 파랑<br><span style="font-size: 11px; font-weight: 500;">준비 완료 (대기)</span>
+          </div>
+          <div class="status-card red">
+            🔴 빨강<br><span style="font-size: 11px; font-weight: 500;">듣는 중 (녹음)</span>
+          </div>
+          <div class="status-card amber">
+            🟠 주황<br><span style="font-size: 11px; font-weight: 500;">변환 & 자동 입력 중</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 핵심 팁 -->
+      <div class="tips-box">
+        <div class="tip-line">
+          <strong>❌ 말하던 중 취소:</strong> 말씀 도중 <strong>[Esc]</strong> 키를 누르면 즉시 취소됩니다.
+        </div>
+        <div class="tip-line">
+          <strong>⚙️ 설정 변경:</strong> 트레이의 마이크 아이콘을 <strong>우클릭</strong>하면 입력 방식(누르고 있기 vs 한 번 눌러 켜기)을 바꿀 수 있습니다.
+        </div>
+      </div>
+    </div>
+
+    <!-- 푸터 -->
+    <div class="footer-note">
+      키아노스 정부 소프트웨어 연구개발원 · Super Intelligence Voice Flow v1.0
+    </div>
+  </div>
+
+</body>
+</html>
