@@ -433,14 +433,26 @@
 
     recognition.onerror = (event) => {
       console.warn('Speech recognition error:', event.error);
-      if (event.error === 'not-allowed') {
-        micStatus.textContent = '마이크 권한이 차단되었습니다.';
-        micSubstatus.textContent = '브라우저 주소창 좌측 마이크 아이콘에서 권한을 허용해 주세요.';
-      } else {
-        micStatus.textContent = `음성 인식 안내: ${event.error}`;
-      }
       isRecording = false;
       micBtn.classList.remove('recording');
+      micStatus.style.color = '#dc2626';
+
+      if (event.error === 'not-allowed') {
+        micStatus.textContent = '🔒 마이크 접근 권한이 필요합니다.';
+        micSubstatus.innerHTML = 'Edge 브라우저 주소창 좌측 <strong>[자물쇠🔒]</strong> 클릭 ➔ <strong>[마이크: 허용]</strong>으로 설정해 주세요.';
+      } else if (event.error === 'no-speech') {
+        micStatus.textContent = '소리가 감지되지 않았습니다.';
+        micSubstatus.textContent = '마이크에 가까이 대고 조금 더 큰 목소리로 말씀해 보세요.';
+      } else if (event.error === 'audio-capture') {
+        micStatus.textContent = '마이크 연결 실패 (음악웹 또는 녹음앱 충돌 가능)';
+        micSubstatus.textContent = '다른 웹/앱에서 마이크를 점유 중인지 또는 기본 마이크 설정을 확인해 주세요.';
+      } else if (event.error === 'network') {
+        micStatus.textContent = '음성 변환 네트워크 일시 지연';
+        micSubstatus.textContent = '잠시 후 다시 마이크 버튼을 눌러 시도해 주세요.';
+      } else {
+        micStatus.textContent = `음성 안내 (${event.error})`;
+        micSubstatus.textContent = '마이크 버튼을 다시 누르고 말씀해 보세요.';
+      }
     };
 
     recognition.onend = () => {
