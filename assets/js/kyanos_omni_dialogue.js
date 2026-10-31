@@ -389,16 +389,41 @@
     let isRecording = false;
     let baseTranscript = '';
 
-    micBtn.addEventListener('click', () => {
-      if (isRecording) {
-        recognition.stop();
-      } else {
+    function startRecognitionWithPermission() {
+      if (!isRecording) {
+        baseTranscript = resultArea.value ? resultArea.value + (resultArea.value.endsWith(' ') || resultArea.value.endsWith('\n') ? '' : ' ') : '';
         try {
-          baseTranscript = resultArea.value ? resultArea.value + (resultArea.value.endsWith(' ') || resultArea.value.endsWith('\n') ? '' : ' ') : '';
           recognition.start();
         } catch (e) {
           console.warn('Recognition start error:', e);
         }
+      }
+    }
+
+    micBtn.addEventListener('click', () => {
+      if (isRecording) {
+        recognition.stop();
+        return;
+      }
+
+      // Edge 브라우저에 마이크 권한 요청 팝업을 강제로 띄우는 브리지
+      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        micStatus.textContent = '🎙️ 마이크 권한 확인 중...';
+        micSubstatus.textContent = '브라우저 상단에 "마이크 허용" 창이 뜨면 [허용]을 눌러주세요.';
+
+        navigator.mediaDevices.getUserMedia({ audio: true })
+          .then((stream) => {
+            // 권한 획득 성공 시 즉시 스트림 해제 후 recognition 시작
+            stream.getTracks().forEach(track => track.stop());
+            startRecognitionWithPermission();
+          })
+          .catch((err) => {
+            console.warn('getUserMedia error:', err);
+            // 권한 프롬프트 실패 시에도 recognition 시도
+            startRecognitionWithPermission();
+          });
+      } else {
+        startRecognitionWithPermission();
       }
     });
 
