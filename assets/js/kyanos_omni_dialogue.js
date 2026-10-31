@@ -387,10 +387,12 @@
     recognition.continuous = true;
 
     let isRecording = false;
+    let hasError = false;
     let baseTranscript = '';
 
     function startRecognitionWithPermission() {
       if (!isRecording) {
+        hasError = false;
         baseTranscript = resultArea.value ? resultArea.value + (resultArea.value.endsWith(' ') || resultArea.value.endsWith('\n') ? '' : ' ') : '';
         try {
           recognition.start();
@@ -406,21 +408,40 @@
         return;
       }
 
-      // Edge 브라우저에 마이크 권한 요청 팝업을 강제로 띄우는 브리지
+      hasError = false;
+      // Edge 브라우저 마이크 장치 및 권한 사전 정밀 점검
       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        micStatus.textContent = '🎙️ 마이크 권한 확인 중...';
+        micStatus.style.color = '#1d4ed8';
+        micStatus.textContent = '🎙️ 마이크 연결 및 권한 확인 중...';
         micSubstatus.textContent = '브라우저 상단에 "마이크 허용" 창이 뜨면 [허용]을 눌러주세요.';
 
         navigator.mediaDevices.getUserMedia({ audio: true })
           .then((stream) => {
-            // 권한 획득 성공 시 즉시 스트림 해제 후 recognition 시작
+            // 권한 및 마이크 장치 확인 성공 시 스트림 해제 후 recognition 시작
             stream.getTracks().forEach(track => track.stop());
             startRecognitionWithPermission();
           })
           .catch((err) => {
             console.warn('getUserMedia error:', err);
-            // 권한 프롬프트 실패 시에도 recognition 시도
-            startRecognitionWithPermission();
+            hasError = true;
+            isRecording = false;
+            micBtn.classList.remove('recording');
+            micStatus.style.color = '#dc2626';
+
+            if (err.name === 'NotFoundError' || err.name === 'DevicesNotFoundError') {
+              micStatus.textContent = '🔌 연결된 마이크 장치가 감지되지 않습니다.';
+              micSubstatus.innerHTML = '현재 PC에 마이크(이어폰·헤드셋·무선마이크)가 꽂혀 있지 않습니다. <strong>마이크 연결 후 다시 눌러주세요!</strong>';
+            } else if (err.name === 'NotAllowedError' || err.name === 'PermissionDeniedError') {
+              micStatus.textContent = '🔒 마이크 접근 권한이 차단되어 있습니다.';
+              micSubstatus.innerHTML = 'Edge 주소창 좌측 <strong>[자물쇠🔒]</strong> 클릭 ➔ <strong>[마이크: 허용]</strong>으로 설정해 주세요.';
+            } else if (err.name === 'NotReadableError' || err.name === 'TrackStartError') {
+              micStatus.textContent = '⚠️ 마이크가 다른 프로그램에서 사용 중입니다.';
+              micSubstatus.textContent = '다른 녹음 앱이나 통화 프로그램을 종료한 후 다시 시도해 주세요.';
+            } else {
+              // 기타 예외 시에는 음성인식 직접 시도
+              hasError = false;
+              startRecognitionWithPermission();
+            }
           });
       } else {
         startRecognitionWithPermission();
@@ -428,6 +449,7 @@
     });
 
     recognition.onstart = () => {
+      hasError = false;
       isRecording = true;
       micBtn.classList.add('recording');
       micStatus.textContent = '🔴 듣고 있습니다... 편하게 말씀하세요!';
@@ -458,6 +480,7 @@
 
     recognition.onerror = (event) => {
       console.warn('Speech recognition error:', event.error);
+      hasError = true;
       isRecording = false;
       micBtn.classList.remove('recording');
       micStatus.style.color = '#dc2626';
@@ -469,23 +492,25 @@
         micStatus.textContent = '소리가 감지되지 않았습니다.';
         micSubstatus.textContent = '마이크에 가까이 대고 조금 더 큰 목소리로 말씀해 보세요.';
       } else if (event.error === 'audio-capture') {
-        micStatus.textContent = '마이크 연결 실패 (음악웹 또는 녹음앱 충돌 가능)';
-        micSubstatus.textContent = '다른 웹/앱에서 마이크를 점유 중인지 또는 기본 마이크 설정을 확인해 주세요.';
+        micStatus.textContent = '🔌 마이크 입력 장치를 찾을 수 없습니다.';
+        micSubstatus.innerHTML = 'PC에 마이크(이어폰·헤드셋·무선마이크)가 연결되어 있는지 확인해 주세요.';
       } else if (event.error === 'network') {
         micStatus.textContent = '음성 변환 네트워크 일시 지연';
         micSubstatus.textContent = '잠시 후 다시 마이크 버튼을 눌러 시도해 주세요.';
       } else {
         micStatus.textContent = `음성 안내 (${event.error})`;
-        micSubstatus.textContent = '마이크 버튼을 다시 누르고 말씀해 보세요.';
+        micSubstatus.textContent = '마이크 연결 상태를 확인하신 후 다시 눌러보세요.';
       }
     };
 
     recognition.onend = () => {
       isRecording = false;
       micBtn.classList.remove('recording');
-      micStatus.textContent = '마이크를 누르고 말씀해 보세요';
-      micStatus.style.color = '#78350f';
-      micSubstatus.textContent = '말씀하신 내용이 아래 텍스트 창에 완성되었습니다.';
+      if (!hasError) {
+        micStatus.textContent = '마이크를 누르고 말씀해 보세요';
+        micStatus.style.color = '#78350f';
+        micSubstatus.textContent = '말씀하신 내용이 아래 텍스트 창에 완성되었습니다.';
+      }
     };
 
     // 옴니 다이얼로그 전용 인라인 음성 검색
