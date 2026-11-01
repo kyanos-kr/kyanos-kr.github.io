@@ -1,16 +1,16 @@
 {
-  "timestamp": "2026-11-01 11:36:53",
+  "timestamp": "2026-11-01 12:06:51",
   "crypto": [
     {
       "category": "crypto",
       "symbol": "BTC",
       "name": "비트코인",
-      "price": 104627000.0,
-      "price_str": "104,627,000원",
-      "change": 152000.0,
-      "change_str": "+152,000원",
-      "change_rate": 0.14548935,
-      "change_rate_str": "+0.15%",
+      "price": 104688000.0,
+      "price_str": "104,688,000원",
+      "change": 213000.0,
+      "change_str": "+213,000원",
+      "change_rate": 0.20387653000000003,
+      "change_rate_str": "+0.20%",
       "high_str": "104,733,000원",
       "low_str": "104,358,000원",
       "status": "up"
@@ -40,36 +40,36 @@
       "change_rate": -0.23738872,
       "change_rate_str": "-0.24%",
       "high_str": "1,692원",
-      "low_str": "1,681원",
+      "low_str": "1,680원",
       "status": "down"
     },
     {
       "category": "crypto",
       "symbol": "SOL",
       "name": "솔라나",
-      "price": 128500.0,
-      "price_str": "128,500원",
-      "change": 0,
-      "change_str": "+0.00원",
-      "change_rate": 0,
-      "change_rate_str": "+0.00%",
+      "price": 128600.0,
+      "price_str": "128,600원",
+      "change": 100.0,
+      "change_str": "+100원",
+      "change_rate": 0.07782101,
+      "change_rate_str": "+0.08%",
       "high_str": "129,100원",
-      "low_str": "128,400원",
-      "status": "flat"
+      "low_str": "128,300원",
+      "status": "up"
     },
     {
       "category": "crypto",
       "symbol": "DOGE",
       "name": "도지코인",
-      "price": 101.0,
-      "price_str": "101원",
-      "change": -1.0,
-      "change_str": "-1.00원",
-      "change_rate": -0.98039216,
-      "change_rate_str": "-0.98%",
+      "price": 102.0,
+      "price_str": "102원",
+      "change": 0,
+      "change_str": "+0.00원",
+      "change_rate": 0,
+      "change_rate_str": "+0.00%",
       "high_str": "103원",
       "low_str": "101원",
-      "status": "down"
+      "status": "flat"
     }
   ],
   "domestic": [
