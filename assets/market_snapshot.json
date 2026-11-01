@@ -149,18 +149,6 @@
     },
     {
       "category": "global",
-      "symbol": "GSPC",
-      "name": "S&P 500",
-      "price": 7580.07,
-      "price_str": "7,580.07pt",
-      "change": -140.32000000000062,
-      "change_str": "-140.32pt",
-      "change_rate": -1.8175247623500965,
-      "change_rate_str": "-1.82%",
-      "status": "down"
-    },
-    {
-      "category": "global",
       "symbol": "NVDA",
       "name": "엔비디아",
       "price": 204.64,
