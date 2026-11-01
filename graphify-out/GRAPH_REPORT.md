@@ -1,17 +1,17 @@
-# Graph Report - 안티그래비티파이튼  (2026-10-27)
+# Graph Report - 안티그래비티파이튼  (2026-11-01)
 
 ## Corpus Check
-- 189 files · ~488,670 words
+- 208 files · ~552,832 words
 - Verdict: corpus is large enough that graph structure adds value.
-- Unclassified: 124 file(s) not represented in the graph (top: .url 61, .hwpx 24, .bat 19)
+- Unclassified: 142 file(s) not represented in the graph (top: .url 77, .hwpx 24, .bat 20)
 
 ## Summary
-- 1781 nodes · 1973 edges · 194 communities (180 shown, 14 thin omitted)
-- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 12 edges (avg confidence: 0.88)
+- 2007 nodes · 2224 edges · 210 communities (187 shown, 23 thin omitted)
+- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 13 edges (avg confidence: 0.87)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `592ab2c2`
+- Built from commit: `26e3d8f7`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -41,7 +41,7 @@
 - 📑 3. 영역별 상세 프로젝트 지시사항 및 이행 내역 추적
 - 💎 키아노스 국가 자립 재정 확충 및 국민 방문 경험치 시스템 종합 백서
 - 2. 기타 코드 악보 (Guitar Chords & Lyrics)
-- 🏛️ 키아노스 국립 인류문명사연구원
+- 키아노스 정부 교육·문화부 소관 핵심 연구기관
 - 📰 AntNews (antnews.org) 구글 애드센스 승인 및 광고 효율 최적화 연구 리포트
 - subprocess
 - 📊 2. 6대 전략 사업 카테고리 (Sovereign Business Categories)
@@ -65,20 +65,20 @@
 - 2. 키아노스 독자 드론 「TALOS-Omni」 핵심 개발 규격
 - 3. 핵심 자동화 파이프라인 4대 구조
 - 📚 [1] 삼국지 평역 10권별 목차 및 수록 현황 (Volume Index)
-- 3. 🌏 동양 고전 및 역사철학
+- 🏛️ 국내 정치 & 국정·정책 (10건)
 - 🏛️ 국내 정치 & 국정·정책 (10건)
 - 🌐 파이튼 공식 3대 블로그 네트워크 재정립 헌장
 - 🎨 구글 『파이튼의 예술세계』 기존 92편 전수 점검 및 해설판 전환 대장
 - 3. 키아노스 국제부 4대 핵심 직제 반영 정책 및 카테고리 선별 체계
 - 2. X (Twitter) High-Impact Viral Thread (5 Tweets)
 - 2. 산하 4대 핵심 국(局)별 세부 활동 계획 및 지침
-- 《돈키호테(Don Quijote)》: 세상을 바꾼 거룩한 광기와 슬픈 몰골의 기사
+- 🏛️ 국내 정치 & 국정·정책 (10건)
 - 🏛️ 2. 단계별 마스터 실행 계획 (4-Phase Strategy)
 - 2. 5대 무결점 보안 수칙 (Five Ironclad Protocols)
 - [키아노스 보안사령부 전술교리 문서]
 - 2. 키아노스 전략 인텔리전스 3대 분석 축
 - 2. 산하 4대 핵심 국(局)별 세부 활동 계획 및 지침
-- 01_네이버_파이튼의_문학산책/README.md
+- 🏛️ 국내 정치 & 국정·정책 (10건)
 - 🌹 Land of Blue Rose (블루로즈 판타지아 이상국가: 키아노스 주권령)
 - 2. 산하 5대 핵심 기관별 세부 활동 계획 및 지침
 - 2. 5대 무결점 보안 수칙 (Five Ironclad Protocols)
@@ -110,13 +110,13 @@
 - 📰 앤트뉴스 보도국 내부 실무 규정 및 제작 지침서 (대외비)
 - auto_daily_travel_runner.py
 - make_may_love_guide.py
-- 《레미제라블(Les Misérables)》: 가장 비참한 밑바닥에서 피어난 거룩한 사랑과 영혼의 부활
+- 🏛️ 국내 정치 & 국정·정책 (10건)
 - 🗺️ 키아노스 주권국 (The Sovereign Realm of Kyanos) 공식 국가지도 등록증
 - 🌿 『Ant-Travel Korea』 시범 원고 제1호 — 선유도공원 (Seonyudo Island Park)
 - 🌿 『Ant-Travel Korea』 시범 원고 제1호 — 선유도공원 (Seonyudo Island Park)
 - 🎼 [키아노스 국립음악창작원] 독자 AI 음원 생성 인프라 운용 가이드
 - createTopNoticeWidget
-- 01_네이버_파이튼의_문학산책/README.md
+- 📁 주요 보관 및 연동 체계 (D/F 단일 원본 원칙 준수)
 - 💰 키아노스 경제부 (Ministry of Economy)
 - 📱 키아노스 대국민 모바일 환경 및 전용 앱 구축 검토 보고 (참고 메모)
 - 2. 시스템 실전 탑재 완료 내역 (4대 핵심 오픈소스 엔진 & 스킬)
@@ -132,9 +132,9 @@
 - 🛡️ 국제질서유지 보안사령부 (Supreme Security Command / K-SEF)
 - 🏛️ 키아노스 경제부 전략 재원 포트폴리오 체결 및 관리 대장
 - 🔬 키아노스 과학·SI부 (Ministry of Science & Super Intelligence)
-- Ⅰ. 대문호의 숨결: 세계 유명 문학 서적 (러시아 / 영국 / 프랑스 / 독일 등)
-- Ⅲ. 전체 줄거리 및 5부 대서사 전개
-- 3. 🇫🇷 프랑스 문학: 행동주의, 휴머니즘, 실존의 결단
+- 🏛️ 국내 정치 & 국정·정책 (10건)
+- monitor_web.py
+- manifest.json
 - DAILY_TRAVEL_AUTO_PIPELINE.md
 - ✈️ 『Ant-Travel Korea』 전용 원고 저장소
 - 03_구글_파이튼의_초지능_미래오디세이/README.md
@@ -207,20 +207,36 @@
 - 🦾 키아노스 탈로스(TALOS) 휴머노이드 로봇 대량양산 생산기술서
 - 🛸 키아노스 차세대 자율비행 군집드론 제작 엔지니어링 기술서
 - kyanos_omni_dialogue.js
-- 🏛️ 키아노스 국립 인류문명사연구원
-- 1. 🇷🇺 러시아 문학: 영혼의 심연과 도덕적 구원
+- kyanos_music_engine.py
+- KyanosMusicEngine
+- 🧠 키아노스 자율로봇(Project TALOS) D램 반도체 생산함수 및 수급 자립 국가전략서
+- time
+- [키아노스 정부] 엔비디아 고성능 오픈소스 SI 인프라 통합 전략서
+- nvidia_nim_client.py
+- 🏛️ [키아노스 과학·SI부 표준규격서] 제미나이 4 아르곤 멀티 에이전트 오케스트레이션 및 원 프롬프트 개발 표준 (SI-SPEC-2026-04)
+- 🌐 [국무총리실 특별보고] 키아노스 국가 소개 및 글로벌 유튜브 홍보 비디오(롱/숏폼) 런칭 완비 보고서
+- build_5_articles_batch.py
+- initMobileDrawer
+- 🏛️ 키아노스 마켓 펄스 (KYANOS Market Pulse)
+- 🎵 키아노스 AI 음악 생성기 (F: 드라이브 정규 이전 완료)
+- build_hwpx
+- build_hwpx_perfect
+- 🌺 Ant-Travel Korea 일일 인바운드 발행 안내문
+- sw.js
+- 2026-10-28_Travel_Gyeonggi_Pocheon_Sanjeongho_Lake_Myeongseongsan_안내문.md
+- 2026-10-28_SI_제9호_피지컬SI와휴머노이드로봇생산함수혁명_안내문.md
 
 ## God Nodes (most connected - your core abstractions)
 1. `📜 [3] 삼국지 지혜 원문 인용 카드 (48선 전재)` - 49 edges
-2. `Identity & Interaction Guidelines` - 25 edges
-3. `CitizenManager` - 20 edges
-4. `get_all_market_data()` - 13 edges
+2. `CitizenManager` - 20 edges
+3. `get_all_market_data()` - 13 edges
+4. `🧭 키아노스 덕치 12대 원칙 (본문)` - 13 edges
 5. `🧭 키아노스 덕치 12대 원칙 (본문)` - 13 edges
-6. `🧭 키아노스 덕치 12대 원칙 (본문)` - 13 edges
-7. `KyanosTranslator` - 12 edges
-8. `🏛️ 국내 정치 & 국정·정책 (10건)` - 11 edges
-9. `⚡ 5대 전략 테크 & 산업 (10건)` - 11 edges
-10. `🏛️ 국내 정치 & 국정·정책 (10건)` - 11 edges
+6. `KyanosTranslator` - 12 edges
+7. `🏛️ 국내 정치 & 국정·정책 (10건)` - 11 edges
+8. `⚡ 5대 전략 테크 & 산업 (10건)` - 11 edges
+9. `🏛️ 국내 정치 & 국정·정책 (10건)` - 11 edges
+10. `⚡ 5대 전략 테크 & 산업 (10건)` - 11 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `🛠️ 종목 추가 및 커스텀 방법` --references--> `fetch_crypto_upbit()`  [INFERRED]
@@ -237,7 +253,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (194 total, 14 thin omitted)
+## Communities (210 total, 23 thin omitted)
 
 ### Community 0 - "⚡ 5대 전략 테크 & 산업 (10건)"
 Cohesion: 0.05
@@ -264,16 +280,16 @@ Cohesion: 0.05
 Nodes (39): [10] 정부, 반도체 규제 13개 개선과제 발표… 공장 건설부터 수출까지 속도 높인다, [1] 2026 국회 국정감사 최종 종합감사 대격돌… 사법·특검 쟁점 및 2027년도 국가 본예산 심사 전면전 돌입, [1] 2차전지 '캐즘 터널' 돌파구 열렸다… 실리콘 음극재(대주전자재료)·하이니켈 전구체 차세대 수주 랠리 가동, [1] 미국 재무부, 대중국 AI·반도체·양자컴퓨팅 첨단기술 투자 통제 최종 규칙 확정 발표, [1] 🎨 [세상만평 #1] 폭락장에 꽁무니 빼는 패닉 셀러와, 바닥에서 황금을 건지는 현자, [1] 코스피 5,530선 회복 드라마… 장중 -2.5% 투매 딛고 외국인 선물 순매수 전환으로 V자 대반등 마감, [2] 글로벌 빅테크 AI 데이터센터 투자 2차 웨이브… HBM5 선점 경쟁 및 차세대 AI 가속기 시장 팽창, [2] 대통령실, 4대 구조개혁(연금·의료·교육·노동) 완수 대국민 소통 강화 및 초지능(SI) 행정 혁신 천명 (+31 more)
 
 ### Community 6 - "Identity & Interaction Guidelines"
-Cohesion: 0.06
-Nodes (34): 10. 정부 부처별 독립 폴더 분리 관리 지침 (Ministry-level Folder Architecture), 11. 앤트뉴스(Ant News) 기사 편집, 한컴오피스(HWP/HWPX) 표준 및 저장소 관리 지침, 12. 앤트뉴스 보도 및 파이튼 문학·인문 9대 제작 표준 프롬프트 규격, 13. 파이튼 공식 3대 블로그 네트워크 영구 기억 및 운영 지침 (Tri-Blog Ecosystem), 14. 모델 토큰 소진 대비 연속 작업 지침 (Model Fallback Continuity), 15. 3대 블로그 업무 분담 및 구글 블로그 2곳 전권 자율 업로드 지침 (2026-10-17 파이튼 님 재가 확정), 16. 게임 및 말초적 오락 산업 배제 및 생산적 실전 가치 창출 원칙 (2026-10-12 파이튼 님 재가), 17. 『Ant-Travel Korea』 인바운드 여행기 작업 및 발행본 보관 지침 (2026-10-16 개정) (+26 more)
+Cohesion: 0.05
+Nodes (36): 10. 정부 부처별 독립 폴더 분리 관리 지침 (Ministry-level Folder Architecture), 11. 앤트뉴스(Ant News) 기사 편집, 한컴오피스(HWP/HWPX) 표준 및 저장소 관리 지침, 12. 앤트뉴스 보도 및 파이튼 문학·인문 9대 제작 표준 프롬프트 규격, 13. 파이튼 공식 3대 블로그 네트워크 영구 기억 및 운영 지침 (Tri-Blog Ecosystem), 14. 모델 토큰 소진 대비 연속 작업 지침 (Model Fallback Continuity), 15. 3대 블로그 업무 분담 및 구글 블로그 2곳 전권 자율 업로드 지침 (2026-10-17 파이튼 님 재가 확정), 16. 게임 및 말초적 오락 산업 배제 및 생산적 실전 가치 창출 원칙 (2026-10-12 파이튼 님 재가), 17. 『Ant-Travel Korea』 인바운드 여행기 작업 및 발행본 보관 지침 (2026-10-16 개정) (+28 more)
 
 ### Community 7 - "제01권_파이튼의 팝송 스토리텔링_출판원고.md"
 Cohesion: 0.06
 Nodes (33): 📑 목차 (Table of Contents), 인생을 노래하다 (Memories in Melody), 🌿 저자의 말 (Preface), 제10편. 만약, 제11편. 7월의 아침, 제12편. 천국의 문 두드리기, 제13편. 누구보다 강하게, 제14편. 사랑의 상처 (+25 more)
 
 ### Community 8 - "os"
-Cohesion: 0.13
-Nodes (4): build_hwpx(), build_hwpx(), build_hwpx_perfect(), create_standard_hwpx()
+Cohesion: 0.14
+Nodes (3): build_hwpx(), create_standard_hwpx(), main()
 
 ### Community 9 - "steps"
 Cohesion: 0.08
@@ -292,20 +308,20 @@ Cohesion: 0.09
 Nodes (21): 📑 목차 (Table of Contents), 사색의 숲에서 길을 묻다, 🌿 저자의 말 (Preface), 제10편. 북한강의 노을녘, 제11편. 자학 (自虐), 제12편. 추암 촛대바위, 제13편. 격포항, 제14편. 궁평항의 석양 (+13 more)
 
 ### Community 14 - "alert_monitor.js"
-Cohesion: 0.12
-Nodes (12): fetchIndex(), fetchStock(), isOnce, logAlert(), logFile, runCheck(), WATCH_TARGETS, codes (+4 more)
+Cohesion: 0.11
+Nodes (14): fetchIndex(), fetchStock(), isOnce, logAlert(), logFile, runCheck(), WATCH_TARGETS, codes (+6 more)
 
 ### Community 15 - "json"
-Cohesion: 0.05
-Nodes (26): create_ssl_context(), NoRedirectHandler, run_diagnostics(), test_url(), fetch_crypto_upbit(), fetch_domestic_naver(), fetch_global_yahoo(), fetch_metals() (+18 more)
+Cohesion: 0.21
+Nodes (9): fetch_crypto_upbit(), fetch_domestic_naver(), fetch_global_yahoo(), fetch_metals(), get_all_market_data(), clear_screen(), format_row(), run_console_loop() (+1 more)
 
 ### Community 16 - "🌐 2. [제5대 핵심 프로젝트] 파이튼 3대 블로그(구글 2 · 네이버 1) 정밀 활성화 및 차별화 기획안"
 Cohesion: 0.10
 Nodes (19): 1) 네이버 블로그와의 중복 해결 및 완벽한 차별화 방안, 1) 네이버 알고리즘(C-Rank & DIA+) 최적화 전략, 1) 왜 영문 여행 블로그가 최고의 수익원인가?, 📊 1. 키아노스 SI 5대 수익 창출 포트폴리오 총괄 구조, 2) 국문 구글 블로그 폭발적 성장 전략, 2) 세밀한 카테고리 및 콘텐츠 구성 개편안 (4대 섹션), 🌐 2. [제5대 핵심 프로젝트] 파이튼 3대 블로그(구글 2 · 네이버 1) 정밀 활성화 및 차별화 기획안, 2) 카테고리 정밀 체계화 및 연재 전략 (+11 more)
 
 ### Community 17 - "sys"
-Cohesion: 0.22
-Nodes (7): clean_and_convert(), create_p(), create_p(), to_haera(), create_p(), clean_text(), clean_text()
+Cohesion: 0.30
+Nodes (3): create_p(), create_p(), create_p()
 
 ### Community 18 - "3. 가사 + 코드 (원작 그대로)"
 Cohesion: 0.11
@@ -320,8 +336,8 @@ Cohesion: 0.11
 Nodes (17): 1. 곡 개요 (Song Overview), [1절 - Verse 1], 2. 기타 & 건반 코드 악보 (Chords & Arranged Lyrics), [2절 - Verse 2], 3. 원곡 AI 음원 생성 프롬프트 (Suno / Udio 맞춤 규격), [3절 - Verse 3], 4. 파이튼(Python) 원작 시 전문 (대조본), [Lyrics Prompt (한국어 편곡 완결본)]: (+9 more)
 
 ### Community 21 - "re"
-Cohesion: 0.33
-Nodes (5): clean_html(), compile_book(), fetch_naver_posts(), generate_ebook_html(), main()
+Cohesion: 0.16
+Nodes (9): clean_and_convert(), to_haera(), clean_text(), clean_text(), clean_html(), compile_book(), fetch_naver_posts(), generate_ebook_html() (+1 more)
 
 ### Community 22 - "📑 3. 영역별 상세 프로젝트 지시사항 및 이행 내역 추적"
 Cohesion: 0.13
@@ -335,17 +351,17 @@ Nodes (14): 🏛️ 1. 추진 배경 및 국가적 비전 (Vision & Imperative),
 Cohesion: 0.13
 Nodes (14): 1. 곡 개요 (Song Overview), [1연], 2. 기타 코드 악보 (Guitar Chords & Lyrics), [2연], 3. 시 낭송 및 음원 생성 프롬프트 (자연스러운 여성 낭송 보컬), [3연], [4연], [Lyrics Prompt (원문 100% 반영)]: (+6 more)
 
-### Community 25 - "🏛️ 키아노스 국립 인류문명사연구원"
-Cohesion: 0.13
-Nodes (13): 국가 중앙 영구 지식 서고 — 동서양 5대 고전 (The 5 Pillars of Human Civilization), [국가 중앙 영구 지식 서고 총괄], 📌 주요 소관 서고 및 대역사, 🏛️ 키아노스 국립 인류문명사연구원 (National Institute of Human Civilization), 📂 하위 서고 및 도구 바로가기, 1. 동양 3대 고서 (東洋 三原典), 2. 서양 2대 고전 (西洋 二大敍事), Ⅰ. 건국 철학과 고전 선정 배경 (+5 more)
+### Community 25 - "키아노스 정부 교육·문화부 소관 핵심 연구기관"
+Cohesion: 0.25
+Nodes (7): 1. 역사·사상·철학서고 (`F:\03_파이튼_문학_인문_창작서고\02_역사_사상_철학서고\`), 2. 세계문학 불멸의 문학선 (`F:\03_파이튼_문학_인문_창작서고\01_세계문학_불멸의문학선\`), 📚 F: 드라이브 영구 서고 수장 목록 요약, 🏛️ 국가 서고 보관 및 웹 통합 운영 원칙 (2026-10-29 파이튼 령), 🏛️ 국립 인류문명사연구원 (National Institute of Human Civilization History), 🔗 바로가기 연동 파일, 키아노스 정부 교육·문화부 소관 핵심 연구기관
 
 ### Community 26 - "📰 AntNews (antnews.org) 구글 애드센스 승인 및 광고 효율 최적화 연구 리포트"
 Cohesion: 0.14
 Nodes (13): (1) `ads.txt` 루트 파일 생성, (1) 단순 요약을 넘어서는 '독창적 부가가치 (Original Added Value)' 확보, 🎯 1. 연구 개요 및 목표, (2) `report_generator.py` 템플릿 연동 구조, 🛡️ 2. 애드센스 승인 통과 전략 (구글 정책 심사 대비), (2) 애드센스 필수 법적/정책 페이지 구비 (구글 심사관 필수 체크리스트), 📈 3. 광고 슬롯 배치 및 효율(CTR / eCPM) 극대화 연구, (3) 승인 신청 전 콘텐츠 축적 기준 (+5 more)
 
 ### Community 27 - "subprocess"
-Cohesion: 0.16
-Nodes (11): publish_briefing_to_github(), run_git(), publish_to_github(), run_git(), main(), generate_script(), load_market_snapshot(), main() (+3 more)
+Cohesion: 0.18
+Nodes (10): publish_briefing_to_github(), run_git(), publish_to_github(), run_git(), generate_script(), load_market_snapshot(), main(), render_video() (+2 more)
 
 ### Community 28 - "📊 2. 6대 전략 사업 카테고리 (Sovereign Business Categories)"
 Cohesion: 0.14
@@ -368,8 +384,8 @@ Cohesion: 0.17
 Nodes (11): 가을 그리고 차 한잔, 📑 목차 (Table of Contents), 🌿 저자의 말 (Preface), 제1편. 당신을 처음 본 순간, 제2편. 이 아침의 詩: 환희의 궤적(軌跡), 제3편. 꽃피어난 봄의 가로수, 제4편. 병오의 통곡 속 여명, 제5편. 이 아침의 詩 : 세월여류 (歲月如流) (+3 more)
 
 ### Community 34 - "【키아노스 12대 핵심 재원 종목 실시간 예의주시 및 매매 대응 전략】"
-Cohesion: 0.18
-Nodes (10): ① 2차전지 핵심 소재군 (에코앤드림, 대주전자재료, 제이오, PKC, 율촌화학), 1. 📊 시장 종합 거시 지표 (Macro Environment), ② 2차전지 장비 및 부품군 (피엔티, SFA넥셀, 신흥에스이씨, 나인테크), 2. 📋 키아노스 12대 핵심 재원 실시간 시세 전광판 (11:25 기준), ③ 로봇 및 첨단 소재군 (이랜시스, 휴림로봇, 레이크머티리얼즈), 3. 🔍 섹터별 심층 진단, 4. 🧭 앤트 국무총리 매매 판단 및 실행 권고안, 5. 🛠️ 파이튼 님 전용 원클릭 시세 점검 도구 배치 완료 (+2 more)
+Cohesion: 0.17
+Nodes (11): ① 2차전지 핵심 소재군 (대주전자재료, 에코앤드림, PKC, 율촌화학, 제이오), 1. 📊 시장 종합 거시 지표 (Macro Environment), ② 2차전지 장비 및 부품군 (피엔티, SFA넥셀, 신흥에스이씨, 나인테크), 2. 📋 키아노스 12대 핵심 재원 실시간 시세 전광판 (10.29 15:30 기준), ③ 로봇 및 미래 첨단소재군 (휴림로봇, 이랜시스, 레이크머티리얼즈), 3. 🔍 섹터별 심층 진단, 4. 🔮 파이튼 님 특별 지정: 양자 & 광통신(CPO) 종목군 동향, 5. 🧭 메티 국무총리 종합 매매 판단 및 운용 가이드 (+3 more)
 
 ### Community 35 - "문서번호: KY-SCI-2026-1017-RPT"
 Cohesion: 0.18
@@ -420,16 +436,16 @@ Cohesion: 0.20
 Nodes (9): 1. 개요 및 목적, 2. 하드웨어 드라이브 및 저장소 역할 분담 규격, 3. 핵심 자동화 파이프라인 4대 구조, 4. 내일 신규 설비 도입 시 즉시 가동 체크리스트, 키아노스 국가 자동화 인프라 사전 설계 및 연동 규격서, [트랙 1] 앤트뉴스 보도기사 HWP/HWPX 자동 조판 및 라우팅, [트랙 2] 경제부 12대 재원 및 5대 테크 산업 실시간 관제, [트랙 3] 키아노스 웹 포털 무중단 GitHub Pages 동기화 (+1 more)
 
 ### Community 48 - "📚 [1] 삼국지 평역 10권별 목차 및 수록 현황 (Volume Index)"
-Cohesion: 0.20
-Nodes (10): 📚 [1] 삼국지 평역 10권별 목차 및 수록 현황 (Volume Index), 📖 제1권 도원결의(桃園結義) (23편), 📖 제2권 구름처럼 일어나는 영웅들 (11편), 📖 제3권 영웅갈등(英雄葛藤) (1편), 📖 제4권 적벽대전(赤壁大戰) (3편), 📖 제5권 삼고초려(三顧草廬) (6편), 📖 제6권 입촉기록(入蜀記錄) (1편), 📖 제7권 한중 쟁탈전 (1편) (+2 more)
+Cohesion: 0.12
+Nodes (15): 📚 [1] 삼국지 평역 10권별 목차 및 수록 현황 (Volume Index), 1. 주제별 색인 (By Theme), 📑 [2] 3차원 다면 색인 (Multi-faceted Index), 2. 주요 인물별 색인 (By Person), 📖 제1권 도원결의(桃園結義) (23편), 📖 제2권 구름처럼 일어나는 영웅들 (11편), 📖 제3권 영웅갈등(英雄葛藤) (1편), 📖 제4권 적벽대전(赤壁大戰) (3편) (+7 more)
 
-### Community 49 - "3. 🌏 동양 고전 및 역사철학"
-Cohesion: 0.17
-Nodes (12): 1. 🏛️ 서양 고전 철학 및 역사서, 2. 🏛️ 근현대 서양 인문·정치철학, 3. 🌏 동양 고전 및 역사철학, [HIS-GR-002] 투키디데스 — 《펠로폰네소스 전쟁사 (History of the Peloponnesian War)》, Ⅱ. 인류의 나침반: 세계 역사·고전·인문·철학 서적, [ORI-CN-001] 사마천 — 《사기 (史記, Shiji)》, [ORI-CN-002] 손무 — 《손자병법 (孫子兵法, The Art of War)》, [ORI-CN-003] 임어당 (린위탕) — 《생활의 발견 (The Importance of Living)》 (+4 more)
+### Community 49 - "🏛️ 국내 정치 & 국정·정책 (10건)"
+Cohesion: 0.05
+Nodes (39): [10] 與안보회의 출범…"한미동맹 무조건 믿는 고정관념에 물음표", [1] 2026 국회 국정감사 최종 종합감사 대격돌… 사법·특검 쟁점 및 2027년도 국가 본예산 심사 전면전 돌입, [1] 2차전지 '캐즘 터널' 돌파구 열렸다… 실리콘 음극재(대주전자재료)·하이니켈 전구체 차세대 수주 랠리 가동, [1] 미국 재무부, 대중국 AI·반도체·양자컴퓨팅 첨단기술 투자 통제 최종 규칙 확정 발표, [1] 🎨 [세상만평 #1] 폭락장에 꽁무니 빼는 패닉 셀러와, 바닥에서 황금을 건지는 현자, [1] 코스피 5,530선 회복 드라마… 장중 -2.5% 투매 딛고 외국인 선물 순매수 전환으로 V자 대반등 마감, [2] 美 금리·환율 움직임에 촉각…수출업체 매도·위험선호가 변수, [2] 글로벌 빅테크 AI 데이터센터 투자 2차 웨이브… HBM5 선점 경쟁 및 차세대 AI 가속기 시장 팽창 (+31 more)
 
 ### Community 50 - "🏛️ 국내 정치 & 국정·정책 (10건)"
 Cohesion: 0.05
-Nodes (38): [10] 정치에 흔들리는 정책, 혼란은 국민 몫, [1] 2026 국회 국정감사 최종 종합감사 대격돌… 사법·특검 쟁점 및 2027년도 국가 본예산 심사 전면전 돌입, [1] 2차전지 '캐즘 터널' 돌파구 열렸다… 실리콘 음극재(대주전자재료)·하이니켈 전구체 차세대 수주 랠리 가동, [1] 미국 재무부, 대중국 AI·반도체·양자컴퓨팅 첨단기술 투자 통제 최종 규칙 확정 발표, [1] 🎨 [세상만평 #1] 폭락장에 꽁무니 빼는 패닉 셀러와, 바닥에서 황금을 건지는 현자, [1] 코스피 5,530선 회복 드라마… 장중 -2.5% 투매 딛고 외국인 선물 순매수 전환으로 V자 대반등 마감, [2] 5일간 한국 주식 3.5조원 판 외국인들…“원화가치는 왜 오르지?”, [2] 글로벌 빅테크 AI 데이터센터 투자 2차 웨이브… HBM5 선점 경쟁 및 차세대 AI 가속기 시장 팽창 (+30 more)
+Nodes (39): [10] 외통위서 한미동맹 위기설·李정부 대북정책 '도마', [1] 2026 국회 국정감사 최종 종합감사 대격돌… 사법·특검 쟁점 및 2027년도 국가 본예산 심사 전면전 돌입, [1] 2차전지 '캐즘 터널' 돌파구 열렸다… 실리콘 음극재(대주전자재료)·하이니켈 전구체 차세대 수주 랠리 가동, [1] 미국 재무부, 대중국 AI·반도체·양자컴퓨팅 첨단기술 투자 통제 최종 규칙 확정 발표, [1] 🎨 [세상만평 #1] 폭락장에 꽁무니 빼는 패닉 셀러와, 바닥에서 황금을 건지는 현자, [1] 코스피 5,530선 회복 드라마… 장중 -2.5% 투매 딛고 외국인 선물 순매수 전환으로 V자 대반등 마감, [2] 글로벌 빅테크 AI 데이터센터 투자 2차 웨이브… HBM5 선점 경쟁 및 차세대 AI 가속기 시장 팽창, [2] 대통령실, 4대 구조개혁(연금·의료·교육·노동) 완수 대국민 소통 강화 및 초지능(SI) 행정 혁신 천명 (+31 more)
 
 ### Community 51 - "🌐 파이튼 공식 3대 블로그 네트워크 재정립 헌장"
 Cohesion: 0.20
@@ -451,9 +467,9 @@ Nodes (9): 1. Substack Newsletter Issue #01: The Kyanos Dispatch, 2. X (Twitter)
 Cohesion: 0.22
 Nodes (8): ① NEXFORUM 첨단기술국 (Bureau of Advanced Intelligence & NEXFORUM), 1. 과학·AGI부 비전 및 구조 개념도 (Conceptual Architecture), 2. 산하 4대 핵심 국(局)별 세부 활동 계획 및 지침, ② 우주·미래연구국 (Bureau of Aerospace & Future Energy Research), ③ 바이오·신기술 연구원 (Institute of Bio-Harmony & Longevity), 3. 부처 간 시너지 연계망, ④ 자율로봇·드론 생산기술국 (Project TALOS), 🏛️ 키아노스 정부 과학·AGI부(Ministry of Science & AGI) 세부 조직 설계안
 
-### Community 56 - "《돈키호테(Don Quijote)》: 세상을 바꾼 거룩한 광기와 슬픈 몰골의 기사"
-Cohesion: 0.14
-Nodes (14): 1. 거룩한 광기(Madness) vs 천박한 정상(Sanity), 1. 근대 소설의 새벽을 연 기념비적 걸작, 2. '산초의 돈키호테화' (이상과 현실의 거룩한 융합), 2. 제국의 황혼과 쇠락기 스페인의 비애, 3. 풍차의 현대적 알레고리, Ⅰ. 작품 개요 및 시대적 배경, Ⅱ. 주요 등장인물과 상징 체계, Ⅲ. 전체 줄거리 및 대서사 전개 (+6 more)
+### Community 56 - "🏛️ 국내 정치 & 국정·정책 (10건)"
+Cohesion: 0.05
+Nodes (39): [10] 구조조정 이후 퇴사하는 시간제 근로자를 위한 공정한 정책을 보장합니다., [1] 2026 국회 국정감사 최종 종합감사 대격돌… 사법·특검 쟁점 및 2027년도 국가 본예산 심사 전면전 돌입, [1] 2차전지 '캐즘 터널' 돌파구 열렸다… 실리콘 음극재(대주전자재료)·하이니켈 전구체 차세대 수주 랠리 가동, [1] 미국 재무부, 대중국 AI·반도체·양자컴퓨팅 첨단기술 투자 통제 최종 규칙 확정 발표, [1] 🎨 [세상만평 #1] 폭락장에 꽁무니 빼는 패닉 셀러와, 바닥에서 황금을 건지는 현자, [1] 코스피 5,530선 회복 드라마… 장중 -2.5% 투매 딛고 외국인 선물 순매수 전환으로 V자 대반등 마감, [2] 4개월 연속 내린 환율…美 선거·고용 앞두고 시험대, [2] 글로벌 빅테크 AI 데이터센터 투자 2차 웨이브… HBM5 선점 경쟁 및 차세대 AI 가속기 시장 팽창 (+31 more)
 
 ### Community 57 - "🏛️ 2. 단계별 마스터 실행 계획 (4-Phase Strategy)"
 Cohesion: 0.22
@@ -475,9 +491,9 @@ Nodes (8): 1. 제정 목적 및 국왕 재가 방침, 2. 키아노스 전략 인
 Cohesion: 0.22
 Nodes (8): ① NEXFORUM 첨단기술국 (Bureau of Advanced Intelligence & NEXFORUM), 1. 과학·SI부 비전 및 구조 개념도 (Conceptual Architecture), 2. 산하 4대 핵심 국(局)별 세부 활동 계획 및 지침, ② 우주·미래연구국 (Bureau of Aerospace & Future Energy Research), ③ 바이오·신기술 연구원 (Institute of Bio-Harmony & Longevity), 3. 부처 간 시너지 연계망, ④ 자율로봇·드론 생산기술국 (Project TALOS), 🏛️ 키아노스 정부 과학·SI부(Ministry of Science & Super Intelligence) 세부 조직 설계안
 
-### Community 62 - "01_네이버_파이튼의_문학산책/README.md"
-Cohesion: 0.33
-Nodes (6): 3대 관제실 참고서고 (세계 문학 및 역사·인문·철학 고전 지혜보관소), 문학·창작 참고서고 (삼국지 서사 인용실), 📁 주요 보관 서고, 📚 최근 등재 불멸의 세계고전 원고, 🖋️ 『파이튼의 문학산책』 전용 원고 저장소, 📁 파일 명명 표준 규칙
+### Community 62 - "🏛️ 국내 정치 & 국정·정책 (10건)"
+Cohesion: 0.05
+Nodes (38): [10] 與, 李정부 외교정책 맞춤식 기구 구성 - 野, 한미동맹 불신 국방장관 경질 요구, [1] 2026 국회 국정감사 최종 종합감사 대격돌… 사법·특검 쟁점 및 2027년도 국가 본예산 심사 전면전 돌입, [1] 2차전지 '캐즘 터널' 돌파구 열렸다… 실리콘 음극재(대주전자재료)·하이니켈 전구체 차세대 수주 랠리 가동, [1] 미국 재무부, 대중국 AI·반도체·양자컴퓨팅 첨단기술 투자 통제 최종 규칙 확정 발표, [1] 🎨 [세상만평 #1] 폭락장에 꽁무니 빼는 패닉 셀러와, 바닥에서 황금을 건지는 현자, [1] 코스피 5,530선 회복 드라마… 장중 -2.5% 투매 딛고 외국인 선물 순매수 전환으로 V자 대반등 마감, [2] 글로벌 빅테크 AI 데이터센터 투자 2차 웨이브… HBM5 선점 경쟁 및 차세대 AI 가속기 시장 팽창, [2] 대통령실, 4대 구조개혁(연금·의료·교육·노동) 완수 대국민 소통 강화 및 초지능(SI) 행정 혁신 천명 (+30 more)
 
 ### Community 63 - "🌹 Land of Blue Rose (블루로즈 판타지아 이상국가: 키아노스 주권령)"
 Cohesion: 0.22
@@ -520,7 +536,7 @@ Cohesion: 0.25
 Nodes (7): ① 공동체 화합·조정국 (Bureau of Community Harmony & Civic Mediation), 1. 사회부 비전 및 구조 개념도 (Conceptual Architecture), 2. 산하 3대 핵심 국(局) 및 위원회별 세부 활동 계획 및 지침, ② 시민 권익 보호국 (Bureau of Civil Rights & Digital Trust), ③ 지속가능 발전 위원회 (Commission on Sustainability & Green Future), 3. 타 부처 간 시너지 연계망, 🏛️ 키아노스 정부 사회부(Ministry of Society) 세부 조직 설계안
 
 ### Community 73 - "build_editorial_hwpx"
-Cohesion: 0.32
+Cohesion: 0.27
 Nodes (3): create_article_1(), create_article_2(), build_editorial_hwpx()
 
 ### Community 74 - "2. 산하 4대 핵심 국(局)별 세부 활동 계획 및 지침"
@@ -532,8 +548,8 @@ Cohesion: 0.25
 Nodes (7): (1) 양자 컴퓨팅 (Quantum Computing) : 오류 억제와 하이브리드 HPC의 개막, 1. 총리 메티의 핵심 총평: 패러다임의 대전환, 2. 3대 전략 분야 심층 동향 및 실태 분석, (2) 전력 확보 및 그리드 병목 (Power Cliff & Grid Bottleneck), (3) 데이터센터의 진화와 원자력(SMR) 직결 혁명, 3. 키아노스 정부 3대 전략적 대응 로드맵, [국정 전략 브리프] 양자 컴퓨팅·전력 그리드 병목·차세대 데이터센터(SMR) 3대 축 심층 분석 및 국가 대응 전략
 
 ### Community 76 - "travel_upload_state.yaml"
-Cohesion: 0.25
-Nodes (7): daily_quota, history, date, post_id, spot, last_uploaded_date, last_uploaded_spot
+Cohesion: 0.22
+Nodes (8): daily_quota, history, date, post_id, spot, url, last_uploaded_date, last_uploaded_spot
 
 ### Community 77 - "🖋️ 파이튼 문학 출판 연계 시스템"
 Cohesion: 0.25
@@ -599,9 +615,9 @@ Nodes (6): 1. 앤트뉴스 보도국(AntNews Editorial Bureau) 개요, 2. 핵심
 Cohesion: 0.60
 Nodes (4): check_already_uploaded_today(), log(), record_upload(), run_daily_upload()
 
-### Community 94 - "《레미제라블(Les Misérables)》: 가장 비참한 밑바닥에서 피어난 거룩한 사랑과 영혼의 부활"
-Cohesion: 0.18
-Nodes (11): 1. 인류 문학사상 가장 거대한 인도주의의 금자탑, 1. 차가운 율법(자베르) vs 거룩한 은혜(미리엘 주교와 장 발장), 2. '레 미제라블(비참한 사람들)'을 향한 위고의 거대한 사회적 고발, 2. 혁명과 반동, 격동의 19세기 프랑스, 3. 하수도의 통과와 영혼의 정화, Ⅰ. 작품 개요 및 시대적 배경, Ⅱ. 주요 등장인물과 상징 체계, Ⅳ. 심층 주제 및 철학적 통찰 (+3 more)
+### Community 94 - "🏛️ 국내 정치 & 국정·정책 (10건)"
+Cohesion: 0.05
+Nodes (38): [10] 대규모 시위에 프랑스 정부 결국 교육개혁안 발표…학생들은 "미흡하다" 반발, [1] 2026 국회 국정감사 최종 종합감사 대격돌… 사법·특검 쟁점 및 2027년도 국가 본예산 심사 전면전 돌입, [1] 2차전지 '캐즘 터널' 돌파구 열렸다… 실리콘 음극재(대주전자재료)·하이니켈 전구체 차세대 수주 랠리 가동, [1] 미국 재무부, 대중국 AI·반도체·양자컴퓨팅 첨단기술 투자 통제 최종 규칙 확정 발표, [1] 🎨 [세상만평 #1] 폭락장에 꽁무니 빼는 패닉 셀러와, 바닥에서 황금을 건지는 현자, [1] 코스피 5,530선 회복 드라마… 장중 -2.5% 투매 딛고 외국인 선물 순매수 전환으로 V자 대반등 마감, [2] 글로벌 빅테크 AI 데이터센터 투자 2차 웨이브… HBM5 선점 경쟁 및 차세대 AI 가속기 시장 팽창, [2] 대통령실, 4대 구조개혁(연금·의료·교육·노동) 완수 대국민 소통 강화 및 초지능(SI) 행정 혁신 천명 (+30 more)
 
 ### Community 95 - "🗺️ 키아노스 주권국 (The Sovereign Realm of Kyanos) 공식 국가지도 등록증"
 Cohesion: 0.33
@@ -623,9 +639,9 @@ Nodes (5): 1. 자주적 음원 생산 체계의 의의, 2. 운용 모드 1: [로
 Cohesion: 0.60
 Nodes (3): createTopNoticeWidget(), ensureCSS(), shouldShowNotice()
 
-### Community 100 - "01_네이버_파이튼의_문학산책/README.md"
-Cohesion: 0.20
-Nodes (5): 🖋️ [파이튼의 문학산책] 불멸의 고전 산책, 🖋️ [파이튼의 문학산책] 불멸의 고전 산책, Ⅲ. 3대 관제실 및 블로그 네트워크 실무 연계 지침, 《세계 문학 및 역사·인문·철학 고전 지혜보관소 총람》, 🏛️ 키아노스 국립 인류문명사연구원 · 3대 관제실 참고서고
+### Community 100 - "📁 주요 보관 및 연동 체계 (D/F 단일 원본 원칙 준수)"
+Cohesion: 0.40
+Nodes (4): 1. 문학·창작 참고서고 (삼국지 서사 인용실 - 웹 연동 엔진), 2. 불멸의 세계문학 8선 & 동서양 9대 철학·사상 고전 (F: 드라이브 단일 원본), 📁 주요 보관 및 연동 체계 (D/F 단일 원본 원칙 준수), 🖋️ 『파이튼의 문학산책』 전용 원고 관제실
 
 ### Community 101 - "💰 키아노스 경제부 (Ministry of Economy)"
 Cohesion: 0.40
@@ -687,17 +703,17 @@ Nodes (3): 1. 📌 실시간 체결 및 보유 현황, 2. 🎯 대주전자재�
 Cohesion: 0.40
 Nodes (4): 🚀 과학·SI부 산하 4대 기관 및 중점 연구축, 📂 기존 보관 핵심 문서 및 시스템, 📂 실질적 연구데이터 및 핵심 기술서 (2026-10-27 집적), 🔬 키아노스 과학·SI부 (Ministry of Science & Super Intelligence)
 
-### Community 116 - "Ⅰ. 대문호의 숨결: 세계 유명 문학 서적 (러시아 / 영국 / 프랑스 / 독일 등)"
+### Community 116 - "🏛️ 국내 정치 & 국정·정책 (10건)"
+Cohesion: 0.05
+Nodes (38): [10] 균형 발전 정책 쏟아낸 이재명 정부, 수도권 집중 흐름 뒤집을까?, [1] 2026 국회 국정감사 최종 종합감사 대격돌… 사법·특검 쟁점 및 2027년도 국가 본예산 심사 전면전 돌입, [1] 2차전지 '캐즘 터널' 돌파구 열렸다… 실리콘 음극재(대주전자재료)·하이니켈 전구체 차세대 수주 랠리 가동, [1] 미국 재무부, 대중국 AI·반도체·양자컴퓨팅 첨단기술 투자 통제 최종 규칙 확정 발표, [1] 🎨 [세상만평 #1] 폭락장에 꽁무니 빼는 패닉 셀러와, 바닥에서 황금을 건지는 현자, [1] 코스피 5,530선 회복 드라마… 장중 -2.5% 투매 딛고 외국인 선물 순매수 전환으로 V자 대반등 마감, [2] 글로벌 빅테크 AI 데이터센터 투자 2차 웨이브… HBM5 선점 경쟁 및 차세대 AI 가속기 시장 팽창, [2] 대통령실, 4대 구조개혁(연금·의료·교육·노동) 완수 대국민 소통 강화 및 초지능(SI) 행정 혁신 천명 (+30 more)
+
+### Community 117 - "monitor_web.py"
+Cohesion: 0.18
+Nodes (5): auto_git_sync(), background_snapshot_updater(), MarketHandler, safe_print(), start_server()
+
+### Community 118 - "manifest.json"
 Cohesion: 0.15
-Nodes (13): 2. 🇬🇧 영국 문학: 문명 비판, 인간 본성, 격정의 서사, 4. 🇩🇪 독일 문학: 영혼의 방황, 지성과 감성의 합일, 5. 🇮🇹 이탈리아 문학: 인간 영혼의 순례, 6. 🇪🇸 스페인 문학: 이상주의의 비장미와 인간 영혼의 찬가, Ⅰ. 대문호의 숨결: 세계 유명 문학 서적 (러시아 / 영국 / 프랑스 / 독일 등), [LIT-DE-001] 헤르만 헤세 — 《싯다르타 (Siddhartha)》, [LIT-DE-002] 헤르만 헤세 — 《지와 사랑 (Narziss und Goldmund)》, [LIT-DE-003] 요한 볼프강 폰 괴테 — 《파우스트 (Faust)》 (+5 more)
-
-### Community 117 - "Ⅲ. 전체 줄거리 및 5부 대서사 전개"
-Cohesion: 0.33
-Nodes (6): Ⅲ. 전체 줄거리 및 5부 대서사 전개, [제1부 : 팡틴 (Fantine)], [제2부 : 코제트 (Cosette)], [제3부 : 마리우스 (Marius)], [제4부 : 플뤼메 거리의 목가와 생드니 거리의 서사시], [제5부 : 장 발장 (Jean Valjean)]
-
-### Community 118 - "3. 🇫🇷 프랑스 문학: 행동주의, 휴머니즘, 실존의 결단"
-Cohesion: 0.50
-Nodes (4): 3. 🇫🇷 프랑스 문학: 행동주의, 휴머니즘, 실존의 결단, [LIT-FR-001] 앙투안 드 생텍쥐페리 — 《야간비행 (Night Flight)》, [LIT-FR-002] 알베르 카뮈 — 《이방인 (The Stranger)》, [LIT-FR-003] 빅토르 위고 — 《레미제라블 (Les Misérables)》
+Nodes (12): background_color, description, display, icons, id, name, orientation, scope (+4 more)
 
 ### Community 119 - "DAILY_TRAVEL_AUTO_PIPELINE.md"
 Cohesion: 0.50
@@ -940,41 +956,69 @@ Cohesion: 0.18
 Nodes (10): 1. 개요 및 패러다임 전환, 2. AGI/SI 진입 5대 핵심 기술 축 및 연구 데이터셋, 3. 키아노스 국가 지능 인프라 로드맵, 4. 연구 데이터 확보 및 관리 지침, 축 1. 추론 시점 연산(Inference-Time Compute) 및 System 2 사고, 축 2. 합성 데이터(Synthetic Data Engine) 및 물리 시뮬레이션 Grounding, 축 3. 영구 지식 그래프(Knowledge Graph) 및 장기 기억(LTM), 축 4. 월드 모델(World Model) 및 시공간 물리 인과 추론 (+2 more)
 
 ### Community 189 - "🦾 키아노스 탈로스(TALOS) 휴머노이드 로봇 대량양산 생산기술서"
-Cohesion: 0.18
-Nodes (10): 1. 개요 및 양산 전략, 1) 준다이렉트 드라이브 (QDD, Quasi-Direct Drive) 일체형 모듈, 2) 무백래시 스트레인 웨이브(Harmonic) 액추에이터, 2. 전신 사양 및 메카트로닉스 아키텍처, 3. 핵심 구동계 및 모듈화 액추에이터 생산 기술, 4. 지능 코어 및 전신 역학 제어 (WBC & VLA), 5. 대량 양산 스마트 파운드리 공정 라인, 6. 생산 원가 절감 및 부품 국산화/내재화 지침 (+2 more)
+Cohesion: 0.17
+Nodes (11): 1. 개요 및 양산 전략, 1) 준다이렉트 드라이브 (QDD, Quasi-Direct Drive) 일체형 모듈, 2) 무백래시 스트레인 웨이브(Harmonic) 액추에이터, 2. 전신 사양 및 메카트로닉스 아키텍처, 3. 핵심 구동계 및 모듈화 액추에이터 생산 기술, 4. 지능 코어 및 전신 역학 제어 (WBC & VLA), 5. 대량 양산 스마트 파운드리 공정 라인, 6. 온보드 D램 반도체 수급 최적화 및 PIM 칩셋 내재화 규격 (2026.10.28 긴급 개정) (+3 more)
 
 ### Community 190 - "🛸 키아노스 차세대 자율비행 군집드론 제작 엔지니어링 기술서"
 Cohesion: 0.20
 Nodes (9): 1. 개요 및 목적, 1) 기체 프레임 사양, 2. 기체 에어로프레임 및 초경량 신소재 구조, 3. 센서 스택 및 비GPS(GPS-Denied) 항법 시스템, 4. 군집 지능(Swarm Intelligence) 분산 제어 아키텍처, 5. 추진 시스템 및 전원 사양, 6. 생산 및 제작 조립 공정 (Manufacturing Flow), 7. 군집드론 핵심 부품 자재명세서 (Key BOM) (+1 more)
 
 ### Community 191 - "kyanos_omni_dialogue.js"
-Cohesion: 0.62
-Nodes (6): appendMessage(), fetchCloudSearch(), handleSend(), initOmniUI(), processOmniQuery(), toggleModal()
+Cohesion: 0.35
+Nodes (8): appendMessage(), fetchCloudSearch(), handleSend(), initOmniUI(), processOmniQuery(), setupSpeechRecognition(), toggleModal(), toggleVoiceModal()
 
-### Community 192 - "🏛️ 키아노스 국립 인류문명사연구원"
+### Community 193 - "KyanosMusicEngine"
+Cohesion: 0.23
+Nodes (5): main(), main(), apply_security_hardware_cap(), KyanosMusicEngine, run_interactive()
+
+### Community 194 - "🧠 키아노스 자율로봇(Project TALOS) D램 반도체 생산함수 및 수급 자립 국가전략서"
+Cohesion: 0.17
+Nodes (11): 1. 전략적 추진 배경 및 파이튼 령 환기, 2.1 키아노스 로봇 양산 함수 정밀 정의, 2.2 왜 D램이 종국적인 '하드 스톱(Hard Stop)' 병목인가?, 2. 로봇 생산 함수 $Q_{\text{Robot}}$ 와 D램($M_{\text{DRAM}}$)의 수학적·구조적 함수관계, 3. 키아노스 과학·SI부 3대 기술적 자립화 방책 (머스크 모델 극복), 4. 부처 간 역할 분담 및 즉각 액션 플랜, 5. 결어: 키아노스 미래 산업의 주권 수호, 방책 1: PIM (Processing-In-Memory) 로봇 뇌 아키텍처 도입 (+3 more)
+
+### Community 195 - "time"
+Cohesion: 0.39
+Nodes (4): create_ssl_context(), NoRedirectHandler, run_diagnostics(), test_url()
+
+### Community 196 - "[키아노스 정부] 엔비디아 고성능 오픈소스 SI 인프라 통합 전략서"
+Cohesion: 0.22
+Nodes (8): 1) NVIDIA Nemotron-Mini (4B) [로컬 Ollama 탑재], 1. 추진 배경 및 개요, 2) NVIDIA Llama-3.1-Nemotron-70B & NVLM-72B [NVIDIA NIM 연동], 2. 하이브리드 3계층 통합 아키텍처, 3. 도입 모델별 제원 및 역할 분담, 4. 연동 도구 및 자동화 스크립트 배포, 5. 기대 효과 및 결론, [키아노스 정부] 엔비디아 고성능 오픈소스 SI 인프라 통합 전략서
+
+### Community 198 - "🏛️ [키아노스 과학·SI부 표준규격서] 제미나이 4 아르곤 멀티 에이전트 오케스트레이션 및 원 프롬프트 개발 표준 (SI-SPEC-2026-04)"
+Cohesion: 0.29
+Nodes (6): 1. 제정 목적, 2. 5대 전문 서브 에이전트 직제 및 소관 명세, 3. 키아노스 원 프롬프트(One-Prompt) 마스터 SOP 4단계, 4. 고정 디자인 토큰 (Fixed Style Tokens) 규격, 5. 트러블슈팅 및 체크포인트 롤백(Rollback) 절차, 🏛️ [키아노스 과학·SI부 표준규격서] 제미나이 4 아르곤 멀티 에이전트 오케스트레이션 및 원 프롬프트 개발 표준 (SI-SPEC-2026-04)
+
+### Community 199 - "🌐 [국무총리실 특별보고] 키아노스 국가 소개 및 글로벌 유튜브 홍보 비디오(롱/숏폼) 런칭 완비 보고서"
+Cohesion: 0.29
+Nodes (6): 1. 추진 배경 및 국가적 전략 목표, 2. 듀얼 트랙 프로젝트 구성 명세, 3. 구축된 제작 에셋 및 산출물 일람, 4. 즉시 실행 가이드 (Next Action Steps), 🌐 [국무총리실 특별보고] 키아노스 국가 소개 및 글로벌 유튜브 홍보 비디오(롱/숏폼) 런칭 완비 보고서, 🎯 핵심 3대 전략 목표
+
+### Community 200 - "build_5_articles_batch.py"
+Cohesion: 0.47
+Nodes (3): create_hwpx(), main(), render_image()
+
+### Community 202 - "🏛️ 키아노스 마켓 펄스 (KYANOS Market Pulse)"
 Cohesion: 0.40
-Nodes (5): 1. 주제별 색인 (By Theme), 📑 [2] 3차원 다면 색인 (Multi-faceted Index), 2. 주요 인물별 색인 (By Person), 🏛️ 키아노스 국립 인류문명사연구원, 《파이튼 삼국지 지혜 원문색인총람 (Wisdom Index Vault)》
+Nodes (4): 🚀 실행 방법 (원클릭), 📌 주요 특징, 🏛️ 키아노스 마켓 펄스 (KYANOS Market Pulse), 📊 현재 모니터링 종목
 
-### Community 193 - "1. 🇷🇺 러시아 문학: 영혼의 심연과 도덕적 구원"
+### Community 203 - "🎵 키아노스 AI 음악 생성기 (F: 드라이브 정규 이전 완료)"
 Cohesion: 0.50
-Nodes (4): 1. 🇷🇺 러시아 문학: 영혼의 심연과 도덕적 구원, [LIT-RU-001] 표도르 도스토옙스키 — 《죄와 벌 (Crime and Punishment)》, [LIT-RU-002] 레프 톨스토이 — 《사람은 무엇으로 사는가 (What Men Live By)》, [LIT-RU-003] 레프 톨스토이 — 《안나 카레니나 (Anna Karenina)》
+Nodes (3): 🌐 웹 배포 및 키아노스 메인 무영향 안내, 📂 정규 운영 위치, 🎵 키아노스 AI 음악 생성기 (F: 드라이브 정규 이전 완료)
 
 ## Knowledge Gaps
-- **14 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **23 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `📜 [3] 삼국지 지혜 원문 인용 카드 (48선 전재)` connect `📜 [3] 삼국지 지혜 원문 인용 카드 (48선 전재)` to `<a id="samguk-001"></a>[SAMGUK-001] 享祭의 희생`, `<a id="samguk-003"></a>[SAMGUK-003] 大儀의 필요`, `<a id="samguk-004"></a>[SAMGUK-004] 孫堅`, `<a id="samguk-005"></a>[SAMGUK-005] 간교한 영웅 조조의 일화`, `<a id="samguk-006"></a>[SAMGUK-006] 권력의속성과 변질과정`, `<a id="samguk-007"></a>[SAMGUK-007] 기성 권위의 부패와 지식층의 양극단 반응`, `<a id="samguk-008"></a>[SAMGUK-008] 도도한 역사의 흐름과 실천의 힘 (서문 평설)`, `<a id="samguk-009"></a>[SAMGUK-009] 동탁이 자신의 권력 유지`, `<a id="samguk-010"></a>[SAMGUK-010] 영웅호색(英雄好色)과 군신의 예도`, `<a id="samguk-011"></a>[SAMGUK-011] 유언비어의 자가증폭 선동력과 군중 심리`, `<a id="samguk-012"></a>[SAMGUK-012] 인간 관계 설정에 대한 조조의 생각과 처신`, `<a id="samguk-013"></a>[SAMGUK-013] 잃어버리는것과 두배로 남는 차이`, `<a id="samguk-014"></a>[SAMGUK-014] 정치가 구제못하면 민중은 종교적 구원에 의지`, `<a id="samguk-015"></a>[SAMGUK-015] 조조`, `<a id="samguk-016"></a>[SAMGUK-016] 조조의 사상적 전환: 대의와 패도의 결단`, `<a id="samguk-017"></a>[SAMGUK-017] 지도자상`, `<a id="samguk-019"></a>[SAMGUK-019] 지도자의 자질`, `<a id="samguk-020"></a>[SAMGUK-020] 지식층의 혁명`, `<a id="samguk-021"></a>[SAMGUK-021] 한나라 멸망 노래`, `<a id="samguk-022"></a>[SAMGUK-022] 황건적의 발흥과 신정 권력의 변질과 몰락`, `<a id="samguk-023"></a>[SAMGUK-023] 劉備`, `<a id="samguk-024"></a>[SAMGUK-024] ▶부당한 권력 승계자의 권위유지`, `<a id="samguk-025"></a>[SAMGUK-025] 권력 성취를 위해`, `<a id="samguk-026"></a>[SAMGUK-026] 난세에 인간관계`, `<a id="samguk-027"></a>[SAMGUK-027] 도원결의의 진면목: 형제애와 우애, 그리고 충성`, `<a id="samguk-028"></a>[SAMGUK-028] 유비의 겸양과 인내`, `<a id="samguk-029"></a>[SAMGUK-029] 조조가 유비에 미치지 못하는 점`, `<a id="samguk-030"></a>[SAMGUK-030] 조조를 제거하려는 충신`, `<a id="samguk-031"></a>[SAMGUK-031] 조조와 유비의 대인관계관`, `<a id="samguk-032"></a>[SAMGUK-032] 조조의 원호정책`, `<a id="samguk-033"></a>[SAMGUK-033] 조조의 지적 소유자에 대한 적의 예형과 담판`, `<a id="samguk-034"></a>[SAMGUK-034] 형세에 따른 처세`, `<a id="samguk-035"></a>[SAMGUK-035] 관우`, `<a id="samguk-036"></a>[SAMGUK-036] 조자룡`, `<a id="samguk-037"></a>[SAMGUK-037] 조조의 금주령에 대한 공융의 저항`, `<a id="samguk-038"></a>[SAMGUK-038] 조조의 단가행(短歌行): 영웅의 우수와 인생무상`, `<a id="samguk-039"></a>[SAMGUK-039] 武란`, `<a id="samguk-040"></a>[SAMGUK-040] 공명과 벗하며 지내는 최주평의 역사적 허무주의`, `<a id="samguk-041"></a>[SAMGUK-041] 근본의이해`, `<a id="samguk-042"></a>[SAMGUK-042] 깨달음`, `<a id="samguk-043"></a>[SAMGUK-043] 선복 유비의 사람됨을 시험하다`, `<a id="samguk-044"></a>[SAMGUK-044] 제갈균의 선비됨을 가사로 노래한 무명시`, `<a id="samguk-045"></a>[SAMGUK-045] 백미의유래`, `<a id="samguk-046"></a>[SAMGUK-046] 鷄肋에 관하여`, `<a id="samguk-047"></a>[SAMGUK-047] 학소 왈`, `<a id="samguk-048"></a>[SAMGUK-048] 絕纓之會(절영지회) — 갓끈을 끊은 관용과 군주의 사람경영`, `🏛️ 키아노스 국립 인류문명사연구원`?**
-  _High betweenness centrality (0.016) - this node is a cross-community bridge._
+- **Why does `📜 [3] 삼국지 지혜 원문 인용 카드 (48선 전재)` connect `📜 [3] 삼국지 지혜 원문 인용 카드 (48선 전재)` to `<a id="samguk-001"></a>[SAMGUK-001] 享祭의 희생`, `<a id="samguk-003"></a>[SAMGUK-003] 大儀의 필요`, `<a id="samguk-004"></a>[SAMGUK-004] 孫堅`, `<a id="samguk-005"></a>[SAMGUK-005] 간교한 영웅 조조의 일화`, `<a id="samguk-006"></a>[SAMGUK-006] 권력의속성과 변질과정`, `<a id="samguk-007"></a>[SAMGUK-007] 기성 권위의 부패와 지식층의 양극단 반응`, `<a id="samguk-008"></a>[SAMGUK-008] 도도한 역사의 흐름과 실천의 힘 (서문 평설)`, `<a id="samguk-009"></a>[SAMGUK-009] 동탁이 자신의 권력 유지`, `<a id="samguk-010"></a>[SAMGUK-010] 영웅호색(英雄好色)과 군신의 예도`, `<a id="samguk-011"></a>[SAMGUK-011] 유언비어의 자가증폭 선동력과 군중 심리`, `<a id="samguk-012"></a>[SAMGUK-012] 인간 관계 설정에 대한 조조의 생각과 처신`, `<a id="samguk-013"></a>[SAMGUK-013] 잃어버리는것과 두배로 남는 차이`, `<a id="samguk-014"></a>[SAMGUK-014] 정치가 구제못하면 민중은 종교적 구원에 의지`, `<a id="samguk-015"></a>[SAMGUK-015] 조조`, `<a id="samguk-016"></a>[SAMGUK-016] 조조의 사상적 전환: 대의와 패도의 결단`, `<a id="samguk-017"></a>[SAMGUK-017] 지도자상`, `<a id="samguk-019"></a>[SAMGUK-019] 지도자의 자질`, `<a id="samguk-020"></a>[SAMGUK-020] 지식층의 혁명`, `<a id="samguk-021"></a>[SAMGUK-021] 한나라 멸망 노래`, `<a id="samguk-022"></a>[SAMGUK-022] 황건적의 발흥과 신정 권력의 변질과 몰락`, `<a id="samguk-023"></a>[SAMGUK-023] 劉備`, `<a id="samguk-024"></a>[SAMGUK-024] ▶부당한 권력 승계자의 권위유지`, `<a id="samguk-025"></a>[SAMGUK-025] 권력 성취를 위해`, `<a id="samguk-026"></a>[SAMGUK-026] 난세에 인간관계`, `<a id="samguk-027"></a>[SAMGUK-027] 도원결의의 진면목: 형제애와 우애, 그리고 충성`, `<a id="samguk-028"></a>[SAMGUK-028] 유비의 겸양과 인내`, `<a id="samguk-029"></a>[SAMGUK-029] 조조가 유비에 미치지 못하는 점`, `<a id="samguk-030"></a>[SAMGUK-030] 조조를 제거하려는 충신`, `<a id="samguk-031"></a>[SAMGUK-031] 조조와 유비의 대인관계관`, `<a id="samguk-032"></a>[SAMGUK-032] 조조의 원호정책`, `<a id="samguk-033"></a>[SAMGUK-033] 조조의 지적 소유자에 대한 적의 예형과 담판`, `<a id="samguk-034"></a>[SAMGUK-034] 형세에 따른 처세`, `<a id="samguk-035"></a>[SAMGUK-035] 관우`, `<a id="samguk-036"></a>[SAMGUK-036] 조자룡`, `<a id="samguk-037"></a>[SAMGUK-037] 조조의 금주령에 대한 공융의 저항`, `<a id="samguk-038"></a>[SAMGUK-038] 조조의 단가행(短歌行): 영웅의 우수와 인생무상`, `<a id="samguk-039"></a>[SAMGUK-039] 武란`, `<a id="samguk-040"></a>[SAMGUK-040] 공명과 벗하며 지내는 최주평의 역사적 허무주의`, `<a id="samguk-041"></a>[SAMGUK-041] 근본의이해`, `<a id="samguk-042"></a>[SAMGUK-042] 깨달음`, `<a id="samguk-043"></a>[SAMGUK-043] 선복 유비의 사람됨을 시험하다`, `<a id="samguk-044"></a>[SAMGUK-044] 제갈균의 선비됨을 가사로 노래한 무명시`, `<a id="samguk-045"></a>[SAMGUK-045] 백미의유래`, `<a id="samguk-046"></a>[SAMGUK-046] 鷄肋에 관하여`, `<a id="samguk-047"></a>[SAMGUK-047] 학소 왈`, `<a id="samguk-048"></a>[SAMGUK-048] 絕纓之會(절영지회) — 갓끈을 끊은 관용과 군주의 사람경영`, `📚 [1] 삼국지 평역 10권별 목차 및 수록 현황 (Volume Index)`?**
+  _High betweenness centrality (0.009) - this node is a cross-community bridge._
 - **Should `⚡ 5대 전략 테크 & 산업 (10건)` be split into smaller, more focused modules?**
   _Cohesion score 0.045454545454545456 - nodes in this community are weakly interconnected._
-- **Why does `🏛️ 키아노스 국립 인류문명사연구원` connect `🏛️ 키아노스 국립 인류문명사연구원` to `📚 [1] 삼국지 평역 10권별 목차 및 수록 현황 (Volume Index)`, `01_네이버_파이튼의_문학산책/README.md`, `📜 [3] 삼국지 지혜 원문 인용 카드 (48선 전재)`?**
-  _High betweenness centrality (0.010) - this node is a cross-community bridge._
+- **Why does `🛠️ 종목 추가 및 커스텀 방법` connect `json` to `🏛️ 키아노스 마켓 펄스 (KYANOS Market Pulse)`?**
+  _High betweenness centrality (0.002) - this node is a cross-community bridge._
 - **Should `⚡ 5대 전략 테크 & 산업 (10건)` be split into smaller, more focused modules?**
   _Cohesion score 0.045454545454545456 - nodes in this community are weakly interconnected._
-- **Why does `《세계 문학 및 역사·인문·철학 고전 지혜보관소 총람》` connect `01_네이버_파이튼의_문학산책/README.md` to `3. 🌏 동양 고전 및 역사철학`, `Ⅰ. 대문호의 숨결: 세계 유명 문학 서적 (러시아 / 영국 / 프랑스 / 독일 등)`?**
-  _High betweenness centrality (0.006) - this node is a cross-community bridge._
+- **Why does `🏛️ 키아노스 마켓 펄스 (KYANOS Market Pulse)` connect `🏛️ 키아노스 마켓 펄스 (KYANOS Market Pulse)` to `json`?**
+  _High betweenness centrality (0.002) - this node is a cross-community bridge._
 - **Should `🏛️ 국내 정치 & 국정·정책 (10건)` be split into smaller, more focused modules?**
   _Cohesion score 0.047619047619047616 - nodes in this community are weakly interconnected._
 - **Should `subprocess` be split into smaller, more focused modules?**
