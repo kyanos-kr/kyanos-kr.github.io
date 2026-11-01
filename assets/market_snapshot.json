@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-01 11:06:44",
+  "timestamp": "2026-11-01 11:06:45",
   "crypto": [
     {
       "category": "crypto",
@@ -19,12 +19,12 @@
       "category": "crypto",
       "symbol": "ETH",
       "name": "이더리움",
-      "price": 3057000.0,
-      "price_str": "3,057,000원",
-      "change": 19000.0,
-      "change_str": "+19,000원",
-      "change_rate": 0.62541145,
-      "change_rate_str": "+0.63%",
+      "price": 3056000.0,
+      "price_str": "3,056,000원",
+      "change": 18000.0,
+      "change_str": "+18,000원",
+      "change_rate": 0.5924950600000001,
+      "change_rate_str": "+0.59%",
       "high_str": "3,061,000원",
       "low_str": "3,036,000원",
       "status": "up"
