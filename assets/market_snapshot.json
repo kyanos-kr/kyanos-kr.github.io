@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-01 15:33:14",
+  "timestamp": "2026-11-01 15:33:18",
   "crypto": [
     {
       "category": "crypto",
@@ -47,12 +47,12 @@
       "category": "crypto",
       "symbol": "SOL",
       "name": "솔라나",
-      "price": 128600.0,
-      "price_str": "128,600원",
-      "change": 100.0,
-      "change_str": "+100원",
-      "change_rate": 0.07782101,
-      "change_rate_str": "+0.08%",
+      "price": 128800.0,
+      "price_str": "128,800원",
+      "change": 300.0,
+      "change_str": "+300원",
+      "change_rate": 0.23346304,
+      "change_rate_str": "+0.23%",
       "high_str": "129,100원",
       "low_str": "128,300원",
       "status": "up"
