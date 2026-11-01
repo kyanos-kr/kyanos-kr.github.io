@@ -1,8 +1,8 @@
 ﻿# 🌐 Ant-Travel Korea 일일 1편 자동 업로드 관리 로그 (State Log)
 # 매일 1회만 정확히 실행되며, 하루에 2편 이상 중복 업로드되지 않습니다.
 
-last_uploaded_date: 2026-10-30
-last_uploaded_spot: Jeongdong-Simgok Badabuchaegil (Gangneung)
+last_uploaded_date: 2026-11-01
+last_uploaded_spot: National Institute of Ecology Ecorium (Seocheon)
 daily_quota: 1
 history:
   - date: 2026-10-20
@@ -33,3 +33,7 @@ history:
     spot: "2026-10-30_Travel_Gangwon_Gangneung_Jeongdong_Simgok_Badabuchaegil.html"
     post_id: "1962169193924433884"
     url: "https://antkoreatrip.blogspot.com/2026/10/phaeton-k-travel-inbound-guide.html"
+  - date: 2026-11-01
+    spot: '2026-11-01_Travel_Chungnam_Seocheon_National_Institute_of_Ecology_Ecorium.html'
+    post_id: '2023188030251226770'
+    url: 'https://antkoreatrip.blogspot.com/2026/10/phaeton-k-travel-inbound-guide-national.html'
