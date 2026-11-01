@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-01 09:35:59",
+  "timestamp": "2026-11-01 09:38:36",
   "crypto": [
     {
       "category": "crypto",
@@ -11,7 +11,7 @@
       "change_str": "+79,000원",
       "change_rate": 0.07561618,
       "change_rate_str": "+0.08%",
-      "high_str": "104,554,000원",
+      "high_str": "104,556,000원",
       "low_str": "104,358,000원",
       "status": "up"
     },
@@ -19,12 +19,12 @@
       "category": "crypto",
       "symbol": "ETH",
       "name": "이더리움",
-      "price": 3040000.0,
-      "price_str": "3,040,000원",
-      "change": 2000.0,
-      "change_str": "+2,000원",
-      "change_rate": 0.06583278,
-      "change_rate_str": "+0.07%",
+      "price": 3042000.0,
+      "price_str": "3,042,000원",
+      "change": 4000.0,
+      "change_str": "+4,000원",
+      "change_rate": 0.13166556999999998,
+      "change_rate_str": "+0.13%",
       "high_str": "3,042,000원",
       "low_str": "3,036,000원",
       "status": "up"
@@ -33,13 +33,13 @@
       "category": "crypto",
       "symbol": "XRP",
       "name": "리플",
-      "price": 1690.0,
-      "price_str": "1,690원",
-      "change": 5.0,
-      "change_str": "+5.00원",
-      "change_rate": 0.29673591,
-      "change_rate_str": "+0.30%",
-      "high_str": "1,690원",
+      "price": 1691.0,
+      "price_str": "1,691원",
+      "change": 6.0,
+      "change_str": "+6.00원",
+      "change_rate": 0.35608309,
+      "change_rate_str": "+0.36%",
+      "high_str": "1,691원",
       "low_str": "1,684원",
       "status": "up"
     },
@@ -61,15 +61,15 @@
       "category": "crypto",
       "symbol": "DOGE",
       "name": "도지코인",
-      "price": 102.0,
-      "price_str": "102원",
-      "change": 0,
-      "change_str": "+0.00원",
-      "change_rate": 0,
-      "change_rate_str": "+0.00%",
+      "price": 103.0,
+      "price_str": "103원",
+      "change": 1.0,
+      "change_str": "+1.00원",
+      "change_rate": 0.98039216,
+      "change_rate_str": "+0.98%",
       "high_str": "103원",
       "low_str": "101원",
-      "status": "flat"
+      "status": "up"
     }
   ],
   "domestic": [
