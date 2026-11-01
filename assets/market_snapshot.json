@@ -1,16 +1,16 @@
 {
-  "timestamp": "2026-11-01 23:02:36",
+  "timestamp": "2026-11-01 23:02:40",
   "crypto": [
     {
       "category": "crypto",
       "symbol": "BTC",
       "name": "비트코인",
-      "price": 104422000.0,
-      "price_str": "104,422,000원",
-      "change": -53000.0,
-      "change_str": "-53,000원",
-      "change_rate": -0.050729840000000005,
-      "change_rate_str": "-0.05%",
+      "price": 104417000.0,
+      "price_str": "104,417,000원",
+      "change": -58000.0,
+      "change_str": "-58,000원",
+      "change_rate": -0.05551567,
+      "change_rate_str": "-0.06%",
       "high_str": "104,930,000원",
       "low_str": "104,050,000원",
       "status": "down"
