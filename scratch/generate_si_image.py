@@ -1,0 +1,89 @@
+import os
+from PIL import Image, ImageDraw, ImageFont
+
+def create_infographic():
+    width = 960
+    height = 540
+    img = Image.new('RGB', (width, height), color='#0b0f19')
+    draw = ImageDraw.Draw(img)
+
+    # Gradient background / lines
+    for y in range(height):
+        r = int(11 + (20 - 11) * (y / height))
+        g = int(15 + (30 - 15) * (y / height))
+        b = int(25 + (50 - 25) * (y / height))
+        draw.line([(0, y), (width, y)], fill=(r, g, b))
+
+    # Grid / tech lines
+    for x in range(0, width, 40):
+        draw.line([(x, 0), (x, height)], fill=(20, 35, 60, 40))
+    for y in range(0, height, 40):
+        draw.line([(0, y), (width, y)], fill=(20, 35, 60, 40))
+
+    # Title box
+    draw.rectangle([(50, 40), (910, 120)], fill='#111827', outline='#4f46e5', width=2)
+    
+    # Try finding Korean font or default font
+    font_paths = [
+        "C:/Windows/Fonts/malgunbd.ttf",
+        "C:/Windows/Fonts/malgun.ttf",
+        "C:/Windows/Fonts/gulim.ttc"
+    ]
+    font_title = None
+    font_sub = None
+    font_box = None
+    font_desc = None
+    for fp in font_paths:
+        if os.path.exists(fp):
+            font_title = ImageFont.truetype(fp, 26)
+            font_sub = ImageFont.truetype(fp, 16)
+            font_box = ImageFont.truetype(fp, 18)
+            font_desc = ImageFont.truetype(fp, 13)
+            break
+    if not font_title:
+        font_title = ImageFont.load_default()
+        font_sub = ImageFont.load_default()
+        font_box = ImageFont.load_default()
+        font_desc = ImageFont.load_default()
+
+    draw.text((70, 52), "[Phaeton SI Odyssey #10] 피지컬 SI 자율 파운드리 & 전고체 2차전지", fill='#38bdf8', font=font_title)
+    draw.text((70, 88), "파이튼 5대 미래 전략 산업(2차전지 · EV · 반도체 · SI · 로봇) 완전 수직통합 매트릭스", fill='#94a3b8', font=font_sub)
+
+    # 4 Core Columns
+    boxes = [
+        ("① 피지컬 SI 파운드리", "자율 생산 로봇 군집\n24/7 무인 자율 공장\n오차 0.001mm 극정밀", "#3b82f6"),
+        ("② 전고체 2차전지", "500Wh/kg 고밀도 셀\n화재 제로 안전성\n18시간 연속 가동", "#10b981"),
+        ("③ 차세대 2nm 반도체", "뉴로모픽 엣지 SI NPU\n초저지연 메모리 직결\n클라우드 무의존 연산", "#8b5cf6"),
+        ("④ EV · 로봇 통합", "단일 파워트레인 아키텍처\n소프트웨어 정의 모빌리티\n국가 공급망 100% 자립", "#f59e0b")
+    ]
+
+    box_w = 195
+    box_h = 320
+    start_x = 55
+    spacing = 20
+    start_y = 150
+
+    for i, (btitle, bdesc, color) in enumerate(boxes):
+        bx = start_x + i * (box_w + spacing)
+        by = start_y
+        draw.rectangle([(bx, by), (bx + box_w, by + box_h)], fill='#1e293b', outline=color, width=2)
+        # Header inside box
+        draw.rectangle([(bx, by), (bx + box_w, by + 45)], fill=color)
+        draw.text((bx + 12, by + 12), btitle, fill='#ffffff', font=font_box)
+        # Body text inside box
+        draw.text((bx + 15, by + 70), bdesc, fill='#e2e8f0', font=font_desc, spacing=14)
+        
+        # Bottom badge
+        draw.rectangle([(bx + 15, by + box_h - 45), (bx + box_w - 15, by + box_h - 15)], fill='#0f172a', outline='#334155')
+        draw.text((bx + 35, by + box_h - 38), "100% 국가 자립", fill='#38bdf8', font=font_desc)
+
+    # Footer
+    draw.text((55, 495), "KYANOS SUPER INTELLIGENCE ODYSSEY · CHIEF ORCHESTRATOR METI", fill='#64748b', font=font_desc)
+    draw.text((720, 495), "OFFICIAL ANTHOLOGY 2026", fill='#64748b', font=font_desc)
+
+    out_path = r"D:\안티그래비티파이튼\assets\images\si\06_autonomous_foundry_solidstate_battery.jpg"
+    img.save(out_path, quality=95)
+    print("Saved infographic to:", out_path)
+
+if __name__ == '__main__':
+    create_infographic()
