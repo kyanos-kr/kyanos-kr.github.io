@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-01 10:36:15",
+  "timestamp": "2026-11-01 10:36:35",
   "crypto": [
     {
       "category": "crypto",
@@ -19,12 +19,12 @@
       "category": "crypto",
       "symbol": "ETH",
       "name": "이더리움",
-      "price": 3056000.0,
-      "price_str": "3,056,000원",
-      "change": 18000.0,
-      "change_str": "+18,000원",
-      "change_rate": 0.5924950600000001,
-      "change_rate_str": "+0.59%",
+      "price": 3054000.0,
+      "price_str": "3,054,000원",
+      "change": 16000.0,
+      "change_str": "+16,000원",
+      "change_rate": 0.5266622799999999,
+      "change_rate_str": "+0.53%",
       "high_str": "3,056,000원",
       "low_str": "3,036,000원",
       "status": "up"
@@ -61,15 +61,15 @@
       "category": "crypto",
       "symbol": "DOGE",
       "name": "도지코인",
-      "price": 103.0,
-      "price_str": "103원",
-      "change": 1.0,
-      "change_str": "+1.00원",
-      "change_rate": 0.98039216,
-      "change_rate_str": "+0.98%",
+      "price": 102.0,
+      "price_str": "102원",
+      "change": 0,
+      "change_str": "+0.00원",
+      "change_rate": 0,
+      "change_rate_str": "+0.00%",
       "high_str": "103원",
       "low_str": "101원",
-      "status": "up"
+      "status": "flat"
     }
   ],
   "domestic": [
