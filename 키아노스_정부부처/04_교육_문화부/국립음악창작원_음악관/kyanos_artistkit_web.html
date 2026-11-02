@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kyanos ArtistKit & Sound Lab | 키아노스 국립음악창작원</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Montserrat:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #070b14;
+      --bg-card: rgba(14, 23, 42, 0.85);
+      --bg-card-hover: rgba(22, 36, 66, 0.95);
+      --gold: #d4af37;
+      --gold-light: #fef08a;
+      --gold-dim: rgba(212, 175, 55, 0.25);
+      --amber: #f59e0b;
+      --cyan: #38bdf8;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-gold: rgba(212, 175, 55, 0.3);
+      --border-soft: rgba(255, 255, 255, 0.08);
+      --accent-glow: rgba(245, 158, 11, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 10% 15%, rgba(212, 175, 55, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 85%, rgba(56, 189, 248, 0.06) 0%, transparent 45%),
+        linear-gradient(180deg, #070b14 0%, #030712 100%);
+      color: var(--text-main);
+      font-family: 'Noto Sans KR', sans-serif;
+      min-height: 100vh;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1440px;
+    }
+
+    /* HEADER */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid var(--border-gold);
+      margin-bottom: 1.8rem;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .emblem-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold);
+      background: radial-gradient(circle, #f59e0b 0%, #091224 85%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+
+    .brand-text h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--gold-light);
+    }
+
+    .brand-text p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    .badge-benchmark {
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid var(--amber);
+      color: var(--amber);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* MAIN GRID LAYOUT */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 1.8rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 1024px) {
+      .main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* LEFT: PLAYER PANEL */
+    .player-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: 16px;
+      padding: 1.8rem;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .vinyl-wrapper {
+      position: relative;
+      width: 240px;
+      height: 240px;
+      margin-bottom: 1.5rem;
+    }
+
+    .vinyl-disc {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: radial-gradient(circle, #1a1a1a 20%, #000 60%, #222 100%);
+      border: 3px solid rgba(212, 175, 55, 0.4);
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.8), 0 0 15px var(--accent-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.5s ease;
+    }
+
+    .vinyl-disc.playing {
+      animation: rotateVinyl 12s linear infinite;
+    }
+
+    @keyframes rotateVinyl {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .vinyl-label {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      background: radial-gradient(circle, #f59e0b 0%, #1e1b4b 90%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-align: center;
+      padding: 4px;
+    }
+
+    .track-meta {
+      width: 100%;
+      margin-bottom: 1.2rem;
+    }
+
+    .track-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+
+    .track-subtitle {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      color: var(--gold);
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    .tag-pills {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 1.2rem;
+    }
+
+    .tag-pill {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-soft);
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .tag-pill.highlight {
+      border-color: var(--gold);
+      color: var(--gold-light);
+      background: rgba(212, 175, 55, 0.1);
+    }
+
+    /* AUDIO CONTROLLER */
+    .controller {
+      width: 100%;
+    }
+
+    .progress-bar-wrap {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1.2rem;
+    }
+
+    .time-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      width: 40px;
+    }
+
+    .progress-bar {
+      flex: 1;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--gold), var(--amber));
+      border-radius: 3px;
+      transition: width 0.1s linear;
+    }
+
+    .control-buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 1.2rem;
+    }
+
+    .ctrl-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-main);
+      cursor: pointer;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+    }
+
+    .ctrl-btn:hover {
+      color: var(--gold);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .ctrl-btn.play-btn {
+      width: 52px;
+      height: 52px;
+      background: var(--gold);
+      color: #070b14;
+      font-size: 1.4rem;
+      box-shadow: 0 0 18px rgba(212, 175, 55, 0.4);
+    }
+
+    .ctrl-btn.play-btn:hover {
+      background: var(--gold-light);
+      transform: scale(1.05);
+    }
+
+    .volume-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .volume-wrap input[type=range] {
+      width: 120px;
+      accent-color: var(--gold);
+      cursor: pointer;
+    }
+
+    /* RIGHT: DETAILS & TABS */
+    .details-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: 16px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .tabs-header {
+      display: flex;
+      background: rgba(0, 0, 0, 0.35);
+      border-bottom: 1px solid var(--border-soft);
+      padding: 0 1.2rem;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      font-weight: 600;
+      padding: 1.1rem 1.4rem;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-main);
+    }
+
+    .tab-btn.active {
+      color: var(--gold-light);
+    }
+
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--gold);
+      box-shadow: 0 0 10px var(--gold);
+    }
+
+    .tab-content-panel {
+      padding: 1.8rem;
+      flex: 1;
+      overflow-y: auto;
+      max-height: 480px;
+    }
+
+    .tab-pane {
+      display: none;
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+
+    .tab-pane.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .poem-box {
+      font-family: 'Noto Serif KR', serif;
+      white-space: pre-wrap;
+      font-size: 1.05rem;
+      color: #e2e8f0;
+      padding: 1rem 1.5rem;
+      background: rgba(255, 255, 255, 0.02);
+      border-left: 3px solid var(--gold);
+      border-radius: 4px;
+    }
+
+    .lyrics-box {
+      white-space: pre-wrap;
+      font-size: 0.98rem;
+      color: #cbd5e1;
+      padding: 1rem 1.5rem;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 8px;
+    }
+
+    .chords-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .chord-card {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-soft);
+      border-radius: 8px;
+      padding: 1rem;
+    }
+
+    .chord-card h4 {
+      font-size: 0.78rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .chord-card p {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.92rem;
+      color: var(--text-main);
+    }
+
+    .chord-prog-box {
+      font-family: 'JetBrains Mono', monospace;
+      background: #030712;
+      border: 1px solid var(--border-gold);
+      border-radius: 8px;
+      padding: 1rem 1.2rem;
+      font-size: 0.88rem;
+      color: #38bdf8;
+      white-space: pre-wrap;
+      line-height: 1.6;
+    }
+
+    /* PLAYLIST CATALOG TABLE */
+    .catalog-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: 16px;
+      padding: 1.8rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      margin-bottom: 2rem;
+    }
+
+    .catalog-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .catalog-header h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.15rem;
+      color: var(--gold-light);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .catalog-count {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .track-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      max-height: 420px;
+      overflow-y: auto;
+    }
+
+    .track-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 16px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .track-item:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-gold);
+    }
+
+    .track-item.current {
+      background: rgba(212, 175, 55, 0.12);
+      border-color: var(--gold);
+    }
+
+    .track-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .track-idx {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      width: 24px;
+    }
+
+    .track-name-wrap h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .track-name-wrap p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .track-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .badge-audio {
+      padding: 3px 8px;
+      border-radius: 10px;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+
+    .badge-audio.has {
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid var(--cyan);
+      color: var(--cyan);
+    }
+
+    .badge-audio.none {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-muted);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 1.5rem 0;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-soft);
+      width: 100%;
+    }
+
+    footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- HEADER -->
+  <header>
+    <div class="brand-wrap">
+      <div class="emblem-icon">👑</div>
+      <div class="brand-text">
+        <h1>KYANOS SOUND LAB • ARTISTKIT</h1>
+        <p>키아노스 국립음악창작원 공식 SI 프로듀서 레이블 '키아노사운드(KyanoSound)'</p>
+      </div>
+    </div>
+    <div class="badge-benchmark">
+      <span>★ 벤치마킹 모델: 포자랩스(POZAlabs) Steal Saturday 신보 아키텍처</span>
+    </div>
+  </header>
+
+  <!-- MAIN PLAYER & TABS -->
+  <div class="main-grid">
+    <!-- LEFT: PLAYER PANEL -->
+    <div class="player-card">
+      <div class="vinyl-wrapper">
+        <div class="vinyl-disc" id="vinylDisc">
+          <div class="vinyl-label">
+            <span style="font-family:'Cinzel', serif; font-size:0.65rem;">KYANOS</span>
+            <span style="color:var(--gold-light); font-size:0.75rem;">SOUND</span>
+            <span style="font-size:0.6rem; opacity:0.8;">OFFICIAL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="track-meta">
+        <h2 class="track-title" id="curTitle">가을 그리고 차 한잔</h2>
+        <p class="track-subtitle" id="curSubtitle">Autumn and a Cup of Tea</p>
+        <div class="tag-pills">
+          <span class="tag-pill highlight" id="curGenre">Acoustic Folk Ballad</span>
+          <span class="tag-pill" id="curBpm">72 BPM</span>
+          <span class="tag-pill" id="curKey">G Major</span>
+          <span class="tag-pill">파이튼 원작 시문학</span>
+        </div>
+      </div>
+
+      <!-- AUDIO ELEMENT & CONTROLS -->
+      <audio id="audioElement" preload="metadata"></audio>
+
+      <div class="controller">
+        <div class="progress-bar-wrap">
+          <span class="time-text" id="curTime">0:00</span>
+          <div class="progress-bar" id="progressBar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <span class="time-text" id="totalTime">0:00</span>
+        </div>
+
+        <div class="control-buttons">
+          <button class="ctrl-btn" id="prevBtn" title="이전 곡">⏮</button>
+          <button class="ctrl-btn play-btn" id="playBtn" title="재생 / 일시정지">▶</button>
+          <button class="ctrl-btn" id="nextBtn" title="다음 곡">⏭</button>
+        </div>
+
+        <div class="volume-wrap">
+          <span style="font-size:0.85rem; color:var(--text-muted);">🔊</span>
+          <input type="range" id="volumeSlider" min="0" max="1" step="0.05" value="0.8">
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: INTERACTIVE TABS -->
+    <div class="details-card">
+      <div class="tabs-header">
+        <button class="tab-btn active" data-tab="poemTab">📜 파이튼 원작 시</button>
+        <button class="tab-btn" data-tab="lyricsTab">🎤 편곡 가사</button>
+        <button class="tab-btn" data-tab="chordsTab">🎸 코드 악보 & 사운드</button>
+        <button class="tab-btn" data-tab="noteTab">💡 SI 프로덕션 노트</button>
+      </div>
+
+      <div class="tab-content-panel">
+        <!-- TAB 1: POEM -->
+        <div class="tab-pane active" id="poemTab">
+          <h3 style="font-family:'Noto Serif KR', serif; color:var(--gold-light); margin-bottom:1rem;">파이튼 최고통수권자 원작 서정시</h3>
+          <div class="poem-box" id="poemContent">시 원문이 로딩 중입니다...</div>
+        </div>
+
+        <!-- TAB 2: LYRICS -->
+        <div class="tab-pane" id="lyricsTab">
+          <h3 style="color:var(--cyan); margin-bottom:1rem;">키아노사운드 보컬 편곡 가사 (Lyric Sheet)</h3>
+          <div class="lyrics-box" id="lyricsContent">가사 내용이 로딩 중입니다...</div>
+        </div>
+
+        <!-- TAB 3: CHORDS & SCORE -->
+        <div class="tab-pane" id="chordsTab">
+          <h3 style="color:var(--amber); margin-bottom:1rem;">마디별 코드 진행 및 악기 오케스트레이션</h3>
+          <div class="chords-grid">
+            <div class="chord-card">
+              <h4>조성 (Key)</h4>
+              <p id="chordKey">G Major</p>
+            </div>
+            <div class="chord-card">
+              <h4>템포 (Tempo)</h4>
+              <p id="chordBpm">72 BPM</p>
+            </div>
+            <div class="chord-card" style="grid-column: 1 / -1;">
+              <h4>주요 악기 편성 (Instrumentation)</h4>
+              <p id="chordInst">Acoustic Guitar, Mellow Piano, Cello, Shaker</p>
+            </div>
+          </div>
+          <h4 style="font-size:0.8rem; color:var(--text-muted); margin-bottom:6px;">마디별 코드 프로그레션 (Chord Progression)</h4>
+          <div class="chord-prog-box" id="chordProg">G - D/F# - Em7 - C(add9)</div>
+        </div>
+
+        <!-- TAB 4: SI PRODUCTION NOTE -->
+        <div class="tab-pane" id="noteTab">
+          <h3 style="color:var(--gold); margin-bottom:0.8rem;">포자랩스(POZAlabs) 'Steal Saturday' 벤치마킹 분석 노트</h3>
+          <p style="color:#94a3b8; font-size:0.88rem; margin-bottom:1rem;">
+            본 곡은 포자랩스가 2026년 10월 26일 발표한 AI 프로듀서 Steal Saturday의 신보 '그럼에도, 오늘은' 제작 방식을 벤치마킹하여 설계되었습니다.
+          </p>
+          <ul style="color:#cbd5e1; font-size:0.88rem; padding-left:1.2rem; line-height:1.8;">
+            <li><strong>독자 아티스트 브랜딩</strong>: 단순 툴 생성을 넘어 '키아노사운드(KyanoSound)' 고유의 서정적 리리시즘 레이블 구축.</li>
+            <li><strong>하이브리드 마스터링</strong>: 생성형 AI 화성 도출 후 전문 사운드 엔지니어링 후반 믹싱을 결합하여 따뜻한 아날로그 감성 구현.</li>
+            <li><strong>원스톱 배포 체계</strong>: 전용 ArtistKit을 통해 원작 시, 편곡 가사, 코드 악보, 스트리밍 오디오를 일체형으로 제공.</li>
+            <li><strong>09_미디어부 연동</strong>: 신보 발매 시 앤트뉴스 완성형 보도기사(한글 2024 HWPX) 동시 발행.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTTOM: CATALOG JUKEBOX -->
+  <div class="catalog-section">
+    <div class="catalog-header">
+      <h3><span>🎵</span> 키아노스 국립음악창작원 17대 공식 음원 카탈로그</h3>
+      <span class="catalog-count" id="catalogCount">총 17곡 수록</span>
+    </div>
+    <div class="track-list" id="trackList">
+      <!-- Generated via JS -->
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 KYANOS GOVERNMENT • 교육·문화부 국립음악창작원 & 09_미디어부 앤트뉴스</p>
+    <p style="margin-top:4px; font-size:0.75rem; opacity:0.7;">
+      보안 관할: 키아노스 국제질서유지 보안사령부 (K-SEF) 퀀텀 아이기스 방위단 • All Rights Reserved.
+    </p>
+  </footer>
+</div>
+
+<script>
+let tracksData = [];
+let currentIndex = 0;
+let isPlaying = false;
+
+const audio = document.getElementById('audioElement');
+const playBtn = document.getElementById('playBtn');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const progressBar = document.getElementById('progressBar');
+const progressFill = document.getElementById('progressFill');
+const curTimeEl = document.getElementById('curTime');
+const totalTimeEl = document.getElementById('totalTime');
+const volumeSlider = document.getElementById('volumeSlider');
+const vinylDisc = document.getElementById('vinylDisc');
+
+// Fetch Catalog Data
+fetch('kyanos_tracks_catalog.json')
+  .then(res => res.json())
+  .then(data => {
+    tracksData = data;
+    renderCatalog();
+    loadTrack(0);
+  })
+  .catch(err => {
+    console.error('Failed to load catalog data:', err);
+  });
+
+function renderCatalog() {
+  const listEl = document.getElementById('trackList');
+  listEl.innerHTML = '';
+  document.getElementById('catalogCount').textContent = `총 ${tracksData.length}곡 수록`;
+
+  tracksData.forEach((track, idx) => {
+    const item = document.createElement('div');
+    item.className = `track-item ${idx === currentIndex ? 'current' : ''}`;
+    item.onclick = () => {
+      loadTrack(idx);
+      playAudio();
+    };
+
+    const numStr = (idx + 1).toString().padStart(2, '0');
+    const audioBadge = track.has_audio 
+      ? `<span class="badge-audio has">HQ Audio</span>` 
+      : `<span class="badge-audio none">악보/시</span>`;
+
+    item.innerHTML = `
+      <div class="track-left">
+        <span class="track-idx">${numStr}</span>
+        <div class="track-name-wrap">
+          <h4>${track.title}</h4>
+          <p>${track.en_title} • ${track.genre}</p>
+        </div>
+      </div>
+      <div class="track-right">
+        ${audioBadge}
+      </div>
+    `;
+    listEl.appendChild(item);
+  });
+}
+
+function loadTrack(index) {
+  currentIndex = index;
+  const track = tracksData[index];
+  if (!track) return;
+
+  // Metadata update
+  document.getElementById('curTitle').textContent = track.title;
+  document.getElementById('curSubtitle').textContent = track.en_title;
+  document.getElementById('curGenre').textContent = track.genre;
+  document.getElementById('curBpm').textContent = `${track.bpm} BPM`;
+  document.getElementById('curKey').textContent = track.key;
+
+  // Tabs content update
+  document.getElementById('poemContent').textContent = track.poem;
+  document.getElementById('lyricsContent').textContent = track.lyrics;
+  document.getElementById('chordKey').textContent = track.key;
+  document.getElementById('chordBpm').textContent = `${track.bpm} BPM`;
+  document.getElementById('chordInst').textContent = track.instruments;
+  document.getElementById('chordProg').textContent = track.chords;
+
+  // Audio source update
+  if (track.has_audio && track.mp3_src) {
+    audio.src = track.mp3_src;
+  } else {
+    audio.src = '';
+  }
+
+  // Update catalog highlight
+  const items = document.querySelectorAll('.track-item');
+  items.forEach((item, idx) => {
+    item.classList.toggle('current', idx === index);
+  });
+}
+
+function playAudio() {
+  if (!audio.src) {
+    alert('해당 곡은 고음질 오디오 렌더링 준비 중이며 현재 원작 시와 편곡 악보를 제공합니다.');
+    return;
+  }
+  audio.play()
+    .then(() => {
+      isPlaying = true;
+      playBtn.textContent = '⏸';
+      vinylDisc.classList.add('playing');
+    })
+    .catch(err => {
+      console.warn('Playback error:', err);
+    });
+}
+
+function pauseAudio() {
+  audio.pause();
+  isPlaying = false;
+  playBtn.textContent = '▶';
+  vinylDisc.classList.remove('playing');
+}
+
+playBtn.addEventListener('click', () => {
+  if (isPlaying) {
+    pauseAudio();
+  } else {
+    playAudio();
+  }
+});
+
+prevBtn.addEventListener('click', () => {
+  let prevIdx = (currentIndex - 1 + tracksData.length) % tracksData.length;
+  loadTrack(prevIdx);
+  playAudio();
+});
+
+nextBtn.addEventListener('click', () => {
+  let nextIdx = (currentIndex + 1) % tracksData.length;
+  loadTrack(nextIdx);
+  playAudio();
+});
+
+// Audio events
+audio.addEventListener('timeupdate', () => {
+  if (audio.duration) {
+    const percent = (audio.currentTime / audio.duration) * 100;
+    progressFill.style.width = `${percent}%`;
+    curTimeEl.textContent = formatTime(audio.currentTime);
+    totalTimeEl.textContent = formatTime(audio.duration);
+  }
+});
+
+audio.addEventListener('ended', () => {
+  let nextIdx = (currentIndex + 1) % tracksData.length;
+  loadTrack(nextIdx);
+  playAudio();
+});
+
+progressBar.addEventListener('click', (e) => {
+  if (audio.duration) {
+    const rect = progressBar.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const ratio = clickX / rect.width;
+    audio.currentTime = ratio * audio.duration;
+  }
+});
+
+volumeSlider.addEventListener('input', (e) => {
+  audio.volume = e.target.value;
+});
+
+function formatTime(sec) {
+  const m = Math.floor(sec / 60);
+  const s = Math.floor(sec % 60);
+  return `${m}:${s < 10 ? '0' : ''}${s}`;
+}
+
+// TAB SWITCHING
+const tabBtns = document.querySelectorAll('.tab-btn');
+const tabPanes = document.querySelectorAll('.tab-pane');
+
+tabBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    tabBtns.forEach(b => b.classList.remove('active'));
+    tabPanes.forEach(p => p.classList.remove('active'));
+
+    btn.classList.add('active');
+    const targetId = btn.getAttribute('data-tab');
+    document.getElementById(targetId).classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>

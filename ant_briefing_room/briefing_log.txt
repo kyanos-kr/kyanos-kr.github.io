@@ -356,3 +356,14 @@ error: failed to push some refs to 'https://github.com/kyanos-kr/kyanos-kr.githu
   - 총 브리핑 아이템: 32건 (데스크 심층 13건 + 실시간 RSS 19건)
   - 웹 데이터(JS/JSON): D:\안티그래비티파이튼\ant_briefing_room\briefing_data.js
   - 오늘편집 취재원석 리포트: D:\DATA CENTER\편집 기사\오늘편집\취재원석\오늘의_취재원석_브리핑_20261103.md
+Traceback (most recent call last):
+  File "D:\안티그래비티파이튼\ant_briefing_room\git_publisher.py", line 47, in <module>
+    publish_briefing_to_github()
+  File "D:\안티그래비티파이튼\ant_briefing_room\git_publisher.py", line 42, in publish_briefing_to_github
+    run_git(["git", "push", "origin", "main"], REPO_ROOT)
+  File "D:\안티그래비티파이튼\ant_briefing_room\git_publisher.py", line 25, in run_git
+    raise RuntimeError(f"Git 오류: {err}")
+RuntimeError: Git 오류: To https://github.com/kyanos-kr/kyanos-kr.github.io.git
+ ! [remote rejected] main -> main (cannot lock ref 'refs/heads/main': is at a64fbb2ce3f5ad38783824745ee3ef173487eefa but expected 47cbc0a3362ed33f26db84a58189ce03038bdc64)
+error: failed to push some refs to 'https://github.com/kyanos-kr/kyanos-kr.github.io.git'
+[2026-11-03  7:22:13.10] AntNews Briefing Room Update Completed (Code: 1) 

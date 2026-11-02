@@ -1,0 +1,22 @@
+================================================================================
+[키아노스 3D 아나모픽 숏폼 - 최신 AI 비디오 및 3D 프롬프트 가이드]
+적용 가능 툴: Runway Gen-3 Alpha, Kling AI, Luma Dream Machine, Sora, Midjourney v6
+================================================================================
+
+[Scene 1: Screen Shatter & 3D Depth Hook]
+* Prompt (English):
+"Anamorphic 3D illusion effect, vertical 9:16 aspect ratio. A realistic smartphone screen appearing to shatter from the inside out, hyper-realistic glowing cyan quantum geometric cube bursting through broken glass fragments flying directly towards the viewer camera. Optical illusion depth effect, black frame borders with elements breaking outside the boundaries, cinematic lighting, ultra-detailed 8k, Unreal Engine 5 render style, dramatic slow-motion impact --ar 9:16"
+
+[Scene 2: Floating Kyanos Futuristic Ocean City & 3D Emblem]
+* Prompt (English):
+"Anamorphic 3D billboard visual effect. A magnificent floating utopian city island named KYANOS emerging from a holographic portal in the center of the frame. Luxurious cyber-classical architecture, crystal domes, turquoise ocean water spilling over the 3D frame edges into the viewer's space. Glowing golden and cyan national crest emblem spinning in mid-air with volumetric light rays, extreme three-dimensional depth, photorealistic, cinematic masterpiece --ar 9:16"
+
+[Scene 3: High-Tech Sovereignty Breakthrough]
+* Prompt (English):
+"3D anamorphic depth projection. High-tech solid-state battery core glowing with electric sparks, quantum semiconductor microchip floating and reaching out of the screen frame towards the camera. Sleek white humanoid robot arm extending out of the display into real-world space. Dynamic cinematic camera dolly zoom, Octane render, cyberpunk luxury aesthetic, hyper-detailed --ar 9:16"
+
+[Scene 4: 3D Golden Passport & Presidential Seal]
+* Prompt (English):
+"Anamorphic 3D pop-out effect. A heavy, luxurious golden digital passport embossed with high-tech glowing insignia and supreme sovereign seal 'PYTHON'. The passport rotates smoothly in 3D space, tilting forward and extending completely past the screen boundary towards the viewer. Volumetric god rays, macro lens focus, metallic reflections, premium national identity --ar 9:16"
+
+================================================================================
