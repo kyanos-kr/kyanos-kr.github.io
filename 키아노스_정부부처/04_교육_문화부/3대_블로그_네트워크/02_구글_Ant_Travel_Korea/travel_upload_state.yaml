@@ -1,8 +1,8 @@
 ﻿# 🌐 Ant-Travel Korea 일일 1편 자동 업로드 관리 로그 (State Log)
 # 매일 1회만 정확히 실행되며, 하루에 2편 이상 중복 업로드되지 않습니다.
 
-last_uploaded_date: 2026-11-02
-last_uploaded_spot: 2026-11-02_Travel_Gyeonggi_Gapyeong_Garden_of_Morning_Calm_Autumn_Symphony.html
+last_uploaded_date: 2026-11-03
+last_uploaded_spot: 2026-11-03_Travel_Gangwon_Chuncheon_Obongsan_Cheongpyeongsa_Temple.html
 daily_quota: 1
 history:
   - date: 2026-10-20
@@ -42,3 +42,7 @@ history:
     spot: 2026-11-02_Travel_Gyeonggi_Gapyeong_Garden_of_Morning_Calm_Autumn_Symphony.html
     post_id: "5719137267179757378"
     url: " https://antkoreatrip.blogspot.com/2026/11/phaeton-k-travel-inbound-guide-garden.html\n
+  - date: 2026-11-03
+    spot: 2026-11-03_Travel_Gangwon_Chuncheon_Obongsan_Cheongpyeongsa_Temple.html
+    post_id: "4022503428015759925"
+    url: "https://antkoreatrip.blogspot.com/2026/11/phaeton-k-travel-inbound-guide-obongsan.html"
