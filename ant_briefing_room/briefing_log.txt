@@ -480,3 +480,15 @@ RuntimeError: Git 오류: Unknown error
 🧹 [자동 폐기 관제] 3일 이전(2026-11-03 이전) 경과 취재원석 자동 정밀 정리 가동...
   🗑️ [영구 폐기 완료]: briefing_20261102.md
   -> 총 1개의 3일 경과 취재원석 파일이 영구 자동 폐기되었습니다.
+  [Notice] git pull rebase 참고: Git 오류: From https://github.com/kyanos-kr/kyanos-kr.github.io
+   822a0dd..911bbfb  main       -> origin/main
+fatal: It seems that there is already a rebase-merge directory, and
+I wonder if you are in the middle of another rebase.  If that is the
+case, please try
+	git rebase (--continue | --abort | --skip)
+If that is not the case, please
+	rm -fr ".git/rebase-merge"
+and run me again.  I am stopping in case you still have something
+valuable there.
+  [Git] GitHub Pages 라이브 배포 완료: https://kyanos-kr.github.io/ant_briefing_room/ (2026-11-06 07:52)
+[2026-11-06  7:52:42.28] AntNews Briefing Room Update Completed (Code: 0) 

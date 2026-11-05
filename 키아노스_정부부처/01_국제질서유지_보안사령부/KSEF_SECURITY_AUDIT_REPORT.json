@@ -1,6 +1,6 @@
 {
-  "report_id": "KSEF-SEC-2026-DPRK-1793612135",
-  "generated_at": "2026-11-02 18:35:35 (KST)",
+  "report_id": "KSEF-SEC-2026-DPRK-1793919836",
+  "generated_at": "2026-11-06 08:03:56 (KST)",
   "supreme_commander": "King Python (파이튼 국왕)",
   "defense_coordinator": "Ant (앤트 국무총리)",
   "threat_environment": {
@@ -83,7 +83,7 @@
   },
   "recent_actions": [
     {
-      "timestamp": "2026-11-02 18:35:35",
+      "timestamp": "2026-11-06 08:03:56",
       "event": "HONEYPOT_INTERCEPT_AND_COUNTERSTRIKE",
       "target_ip": "175.45.176.42",
       "origin": "DPRK Reconnaissance General Bureau (Identified)",
