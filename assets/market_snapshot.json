@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-07 15:33:33",
+  "timestamp": "2026-11-07 15:33:35",
   "crypto": [
     {
       "category": "crypto",
@@ -33,12 +33,12 @@
       "category": "crypto",
       "symbol": "XRP",
       "name": "리플",
-      "price": 1589.0,
-      "price_str": "1,589원",
-      "change": -19.0,
-      "change_str": "-19.00원",
-      "change_rate": -1.1815920400000002,
-      "change_rate_str": "-1.18%",
+      "price": 1590.0,
+      "price_str": "1,590원",
+      "change": -18.0,
+      "change_str": "-18.00원",
+      "change_rate": -1.11940299,
+      "change_rate_str": "-1.12%",
       "high_str": "1,614원",
       "low_str": "1,571원",
       "status": "down"
