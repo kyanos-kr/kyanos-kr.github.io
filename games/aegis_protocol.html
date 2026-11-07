@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KYANOS: Aegis Protocol (키아노스 방위 프로토콜)</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+    body {
+      background: #080d1a;
+      color: #e0f2fe;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+    #game-container {
+      position: relative;
+      width: 900px;
+      max-width: 96vw;
+      background: radial-gradient(circle at 50% 20%, #0f172a, #020617);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 16px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(14, 165, 233, 0.15);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      padding: 16px 24px;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .badge {
+      background: linear-gradient(135deg, #0284c7, #0369a1);
+      color: #fff;
+      font-weight: 700;
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 6px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .title {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #f8fafc;
+    }
+    .title span {
+      color: #38bdf8;
+    }
+    .hud {
+      display: flex;
+      gap: 20px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .hud-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(30, 41, 59, 0.6);
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid rgba(148, 163, 184, 0.15);
+    }
+    .hud-label {
+      color: #94a3b8;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .hud-val {
+      color: #38bdf8;
+      font-family: monospace;
+      font-size: 15px;
+    }
+    .hud-val.danger {
+      color: #f43f5e;
+    }
+
+    #canvas {
+      display: block;
+      width: 100%;
+      height: 520px;
+      background: #020617;
+      cursor: crosshair;
+    }
+
+    #overlay {
+      position: absolute;
+      top: 65px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(2, 6, 23, 0.88);
+      backdrop-filter: blur(6px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px;
+      z-index: 10;
+    }
+    #overlay.hidden {
+      display: none;
+    }
+    .modal-title {
+      font-size: 30px;
+      font-weight: 800;
+      color: #f8fafc;
+      margin-bottom: 12px;
+      text-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+    }
+    .modal-sub {
+      color: #94a3b8;
+      font-size: 15px;
+      line-height: 1.6;
+      max-width: 540px;
+      margin-bottom: 24px;
+    }
+    .guide-box {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 12px;
+      padding: 16px 24px;
+      margin-bottom: 28px;
+      text-align: left;
+      font-size: 13px;
+      line-height: 1.8;
+      color: #cbd5e1;
+    }
+    .guide-box strong {
+      color: #38bdf8;
+    }
+    .btn-start {
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 14px 40px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(2, 132, 199, 0.4);
+      transition: all 0.2s ease;
+      letter-spacing: 0.5px;
+    }
+    .btn-start:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(2, 132, 199, 0.6);
+      background: linear-gradient(135deg, #0369a1, #1d4ed8);
+    }
+
+    footer {
+      padding: 10px 24px;
+      background: #090e1a;
+      border-top: 1px solid rgba(56, 189, 248, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: #64748b;
+    }
+    footer a {
+      color: #38bdf8;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<div id="game-container">
+  <header>
+    <div class="brand">
+      <div class="badge">K-SEF 03</div>
+      <div class="title">KYANOS <span>Aegis Protocol</span></div>
+    </div>
+    <div class="hud">
+      <div class="hud-item">
+        <span class="hud-label">Core Integrity</span>
+        <span id="hp-val" class="hud-val">100%</span>
+      </div>
+      <div class="hud-item">
+        <span class="hud-label">Score</span>
+        <span id="score-val" class="hud-val">0</span>
+      </div>
+      <div class="hud-item">
+        <span class="hud-label">Wave</span>
+        <span id="wave-val" class="hud-val">1</span>
+      </div>
+    </div>
+  </header>
+
+  <canvas id="canvas" width="900" height="520"></canvas>
+
+  <div id="overlay">
+    <div id="modal-title" class="modal-title">국가 코어 방위 프로토콜 가동</div>
+    <div id="modal-desc" class="modal-sub">
+      키아노스 정부 중앙 코어를 향해 외부 사이버 위협 패킷이 침투하고 있습니다.<br>
+      초경량 Aegis 요격 터렛을 제어하여 코어를 무결점으로 수호하십시오.
+    </div>
+    <div class="guide-box">
+      🛡️ <strong>조작법</strong>: <code>A</code> / <code>D</code> 또는 <code>←</code> / <code>→</code> 방향키로 코어 요격 궤도 회전<br>
+      ⚡ <strong>발사</strong>: <code>스페이스바(Space)</code> 또는 <code>마우스 좌클릭</code>으로 펄스 빔 방출<br>
+      💡 <strong>메모리 최적화</strong>: 0% 브라우저 부하, Canvas 60FPS 하드웨어 가속
+    </div>
+    <button id="btn-action" class="btn-start" onclick="startGame()">프로토콜 개시</button>
+  </div>
+
+  <footer>
+    <span>키아노스 정부 과학·SI부 & 국제질서유지 보안사령부 시험 센터</span>
+    <a href="../main.html">정부 메인 포털로 이동 →</a>
+  </footer>
+</div>
+
+<script>
+  const canvas = document.getElementById('canvas');
+  const ctx = canvas.getContext('2d');
+  const hpEl = document.getElementById('hp-val');
+  const scoreEl = document.getElementById('score-val');
+  const waveEl = document.getElementById('wave-val');
+  const overlay = document.getElementById('overlay');
+  const modalTitle = document.getElementById('modal-title');
+  const modalDesc = document.getElementById('modal-desc');
+  const btnAction = document.getElementById('btn-action');
+
+  let width = canvas.width;
+  let height = canvas.height;
+  let centerX = width / 2;
+  let centerY = height / 2;
+
+  // Game States
+  let isRunning = false;
+  let score = 0;
+  let coreHp = 100;
+  let wave = 1;
+  let turretAngle = -Math.PI / 2;
+  let turretDist = 55;
+  let bullets = [];
+  let enemies = [];
+  let particles = [];
+  let spawnTimer = 0;
+  let keys = {};
+  let lastTime = 0;
+
+  // Sound Synth (Web Audio API - No external assets)
+  let audioCtx = null;
+  function getAudio() {
+    if (!audioCtx) {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    return audioCtx;
+  }
+
+  function playTone(freq, type, duration, vol=0.1) {
+    try {
+      const actx = getAudio();
+      if (actx.state === 'suspended') actx.resume();
+      const osc = actx.createOscillator();
+      const gain = actx.createGain();
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, actx.currentTime);
+      gain.gain.setValueAtTime(vol, actx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, actx.currentTime + duration);
+      osc.connect(gain);
+      gain.connect(actx.destination);
+      osc.start();
+      osc.stop(actx.currentTime + duration);
+    } catch(e) {}
+  }
+
+  function soundShoot() {
+    playTone(600, 'square', 0.1, 0.08);
+  }
+  function soundHit() {
+    playTone(200, 'sawtooth', 0.15, 0.12);
+  }
+  function soundCoreDmg() {
+    playTone(90, 'triangle', 0.35, 0.25);
+  }
+
+  // Input Listeners
+  window.addEventListener('keydown', e => {
+    keys[e.code] = true;
+    if (e.code === 'Space' && isRunning) {
+      shootBullet();
+      e.preventDefault();
+    }
+  });
+  window.addEventListener('keyup', e => {
+    keys[e.code] = false;
+  });
+
+  canvas.addEventListener('mousemove', e => {
+    if (!isRunning) return;
+    const rect = canvas.getBoundingClientRect();
+    const mx = (e.clientX - rect.left) * (canvas.width / rect.width);
+    const my = (e.clientY - rect.top) * (canvas.height / rect.height);
+    turretAngle = Math.atan2(my - centerY, mx - centerX);
+  });
+
+  canvas.addEventListener('mousedown', e => {
+    if (isRunning && e.button === 0) {
+      shootBullet();
+    }
+  });
+
+  function shootBullet() {
+    bullets.push({
+      x: centerX + Math.cos(turretAngle) * turretDist,
+      y: centerY + Math.sin(turretAngle) * turretDist,
+      vx: Math.cos(turretAngle) * 9,
+      vy: Math.sin(turretAngle) * 9,
+      radius: 4,
+      life: 80
+    });
+    soundShoot();
+  }
+
+  function spawnEnemy() {
+    // Spawn from edge
+    const edge = Math.floor(Math.random() * 4);
+    let x, y;
+    if (edge === 0) { x = Math.random() * width; y = -20; }
+    else if (edge === 1) { x = width + 20; y = Math.random() * height; }
+    else if (edge === 2) { x = Math.random() * width; y = height + 20; }
+    else { x = -20; y = Math.random() * height; }
+
+    const angle = Math.atan2(centerY - y, centerX - x);
+    const speed = 1.2 + Math.random() * 0.8 + (wave * 0.15);
+    const type = Math.random() > 0.8 ? 'fast' : 'standard';
+
+    enemies.push({
+      x: x,
+      y: y,
+      vx: Math.cos(angle) * (type === 'fast' ? speed * 1.5 : speed),
+      vy: Math.sin(angle) * (type === 'fast' ? speed * 1.5 : speed),
+      radius: type === 'fast' ? 7 : 11,
+      hp: type === 'fast' ? 1 : 2,
+      type: type,
+      color: type === 'fast' ? '#f43f5e' : '#a855f7'
+    });
+  }
+
+  function createExplosion(x, y, color, count=12) {
+    for (let i = 0; i < count; i++) {
+      const angle = Math.random() * Math.PI * 2;
+      const speed = 1 + Math.random() * 4;
+      particles.push({
+        x: x,
+        y: y,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        radius: 1.5 + Math.random() * 2,
+        color: color,
+        life: 25 + Math.random() * 15,
+        maxLife: 40
+      });
+    }
+  }
+
+  function startGame() {
+    overlay.classList.add('hidden');
+    score = 0;
+    coreHp = 100;
+    wave = 1;
+    bullets = [];
+    enemies = [];
+    particles = [];
+    spawnTimer = 0;
+    isRunning = true;
+    updateHUD();
+    getAudio(); // Audio unlock
+    lastTime = performance.now();
+    requestAnimationFrame(gameLoop);
+  }
+
+  function gameOver() {
+    isRunning = false;
+    modalTitle.innerText = "프로토콜 정지: 코어 방어선 돌파됨";
+    modalDesc.innerHTML = `외부 침투 패킷으로 인해 방위 시스템이 차단되었습니다.<br><br>최종 방어 기록: <strong style="color:#38bdf8; font-size:18px;">${score} pt</strong> (웨이브 ${wave})`;
+    btnAction.innerText = "프로토콜 재기동";
+    overlay.classList.remove('hidden');
+  }
+
+  function updateHUD() {
+    hpEl.innerText = `${Math.max(0, coreHp)}%`;
+    if (coreHp <= 30) {
+      hpEl.classList.add('danger');
+    } else {
+      hpEl.classList.remove('danger');
+    }
+    scoreEl.innerText = score.toLocaleString();
+    waveEl.innerText = wave;
+  }
+
+  function gameLoop(timestamp) {
+    if (!isRunning) return;
+
+    // Turret keyboard rotation
+    if (keys['KeyA'] || keys['ArrowLeft']) turretAngle -= 0.05;
+    if (keys['KeyD'] || keys['ArrowRight']) turretAngle += 0.05;
+
+    // Spawning logic
+    spawnTimer++;
+    const spawnRate = Math.max(30, 80 - wave * 6);
+    if (spawnTimer % spawnRate === 0) {
+      spawnEnemy();
+    }
+
+    // Wave advancement
+    if (score > wave * 300) {
+      wave++;
+      updateHUD();
+    }
+
+    // Update Bullets
+    for (let i = bullets.length - 1; i >= 0; i--) {
+      const b = bullets[i];
+      b.x += b.vx;
+      b.y += b.vy;
+      b.life--;
+
+      if (b.life <= 0 || b.x < 0 || b.x > width || b.y < 0 || b.y > height) {
+        bullets.splice(i, 1);
+        continue;
+      }
+
+      // Check bullet vs enemy collision
+      for (let j = enemies.length - 1; j >= 0; j--) {
+        const e = enemies[j];
+        const dist = Math.hypot(b.x - e.x, b.y - e.y);
+        if (dist < b.radius + e.radius) {
+          e.hp--;
+          createExplosion(b.x, b.y, '#38bdf8', 6);
+          bullets.splice(i, 1);
+          soundHit();
+
+          if (e.hp <= 0) {
+            createExplosion(e.x, e.y, e.color, 16);
+            score += e.type === 'fast' ? 25 : 15;
+            enemies.splice(j, 1);
+            updateHUD();
+          }
+          break;
+        }
+      }
+    }
+
+    // Update Enemies
+    for (let i = enemies.length - 1; i >= 0; i--) {
+      const e = enemies[i];
+      e.x += e.vx;
+      e.y += e.vy;
+
+      // Enemy hit core
+      const distToCore = Math.hypot(e.x - centerX, e.y - centerY);
+      if (distToCore < 30 + e.radius) {
+        coreHp -= e.type === 'fast' ? 10 : 15;
+        createExplosion(e.x, e.y, '#f43f5e', 20);
+        enemies.splice(i, 1);
+        soundCoreDmg();
+        updateHUD();
+
+        if (coreHp <= 0) {
+          createExplosion(centerX, centerY, '#38bdf8', 40);
+          gameOver();
+          return;
+        }
+      }
+    }
+
+    // Update Particles
+    for (let i = particles.length - 1; i >= 0; i--) {
+      const p = particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+      p.life--;
+      if (p.life <= 0) {
+        particles.splice(i, 1);
+      }
+    }
+
+    // Render Canvas
+    render();
+
+    requestAnimationFrame(gameLoop);
+  }
+
+  function render() {
+    // Clear background
+    ctx.fillStyle = '#020617';
+    ctx.fillRect(0, 0, width, height);
+
+    // Subtle background grid
+    ctx.strokeStyle = 'rgba(30, 41, 59, 0.4)';
+    ctx.lineWidth = 1;
+    const gridSize = 45;
+    for (let x = 0; x < width; x += gridSize) {
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, height);
+      ctx.stroke();
+    }
+    for (let y = 0; y < height; y += gridSize) {
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(width, y);
+      ctx.stroke();
+    }
+
+    // Defense Radius Rings
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, 130, 0, Math.PI * 2);
+    ctx.strokeStyle = 'rgba(56, 189, 248, 0.08)';
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, turretDist, 0, Math.PI * 2);
+    ctx.strokeStyle = 'rgba(56, 189, 248, 0.2)';
+    ctx.stroke();
+
+    // Central Core
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, 28, 0, Math.PI * 2);
+    ctx.fillStyle = coreHp > 30 ? 'rgba(14, 165, 233, 0.25)' : 'rgba(244, 63, 94, 0.25)';
+    ctx.fill();
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = coreHp > 30 ? '#38bdf8' : '#f43f5e';
+    ctx.stroke();
+
+    // Core Center Dot
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, 8, 0, Math.PI * 2);
+    ctx.fillStyle = coreHp > 30 ? '#0284c7' : '#e11d48';
+    ctx.fill();
+
+    // Turret
+    const tx = centerX + Math.cos(turretAngle) * turretDist;
+    const ty = centerY + Math.sin(turretAngle) * turretDist;
+
+    ctx.beginPath();
+    ctx.arc(tx, ty, 9, 0, Math.PI * 2);
+    ctx.fillStyle = '#38bdf8';
+    ctx.shadowColor = '#38bdf8';
+    ctx.shadowBlur = 12;
+    ctx.fill();
+    ctx.shadowBlur = 0;
+
+    // Turret Cannon Barrel
+    ctx.beginPath();
+    ctx.moveTo(tx, ty);
+    ctx.lineTo(tx + Math.cos(turretAngle) * 14, ty + Math.sin(turretAngle) * 14);
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = '#e0f2fe';
+    ctx.stroke();
+
+    // Bullets
+    for (const b of bullets) {
+      ctx.beginPath();
+      ctx.arc(b.x, b.y, b.radius, 0, Math.PI * 2);
+      ctx.fillStyle = '#38bdf8';
+      ctx.shadowColor = '#38bdf8';
+      ctx.shadowBlur = 8;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    }
+
+    // Enemies
+    for (const e of enemies) {
+      ctx.beginPath();
+      ctx.arc(e.x, e.y, e.radius, 0, Math.PI * 2);
+      ctx.fillStyle = e.color;
+      ctx.shadowColor = e.color;
+      ctx.shadowBlur = 10;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+
+      // Inner icon / eye
+      ctx.beginPath();
+      ctx.arc(e.x, e.y, e.radius * 0.4, 0, Math.PI * 2);
+      ctx.fillStyle = '#ffffff';
+      ctx.fill();
+    }
+
+    // Particles
+    for (const p of particles) {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = p.life / p.maxLife;
+      ctx.fill();
+      ctx.globalAlpha = 1.0;
+    }
+  }
+
+  // Initial draw
+  render();
+</script>
+
+</body>
+</html>
