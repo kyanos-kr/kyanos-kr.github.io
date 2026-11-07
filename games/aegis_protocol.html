@@ -227,7 +227,7 @@
       ⚡ <strong>발사</strong>: <code>스페이스바(Space)</code> 또는 <code>마우스 좌클릭</code>으로 펄스 빔 방출<br>
       💡 <strong>메모리 최적화</strong>: 0% 브라우저 부하, Canvas 60FPS 하드웨어 가속
     </div>
-    <button id="btn-action" class="btn-start" onclick="startGame()">프로토콜 개시</button>
+    <button id="btn-action" class="btn-start" onclick="startGame()">게임 시작</button>
   </div>
 
   <footer>
@@ -400,9 +400,9 @@
 
   function gameOver() {
     isRunning = false;
-    modalTitle.innerText = "프로토콜 정지: 코어 방어선 돌파됨";
+    modalTitle.innerText = "게임 종료: 코어 방어선 돌파됨";
     modalDesc.innerHTML = `외부 침투 패킷으로 인해 방위 시스템이 차단되었습니다.<br><br>최종 방어 기록: <strong style="color:#38bdf8; font-size:18px;">${score} pt</strong> (웨이브 ${wave})`;
-    btnAction.innerText = "프로토콜 재기동";
+    btnAction.innerText = "게임 다시 시작";
     overlay.classList.remove('hidden');
   }
 
