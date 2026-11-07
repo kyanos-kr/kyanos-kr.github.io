@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>생활지혜 가이드 (Life-Kyanos) | 사회부 대민 일상생활 정보·상식 포털</title>
+  <meta name="description" content="시민들의 쾌적하고 현명한 일상을 위해 분리배출, 절전·절약, 생활 얼룩·세탁, 과태료 감경, 식재료 보관 등 검증된 생활지혜와 실용 계산기를 제공하는 키아노스 사회부 초지능(SI) 대민 솔루션">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Montserrat:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700;800&family=Noto+Serif+KR:wght@500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/kyanos_i18n.css">
+
+  <style>
+    :root {
+      --bg-dark: #121929;
+      --bg-navy: #0a1120;
+      --bg-card: rgba(26, 36, 58, 0.75);
+      --bg-glass: rgba(15, 23, 42, 0.78);
+      --amber: #f59e0b;
+      --amber-light: #fbbf24;
+      --amber-soft: rgba(245, 158, 11, 0.15);
+      --cyan: #00d2ff;
+      --cyan-soft: rgba(0, 210, 255, 0.14);
+      --gold: #d4af37;
+      --gold-light: #fde68a;
+      --emerald: #10b981;
+      --rose: #f43f5e;
+      --text-main: #fffbeb;
+      --text-sub: #cbd5e1;
+      --border-amber: rgba(245, 158, 11, 0.38);
+      --border-card: rgba(255, 255, 255, 0.1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image:
+        radial-gradient(circle at 15% 0%, rgba(245, 158, 11, 0.15) 0%, transparent 55%),
+        radial-gradient(circle at 85% 15%, rgba(0, 210, 255, 0.10) 0%, transparent 50%),
+        radial-gradient(circle at 50% 90%, rgba(245, 158, 11, 0.08) 0%, transparent 60%);
+      color: var(--text-main);
+      font-family: 'Noto Sans KR', 'Montserrat', sans-serif;
+      min-height: 100vh;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* Sticky Top Navigation */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(10, 17, 32, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-amber);
+      padding: 0.75rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-emblem {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1.5px solid var(--amber-light);
+      background: radial-gradient(circle, #78350f 0%, #0a1120 75%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      box-shadow: 0 0 15px rgba(245, 158, 11, 0.35);
+    }
+
+    .brand-titles .en {
+      font-family: 'Cinzel', serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      color: var(--amber-light);
+      display: block;
+    }
+
+    .brand-titles .kr {
+      font-size: 0.75rem;
+      color: var(--text-sub);
+      letter-spacing: 0.06em;
+    }
+
+    .nav-quick-links {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-pill {
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 7px 15px;
+      border-radius: 20px;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      cursor: pointer;
+    }
+
+    .nav-pill:hover {
+      background: var(--amber-soft);
+      border-color: var(--amber-light);
+      color: var(--amber-light);
+      transform: translateY(-2px);
+    }
+
+    .nav-pill.primary {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      border: none;
+      color: #0f172a;
+      font-weight: 800;
+    }
+
+    /* Main Container */
+    .main-wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 2.2rem 1.5rem 5rem 1.5rem;
+    }
+
+    /* Hero Banner */
+    .life-hero {
+      text-align: center;
+      padding: 3rem 1.5rem 2.4rem;
+      background: linear-gradient(180deg, rgba(30, 41, 59, 0.65) 0%, rgba(15, 23, 42, 0.85) 100%);
+      border: 1.5px solid var(--border-amber);
+      border-radius: 24px;
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5), 0 0 30px rgba(245, 158, 11, 0.1);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 2.5rem;
+    }
+
+    .life-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, transparent, #fbbf24, #00d2ff, transparent);
+    }
+
+    .ministry-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--amber-light);
+      background: rgba(245, 158, 11, 0.18);
+      border: 1px solid var(--border-amber);
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 2.3rem;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 0.8rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-title span {
+      color: var(--amber-light);
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      font-size: 1.7rem;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: var(--text-sub);
+      max-width: 820px;
+      margin: 0 auto 1.8rem;
+      line-height: 1.75;
+    }
+
+    /* Central Search Box */
+    .search-container {
+      max-width: 760px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .search-input-wrap {
+      display: flex;
+      align-items: center;
+      background: rgba(10, 17, 32, 0.95);
+      border: 2px solid var(--amber);
+      border-radius: 40px;
+      padding: 6px 8px 6px 20px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(245, 158, 11, 0.25);
+      transition: all 0.3s ease;
+    }
+
+    .search-input-wrap:focus-within {
+      border-color: #fde68a;
+      box-shadow: 0 8px 35px rgba(245, 158, 11, 0.45);
+    }
+
+    .search-input-wrap input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 1rem;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .search-input-wrap input::placeholder {
+      color: #94a3b8;
+      font-size: 0.92rem;
+    }
+
+    .search-btn {
+      background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+      color: #0f172a;
+      border: none;
+      border-radius: 30px;
+      padding: 12px 26px;
+      font-size: 0.95rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .search-btn:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+    }
+
+    /* Quick Filter Chips */
+    .quick-chips-wrap {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 1.2rem;
+    }
+
+    .chip-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      color: #e2e8f0;
+      font-size: 0.8rem;
+      padding: 6px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .chip-btn:hover, .chip-btn.active {
+      background: var(--amber);
+      color: #0f172a;
+      border-color: var(--amber);
+      font-weight: 700;
+      transform: translateY(-2px);
+    }
+
+    /* 3-Column Topic Cards Grid */
+    .section-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-subtitle {
+      font-size: 0.88rem;
+      color: var(--text-sub);
+      margin-bottom: 1.5rem;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .info-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 18px;
+      padding: 1.8rem;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .info-card:hover {
+      border-color: var(--amber);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 35px rgba(245, 158, 11, 0.15);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .card-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 12px;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      color: var(--amber-light);
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.6rem;
+      line-height: 1.4;
+    }
+
+    .card-desc {
+      font-size: 0.88rem;
+      color: var(--text-sub);
+      line-height: 1.65;
+      margin-bottom: 1.2rem;
+    }
+
+    .tip-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .tip-item {
+      font-size: 0.84rem;
+      color: #e2e8f0;
+      padding: 8px 12px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.04);
+      border-left: 3px solid var(--amber);
+      line-height: 1.5;
+    }
+
+    .tip-item strong {
+      color: var(--amber-light);
+    }
+
+    .card-action-btn {
+      width: 100%;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid var(--amber);
+      color: var(--amber-light);
+      padding: 10px;
+      border-radius: 12px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .card-action-btn:hover {
+      background: var(--amber);
+      color: #0f172a;
+    }
+
+    /* Practical Calculator Section */
+    .tool-box {
+      background: linear-gradient(145deg, rgba(20, 30, 50, 0.88) 0%, rgba(10, 16, 30, 0.95) 100%);
+      border: 1.5px solid var(--border-amber);
+      border-radius: 20px;
+      padding: 2.2rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    }
+
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.8rem;
+      margin-top: 1.5rem;
+    }
+
+    .tool-card {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 1.4rem;
+    }
+
+    .tool-card h4 {
+      font-size: 1.05rem;
+      color: var(--amber-light);
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--text-sub);
+      margin-bottom: 5px;
+    }
+
+    .form-control {
+      width: 100%;
+      background: rgba(3, 7, 18, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      padding: 8px 12px;
+      color: #fff;
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .form-control:focus {
+      border-color: var(--amber);
+    }
+
+    .calc-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #fbbf24, #d97706);
+      color: #0f172a;
+      border: none;
+      border-radius: 8px;
+      padding: 10px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .calc-btn:hover {
+      opacity: 0.9;
+    }
+
+    .calc-result {
+      margin-top: 1rem;
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px dashed var(--amber);
+      font-size: 0.86rem;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    /* Modal / Detail View */
+    .detail-modal {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .detail-modal.active {
+      display: flex;
+    }
+
+    .modal-box {
+      background: #111a2e;
+      border: 1.5px solid var(--amber);
+      border-radius: 20px;
+      max-width: 680px;
+      width: 100%;
+      padding: 2rem;
+      position: relative;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      background: transparent;
+      border: none;
+      color: var(--text-sub);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .modal-close:hover {
+      color: #fff;
+    }
+
+    /* Footer Nav */
+    .footer-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-action {
+      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      transition: all 0.25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-action.gold {
+      background: linear-gradient(135deg, #fbbf24, #d97706);
+      color: #0f172a;
+    }
+
+    .btn-action.outline {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+    }
+
+    .btn-action.outline:hover {
+      border-color: var(--amber);
+      color: var(--amber-light);
+    }
+
+    @media (max-width: 768px) {
+      .top-nav { padding: 0.6rem 1rem; }
+      .hero-title { font-size: 1.8rem; }
+      .hero-title span { font-size: 1.3rem; }
+      .cards-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Header Navigation -->
+  <header class="top-nav">
+    <a href="main.html" class="brand-group">
+      <div class="brand-emblem">💡</div>
+      <div class="brand-titles">
+        <span class="en">LIFE-KYANOS · WISDOM GUIDE</span>
+        <span class="kr">생활지혜 가이드 | 사회부 대민 일상정보 솔루션</span>
+      </div>
+    </a>
+    <div class="nav-quick-links">
+      <a href="#wasteSection" class="nav-pill">🗑️ 분리배출 요령</a>
+      <a href="#energySection" class="nav-pill">⚡ 절전·절약 가이드</a>
+      <a href="#cleanSection" class="nav-pill">🧼 얼룩·청소 비법</a>
+      <a href="#calcSection" class="nav-pill primary">🧮 생활비·절전 계산기</a>
+      <a href="lex_kyanos.html" class="nav-pill">⚖️ 법률 나침반 ↗</a>
+      <a href="med_kyanos.html" class="nav-pill">🩺 생명케어 가이드 ↗</a>
+      <a href="main.html" class="nav-pill">🏠 메인 포털</a>
+    </div>
+  </header>
+
+  <main class="main-wrap">
+
+    <!-- Hero Banner -->
+    <section class="life-hero">
+      <div class="ministry-badge">🤝 키아노스 사회부 공식 대민 일상생활 솔루션</div>
+      <h1 class="hero-title">생활지혜 가이드 <span>(Life-Kyanos)</span></h1>
+      <p class="hero-sub">
+        복잡하고 헷갈리는 분리배출 기준, 공과금 절약 꿀팁, 생활 얼룩 제거 비법부터 과태료 감경 요령까지!<br>
+        시민들의 쾌적하고 현명한 일상을 돕는 <strong>검증된 생활지혜 통합 검색 포털</strong>입니다.
+      </p>
+
+      <!-- Main Search Box -->
+      <div class="search-container">
+        <div class="search-input-wrap">
+          <input type="text" id="lifeSearchInput" placeholder="생활 고민·상식 검색 (예: 프라이팬 기름때, 건전지 버리는 법, 전기세 절약, 과태료 감경, 음식물 쓰레기 기준)" onkeypress="if(event.key==='Enter') doSearch();">
+          <button class="search-btn" onclick="doSearch()">
+            <span>💡 지혜 검색</span>
+          </button>
+        </div>
+
+        <!-- Quick Filter Chips -->
+        <div class="quick-chips-wrap">
+          <button class="chip-btn active" onclick="filterCategory('all', this)">🌐 전체보기</button>
+          <button class="chip-btn" onclick="filterCategory('waste', this)">🗑️ 분리배출·폐기물</button>
+          <button class="chip-btn" onclick="filterCategory('energy', this)">⚡ 전기·가스비 절약</button>
+          <button class="chip-btn" onclick="filterCategory('clean', this)">🧼 세탁·얼룩·청소</button>
+          <button class="chip-btn" onclick="filterCategory('fine', this)">📜 과태료·주차 감경</button>
+          <button class="chip-btn" onclick="filterCategory('food', this)">🍳 식품보관 & 소비기한</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Search Result Announcement (Dynamic) -->
+    <div id="searchNotice" style="display:none; margin-bottom:1.5rem; padding:12px 18px; border-radius:12px; background:rgba(245,158,11,0.15); border:1px solid var(--amber); font-size:0.9rem; color:var(--amber-light);"></div>
+
+    <!-- Cards Grid -->
+    <div class="section-title">
+      <span>💡</span> 핵심 일상지혜 카테고리
+    </div>
+    <div class="section-subtitle">
+      생활 속에서 가장 빈번하게 마주치는 궁금증과 실전 해결책을 한눈에 확인하세요.
+    </div>
+
+    <div class="cards-grid" id="cardsGrid">
+      <!-- 1. 분리배출 & 대형폐기물 -->
+      <div class="info-card" data-category="waste" id="wasteSection">
+        <div>
+          <div class="card-top">
+            <span class="card-badge">🗑️ 자원순환 / 분리배출</span>
+            <span style="font-size:0.75rem; color:#94a3b8;">과태료 최대 100만원 예방</span>
+          </div>
+          <h3 class="card-title">알쏭달쏭 쓰레기 분리배출 완벽 기준</h3>
+          <p class="card-desc">
+            일반 쓰레기로 오인하기 쉬운 품목과 과태료 대상 음식물 쓰레기 구분법을 명쾌히 정리했습니다.
+          </p>
+          <ul class="tip-list">
+            <li class="tip-item"><strong>음식물 vs 일반:</strong> 달걀 껍데기, 닭뼈, 생선뼈, 조개껍데기, 양파·마늘 껍질은 <strong>일반 쓰레기(종량제)</strong>입니다.</li>
+            <li class="tip-item"><strong>오염된 플라스틱:</strong> 씻어도 고추기름/기름때가 안 빠지는 배달용기는 <strong>종량제 봉투</strong>에 버려야 합니다.</li>
+            <li class="tip-item"><strong>폐가전 무상수거:</strong> 대형 가전(냉장고, 세탁기)은 <strong>1599-0903</strong> 예약 시 무상 방문 수거됩니다.</li>
+          </ul>
+        </div>
+        <button class="card-action-btn" onclick="openDetail('waste')">상세 분리배출 백과 열람 →</button>
+      </div>
+
+      <!-- 2. 전기·가스 공과금 절약 -->
+      <div class="info-card" data-category="energy" id="energySection">
+        <div>
+          <div class="card-top">
+            <span class="card-badge">⚡ 공과금 절약 / 에너지</span>
+            <span style="font-size:0.75rem; color:#94a3b8;">연간 20~30만원 절감</span>
+          </div>
+          <h3 class="card-title">사계절 전기·가스비 알뜰 절약 꿀팁</h3>
+          <p class="card-desc">
+            가전제품 사용 습관을 조금만 바꾸어도 누진세를 방어하고 공과금을 획기적으로 줄일 수 있습니다.
+          </p>
+          <ul class="tip-list">
+            <li class="tip-item"><strong>인버터 에어컨:</strong> 껐다 켰다 하지 말고, 처음 24~26도 강풍 가동 후 <strong>희망온도 유지</strong>가 전기세 절반입니다.</li>
+            <li class="tip-item"><strong>보일러 외출 모드:</strong> 한겨울 장시간 외출 시 끄지 말고 <strong>평소 설정보다 2~3도 낮추거나 외출모드</strong>로 두어야 난방비 폭탄을 막습니다.</li>
+            <li class="tip-item"><strong>대기전력 차단:</strong> 셋톱박스, 밥솥 보온 기능은 TV의 10배 이상 전력을 낭비하므로 <strong>개별 멀티탭 스위치</strong>를 끕니다.</li>
+          </ul>
+        </div>
+        <button class="card-action-btn" onclick="openDetail('energy')">공과금 절약 상세 비법 열람 →</button>
+      </div>
+
+      <!-- 3. 생활 얼룩 & 청소 비법 -->
+      <div class="info-card" data-category="clean" id="cleanSection">
+        <div>
+          <div class="card-top">
+            <span class="card-badge">🧼 세탁·얼룩 / 청소 노하우</span>
+            <span style="font-size:0.75rem; color:#94a3b8;">세탁소 비용 절감</span>
+          </div>
+          <h3 class="card-title">옷감 안 상하는 생활 얼룩 지우개 비법</h3>
+          <p class="card-desc">
+            커피, 김치국물, 볼펜 자국 등 갑자기 묻은 얼룩을 가정용 상비 세제로 손쉽게 제거하는 황금 공식입니다.
+          </p>
+          <ul class="tip-list">
+            <li class="tip-item"><strong>김치국물·고추기름:</strong> 주방세제 원액을 문지른 후 <strong>햇볕(자외선)에 말리면</strong> 색소가 감쪽같이 분해됩니다.</li>
+            <li class="tip-item"><strong>커피·와인 얼룩:</strong> 뜨거운 물은 단백질을 응고시키므로 <strong>미온수에 식초+주방세제(1:1)</strong>로 두드려 뺍니다.</li>
+            <li class="tip-item"><strong>볼펜·유성매직:</strong> 물 대신 <strong>소독용 에탄올(알코올)이나 물파스</strong>를 톡톡 두드리면 잉크가 번지며 지워집니다.</li>
+          </ul>
+        </div>
+        <button class="card-action-btn" onclick="openDetail('clean')">얼룩별 전용 제거법 보기 →</button>
+      </div>
+
+      <!-- 4. 일상 과태료 & 주차 감경 -->
+      <div class="info-card" data-category="fine" id="fineSection">
+        <div>
+          <div class="card-top">
+            <span class="card-badge">📜 행정상식 / 과태료 감경</span>
+            <span style="font-size:0.75rem; color:#94a3b8;">자진납부 시 20% 할인</span>
+          </div>
+          <h3 class="card-title">모르면 손해보는 과태료 감경 & 구제 요령</h3>
+          <p class="card-desc">
+            주정차 위반, 신호위반 등 고지서를 받았을 때 합법적으로 감경받고 구제받는 행정 상식입니다.
+          </p>
+          <ul class="tip-list">
+            <li class="tip-item"><strong>사전의견 제출기간:</strong> 과태료 통지서 수령 후 15~20일 내 자진 납부 시 <strong>20% 즉시 감경</strong>됩니다.</li>
+            <li class="tip-item"><strong>정당한 사유 면제:</strong> 응급환자 수송, 차량 고장, 도난, 재난 구호 등 불가피한 사유는 <strong>입증자료 제출 시 면제</strong>됩니다.</li>
+            <li class="tip-item"><strong>사회적 배려 감경:</strong> 기초생활수급자, 한부모가족, 장애인(1~3급), 국가유공자는 <strong>최대 50%까지 추가 감경</strong> 가능합니다.</li>
+          </ul>
+        </div>
+        <button class="card-action-btn" onclick="openDetail('fine')">과태료 이의신청 가이드 보기 →</button>
+      </div>
+
+      <!-- 5. 식품보관 & 소비기한 -->
+      <div class="info-card" data-category="food" id="foodSection">
+        <div>
+          <div class="card-top">
+            <span class="card-badge">🍳 식생활 / 보관 노하우</span>
+            <span style="font-size:0.75rem; color:#94a3b8;">소비기한 vs 유통기한</span>
+          </div>
+          <h3 class="card-title">식재료 신선 보관법 & 소비기한 상식</h3>
+          <p class="card-desc">
+            유통기한이 지나도 섭취 가능한 소비기한 기준과 식재료를 2배 오래 보관하는 밀폐 비법입니다.
+          </p>
+          <ul class="tip-list">
+            <li class="tip-item"><strong>계란·우유 소비기한:</strong> 미개봉 냉장 보관 시 계란은 유통기한 후 <strong>+25일</strong>, 우유는 <strong>+45일</strong>까지 안전합니다.</li>
+            <li class="tip-item"><strong>감자·양파 보관 금기:</strong> 감자와 양파를 같이 두면 양파의 수분 때문에 <strong>감자에 싹이 빨리 나므로</strong> 따로 보관합니다.</li>
+            <li class="tip-item"><strong>남은 아보카도·사과:</strong> 갈변을 막으려면 단면에 <strong>레몬즙이나 올리브유</strong>를 살짝 발라 밀폐 보관하세요.</li>
+          </ul>
+        </div>
+        <button class="card-action-btn" onclick="openDetail('food')">식품 보관 완전정복 열람 →</button>
+      </div>
+
+      <!-- 6. 자취·생활 꿀팁 -->
+      <div class="info-card" data-category="clean" id="lifeHackSection">
+        <div>
+          <div class="card-top">
+            <span class="card-badge">🏠 1인가구 / 자취 살림</span>
+            <span style="font-size:0.75rem; color:#94a3b8;">악취·벌레 퇴치</span>
+          </div>
+          <h3 class="card-title">배수구 악취·날파리 박멸 황금 비법</h3>
+          <p class="card-desc">
+            여름철 싱크대 배수구 악취와 초파리를 독한 화학약품 없이 천연 재료로 원천 차단하는 법입니다.
+          </p>
+          <ul class="tip-list">
+            <li class="tip-item"><strong>배수구 살균 청소:</strong> <strong>과탄산소다 1컵 + 주방세제 몇 방울</strong> 위에 뜨거운 물을 천천히 부으면 거품 폭탄으로 때가 녹습니다.</li>
+            <li class="tip-item"><strong>초파리 유인 트랩:</strong> 종이컵에 <strong>식초 + 주방세제 + 설탕(1:1:1)</strong>을 섞고 랩을 씌워 이쑤시개 구멍을 뚫으면 즉시 박멸됩니다.</li>
+            <li class="tip-item"><strong>욕실 곰팡이:</strong> 휴지에 락스 원액을 적셔 실리콘 부위에 1~2시간 얹어두면 솔질 없이도 하얗게 복원됩니다.</li>
+          </ul>
+        </div>
+        <button class="card-action-btn" onclick="openDetail('clean')">살림 꿀팁 더보기 →</button>
+      </div>
+    </div>
+
+    <!-- Practical Calculator Section -->
+    <section class="tool-box" id="calcSection">
+      <div class="section-title">
+        <span>🧮</span> 생활밀착 지혜 계산기 (알뜰 가계부 도우미)
+      </div>
+      <div class="section-subtitle">
+        가전제품 소비전력에 따른 예상 전기세와 일상 생활비 절감액을 즉시 계산해 보세요.
+      </div>
+
+      <div class="tool-grid">
+        <!-- 1. 가전제품 전기요금 계산기 -->
+        <div class="tool-card">
+          <h4>⚡ 가전 소비전력 요금 계산기</h4>
+          <div class="form-group">
+            <label>소비전력 (Watt, 와트)</label>
+            <input type="number" id="wattInput" class="form-control" placeholder="예: 에어컨 1800, 컴퓨터 300, 선풍기 45" value="1500">
+          </div>
+          <div class="form-group">
+            <label>하루 사용 시간 (시간)</label>
+            <input type="number" id="hoursInput" class="form-control" placeholder="예: 5" value="6">
+          </div>
+          <button class="calc-btn" onclick="calcElectricFee()">⚡ 예상 월 전기요금 계산</button>
+          <div id="electricResult" class="calc-result" style="display:none;"></div>
+        </div>
+
+        <!-- 2. 쓰레기 종량제 vs 분리수거 판별기 -->
+        <div class="tool-card">
+          <h4>🗑️ 품목별 배출방법 즉시 판별기</h4>
+          <div class="form-group">
+            <label>버리려는 물품 이름</label>
+            <input type="text" id="wasteItemInput" class="form-control" placeholder="예: 거울, 프라이팬, 아이스팩, 베개, 사탕봉지" value="아이스팩">
+          </div>
+          <button class="calc-btn" onclick="checkWasteType()">🔍 배출 방법 판별하기</button>
+          <div id="wasteResult" class="calc-result" style="display:none;"></div>
+        </div>
+
+        <!-- 3. 과태료 자진납부 감경 계산기 -->
+        <div class="tool-card">
+          <h4>📜 과태료 자진납부 20% 감경액 계산기</h4>
+          <div class="form-group">
+            <label>부과된 본 과태료 (원)</label>
+            <input type="number" id="fineAmountInput" class="form-control" placeholder="예: 주정차 40000, 속도위반 70000" value="40000">
+          </div>
+          <button class="calc-btn" onclick="calcFineDiscount()">💰 감경 납부액 확인하기</button>
+          <div id="fineResult" class="calc-result" style="display:none;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom Action Navigation -->
+    <footer class="footer-nav">
+      <a href="main.html" class="btn-action gold">👑 키아노스 메인 포털 복귀</a>
+      <a href="lex_kyanos.html" class="btn-action outline">⚖️ 법률 나침반 열람</a>
+      <a href="med_kyanos.html" class="btn-action outline">🩺 생명케어 가이드 열람</a>
+      <a href="gov_society.html" class="btn-action outline">🤝 사회부 공식 포털</a>
+    </footer>
+
+  </main>
+
+  <!-- Detail Information Modal -->
+  <div class="detail-modal" id="detailModal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeDetail()">&times;</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <script>
+    // Search Function
+    function doSearch() {
+      const q = document.getElementById('lifeSearchInput').value.trim().toLowerCase();
+      const cards = document.querySelectorAll('.info-card');
+      const notice = document.getElementById('searchNotice');
+
+      if (!q) {
+        cards.forEach(c => c.style.display = 'flex');
+        notice.style.display = 'none';
+        return;
+      }
+
+      let count = 0;
+      cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        if (text.includes(q)) {
+          card.style.display = 'flex';
+          count++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      notice.style.display = 'block';
+      notice.innerHTML = `🔍 <strong>'${q}'</strong> 검색 결과: 총 <strong>${count}개</strong>의 생활지혜 항목을 찾았습니다.`;
+    }
+
+    // Category Filter
+    function filterCategory(cat, btn) {
+      document.querySelectorAll('.chip-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cards = document.querySelectorAll('.info-card');
+      const notice = document.getElementById('searchNotice');
+      notice.style.display = 'none';
+
+      cards.forEach(card => {
+        if (cat === 'all' || card.getAttribute('data-category') === cat) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Modal Content Database
+    const DETAIL_DB = {
+      waste: {
+        title: "🗑️ 올바른 쓰레기 분리배출 상세 가이드",
+        content: `
+          <p style="color:#cbd5e1; margin-bottom:1rem; font-size:0.92rem;">
+            지자체 폐기물 관리법에 따라 잘못 배출 시 <strong>10만원~100만원 이하의 과태료</strong>가 부과됩니다. 아래 품목을 반드시 확인하세요!
+          </p>
+          <div style="background:rgba(255,255,255,0.05); padding:1rem; border-radius:10px; margin-bottom:1rem; border-left:3px solid #fbbf24;">
+            <h5 style="color:#fbbf24; margin-bottom:0.4rem;">❌ 음식물 쓰레기가 아닌 일반쓰레기(종량제) 품목</h5>
+            <ul style="padding-left:1.2rem; font-size:0.86rem; color:#e2e8f0; line-height:1.7;">
+              <li><strong>채소류 껍질·뿌리:</strong> 양파·마늘·생강·옥수수 껍질, 파뿌리, 고추씨</li>
+              <li><strong>단단한 껍데기:</strong> 호두·밤·도토리 등 견과류 껍데기, 조개·소라·게·가재 껍데기, 달걀·메추리알 껍질</li>
+              <li><strong>뼈다귀:</strong> 소·돼지·닭뼈, 생선 가시</li>
+              <li><strong>차 찌꺼기:</strong> 녹차·보리차 티백, 한약재 찌꺼기, 커피 찌꺼기</li>
+            </ul>
+          </div>
+          <div style="background:rgba(255,255,255,0.05); padding:1rem; border-radius:10px; border-left:3px solid #00d2ff;">
+            <h5 style="color:#00d2ff; margin-bottom:0.4rem;">💡 대형 폐기물 & 가전 무상 수거 팁</h5>
+            <p style="font-size:0.86rem; color:#cbd5e1; line-height:1.6;">
+              • <strong>소형 가전(5개 이상) 또는 대형 가전(1개 이상):</strong> 한국전자제품자원순환공제조합(1599-0903 또는 www.15990903.or.kr)에서 무상 방문 수거를 신청할 수 있습니다.<br>
+              • <strong>가구·매트리스:</strong> 주민센터나 지자체 홈페이지(또는 빼기 앱)에서 대형폐기물 스티커를 발급받아 부착 후 배출합니다.
+            </p>
+          </div>
+        `
+      },
+      energy: {
+        title: "⚡ 공과금 절약 황금 비법",
+        content: `
+          <p style="color:#cbd5e1; margin-bottom:1rem; font-size:0.92rem;">
+            전기요금 누진제 구간을 피하고 보일러 효율을 높이는 실전 절전 가이드입니다.
+          </p>
+          <div style="background:rgba(255,255,255,0.05); padding:1rem; border-radius:10px; margin-bottom:1rem; border-left:3px solid #fbbf24;">
+            <h5 style="color:#fbbf24; margin-bottom:0.4rem;">❄️ 여름철 냉방비 절약</h5>
+            <p style="font-size:0.86rem; color:#e2e8f0; line-height:1.6;">
+              • <strong>에어컨 필터 청소:</strong> 필터 먼지만 청소해도 냉방 효율이 3~5% 증가하며 전력 소비가 10% 줄어듭니다.<br>
+              • <strong>선풍기·써큘레이터 동시 가동:</strong> 에어컨 바람 방향과 같은 방향으로 선풍기를 켜면 실내 공기 순환으로 체감온도가 2~3도 내려갑니다.
+            </p>
+          </div>
+          <div style="background:rgba(255,255,255,0.05); padding:1rem; border-radius:10px; border-left:3px solid #f43f5e;">
+            <h5 style="color:#f43f5e; margin-bottom:0.4rem;">🔥 겨울철 난방비 절약</h5>
+            <p style="font-size:0.86rem; color:#e2e8f0; line-height:1.6;">
+              • <strong>온수 온도 조절:</strong> 보일러 온수 온도를 '최고' 대신 '중간(40~45도)'으로 맞추면 가스 소비량이 크게 줄어듭니다.<br>
+              • <strong>문풍지 & 뽁뽁이(에어캡):</strong> 창문에 단열 에어캡 부착 시 실내온도가 2~3도 보온되어 난방비 10~15%를 아낍니다.
+            </p>
+          </div>
+        `
+      },
+      clean: {
+        title: "🧼 옷감 손상 없는 얼룩 제거 백과",
+        content: `
+          <p style="color:#cbd5e1; margin-bottom:1rem; font-size:0.92rem;">
+            비싼 드라이클리닝을 맡기기 전, 주방 세제와 천연 상비품으로 즉시 해결 가능한 얼룩 제거 공식입니다.
+          </p>
+          <div style="background:rgba(255,255,255,0.05); padding:1rem; border-radius:10px; margin-bottom:1rem; border-left:3px solid #fbbf24;">
+            <h5 style="color:#fbbf24; margin-bottom:0.4rem;">☕ 커피·홍차·녹차</h5>
+            <p style="font-size:0.86rem; color:#e2e8f0; line-height:1.6;">식초와 주방세제를 1:1로 섞어 미온수에 푼 뒤 얼룩 부위를 살살 비벼 헹굽니다.</p>
+          </div>
+          <div style="background:rgba(255,255,255,0.05); padding:1rem; border-radius:10px; margin-bottom:1rem; border-left:3px solid #f43f5e;">
+            <h5 style="color:#f43f5e; margin-bottom:0.4rem;">🩸 피(혈액) 자국</h5>
+            <p style="font-size:0.86rem; color:#e2e8f0; line-height:1.6;"><strong>반드시 찬물</strong>로 헹궈야 합니다. 뜨거운 물은 단백질이 응고되어 영구 고착됩니다. 과산화수소를 묻히면 거품이 일며 사라집니다.</p>
+          </div>
+          <div style="background:rgba(255,255,255,0.05); padding:1rem; border-radius:10px; border-left:3px solid #10b981;">
+            <h5 style="color:#10b981; margin-bottom:0.4rem;">💄 립스틱·파운데이션</h5>
+            <p style="font-size:0.86rem; color:#e2e8f0; line-height:1.6;">클렌징 오일이나 폼클렌저, 또는 쉐이빙 폼을 묻혀 살살 문지른 뒤 헹구면 기름 성분이 녹아 분리됩니다.</p>
+          </div>
+        `
+      },
+      fine: {
+        title: "📜 과태료 감경 & 이의신청 실전 안내",
+        content: `
+          <p style="color:#cbd5e1; margin-bottom:1rem; font-size:0.92rem;">
+            질서위반행위규제법 제18조에 따라 모든 국민은 정당한 절차를 통해 감경 및 이의신청 권리를 가집니다.
+          </p>
+          <div style="background:rgba(255,255,255,0.05); padding:1rem; border-radius:10px; margin-bottom:1rem; border-left:3px solid #fbbf24;">
+            <h5 style="color:#fbbf24; margin-bottom:0.4rem;">⚖️ 자진납부 20% 감경</h5>
+            <p style="font-size:0.86rem; color:#e2e8f0; line-height:1.6;">사전통지서에 기재된 의견제출 기한 내에 자진 납부하면 20%가 자동 감경됩니다. (예: 4만원 ➔ 3만 2천원)</p>
+          </div>
+          <div style="background:rgba(255,255,255,0.05); padding:1rem; border-radius:10px; margin-bottom:1rem; border-left:3px solid #00d2ff;">
+            <h5 style="color:#00d2ff; margin-bottom:0.4rem;">🛡️ 정당한 사유로 인한 면제</h5>
+            <p style="font-size:0.86rem; color:#e2e8f0; line-height:1.6;">• 응급환자 진료·수송 (진료확인서 첨부)<br>• 차량 도난 또는 천재지변, 차량 고장 렉카 견인 중<br>• 경찰관 지시에 따른 부득이한 이동</p>
+          </div>
+        `
+      },
+      food: {
+        title: "🍳 소비기한 표시제 & 식재료 보관 비법",
+        content: `
+          <p style="color:#cbd5e1; margin-bottom:1rem; font-size:0.92rem;">
+            2023년부터 도입된 <strong>소비기한(Use-by date)</strong>은 보관 방법을 준수했을 때 안전하게 섭취 가능한 기한입니다.
+          </p>
+          <div style="background:rgba(255,255,255,0.05); padding:1rem; border-radius:10px; margin-bottom:1rem; border-left:3px solid #fbbf24;">
+            <h5 style="color:#fbbf24; margin-bottom:0.4rem;">📅 주요 가공식품 소비기한目安 (미개봉 냉장 기준)</h5>
+            <ul style="padding-left:1.2rem; font-size:0.86rem; color:#e2e8f0; line-height:1.7;">
+              <li><strong>우유:</strong> 유통기한 경과 후 최대 45일</li>
+              <li><strong>계란:</strong> 유통기한 경과 후 최대 25일 (냉수에 띄워 가라앉으면 신선)</li>
+              <li><strong>두부:</strong> 유통기한 경과 후 최대 90일 (물 갈아주며 밀폐 냉장)</li>
+              <li><strong>식빵:</strong> 냉동 보관 시 최대 20일 이상</li>
+            </ul>
+          </div>
+        `
+      }
+    };
+
+    function openDetail(key) {
+      const data = DETAIL_DB[key];
+      if (!data) return;
+      document.getElementById('modalContent').innerHTML = `
+        <h3 style="color:#fbbf24; font-size:1.35rem; margin-bottom:1rem; font-family:'Noto Serif KR',serif;">${data.title}</h3>
+        ${data.content}
+        <button onclick="closeDetail()" style="margin-top:1.2rem; width:100%; background:rgba(245,158,11,0.2); border:1px solid #fbbf24; color:#fbbf24; padding:9px; border-radius:8px; cursor:pointer; font-weight:700;">닫기</button>
+      `;
+      document.getElementById('detailModal').classList.add('active');
+    }
+
+    function closeDetail() {
+      document.getElementById('detailModal').classList.remove('active');
+    }
+
+    // Calculators
+    function calcElectricFee() {
+      const watt = parseFloat(document.getElementById('wattInput').value) || 0;
+      const hours = parseFloat(document.getElementById('hoursInput').value) || 0;
+
+      // kWh per month
+      const kwh = (watt * hours * 30) / 1000;
+      // Rough Korean domestic electricity average rate (~150~220 KRW/kWh)
+      const estimatedFee = Math.round(kwh * 185);
+
+      const res = document.getElementById('electricResult');
+      res.style.display = 'block';
+      res.innerHTML = `
+        <div>• <strong>월 예상 소비전력량:</strong> <span style="color:#fbbf24; font-weight:800;">${kwh.toFixed(1)} kWh</span></div>
+        <div>• <strong>해당 가전 단독 월 전기요금:</strong> 약 <span style="color:#34d399; font-weight:800;">${estimatedFee.toLocaleString()}원</span> 내외</div>
+        <div style="font-size:0.78rem; color:#94a3b8; margin-top:4px;">* 주택용 저압 2단계 평균 단가 기준이며, 가구별 누진세 구간에 따라 실제 청구액은 달라질 수 있습니다.</div>
+      `;
+    }
+
+    function checkWasteType() {
+      const item = document.getElementById('wasteItemInput').value.trim();
+      const res = document.getElementById('wasteResult');
+      res.style.display = 'block';
+
+      const itemLower = item.toLowerCase();
+      let msg = '';
+
+      if (itemLower.includes('아이스팩')) {
+        msg = `🧊 <strong>아이스팩:</strong> 고흡수성수지(젤) 팩은 <strong>종량제 봉투</strong>로 버리거나 동주민센터 전용 수거함에 배출하세요. 순수 물 100% 팩은 찢어서 물은 버리고 비닐만 분리수거합니다.`;
+      } else if (itemLower.includes('프라이팬') || itemLower.includes('냄비')) {
+        msg = `🍳 <strong>프라이팬/냄비:</strong> 손잡이 분리 여부와 상관없이 <strong>고철류(캔류)</strong>로 분리배출합니다.`;
+      } else if (itemLower.includes('거울') || itemLower.includes('도자기') || itemLower.includes('유리잔')) {
+        msg = `🪞 <strong>거울/도자기/내열유리:</strong> 재활용이 안 되므로 <strong>불연성 쓰레기봉투(마대)</strong>나 신문지에 싸서 종량제 봉투에 배출합니다.`;
+      } else if (itemLower.includes('베개') || itemLower.includes('이불')) {
+        msg = `🛌 <strong>베개/솜이불:</strong> 의류수거함 배출 불가! <strong>종량제 봉투</strong>에 담아 버리거나 대형폐기물 스티커를 부착합니다. (얇은 누비이불은 의류수거함 가능)`;
+      } else if (itemLower.includes('건전지') || itemLower.includes('배터리')) {
+        msg = `🔋 <strong>폐건전지:</strong> 절대 종량제 봉투에 버리지 마시고 <strong>아파트·주민센터 전용 폐건전지 수거함</strong>에 배출하세요. 화재 위험이 있습니다.`;
+      } else {
+        msg = `💡 <strong>${item}:</strong> 복합 재질이거나 오염물질이 묻은 경우 원칙적으로 <strong>종량제 봉투</strong>로 배출하시고, 깨끗한 단일 재질(플라스틱, 캔, 투명페트)은 <strong>재활용 분리배출</strong>하세요.`;
+      }
+
+      res.innerHTML = msg;
+    }
+
+    function calcFineDiscount() {
+      const fine = parseInt(document.getElementById('fineAmountInput').value, 10) || 0;
+      const discount = Math.round(fine * 0.2);
+      const finalAmount = fine - discount;
+
+      const res = document.getElementById('fineResult');
+      res.style.display = 'block';
+      res.innerHTML = `
+        <div>• <strong>원래 과태료:</strong> ${fine.toLocaleString()}원</div>
+        <div>• <strong>사전 자진납부 20% 감경:</strong> <span style="color:#fbbf24; font-weight:800;">-${discount.toLocaleString()}원 절약!</span></div>
+        <div style="font-size:1.05rem; margin-top:4px;">• <strong>실제 납부액:</strong> <strong style="color:#34d399;">${finalAmount.toLocaleString()}원</strong></div>
+      `;
+    }
+
+    // Auto-detect URL query parameter ?q=...
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const q = params.get('q');
+      if (q) {
+        document.getElementById('lifeSearchInput').value = q;
+        doSearch();
+      }
+    });
+  </script>
+  <script src="assets/js/kyanos_i18n.js"></script>
+  <script src="assets/js/kyanos_omni_dialogue.js?v=20261031_1005" defer></script>
+</body>
+</html>
