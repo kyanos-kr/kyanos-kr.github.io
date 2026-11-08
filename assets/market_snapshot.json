@@ -1,18 +1,18 @@
 {
-  "timestamp": "2026-11-08 09:35:55",
+  "timestamp": "2026-11-08 10:06:03",
   "crypto": [
     {
       "category": "crypto",
       "symbol": "BTC",
       "name": "비트코인",
-      "price": 103445000.0,
-      "price_str": "103,445,000원",
-      "change": -255000.0,
-      "change_str": "-255,000원",
-      "change_rate": -0.24590164000000003,
-      "change_rate_str": "-0.25%",
+      "price": 103528000.0,
+      "price_str": "103,528,000원",
+      "change": -172000.0,
+      "change_str": "-172,000원",
+      "change_rate": -0.16586307,
+      "change_rate_str": "-0.17%",
       "high_str": "103,715,000원",
-      "low_str": "103,443,000원",
+      "low_str": "103,400,000원",
       "status": "down"
     },
     {
@@ -26,21 +26,21 @@
       "change_rate": -0.19601437,
       "change_rate_str": "-0.20%",
       "high_str": "3,062,000원",
-      "low_str": "3,054,000원",
+      "low_str": "3,049,000원",
       "status": "down"
     },
     {
       "category": "crypto",
       "symbol": "XRP",
       "name": "리플",
-      "price": 1585.0,
-      "price_str": "1,585원",
-      "change": -7.0,
-      "change_str": "-7.00원",
-      "change_rate": -0.43969849000000005,
-      "change_rate_str": "-0.44%",
+      "price": 1587.0,
+      "price_str": "1,587원",
+      "change": -5.0,
+      "change_str": "-5.00원",
+      "change_rate": -0.31407035,
+      "change_rate_str": "-0.31%",
       "high_str": "1,592원",
-      "low_str": "1,584원",
+      "low_str": "1,583원",
       "status": "down"
     },
     {
@@ -54,7 +54,7 @@
       "change_rate": -0.40749795999999994,
       "change_rate_str": "-0.41%",
       "high_str": "122,700원",
-      "low_str": "122,200원",
+      "low_str": "122,000원",
       "status": "down"
     },
     {
@@ -68,7 +68,7 @@
       "change_rate": -0.40858018,
       "change_rate_str": "-0.41%",
       "high_str": "98원",
-      "low_str": "98원",
+      "low_str": "97원",
       "status": "down"
     }
   ],
