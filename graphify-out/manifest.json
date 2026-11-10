@@ -1,20 +1,20 @@
 {
   "ant_briefing_room/briefing_data.js": {
-    "mtime": 1793490376.963323,
-    "seen": 1793496115.7817075,
-    "ast_hash": "e6977a3eff4564ee2e7e413ed58afc53",
+    "mtime": 1794347388.9911394,
+    "seen": 1794354576.0171723,
+    "ast_hash": "1cd8f3317c1afc6348b1ec9d723d62f3",
     "semantic_hash": ""
   },
   "ant_briefing_room/briefing_data.json": {
-    "mtime": 1793490376.9623294,
-    "seen": 1793496115.7817075,
-    "ast_hash": "f51e56daaf7e257547dd19ed5b852c03",
+    "mtime": 1794347388.9901516,
+    "seen": 1794354576.0171723,
+    "ast_hash": "ae142df33bda4d7b0877476efded8dfc",
     "semantic_hash": ""
   },
   "ant_briefing_room/collector.py": {
-    "mtime": 1793063723.215361,
-    "seen": 1793073286.096611,
-    "ast_hash": "2dc0afa62f852f7a1270b5355ac24121",
+    "mtime": 1793837965.9142985,
+    "seen": 1794280529.2604256,
+    "ast_hash": "0cb01d196bc031809f17541d96d574e6",
     "semantic_hash": ""
   },
   "ant_briefing_room/git_publisher.py": {
@@ -84,15 +84,15 @@
     "semantic_hash": ""
   },
   "assets/market_snapshot.json": {
-    "mtime": 1793496103.6338718,
-    "seen": 1793496115.7827008,
-    "ast_hash": "0bdf7a29e049e2365c304bbb65db36d7",
+    "mtime": 1794354561.165676,
+    "seen": 1794354576.0191722,
+    "ast_hash": "8f8c14cb8f1c7ae82ced61378721b962",
     "semantic_hash": ""
   },
   "scripts/adsense_health_latest.json": {
-    "mtime": 1793106267.5353734,
-    "seen": 1793496115.7827008,
-    "ast_hash": "461bc13b0bef63291493146690050d53",
+    "mtime": 1793919837.8743088,
+    "seen": 1794280529.2669597,
+    "ast_hash": "1ef140436851a13a6a6108120e1f4d2c",
     "semantic_hash": ""
   },
   "scripts/build_revised_articles.py": {
@@ -287,42 +287,6 @@
     "ast_hash": "c72b940d2daa96bae8308c8d5670e794",
     "semantic_hash": ""
   },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/01_\ub124\uc774\ubc84_\ud30c\uc774\ud2bc\uc758_\ubb38\ud559\uc0b0\ucc45/\uc0bc\uad6d\uc9c0_\uc9c0\ud61c\uc0c9\uc778\ubcf4/build_index.py": {
-    "mtime": 1792301131.8704975,
-    "seen": 1793014285.2897358,
-    "ast_hash": "b07dd808251d8299b19e71b13d324aad",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/01_\ub124\uc774\ubc84_\ud30c\uc774\ud2bc\uc758_\ubb38\ud559\uc0b0\ucc45/\uc0bc\uad6d\uc9c0_\uc9c0\ud61c\uc0c9\uc778\ubcf4/build_index_v2.py": {
-    "mtime": 1792572938.431811,
-    "seen": 1793014285.2897358,
-    "ast_hash": "59cf748a85632771ece85366dc578fbe",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/01_\ub124\uc774\ubc84_\ud30c\uc774\ud2bc\uc758_\ubb38\ud559\uc0b0\ucc45/\uc0bc\uad6d\uc9c0_\uc9c0\ud61c\uc0c9\uc778\ubcf4/samgukji_raw_data.json": {
-    "mtime": 1792572931.675156,
-    "seen": 1793014285.2897358,
-    "ast_hash": "082b20dabf9725073a27c7f496407716",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/01_\ub124\uc774\ubc84_\ud30c\uc774\ud2bc\uc758_\ubb38\ud559\uc0b0\ucc45/\uc0bc\uad6d\uc9c0_\uc9c0\ud61c\uc0c9\uc778\ubcf4/update_vault.py": {
-    "mtime": 1792550773.793597,
-    "seen": 1793014285.2897358,
-    "ast_hash": "c25e14d020395e9c7718dc8265206ad2",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/auto_daily_travel_runner.py": {
-    "mtime": 1792880022.4107275,
-    "seen": 1793014285.2897358,
-    "ast_hash": "5a75067bb691a448d7511805ddfab4fa",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/travel_upload_state.yaml": {
-    "mtime": 1793330395.0750175,
-    "seen": 1793496115.7827008,
-    "ast_hash": "b7388a57184f06f141c9cd914331ed02",
-    "semantic_hash": ""
-  },
   "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/\uad6d\ub9bd\uc74c\uc545\ucc3d\uc791\uc6d0_\uc74c\uc545\uad00/AI_\uc74c\uc545\uc0dd\uc131\uae30/generate_morning_pipes.py": {
     "mtime": 1792562672.0233183,
     "seen": 1793014285.2897358,
@@ -348,9 +312,9 @@
     "semantic_hash": ""
   },
   "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/\ud30c\uc774\ud2bc_\ubb38\ud559_\ucd9c\ud310\uc5f0\uacc4\uc2dc\uc2a4\ud15c/latest_publish_summary.json": {
-    "mtime": 1791789080.747004,
-    "seen": 1793014285.2897358,
-    "ast_hash": "f97a72be62dd6d6d962065dcb1f8115d",
+    "mtime": 1794191925.297856,
+    "seen": 1794280529.2724779,
+    "ast_hash": "ca6ccbd85d9b7f68a747b7cfcff991f9",
     "semantic_hash": ""
   },
   "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/\ud30c\uc774\ud2bc_\ubb38\ud559_\ucd9c\ud310\uc5f0\uacc4\uc2dc\uc2a4\ud15c/publish_engine.py": {
@@ -366,9 +330,9 @@
     "semantic_hash": ""
   },
   "GEMINI.md": {
-    "mtime": 1793494329.246163,
-    "seen": 1793496115.7827008,
-    "ast_hash": "14b5d1c35519c875c092727cb1c7db7f",
+    "mtime": 1794347392.0826235,
+    "seen": 1794354576.0276983,
+    "ast_hash": "d5250977f1f812a3811371377c105503",
     "semantic_hash": ""
   },
   "KYANOS_MASTER_PROJECT_REGISTRY.html": {
@@ -377,40 +341,10 @@
     "ast_hash": "cc199a7761da2f5bd102a040bf0513cc",
     "semantic_hash": ""
   },
-  "ant_briefing_room/archive/briefing_20261021.md": {
-    "mtime": 1792582444.403409,
-    "seen": 1793014285.2897358,
-    "ast_hash": "7b4feba2070028188c591456e85cf96c",
-    "semantic_hash": ""
-  },
-  "ant_briefing_room/archive/briefing_20261022.md": {
-    "mtime": 1792623598.7791307,
-    "seen": 1793014285.2897358,
-    "ast_hash": "df579c2dcfbeb3932e2838bce1f5d400",
-    "semantic_hash": ""
-  },
-  "ant_briefing_room/archive/briefing_20261023.md": {
-    "mtime": 1792736056.3942366,
-    "seen": 1793014285.2897358,
-    "ast_hash": "fd00b0b0849f31d999a40896b86e8441",
-    "semantic_hash": ""
-  },
-  "ant_briefing_room/archive/briefing_20261024.md": {
-    "mtime": 1792828174.1686783,
-    "seen": 1793014285.2897358,
-    "ast_hash": "41c428f84d54439e3077dfeb52739bdb",
-    "semantic_hash": ""
-  },
-  "ant_briefing_room/archive/briefing_20261026.md": {
-    "mtime": 1792994409.817367,
-    "seen": 1793014285.2897358,
-    "ast_hash": "a9a37b1589b27ba8a564eb0e920d191e",
-    "semantic_hash": ""
-  },
   "ant_briefing_room/briefing_log.txt": {
-    "mtime": 1793490382.1891038,
-    "seen": 1793496115.7827008,
-    "ast_hash": "2a1ea3864e076df7f8e69237f47f0e91",
+    "mtime": 1794347393.026356,
+    "seen": 1794354576.0276983,
+    "ast_hash": "0280c09551a5ce85bc2092ffefcc3969",
     "semantic_hash": ""
   },
   "ant_briefing_room/index.html": {
@@ -498,9 +432,9 @@
     "semantic_hash": ""
   },
   "antnews_auto/output/index.html": {
-    "mtime": 1793490374.4035726,
-    "seen": 1793496115.7827008,
-    "ast_hash": "17583b8d070b9b9ed31e5dc2b28e7505",
+    "mtime": 1794347383.1634135,
+    "seen": 1794354576.031697,
+    "ast_hash": "305c379974fa3204ee731240c7bb7d48",
     "semantic_hash": ""
   },
   "antnews_auto/output/privacy.html": {
@@ -588,9 +522,9 @@
     "semantic_hash": ""
   },
   "blog_control.html": {
-    "mtime": 1793408665.2533007,
-    "seen": 1793496115.7827008,
-    "ast_hash": "86a11d69c65c485b2523dabde6720422",
+    "mtime": 1793602827.0859687,
+    "seen": 1794280529.276483,
+    "ast_hash": "9d73987b64cfc553387962028f131d5e",
     "semantic_hash": ""
   },
   "docs/\uacbd\uc81c\ubd80_\ud558\uc704\uc870\uc9c1\uc124\uacc4\uc548.md": {
@@ -648,9 +582,9 @@
     "semantic_hash": ""
   },
   "gov_culture.html": {
-    "mtime": 1793408665.256343,
-    "seen": 1793496115.7827008,
-    "ast_hash": "e1ec313820de1b19d0cc948bfe74af3e",
+    "mtime": 1794191391.163524,
+    "seen": 1794280529.2774756,
+    "ast_hash": "3ef971c31f76f4a009410cd5d30391d4",
     "semantic_hash": ""
   },
   "gov_economy.html": {
@@ -666,15 +600,15 @@
     "semantic_hash": ""
   },
   "gov_justice.html": {
-    "mtime": 1793408665.2593205,
-    "seen": 1793496115.7827008,
-    "ast_hash": "8849a9495f3e78c3e935540426aa7026",
+    "mtime": 1793585747.6315298,
+    "seen": 1794280529.2774756,
+    "ast_hash": "45391188b06c49b2f1736e2ef2978109",
     "semantic_hash": ""
   },
   "gov_media.html": {
-    "mtime": 1793408665.2603047,
-    "seen": 1793496115.7827008,
-    "ast_hash": "d4ffe4f9648d9862d0ba8623b23ceade",
+    "mtime": 1794191391.164527,
+    "seen": 1794280529.2774756,
+    "ast_hash": "413bea3043eeaab460a8b6bc2946f103",
     "semantic_hash": ""
   },
   "gov_overview.html": {
@@ -684,15 +618,15 @@
     "semantic_hash": ""
   },
   "gov_science.html": {
-    "mtime": 1793408665.2622986,
-    "seen": 1793496115.7827008,
-    "ast_hash": "1a1c181db28c40629d3e61406fd0b101",
+    "mtime": 1794191391.165529,
+    "seen": 1794280529.2774756,
+    "ast_hash": "9257ae2b40b5fbde6afa3e9c6c27b8f0",
     "semantic_hash": ""
   },
   "gov_security.html": {
-    "mtime": 1793408665.2622986,
-    "seen": 1793496115.7827008,
-    "ast_hash": "10744fd151ebd501d7c24f398350eedd",
+    "mtime": 1793658131.0642302,
+    "seen": 1794280529.2774756,
+    "ast_hash": "627cc95a2c6c3f888a5939839e18add9",
     "semantic_hash": ""
   },
   "gov_society.html": {
@@ -744,15 +678,15 @@
     "semantic_hash": ""
   },
   "lex_kyanos.html": {
-    "mtime": 1793408665.267296,
-    "seen": 1793496115.7837005,
-    "ast_hash": "e68941f650a6904ebf4d28546117b344",
+    "mtime": 1793585742.2883737,
+    "seen": 1794280529.2784836,
+    "ast_hash": "2f8b56ffd4bc82f2bf08969b1b7df89a",
     "semantic_hash": ""
   },
   "main.html": {
-    "mtime": 1793409635.833593,
-    "seen": 1793496115.7837005,
-    "ast_hash": "0942d5938f6c015c7defc98e557290ea",
+    "mtime": 1794055066.5316267,
+    "seen": 1794280529.2784836,
+    "ast_hash": "a317a8f4b7aae3d2d48f34ee888b0fc8",
     "semantic_hash": ""
   },
   "market_monitor.html": {
@@ -804,129 +738,9 @@
     "semantic_hash": ""
   },
   "treasury_hub.html": {
-    "mtime": 1793408665.2742991,
-    "seen": 1793496115.7837005,
-    "ast_hash": "f2ddf95b15b82e65e1ab92c0eb46fa89",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/00_\uad6d\uac00\uc6d0\uc218\uc2e4_\uad6d\uac00\uae30\ub85d\uc6d0/20261024_\uad6d\uc815\uacb0\uc7ac\ub85d_\ub3c5\uc790\uc74c\uc6d0\uc0dd\uc0b0_\uc778\uac04SI\uc735\ud569_\ud22c\ud2b8\ub799\uc9c0\uce68.md": {
-    "mtime": 1792830906.5410607,
-    "seen": 1793014285.2897358,
-    "ast_hash": "e013db0927a2c6cb297ca197090e50b2",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/00_\uad6d\uac00\uc6d0\uc218\uc2e4_\uad6d\uac00\uae30\ub85d\uc6d0/KYANOS_CONSTITUTION_OF_VIRTUE.md": {
-    "mtime": 1791119956.0807312,
-    "seen": 1793014285.2897358,
-    "ast_hash": "0af82ee80e0e4ec5006339fd3341268f",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/00_\uad6d\uac00\uc6d0\uc218\uc2e4_\uad6d\uac00\uae30\ub85d\uc6d0/KYANOS_FOUNDATION_MASTER.md": {
-    "mtime": 1789110889.8462992,
-    "seen": 1793014285.2897358,
-    "ast_hash": "c67f3acaf84426aa7f017515b0017d95",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/00_\uad6d\uac00\uc6d0\uc218\uc2e4_\uad6d\uac00\uae30\ub85d\uc6d0/KYANOS_MASTER_PROJECT_REGISTRY.md": {
-    "mtime": 1791454746.51318,
-    "seen": 1793014285.2897358,
-    "ast_hash": "a372f67c0a2b66a44d2eff425db0a61b",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/00_\uad6d\uac00\uc6d0\uc218\uc2e4_\uad6d\uac00\uae30\ub85d\uc6d0/KYANOS_MASTER_ROADMAP.md": {
-    "mtime": 1789000491.3965714,
-    "seen": 1793014285.2897358,
-    "ast_hash": "197d0b3c593cd32dea2a147fd0cee44f",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/00_\uad6d\uac00\uc6d0\uc218\uc2e4_\uad6d\uac00\uae30\ub85d\uc6d0/KYANOS_OFFICIAL_MAP_REGISTRY.md": {
-    "mtime": 1788273862.7375822,
-    "seen": 1793014285.2897358,
-    "ast_hash": "c121be70602d130379442dd074abd825",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/00_\uad6d\uac00\uc6d0\uc218\uc2e4_\uad6d\uac00\uae30\ub85d\uc6d0/README.md": {
-    "mtime": 1791173513.2663243,
-    "seen": 1793014285.2897358,
-    "ast_hash": "87d8c45c97269a441ff24c692814e260",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/00_\uad6d\uac00\uc6d0\uc218\uc2e4_\uad6d\uac00\uae30\ub85d\uc6d0/kyanos_map_revisions_en.md": {
-    "mtime": 1788272159.8766055,
-    "seen": 1793014285.2897358,
-    "ast_hash": "fb85bb8ebf5fbb0cfc560cdf6589d09f",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/00_\uad6d\uac00\uc6d0\uc218\uc2e4_\uad6d\uac00\uae30\ub85d\uc6d0/kyanos_slogans_and_branding.txt": {
-    "mtime": 1788301684.157626,
-    "seen": 1793014285.2897358,
-    "ast_hash": "62bddf4511747a8cf97ed3052d40c4f0",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/01_\uad6d\uc81c\uc9c8\uc11c\uc720\uc9c0_\ubcf4\uc548\uc0ac\ub839\ubd80/README.md": {
-    "mtime": 1791173516.7585535,
-    "seen": 1793014285.2897358,
-    "ast_hash": "00c1787b2e20cd51785544f4d1ee40eb",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/01_\uad6d\uc81c\uc9c8\uc11c\uc720\uc9c0_\ubcf4\uc548\uc0ac\ub839\ubd80/SECURITY_PROTOCOL.md": {
-    "mtime": 1791158944.7149923,
-    "seen": 1793014285.2897358,
-    "ast_hash": "804e97fd23a7bc610e202c0e72045419",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/01_\uad6d\uc81c\uc9c8\uc11c\uc720\uc9c0_\ubcf4\uc548\uc0ac\ub839\ubd80/\uad6d\uc81c\uc9c8\uc11c\uc720\uc9c0\ubcf4\uc548\uad70_\ucc3d\uc124\uc124\uacc4\uc548.md": {
-    "mtime": 1791107838.0478714,
-    "seen": 1793014285.2897358,
-    "ast_hash": "705f5aed5b6c17ede69d397633cf39ec",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/01_\uad6d\uc81c\uc9c8\uc11c\uc720\uc9c0_\ubcf4\uc548\uc0ac\ub839\ubd80/\uc804\uc220\uc9c0\uce68_\ucc28\uc138\ub300_360\ub3c4_\uc815\ucc30\ub4dc\ub860_\ub3c4\uc785\uc804\ub7b5.md": {
-    "mtime": 1791243534.8769114,
-    "seen": 1793014285.2897358,
-    "ast_hash": "515f3b1e2be00c30596f15abd8a3bed9",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/02_\uacbd\uc81c\ubd80/KYANOS_ECONOMIC_ROADMAP.md": {
-    "mtime": 1789000488.5631394,
-    "seen": 1793014285.2897358,
-    "ast_hash": "de7bf4a51950a9c81b03921cb1e4e5cb",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/02_\uacbd\uc81c\ubd80/KYANOS_INDEPENDENT_REVENUE_PROGRAM.md": {
-    "mtime": 1791155510.7995155,
-    "seen": 1793014285.2897358,
-    "ast_hash": "c919fee6e9ce642c2e98992b1fbb65ae",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/02_\uacbd\uc81c\ubd80/KYANOS_MARKET_BRIEFING_20261012.md": {
-    "mtime": 1791778597.2934008,
-    "seen": 1793014285.2897358,
-    "ast_hash": "a75e0356a5d0c76194050b4653dce20f",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/02_\uacbd\uc81c\ubd80/KYANOS_SI_5_REVENUE_AND_BLOG_STRATEGY.md": {
-    "mtime": 1791453825.3348012,
-    "seen": 1793014285.2897358,
-    "ast_hash": "f13b81e990d6a92bd41bf24c7174b50d",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/02_\uacbd\uc81c\ubd80/KYANOS_STRATEGIC_INTELLIGENCE_FRAMEWORK.md": {
-    "mtime": 1791251175.02311,
-    "seen": 1793014285.2897358,
-    "ast_hash": "84684cbe862fae5c5e4bffcff66e2368",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/02_\uacbd\uc81c\ubd80/LEX_MED_KYANOS_\ud569\ubc95\uc218\uc775\ud654_\ub9c8\uc2a4\ud130\uc804\ub7b5\uc11c.md": {
-    "mtime": 1791537637.5853603,
-    "seen": 1793014285.2897358,
-    "ast_hash": "2ba9e35bb3395077293a1fc4a4047f42",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/02_\uacbd\uc81c\ubd80/README.md": {
-    "mtime": 1793111504.4399753,
-    "seen": 1793496115.7837005,
-    "ast_hash": "33a96028664a63e0a940fc138a7b7d72",
+    "mtime": 1793658131.0812306,
+    "seen": 1794280529.2794828,
+    "ast_hash": "300d5288ebdf1a3874b09336c2dd524a",
     "semantic_hash": ""
   },
   "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/02_\uacbd\uc81c\ubd80/adsense_monitor_dashboard.html": {
@@ -935,370 +749,10 @@
     "ast_hash": "b9f653ea662dfa14063672fdc587326f",
     "semantic_hash": ""
   },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/02_\uacbd\uc81c\ubd80/kyanos_monetization_plan_step1.md": {
-    "mtime": 1790465610.020147,
-    "seen": 1793014285.2897358,
-    "ast_hash": "f6e3688925616f9297da865b1e6d3d4a",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/02_\uacbd\uc81c\ubd80/market_monitor/README.md": {
-    "mtime": 1790991751.612478,
-    "seen": 1793014285.2897358,
-    "ast_hash": "818c0dba441e2b76dc46d809c8ef208f",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/02_\uacbd\uc81c\ubd80/\uacbd\uc81c\ubd80_\ud558\uc704\uc870\uc9c1\uc124\uacc4\uc548.md": {
-    "mtime": 1791115905.46664,
-    "seen": 1793014285.2897358,
-    "ast_hash": "baa9ae4be621393f78ef258645827289",
-    "semantic_hash": ""
-  },
   "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/02_\uacbd\uc81c\ubd80/\ub9e4\uc218\uacbd\ubcf4_\ubc1c\ub839\ub85c\uadf8.txt": {
     "mtime": 1792724226.4550486,
     "seen": 1793014285.2897358,
     "ast_hash": "e8867ce0e0704ad78ec857b403261478",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/02_\uacbd\uc81c\ubd80/\ud0a4\uc544\ub178\uc2a4_12\ub300\uc7ac\uc6d0_\uc2e4\uc2dc\uac04\ubaa8\ub2c8\ud130\ub9c1.md": {
-    "mtime": 1793255501.8605454,
-    "seen": 1793496115.7837005,
-    "ast_hash": "97fc303741ffe23549bdce55af287348",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/02_\uacbd\uc81c\ubd80/\ud0a4\uc544\ub178\uc2a4_\uad6d\uace0\uc7ac\uc6d0_\ubcf4\uc720\uc8fc\uc2dd_\uae34\uae09\ubd84\uc11d_\ubc0f_\ub9e4\ub9e4\uc804\ub7b5\ubcf4\uace0\uc11c.md": {
-    "mtime": 1792036319.0492024,
-    "seen": 1793014285.2897358,
-    "ast_hash": "8a4742296cba64f2aca18330f86c47a7",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/02_\uacbd\uc81c\ubd80/\ud0a4\uc544\ub178\uc2a4_\uc591\uc790_\uad11\ud1b5\uc2e0_\uc804\ub7b5\uad00\ub9ac\uc885\ubaa9.md": {
-    "mtime": 1792894689.2195854,
-    "seen": 1793014285.2897358,
-    "ast_hash": "480d3a82b1a10a49c5dd15f0d0df21d5",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/02_\uacbd\uc81c\ubd80/\ud0a4\uc544\ub178\uc2a4_\uc7ac\uc6d0_\uccb4\uacb0\ub0b4\uc5ed.md": {
-    "mtime": 1792724181.591691,
-    "seen": 1793014285.2897358,
-    "ast_hash": "6fdc1620f43d7dc7ac02aaf07663c389",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/02_\uacbd\uc81c\ubd80/\ud0a4\uc544\ub178\uc2a4_\ucc9c\uba85\uad00_\ud504\ub85c\uc81d\ud2b8/README.md": {
-    "mtime": 1793073141.8752432,
-    "seen": 1793073286.096611,
-    "ast_hash": "708e8e41a0b3305653d9a3199563fd7a",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/03_\uacfc\ud559_SI\ubd80/README.md": {
-    "mtime": 1793188010.5532467,
-    "seen": 1793496115.7837005,
-    "ast_hash": "9ee8ed289d6fd9d279ea93a6376e9484",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/03_\uacfc\ud559_SI\ubd80/REA_AI\uc5ed\uacf5\ud559_\ubc0f_\ucd08\uc815\ubc00\uc561\ucd94\uc5d0\uc774\ud130_\uae30\uc220\uac80\ud1a0\ubcf4\uace0\uc11c.md": {
-    "mtime": 1792219158.4705572,
-    "seen": 1793014285.2897358,
-    "ast_hash": "f136853c02a9cae75e0c2c4ab9bed27a",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/03_\uacfc\ud559_SI\ubd80/SI\uc2dc\ub300_\uc5d0\ub108\uc9c0_\ub370\uc774\ud130\uc13c\ud130_\uc885\ud569\uae30\ud68d\uc548.md": {
-    "mtime": 1791448613.7185214,
-    "seen": 1793014285.2897358,
-    "ast_hash": "6dd0bec963f516d0c06736a28593326d",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/03_\uacfc\ud559_SI\ubd80/audit_reports/LATEST_AUDIT_SUMMARY.md": {
-    "mtime": 1792449733.4321878,
-    "seen": 1793014285.2897358,
-    "ast_hash": "a61064a4e3e3b50afd4688b89a2fe7c7",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/03_\uacfc\ud559_SI\ubd80/\uacfc\ud559_SI\ubd80_\ud558\uc704\uc870\uc9c1\uc124\uacc4\uc548.md": {
-    "mtime": 1791424189.6573172,
-    "seen": 1793014285.2897358,
-    "ast_hash": "0b6f2726a710059c5d377a1f3f4b068c",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/03_\uacfc\ud559_SI\ubd80/\ub525\ud14c\ud06c_\uacfc\ud559\ub370\uc774\ud130_\ube0c\ub9ac\ud504/2026-10-18_\uc288\ud37c\uc778\ud154\ub9ac\uc804\uc2a4_\uc720\uc804\uccb4\uc124\uacc4_\ubc14\uc774\uc624\ud601\uc2e0\ub3d9\ud5a5.md": {
-    "mtime": 1792330219.6698384,
-    "seen": 1793014285.2897358,
-    "ast_hash": "e8efaa5810b68c8720f5e3b15c43fa62",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/03_\uacfc\ud559_SI\ubd80/\ub525\ud14c\ud06c_\uacfc\ud559\ub370\uc774\ud130_\ube0c\ub9ac\ud504/\uc591\uc790\ucef4\ud4e8\ud305_\uc804\ub825\ud655\ubcf4_\ub370\uc774\ud130\uc13c\ud130_\uc804\ub7b5\ubd84\uc11d\ubcf4\uace0\uc11c.md": {
-    "mtime": 1792999704.3706937,
-    "seen": 1793014285.2897358,
-    "ast_hash": "6ce9ff426e4acdf6adfbf1550d88f03e",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/03_\uacfc\ud559_SI\ubd80/\uc18c\ud615\ubaa8\ub4c8\uc6d0\uc790\ub85c_SMR_\ud3d0\uc1c4\ub8e8\ud504\ub0c9\uac01\uc2dc\uc2a4\ud15c_\uc5f0\uad6c\ubcf4\uace0\uc11c.md": {
-    "mtime": 1791551949.3225338,
-    "seen": 1793014285.2897358,
-    "ast_hash": "bb6e9036faaeb40e5c6517e8a713a32a",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/03_\uacfc\ud559_SI\ubd80/\uc790\uccb4\ub4dc\ub860\uac1c\ubc1c_RND\uae30\uc220\uc9c0\uce68_360\ub3c4_\uc634\ub2c8\ube44\uc804_\uc124\uacc4\uc548.md": {
-    "mtime": 1791243527.84093,
-    "seen": 1793014285.2897358,
-    "ast_hash": "19760c86e852bae41c5a6abc41920154",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/03_\uacfc\ud559_SI\ubd80/\ud0a4\uc544\ub178\uc2a4_\uad6d\uac00\uc790\ub3d9\ud654\uc778\ud504\ub77c_\uc0ac\uc804\uc124\uacc4\ubc0f\uad6c\ucd95\uaddc\uaca9\uc11c.md": {
-    "mtime": 1792736955.6787465,
-    "seen": 1793014285.2897358,
-    "ast_hash": "5d04c2e12f429947c3fe16cfb6edf0b9",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/03_\uacfc\ud559_SI\ubd80/\ud0a4\uc544\ub178\uc2a4_\ub300\uad6d\ubbfc_\ubaa8\ubc14\uc77c\ud658\uacbd_\uad6c\ucd95\uac80\ud1a0_\uba54\ubaa8.md": {
-    "mtime": 1792038897.329357,
-    "seen": 1793014285.2897358,
-    "ast_hash": "1a02f508480ddddedf559522fb718474",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/03_\uacfc\ud559_SI\ubd80/\ud14c\uc2ac\ub77c_\uc2a4\ud398\uc774\uc2a4X_\ub0c9\uac00\uc2a4\ucd94\uc9c4_\ube44\ud589\ubaa8\ube4c\ub9ac\ud2f0_\uae30\uc220\uac80\ud1a0\ubcf4\uace0\uc11c.md": {
-    "mtime": 1792218555.1850073,
-    "seen": 1793014285.2897358,
-    "ast_hash": "b6cb365c4dd92d3ef80669f346ebe089",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/01_\ub124\uc774\ubc84_\ud30c\uc774\ud2bc\uc758_\ubb38\ud559\uc0b0\ucc45/README.md": {
-    "mtime": 1793260868.1109674,
-    "seen": 1793496115.7837005,
-    "ast_hash": "e9fc32a83b50ba0988faceebb5c482fd",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/01_\ub124\uc774\ubc84_\ud30c\uc774\ud2bc\uc758_\ubb38\ud559\uc0b0\ucc45/\uc0bc\uad6d\uc9c0_\uc9c0\ud61c\uc0c9\uc778\ubcf4/\uc0bc\uad6d\uc9c0_\uc778\ubb38\ud559_\uc6d0\ubb38\uc0c9\uc778\ucd1d\ub78c.md": {
-    "mtime": 1792572942.7280638,
-    "seen": 1793014285.2897358,
-    "ast_hash": "5dece2e424cc96eee0b1b49fce1909e7",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/01_\ub124\uc774\ubc84_\ud30c\uc774\ud2bc\uc758_\ubb38\ud559\uc0b0\ucc45/\uc0bc\uad6d\uc9c0_\uc9c0\ud61c\uc0c9\uc778\ubcf4/\uc0bc\uad6d\uc9c0_\uc9c0\ud61c\uc778\uc6a9\uc2e4.html": {
-    "mtime": 1792572942.7350564,
-    "seen": 1793014285.2897358,
-    "ast_hash": "22e8e150ed001fc641285775514ff768",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/2019-01-13_Travel_Gangwon_Hwacheon_Sancheoneo_Ice_Festival.html": {
-    "mtime": 1791794100.7769318,
-    "seen": 1793014285.2897358,
-    "ast_hash": "81a2f1d7b2203fe038d4085059546395",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/2026-10-14_Travel_Chungbuk_Goesan_Mungwang_Ginkgo_Reservoir.html": {
-    "mtime": 1791943809.9729793,
-    "seen": 1793014285.2897358,
-    "ast_hash": "8c8edb4eda54f052ba6d53f24dd1a3f2",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/2026-10-15_Travel_Chungbuk_Goesan_Sanmaki_Yetgil.html": {
-    "mtime": 1792040622.6855986,
-    "seen": 1793014285.2897358,
-    "ast_hash": "450f2ae6f4cdf2565b15b9776afd9252",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/2026-10-15_Travel_Chungbuk_Goesan_Sanmaki_Yetgil_\uc548\ub0b4\ubb38.md": {
-    "mtime": 1792040673.5512154,
-    "seen": 1793014285.2897358,
-    "ast_hash": "b1acaedea3e1aa53b0f262a6ad31607e",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/2026-10-16_Travel_Gyeonggi_Hwaseong_Gungpyeonghang_Port.html": {
-    "mtime": 1792113722.7850316,
-    "seen": 1793014285.2897358,
-    "ast_hash": "b8c38fef180775a7c07645e8e5b3cf66",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/2026-10-17_Travel_Chungnam_Nonsan_8_Wonders_Tapjeongho_Gwanchoksa.html": {
-    "mtime": 1792205572.3122966,
-    "seen": 1793014285.2897358,
-    "ast_hash": "9bccc21660cee5bea6dfd0aeeb95142d",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/2026-10-18_Travel_Gangwon_Yeongwol_Cheongnyeongpo_King_Danjong.html": {
-    "mtime": 1792287306.4191985,
-    "seen": 1793014285.2897358,
-    "ast_hash": "fb9e0c7e45a84710098425f8fbf1c460",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/2026-10-18_Travel_Gangwon_Yeongwol_Cheongnyeongpo_King_Danjong_\uc548\ub0b4\ubb38.md": {
-    "mtime": 1792287311.325017,
-    "seen": 1793014285.2897358,
-    "ast_hash": "0ef1f04dbff7ce4dd7a7c1d27d544a2f",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/2026-10-18_Travel_Gyeonggi_Namyangju_Dasan_Jeong_Yak_yong_Yeoyudang.html": {
-    "mtime": 1792206203.520643,
-    "seen": 1793014285.2897358,
-    "ast_hash": "ca5ae3f551a78e6f6e08328d602cd499",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/2026-10-20_Travel_Incheon_Ganghwa_Nammunangil_Sochang_Alley.html": {
-    "mtime": 1792464538.5895693,
-    "seen": 1793014285.2897358,
-    "ast_hash": "ea3b59f795009058c3f70d27d21e2891",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/2026-10-20_Travel_Incheon_Ganghwa_Nammunangil_Sochang_Alley_\uc548\ub0b4\ubb38.md": {
-    "mtime": 1792464609.391433,
-    "seen": 1793014285.2897358,
-    "ast_hash": "2b2ebd99d766e121a9972e9c725efe38",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/2026-10-21_Travel_Gyeonggi_Gimpo_Daemyung_Port_Seafood_Market.html": {
-    "mtime": 1792551143.234659,
-    "seen": 1793014285.2897358,
-    "ast_hash": "ca880fef8a157460f4268e091757755d",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/2026-10-21_Travel_Gyeonggi_Gimpo_Daemyung_Port_\uc548\ub0b4\ubb38.md": {
-    "mtime": 1792551156.784335,
-    "seen": 1793014285.2897358,
-    "ast_hash": "c8ad6a97040dc852baa2e9d86539cd34",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/2026-10-23_Travel_Gyeonggi_Paju_Munsan_Free_Market_DMZ_Peace_Tour.html": {
-    "mtime": 1792726793.3816378,
-    "seen": 1793014285.2897358,
-    "ast_hash": "09a7b821c68e96d715a3b915e739d87f",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/2026-10-23_Travel_Gyeonggi_Paju_Munsan_Free_Market_DMZ_Peace_Tour_\uc548\ub0b4\ubb38.md": {
-    "mtime": 1792726800.9794726,
-    "seen": 1793014285.2897358,
-    "ast_hash": "14132fb7667ac51d4060a4af68ac7576",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/2026-10-24_Travel_Gangwon_Sokcho_Oeongchi_Badahyangiro_Coastal_Trail.html": {
-    "mtime": 1792827832.9844122,
-    "seen": 1793014285.2897358,
-    "ast_hash": "6469691cf21f3159e6820d733e41c9e7",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/2026-10-24_Travel_Gangwon_Sokcho_Oeongchi_Badahyangiro_\uc548\ub0b4\ubb38.md": {
-    "mtime": 1792827855.017863,
-    "seen": 1793014285.2897358,
-    "ast_hash": "3129bd2f05f6504a0c557700731c8581",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/2026-10-26_Travel_Jeonbuk_Buan_Byeonsanbando_Chaeseokgang_Naesosa.html": {
-    "mtime": 1792987333.270447,
-    "seen": 1793014285.2897358,
-    "ast_hash": "e4f0fd46e4a5731de1d83154c7443de9",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/2026-10-26_Travel_Jeonbuk_Buan_Byeonsanbando_Chaeseokgang_Naesosa_\uc548\ub0b4\ubb38.md": {
-    "mtime": 1792987339.0652711,
-    "seen": 1793014285.2897358,
-    "ast_hash": "152753c37d046c9a5c567a805682eb0b",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/DAILY_TRAVEL_AUTO_PIPELINE.md": {
-    "mtime": 1793330401.2888408,
-    "seen": 1793496115.7837005,
-    "ast_hash": "0381a6248cf77c5dd02cbfd1fdbaa030",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/README.md": {
-    "mtime": 1792287332.7361786,
-    "seen": 1793014285.2897358,
-    "ast_hash": "bbe90c65f204f8552c56fd373b939086",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/antkoreatrip_\uc2dc\ubc94\uc6d0\uace0_1\ud638_\uc120\uc720\ub3c4\uacf5\uc6d0.html": {
-    "mtime": 1791521550.8826566,
-    "seen": 1793014285.2897358,
-    "ast_hash": "76c19ce8fc5a9189de74be5f32b03e26",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/antkoreatrip_\uc2dc\ubc94\uc6d0\uace0_1\ud638_\uc120\uc720\ub3c4\uacf5\uc6d0_\uc548\ub0b4\ubb38.md": {
-    "mtime": 1791461161.73384,
-    "seen": 1793014285.2897358,
-    "ast_hash": "a672de77459ae6eeaa15f9dc13cf594e",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/03_\uad6c\uae00_\ud30c\uc774\ud2bc\uc758_\ucd08\uc9c0\ub2a5_\ubbf8\ub798\uc624\ub514\uc138\uc774/2026-10-16_SI_\uc81c3\ud638_\uc6b0\uc8fc\ub370\uc774\ud130\uc13c\ud130\uc640\ud53c\uc9c0\uceecSI.html": {
-    "mtime": 1792117057.4936686,
-    "seen": 1793014285.2897358,
-    "ast_hash": "c1e68c59b77634de68b19d9ed5168f51",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/03_\uad6c\uae00_\ud30c\uc774\ud2bc\uc758_\ucd08\uc9c0\ub2a5_\ubbf8\ub798\uc624\ub514\uc138\uc774/2026-10-17_SI_\uc81c4\ud638_\uc790\uc728\uc5d0\uc774\uc804\ud2f1SI\uc6405\ub300\uc804\ub7b5\uc0b0\uc5c5.html": {
-    "mtime": 1792205602.318014,
-    "seen": 1793014285.2897358,
-    "ast_hash": "d4138ee30f8da9be80afcb41817e5bae",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/03_\uad6c\uae00_\ud30c\uc774\ud2bc\uc758_\ucd08\uc9c0\ub2a5_\ubbf8\ub798\uc624\ub514\uc138\uc774/2026-10-20_SI_\uc81c5\ud638_\ucd08\uc9c0\ub2a5\uae30\ubc18\uc720\uc804\uccb4\uc124\uacc4\uc640\ubc14\uc774\uc624\ud601\uba85.html": {
-    "mtime": 1792464558.7664402,
-    "seen": 1793014285.2897358,
-    "ast_hash": "9ff551bdb7979460c3cefe2e6381c2b4",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/03_\uad6c\uae00_\ud30c\uc774\ud2bc\uc758_\ucd08\uc9c0\ub2a5_\ubbf8\ub798\uc624\ub514\uc138\uc774/2026-10-20_SI_\uc81c5\ud638_\ucd08\uc9c0\ub2a5\uae30\ubc18\uc720\uc804\uccb4\uc124\uacc4\uc640\ubc14\uc774\uc624\ud601\uba85_\uc548\ub0b4\ubb38.md": {
-    "mtime": 1792464616.6634016,
-    "seen": 1793014285.2897358,
-    "ast_hash": "0fc3740245f75f676c84624fe5fc1593",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/03_\uad6c\uae00_\ud30c\uc774\ud2bc\uc758_\ucd08\uc9c0\ub2a5_\ubbf8\ub798\uc624\ub514\uc138\uc774/2026-10-23_SI_\uc81c6\ud638_\uc77c\ub860\uba38\uc2a4\ud06c7\ub300\ubbf8\ub798\uc608\uce21\uacfc\uc774\uba74\uc758\uc9c4\uc2e4.html": {
-    "mtime": 1792726747.8817909,
-    "seen": 1793014285.2897358,
-    "ast_hash": "200bc07199ad2835dd74bdb0a7ef41f6",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/03_\uad6c\uae00_\ud30c\uc774\ud2bc\uc758_\ucd08\uc9c0\ub2a5_\ubbf8\ub798\uc624\ub514\uc138\uc774/2026-10-23_SI_\uc81c6\ud638_\uc77c\ub860\uba38\uc2a4\ud06c7\ub300\ubbf8\ub798\uc608\uce21\uacfc\uc774\uba74\uc758\uc9c4\uc2e4_\uc548\ub0b4\ubb38.md": {
-    "mtime": 1792726755.7745998,
-    "seen": 1793014285.2897358,
-    "ast_hash": "a3e26fb7fd31497eea93fe7531676fc9",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/03_\uad6c\uae00_\ud30c\uc774\ud2bc\uc758_\ucd08\uc9c0\ub2a5_\ubbf8\ub798\uc624\ub514\uc138\uc774/2026-10-24_SI_\uc81c7\ud638_\ud53c\uc9c0\uceecAI\uc640\ucc28\uc138\ub300\uc804\uace0\uccb4\uc561\ucd94\uc5d0\uc774\ud130\ud601\uba85.html": {
-    "mtime": 1792827942.9072468,
-    "seen": 1793014285.2897358,
-    "ast_hash": "c12354ee8d08c79f8c52d39707972a75",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/03_\uad6c\uae00_\ud30c\uc774\ud2bc\uc758_\ucd08\uc9c0\ub2a5_\ubbf8\ub798\uc624\ub514\uc138\uc774/2026-10-24_SI_\uc81c7\ud638_\ud53c\uc9c0\uceecAI\uc640\ucc28\uc138\ub300\uc804\uace0\uccb4\uc561\ucd94\uc5d0\uc774\ud130\ud601\uba85_\uc548\ub0b4\ubb38.md": {
-    "mtime": 1792827962.7843132,
-    "seen": 1793014285.2897358,
-    "ast_hash": "25c0dc0532a7a2706ee0ccbb754b39f5",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/03_\uad6c\uae00_\ud30c\uc774\ud2bc\uc758_\ucd08\uc9c0\ub2a5_\ubbf8\ub798\uc624\ub514\uc138\uc774/2026-10-26_SI_\uc81c8\ud638_\ucd08\uc9c0\ub2a5\uc5e3\uc9c0\ub274\ub85c\ubaa8\ud53d\uacfc5\ub300\ud14c\ud06c\ubb3c\ub9ac\uc735\ud569.html": {
-    "mtime": 1792987367.3329377,
-    "seen": 1793014285.2897358,
-    "ast_hash": "f12baffb04c45c405300372dff32e622",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/03_\uad6c\uae00_\ud30c\uc774\ud2bc\uc758_\ucd08\uc9c0\ub2a5_\ubbf8\ub798\uc624\ub514\uc138\uc774/2026-10-26_SI_\uc81c8\ud638_\ucd08\uc9c0\ub2a5\uc5e3\uc9c0\ub274\ub85c\ubaa8\ud53d\uacfc5\ub300\ud14c\ud06c\ubb3c\ub9ac\uc735\ud569_\uc548\ub0b4\ubb38.md": {
-    "mtime": 1792987378.9233854,
-    "seen": 1793014285.2897358,
-    "ast_hash": "94afc6b1f9ffa8fabc0208be4245b5cf",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/03_\uad6c\uae00_\ud30c\uc774\ud2bc\uc758_\ucd08\uc9c0\ub2a5_\ubbf8\ub798\uc624\ub514\uc138\uc774/README.md": {
-    "mtime": 1793330401.28984,
-    "seen": 1793496115.7837005,
-    "ast_hash": "98fbb956b4d777f5f3fbf462fcbf0ed1",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/03_\uad6c\uae00_\ud30c\uc774\ud2bc\uc758_\ucd08\uc9c0\ub2a5_\ubbf8\ub798\uc624\ub514\uc138\uc774/phaeton_si_\uc81c2\ud638_SI\uac00\uaca9\ud601\uba85\uacfc\uac70\ud488\ub860.html": {
-    "mtime": 1791723997.7997415,
-    "seen": 1793014285.2897358,
-    "ast_hash": "ea6b9eb3b45b4a4e8816a3a67ee32025",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/03_\uad6c\uae00_\ud30c\uc774\ud2bc\uc758_\ucd08\uc9c0\ub2a5_\ubbf8\ub798\uc624\ub514\uc138\uc774/phaeton_si_\ucc3d\uac04\ud638_\ucd08\uc9c0\ub2a52030\ubbf8\ub798\ubb38\uba85.html": {
-    "mtime": 1791522022.1305454,
-    "seen": 1793014285.2897358,
-    "ast_hash": "02280ec7d012e1873bf57a40a94dc0c3",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/README.md": {
-    "mtime": 1792314057.4221654,
-    "seen": 1793014285.2897358,
-    "ast_hash": "7d5c4bea376f765370c0dd7bd976601b",
     "semantic_hash": ""
   },
   "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/antkoreatrip_\uc2dc\ubc94\uc6d0\uace0_1\ud638_\uc120\uc720\ub3c4\uacf5\uc6d0.html": {
@@ -1307,22 +761,10 @@
     "ast_hash": "76c19ce8fc5a9189de74be5f32b03e26",
     "semantic_hash": ""
   },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/antkoreatrip_\uc2dc\ubc94\uc6d0\uace0_1\ud638_\uc120\uc720\ub3c4\uacf5\uc6d0_\uc548\ub0b4\ubb38.md": {
-    "mtime": 1791461161.73384,
-    "seen": 1793014285.2897358,
-    "ast_hash": "a672de77459ae6eeaa15f9dc13cf594e",
-    "semantic_hash": ""
-  },
   "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/templates/antkoreatrip_post_template.html": {
     "mtime": 1791522010.4954557,
     "seen": 1793014285.2897358,
     "ast_hash": "b943e9d25f6ae9b20c611cb1370f9d84",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/templates/naver_munhak_template.md": {
-    "mtime": 1791454590.0564306,
-    "seen": 1793014285.2897358,
-    "ast_hash": "f6d446772f4d2003b60c05a41a65c704",
     "semantic_hash": ""
   },
   "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/templates/phaeton_si_future_template.html": {
@@ -1337,52 +779,22 @@
     "ast_hash": "0b9879cb9857d1d689055deea2a9c326",
     "semantic_hash": ""
   },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/tools/README.md": {
-    "mtime": 1791724581.5046017,
-    "seen": 1793014285.2897358,
-    "ast_hash": "fbb6727e0efdca217a164fb3ce5ea167",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/\uc608\uc220\uc138\uacc4_92\ud3b8_\uc804\uc218\uc810\uac80_\ubc0f_\ud574\uc124\ud310_\uc804\ud658\ubaa9\ub85d.md": {
-    "mtime": 1791461198.537943,
-    "seen": 1793014285.2897358,
-    "ast_hash": "fcf57816fceb88f8a3e3159184de017f",
-    "semantic_hash": ""
-  },
   "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/\ud0a4\uc544\ub178\uc2a4_3\ub300\ube14\ub85c\uadf8_\ud1b5\ud569\uad00\uc81c\uc2e4.html": {
-    "mtime": 1793330424.529728,
-    "seen": 1793496115.7837005,
-    "ast_hash": "a5c5be6e5d3ca46fa880377bfa7ad47e",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/Land of Blue Rose.md": {
-    "mtime": 1788592882.2157435,
-    "seen": 1793014285.2897358,
-    "ast_hash": "5d3798178979b3cabe7a5fd6a1cca1d5",
+    "mtime": 1794025877.5804956,
+    "seen": 1794280529.280486,
+    "ast_hash": "a6fc22c0626a2b9dac1aa67617e72dfb",
     "semantic_hash": ""
   },
   "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/README.md": {
-    "mtime": 1792825779.5770373,
-    "seen": 1793014285.2897358,
-    "ast_hash": "14a5ba1a6a2d1b6d4f6cf8dba2a3771a",
+    "mtime": 1793761357.0156715,
+    "seen": 1794280529.280486,
+    "ast_hash": "f3493f803cd3d25ea0eadc39eb4c9069",
     "semantic_hash": ""
   },
   "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/kyanos_slogans_and_branding.txt": {
     "mtime": 1788301684.157626,
     "seen": 1793014285.2897358,
     "ast_hash": "62bddf4511747a8cf97ed3052d40c4f0",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/\uad50\uc721_\ubb38\ud654\ubd80_\ud558\uc704\uc870\uc9c1\uc124\uacc4\uc548.md": {
-    "mtime": 1792825803.5955083,
-    "seen": 1793014285.2897358,
-    "ast_hash": "3553b84c03212408811e1b40e68bab85",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/\uad6d\ub9bd_\uc778\ub958\ubb38\uba85\uc0ac\ub3c4\uc11c\uad00_\uc5f0\uad6c\uc6d0_\uc6b4\uc601\uccb4\uacc4.md": {
-    "mtime": 1791789017.3239398,
-    "seen": 1793014285.2897358,
-    "ast_hash": "eeb0519e32022ea0ce0eda2c9e5cfa6b",
     "semantic_hash": ""
   },
   "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/\uad6d\ub9bd\uc74c\uc545\ucc3d\uc791\uc6d0_\uc74c\uc545\uad00/AI_\uc74c\uc545\uc0dd\uc131\uae30/SECURITY_PROTOCOL.md": {
@@ -1458,93 +870,45 @@
     "semantic_hash": ""
   },
   "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/\ud30c\uc774\ud2bc_\ubb38\ud559_\ucd9c\ud310\uc5f0\uacc4\uc2dc\uc2a4\ud15c/\ucd9c\ud310_\uc6d0\uace0_\ubcf4\uad00\uc18c/\uc81c01\uad8c_\ud30c\uc774\ud2bc\uc758 \ud31d\uc1a1 \uc2a4\ud1a0\ub9ac\ud154\ub9c1_\uc870\ud310\ubbf8\ub9ac\ubcf4\uae30.html": {
-    "mtime": 1791789080.7440045,
-    "seen": 1793014285.2897358,
-    "ast_hash": "a80d74cdb6af658aecb13c566484d1c5",
+    "mtime": 1794191925.2963521,
+    "seen": 1794280529.2819989,
+    "ast_hash": "0a1acebd6300477646b6d07662643336",
     "semantic_hash": ""
   },
   "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/\ud30c\uc774\ud2bc_\ubb38\ud559_\ucd9c\ud310\uc5f0\uacc4\uc2dc\uc2a4\ud15c/\ucd9c\ud310_\uc6d0\uace0_\ubcf4\uad00\uc18c/\uc81c01\uad8c_\ud30c\uc774\ud2bc\uc758 \ud31d\uc1a1 \uc2a4\ud1a0\ub9ac\ud154\ub9c1_\ucd9c\ud310\uc6d0\uace0.md": {
-    "mtime": 1791789080.7440045,
-    "seen": 1793014285.2897358,
-    "ast_hash": "9ce5e9493fa9f117bc4843aba715c90f",
+    "mtime": 1794191925.2953596,
+    "seen": 1794280529.2819989,
+    "ast_hash": "cae7480508fa31bf712103e143de2001",
     "semantic_hash": ""
   },
   "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/\ud30c\uc774\ud2bc_\ubb38\ud559_\ucd9c\ud310\uc5f0\uacc4\uc2dc\uc2a4\ud15c/\ucd9c\ud310_\uc6d0\uace0_\ubcf4\uad00\uc18c/\uc81c02\uad8c_\uac00\uc744 \uadf8\ub9ac\uace0 \ucc28 \ud55c\uc794_\uc870\ud310\ubbf8\ub9ac\ubcf4\uae30.html": {
-    "mtime": 1791789080.7460032,
-    "seen": 1793014285.2897358,
-    "ast_hash": "81c241a964955c51ff08ead0662fc49f",
+    "mtime": 1794191925.2963521,
+    "seen": 1794280529.2819989,
+    "ast_hash": "701441a40bf87163b9eed7aee0540e75",
     "semantic_hash": ""
   },
   "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/\ud30c\uc774\ud2bc_\ubb38\ud559_\ucd9c\ud310\uc5f0\uacc4\uc2dc\uc2a4\ud15c/\ucd9c\ud310_\uc6d0\uace0_\ubcf4\uad00\uc18c/\uc81c02\uad8c_\uac00\uc744 \uadf8\ub9ac\uace0 \ucc28 \ud55c\uc794_\ucd9c\ud310\uc6d0\uace0.md": {
-    "mtime": 1791789080.7450051,
-    "seen": 1793014285.2897358,
-    "ast_hash": "8d68ff788628e477a3746c047ab844ed",
+    "mtime": 1794191925.2963521,
+    "seen": 1794280529.2819989,
+    "ast_hash": "e7d0f2bc53e50a97d8c00db2354237df",
     "semantic_hash": ""
   },
   "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/\ud30c\uc774\ud2bc_\ubb38\ud559_\ucd9c\ud310\uc5f0\uacc4\uc2dc\uc2a4\ud15c/\ucd9c\ud310_\uc6d0\uace0_\ubcf4\uad00\uc18c/\uc81c03\uad8c_\uc0ac\uc0c9\uc758 \uc232\uc5d0\uc11c \uae38\uc744 \ubb3b\ub2e4_\uc870\ud310\ubbf8\ub9ac\ubcf4\uae30.html": {
-    "mtime": 1791789080.747004,
-    "seen": 1793014285.2897358,
-    "ast_hash": "5ef42cea683c7629bf920c0b6e67a220",
+    "mtime": 1794191925.297856,
+    "seen": 1794280529.2819989,
+    "ast_hash": "19de0d2d17f20a50ed6e66ddaf953ced",
     "semantic_hash": ""
   },
   "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/\ud30c\uc774\ud2bc_\ubb38\ud559_\ucd9c\ud310\uc5f0\uacc4\uc2dc\uc2a4\ud15c/\ucd9c\ud310_\uc6d0\uace0_\ubcf4\uad00\uc18c/\uc81c03\uad8c_\uc0ac\uc0c9\uc758 \uc232\uc5d0\uc11c \uae38\uc744 \ubb3b\ub2e4_\ucd9c\ud310\uc6d0\uace0.md": {
-    "mtime": 1791789080.7460032,
-    "seen": 1793014285.2897358,
-    "ast_hash": "f7fff0c52175da2fed61d1be1de849cf",
+    "mtime": 1794191925.297856,
+    "seen": 1794280529.2819989,
+    "ast_hash": "743b4893f0af6a51481b000fce59283d",
     "semantic_hash": ""
   },
   "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/\ud30c\uc774\ud2bc_\ubb38\ud559_\ucd9c\ud310\uc5f0\uacc4\uc2dc\uc2a4\ud15c/\ud30c\uc774\ud2bc_\ubb38\ud559_\ucd9c\ud310\uad00\uc81c\uc2e4.html": {
     "mtime": 1791789100.8204374,
     "seen": 1793014285.2897358,
     "ast_hash": "6453b5bb1a4785a914c56f7a0281e0c2",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/05_\ubcf5\uc9c0\ubd80/MED_KYANOS_\uc2dc\ubbfc\uc0dd\uba85\ucf00\uc5b4\uac00\uc774\ub4dc_\ub9c8\uc2a4\ud130\uc124\uacc4\uc11c.md": {
-    "mtime": 1791591408.3528078,
-    "seen": 1793014285.2897358,
-    "ast_hash": "3cccfadcb1b122c78934cfd71d9f2daa",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/05_\ubcf5\uc9c0\ubd80/README.md": {
-    "mtime": 1791535470.42444,
-    "seen": 1793014285.2897358,
-    "ast_hash": "edbf90d15b9c6411ad06df5a2163db87",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/05_\ubcf5\uc9c0\ubd80/\ubcf5\uc9c0\ubd80_\ud558\uc704\uc870\uc9c1\uc124\uacc4\uc548.md": {
-    "mtime": 1791106597.7925937,
-    "seen": 1793014285.2897358,
-    "ast_hash": "3bd3ef8da380973d093ce75180886af7",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/06_\uc0ac\ud68c\ubd80/README.md": {
-    "mtime": 1791173544.735256,
-    "seen": 1793014285.2897358,
-    "ast_hash": "bcc256bf427ce2f4240c33dceba92c99",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/06_\uc0ac\ud68c\ubd80/\uc0ac\ud68c\ubd80_\ud558\uc704\uc870\uc9c1\uc124\uacc4\uc548.md": {
-    "mtime": 1791119601.2101154,
-    "seen": 1793014285.2897358,
-    "ast_hash": "13d2289ff67adb6d8d09a82bba9352cb",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/07_\uad6d\uc81c\ubd80/README.md": {
-    "mtime": 1792209285.952612,
-    "seen": 1793014285.2897358,
-    "ast_hash": "6150f7615f0fa4f394164c8655ecfa66",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/07_\uad6d\uc81c\ubd80/\uad6d\uc81c\ubd80_ReportData_\ubd84\uc11d\ubc0f_\uce74\ud14c\uace0\ub9ac\uc815\ucc45.md": {
-    "mtime": 1792209276.9801195,
-    "seen": 1793014285.2897358,
-    "ast_hash": "c6fe6af1e39d51a7161fad0c3e684539",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/07_\uad6d\uc81c\ubd80/\uad6d\uc81c\ubd80_\ud558\uc704\uc870\uc9c1\uc124\uacc4\uc548.md": {
-    "mtime": 1792160350.244783,
-    "seen": 1793014285.2897358,
-    "ast_hash": "b1a3401204e6bbe904c89c70fbdefb48",
     "semantic_hash": ""
   },
   "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/07_\uad6d\uc81c\ubd80/\uc2a4\ub098\uc774\ub354_\ubc88\uc5ed\uc6d0\ubb38/bioweapon.txt": {
@@ -1569,78 +933,6 @@
     "mtime": 1791525635.75245,
     "seen": 1793014285.2897358,
     "ast_hash": "6cfb5c584a86902059f0623327c49065",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/07_\uad6d\uc81c\ubd80/\ud0a4\uc544\ub178\uc2a4_\uc138\uacc4\ud654_\uae00\ub85c\ubc8c_\ud64d\ubcf4\uc804\ub7b5_\ub9c8\uc2a4\ud130\ud50c\ub79c.md": {
-    "mtime": 1792965563.3580956,
-    "seen": 1793014285.2897358,
-    "ast_hash": "8fb63ec620afd33644aaa0a1913bf2c2",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/08_\ub355\uce58\uc0ac\ubc95\uc6d0/KYANOS_CONSTITUTION_OF_VIRTUE.md": {
-    "mtime": 1791119956.0807312,
-    "seen": 1793014285.2897358,
-    "ast_hash": "0af82ee80e0e4ec5006339fd3341268f",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/08_\ub355\uce58\uc0ac\ubc95\uc6d0/LEX_KYANOS_\uc2dc\ubbfc\ubc95\ub960\ub098\uce68\ubc18_\ub9c8\uc2a4\ud130\uc124\uacc4\uc11c.md": {
-    "mtime": 1791535405.194372,
-    "seen": 1793014285.2897358,
-    "ast_hash": "de3edb0843f212cff683b054d6146f09",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/08_\ub355\uce58\uc0ac\ubc95\uc6d0/README.md": {
-    "mtime": 1791535421.03791,
-    "seen": 1793014285.2897358,
-    "ast_hash": "b255328be7c852847f94366359ed14a9",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/09_\ubbf8\ub514\uc5b4\ubd80/KYANOS_PROJECT_01_ANTNEWS_INTELLIGENCE.md": {
-    "mtime": 1789000749.028816,
-    "seen": 1793014285.2897358,
-    "ast_hash": "56d818b779b773fe51ee28f9c3d6b325",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/09_\ubbf8\ub514\uc5b4\ubd80/README.md": {
-    "mtime": 1792582954.6462712,
-    "seen": 1793014285.2897358,
-    "ast_hash": "77786fec2d283ce6514068d4f9b863f6",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/09_\ubbf8\ub514\uc5b4\ubd80/\ubbf8\ub514\uc5b4\ubd80_\ud558\uc704_3\ub300_\uc11c\ube0c\uc2dc\uc2a4\ud15c_\uad6c\ucd95\uc804\ub7b5.md": {
-    "mtime": 1791855127.1697533,
-    "seen": 1793014285.2897358,
-    "ast_hash": "9d1ab10df7ed991fc9c4aa1e178a9c7a",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/09_\ubbf8\ub514\uc5b4\ubd80/\uc564\ud2b8\ub274\uc2a4_\ubcf4\ub3c4\uad6d_\ub0b4\ubd80\uc2e4\ubb34\uc9c0\uce68\uc11c.md": {
-    "mtime": 1792975976.7564824,
-    "seen": 1793014285.2897358,
-    "ast_hash": "674a8117cd505262bc22b9981c4514d7",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/09_\ubbf8\ub514\uc5b4\ubd80/\uc564\ud2b8\ub274\uc2a4_\ubcf4\ub3c4\ud45c\uc900_\ub808\ud37c\ub7f0\uc2a4/\uc800\ub110\ub9ac\uc998_\uce7c\ub7fc\uae30\uc0ac_\ud45c\uc900\uc608\uc2dc/README.md": {
-    "mtime": 1792296191.98289,
-    "seen": 1793014285.2897358,
-    "ast_hash": "ebb9651af127acc480c0898bb4c3d93f",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/09_\ubbf8\ub514\uc5b4\ubd80/\uc720\ud29c\ube0c_\uc624\ub9ac\uc9c0\ub110_\ucf58\ud150\uce20_\uac1c\ubc1c_\uc5f0\uad6c\ubcf4\uace0\uc11c.md": {
-    "mtime": 1792810153.6947958,
-    "seen": 1793014285.2897358,
-    "ast_hash": "9c2fb2d75bce6f21014ff3fa8a40c416",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/09_\ubbf8\ub514\uc5b4\ubd80/\ud0a4\uc544\ub178\uc2a4_\uae00\ub85c\ubc8c_\ud64d\ubcf4_\uc5d0\uc14b_\ud328\ud0a4\uc9c0_Vol1.md": {
-    "mtime": 1792976010.51762,
-    "seen": 1793014285.2897358,
-    "ast_hash": "209529dcdc96416fae8ddc76d00d78e9",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/README.md": {
-    "mtime": 1791807272.1539223,
-    "seen": 1793014285.2897358,
-    "ast_hash": "f366c59fa02d05c1f3f5249dd7a86347",
     "semantic_hash": ""
   },
   "assets/Kyanos flag.png": {
@@ -2717,60 +2009,6 @@
     "ast_hash": "c7303542ee4734169b4ba028b7ccb575",
     "semantic_hash": ""
   },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/images/cheongnyeongpo/01_cheongnyeongpo_scenic_overview.jpg": {
-    "mtime": 1573442556.05389,
-    "seen": 1793014285.2897358,
-    "ast_hash": "63b3e7a21bcdb1d4eb571b7ad9dfdbb5",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/images/cheongnyeongpo/02_cheongnyeongpo_pine_panorama.jpg": {
-    "mtime": 1573447723.4339888,
-    "seen": 1793014285.2897358,
-    "ast_hash": "73285df66d1c547100f7a2913c2514f0",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/images/cheongnyeongpo/03_cheongnyeongpo_ferry_crossing.jpg": {
-    "mtime": 1573442596.7027748,
-    "seen": 1793014285.2897358,
-    "ast_hash": "2cc4dd2e068cdb95576af29a3d0492e2",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/images/cheongnyeongpo/04_cheongnyeongpo_gwaneumsong_pine.jpg": {
-    "mtime": 1573442621.6465328,
-    "seen": 1793014285.2897358,
-    "ast_hash": "24bffd7129df850ae26b191e4fafa457",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/images/cheongnyeongpo/05_gwanpunghon_historic_dongheon.jpg": {
-    "mtime": 1573447241.8959746,
-    "seen": 1793014285.2897358,
-    "ast_hash": "025d40fc98ba5e6b7790b4367d022de8",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/images/cheongnyeongpo/06_jagyuru_pavilion_yeongwol.jpg": {
-    "mtime": 1573445596.2554102,
-    "seen": 1793014285.2897358,
-    "ast_hash": "9151af7da3cb36786c52f2d0e5efc3bc",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/images/cheongnyeongpo/07_cheongnyeongpo_forest_trail.jpg": {
-    "mtime": 1573444996.0324886,
-    "seen": 1793014285.2897358,
-    "ast_hash": "71eacf576433f6983557b7e94251f88a",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/images/cheongnyeongpo/08_cheongnyeongpo_danjeong_residence.jpg": {
-    "mtime": 1573445069.218089,
-    "seen": 1793014285.2897358,
-    "ast_hash": "3a3e5e080cc9f3211f60fcb9abb6f357",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/images/ganghwa/02_ganghwa_retro_cafe_alley.jpg": {
-    "mtime": 1792464498.1597836,
-    "seen": 1793014285.2897358,
-    "ast_hash": "62a8ef83b8bc7ee3f1ce621b4c35bbd1",
-    "semantic_hash": ""
-  },
   "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/09_\ubbf8\ub514\uc5b4\ubd80/\uc564\ud2b8\ub274\uc2a4_\ubcf4\ub3c4\ud45c\uc900_\ub808\ud37c\ub7f0\uc2a4/\uc800\ub110\ub9ac\uc998_\uce7c\ub7fc\uae30\uc0ac_\ud45c\uc900\uc608\uc2dc/[\uc218\uc815\ubcf8]\ud604\ub300 \uc0ac\ud68c\uc758 \ubb38\ud654\uc801 \ubab0\ub77d\uacfc \uc131\uacbd\uc801 \uc808\ub300 \uc9c4\ub9ac\uc758 \ud68c\ubcf5.jpg": {
     "mtime": 1792295730.533325,
     "seen": 1793014285.2897358,
@@ -2951,12 +2189,6 @@
     "ast_hash": "eed98f959504db576e149e0b36702ab2",
     "semantic_hash": ""
   },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/03_\uacfc\ud559_SI\ubd80/20261026_\uc624\ud508\uc18c\uc2a4_SI\uae30\uc220_\ub0b4\uc7ac\ud654_\ub9c8\uc2a4\ud130\ud50c\ub79c.md": {
-    "mtime": 1793014373.9588437,
-    "seen": 1793059014.5599167,
-    "ast_hash": "b48073ad5d098da88de3669759d5fd10",
-    "semantic_hash": ""
-  },
   "assets/js/kyanos_omni_dialogue.js": {
     "mtime": 1793408646.7816482,
     "seen": 1793496115.7827008,
@@ -2967,36 +2199,6 @@
     "mtime": 1793073117.8103652,
     "seen": 1793073286.096611,
     "ast_hash": "e4dcacf91fc85f788a13dc059c7821da",
-    "semantic_hash": ""
-  },
-  "ant_briefing_room/archive/briefing_20261027.md": {
-    "mtime": 1793106261.08652,
-    "seen": 1793496115.7827008,
-    "ast_hash": "20c2c6fd8d0d3c492b3cae1ea3165e3e",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/03_\uacfc\ud559_SI\ubd80/AGI_SI_\uc9c4\uc785_\ud575\uc2ec\uc5f0\uad6c\ub370\uc774\ud130_\ubc0f_\uae30\uc220\ub85c\ub4dc\ub9f5.md": {
-    "mtime": 1793073208.634284,
-    "seen": 1793073286.096611,
-    "ast_hash": "5d17a6428fb3ccd36a0b6c08f908a338",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/03_\uacfc\ud559_SI\ubd80/\uace0\uc5d0\ub108\uc9c0_\uc9c0\ud5a5\uc131\uc5d0\ub108\uc9c0\ubb34\uae30_\ub808\uc774\uc800\uac74_\ud575\uc2ec\uae30\uc220\uc11c.md": {
-    "mtime": 1793073219.106664,
-    "seen": 1793073286.096611,
-    "ast_hash": "57c0fc4a1f084dd17714562d6d30476c",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/03_\uacfc\ud559_SI\ubd80/\ucc28\uc138\ub300_\uc790\uc728\ube44\ud589_\uad70\uc9d1\ub4dc\ub860_\uc81c\uc791_\uc5d4\uc9c0\ub2c8\uc5b4\ub9c1_\uae30\uc220\uc11c.md": {
-    "mtime": 1793073228.49221,
-    "seen": 1793073286.096611,
-    "ast_hash": "7f8a1f6496e460d1aa4f96398ed1cdad",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/03_\uacfc\ud559_SI\ubd80/\ud0c8\ub85c\uc2a4_\ud734\uba38\ub178\uc774\ub4dc_\ub85c\ubd07_\ub300\ub7c9\uc591\uc0b0_\uc0dd\uc0b0\uae30\uc220\uc11c.md": {
-    "mtime": 1793188005.1487699,
-    "seen": 1793496115.7837005,
-    "ast_hash": "88d2cc4f08018ba406fc0166423c2d67",
     "semantic_hash": ""
   },
   "assets/js/kyanos_mobile.js": {
@@ -3071,36 +2273,6 @@
     "ast_hash": "e8bb16b794a2bd3b8ed637b5fc732278",
     "semantic_hash": ""
   },
-  "ant_briefing_room/archive/briefing_20261028.md": {
-    "mtime": 1793184061.4275968,
-    "seen": 1793496115.7827008,
-    "ast_hash": "6c2e51815365f71caa026ddd65a24f1a",
-    "semantic_hash": ""
-  },
-  "ant_briefing_room/archive/briefing_20261029.md": {
-    "mtime": 1793254606.948416,
-    "seen": 1793496115.7827008,
-    "ast_hash": "c0a4ee02bca8b5a0651333479c62375d",
-    "semantic_hash": ""
-  },
-  "ant_briefing_room/archive/briefing_20261030.md": {
-    "mtime": 1793353789.7971249,
-    "seen": 1793496115.7827008,
-    "ast_hash": "7e15bcdd190965a84ccba615060e141f",
-    "semantic_hash": ""
-  },
-  "ant_briefing_room/archive/briefing_20261031.md": {
-    "mtime": 1793443310.1981738,
-    "seen": 1793496115.7827008,
-    "ast_hash": "dd357542582352a00090056c3d7faf6b",
-    "semantic_hash": ""
-  },
-  "ant_briefing_room/archive/briefing_20261101.md": {
-    "mtime": 1793490376.9643219,
-    "seen": 1793496115.7827008,
-    "ast_hash": "464c30ca5ade1d2be51ebbc64c56a28f",
-    "semantic_hash": ""
-  },
   "antnews_auto/output/antnews_20261028.html": {
     "mtime": 1793142478.7202892,
     "seen": 1793496115.7827008,
@@ -3168,9 +2340,9 @@
     "semantic_hash": ""
   },
   "video_studio.html": {
-    "mtime": 1793408665.2752984,
-    "seen": 1793496115.7837005,
-    "ast_hash": "9e9aca6fd8cb6c80b073476338a42a90",
+    "mtime": 1794191334.0288062,
+    "seen": 1794280529.2794828,
+    "ast_hash": "eae4b09fc38c2f78d760a1e39ed87fd3",
     "semantic_hash": ""
   },
   "\ud0a4\uc544\ub178\uc2a4_\uc601\uc0c1\uc2a4\ud29c\ub514\uc624/01_\ub871\ud3fc_\uc2dc\ub124\ub9c8\ud2f1_\uc790\ub8cc/01_\ub871\ud3fc_\ub300\ubcf8_\ubc0f_\ud574\uc124.txt": {
@@ -3209,76 +2381,10 @@
     "ast_hash": "5f26f4ed4ebe317cd2a54ce3ee637005",
     "semantic_hash": ""
   },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/03_\uacfc\ud559_SI\ubd80/20261028_\ub85c\ubd07\uc0dd\uc0b0\ud568\uc218_DRAM\ubc18\ub3c4\uccb4_\uc218\uae09\uc790\ub9bd_\uad6d\uac00\uc804\ub7b5\uc11c.md": {
-    "mtime": 1793187997.251169,
-    "seen": 1793496115.7837005,
-    "ast_hash": "26e76c5655b5eface9bd671ecd991691",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/03_\uacfc\ud559_SI\ubd80/20261101_\uc5d4\ube44\ub514\uc544_\ub124\ubaa8\ud2b8\ub860_\uc624\ud508\uc18c\uc2a4_SI\ud1b5\ud569_\uc804\ub7b5\uc11c.md": {
-    "mtime": 1793495871.4620721,
-    "seen": 1793496115.7837005,
-    "ast_hash": "c7fbcd46226f0a4aba3ffedeba0399b5",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/03_\uacfc\ud559_SI\ubd80/\uc81c\ubbf8\ub098\uc7744_\uc544\ub974\uace4_\uba40\ud2f0\uc5d0\uc774\uc804\ud2b8_\uc624\ucf00\uc2a4\ud2b8\ub808\uc774\uc158_\ud45c\uc900\uaddc\uaca9\uc11c.md": {
-    "mtime": 1793110476.6243057,
-    "seen": 1793496115.7837005,
-    "ast_hash": "87de131ddce6537b7ddef7a47b0c9c24",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/2026-10-28_Travel_Gyeonggi_Pocheon_Sanjeongho_Lake_Myeongseongsan.html": {
-    "mtime": 1793194421.15615,
-    "seen": 1793496115.7837005,
-    "ast_hash": "d32589f0e01210921a4ea3a1f9965a58",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/2026-10-28_Travel_Gyeonggi_Pocheon_Sanjeongho_Lake_Myeongseongsan_\uc548\ub0b4\ubb38.md": {
-    "mtime": 1793194453.538608,
-    "seen": 1793496115.7837005,
-    "ast_hash": "5baa699d76038b1cdef13b6704b8edf7",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/2026-10-29_Travel_Chungnam_Seocheon_Maryangri_Camellia_Forest_Dongbaekjeong.html": {
-    "mtime": 1793248901.3466554,
-    "seen": 1793496115.7837005,
-    "ast_hash": "04ebbfea256afe6f0218430085dd09dc",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/2026-10-29_Travel_Chungnam_Seocheon_Maryangri_Camellia_Forest_Dongbaekjeong_\uc548\ub0b4\ubb38.md": {
-    "mtime": 1793248710.8345294,
-    "seen": 1793496115.7837005,
-    "ast_hash": "6e9a7a1e7b92511bd7be853cd009baf5",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_\uad6c\uae00_Ant_Travel_Korea/2026-10-30_Travel_Gangwon_Gangneung_Jeongdong_Simgok_Badabuchaegil.html": {
-    "mtime": 1793330377.891795,
-    "seen": 1793496115.7837005,
-    "ast_hash": "a1f475f29c9d444e2195ef43e91f44d9",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/03_\uad6c\uae00_\ud30c\uc774\ud2bc\uc758_\ucd08\uc9c0\ub2a5_\ubbf8\ub798\uc624\ub514\uc138\uc774/2026-10-28_SI_\uc81c9\ud638_\ud53c\uc9c0\uceecSI\uc640\ud734\uba38\ub178\uc774\ub4dc\ub85c\ubd07\uc0dd\uc0b0\ud568\uc218\ud601\uba85.html": {
-    "mtime": 1793194346.8874629,
-    "seen": 1793496115.7837005,
-    "ast_hash": "8b5a2925df2c5834d51420e917159d4f",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/03_\uad6c\uae00_\ud30c\uc774\ud2bc\uc758_\ucd08\uc9c0\ub2a5_\ubbf8\ub798\uc624\ub514\uc138\uc774/2026-10-28_SI_\uc81c9\ud638_\ud53c\uc9c0\uceecSI\uc640\ud734\uba38\ub178\uc774\ub4dc\ub85c\ubd07\uc0dd\uc0b0\ud568\uc218\ud601\uba85_\uc548\ub0b4\ubb38.md": {
-    "mtime": 1793194381.1241188,
-    "seen": 1793496115.7837005,
-    "ast_hash": "6b930ac12a6a954fa9f377819cac8063",
-    "semantic_hash": ""
-  },
   "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/\uad6d\ub9bd\uc74c\uc545\ucc3d\uc791\uc6d0_\uc74c\uc545\uad00/AI_\uc74c\uc545\uc0dd\uc131\uae30/README.md": {
     "mtime": 1793416031.8237324,
     "seen": 1793496115.7837005,
     "ast_hash": "0504ba20e877af50a7ea5fdcd242bbca",
-    "semantic_hash": ""
-  },
-  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/09_\ubbf8\ub514\uc5b4\ubd80/\ud0a4\uc544\ub178\uc2a4_\uae00\ub85c\ubc8c_\uc601\uc0c1\ud64d\ubcf4_\ub871\uc20f\ud3fc_\ub7f0\uce6d\uc804\ub7b5_\ubcf4\uace0\uc11c.md": {
-    "mtime": 1793073364.3569198,
-    "seen": 1793496115.7847023,
-    "ast_hash": "2766b5ecc23fe7e2e6626a7dc9787cf3",
     "semantic_hash": ""
   },
   "assets/icons/icon-192.png": {
@@ -3399,6 +2505,1224 @@
     "mtime": 1547628412.0,
     "seen": 1793496115.7852118,
     "ast_hash": "95231f4890f33ca4285ec78d6cb1c868",
+    "semantic_hash": ""
+  },
+  "assets/js/kyanos_quantum_aegis.js": {
+    "mtime": 1793611801.049624,
+    "seen": 1794280529.2649655,
+    "ast_hash": "355e0ac7f808d078510744ae59a61c4f",
+    "semantic_hash": ""
+  },
+  "scratch/build_today_editorial_packages.py": {
+    "mtime": 1793513933.5835657,
+    "seen": 1794280529.2659597,
+    "ast_hash": "fef7abec61affef8f95fd9292d7f9616",
+    "semantic_hash": ""
+  },
+  "scratch/extract_hwp.py": {
+    "mtime": 1793513667.6660504,
+    "seen": 1794280529.2669597,
+    "ast_hash": "02c1f7c2fcbf167365d36eeea5de5fcc",
+    "semantic_hash": ""
+  },
+  "scratch/generate_si_image.py": {
+    "mtime": 1793513774.3002834,
+    "seen": 1794280529.2669597,
+    "ast_hash": "46eaed8627c7e41bde73f37e5bb1d38e",
+    "semantic_hash": ""
+  },
+  "scratch/generate_si_image_11.py": {
+    "mtime": 1793602784.8111265,
+    "seen": 1794280529.2669597,
+    "ast_hash": "917df42fa2f33de7f0e5041a9992a111",
+    "semantic_hash": ""
+  },
+  "scratch/test_hwp_text.py": {
+    "mtime": 1793513689.8800187,
+    "seen": 1794280529.2669597,
+    "ast_hash": "02721b6c9d9c753319ffc5592741685f",
+    "semantic_hash": ""
+  },
+  "scripts/archive_travel_post.py": {
+    "mtime": 1793757171.433217,
+    "seen": 1794280529.2669597,
+    "ast_hash": "b5bf6685c525a4e511fdfd19663fe1fb",
+    "semantic_hash": ""
+  },
+  "scripts/convert_all_literature_hwpx.py": {
+    "mtime": 1793801472.8868904,
+    "seen": 1794280529.2679603,
+    "ast_hash": "d3c59884533038b3d4dad7a6b84064f7",
+    "semantic_hash": ""
+  },
+  "scripts/move_to_permanent_archive.py": {
+    "mtime": 1793756758.7165546,
+    "seen": 1794280529.2699614,
+    "ast_hash": "6369b39464eaa25ff5fb83ff20910281",
+    "semantic_hash": ""
+  },
+  "scripts/package_si_odyssey.py": {
+    "mtime": 1793755221.4554155,
+    "seen": 1794280529.2699614,
+    "ast_hash": "d08301fb3541a938580eed767224a214",
+    "semantic_hash": ""
+  },
+  "scripts/process_steel_article.py": {
+    "mtime": 1794280012.3751762,
+    "seen": 1794280529.2699614,
+    "ast_hash": "a1e413ce7d475ce9b73e58b66fdff249",
+    "semantic_hash": ""
+  },
+  "scripts/update_travel_state.py": {
+    "mtime": 1793755193.720391,
+    "seen": 1794280529.2709599,
+    "ast_hash": "11232d930a11a163258e58d46aa51018",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc601\uc0c1\uc2a4\ud29c\ub514\uc624/kyanos_shorts_engine.py": {
+    "mtime": 1793604646.7500424,
+    "seen": 1794280529.2709599,
+    "ast_hash": "b28e2ee0909045271df1c07b3c91fd6c",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/01_\uad6d\uc81c\uc9c8\uc11c\uc720\uc9c0_\ubcf4\uc548\uc0ac\ub839\ubd80/KSEF_SECURITY_AUDIT_REPORT.json": {
+    "mtime": 1793919836.4107094,
+    "seen": 1794280529.2709599,
+    "ast_hash": "3428c28c3f462daa960d856d7838150c",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/01_\uad6d\uc81c\uc9c8\uc11c\uc720\uc9c0_\ubcf4\uc548\uc0ac\ub839\ubd80/ksef_active_defense_sentinel.py": {
+    "mtime": 1793612131.9273615,
+    "seen": 1794280529.2709599,
+    "ast_hash": "0956f2783e2b7e0411cd851b207da1c7",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/01_\uad6d\uc81c\uc9c8\uc11c\uc720\uc9c0_\ubcf4\uc548\uc0ac\ub839\ubd80/ksef_unified_cyber_engine.py": {
+    "mtime": 1794024958.149,
+    "seen": 1794280529.2709599,
+    "ast_hash": "4dc6b73414e7ed9e4aba6b616cd4207c",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/01_\uad6d\uc81c\uc9c8\uc11c\uc720\uc9c0_\ubcf4\uc548\uc0ac\ub839\ubd80/ksef_unified_engine_status.json": {
+    "mtime": 1794024961.5273654,
+    "seen": 1794280529.2709599,
+    "ast_hash": "9fa573aed90b02eac09ff50f399d3711",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/02_\uacbd\uc81c\ubd80/ksef_treasury_shield.js": {
+    "mtime": 1793611788.6131692,
+    "seen": 1794280529.2709599,
+    "ast_hash": "18d2e89b99623129cfe37f859af78862",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/01_\ud30c\uc774\ud2bc\uc758_\ubb38\ud559\uc0b0\ucc45/\uc0bc\uad6d\uc9c0_\uc9c0\ud61c\uc0c9\uc778\ubcf4/build_index.py": {
+    "mtime": 1792301131.8704975,
+    "seen": 1794280529.2724779,
+    "ast_hash": "b07dd808251d8299b19e71b13d324aad",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/01_\ud30c\uc774\ud2bc\uc758_\ubb38\ud559\uc0b0\ucc45/\uc0bc\uad6d\uc9c0_\uc9c0\ud61c\uc0c9\uc778\ubcf4/build_index_v2.py": {
+    "mtime": 1792572938.431811,
+    "seen": 1794280529.2724779,
+    "ast_hash": "59cf748a85632771ece85366dc578fbe",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/01_\ud30c\uc774\ud2bc\uc758_\ubb38\ud559\uc0b0\ucc45/\uc0bc\uad6d\uc9c0_\uc9c0\ud61c\uc0c9\uc778\ubcf4/samgukji_raw_data.json": {
+    "mtime": 1792572931.675156,
+    "seen": 1794280529.2724779,
+    "ast_hash": "082b20dabf9725073a27c7f496407716",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/01_\ud30c\uc774\ud2bc\uc758_\ubb38\ud559\uc0b0\ucc45/\uc0bc\uad6d\uc9c0_\uc9c0\ud61c\uc0c9\uc778\ubcf4/update_vault.py": {
+    "mtime": 1792550773.793597,
+    "seen": 1794280529.2724779,
+    "ast_hash": "c25e14d020395e9c7718dc8265206ad2",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/auto_daily_travel_runner.py": {
+    "mtime": 1794306030.5651731,
+    "seen": 1794354576.0256832,
+    "ast_hash": "2a1b502490e1bd4bf7614f7289596faf",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/\uad6d\ub9bd\uc74c\uc545\ucc3d\uc791\uc6d0_\uc74c\uc545\uad00/AI_\uc74c\uc545\uc0dd\uc131\uae30/kyanos_producer_studio.py": {
+    "mtime": 1793606016.7522607,
+    "seen": 1794280529.2724779,
+    "ast_hash": "c88344d75c40adf9387587f73b05b768",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/\uad6d\ub9bd\uc74c\uc545\ucc3d\uc791\uc6d0_\uc74c\uc545\uad00/kyanos_tracks_catalog.json": {
+    "mtime": 1793605969.6221676,
+    "seen": 1794280529.2724779,
+    "ast_hash": "0b76f4d75d1c903cbb85a99709f9d2ba",
+    "semantic_hash": ""
+  },
+  "ant_briefing_room/archive/briefing_20261108.md": {
+    "mtime": 1794117609.0164735,
+    "seen": 1794280529.2734756,
+    "ast_hash": "66df9347e2824a59e9969acf58dd74a1",
+    "semantic_hash": ""
+  },
+  "ant_briefing_room/archive/briefing_20261109.md": {
+    "mtime": 1794220482.5677693,
+    "seen": 1794280529.2734756,
+    "ast_hash": "cba6a2d9dc086cefe2f5aaa598c7fd52",
+    "semantic_hash": ""
+  },
+  "ant_briefing_room/archive/briefing_20261110.md": {
+    "mtime": 1794290409.170163,
+    "seen": 1794354576.0276983,
+    "ast_hash": "28fbc484195839fd3039d66623f04069",
+    "semantic_hash": ""
+  },
+  "antnews_auto/output/antnews_20261102.html": {
+    "mtime": 1793568852.9790285,
+    "seen": 1794280529.274482,
+    "ast_hash": "c7cda5f765cff4f2fa0580bb024221c4",
+    "semantic_hash": ""
+  },
+  "antnews_auto/output/antnews_20261103.html": {
+    "mtime": 1793658121.2759607,
+    "seen": 1794280529.274482,
+    "ast_hash": "a8adb7ab19cdba1819f740b4d59cf5b4",
+    "semantic_hash": ""
+  },
+  "antnews_auto/output/antnews_20261104.html": {
+    "mtime": 1793749166.830966,
+    "seen": 1794280529.274482,
+    "ast_hash": "1051e205b8872871fc26002f6ec53a58",
+    "semantic_hash": ""
+  },
+  "antnews_auto/output/antnews_20261105.html": {
+    "mtime": 1793837316.5089207,
+    "seen": 1794280529.274482,
+    "ast_hash": "d2f85f30395441e0fa01dbd89e4d7d8a",
+    "semantic_hash": ""
+  },
+  "antnews_auto/output/antnews_20261106.html": {
+    "mtime": 1793919152.2732453,
+    "seen": 1794280529.274482,
+    "ast_hash": "759ec562a5e9a4f6f99358301c7ae665",
+    "semantic_hash": ""
+  },
+  "antnews_auto/output/antnews_20261107.html": {
+    "mtime": 1794004772.9045594,
+    "seen": 1794280529.274482,
+    "ast_hash": "143d61abc21ca5e8a226b512448c795e",
+    "semantic_hash": ""
+  },
+  "antnews_auto/output/antnews_20261108.html": {
+    "mtime": 1794093329.7315247,
+    "seen": 1794280529.274482,
+    "ast_hash": "08b37f14fc417ab37defb4d6716f8043",
+    "semantic_hash": ""
+  },
+  "antnews_auto/output/antnews_20261109.html": {
+    "mtime": 1794175549.6519332,
+    "seen": 1794280529.274482,
+    "ast_hash": "a4f6a61ad931bfcc7797973e408eab15",
+    "semantic_hash": ""
+  },
+  "antnews_auto/output/antnews_20261110.html": {
+    "mtime": 1794262749.40836,
+    "seen": 1794280529.274482,
+    "ast_hash": "ef154370c8ecf827c9f85bb4edd4d40d",
+    "semantic_hash": ""
+  },
+  "games/aegis_protocol.html": {
+    "mtime": 1794032680.767452,
+    "seen": 1794280529.2774756,
+    "ast_hash": "685d61dec795c18d65e358b3c5b19e32",
+    "semantic_hash": ""
+  },
+  "kyanos_national_power_hub.html": {
+    "mtime": 1793887625.7280846,
+    "seen": 1794280529.2784836,
+    "ast_hash": "de3024ee0dfd1a11b98bd212ba640d60",
+    "semantic_hash": ""
+  },
+  "life_kyanos.html": {
+    "mtime": 1794057286.510868,
+    "seen": 1794280529.2784836,
+    "ast_hash": "957ad18012c7df0ae73f54e6f6ad5eba",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc601\uc0c1\uc2a4\ud29c\ub514\uc624/02_\uc20f\ud3fc_\uc1fc\uce20_\uc790\ub8cc/04_3D_\uc544\ub098\ubaa8\ud53d_\ucd08\uc785\uccb4_\uc20f\ud3fc_\uae30\ud68d\uc548.txt": {
+    "mtime": 1793603204.4834,
+    "seen": 1794280529.280486,
+    "ast_hash": "024d7d152310f78e8facf3387db8bdcb",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc601\uc0c1\uc2a4\ud29c\ub514\uc624/02_\uc20f\ud3fc_\uc1fc\uce20_\uc790\ub8cc/05_3D_\uc544\ub098\ubaa8\ud53d_\ud504\ub86c\ud504\ud2b8_\uac00\uc774\ub4dc.txt": {
+    "mtime": 1793603209.9278316,
+    "seen": 1794280529.280486,
+    "ast_hash": "64f320cb5197fdf1dbc51e4666b15b48",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/00_\ud0a4\uc544\ub178\uc2a4_\uad6d\uac00\ucd5c\uace0\ud5cc\uc815\uc6d0/01_\uad6d\uac00\uc6d0\uc218\uc2e4_\ubc0f_\uad6d\uac00\uae30\ub85d\uc6d0/kyanos_slogans_and_branding.txt": {
+    "mtime": 1788301684.157626,
+    "seen": 1794280529.280486,
+    "ast_hash": "62bddf4511747a8cf97ed3052d40c4f0",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/00_\ud0a4\uc544\ub178\uc2a4_\uad6d\uac00\ucd5c\uace0\ud5cc\uc815\uc6d0/01_\uad6d\uac00\uc6d0\uc218\uc2e4_\ubc0f_\uad6d\uac00\uae30\ub85d\uc6d0/\uad6d\uc815\uc815\ucc45_\uad6d\ucc45\uc0ac\uc5c5_\uc2dc\ud589\uc548\uac74/\ud0a4\uc544\ub178\uc2a4_\uacbd\ud5d8\uae30\ubc18_AI\uc5d0\uc774\uc804\ud2b8\uad6c\ucd95_\ubc0f_\ub3c4\uba54\uc778\uc9c0\uc2dd_\uc790\uc0b0\ud654_\uad6d\uc815\uc9c0\uce68.md": {
+    "mtime": 1794130842.785249,
+    "seen": 1794280529.280486,
+    "ast_hash": "bc6d5ad51dd6b3571a280ee7401927ed",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/00_\ud0a4\uc544\ub178\uc2a4_\uad6d\uac00\ucd5c\uace0\ud5cc\uc815\uc6d0/01_\uad6d\uac00\uc6d0\uc218\uc2e4_\ubc0f_\uad6d\uac00\uae30\ub85d\uc6d0/\uad6d\uc815\uc815\ucc45_\uad6d\ucc45\uc0ac\uc5c5_\uc2dc\ud589\uc548\uac74/\ud0a4\uc544\ub178\uc2a4_\uad6d\ub825\uac15\ud654_\uad6d\ucc45_\uae30\uc220_\uc5f0\uad6c_\uc0ac\uc5c5_\ud1b5\ud569\uc9d1\uc801_\ucd1d\uad04\uc9c0\uce68.md": {
+    "mtime": 1793887588.5933888,
+    "seen": 1794280529.280486,
+    "ast_hash": "a4503ffc4421ee927973f357faf10d28",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/00_\ud0a4\uc544\ub178\uc2a4_\uad6d\uac00\ucd5c\uace0\ud5cc\uc815\uc6d0/01_\uad6d\uac00\uc6d0\uc218\uc2e4_\ubc0f_\uad6d\uac00\uae30\ub85d\uc6d0/\uad6d\uc815\uc815\ucc45_\uad6d\ucc45\uc0ac\uc5c5_\uc2dc\ud589\uc548\uac74/\ud0a4\uc544\ub178\uc2a4_\uad6d\ucc45\uc0ac\uc5c5_\uae30\uc220\uc2e4\ud589_RND\uc9c0\uce68_\uad6c\uae00\uc2a4\ud29c\ub514\uc624\ubd84\uc11d.md": {
+    "mtime": 1793887285.0447545,
+    "seen": 1794280529.280486,
+    "ast_hash": "82841806fe6e2e9856d9c3211f10605b",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/00_\ud0a4\uc544\ub178\uc2a4_\uad6d\uac00\ucd5c\uace0\ud5cc\uc815\uc6d0/01_\uad6d\uac00\uc6d0\uc218\uc2e4_\ubc0f_\uad6d\uac00\uae30\ub85d\uc6d0/\uad6d\uc815\uc815\ucc45_\uad6d\ucc45\uc0ac\uc5c5_\uc2dc\ud589\uc548\uac74/\ud0a4\uc544\ub178\uc2a4_\ubbf8\ub798\uc804\ub7b5_7\ub300\uad6d\ucc45\uc0ac\uc5c5_\uc2dc\ud589\uc548\uac74_\uad00\ub9ac\ub300\uc7a5.md": {
+    "mtime": 1793886728.5514839,
+    "seen": 1794280529.280486,
+    "ast_hash": "12a75b6d78693890a5095d378f072cf5",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/00_\ud0a4\uc544\ub178\uc2a4_\uad6d\uac00\ucd5c\uace0\ud5cc\uc815\uc6d0/01_\uad6d\uac00\uc6d0\uc218\uc2e4_\ubc0f_\uad6d\uac00\uae30\ub85d\uc6d0/\uad6d\uc815\uc815\ucc45_\uad6d\ucc45\uc0ac\uc5c5_\uc2dc\ud589\uc548\uac74/\ud0a4\uc544\ub178\uc2a4_\ud50c\ub7ab\ud3fc\uac1c\ud601_\ubc0f_\uc6b4\uc601\uad00\ub85c_\uc820\uc2a4\ud30c\ud06c\ubd84\uc11d_\uc5f0\uad6c\uc9c0\uce68.md": {
+    "mtime": 1793887921.0925992,
+    "seen": 1794280529.280486,
+    "ast_hash": "9e19bd737967625473fe8a59e1cc832c",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/00_\ud0a4\uc544\ub178\uc2a4_\uad6d\uac00\ucd5c\uace0\ud5cc\uc815\uc6d0/01_\uad6d\uac00\uc6d0\uc218\uc2e4_\ubc0f_\uad6d\uac00\uae30\ub85d\uc6d0/\ud0a4\uc544\ub178\uc2a4_SI_\ucc45\uc784\ubd84\ub2f4\uc81c_\ubc0f_\ubaa8\ub378\ucd5c\uc801\ud654_\uc6b4\uc6a9\ub839.md": {
+    "mtime": 1793601949.0889626,
+    "seen": 1794280529.280486,
+    "ast_hash": "264b5519a9e7246a6ab38ffaf748389a",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/00_\ud0a4\uc544\ub178\uc2a4_\uad6d\uac00\ucd5c\uace0\ud5cc\uc815\uc6d0/01_\uad6d\uac00\uc6d0\uc218\uc2e4_\ubc0f_\uad6d\uac00\uae30\ub85d\uc6d0/\ud0a4\uc544\ub178\uc2a4_\uad6d\uac00\ubbf8\ub798\uc804\ub7b5_7\ub300\ud504\ub85c\uc81d\ud2b8_\ubc0f_\uc0dd\uc874\ub85c\ub4dc\ub9f5_\uc9c0\uce68\uc11c.md": {
+    "mtime": 1793886139.9688263,
+    "seen": 1794280529.280486,
+    "ast_hash": "8d3b592d636ba25108e142288d7fd86d",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/00_\ud0a4\uc544\ub178\uc2a4_\uad6d\uac00\ucd5c\uace0\ud5cc\uc815\uc6d0/01_\uad6d\uac00\uc6d0\uc218\uc2e4_\ubc0f_\uad6d\uac00\uae30\ub85d\uc6d0/\ud30c\uc774\ud2bc\ub839_\uc81c3\ud638_\uad6d\uac00\ud654\uc774\ud2b8\ud587_\uc548\ubcf4\uc6d0_\uc124\ub9bd_\ubc0f_\uc591\uc131\uccb4\uacc4_\ud6c8\ub839.md": {
+    "mtime": 1793799802.3528326,
+    "seen": 1794280529.280486,
+    "ast_hash": "3bfa9262545d0d238273260cdbe91c0c",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/01_\uad6d\uc81c\uc9c8\uc11c\uc720\uc9c0_\ubcf4\uc548\uc0ac\ub839\ubd80/K-SEF_\ub300\ubd81\uc0ac\uc774\ubc84\uc804_\ud2b9\ubcc4\uacbd\ubcf4_DEFCON1.md": {
+    "mtime": 1793611821.4660058,
+    "seen": 1794280529.280486,
+    "ast_hash": "2a2412f8ecc8bcc4f2b6723275bf4b2e",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/01_\uad6d\uc81c\uc9c8\uc11c\uc720\uc9c0_\ubcf4\uc548\uc0ac\ub839\ubd80/\ud0a4\uc544\ub178\uc2a4_\uad6d\uac00\ubc29\uc704_\uae30\ubcf8\uaddc\uc815_\uc81c1\uc870_\uc801\ub300\uad6d_\uaddc\uc815.md": {
+    "mtime": 1793612112.7205384,
+    "seen": 1794280529.280486,
+    "ast_hash": "d9b2e108c642331a1a5247a3bf4b176a",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/03_\uacfc\ud559_SI\ubd80/OPENCLAW_VAULTAIRE_\uc2ec\uce35\ubd84\uc11d_\ubc0f_\uc2dc\uc2a4\ud15c\uc801\uc6a9_\ubcf4\uace0\uc11c.md": {
+    "mtime": 1793676839.5140164,
+    "seen": 1794280529.280486,
+    "ast_hash": "d0ceb1ce488138e1e87a88310222e1fd",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/03_\uacfc\ud559_SI\ubd80/SI_\ubd80\ucc98\ubcc4_\uc9c1\ubb34\uae30\uc220\uc11c_\ud45c\uc900\uc548.md": {
+    "mtime": 1793676847.8863578,
+    "seen": 1794280529.280486,
+    "ast_hash": "c3a0033db15e1860680648f93b1bf788",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/01_\ud30c\uc774\ud2bc\uc758_\ubb38\ud559\uc0b0\ucc45/\uc0bc\uad6d\uc9c0_\uc9c0\ud61c\uc0c9\uc778\ubcf4/\uc0bc\uad6d\uc9c0_\uc9c0\ud61c\uc778\uc6a9\uc2e4.html": {
+    "mtime": 1792572942.7350564,
+    "seen": 1794280529.280486,
+    "ast_hash": "22e8e150ed001fc641285775514ff768",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/\uc5ec\ud589 \ub370\uc774\ud130/2019-01-13_Travel_Gangwon_Hwacheon_Sancheoneo_Ice_Festival.html": {
+    "mtime": 1791794100.7769318,
+    "seen": 1794280529.280486,
+    "ast_hash": "81a2f1d7b2203fe038d4085059546395",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/\uc5ec\ud589 \ub370\uc774\ud130/2026-10-14_Travel_Chungbuk_Goesan_Mungwang_Ginkgo_Reservoir.html": {
+    "mtime": 1791943809.9729793,
+    "seen": 1794280529.280486,
+    "ast_hash": "8c8edb4eda54f052ba6d53f24dd1a3f2",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/\uc5ec\ud589 \ub370\uc774\ud130/2026-10-15_Travel_Chungbuk_Goesan_Sanmaki_Yetgil.html": {
+    "mtime": 1792040622.6855986,
+    "seen": 1794280529.280486,
+    "ast_hash": "450f2ae6f4cdf2565b15b9776afd9252",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/\uc5ec\ud589 \ub370\uc774\ud130/2026-10-16_Travel_Gyeonggi_Hwaseong_Gungpyeonghang_Port.html": {
+    "mtime": 1792113722.7850316,
+    "seen": 1794280529.280486,
+    "ast_hash": "b8c38fef180775a7c07645e8e5b3cf66",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/\uc5ec\ud589 \ub370\uc774\ud130/2026-10-17_Travel_Chungnam_Nonsan_8_Wonders_Tapjeongho_Gwanchoksa.html": {
+    "mtime": 1792205572.3122966,
+    "seen": 1794280529.280486,
+    "ast_hash": "9bccc21660cee5bea6dfd0aeeb95142d",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/\uc5ec\ud589 \ub370\uc774\ud130/2026-10-18_Travel_Gangwon_Yeongwol_Cheongnyeongpo_King_Danjong.html": {
+    "mtime": 1792287306.4191985,
+    "seen": 1794280529.280486,
+    "ast_hash": "fb9e0c7e45a84710098425f8fbf1c460",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/\uc5ec\ud589 \ub370\uc774\ud130/2026-10-18_Travel_Gyeonggi_Namyangju_Dasan_Jeong_Yak_yong_Yeoyudang.html": {
+    "mtime": 1792206203.520643,
+    "seen": 1794280529.280486,
+    "ast_hash": "ca5ae3f551a78e6f6e08328d602cd499",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/\uc5ec\ud589 \ub370\uc774\ud130/2026-10-20_Travel_Incheon_Ganghwa_Nammunangil_Sochang_Alley.html": {
+    "mtime": 1792464538.5895693,
+    "seen": 1794280529.280486,
+    "ast_hash": "ea3b59f795009058c3f70d27d21e2891",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/\uc5ec\ud589 \ub370\uc774\ud130/2026-10-21_Travel_Gyeonggi_Gimpo_Daemyung_Port_Seafood_Market.html": {
+    "mtime": 1792551143.234659,
+    "seen": 1794280529.280486,
+    "ast_hash": "ca880fef8a157460f4268e091757755d",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/\uc5ec\ud589 \ub370\uc774\ud130/2026-10-23_Travel_Gyeonggi_Paju_Munsan_Free_Market_DMZ_Peace_Tour.html": {
+    "mtime": 1792726793.3816378,
+    "seen": 1794280529.280486,
+    "ast_hash": "09a7b821c68e96d715a3b915e739d87f",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/\uc5ec\ud589 \ub370\uc774\ud130/2026-10-24_Travel_Gangwon_Sokcho_Oeongchi_Badahyangiro_Coastal_Trail.html": {
+    "mtime": 1792827832.9844122,
+    "seen": 1794280529.280486,
+    "ast_hash": "6469691cf21f3159e6820d733e41c9e7",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/\uc5ec\ud589 \ub370\uc774\ud130/2026-10-26_Travel_Jeonbuk_Buan_Byeonsanbando_Chaeseokgang_Naesosa.html": {
+    "mtime": 1792987333.270447,
+    "seen": 1794280529.280486,
+    "ast_hash": "e4f0fd46e4a5731de1d83154c7443de9",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/\uc5ec\ud589 \ub370\uc774\ud130/2026-10-28_Travel_Gyeonggi_Pocheon_Sanjeongho_Lake_Myeongseongsan.html": {
+    "mtime": 1793194421.15615,
+    "seen": 1794280529.280486,
+    "ast_hash": "d32589f0e01210921a4ea3a1f9965a58",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/\uc5ec\ud589 \ub370\uc774\ud130/2026-10-29_Travel_Chungnam_Seocheon_Maryangri_Camellia_Forest_Dongbaekjeong.html": {
+    "mtime": 1793248901.3466554,
+    "seen": 1794280529.280486,
+    "ast_hash": "04ebbfea256afe6f0218430085dd09dc",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/\uc5ec\ud589 \ub370\uc774\ud130/2026-10-30_Travel_Gangwon_Gangneung_Jeongdong_Simgok_Badabuchaegil.html": {
+    "mtime": 1793330377.891795,
+    "seen": 1794280529.280486,
+    "ast_hash": "a1f475f29c9d444e2195ef43e91f44d9",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/\uc5ec\ud589 \ub370\uc774\ud130/2026-11-01_Travel_Chungnam_Seocheon_National_Institute_of_Ecology_Ecorium.html": {
+    "mtime": 1793513731.4755614,
+    "seen": 1794280529.280486,
+    "ast_hash": "1e5d7e3a076e09f0d0ebb2db9393244b",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/\uc5ec\ud589 \ub370\uc774\ud130/2026-11-02_Travel_Gyeonggi_Gapyeong_Garden_of_Morning_Calm_Autumn_Symphony.html": {
+    "mtime": 1793602715.5100155,
+    "seen": 1794280529.280486,
+    "ast_hash": "1b1686225eb56e76f4f0609df3fe8163",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/\uc5ec\ud589 \ub370\uc774\ud130/2026-11-03_Travel_Gangwon_Chuncheon_Obongsan_Cheongpyeongsa_Temple.html": {
+    "mtime": 1793658580.846231,
+    "seen": 1794280529.280486,
+    "ast_hash": "6e0ed879f3aa083d5d45808960c65daa",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/\uc5ec\ud589 \ub370\uc774\ud130/2026-11-04_Travel_Gangwon_Yangyang_Seoraksan_Osaek_Jujeongol_Valley.html": {
+    "mtime": 1793755115.185848,
+    "seen": 1794280529.280486,
+    "ast_hash": "43a3bd3fa05992309ca61420fefb353d",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/\uc5ec\ud589 \ub370\uc774\ud130/2026-11-06_Travel_Chungnam_Seocheon_Maryangpo_Sunrise_Sunset_Port.html": {
+    "mtime": 1793920421.5457458,
+    "seen": 1794280529.280486,
+    "ast_hash": "33de472b64d1764356172ddae937da0a",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/\uc5ec\ud589 \ub370\uc774\ud130/2026-11-09_Travel_Gangwon_Pyeongchang_Balwangsan_Woljeongsa_Alpine.html": {
+    "mtime": 1794196265.25598,
+    "seen": 1794280529.280486,
+    "ast_hash": "d65298690ef626a92d89d78793561abc",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/\uc5ec\ud589 \ub370\uc774\ud130/antkoreatrip_\uc2dc\ubc94\uc6d0\uace0_1\ud638_\uc120\uc720\ub3c4\uacf5\uc6d0.html": {
+    "mtime": 1791521550.8826566,
+    "seen": 1794280529.280486,
+    "ast_hash": "76c19ce8fc5a9189de74be5f32b03e26",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/\uad6d\ub9bd\uc74c\uc545\ucc3d\uc791\uc6d0_\uc74c\uc545\uad00/kyanos_artistkit_web.html": {
+    "mtime": 1793605995.8055751,
+    "seen": 1794280529.2819989,
+    "ast_hash": "31e184fb2a1f08904abb4dd27526d2d6",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/\uad6d\ub9bd\uc74c\uc545\ucc3d\uc791\uc6d0_\uc74c\uc545\uad00/\ud0a4\uc544\ub178\uc2a4_\uacf5\uc2dd_SI_\ud504\ub85c\ub4c0\uc11c_\uc6b4\uc6a9\uaddc\uc815_\ubc0f_\uc74c\uc6d0IP\uae30\ud68d.md": {
+    "mtime": 1793658131.086231,
+    "seen": 1794280529.2819989,
+    "ast_hash": "25c1cdc2884d5ed890c3d9d6f775fd6c",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/\uad6d\ub9bd\uc778\ub958\ubb38\uba85\uc0ac\uc5f0\uad6c\uc6d0/00_\uc885\ud569\ube44\uad50\uc5f0\uad6c_\ubb38\uba85\uc0ac_\ud2b9\uc9d1/\ud55c\ube44\uc790\uc640_\uc2a4\ud0d5\ub2ec_\uad8c\ub825\uc758_\ud574\ubd80_\uc778\uac04\uc758_\uc704\uc120_\uadf8\ub9ac\uace0_\ub355\uce58\ubb38\uba85\uc758_\uae38.md": {
+    "mtime": 1793761233.076019,
+    "seen": 1794280529.2819989,
+    "ast_hash": "764cf3f3d56f055fb8e3ca169690ed28",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/\uad6d\ub9bd\uc778\ub958\ubb38\uba85\uc0ac\uc5f0\uad6c\uc6d0/01_\ub3d9\uc591\ucca0\ud559_\ubc95\uac00_\ud55c\ube44\uc790/2026-11-04_\ucca0\ud559_\uc778\ubb38\uace0\uc804_\ud55c\ube44\uc790_\ubc95\uc220\uc138_\uc81c\uc655\ud559\uacfc_\ub0c9\ud639\ud55c_\ud604\uc2e4\uc8fc\uc758_\uc778\uac04\ubcf8\uc131\uc758_\ud574\ubd80.md": {
+    "mtime": 1793761186.4540484,
+    "seen": 1794280529.2819989,
+    "ast_hash": "f8ac92c6cf72f4596cc721982a935775",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/\uad6d\ub9bd\uc778\ub958\ubb38\uba85\uc0ac\uc5f0\uad6c\uc6d0/02_\uc11c\uc591\ubb38\ud559_\uc0ac\uc2e4\uc8fc\uc758_\uc2a4\ud0d5\ub2ec_\uc801\uacfc\ud751/2026-11-04_\ubb38\ud559_\uc138\uacc4\uace0\uc804_\uc2a4\ud0d5\ub2ec_\uc801\uacfc\ud751_\uc57c\ub9dd\uacfc\uc704\uc120\uc758\uc5f0\ub300\uae30_\uc958\ub9ac\uc575\uc18c\ub810\uc758\ube44\uadf9\uacfc\uc601\ud63c\uc758\uc790\uc720.md": {
+    "mtime": 1793761215.1297956,
+    "seen": 1794280529.2819989,
+    "ast_hash": "ac6f981e597d32d8d3eee64e7b86c1ce",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/\uad6d\ub9bd\uc778\ub958\ubb38\uba85\uc0ac\uc5f0\uad6c\uc6d0/03_\ub3d9\uc591\ubcd1\ubc95_\uc804\ub7b5\ub860_\uc190\uc790\ubcd1\ubc95/2026-11-04_\ub3d9\uc591\ubcd1\ubc95_\uc804\ub7b5\ub860_\uc190\uc790\ubcd1\ubc95_13\ud3b8_\uc804\ud3b8_\ud574\ubd80\uc640_\uc0b6\uc758_\uc9c0\ud61c_\uc232.md": {
+    "mtime": 1793761280.863815,
+    "seen": 1794280529.2819989,
+    "ast_hash": "6ebd17ae84270cff2ec7c83873d6b4fb",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/\uad6d\ub9bd\uc778\ub958\ubb38\uba85\uc0ac\uc5f0\uad6c\uc6d0/03_\ub3d9\uc591\ubcd1\ubc95_\uc804\ub7b5\ub860_\uc190\uc790\ubcd1\ubc95/README.md": {
+    "mtime": 1793761340.2315075,
+    "seen": 1794280529.2819989,
+    "ast_hash": "5a6e3ae5e05064848204d4d518139591",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/\uad6d\ub9bd\uc778\ub958\ubb38\uba85\uc0ac\uc5f0\uad6c\uc6d0/\ucca0\ud559_\uc778\ubb38\uc11c\uace0/\uc608\ub8e8\uc0b4\ub818\uc758 \ucd1b\ubd88\uacfc \uc624\ub450\ub9c9\uc758 \ube75 \ud55c \uc870\uac01.md": {
+    "mtime": 1793761236.6174588,
+    "seen": 1794280529.2819989,
+    "ast_hash": "b613910aabd4a5632ca9b1a52d26054a",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/\ubb38\ud559_\uc5d0\uc138\uc774/\uc608\ub8e8\uc0b4\ub818\uc758 \ucd1b\ubd88\uacfc \uc624\ub450\ub9c9\uc758 \ube75 \ud55c \uc870\uac01.md": {
+    "mtime": 1793761236.6164618,
+    "seen": 1794280529.2819989,
+    "ast_hash": "b613910aabd4a5632ca9b1a52d26054a",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/\ubb38\ud654\ubd80_\ubb38\ud559_\uc5d0\uc138\uc774_\uc81c\uc791\uc9c0\uce68\uc11c.md": {
+    "mtime": 1793837318.0544817,
+    "seen": 1794280529.2819989,
+    "ast_hash": "e0b9669a3433e8216be9a1fe63648a5a",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/09_\ubbf8\ub514\uc5b4\ubd80/\uc564\ud2b8\ub274\uc2a4_\uace0\ud6a8\uc728_SEO_\ud2c8\uc0c8\ud0c0\uac9f_\ubc1c\ud589\uc804\ub7b5_\uc9c0\uce68\uc11c.md": {
+    "mtime": 1793930704.3841188,
+    "seen": 1794280529.2830062,
+    "ast_hash": "49d4d5b60c8483900420e6e874ade5c2",
+    "semantic_hash": ""
+  },
+  "assets/icons/icon_blog_control.png": {
+    "mtime": 1794093846.8065357,
+    "seen": 1794280529.2860134,
+    "ast_hash": "95704158650a917b71f6fae5f000d610",
+    "semantic_hash": ""
+  },
+  "assets/icons/icon_briefing_room.png": {
+    "mtime": 1794093846.8281999,
+    "seen": 1794280529.2860134,
+    "ast_hash": "1c98e766a17630350158990c6d08fa37",
+    "semantic_hash": ""
+  },
+  "assets/icons/icon_market_pulse.png": {
+    "mtime": 1794093846.6653724,
+    "seen": 1794280529.2860134,
+    "ast_hash": "bd05a1474725d5cc503b7bf69e76280b",
+    "semantic_hash": ""
+  },
+  "assets/images/si/06_autonomous_foundry_solidstate_battery.jpg": {
+    "mtime": 1793513777.3503666,
+    "seen": 1794280529.2935393,
+    "ast_hash": "5a2882cee0c2ae14dcce244892469335",
+    "semantic_hash": ""
+  },
+  "assets/images/si/07_agentic_swarm_si_governance_engine.jpg": {
+    "mtime": 1793602787.2234979,
+    "seen": 1794280529.2935393,
+    "ast_hash": "c67eabce5c3fdc2f5f70458a8a2dd1fb",
+    "semantic_hash": ""
+  },
+  "assets/images/si/08_physical_si_semiconductor_hegemony_kchips.jpg": {
+    "mtime": 1793755137.1137774,
+    "seen": 1794280529.2935393,
+    "ast_hash": "8aa7f07a563729433f6027722ac6579b",
+    "semantic_hash": ""
+  },
+  "assets/images/si/09_lfp_battery_physical_ai_robotics_alliance.jpg": {
+    "mtime": 1793920445.5471332,
+    "seen": 1794280529.2935393,
+    "ast_hash": "bc8d41e2f52cae0704fff146576a25aa",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/cheongpyeongsa/01_soyangho_ferry.jpg": {
+    "mtime": 1546229016.6895113,
+    "seen": 1794280529.2945378,
+    "ast_hash": "323fa6748ee5c88f560937b8f995e36f",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/cheongpyeongsa/02_cheongpyeongsa_temple.jpg": {
+    "mtime": 1546228812.129832,
+    "seen": 1794280529.2945378,
+    "ast_hash": "5afe8a9ff8dd9e649fab3c4b0f393e09",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/cheongpyeongsa/03_guseong_waterfall.jpg": {
+    "mtime": 1246705055.59375,
+    "seen": 1794280529.2945378,
+    "ast_hash": "9eb5ef1f69473826872ea124efa76b11",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/jujeongol/01_jujeongol_autumn_foliage_valley.jpg": {
+    "mtime": 1541618490.5519006,
+    "seen": 1794280529.298054,
+    "ast_hash": "20aee6d6281e26ec1267440e6f80eb8e",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/jujeongol/02_jujeongol_granite_cliffs_canopy.jpg": {
+    "mtime": 1541618461.8211749,
+    "seen": 1794280529.298054,
+    "ast_hash": "dff41e64b5783e1b92593e783375e34a",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/jujeongol/03_yongso_waterfall_emerald_pool.jpg": {
+    "mtime": 1541618522.3775437,
+    "seen": 1794280529.298054,
+    "ast_hash": "ee627a3b71903d4c4cd665327b241656",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/jujeongol/04_yongso_cascade_cliff_view.jpg": {
+    "mtime": 1541618508.6483696,
+    "seen": 1794280529.298054,
+    "ast_hash": "38fc94b98795ab6d145635fd703b0134",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/jujeongol/05_jujeongol_wooden_deck_trail.jpg": {
+    "mtime": 1541618435.406454,
+    "seen": 1794280529.298054,
+    "ast_hash": "ec6df2d41671d7869a606f4f81be9c33",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/jujeongol/06_jujeongol_stream_reflection.jpg": {
+    "mtime": 1541618419.9231188,
+    "seen": 1794280529.298054,
+    "ast_hash": "95b547a54ac4a34fad82b0137c7291a4",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/jujeongol/07_jujeongol_mountain_path_hiker.jpg": {
+    "mtime": 1541618402.409852,
+    "seen": 1794280529.298054,
+    "ast_hash": "c6578c7869ab2fa54dfd8c483e30c7a5",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/jujeongol/08_jujeongol_autumn_morning_light.jpg": {
+    "mtime": 1540959836.426857,
+    "seen": 1794280529.298054,
+    "ast_hash": "9351732b4d56c62d66084dd85ee81655",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/maryangpo_port/01_maryangpo_golden_sunrise_west_sea.jpg": {
+    "mtime": 1550668711.9542103,
+    "seen": 1794280529.298054,
+    "ast_hash": "88fdeb577892011d6f5415154ae63d84",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/maryangpo_port/02_maryangpo_dawn_lighthouse_boat.jpg": {
+    "mtime": 1550668724.479705,
+    "seen": 1794280529.298054,
+    "ast_hash": "7d2ad3f75b8ed43c1d82107e9061cc25",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/maryangpo_port/03_maryangpo_tidal_flats_biin_bay.jpg": {
+    "mtime": 1550668750.0133793,
+    "seen": 1794280529.298054,
+    "ast_hash": "278add920f60ab0d26b99e135c900459",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/maryangpo_port/04_maryangpo_sunrise_sunset_village_sign.jpg": {
+    "mtime": 1546592849.8832576,
+    "seen": 1794280529.298054,
+    "ast_hash": "5ae9cb2a41b7581d1009f8e32ef0b66a",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/morning_calm/01_morning_calm_panoramic_landscape.jpg": {
+    "mtime": 1229171758.078125,
+    "seen": 1794280529.298054,
+    "ast_hash": "2f146a932bb033cdd5d37d57ae240abf",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/morning_calm/02_seohwayeon_traditional_korean_garden.jpg": {
+    "mtime": 1229170905.296875,
+    "seen": 1794280529.298054,
+    "ast_hash": "83127bd117d3ca0a2b80b2d10f831f17",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/morning_calm/03_millennium_juniper_and_conifers.jpg": {
+    "mtime": 1229173363.640625,
+    "seen": 1794280529.298054,
+    "ast_hash": "1e80385aaa5516cd11df260c94a16bbe",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/morning_calm/04_chrysanthemum_and_autumn_blooms.jpg": {
+    "mtime": 1233754824.03125,
+    "seen": 1794280529.298054,
+    "ast_hash": "a2215b513f0fb4e3571092332efe36c3",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/morning_calm/05_sunken_garden_floral_waves.jpg": {
+    "mtime": 1233754798.765625,
+    "seen": 1794280529.298054,
+    "ast_hash": "686bf43340442ca77644d1ce99bff46e",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/morning_calm/06_moonlight_garden_path.jpg": {
+    "mtime": 1233754793.390625,
+    "seen": 1794280529.298054,
+    "ast_hash": "89df96a550747db229d0daf1ae87ad27",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/morning_calm/07_wildflower_rock_garden.jpg": {
+    "mtime": 1277086854.140625,
+    "seen": 1794280529.298054,
+    "ast_hash": "825aed8f08f59ba24ae53f5cf8c3ce1e",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/morning_calm/08_autumn_foliage_forest_canopy.jpg": {
+    "mtime": 1229347805.1322775,
+    "seen": 1794280529.298054,
+    "ast_hash": "a3fd31c2f46beb3d14df0979b2ce444d",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/pyeongchang/01_balwangsan_mountain_summit_skywalk.jpg": {
+    "mtime": 1566735953.9808395,
+    "seen": 1794280529.3000562,
+    "ast_hash": "189d52b9fca7718f8ba1e1d8c78b575f",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/pyeongchang/02_balwangsan_cable_car_alpine_view.jpg": {
+    "mtime": 1566735626.6884797,
+    "seen": 1794280529.3000562,
+    "ast_hash": "4ab884f3e7041977b172d760040a3a61",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/pyeongchang/03_woljeongsa_temple_fir_forest_trail.jpg": {
+    "mtime": 1566738653.0600147,
+    "seen": 1794280529.3000562,
+    "ast_hash": "880f2d8d3c05471cea01b9105592fc83",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/pyeongchang/04_woljeongsa_main_zen_hall_daeungjeon.jpg": {
+    "mtime": 1566739507.3467662,
+    "seen": 1794280529.3000562,
+    "ast_hash": "67638adf3f82359b0b0ba4c60869162f",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/pyeongchang/05_alpensia_olympic_ski_jumping_stadium.jpg": {
+    "mtime": 1566736809.6233041,
+    "seen": 1794280529.3000562,
+    "ast_hash": "d52f47004f5a601f86bfc5c1abefb8fa",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/seocheon_ecorium/01_ecorium_exterior.jpg": {
+    "mtime": 1586689968.0,
+    "seen": 1794280529.302055,
+    "ast_hash": "325e7daca94e2bee64cd79506eaff156",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/seocheon_ecorium/02_baobab_tree.jpg": {
+    "mtime": 1586690180.0,
+    "seen": 1794280529.302055,
+    "ast_hash": "31a9a0bd38022afd2d8d1e664c11bd8e",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/seocheon_ecorium/03_madagascar_desert.jpg": {
+    "mtime": 1586689828.0,
+    "seen": 1794280529.302055,
+    "ast_hash": "79916d2fbcb4916f09c13b42b28c7d30",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/seocheon_ecorium/04_reed_trail.jpg": {
+    "mtime": 1586690120.0,
+    "seen": 1794280529.302055,
+    "ast_hash": "bd5b103ccbe514ba996dee43c255db43",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/seocheon_ecorium/05_pirarucu_aquarium.jpg": {
+    "mtime": 1586689590.0,
+    "seen": 1794280529.302055,
+    "ast_hash": "c0b69947017809c17caccdea48b2f74f",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/seocheon_ecorium/06_temperate_zone.jpg": {
+    "mtime": 1586689736.0,
+    "seen": 1794280529.302055,
+    "ast_hash": "cbc37403ec470aa8a9c3bfe30062efd6",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/seocheon_ecorium/07_mojave_desert.jpg": {
+    "mtime": 1586690162.0,
+    "seen": 1794280529.302055,
+    "ast_hash": "4b759787d51aa03f341d5daafd917bb5",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/seocheon_ecorium/08_tropical_fish.jpg": {
+    "mtime": 1586689902.0,
+    "seen": 1794280529.302055,
+    "ast_hash": "3426fa66ab639e63bbf1b4695ea329fc",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/00_\ud0a4\uc544\ub178\uc2a4_\ubb38\ud559_\uc778\ubb38_\ucc3d\uc791\uc11c\uace0_\ub300\ud45c.jpg": {
+    "mtime": 1742801184.0909626,
+    "seen": 1794280529.3045688,
+    "ast_hash": "e5c48b2976522a352e36ec15f22c7882",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/01_\uc138\uacc4\ubb38\ud559_\ubd88\uba78\uc758\ubb38\ud559\uc120/00_\uc138\uacc4\ubb38\ud559_\ubd88\uba78\uc758\ubb38\ud559\uc120_\ub300\ud45c.jpg": {
+    "mtime": 1742801184.0909626,
+    "seen": 1794280529.3045688,
+    "ast_hash": "e5c48b2976522a352e36ec15f22c7882",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/01_\uc138\uacc4\ubb38\ud559_\ubd88\uba78\uc758\ubb38\ud559\uc120/01_\ubbf8\uac94_\ub370_\uc138\ub974\ubc18\ud14c\uc2a4_\ub3c8\ud0a4\ud638\ud14c/\ub3c8\ud0a4\ud638\ud14c_\ubd88\uba78\uc758\uad11\uae30.jpg": {
+    "mtime": 1793801325.1755476,
+    "seen": 1794280529.3045688,
+    "ast_hash": "29611ee3523d3de32680716950abbc3f",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/01_\uc138\uacc4\ubb38\ud559_\ubd88\uba78\uc758\ubb38\ud559\uc120/02_\ube45\ud1a0\ub974_\uc704\uace0_\ub808\ubbf8\uc81c\ub77c\ube14/\ube45\ud1a0\ub974\uc704\uace0_\ub808\ubbf8\uc81c\ub77c\ube14_\uc22d\uace0\ud55c\uad6c\uc6d0.jpg": {
+    "mtime": 1793801398.3124485,
+    "seen": 1794280529.3045688,
+    "ast_hash": "4b87b8236a0563bbd370808678bbf932",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/01_\uc138\uacc4\ubb38\ud559_\ubd88\uba78\uc758\ubb38\ud559\uc120/04_\ud384_\ubc85_\ub300\uc9c0/\ud384\ubc85_\ub300\uc9c0_\uc0dd\uba85\ub825\uacfc\ub300\uc9c0.jpg": {
+    "mtime": 1793801450.861733,
+    "seen": 1794280529.3045688,
+    "ast_hash": "fccd896a41520fe43c3376ca2f70ced1",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/01_\uc138\uacc4\ubb38\ud559_\ubd88\uba78\uc758\ubb38\ud559\uc120/05_\ub108\uc0c8\ub2c8\uc5bc_\ud638\uc190_\uc8fc\ud64d\uae00\uc528/\ub108\uc0c8\ub2c8\uc5bc\ud638\uc190_\uc8fc\ud64d\uae00\uc528.jpg": {
+    "mtime": 1735625135.4716482,
+    "seen": 1794280529.3045688,
+    "ast_hash": "043b074a3548d164fbd51c4c82941e6c",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/01_\uc138\uacc4\ubb38\ud559_\ubd88\uba78\uc758\ubb38\ud559\uc120/06_\uc774\ubb38\uc5f4_\ub098\uad00\uc911_\uc0bc\uad6d\uc9c0\uc5f0\uc758/01_\ub3c4\ub355_\uc778\uc7ac\uad00/\uc720\ube44\uc640_\uc778\uc7ac\uad00_\ub3c4\ub355.jpg": {
+    "mtime": 1621955230.6476495,
+    "seen": 1794280529.3045688,
+    "ast_hash": "c343ec406a16d76920e46ed64f6d843e",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/01_\uc138\uacc4\ubb38\ud559_\ubd88\uba78\uc758\ubb38\ud559\uc120/06_\uc774\ubb38\uc5f4_\ub098\uad00\uc911_\uc0bc\uad6d\uc9c0\uc5f0\uc758/02_\ub3c5\uc120_\ubc18\uba74\uad50\uc0ac/\uc870\uc870_\uc591\uc218_\ub3c5\uc120\ubc18\uba74\uad50\uc0ac.jpg": {
+    "mtime": 1671951488.675831,
+    "seen": 1794280529.3045688,
+    "ast_hash": "fa176c1d71866298044181a7e6d8d8b0",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/01_\uc138\uacc4\ubb38\ud559_\ubd88\uba78\uc758\ubb38\ud559\uc120/06_\uc774\ubb38\uc5f4_\ub098\uad00\uc911_\uc0bc\uad6d\uc9c0\uc5f0\uc758/\uc0bc\uad6d\uc9c0\uc5f0\uc758_\ub3c4\ub355\uacfc\ucc98\uc138_\ucd1d\ub78c.jpg": {
+    "mtime": 1621955230.6476495,
+    "seen": 1794280529.3045688,
+    "ast_hash": "c343ec406a16d76920e46ed64f6d843e",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/01_\uc138\uacc4\ubb38\ud559_\ubd88\uba78\uc758\ubb38\ud559\uc120/07_\uae40\ub9cc\uc911_\uad6c\uc6b4\ubabd/\uae40\ub9cc\uc911_\uad6c\uc6b4\ubabd_\uc544\ud649\uad6c\ub984\uc758\uafc8.jpg": {
+    "mtime": 1793801469.5897765,
+    "seen": 1794280529.3045688,
+    "ast_hash": "2794fadbc911b9883d478221663de32e",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/01_\uc138\uacc4\ubb38\ud559_\ubd88\uba78\uc758\ubb38\ud559\uc120/08_\uc70c\ub9ac\uc5c4_\uc170\uc775\uc2a4\ud53c\uc5b4_4\ub300\ube44\uadf9/\uc170\uc775\uc2a4\ud53c\uc5b4_4\ub300\ube44\uadf9_\uc778\uac04\ubcf8\uc131\uacfc\ube44\uadf9.jpg": {
+    "mtime": 1793801491.4760284,
+    "seen": 1794280529.3045688,
+    "ast_hash": "80affbd72a2f94a6b86748eb49f3edc1",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/01_\uc138\uacc4\ubb38\ud559_\ubd88\uba78\uc758\ubb38\ud559\uc120/09_\uc2a4\ud0d5\ub2ec_\uc801\uacfc\ud751/\uc2a4\ud0d5\ub2ec_\uc801\uacfc\ud751_\uc57c\ub9dd\uacfc\uc704\uc120.jpg": {
+    "mtime": 1793801512.9941502,
+    "seen": 1794280529.3045688,
+    "ast_hash": "5f0d4e4a90fd2cc7514b5b71da53c820",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/01_\uc138\uacc4\ubb38\ud559_\ubd88\uba78\uc758\ubb38\ud559\uc120/\ud1a8\uc2a4\ud1a0\uc774/03_\ub808\ud504_\ud1a8\uc2a4\ud1a0\uc774_\uc804\uc7c1\uacfc\ud3c9\ud654/\ud1a8\uc2a4\ud1a0\uc774_\uc804\uc7c1\uacfc\ud3c9\ud654_\uc5ed\uc0ac\uc758\ubb3c\uacb0.jpg": {
+    "mtime": 1793801432.5105102,
+    "seen": 1794280529.3045688,
+    "ast_hash": "c6e63e093412c84399cc9dbdea9b6fab",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/01_\uc138\uacc4\ubb38\ud559_\ubd88\uba78\uc758\ubb38\ud559\uc120/\ud1a8\uc2a4\ud1a0\uc774/\ub450 \ub178\uc778/\ucc38\ub41c \uc131\uc9c0\ub294 \uc778\uac04\uc758 \ub9c8\uc74c\uc18d\uc5d0 \uc788\ub2e4 \u2014 \ud1a8\uc2a4\ud1a0\uc774\uc758 \u3008\ub450 \ub178\uc778\u3009\uc774 \uc804\ud558\ub294 \uc0ac\ub791\uacfc \uc790\ube44\uc758 \uc21c\ub840.jpg": {
+    "mtime": 1793801527.028541,
+    "seen": 1794280529.3045688,
+    "ast_hash": "6d0c613e72eb0f37bb12039c9330b641",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/02_\uc5ed\uc0ac_\uc0ac\uc0c1_\ucca0\ud559\uc11c\uace0/00_\ub3d9\uc11c\uc591_\uc5ed\uc0ac\uc11c_\ucd1d\ub78c/\ub3d9\uc11c\uc591_15\ub300_\uc5ed\uc0ac\uc11c_\ucd1d\ub78c.jpg": {
+    "mtime": 1742801184.0909626,
+    "seen": 1794280529.3045688,
+    "ast_hash": "e5c48b2976522a352e36ec15f22c7882",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/02_\uc5ed\uc0ac_\uc0ac\uc0c1_\ucca0\ud559\uc11c\uace0/00_\uc5ed\uc0ac_\uc0ac\uc0c1_\ucca0\ud559\uc11c\uace0_\ub300\ud45c.jpg": {
+    "mtime": 1742801184.0909626,
+    "seen": 1794280529.3045688,
+    "ast_hash": "e5c48b2976522a352e36ec15f22c7882",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/02_\uc5ed\uc0ac_\uc0ac\uc0c1_\ucca0\ud559\uc11c\uace0/01_\uc11c\uc591_\uc5ed\uc0ac\uc0ac\uc0c1\uad00/00_\uc11c\uc591_\uc5ed\uc0ac\uc0ac\uc0c1\uad00_\ub300\ud45c.jpg": {
+    "mtime": 1742801184.0909626,
+    "seen": 1794280529.3045688,
+    "ast_hash": "e5c48b2976522a352e36ec15f22c7882",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/02_\uc5ed\uc0ac_\uc0ac\uc0c1_\ucca0\ud559\uc11c\uace0/01_\uc11c\uc591_\uc5ed\uc0ac\uc0ac\uc0c1\uad00/01_\ud504\ub9ac\ub4dc\ub9ac\ud788_\ub2c8\uccb4_\ucc28\ub77c\ud22c\uc2a4\ud2b8\ub77c\ub294_\uc774\ub807\uac8c_\ub9d0\ud588\ub2e4/\ub2c8\uccb4_\ucc28\ub77c\ud22c\uc2a4\ud2b8\ub77c_\uc704\ubc84\uba58\uc26c.jpg": {
+    "mtime": 1793801531.4831855,
+    "seen": 1794280529.3045688,
+    "ast_hash": "619accf71f6a801730d0b7f4988b6145",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/02_\uc5ed\uc0ac_\uc0ac\uc0c1_\ucca0\ud559\uc11c\uace0/01_\uc11c\uc591_\uc5ed\uc0ac\uc0ac\uc0c1\uad00/02_\uc18c\ud06c\ub77c\ud14c\uc2a4_\ubcc0\uba85_\ud06c\ub9ac\ud1a4_\ud30c\uc774\ub3c8/\uc18c\ud06c\ub77c\ud14c\uc2a4_\ubcc0\uba85_\ud06c\ub9ac\ud1a4_\ud30c\uc774\ub3c8.jpg": {
+    "mtime": 1609304217.6360126,
+    "seen": 1794280529.3045688,
+    "ast_hash": "2508dd74016ff862d6b37acd216483fd",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/02_\uc5ed\uc0ac_\uc0ac\uc0c1_\ucca0\ud559\uc11c\uace0/01_\uc11c\uc591_\uc5ed\uc0ac\uc0ac\uc0c1\uad00/03_\ud50c\ub77c\ud1a4_\uad6d\uac00/\ud50c\ub77c\ud1a4_\uad6d\uac00.jpg": {
+    "mtime": 1741649846.0,
+    "seen": 1794280529.3045688,
+    "ast_hash": "4783fe1401b6113f0db6e20ece7c877d",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/02_\uc5ed\uc0ac_\uc0ac\uc0c1_\ucca0\ud559\uc11c\uace0/01_\uc11c\uc591_\uc5ed\uc0ac\uc0ac\uc0c1\uad00/04_\uc544\ub9ac\uc2a4\ud1a0\ud154\ub808\uc2a4_\ub2c8\ucf54\ub9c8\ucf54\uc2a4_\uc724\ub9ac\ud559/\uc544\ub9ac\uc2a4\ud1a0\ud154\ub808\uc2a4_\ub2c8\ucf54\ub9c8\ucf54\uc2a4\uc724\ub9ac\ud559_\uc911\uc6a9.jpg": {
+    "mtime": 1793801549.777417,
+    "seen": 1794280529.3045688,
+    "ast_hash": "02fa59b15175c65686678ebca0d80f14",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/02_\uc5ed\uc0ac_\uc0ac\uc0c1_\ucca0\ud559\uc11c\uace0/01_\uc11c\uc591_\uc5ed\uc0ac\uc0ac\uc0c1\uad00/05_\uc7a5_\uc790\ud06c_\ub8e8\uc18c_\uc0ac\ud68c\uacc4\uc57d\ub860_\uc5d0\ubc00_\uace0\ubc31\ub85d/\uc7a5\uc790\ud06c\ub8e8\uc18c_\uace0\ub3c5\uacfc\ud488\uaca9.jpg": {
+    "mtime": 1793801573.0873556,
+    "seen": 1794280529.3045688,
+    "ast_hash": "f153a7cbd631fe0ba2e48728b9e26bcf",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/02_\uc5ed\uc0ac_\uc0ac\uc0c1_\ucca0\ud559\uc11c\uace0/01_\uc11c\uc591_\uc5ed\uc0ac\uc0ac\uc0c1\uad00/\uc2a4\ud53c\ub178\uc790\uc758_\ucca0\ud559\uacfc_\uc131\ucc30/\uc2a4\ud53c\ub178\uc790\uc758_\ucd08\uc0c1\uacfc_\uc0ac\uc720.jpg": {
+    "mtime": 1793801407.6517882,
+    "seen": 1794280529.3045688,
+    "ast_hash": "de6381a88628b65a60e0fd1eeaf20408",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/02_\uc5ed\uc0ac_\uc0ac\uc0c1_\ucca0\ud559\uc11c\uace0/01_\uc11c\uc591_\uc5ed\uc0ac\uc0ac\uc0c1\uad00/\uc2a4\ud53c\ub178\uc790\uc758_\ucca0\ud559\uacfc_\uc131\ucc30/\uc601\uc6d0\uc758 \uc0c1 \uc544\ub798\uc5d0\uc11c \ub9c8\uc8fc\ud55c \uc2e0\uacfc \uc790\uc720.jpg": {
+    "mtime": 1793801435.954288,
+    "seen": 1794280529.3045688,
+    "ast_hash": "838b6e6fd9f665811f7e7a2f5d83bb56",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/02_\uc5ed\uc0ac_\uc0ac\uc0c1_\ucca0\ud559\uc11c\uace0/02_\ub3d9\uc591_\uc5ed\uc0ac\uc0ac\uc0c1\uad00/01_\uacf5\uc790_\ub17c\uc5b4/\uacf5\uc790_\ub17c\uc5b4.jpg": {
+    "mtime": 1635192459.0390513,
+    "seen": 1794280529.3045688,
+    "ast_hash": "0d503bd575396685edbbdac5e88b5d56",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/02_\uc5ed\uc0ac_\uc0ac\uc0c1_\ucca0\ud559\uc11c\uace0/02_\ub3d9\uc591_\uc5ed\uc0ac\uc0ac\uc0c1\uad00/02_\ub9f9\uc790_\ub9f9\uc790/\ub9f9\uc790_\ub9f9\uc790.jpg": {
+    "mtime": 1608556140.0,
+    "seen": 1794280529.3045688,
+    "ast_hash": "f3b3aaa793125310b5d074086c352458",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/02_\uc5ed\uc0ac_\uc0ac\uc0c1_\ucca0\ud559\uc11c\uace0/02_\ub3d9\uc591_\uc5ed\uc0ac\uc0ac\uc0c1\uad00/03_\ub178\uc790_\ub3c4\ub355\uacbd/\ub178\uc790_\ub3c4\ub355\uacbd.jpg": {
+    "mtime": 1739352906.458222,
+    "seen": 1794280529.3045688,
+    "ast_hash": "b0464185dc97cab9e8b6b0bf7c8536d7",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/02_\uc5ed\uc0ac_\uc0ac\uc0c1_\ucca0\ud559\uc11c\uace0/02_\ub3d9\uc591_\uc5ed\uc0ac\uc0ac\uc0c1\uad00/04_\uc7a5\uc790_\uc7a5\uc790/\uc7a5\uc790_\uc7a5\uc790.jpg": {
+    "mtime": 1668150937.4778953,
+    "seen": 1794280529.3045688,
+    "ast_hash": "6c95f6c0be1be87fe693e3f90fa9e545",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/02_\uc5ed\uc0ac_\uc0ac\uc0c1_\ucca0\ud559\uc11c\uace0/02_\ub3d9\uc591_\uc5ed\uc0ac\uc0ac\uc0c1\uad00/05_\ud55c\ube44\uc790_\ud55c\ube44\uc790/\ud55c\ube44\uc790_\ud55c\ube44\uc790.jpg": {
+    "mtime": 1699364882.3595161,
+    "seen": 1794280529.3045688,
+    "ast_hash": "0b20c2d37620d73dd168ce7caf20baf2",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/02_\uc5ed\uc0ac_\uc0ac\uc0c1_\ucca0\ud559\uc11c\uace0/02_\ub3d9\uc591_\uc5ed\uc0ac\uc0ac\uc0c1\uad00/\ub3d9\uc591_4\ub300\uc131\ud604_\ucca0\ud559\uc0ac\uc0c1.jpg": {
+    "mtime": 1736058121.4342563,
+    "seen": 1794280529.3045688,
+    "ast_hash": "ff467b7a3fb7581216d2e3f70d8bfc80",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/images/cheongnyeongpo/01_cheongnyeongpo_scenic_overview.jpg": {
+    "mtime": 1573442556.05389,
+    "seen": 1794280529.3045688,
+    "ast_hash": "63b3e7a21bcdb1d4eb571b7ad9dfdbb5",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/images/cheongnyeongpo/02_cheongnyeongpo_pine_panorama.jpg": {
+    "mtime": 1573447723.4339888,
+    "seen": 1794280529.3045688,
+    "ast_hash": "73285df66d1c547100f7a2913c2514f0",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/images/cheongnyeongpo/03_cheongnyeongpo_ferry_crossing.jpg": {
+    "mtime": 1573442596.7027748,
+    "seen": 1794280529.3045688,
+    "ast_hash": "2cc4dd2e068cdb95576af29a3d0492e2",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/images/cheongnyeongpo/04_cheongnyeongpo_gwaneumsong_pine.jpg": {
+    "mtime": 1573442621.6465328,
+    "seen": 1794280529.3045688,
+    "ast_hash": "24bffd7129df850ae26b191e4fafa457",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/images/cheongnyeongpo/05_gwanpunghon_historic_dongheon.jpg": {
+    "mtime": 1573447241.8959746,
+    "seen": 1794280529.3045688,
+    "ast_hash": "025d40fc98ba5e6b7790b4367d022de8",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/images/cheongnyeongpo/06_jagyuru_pavilion_yeongwol.jpg": {
+    "mtime": 1573445596.2554102,
+    "seen": 1794280529.3045688,
+    "ast_hash": "9151af7da3cb36786c52f2d0e5efc3bc",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/images/cheongnyeongpo/07_cheongnyeongpo_forest_trail.jpg": {
+    "mtime": 1573444996.0324886,
+    "seen": 1794280529.3045688,
+    "ast_hash": "71eacf576433f6983557b7e94251f88a",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/images/cheongnyeongpo/08_cheongnyeongpo_danjeong_residence.jpg": {
+    "mtime": 1573445069.218089,
+    "seen": 1794280529.3045688,
+    "ast_hash": "3a3e5e080cc9f3211f60fcb9abb6f357",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/images/ganghwa/02_ganghwa_retro_cafe_alley.jpg": {
+    "mtime": 1792464498.1597836,
+    "seen": 1794280529.3045688,
+    "ast_hash": "62a8ef83b8bc7ee3f1ce621b4c35bbd1",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/images/morning_calm/01_morning_calm_panoramic_landscape.jpg": {
+    "mtime": 1229171758.078125,
+    "seen": 1794280529.3045688,
+    "ast_hash": "2f146a932bb033cdd5d37d57ae240abf",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/images/morning_calm/02_seohwayeon_traditional_korean_garden.jpg": {
+    "mtime": 1229170905.296875,
+    "seen": 1794280529.3045688,
+    "ast_hash": "83127bd117d3ca0a2b80b2d10f831f17",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/images/morning_calm/03_millennium_juniper_and_conifers.jpg": {
+    "mtime": 1229173363.640625,
+    "seen": 1794280529.3045688,
+    "ast_hash": "1e80385aaa5516cd11df260c94a16bbe",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/images/morning_calm/04_chrysanthemum_and_autumn_blooms.jpg": {
+    "mtime": 1233754824.03125,
+    "seen": 1794280529.3045688,
+    "ast_hash": "a2215b513f0fb4e3571092332efe36c3",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/images/morning_calm/05_sunken_garden_floral_waves.jpg": {
+    "mtime": 1233754798.765625,
+    "seen": 1794280529.3045688,
+    "ast_hash": "686bf43340442ca77644d1ce99bff46e",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/images/morning_calm/06_moonlight_garden_path.jpg": {
+    "mtime": 1233754793.390625,
+    "seen": 1794280529.3045688,
+    "ast_hash": "89df96a550747db229d0daf1ae87ad27",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/images/morning_calm/07_wildflower_rock_garden.jpg": {
+    "mtime": 1277086854.140625,
+    "seen": 1794280529.3045688,
+    "ast_hash": "825aed8f08f59ba24ae53f5cf8c3ce1e",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/images/morning_calm/08_autumn_foliage_forest_canopy.jpg": {
+    "mtime": 1229347805.1322775,
+    "seen": 1794280529.3045688,
+    "ast_hash": "a3fd31c2f46beb3d14df0979b2ce444d",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/\uad6d\ub9bd\uc778\ub958\ubb38\uba85\uc0ac\uc5f0\uad6c\uc6d0/\ucca0\ud559_\uc778\ubb38\uc11c\uace0/\uc608\ub8e8\uc0b4\ub818\uc758 \ucd1b\ubd88\uacfc \uc624\ub450\ub9c9\uc758 \ube75 \ud55c \uc870\uac01.jpg": {
+    "mtime": 1793761272.3918364,
+    "seen": 1794280529.3045688,
+    "ast_hash": "63a815afc3626c6ba44f64d77f36ac35",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/\ubb38\ud559_\uc5d0\uc138\uc774/\uc0b4\uc544\uc624\uba74\uc11c 3\ubc88\uc744 \ud6c4\ud68c\ud558\uace0 \ubbf8\uc548\ud55c \uc77c\uc740 \ubd80\ubaa8\ub2d8\uaed8 \uc544\ub0b4\uc5d0\uac8c \uadf8\ub9ac\uace0 \ub9c8\uc9c0\ub9c9 \uc790\uc2dd\uc5d0\uac8c \uc815\ub9d0 \ubbf8\uc548\ud558\uace0 \uc2f6\ub2e4.jpg": {
+    "mtime": 1793679243.1369627,
+    "seen": 1794280529.3045688,
+    "ast_hash": "261ae23b9914242e84329a82451d4e51",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/\ubb38\ud559_\uc5d0\uc138\uc774/\uc608\ub8e8\uc0b4\ub818\uc758 \ucd1b\ubd88\uacfc \uc624\ub450\ub9c9\uc758 \ube75 \ud55c \uc870\uac01.jpg": {
+    "mtime": 1793761272.3918364,
+    "seen": 1794280529.3045688,
+    "ast_hash": "63a815afc3626c6ba44f64d77f36ac35",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/03_\uacfc\ud559_SI\ubd80/KDots_\uc790\uc728\uc0c1\uc2dc\uc6b4\uc601\uc5d4\uc9c4/kdots_config.json": {
+    "mtime": 1794320026.0760994,
+    "seen": 1794354576.02417,
+    "ast_hash": "34d56c805f78b74c6cfaa057cdda3799",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/03_\uacfc\ud559_SI\ubd80/KDots_\uc790\uc728\uc0c1\uc2dc\uc6b4\uc601\uc5d4\uc9c4/kdots_engine.js": {
+    "mtime": 1794320039.747184,
+    "seen": 1794354576.02417,
+    "ast_hash": "6d99c389ded9e9d9e7ac1f16ea5d7c97",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/09_\ubbf8\ub514\uc5b4\ubd80/\uc720\ud29c\ube0c\ub7a9_MED-YTB-01/\uc5d4\uc9c4_\uc2a4\ud29c\ub514\uc624/kyannos_video_engine.py": {
+    "mtime": 1794318530.2281165,
+    "seen": 1794354576.0276983,
+    "ast_hash": "056d48ed41814c79700e0482de1a6fc5",
+    "semantic_hash": ""
+  },
+  "ant_briefing_room/archive/briefing_20261111.md": {
+    "mtime": 1794347388.991938,
+    "seen": 1794354576.0276983,
+    "ast_hash": "1dd424a49f36c5ba75537bb00e9351eb",
+    "semantic_hash": ""
+  },
+  "antnews_auto/output/antnews_20261111.html": {
+    "mtime": 1794347383.1644201,
+    "seen": 1794354576.031697,
+    "ast_hash": "305c379974fa3204ee731240c7bb7d48",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/00_\ud0a4\uc544\ub178\uc2a4_\uad6d\uac00\ucd5c\uace0\ud5cc\uc815\uc6d0/00_\uad6d\uc655\uc9c1\uc18d_\uc218\uc11d\ube44\uc11c\uc2e4/\ube44\uc11c\uc2e4_\uc9c1\uc81c\ubc0f_\ube44\ube44\uc548_\uc784\uba85\uaddc\uc815.md": {
+    "mtime": 1794320777.0613322,
+    "seen": 1794354576.0382156,
+    "ast_hash": "dfed5541de6b5e81e49dafc237748fce",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/00_\ud0a4\uc544\ub178\uc2a4_\uad6d\uac00\ucd5c\uace0\ud5cc\uc815\uc6d0/00_\uad6d\uc655\uc9c1\uc18d_\uc218\uc11d\ube44\uc11c\uc2e4/\ucd98\ucd94\uae30\ub85d\uc6d0_\uacb8\uc784_\uc9c1\uc81c\ud1b5\ud569\uaddc\uc815.md": {
+    "mtime": 1794320923.133329,
+    "seen": 1794354576.0382156,
+    "ast_hash": "0b5065e78d68e637a3e28e16a805c279",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/00_\ud0a4\uc544\ub178\uc2a4_\uad6d\uac00\ucd5c\uace0\ud5cc\uc815\uc6d0/00_\uad6d\uc655\uc9c1\uc18d_\uc218\uc11d\ube44\uc11c\uc2e4/\ucd98\ucd94\uc6d0_\uad00\ud560\ubc0f_\ube44\ube44\uc548_\uc870\uc728\uaddc\uc815.md": {
+    "mtime": 1794321104.1125119,
+    "seen": 1794354576.0382156,
+    "ast_hash": "e2268fa029cfba10af2da25f0187a990",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/04_\uad50\uc721_\ubb38\ud654\ubd80/3\ub300_\ube14\ub85c\uadf8_\ub124\ud2b8\uc6cc\ud06c/02_Ant_Travel_Korea/2026-11-10_Travel_Gyeonggi_Namyangju_Mount_Ungilsan_Sujongsa_Temple.html": {
+    "mtime": 1794306246.8446846,
+    "seen": 1794354576.0402222,
+    "ast_hash": "f328b681e227acf661d2df0192d21ef8",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/sujongsa/01_sujongsa_mountain_trail.jpg": {
+    "mtime": 1542025452.502197,
+    "seen": 1794354576.0733232,
+    "ast_hash": "54618cc96152934475701a57a52127cc",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/sujongsa/02_samjeongheon_tea_house_view.jpg": {
+    "mtime": 1240810453.9375,
+    "seen": 1794354576.0733232,
+    "ast_hash": "2e21ee0f7444d26fea12a2c080805098",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/sujongsa/03_500_year_ginkgo_tree_king_sejo.jpg": {
+    "mtime": 1240810677.1875,
+    "seen": 1794354576.0733232,
+    "ast_hash": "9671ab879b15eafd2973ca0467bee259",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/sujongsa/04_jeongeui_ongju_stupa_pagoda.jpg": {
+    "mtime": 1240797107.171875,
+    "seen": 1794354576.0733232,
+    "ast_hash": "8e216b041a0b97605486503772ae53ea",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/sujongsa/05_panoramic_dumulmeori_river_confluence.jpg": {
+    "mtime": 1240810874.78125,
+    "seen": 1794354576.0733232,
+    "ast_hash": "99f61660f547910171a6820d4912095a",
+    "semantic_hash": ""
+  },
+  "assets/images/travel/sujongsa/06_ungilsan_station_transit.jpg": {
+    "mtime": 1240796346.609375,
+    "seen": 1794354576.0733232,
+    "ast_hash": "0714136be9133157ba45b24ff4597396",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/09_\ubbf8\ub514\uc5b4\ubd80/\uc720\ud29c\ube0c\ub7a9_MED-YTB-01/\uc5d4\uc9c4_\uc2a4\ud29c\ub514\uc624/\uc0dd\uc131_\uc0b0\ucd9c\ubb3c/\uc0bc\uad6d\uc9c0_\uc20f\ud3fc_01_\ub3c4\uc6d0\uacb0\uc758_card.png": {
+    "mtime": 1794318966.3274813,
+    "seen": 1794354576.0798333,
+    "ast_hash": "540664fc2203129a344112b3d0d3436e",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/09_\ubbf8\ub514\uc5b4\ubd80/\uc720\ud29c\ube0c\ub7a9_MED-YTB-01/\uc5d4\uc9c4_\uc2a4\ud29c\ub514\uc624/\uc0dd\uc131_\uc0b0\ucd9c\ubb3c/\ud14c\uc2a4\ud2b8_\uc1fc\uce20_01_card.png": {
+    "mtime": 1794318631.7513757,
+    "seen": 1794354576.0798333,
+    "ast_hash": "45d6a263a40bdb42404e10684b13e09e",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/09_\ubbf8\ub514\uc5b4\ubd80/\uc720\ud29c\ube0c\ub7a9_MED-YTB-01/\uc5d4\uc9c4_\uc2a4\ud29c\ub514\uc624/\uc0dd\uc131_\uc0b0\ucd9c\ubb3c/\uc0bc\uad6d\uc9c0_\uc20f\ud3fc_01_\ub3c4\uc6d0\uacb0\uc758.mp4": {
+    "mtime": 1794318968.2667348,
+    "seen": 1794354576.0839138,
+    "ast_hash": "5b825caae52cbddd9607ec446eabf7ca",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/09_\ubbf8\ub514\uc5b4\ubd80/\uc720\ud29c\ube0c\ub7a9_MED-YTB-01/\uc5d4\uc9c4_\uc2a4\ud29c\ub514\uc624/\uc0dd\uc131_\uc0b0\ucd9c\ubb3c/\uc0bc\uad6d\uc9c0_\uc20f\ud3fc_01_\ub3c4\uc6d0\uacb0\uc758_audio.mp3": {
+    "mtime": 1794318966.2425008,
+    "seen": 1794354576.0839138,
+    "ast_hash": "57e9b15b66032e7410e0a59ddddfcd55",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/09_\ubbf8\ub514\uc5b4\ubd80/\uc720\ud29c\ube0c\ub7a9_MED-YTB-01/\uc5d4\uc9c4_\uc2a4\ud29c\ub514\uc624/\uc0dd\uc131_\uc0b0\ucd9c\ubb3c/\ud14c\uc2a4\ud2b8_\uc1fc\uce20_01.mp4": {
+    "mtime": 1794318633.4750881,
+    "seen": 1794354576.0839138,
+    "ast_hash": "657461780314b2466d3eea3f42dd6fd6",
+    "semantic_hash": ""
+  },
+  "\ud0a4\uc544\ub178\uc2a4_\uc815\ubd80\ubd80\ucc98/09_\ubbf8\ub514\uc5b4\ubd80/\uc720\ud29c\ube0c\ub7a9_MED-YTB-01/\uc5d4\uc9c4_\uc2a4\ud29c\ub514\uc624/\uc0dd\uc131_\uc0b0\ucd9c\ubb3c/\ud14c\uc2a4\ud2b8_\uc1fc\uce20_01_audio.mp3": {
+    "mtime": 1794318631.011085,
+    "seen": 1794354576.0839138,
+    "ast_hash": "70e15825c5539c2036e73c43f254f1ee",
     "semantic_hash": ""
   }
 }
