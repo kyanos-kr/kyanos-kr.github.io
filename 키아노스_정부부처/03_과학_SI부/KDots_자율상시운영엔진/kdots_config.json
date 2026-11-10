@@ -1,0 +1,25 @@
+{
+  "system": "K-DOTS Autonomous Background Intelligence Engine",
+  "nation": "Kyanos Republic",
+  "version": "1.0.0",
+  "status": "active",
+  "heartbeat_interval_ms": 60000,
+  "monitors": [
+    {
+      "name": "5대_전략산업_인텔리전스",
+      "targets": ["2차전지", "전기자동차", "반도체", "초지능(SI)", "휴머노이드로봇"],
+      "source_dir": "D:\\DATA CENTER\\편집 기사\\오늘편집\\취재원석",
+      "alert_threshold": "HIGH"
+    },
+    {
+      "name": "K-SEF_절대안보_에어갭_감시",
+      "target_protection": ["신한증권", "KB증권", "금융결제망"],
+      "airgap_status": "SECURED_100%"
+    },
+    {
+      "name": "키아노스_글로벌_영토_동기화",
+      "target": "kyanos-kr.github.io",
+      "auto_deploy": true
+    }
+  ]
+}

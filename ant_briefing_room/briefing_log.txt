@@ -752,3 +752,5 @@ error: failed to push some refs to 'https://github.com/kyanos-kr/kyanos-kr.githu
   🗑️ [영구 폐기 완료]: 오늘의_취재원석_브리핑_20261107.md
   🗑️ [영구 폐기 완료]: briefing_20261107.md
   -> 총 2개의 3일 경과 취재원석 파일이 영구 자동 폐기되었습니다.
+  [Git] GitHub Pages 라이브 배포 완료: https://kyanos-kr.github.io/ant_briefing_room/ (2026-11-11 06:49)
+[2026-11-11  6:49:53.02] AntNews Briefing Room Update Completed (Code: 0) 
