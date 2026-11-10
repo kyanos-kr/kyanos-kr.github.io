@@ -9,7 +9,7 @@ import shutil
 
 # 경로 설정
 BASE_DIR = r"d:\안티그래비티파이튼"
-TRAVEL_DIR = os.path.join(BASE_DIR, r"키아노스_정부부처\04_교육_문화부\3대_블로그_네트워크\02_구글_Ant_Travel_Korea")
+TRAVEL_DIR = os.path.dirname(os.path.abspath(__file__))
 TOOLS_DIR = os.path.join(BASE_DIR, r"키아노스_정부부처\04_교육_문화부\3대_블로그_네트워크\tools")
 UPLOAD_SCRIPT = os.path.join(TOOLS_DIR, "blogger_upload.ps1")
 STATE_FILE = os.path.join(TRAVEL_DIR, "travel_upload_state.yaml")
