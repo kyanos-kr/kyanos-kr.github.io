@@ -1,8 +1,8 @@
 ﻿# 🌐 Ant-Travel Korea 일일 1편 자동 업로드 관리 로그 (State Log)
 # 매일 1회만 정확히 실행되며, 하루에 2편 이상 중복 업로드되지 않습니다.
 
-last_uploaded_date: 2026-11-10
-last_uploaded_spot: 2026-11-10_Travel_Gyeonggi_Namyangju_Mount_Ungilsan_Sujongsa_Temple.html
+last_uploaded_date: 2026-11-11
+last_uploaded_spot: 2026-11-11_Travel_Jeonbuk_Gunsan_Gogunsan_Seonyudo_Island.html
 daily_quota: 1
 history:
   - date: 2026-10-20
@@ -62,3 +62,7 @@ history:
   - date: 2026-11-10
     spot: 2026-11-10_Travel_Gyeonggi_Namyangju_Mount_Ungilsan_Sujongsa_Temple.html
     post_id: "4621622207222064"
+  - date: 2026-11-11
+    spot: 2026-11-11_Travel_Jeonbuk_Gunsan_Gogunsan_Seonyudo_Island.html
+    post_id: '6786784398192936306'
+    url: 'https://antkoreatrip.blogspot.com/2026/11/phaeton-k-travel-inbound-guide-seonyudo.html'
