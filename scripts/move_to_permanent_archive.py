@@ -18,14 +18,14 @@ hwpx_file = f"{topic_folder_name}.hwpx"
 jpg_file = f"{topic_folder_name}.jpg"
 
 # Source html
-html_src = r"d:\안티그래비티파이튼\키아노스_정부부처\04_교육_문화부\3대_블로그_네트워크\03_구글_파이튼의_초지능_미래오디세이\2026-11-04_SI_제13호_글로벌테크패권과피지컬SI반도체자립.html"
+html_src = r"d:\안티그래비티파이튼\키아노스_정부부처\04_교육_문화부\3대_블로그_네트워크\03_초지능_미래오디세이\2026-11-04_SI_제13호_글로벌테크패권과피지컬SI반도체자립.html"
 
 # 1. Ensure F: archive has all components (HWPX, JPG, HTML, README)
 shutil.copy2(os.path.join(temp_dir, hwpx_file), f_archive_dir)
 shutil.copy2(os.path.join(temp_dir, jpg_file), f_archive_dir)
 shutil.copy2(html_src, f_archive_dir)
 
-meta_info = f"""# 파이튼의 초지능(SI) 미래 오디세이 제13호 영구보관 기록
+meta_info = f"""# 초지능 미래 오디세이 제13호 영구보관 기록
 
 - 제목: [Phaeton SI Odyssey #13] 글로벌 테크 패권 전쟁과 피지컬 SI 반도체 자립: 미 대중 첨단기술 통제 속 한국 5대 전략산업의 초격차 생존 방정식
 - 발행 일자: {today_str}
