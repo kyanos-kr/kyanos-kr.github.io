@@ -250,6 +250,13 @@ def generate_report(articles: List[Dict]) -> str:
             {cards_joined}
         </main>
 
+        <!-- Phaeton SI Odyssey Official Blog Banner Funnel -->
+        <section class="blog-banner-section" style="margin-bottom: 36px; text-align: center;">
+            <a href="https://phaetonktb.blogspot.com/" target="_blank" rel="noopener noreferrer" style="display: block; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(201, 168, 76, 0.4); transition: transform 0.2s ease;">
+                <img src="../../assets/banners/초지능오디세이_공식배너_와이드1200x300.png" alt="[초지능 미래 오디세이] 앤트뉴스 공식 연재 기획 칼럼" style="width: 100%; height: auto; display: block;" onerror="this.src='https://kyanos-kr.github.io/assets/banners/%EC%B4%88%EC%A7%80%EB%8A%A5%EC%98%A4%EB%94%94%EC%84%B8%EC%9D%B4_%EA%B3%B5%EC%8B%9D%EB%B0%B0%EB%84%88_%EC%99%80%EC%9D%B4%EB%93%9C1200x300.png'">
+            </a>
+        </section>
+
         <footer class="main-footer">
             <p>© 2026 AntNews · The Sovereign Realm of Kyanos. All Rights Reserved.</p>
             <p>
