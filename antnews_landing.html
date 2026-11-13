@@ -1452,6 +1452,24 @@ function handleSubscribe(e, inputId, statusId) {
   return false;
 }
 
+/* 관리자용 구독자 명부 CSV 내보내기 (국가 자산화 도구) */
+window.exportKyanosSubscribers = function() {
+  var subs = JSON.parse(localStorage.getItem('kyanos_antnews_subs') || '[]');
+  if (!subs.length) {
+    alert('현재 저장된 신규 구독자가 없습니다.');
+    return;
+  }
+  var csvContent = "data:text/csv;charset=utf-8,\uFEFF회원번호,이메일,신청일시\n" + 
+    subs.map(s => `"${s.subId}","${s.email}","${s.date}"`).join("\n");
+  var encodedUri = encodeURI(csvContent);
+  var link = document.createElement("a");
+  link.setAttribute("href", encodedUri);
+  link.setAttribute("download", `kyanos_antnews_subscribers_${new Date().toISOString().slice(0,10)}.csv`);
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+
 /* 최신 브리프 자동 연동: antnews_auto/output/index.html (매일 자동 생성)에서 날짜와 헤드라인을 읽어옴 */
 (function(){
   var d=new Date(), w=['일','월','화','수','목','금','토'];
