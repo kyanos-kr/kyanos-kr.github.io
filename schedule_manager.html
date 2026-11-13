@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>키아노스 국정 일정 관제 시스템 | Kyanos State Schedule Manager</title>
+    <meta name="description" content="키아노스 국가최고헌정원 국왕직속 수석비서실 및 국무총리실 일일 국정 일정 관제 프로그램">
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #060a12;
+            --bg-panel: #0d1527;
+            --bg-card: #152238;
+            --bg-card-hover: #1c2d4a;
+            --gold: #f59e0b;
+            --gold-light: #fde68a;
+            --gold-dark: #b45309;
+            --cyan: #38bdf8;
+            --emerald: #10b981;
+            --purple: #c084fc;
+            --rose: #f43f5e;
+            --text-main: #f8fafc;
+            --text-sub: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border: rgba(245, 158, 11, 0.28);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image: radial-gradient(circle at top right, rgba(56, 189, 248, 0.05), transparent 40%),
+                              radial-gradient(circle at bottom left, rgba(245, 158, 11, 0.05), transparent 40%);
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: #04070d;
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 8px 2rem;
+            font-size: 0.82rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-muted);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .top-bar-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--emerald);
+            box-shadow: 0 0 10px var(--emerald);
+            display: inline-block;
+            animation: pulse 1.8s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.2); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, rgba(13, 21, 39, 0.95) 0%, rgba(20, 16, 45, 0.95) 100%);
+            border-bottom: 1.5px solid var(--border);
+            padding: 1.5rem 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .brand-box {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .brand-emblem {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            box-shadow: 0 4px 16px rgba(245, 158, 11, 0.35);
+        }
+
+        .brand-title h1 {
+            font-size: 1.55rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-title p {
+            font-size: 0.85rem;
+            color: var(--gold-light);
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .badge-clock {
+            background: rgba(245, 158, 11, 0.12);
+            border: 1px solid var(--border);
+            color: var(--gold-light);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.92rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-nav {
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-portal {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-sub);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-portal:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+        }
+
+        .btn-news {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(220, 38, 38, 0.3));
+            color: #fca5a5;
+            border: 1px solid rgba(239, 68, 68, 0.4);
+        }
+
+        .btn-news:hover {
+            background: rgba(239, 68, 68, 0.35);
+        }
+
+        /* Container Grid */
+        .dashboard-container {
+            max-width: 1440px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            flex: 1;
+        }
+
+        @media (max-width: 1024px) {
+            .dashboard-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Section Cards */
+        .glass-panel {
+            background: var(--bg-panel);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.8rem;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.45);
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .panel-header h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--gold-light);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .panel-badge {
+            font-size: 0.78rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background: rgba(56, 189, 248, 0.12);
+            color: var(--cyan);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            font-weight: 600;
+        }
+
+        /* Timeline Items */
+        .timeline-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            position: relative;
+        }
+
+        .timeline-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 16px 20px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-card:hover {
+            transform: translateX(4px);
+            border-color: var(--border);
+            background: var(--bg-card-hover);
+        }
+
+        .timeline-card.done {
+            border-left: 4px solid var(--emerald);
+        }
+
+        .timeline-card.active {
+            border-left: 4px solid var(--gold);
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.15);
+            background: linear-gradient(90deg, rgba(245, 158, 11, 0.08), var(--bg-card));
+        }
+
+        .timeline-card.pending {
+            border-left: 4px solid var(--text-muted);
+            opacity: 0.85;
+        }
+
+        .time-box {
+            min-width: 75px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--cyan);
+            letter-spacing: -0.3px;
+        }
+
+        .task-content {
+            flex: 1;
+        }
+
+        .task-title {
+            font-size: 1.02rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .task-desc {
+            font-size: 0.86rem;
+            color: var(--text-sub);
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+
+        .task-footer {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        .status-pill {
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.72rem;
+        }
+
+        .status-done {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.4);
+        }
+
+        .status-active {
+            background: rgba(245, 158, 11, 0.15);
+            color: #fbbf24;
+            border: 1px solid rgba(245, 158, 11, 0.4);
+        }
+
+        .status-pending {
+            background: rgba(148, 163, 184, 0.12);
+            color: #94a3b8;
+            border: 1px solid rgba(148, 163, 184, 0.3);
+        }
+
+        /* Sidebar Widgets */
+        .side-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* Progress Card */
+        .progress-card {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .progress-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 10px;
+            padding: 12px 14px;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .progress-bar-bg {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 6px;
+            height: 8px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 0.4s ease;
+        }
+
+        /* Memo Box */
+        .memo-area {
+            width: 100%;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 10px;
+            color: #f1f5f9;
+            padding: 12px;
+            font-size: 0.88rem;
+            line-height: 1.5;
+            resize: vertical;
+            min-height: 120px;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .memo-area:focus {
+            border-color: var(--gold);
+        }
+
+        .btn-memo-save {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: #0b1120;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.84rem;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 8px;
+            transition: opacity 0.2s ease;
+        }
+
+        .btn-memo-save:hover {
+            opacity: 0.9;
+        }
+
+        /* Quick Links */
+        .quick-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .quick-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-sub);
+            padding: 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .quick-btn:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border);
+            color: #fff;
+        }
+
+        /* Footer */
+        footer {
+            background: #04070d;
+            border-top: 1px solid var(--border-subtle);
+            padding: 20px 2rem;
+            text-align: center;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Info Bar -->
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <span class="pulse-dot"></span>
+            <span>국왕직속 최고헌정원 관제망 정상 가동 중</span>
+            <span style="color:var(--border);">|</span>
+            <span>국무총리: <strong>메티(Meti)</strong></span>
+            <span style="color:var(--border);">|</span>
+            <span>수석비서관: <strong>비비안(Vivian)</strong></span>
+        </div>
+        <div>
+            <span>👑 <strong>THE SOVEREIGN REALM OF KYANOS · 국정 스케줄러 v2.0</strong></span>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="brand-box">
+            <div class="brand-emblem">🏛️</div>
+            <div class="brand-title">
+                <h1>키아노스 국정 일정 관제 시스템</h1>
+                <p>국왕직속 수석비서실 & 국무총리실 일일 국정 타임라인 및 국책사업 진행 현황</p>
+            </div>
+        </div>
+
+        <div class="header-actions">
+            <div class="badge-clock" id="liveClock">
+                <span>🕒</span> <span id="clockText">2026-11-13 00:00:00</span>
+            </div>
+            <a href="main.html" class="btn-nav btn-portal">🏠 키아노스 메인</a>
+            <a href="ant_briefing_room/index.html" class="btn-nav btn-news">📡 앤트뉴스 브리핑룸</a>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="dashboard-container">
+        
+        <!-- Left Column: Daily 24H Timeline -->
+        <div class="glass-panel">
+            <div class="panel-header">
+                <h2>📅 2026-11-13(금) 국정 24시간 타임라인</h2>
+                <span class="panel-badge">실시간 동기화 완료</span>
+            </div>
+
+            <div class="timeline-list" id="timelineList">
+                <!-- Timeline items loaded dynamically -->
+            </div>
+        </div>
+
+        <!-- Right Column: Status & Directives -->
+        <div class="side-stack">
+
+            <!-- Card 1: 4대 핵심 국책사업 진척도 -->
+            <div class="glass-panel progress-card">
+                <div class="panel-header">
+                    <h2>🎯 핵심 국책사업 진행률</h2>
+                    <span class="panel-badge">봉민관 대장 연동</span>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>제01호 5대 멀티 SI 무인자동화</span>
+                        <span style="color:var(--emerald);">100% (가동)</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 100%; background: var(--emerald);"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>제02호 앤트뉴스 데일리 보도</span>
+                        <span style="color:var(--emerald);">100% (가동)</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 100%; background: var(--emerald);"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>제04호 양방향 디지털 영토 순환</span>
+                        <span style="color:var(--gold);">85% (양방향 개통)</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 85%; background: var(--gold);"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>제05호 독자 뉴스레터 구독망 확보</span>
+                        <span style="color:var(--cyan);">70% (수집체계 가동)</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 70%; background: var(--cyan);"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: 파이튼 님 최고 어명 및 메모 -->
+            <div class="glass-panel">
+                <div class="panel-header">
+                    <h2>📝 최고통수권자 교시 및 메모</h2>
+                    <span class="panel-badge">비서실 보존</span>
+                </div>
+                <textarea class="memo-area" id="sovereignMemo" placeholder="파이튼 님의 즉각 하명 사항이나 아이디어를 입력하시면 비서실 시스템에 영구 보존됩니다..."></textarea>
+                <button class="btn-memo-save" onclick="saveMemo()">💾 어명 및 메모 저장</button>
+            </div>
+
+            <!-- Card 3: 정부 부처 직통 바로가기 -->
+            <div class="glass-panel">
+                <div class="panel-header">
+                    <h2>⚡ 국정 핵심 거점 바로가기</h2>
+                </div>
+                <div class="quick-grid">
+                    <a href="ant_briefing_room/index.html" class="quick-btn">📡 브리핑룸</a>
+                    <a href="antnews_landing.html" class="quick-btn">📰 앤트뉴스 포털</a>
+                    <a href="blog_control.html" class="quick-btn">✍️ 블로그 관제실</a>
+                    <a href="gov_media.html" class="quick-btn">🎬 미디어부 포털</a>
+                    <a href="gov_economy.html" class="quick-btn">💰 경제부 포털</a>
+                    <a href="main.html" class="quick-btn">🏛️ 키아노스 메인</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 The Sovereign Realm of Kyanos · Office of the Supreme Secretariat & Cabinet Office.</p>
+        <p style="margin-top:4px; font-size:0.75rem; color:#64748b;">
+            "우리는 음지에서 일하고, 양지를 지향한다." — 2026-11-06 파이튼 령 제3호
+        </p>
+    </footer>
+
+    <script>
+        // 국정 타임라인 데이터
+        const scheduleData = [
+            {
+                time: "07:00 ~ 08:00",
+                title: "새벽 취재 원석 수집 및 4대 글로벌 마켓 감시",
+                desc: "국내외 정치·경제·5대 테크 헤드라인 수집 및 환율·증시·가상자산 틱 데이터 갱신 완료",
+                dept: "미디어부 · K-DOTS 엔진",
+                status: "done",
+                statusText: "완료됨"
+            },
+            {
+                time: "08:06 ~ 08:30",
+                title: "앤트뉴스 데일리 리포트 및 브리핑룸 자동 발행",
+                desc: "한컴 윤고딕 740 규격 인텔리전스 리포트 생성 및 초지능 오디세이 공식 배너 연동 배포",
+                dept: "미디어부",
+                status: "done",
+                statusText: "완료됨"
+            },
+            {
+                time: "09:00 ~ 10:00",
+                title: "파이튼 님 최고 국정전략 3인 회의",
+                desc: "제미나이 4 하이드로젠 오케스트레이터 분석 및 국정 현안 종합 점검",
+                dept: "국가최고헌정원 (파이튼·메티·비비안)",
+                status: "done",
+                statusText: "완료됨"
+            },
+            {
+                time: "10:00 ~ 11:30",
+                title: "F:\\ 저장소 봉민관 국책사업(안건 제04·05호) 집행",
+                desc: "블로그-앤트뉴스 양방향 퍼널 위젯 탑재 완료 및 독자 명부 원클릭 CSV 자산화 엔진 구축",
+                dept: "총리실 메티 전결",
+                status: "done",
+                statusText: "완료됨"
+            },
+            {
+                time: "11:30 ~ 13:00",
+                title: "미디어부 마이클 스나이더 컬럼 편집 및 인문 서고 연계",
+                desc: "미디어부 자체 라인 편집 진행 및 교육문화부 인문·문학 창작서고 연계 점검",
+                dept: "미디어부 · 교육문화부",
+                status: "active",
+                statusText: "진행 중"
+            },
+            {
+                time: "14:00 ~ 16:00",
+                title: "앤트뉴스-블로그 트래픽 및 유입 데이터 추적 점검",
+                desc: "Blogger 통계 추천 URL 및 UTM 트래킹 유입 지표 수집 및 결과 분석 데이터 정리",
+                dept: "비서실 · 총리실",
+                status: "pending",
+                statusText: "대기 중"
+            },
+            {
+                time: "17:00 ~ 18:30",
+                title: "글로벌 4대 마켓 일일 결산 및 브리핑룸 스냅샷 마감",
+                desc: "뉴욕/아시아 증시 마감 지표 동기화 및 익일 모닝 브리프 원석 큐레이션 준비",
+                dept: "경제부 · 미디어부",
+                status: "pending",
+                statusText: "대기 중"
+            },
+            {
+                time: "20:00 ~ 22:00",
+                title: "춘추원 사초록 편찬 및 F:\\ 혜민각 국가기록원 영구 동기화",
+                desc: "금일 3인 회의 결재록 및 국책사업 완결 결과 HWPX 사초 편찬 및 2TB 외부 저장소 백업",
+                dept: "총리실 메티 · 비서실 비비안",
+                status: "pending",
+                statusText: "대기 중"
+            }
+        ];
+
+        // 타임라인 렌더링
+        function renderTimeline() {
+            const list = document.getElementById('timelineList');
+            list.innerHTML = scheduleData.map(item => `
+                <div class="timeline-card ${item.status}">
+                    <div class="time-box">${item.time}</div>
+                    <div class="task-content">
+                        <div class="task-title">
+                            ${item.title}
+                            <span class="status-pill status-${item.status}">${item.statusText}</span>
+                        </div>
+                        <div class="task-desc">${item.desc}</div>
+                        <div class="task-footer">
+                            <span>🏛️ 소관: <strong>${item.dept}</strong></span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 실시간 시계
+        function updateClock() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const date = String(now.getDate()).padStart(2, '0');
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const days = ['일', '월', '화', '수', '목', '금', '토'];
+            const day = days[now.getDay()];
+
+            document.getElementById('clockText').textContent = 
+                `${year}-${month}-${date}(${day}) ${hours}:${minutes}:${seconds}`;
+        }
+
+        // 메모 저장/불러오기
+        function loadMemo() {
+            const saved = localStorage.getItem('kyanos_sovereign_memo');
+            if (saved) {
+                document.getElementById('sovereignMemo').value = saved;
+            } else {
+                document.getElementById('sovereignMemo').value = 
+                    "• 앤트뉴스 배너 및 블로그 역링크 결과 지표 주목.\n• 마이클 스나이더 컬럼 미디어부 자체 완결 진행.\n• 국책사업 Phase 2 디지털 영토 및 독자망 우선 추진.";
+            }
+        }
+
+        function saveMemo() {
+            const val = document.getElementById('sovereignMemo').value;
+            localStorage.setItem('kyanos_sovereign_memo', val);
+            alert('파이튼 님의 교시 및 메모가 시스템에 안전하게 저장되었습니다.');
+        }
+
+        // 초기화
+        renderTimeline();
+        updateClock();
+        setInterval(updateClock, 1000);
+        loadMemo();
+    </script>
+</body>
+</html>
