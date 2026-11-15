@@ -305,12 +305,14 @@ def fetch_fresh_live_rss_items(
     history_items: List[Tuple[str, Set[str]]]
 ) -> List[Dict]:
     """
-    당일 24시간 이내의 실시간 RSS 기사만 정밀 수집하고,
+    당일(KST 오늘 00:00 이후) 발행된 실시간 RSS 기사만 정밀 수집하고,
     과거 아카이브 및 당일 중복을 철저히 배제한 신규 취재원석 리스트 생성
     """
     collected = []
     today_registered: List[Tuple[str, Set[str]]] = []
-    now_utc = datetime.datetime.now(datetime.timezone.utc)
+    kst = datetime.timezone(datetime.timedelta(hours=9))
+    now_kst = datetime.datetime.now(kst)
+    today_kst_date = now_kst.date()
 
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0"
@@ -345,17 +347,19 @@ def fetch_fresh_live_rss_items(
                 pub_date_str = item.findtext("pubDate") or ""
                 desc_raw = clean_html_text(item.findtext("description") or "")
 
-                # 1. 24시간 시간 필터링 (당일 뉴스 보장)
-                diff_hours = 0.0
-                if pub_date_str:
-                    try:
-                        pub_dt = email.utils.parsedate_to_datetime(pub_date_str)
-                        diff_hours = (now_utc - pub_dt).total_seconds() / 3600.0
-                        if diff_hours > 24.0:
-                            # 24시간 초과 기사는 전날 기사로 판별하여 즉시 폐기
-                            continue
-                    except Exception:
-                        diff_hours = 0.0
+                # 1. 당일(KST 오늘 날짜) 발행 기사만 엄격 필터링 (전날 헤드라인 완전 차단)
+                if not pub_date_str:
+                    continue
+                try:
+                    pub_dt = email.utils.parsedate_to_datetime(pub_date_str)
+                    if pub_dt.tzinfo is None:
+                        pub_dt = pub_dt.replace(tzinfo=datetime.timezone.utc)
+                    pub_kst = pub_dt.astimezone(kst)
+                    if pub_kst.date() != today_kst_date:
+                        continue
+                    diff_hours = max(0.0, (now_kst - pub_kst).total_seconds() / 3600.0)
+                except Exception:
+                    continue
 
                 headline, media_name = split_title_and_source(raw_title)
                 if not headline or len(headline) < 8:
