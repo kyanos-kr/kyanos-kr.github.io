@@ -472,37 +472,37 @@
 
   <div class="container">
 
-    <!-- 2026-11-15 오픈소스 실사 모션 비디오 엔진 v2.0 (RTX 3050 NVENC) 쇼케이스 -->
+    <!-- 2026-11-15 오픈소스 실사 모션 비디오 엔진 v3.0 (Natural Voice + Word-Highlight + XFade) 쇼케이스 -->
     <section class="player-section" style="margin-bottom: 28px; border: 1px solid rgba(245, 158, 11, 0.45); box-shadow: 0 0 32px rgba(245, 158, 11, 0.15);">
       <div class="official-badge-banner" style="margin-bottom: 18px; border-color: rgba(245, 158, 11, 0.5);">
         <div class="title">
-          <span class="tag" style="background: linear-gradient(135deg, #f59e0b, #d97706); color: #070b14;">2026-11-15 REAL MOTION v2.0</span>
-          🍂 키아노스 가을 실사 숏츠 (100% 실제 촬영 풀-모션 비디오 · RTX 3050 NVENC 렌더링)
+          <span class="tag" style="background: linear-gradient(135deg, #f59e0b, #d97706); color: #070b14;">2026-11-15 REAL MOTION v3.0</span>
+          🍂 키아노스 가을 실사 숏츠 v3.0 (3세대 자연음성 마스터링 · 실시간 단어 하이라이트 자막)
         </div>
         <div class="desc">
-          정지 이미지 슬라이드 방식을 전면 폐기하고, D: 드라이브 미디어부 오픈소스 실사 비디오 엔진(Kyannos Real-Motion Engine v2.0)으로 제작한 9:16(1080×1920) 진짜 실사 동영상입니다.
+          D: 드라이브 미디어부 오픈소스 엔진 v3.0(Kyannos Real-Motion Engine v3.0)으로 업그레이드된 9:16(1080×1920) 실사 동영상입니다. 0.01초 단위 단어 하이라이트 자막과 방송국 스튜디오 보이스 마스터링, 시네마틱 XFade 전환이 적용되었습니다.
         </div>
       </div>
 
       <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: center;">
         <div style="width: 340px; max-width: 100%; aspect-ratio: 9 / 16; border-radius: 16px; overflow: hidden; border: 2px solid rgba(245, 158, 11, 0.6); background: #000; box-shadow: 0 12px 36px rgba(0,0,0,0.6);">
-          <video id="autumnRealVideo" src="assets/video/kyanos_autumn_shorts_2026.mp4" controls playsinline preload="metadata" style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
+          <video id="autumnRealVideo" src="assets/video/kyanos_autumn_shorts_2026.mp4?v=3" controls playsinline preload="metadata" style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
         </div>
 
         <div style="flex: 1; min-width: 280px; max-width: 540px; display: flex; flex-direction: column; gap: 14px;">
           <div style="padding: 16px 20px; border-radius: 12px; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(56, 189, 248, 0.25);">
-            <div style="color: var(--gold-bright); font-weight: 700; font-size: 1.05rem; margin-bottom: 8px;">⚡ Kyannos Real-Motion Engine v2.0 제원</div>
+            <div style="color: var(--gold-bright); font-weight: 700; font-size: 1.05rem; margin-bottom: 8px;">⚡ Kyannos Real-Motion Engine v3.0 제원</div>
             <ul style="list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 0.9rem; color: var(--text-sub); line-height: 1.5;">
               <li>• <strong style="color:#fff;">엔진 위치</strong>: <code>D:\안티그래비티파이튼\키아노스_정부부처\09_미디어부\유튜브랩_MED-YTB-01\엔진_스튜디오\</code></li>
               <li>• <strong style="color:#fff;">영구 서고</strong>: <code>F:\혜민각\04_국정 기록·언론\미디어부_멀티미디어랩\01_영상제작_원본및렌더링\20261115_키아노스_가을_테스트숏츠\</code></li>
-              <li>• <strong style="color:#fff;">비디오 소스</strong>: 4개 씬 전 구간 100% 실제 카메라 촬영 실사 동영상 (단풍 바람 흔들림 · 가을 숲길 · 블루 찻잔 김 피어오름 · 가을 햇살)</li>
+              <li>• <strong style="color:#fff;">자연 음성 스튜디오</strong>: 3세대 다국어 신경망 보이스(<code>HyunsuMultilingual</code>) + FFmpeg EQ·컴프레서·라우드니스 마스터링</li>
+              <li>• <strong style="color:#fff;">v3.0 동적 자막·전환</strong>: <code>WordBoundary</code> 0.01초 단위 실시간 골드 하이라이트 자막 + 0.4초 <code>XFade</code> 디졸브 전환</li>
               <li>• <strong style="color:#fff;">하드웨어 가속</strong>: NVIDIA GeForce RTX 3050 (<code>h264_nvenc</code>) 전용 가속 · 시스템 과부하 0%</li>
-              <li>• <strong style="color:#fff;">오디오/자막</strong>: Edge-TTS 한국어 신경망 내레이션 + 시네마틱 앰비언트 화음 패드 BGM 믹싱 + 한컴 윤고딕 740 자막</li>
             </ul>
           </div>
           <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-            <button class="ctrl-btn primary" onclick="const v=document.getElementById('autumnRealVideo'); v.currentTime=0; v.play();">▶ 가을 실사 숏츠 즉시 재생</button>
-            <a href="assets/video/kyanos_autumn_shorts_2026.mp4" download="kyanos_autumn_shorts_2026_REAL_MOTION.mp4" class="ctrl-btn" style="text-decoration: none; display: inline-flex; align-items: center;">⬇ MP4 원본 다운로드</a>
+            <button class="ctrl-btn primary" onclick="const v=document.getElementById('autumnRealVideo'); v.currentTime=0; v.play();">▶ 가을 실사 숏츠 v3.0 재생</button>
+            <a href="assets/video/kyanos_autumn_shorts_2026.mp4" download="kyanos_autumn_shorts_2026_v3_REAL_MOTION.mp4" class="ctrl-btn" style="text-decoration: none; display: inline-flex; align-items: center;">⬇ MP4 원본 다운로드</a>
           </div>
         </div>
       </div>
