@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>키아노스 국립 이미지 공방 | 오픈소스 AI 스튜디오</title>
+    <!-- 구글 폰트: 한글 및 영문 타이포그래피 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome 아이콘 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --kyanos-deep: #060b14;
+            --kyanos-card: #0c1626;
+            --kyanos-card-border: rgba(56, 189, 248, 0.2);
+            --kyanos-accent: #38bdf8;
+            --kyanos-gold: #fbbf24;
+            --kyanos-text: #f1f5f9;
+            --kyanos-muted: #94a3b8;
+            --kyanos-btn-grad: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+            --kyanos-gold-grad: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--kyanos-deep);
+            color: var(--kyanos-text);
+            font-family: 'Noto Sans KR', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(14, 165, 233, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(245, 158, 11, 0.05) 0%, transparent 40%);
+        }
+
+        /* 헤더 */
+        header {
+            padding: 24px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(6, 11, 20, 0.85);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .brand-badge {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #0ea5e9, #0284c7);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: white;
+            box-shadow: 0 0 16px rgba(14, 165, 233, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .brand-title h1 {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-title h1 span.eng {
+            font-family: 'Cinzel', serif;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--kyanos-gold);
+            letter-spacing: 1.5px;
+        }
+
+        .brand-subtitle {
+            font-size: 12px;
+            color: var(--kyanos-muted);
+            margin-top: 2px;
+        }
+
+        .header-tags {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .tag-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            font-size: 12px;
+            color: var(--kyanos-muted);
+        }
+
+        .tag-pill.active {
+            background: rgba(14, 165, 233, 0.15);
+            border-color: rgba(14, 165, 233, 0.4);
+            color: var(--kyanos-accent);
+        }
+
+        /* 메인 컨테이너 */
+        main {
+            flex: 1;
+            max-width: 1360px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 32px 24px;
+            display: grid;
+            grid-template-columns: 460px 1fr;
+            gap: 32px;
+        }
+
+        @media (max-width: 1024px) {
+            main {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 패널 공통 */
+        .panel {
+            background: var(--kyanos-card);
+            border: 1px solid var(--kyanos-card-border);
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .panel-header h2 {
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #e2e8f0;
+        }
+
+        .panel-header h2 i {
+            color: var(--kyanos-accent);
+        }
+
+        /* 폼 그룹 */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-label {
+            font-size: 13px;
+            font-weight: 500;
+            color: #cbd5e1;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .form-label .sub {
+            color: var(--kyanos-muted);
+            font-weight: 400;
+            font-size: 11px;
+        }
+
+        textarea.prompt-input {
+            width: 100%;
+            height: 120px;
+            background: rgba(3, 7, 18, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            padding: 14px 16px;
+            color: #f8fafc;
+            font-family: inherit;
+            font-size: 14px;
+            line-height: 1.6;
+            resize: none;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        textarea.prompt-input:focus {
+            border-color: var(--kyanos-accent);
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
+            background: rgba(3, 7, 18, 0.8);
+        }
+
+        /* 스타일 프리셋 그리드 */
+        .preset-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .preset-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 12px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .preset-btn:hover {
+            background: rgba(56, 189, 248, 0.08);
+            border-color: rgba(56, 189, 248, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .preset-btn.active {
+            background: rgba(56, 189, 248, 0.15);
+            border-color: var(--kyanos-accent);
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+        }
+
+        .preset-btn .name {
+            font-size: 13px;
+            font-weight: 600;
+            color: #f1f5f9;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .preset-btn .desc {
+            font-size: 11px;
+            color: var(--kyanos-muted);
+        }
+
+        /* 비율 선택 */
+        .aspect-ratio-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .aspect-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 10px 6px;
+            text-align: center;
+            font-size: 12px;
+            cursor: pointer;
+            color: #cbd5e1;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .aspect-btn:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .aspect-btn.active {
+            background: rgba(56, 189, 248, 0.15);
+            border-color: var(--kyanos-accent);
+            color: var(--kyanos-accent);
+            font-weight: 600;
+        }
+
+        /* 모델 선택 셀렉트박스 */
+        .select-input {
+            width: 100%;
+            background: rgba(3, 7, 18, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 8px;
+            padding: 10px 14px;
+            color: #f1f5f9;
+            font-size: 13px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .select-input:focus {
+            border-color: var(--kyanos-accent);
+        }
+
+        /* 실행 버튼 */
+        .generate-btn {
+            background: var(--kyanos-btn-grad);
+            border: none;
+            border-radius: 12px;
+            padding: 16px 20px;
+            color: white;
+            font-size: 15px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(2, 132, 199, 0.4);
+            transition: all 0.2s;
+        }
+
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(2, 132, 199, 0.5);
+            filter: brightness(1.1);
+        }
+
+        .generate-btn:active {
+            transform: translateY(0);
+        }
+
+        .generate-btn:disabled {
+            background: #334155;
+            box-shadow: none;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        /* 오른쪽: 캔버스 / 결과 뷰어 */
+        .viewer-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .preview-box {
+            flex: 1;
+            min-height: 480px;
+            background: rgba(3, 7, 18, 0.5);
+            border: 2px dashed rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .preview-box.has-image {
+            border-style: solid;
+            border-color: rgba(56, 189, 248, 0.3);
+            background: #000;
+        }
+
+        .preview-image {
+            max-width: 100%;
+            max-height: 600px;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.8);
+            display: none;
+        }
+
+        .empty-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            color: var(--kyanos-muted);
+            text-align: center;
+            padding: 40px;
+        }
+
+        .empty-state i {
+            font-size: 48px;
+            color: rgba(255, 255, 255, 0.15);
+        }
+
+        .empty-state p.main-text {
+            font-size: 15px;
+            font-weight: 500;
+            color: #cbd5e1;
+        }
+
+        .empty-state p.sub-text {
+            font-size: 13px;
+            max-width: 320px;
+            line-height: 1.5;
+        }
+
+        /* 로딩 스피너 */
+        .loading-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(6, 11, 20, 0.85);
+            backdrop-filter: blur(8px);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            z-index: 20;
+        }
+
+        .spinner {
+            width: 48px;
+            height: 48px;
+            border: 4px solid rgba(56, 189, 248, 0.2);
+            border-top-color: var(--kyanos-accent);
+            border-radius: 50%;
+            animation: spin 1s infinite linear;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--kyanos-accent);
+            letter-spacing: -0.3px;
+        }
+
+        .loading-subtext {
+            font-size: 12px;
+            color: var(--kyanos-muted);
+        }
+
+        /* 뷰어 하단 액션바 */
+        .viewer-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+        }
+
+        .image-meta {
+            font-size: 12px;
+            color: var(--kyanos-muted);
+            display: flex;
+            gap: 14px;
+        }
+
+        .action-btns {
+            display: flex;
+            gap: 10px;
+        }
+
+        .tool-btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 8px;
+            padding: 8px 14px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #e2e8f0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .tool-btn:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.25);
+            color: white;
+        }
+
+        .tool-btn.primary {
+            background: rgba(14, 165, 233, 0.2);
+            border-color: var(--kyanos-accent);
+            color: var(--kyanos-accent);
+        }
+
+        .tool-btn.primary:hover {
+            background: var(--kyanos-accent);
+            color: #000;
+        }
+
+        /* 갤러리 히스토리 섹션 */
+        .history-section {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .history-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .history-thumbnails {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding-bottom: 6px;
+        }
+
+        .history-thumb {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            object-fit: cover;
+            cursor: pointer;
+            transition: all 0.2s;
+            flex-shrink: 0;
+            background: #111;
+        }
+
+        .history-thumb:hover {
+            border-color: var(--kyanos-accent);
+            transform: scale(1.05);
+        }
+
+        /* 안내 배너 */
+        .info-card {
+            background: rgba(14, 165, 233, 0.05);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            border-radius: 12px;
+            padding: 14px 18px;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .info-card i {
+            color: var(--kyanos-accent);
+            font-size: 16px;
+            margin-top: 2px;
+        }
+
+        .info-card-text {
+            font-size: 12px;
+            line-height: 1.5;
+            color: #cbd5e1;
+        }
+
+        /* 푸터 */
+        footer {
+            padding: 20px 32px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 12px;
+            color: var(--kyanos-muted);
+            background: rgba(6, 11, 20, 0.95);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 국가 헤더 -->
+    <header>
+        <div class="brand-container">
+            <div class="brand-badge">
+                <i class="fa-solid fa-palette"></i>
+            </div>
+            <div class="brand-title">
+                <h1>키아노스 국립 이미지 공방 <span class="eng">KYANOS OPEN AI STUDIO</span></h1>
+                <div class="brand-subtitle">키아노스 정부 과학·SI부 공공 지능 미디어 창작실</div>
+            </div>
+        </div>
+        <div class="header-tags">
+            <span class="tag-pill active"><i class="fa-solid fa-cube"></i> 오픈소스 기반 (FLUX / SDXL)</span>
+            <span class="tag-pill"><i class="fa-solid fa-bolt"></i> GPU 가속 렌더링</span>
+            <span class="tag-pill"><i class="fa-solid fa-shield-halved"></i> 100% 무과금 공공 개방</span>
+        </div>
+    </header>
+
+    <!-- 메인 레이아웃 -->
+    <main>
+        <!-- 좌측: 컨트롤 패널 -->
+        <section class="panel">
+            <div class="panel-header">
+                <h2><i class="fa-solid fa-sliders"></i> 창작 설정 (Prompt & Style)</h2>
+                <button class="tool-btn" id="resetBtn" title="초기화"><i class="fa-solid fa-rotate-left"></i></button>
+            </div>
+
+            <!-- 프롬프트 입력창 -->
+            <div class="form-group">
+                <div class="form-label">
+                    <span>원하는 장면 묘사 (한국어 지원)</span>
+                    <span class="sub">구체적일수록 완성도가 높아집니다</span>
+                </div>
+                <textarea id="promptInput" class="prompt-input" placeholder="예: 비 내리는 늦가을 저녁, 따뜻한 찻잔과 창밖의 단풍나무가 놓인 고요한 서재 풍경..."></textarea>
+            </div>
+
+            <!-- 화풍 프리셋 선택 -->
+            <div class="form-group">
+                <div class="form-label">
+                    <span>키아노스 화풍 프리셋 (Style Presets)</span>
+                    <span class="sub">클릭 시 자동 최적화 반영</span>
+                </div>
+                <div class="preset-grid">
+                    <div class="preset-btn active" data-style="realism">
+                        <span class="name"><i class="fa-solid fa-camera"></i> 초고화질 실사</span>
+                        <span class="desc">35mm 카메라 실사 사진 질감</span>
+                    </div>
+                    <div class="preset-btn" data-style="classic_oil">
+                        <span class="name"><i class="fa-solid fa-brush"></i> 인문 고전 유화</span>
+                        <span class="desc">렘브란트풍 중후한 붓터치</span>
+                    </div>
+                    <div class="preset-btn" data-style="cyberpunk">
+                        <span class="name"><i class="fa-solid fa-microchip"></i> 네오 사이버펑크</span>
+                        <span class="desc">네온 조명과 미래형 SF 감성</span>
+                    </div>
+                    <div class="preset-btn" data-style="oriental">
+                        <span class="name"><i class="fa-solid fa-feather"></i> 한국 전통 수묵담채</span>
+                        <span class="desc">여백과 먹의 깊은 정취</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 비율 선택 -->
+            <div class="form-group">
+                <div class="form-label">
+                    <span>이미지 종횡비 (Aspect Ratio)</span>
+                </div>
+                <div class="aspect-ratio-row">
+                    <div class="aspect-btn active" data-ratio="16:9" data-w="1024" data-h="576">
+                        <i class="fa-solid fa-tv"></i>
+                        <span>16:9 와이드 (문학/보도)</span>
+                    </div>
+                    <div class="aspect-btn" data-ratio="1:1" data-w="768" data-h="768">
+                        <i class="fa-solid fa-square"></i>
+                        <span>1:1 정방형 (음반/프로필)</span>
+                    </div>
+                    <div class="aspect-btn" data-ratio="9:16" data-w="576" data-h="1024">
+                        <i class="fa-solid fa-mobile-screen"></i>
+                        <span>9:16 세로형 (쇼츠/모바일)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 오픈소스 엔진 선택 -->
+            <div class="form-group">
+                <div class="form-label">
+                    <span>오픈소스 렌더링 엔진</span>
+                </div>
+                <select id="modelSelect" class="select-input">
+                    <option value="flux" selected>FLUX.1-schnell (Black Forest Labs 차세대 오픈소스)</option>
+                    <option value="sdxl">Stable Diffusion XL Turbo (초고속 실시간 엔진)</option>
+                </select>
+            </div>
+
+            <!-- 공공 서비스 안내 -->
+            <div class="info-card">
+                <i class="fa-solid fa-circle-info"></i>
+                <div class="info-card-text">
+                    키아노스 정부의 공공 지능 정책에 따라 누구나 로그인이나 과금 없이 무료로 이용할 수 있는 오픈소스 기반 창작 엔진입니다.
+                </div>
+            </div>
+
+            <!-- 생성 버튼 -->
+            <button id="generateBtn" class="generate-btn">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <span>이미지 즉시 창작 (Generate)</span>
+            </button>
+        </section>
+
+        <!-- 우측: 결과물 뷰어 -->
+        <section class="viewer-panel">
+            <div class="panel" style="flex: 1;">
+                <div class="panel-header">
+                    <h2><i class="fa-solid fa-image"></i> 완성된 작품 캔버스</h2>
+                    <div class="action-btns">
+                        <a id="downloadBtn" class="tool-btn primary" href="#" download="kyanos_art.jpg" style="display: none;">
+                            <i class="fa-solid fa-download"></i> 고화질 저장
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 캔버스 / 이미지 출력 영역 -->
+                <div id="previewBox" class="preview-box">
+                    <!-- 로딩 상태 -->
+                    <div id="loadingOverlay" class="loading-overlay">
+                        <div class="spinner"></div>
+                        <div class="loading-text">초지능 오픈소스 엔진이 작품을 렌더링하고 있습니다...</div>
+                        <div class="loading-subtext">빛과 구도를 계산하는 중입니다 (약 3~7초 소요)</div>
+                    </div>
+
+                    <!-- 빈 화면 (초기 상태) -->
+                    <div id="emptyState" class="empty-state">
+                        <i class="fa-solid fa-compass-drafting"></i>
+                        <p class="main-text">아직 생성된 작품이 없습니다</p>
+                        <p class="sub-text">좌측에서 장면을 묘사하고 화풍을 선택한 후 [이미지 즉시 창작] 버튼을 눌러보세요.</p>
+                    </div>
+
+                    <!-- 결과 이미지 -->
+                    <img id="resultImage" class="preview-image" alt="키아노스 생성 작품">
+                </div>
+
+                <!-- 뷰어 하단 메타정보 -->
+                <div class="viewer-actions">
+                    <div class="image-meta">
+                        <span id="metaRes"><i class="fa-solid fa-expand"></i> 해상도: 1024 × 576 px (16:9)</span>
+                        <span id="metaStyle"><i class="fa-solid fa-paintbrush"></i> 화풍: 초고화질 실사</span>
+                        <span id="metaEngine"><i class="fa-solid fa-microchip"></i> 엔진: FLUX.1</span>
+                    </div>
+                    <div class="action-btns">
+                        <button id="fullscreenBtn" class="tool-btn" style="display: none;">
+                            <i class="fa-solid fa-up-right-and-down-left-from-center"></i> 전체화면
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 최근 창작 히스토리 -->
+                <div class="history-section">
+                    <div class="history-title">
+                        <i class="fa-solid fa-clock-rotate-left"></i> 최근 생성된 작품 목록
+                    </div>
+                    <div id="historyThumbnails" class="history-thumbnails">
+                        <!-- 동적으로 추가되는 썸네일 -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 푸터 -->
+    <footer>
+        <p>© 2026 KYANOS GOVERNMENT. MINISTRY OF SCIENCE & SUPER INTELLIGENCE. ALL RIGHTS RESERVED.</p>
+        <p style="margin-top: 4px; color: #64748b;">국민 누구나 자유롭게 향유하는 키아노스 덕치 문화 공공 인프라</p>
+    </footer>
+
+    <!-- 로직 스크립트 -->
+    <script>
+        // 상태 관리
+        let currentStyle = 'realism';
+        let currentWidth = 1024;
+        let currentHeight = 576;
+        let currentRatioName = '16:9 와이드';
+        let currentModel = 'flux';
+        const historyImages = [];
+
+        // 스타일별 프롬프트 모디파이어 딕셔너리
+        const styleModifiers = {
+            realism: "8k resolution, highly detailed, realistic photography, professional 35mm lens, natural cinematic lighting, masterpiece, clean focus, no text overlay, no watermark",
+            classic_oil: "classic oil painting, Rembrandt style, dramatic chiaroscuro, rich deep brush textures, warm golden lighting, timeless fine art museum masterpiece",
+            cyberpunk: "futuristic neo-cyberpunk, neon blue and gold rim lighting, high-tech cinematic scene, sleek sci-fi architectural aesthetic, ultra-detailed 8k",
+            oriental: "traditional Korean ink and wash painting, sumi-e aesthetic, elegant minimal brush strokes, poetic mist, tranquil oriental landscape, artistic masterwork"
+        };
+
+        // DOM 요소
+        const promptInput = document.getElementById('promptInput');
+        const generateBtn = document.getElementById('generateBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const previewBox = document.getElementById('previewBox');
+        const emptyState = document.getElementById('emptyState');
+        const resultImage = document.getElementById('resultImage');
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const fullscreenBtn = document.getElementById('fullscreenBtn');
+        const metaRes = document.getElementById('metaRes');
+        const metaStyle = document.getElementById('metaStyle');
+        const metaEngine = document.getElementById('metaEngine');
+        const historyThumbnails = document.getElementById('historyThumbnails');
+        const modelSelect = document.getElementById('modelSelect');
+
+        // 스타일 버튼 클릭 이벤트
+        document.querySelectorAll('.preset-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentStyle = btn.getAttribute('data-style');
+                metaStyle.innerHTML = `<i class="fa-solid fa-paintbrush"></i> 화풍: ${btn.querySelector('.name').innerText.trim()}`;
+            });
+        });
+
+        // 비율 버튼 클릭 이벤트
+        document.querySelectorAll('.aspect-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.aspect-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentWidth = parseInt(btn.getAttribute('data-w'));
+                currentHeight = parseInt(btn.getAttribute('data-h'));
+                currentRatioName = btn.querySelector('span').innerText.trim();
+                metaRes.innerHTML = `<i class="fa-solid fa-expand"></i> 해상도: ${currentWidth} × ${currentHeight} px (${btn.getAttribute('data-ratio')})`;
+            });
+        });
+
+        // 모델 선택 이벤트
+        modelSelect.addEventListener('change', (e) => {
+            currentModel = e.target.value;
+            const engineName = e.target.value === 'flux' ? 'FLUX.1' : 'SDXL Turbo';
+            metaEngine.innerHTML = `<i class="fa-solid fa-microchip"></i> 엔진: ${engineName}`;
+        });
+
+        // 초기화 버튼
+        resetBtn.addEventListener('click', () => {
+            promptInput.value = '';
+            promptInput.focus();
+        });
+
+        // 이미지 생성 핸들러
+        generateBtn.addEventListener('click', async () => {
+            const rawPrompt = promptInput.value.trim();
+            if (!rawPrompt) {
+                alert('창작하고자 하는 장면을 간단히 입력해 주십시오.');
+                promptInput.focus();
+                return;
+            }
+
+            // 로딩 시작
+            generateBtn.disabled = true;
+            loadingOverlay.style.display = 'flex';
+
+            try {
+                // 오픈소스 이미지 합성 프롬프트 구성
+                const modifier = styleModifiers[currentStyle] || styleModifiers.realism;
+                const fullPrompt = `${rawPrompt}, ${modifier}`;
+                const encodedPrompt = encodeURIComponent(fullPrompt);
+                
+                // 오픈소스 폴리네이션스(Pollinations) 고성능 엔드포인트 연동 (FLUX.1 / SDXL 지원, 완전 무료 개방형)
+                const seed = Math.floor(Math.random() * 99999999);
+                const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=${currentWidth}&height=${currentHeight}&model=${currentModel}&seed=${seed}&nologo=true&enhance=true`;
+
+                // 이미지 사전 로딩
+                const tempImg = new Image();
+                tempImg.crossOrigin = "anonymous";
+                
+                tempImg.onload = () => {
+                    // 출력 갱신
+                    resultImage.src = imageUrl;
+                    resultImage.style.display = 'block';
+                    emptyState.style.display = 'none';
+                    previewBox.classList.add('has-image');
+                    loadingOverlay.style.display = 'none';
+                    generateBtn.disabled = false;
+
+                    // 다운로드 링크 설정
+                    downloadBtn.href = imageUrl;
+                    downloadBtn.style.display = 'inline-flex';
+                    fullscreenBtn.style.display = 'inline-flex';
+
+                    // 히스토리에 추가
+                    addHistory(imageUrl, rawPrompt);
+                };
+
+                tempImg.onerror = () => {
+                    // 오류 시 폴백 또는 알림
+                    alert('이미지 렌더링 중 통신 장애가 발생했습니다. 잠시 후 다시 시도해 주십시오.');
+                    loadingOverlay.style.display = 'none';
+                    generateBtn.disabled = false;
+                };
+
+                tempImg.src = imageUrl;
+
+            } catch (err) {
+                console.error(err);
+                alert('이미지 생성 도중 오류가 발생했습니다: ' + err.message);
+                loadingOverlay.style.display = 'none';
+                generateBtn.disabled = false;
+            }
+        });
+
+        // 히스토리 썸네일 관리
+        function addHistory(url, prompt) {
+            historyImages.unshift({ url, prompt });
+            if (historyImages.length > 8) historyImages.pop();
+
+            historyThumbnails.innerHTML = '';
+            historyImages.forEach(item => {
+                const thumb = document.createElement('img');
+                thumb.className = 'history-thumb';
+                thumb.src = item.url;
+                thumb.title = item.prompt;
+                thumb.addEventListener('click', () => {
+                    resultImage.src = item.url;
+                    downloadBtn.href = item.url;
+                });
+                historyThumbnails.appendChild(thumb);
+            });
+        }
+
+        // 전체화면 뷰어
+        fullscreenBtn.addEventListener('click', () => {
+            if (resultImage.requestFullscreen) {
+                resultImage.requestFullscreen();
+            } else if (resultImage.webkitRequestFullscreen) {
+                resultImage.webkitRequestFullscreen();
+            }
+        });
+    </script>
+</body>
+</html>
