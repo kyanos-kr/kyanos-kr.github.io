@@ -150,7 +150,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
             display: flex;
             flex-direction: column;
-            gap: 24px;
+            gap: 22px;
         }
 
         .panel-header {
@@ -215,6 +215,24 @@
             border-color: var(--kyanos-accent);
             box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
             background: rgba(3, 7, 18, 0.8);
+        }
+
+        /* 번역 결과 표시 바 */
+        .translation-preview {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 11px;
+            color: #94a3b8;
+            display: none;
+            line-height: 1.4;
+        }
+
+        .translation-preview span.label {
+            color: var(--kyanos-gold);
+            font-weight: 600;
+            margin-right: 6px;
         }
 
         /* 스타일 프리셋 그리드 */
@@ -597,8 +615,8 @@
             </div>
         </div>
         <div class="header-tags">
-            <span class="tag-pill active"><i class="fa-solid fa-cube"></i> 오픈소스 기반 (FLUX / SDXL)</span>
-            <span class="tag-pill"><i class="fa-solid fa-bolt"></i> GPU 가속 렌더링</span>
+            <span class="tag-pill active"><i class="fa-solid fa-language"></i> 한국어 정밀 자동번역 탑재</span>
+            <span class="tag-pill"><i class="fa-solid fa-cube"></i> FLUX.1 & SDXL 엔진</span>
             <span class="tag-pill"><i class="fa-solid fa-shield-halved"></i> 100% 무과금 공공 개방</span>
         </div>
     </header>
@@ -615,10 +633,14 @@
             <!-- 프롬프트 입력창 -->
             <div class="form-group">
                 <div class="form-label">
-                    <span>원하는 장면 묘사 (한국어 지원)</span>
-                    <span class="sub">구체적일수록 완성도가 높아집니다</span>
+                    <span>원하는 장면 묘사 (한국어 완벽 지원)</span>
+                    <span class="sub">풍경, 정물, 인물 무엇이든 편하게 입력하세요</span>
                 </div>
-                <textarea id="promptInput" class="prompt-input" placeholder="예: 비 내리는 늦가을 저녁, 따뜻한 찻잔과 창밖의 단풍나무가 놓인 고요한 서재 풍경..."></textarea>
+                <textarea id="promptInput" class="prompt-input" placeholder="예: 비 내리는 늦가을 저녁, 따뜻한 찻잔과 창밖의 단풍나무가 놓인 고요한 서재 풍경...">비 내리는 늦가을 저녁, 따뜻한 찻잔과 창밖의 단풍나무가 놓인 고요한 서재 풍경</textarea>
+                <!-- 번역 미리보기 영역 -->
+                <div id="translationPreview" class="translation-preview">
+                    <span class="label">AI 번역 프롬프트:</span> <span id="translatedText"></span>
+                </div>
             </div>
 
             <!-- 화풍 프리셋 선택 -->
@@ -630,11 +652,11 @@
                 <div class="preset-grid">
                     <div class="preset-btn active" data-style="realism">
                         <span class="name"><i class="fa-solid fa-camera"></i> 초고화질 실사</span>
-                        <span class="desc">35mm 카메라 실사 사진 질감</span>
+                        <span class="desc">정교한 디테일과 자연스러운 조명</span>
                     </div>
                     <div class="preset-btn" data-style="classic_oil">
                         <span class="name"><i class="fa-solid fa-brush"></i> 인문 고전 유화</span>
-                        <span class="desc">렘브란트풍 중후한 붓터치</span>
+                        <span class="desc">렘브란트풍 중후한 유화 터치</span>
                     </div>
                     <div class="preset-btn" data-style="cyberpunk">
                         <span class="name"><i class="fa-solid fa-microchip"></i> 네오 사이버펑크</span>
@@ -675,15 +697,15 @@
                 </div>
                 <select id="modelSelect" class="select-input">
                     <option value="flux" selected>FLUX.1-schnell (Black Forest Labs 차세대 오픈소스)</option>
-                    <option value="sdxl">Stable Diffusion XL Turbo (초고속 실시간 엔진)</option>
+                    <option value="turbo">Stable Diffusion Turbo (초고속 실시간 엔진)</option>
                 </select>
             </div>
 
             <!-- 공공 서비스 안내 -->
             <div class="info-card">
-                <i class="fa-solid fa-circle-info"></i>
+                <i class="fa-solid fa-circle-check"></i>
                 <div class="info-card-text">
-                    키아노스 정부의 공공 지능 정책에 따라 누구나 로그인이나 과금 없이 무료로 이용할 수 있는 오픈소스 기반 창작 엔진입니다.
+                    [한국어 지능형 번역 모듈 탑재] 한글 프롬프트를 AI 엔진이 가장 시각화하기 좋은 영문 프롬프트로 자동 변환하여 정밀 렌더링합니다.
                 </div>
             </div>
 
@@ -711,8 +733,8 @@
                     <!-- 로딩 상태 -->
                     <div id="loadingOverlay" class="loading-overlay">
                         <div class="spinner"></div>
-                        <div class="loading-text">초지능 오픈소스 엔진이 작품을 렌더링하고 있습니다...</div>
-                        <div class="loading-subtext">빛과 구도를 계산하는 중입니다 (약 3~7초 소요)</div>
+                        <div id="loadingMainText" class="loading-text">한국어 프롬프트 번역 및 AI 렌더링 준비 중...</div>
+                        <div id="loadingSubText" class="loading-subtext">장면의 빛과 질감을 계산하고 있습니다 (약 4~8초)</div>
                     </div>
 
                     <!-- 빈 화면 (초기 상태) -->
@@ -769,22 +791,26 @@
         let currentModel = 'flux';
         const historyImages = [];
 
-        // 스타일별 프롬프트 모디파이어 딕셔너리
+        // 인물 편향(35mm lens 등)을 배제한 중립적·품격 높은 화풍 수식어
         const styleModifiers = {
-            realism: "8k resolution, highly detailed, realistic photography, professional 35mm lens, natural cinematic lighting, masterpiece, clean focus, no text overlay, no watermark",
-            classic_oil: "classic oil painting, Rembrandt style, dramatic chiaroscuro, rich deep brush textures, warm golden lighting, timeless fine art museum masterpiece",
-            cyberpunk: "futuristic neo-cyberpunk, neon blue and gold rim lighting, high-tech cinematic scene, sleek sci-fi architectural aesthetic, ultra-detailed 8k",
-            oriental: "traditional Korean ink and wash painting, sumi-e aesthetic, elegant minimal brush strokes, poetic mist, tranquil oriental landscape, artistic masterwork"
+            realism: "photorealistic, highly detailed, atmospheric lighting, beautiful composition, 8k resolution, cinematic aesthetic, masterpiece, sharp focus, no text overlay, no watermark",
+            classic_oil: "masterpiece classic oil painting, fine art museum style, rich textured brush strokes, warm golden chiaroscuro lighting, elegant artistic atmosphere",
+            cyberpunk: "futuristic neo-cyberpunk scene, glowing cyan and gold neon accents, high-tech architectural details, sleek cinematic atmosphere, ultra-detailed 8k",
+            oriental: "traditional Korean ink and wash painting, sumi-e style, graceful black ink strokes, poetic mist, serene peaceful landscape, artistic masterpiece"
         };
 
         // DOM 요소
         const promptInput = document.getElementById('promptInput');
+        const translationPreview = document.getElementById('translationPreview');
+        const translatedText = document.getElementById('translatedText');
         const generateBtn = document.getElementById('generateBtn');
         const resetBtn = document.getElementById('resetBtn');
         const previewBox = document.getElementById('previewBox');
         const emptyState = document.getElementById('emptyState');
         const resultImage = document.getElementById('resultImage');
         const loadingOverlay = document.getElementById('loadingOverlay');
+        const loadingMainText = document.getElementById('loadingMainText');
+        const loadingSubText = document.getElementById('loadingSubText');
         const downloadBtn = document.getElementById('downloadBtn');
         const fullscreenBtn = document.getElementById('fullscreenBtn');
         const metaRes = document.getElementById('metaRes');
@@ -825,8 +851,39 @@
         // 초기화 버튼
         resetBtn.addEventListener('click', () => {
             promptInput.value = '';
+            translationPreview.style.display = 'none';
             promptInput.focus();
         });
+
+        // 한글 감지 함수
+        function containsKorean(text) {
+            return /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/.test(text);
+        }
+
+        // 구글 무료 번역 API (클라이언트단 실시간 한국어 ➔ 영어 자동 변환)
+        async function translateKoreanToEnglish(koreanText) {
+            if (!containsKorean(koreanText)) {
+                return koreanText; // 이미 영어인 경우 그대로 사용
+            }
+            try {
+                const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=ko&tl=en&dt=t&q=${encodeURIComponent(koreanText)}`;
+                const response = await fetch(url);
+                if (!response.ok) throw new Error("Translation network error");
+                const data = await response.json();
+                
+                // 번역 조각 병합
+                let translated = "";
+                if (data && data[0]) {
+                    data[0].forEach(chunk => {
+                        if (chunk[0]) translated += chunk[0];
+                    });
+                }
+                return translated.trim() || koreanText;
+            } catch (err) {
+                console.warn("Translation fallback:", err);
+                return koreanText;
+            }
+        }
 
         // 이미지 생성 핸들러
         generateBtn.addEventListener('click', async () => {
@@ -840,16 +897,32 @@
             // 로딩 시작
             generateBtn.disabled = true;
             loadingOverlay.style.display = 'flex';
+            loadingMainText.innerText = "한국어 프롬프트 번역 및 분석 중...";
+            loadingSubText.innerText = "오픈소스 AI가 정확하게 이해할 수 있도록 변환합니다";
 
             try {
-                // 오픈소스 이미지 합성 프롬프트 구성
+                // 1단계: 한국어 ➔ 영어 실시간 정밀 번역
+                let englishPrompt = rawPrompt;
+                if (containsKorean(rawPrompt)) {
+                    englishPrompt = await translateKoreanToEnglish(rawPrompt);
+                    translatedText.innerText = englishPrompt;
+                    translationPreview.style.display = 'block';
+                } else {
+                    translationPreview.style.display = 'none';
+                }
+
+                loadingMainText.innerText = "초지능 오픈소스 엔진 렌더링 중...";
+                loadingSubText.innerText = "빛과 공간, 질감을 정밀 계산하고 있습니다 (약 4~7초)";
+
+                // 2단계: 최적화된 프롬프트 합성
                 const modifier = styleModifiers[currentStyle] || styleModifiers.realism;
-                const fullPrompt = `${rawPrompt}, ${modifier}`;
+                const fullPrompt = `${englishPrompt}, ${modifier}`;
                 const encodedPrompt = encodeURIComponent(fullPrompt);
                 
-                // 오픈소스 폴리네이션스(Pollinations) 고성능 엔드포인트 연동 (FLUX.1 / SDXL 지원, 완전 무료 개방형)
+                // 3단계: 인물 왜곡을 일으키는 enhance=true 배제 및 시드 부여
                 const seed = Math.floor(Math.random() * 99999999);
-                const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=${currentWidth}&height=${currentHeight}&model=${currentModel}&seed=${seed}&nologo=true&enhance=true`;
+                // enhance=false(왜곡 방지) 적용
+                const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=${currentWidth}&height=${currentHeight}&model=${currentModel}&seed=${seed}&nologo=true`;
 
                 // 이미지 사전 로딩
                 const tempImg = new Image();
@@ -870,11 +943,10 @@
                     fullscreenBtn.style.display = 'inline-flex';
 
                     // 히스토리에 추가
-                    addHistory(imageUrl, rawPrompt);
+                    addHistory(imageUrl, rawPrompt, englishPrompt);
                 };
 
                 tempImg.onerror = () => {
-                    // 오류 시 폴백 또는 알림
                     alert('이미지 렌더링 중 통신 장애가 발생했습니다. 잠시 후 다시 시도해 주십시오.');
                     loadingOverlay.style.display = 'none';
                     generateBtn.disabled = false;
@@ -891,8 +963,8 @@
         });
 
         // 히스토리 썸네일 관리
-        function addHistory(url, prompt) {
-            historyImages.unshift({ url, prompt });
+        function addHistory(url, rawPrompt, engPrompt) {
+            historyImages.unshift({ url, rawPrompt, engPrompt });
             if (historyImages.length > 8) historyImages.pop();
 
             historyThumbnails.innerHTML = '';
@@ -900,7 +972,7 @@
                 const thumb = document.createElement('img');
                 thumb.className = 'history-thumb';
                 thumb.src = item.url;
-                thumb.title = item.prompt;
+                thumb.title = `${item.rawPrompt}\n(${item.engPrompt})`;
                 thumb.addEventListener('click', () => {
                     resultImage.src = item.url;
                     downloadBtn.href = item.url;
