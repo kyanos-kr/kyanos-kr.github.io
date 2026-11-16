@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>키아노스 이미지 스튜디오 | 2D·3D 통합 스튜디오</title>
+    <title>키아노스 이미지 스튜디오 v2.0 | 초지능 2D·3D 통합 스튜디오</title>
     <!-- 구글 폰트 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
     <!-- FontAwesome 아이콘 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Puter.js (선택형 고급 상용 엔진: FLUX.1-pro / GPT-Image-1) -->
+    <script src="https://js.puter.com/v2/" defer></script>
     <style>
         :root {
             --kyanos-deep: #060b14;
@@ -17,6 +19,7 @@
             --kyanos-card-border: rgba(56, 189, 248, 0.2);
             --kyanos-accent: #38bdf8;
             --kyanos-gold: #fbbf24;
+            --kyanos-emerald: #10b981;
             --kyanos-text: #f1f5f9;
             --kyanos-muted: #94a3b8;
             --kyanos-btn-grad: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
@@ -44,12 +47,14 @@
         }
 
         header {
-            padding: 20px 32px;
+            padding: 18px 32px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            background: rgba(6, 11, 20, 0.85);
+            background: rgba(6, 11, 20, 0.88);
             backdrop-filter: blur(12px);
             position: sticky;
             top: 0;
@@ -87,16 +92,33 @@
 
         .brand-title h1 span.eng {
             font-family: 'Cinzel', serif;
-            font-size: 13px;
-            font-weight: 500;
+            font-size: 12px;
+            font-weight: 600;
             color: var(--kyanos-gold);
             letter-spacing: 1.5px;
+        }
+
+        .version-pill {
+            font-size: 10px;
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            padding: 2px 8px;
+            border-radius: 999px;
+            font-weight: 700;
         }
 
         .brand-subtitle {
             font-size: 12px;
             color: var(--kyanos-muted);
             margin-top: 2px;
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
         }
 
         .studio-mode-nav {
@@ -111,7 +133,7 @@
         .mode-tab-btn {
             background: transparent;
             border: none;
-            padding: 8px 18px;
+            padding: 8px 16px;
             color: var(--kyanos-muted);
             font-size: 13px;
             font-weight: 600;
@@ -137,16 +159,16 @@
 
         main {
             flex: 1;
-            max-width: 1400px;
+            max-width: 1440px;
             width: 100%;
             margin: 0 auto;
-            padding: 28px 24px;
+            padding: 26px 24px;
             display: grid;
-            grid-template-columns: 480px 1fr;
-            gap: 28px;
+            grid-template-columns: 500px 1fr;
+            gap: 26px;
         }
 
-        @media (max-width: 1024px) {
+        @media (max-width: 1080px) {
             main {
                 grid-template-columns: 1fr;
             }
@@ -156,18 +178,18 @@
             background: var(--kyanos-card);
             border: 1px solid var(--kyanos-card-border);
             border-radius: 16px;
-            padding: 26px;
+            padding: 24px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 18px;
         }
 
         .panel-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-bottom: 14px;
+            padding-bottom: 12px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
@@ -187,7 +209,7 @@
         .form-group {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 7px;
         }
 
         .form-label {
@@ -196,6 +218,7 @@
             color: #cbd5e1;
             display: flex;
             justify-content: space-between;
+            align-items: center;
         }
 
         .form-label .sub {
@@ -204,43 +227,108 @@
             font-size: 11px;
         }
 
-        textarea.prompt-input {
+        textarea.prompt-input, input.text-input, select.select-input {
             width: 100%;
-            height: 110px;
-            background: rgba(3, 7, 18, 0.6);
+            background: rgba(3, 7, 18, 0.65);
             border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 12px;
-            padding: 14px 16px;
+            border-radius: 10px;
+            padding: 11px 14px;
             color: #f8fafc;
             font-family: inherit;
-            font-size: 14px;
-            line-height: 1.6;
-            resize: none;
+            font-size: 13.5px;
+            line-height: 1.55;
             outline: none;
             transition: all 0.2s;
         }
 
-        textarea.prompt-input:focus {
+        textarea.prompt-input {
+            height: 98px;
+            resize: vertical;
+        }
+
+        textarea.prompt-input:focus, input.text-input:focus, select.select-input:focus {
             border-color: var(--kyanos-accent);
-            box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
-            background: rgba(3, 7, 18, 0.8);
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.22);
+            background: rgba(3, 7, 18, 0.85);
         }
 
-        .translation-preview {
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+        .engine-bar {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .fidelity-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .fidelity-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.09);
             border-radius: 8px;
-            padding: 8px 12px;
-            font-size: 11px;
-            color: #94a3b8;
-            display: none;
-            line-height: 1.4;
+            padding: 8px 10px;
+            color: #cbd5e1;
+            font-size: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: all 0.2s;
         }
 
-        .translation-preview span.label {
+        .fidelity-btn.active {
+            background: rgba(16, 185, 129, 0.14);
+            border-color: var(--kyanos-emerald);
+            color: #34d399;
+            font-weight: 600;
+        }
+
+        .translation-box {
+            background: rgba(2, 6, 23, 0.65);
+            border: 1px solid rgba(251, 191, 36, 0.22);
+            border-radius: 10px;
+            padding: 10px 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .translation-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+        }
+
+        .translation-header span.label {
             color: var(--kyanos-gold);
             font-weight: 600;
-            margin-right: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        textarea.eng-preview-input {
+            width: 100%;
+            min-height: 54px;
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 6px;
+            padding: 8px 10px;
+            color: #e2e8f0;
+            font-family: 'Consolas', monospace;
+            font-size: 12px;
+            line-height: 1.45;
+            resize: vertical;
+            outline: none;
+        }
+
+        textarea.eng-preview-input:focus {
+            border-color: var(--kyanos-gold);
         }
 
         .preset-grid {
@@ -253,7 +341,7 @@
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 10px;
-            padding: 12px;
+            padding: 11px;
             text-align: left;
             cursor: pointer;
             transition: all 0.2s;
@@ -298,7 +386,7 @@
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 8px;
-            padding: 10px 6px;
+            padding: 9px 6px;
             text-align: center;
             font-size: 12px;
             cursor: pointer;
@@ -322,11 +410,25 @@
             font-weight: 600;
         }
 
+        .seed-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--kyanos-muted);
+        }
+
+        .seed-row input[type="number"] {
+            width: 130px;
+            padding: 6px 10px;
+            font-size: 12px;
+        }
+
         .generate-btn {
             background: var(--kyanos-btn-grad);
             border: none;
             border-radius: 12px;
-            padding: 16px 20px;
+            padding: 15px 20px;
             color: white;
             font-size: 15px;
             font-weight: 700;
@@ -356,7 +458,7 @@
         #mode3DContainer {
             display: none;
             flex-direction: column;
-            gap: 18px;
+            gap: 16px;
         }
 
         .viewer-panel {
@@ -367,7 +469,7 @@
 
         .preview-box {
             flex: 1;
-            min-height: 480px;
+            min-height: 500px;
             background: rgba(3, 7, 18, 0.5);
             border: 2px dashed rgba(255, 255, 255, 0.1);
             border-radius: 16px;
@@ -382,13 +484,13 @@
 
         .preview-box.has-image {
             border-style: solid;
-            border-color: rgba(56, 189, 248, 0.3);
-            background: #000;
+            border-color: rgba(56, 189, 248, 0.35);
+            background: #020617;
         }
 
         .preview-image {
             max-width: 100%;
-            max-height: 580px;
+            max-height: 600px;
             object-fit: contain;
             border-radius: 8px;
             box-shadow: 0 12px 32px rgba(0, 0, 0, 0.8);
@@ -418,21 +520,23 @@
 
         .empty-state p.sub-text {
             font-size: 13px;
-            max-width: 320px;
+            max-width: 340px;
             line-height: 1.5;
         }
 
         .loading-overlay {
             position: absolute;
             inset: 0;
-            background: rgba(6, 11, 20, 0.85);
+            background: rgba(6, 11, 20, 0.88);
             backdrop-filter: blur(8px);
             display: none;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 16px;
+            gap: 14px;
             z-index: 20;
+            padding: 20px;
+            text-align: center;
         }
 
         .spinner {
@@ -449,7 +553,7 @@
         }
 
         .loading-text {
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 600;
             color: var(--kyanos-accent);
         }
@@ -457,13 +561,15 @@
         .loading-subtext {
             font-size: 12px;
             color: var(--kyanos-muted);
+            max-width: 420px;
+            line-height: 1.5;
         }
 
         .tool-btn {
             background: rgba(255, 255, 255, 0.06);
             border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 8px;
-            padding: 8px 14px;
+            padding: 7px 12px;
             font-size: 12px;
             font-weight: 600;
             color: #e2e8f0;
@@ -492,6 +598,17 @@
             color: #000;
         }
 
+        .tool-btn.gold {
+            background: rgba(251, 191, 36, 0.14);
+            border-color: rgba(251, 191, 36, 0.4);
+            color: var(--kyanos-gold);
+        }
+
+        .tool-btn.gold:hover {
+            background: var(--kyanos-gold);
+            color: #000;
+        }
+
         .tool-btn.danger {
             background: rgba(239, 68, 68, 0.15);
             border-color: rgba(239, 68, 68, 0.3);
@@ -507,7 +624,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 14px 18px;
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 12px;
@@ -517,13 +636,14 @@
             font-size: 12px;
             color: var(--kyanos-muted);
             display: flex;
+            flex-wrap: wrap;
             gap: 14px;
         }
 
         .history-section {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
         }
 
         .history-header {
@@ -550,8 +670,8 @@
 
         .history-card {
             position: relative;
-            width: 80px;
-            height: 80px;
+            width: 84px;
+            height: 84px;
             flex-shrink: 0;
             border-radius: 8px;
             overflow: hidden;
@@ -595,26 +715,72 @@
             opacity: 1;
         }
 
-        .history-delete-btn:hover {
-            background: #ef4444;
-            color: white;
-        }
-
-        /* 쿨다운 카운트다운 배너 */
-        .cooldown-alert {
-            background: rgba(245, 158, 11, 0.1);
-            border: 1px solid rgba(245, 158, 11, 0.3);
-            border-radius: 12px;
+        .status-banner {
+            background: rgba(14, 165, 233, 0.08);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            border-radius: 10px;
             padding: 10px 14px;
             display: none;
             align-items: center;
             gap: 10px;
             font-size: 12px;
+            color: #7dd3fc;
+        }
+
+        .status-banner.warn {
+            background: rgba(245, 158, 11, 0.1);
+            border-color: rgba(245, 158, 11, 0.35);
             color: var(--kyanos-gold);
         }
 
+        .status-banner.error {
+            background: rgba(239, 68, 68, 0.1);
+            border-color: rgba(239, 68, 68, 0.35);
+            color: #fca5a5;
+        }
+
+        /* 모달 */
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.72);
+            backdrop-filter: blur(6px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            padding: 20px;
+        }
+
+        .modal-card {
+            background: #0f172a;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 16px;
+            max-width: 520px;
+            width: 100%;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-card h3 {
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--kyanos-accent);
+        }
+
+        .modal-card p.hint {
+            font-size: 12px;
+            color: var(--kyanos-muted);
+            line-height: 1.5;
+        }
+
         footer {
-            padding: 20px 32px;
+            padding: 18px 32px;
             text-align: center;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             font-size: 12px;
@@ -631,17 +797,22 @@
                 <i class="fa-solid fa-wand-magic-sparkles"></i>
             </div>
             <div class="brand-title">
-                <h1>키아노스 이미지 스튜디오 <span class="eng">KYANOS IMAGE STUDIO</span></h1>
-                <div class="brand-subtitle">키아노스 정부 과학·SI부 공공 지능 미디어 융합 창작실</div>
+                <h1>키아노스 이미지 스튜디오 <span class="version-pill">v2.0 FLUX-DIRECT</span> <span class="eng">KYANOS IMAGE STUDIO</span></h1>
+                <div class="brand-subtitle">초지능 정밀 프롬프트 파이프라인 · 다중 엔진 무결점 렌더링</div>
             </div>
         </div>
 
-        <div class="studio-mode-nav">
-            <button id="tab2D" class="mode-tab-btn active">
-                <i class="fa-solid fa-paintbrush"></i> 2D 회화·풍경 스튜디오
-            </button>
-            <button id="tab3D" class="mode-tab-btn">
-                <i class="fa-solid fa-cube"></i> 3D 입체·목업 스튜디오 (신설)
+        <div class="header-controls">
+            <div class="studio-mode-nav">
+                <button id="tab2D" class="mode-tab-btn active">
+                    <i class="fa-solid fa-paintbrush"></i> 2D 회화·풍경 스튜디오
+                </button>
+                <button id="tab3D" class="mode-tab-btn">
+                    <i class="fa-solid fa-cube"></i> 3D 입체·목업 스튜디오
+                </button>
+            </div>
+            <button id="openSettingsBtn" class="tool-btn gold" title="고급 엔진 및 API 키 설정">
+                <i class="fa-solid fa-sliders"></i> 엔진 설정
             </button>
         </div>
     </header>
@@ -649,20 +820,38 @@
     <main>
         <section class="panel">
             <div class="panel-header">
-                <h2 id="panelModeTitle"><i class="fa-solid fa-sliders"></i> 2D 회화 설정 (Prompt & Style)</h2>
+                <h2 id="panelModeTitle"><i class="fa-solid fa-sliders"></i> 2D 회화 설정 (Prompt &amp; Style)</h2>
                 <button class="tool-btn" id="resetBtn" title="프롬프트 초기화"><i class="fa-solid fa-rotate-left"></i> 비우기</button>
             </div>
 
-            <div id="mode2DContainer" style="display: flex; flex-direction: column; gap: 18px;">
+            <!-- 렌더링 엔진 선택 -->
+            <div class="form-group">
+                <div class="form-label">
+                    <span>렌더링 엔진 선택</span>
+                    <span class="sub" id="engineStatusTag">무인증 직통 가동 중</span>
+                </div>
+                <div class="engine-bar">
+                    <select id="engineSelect" class="select-input">
+                        <option value="hf_flux_schnell">⚡ FLUX.1-schnell (공식 무료·초고속 정밀)</option>
+                        <option value="puter_flux_pro">💎 Puter FLUX.1-pro (초고화질·무료계정)</option>
+                        <option value="puter_gpt_image">🎨 Puter GPT-Image-1 (문맥·텍스트 최강)</option>
+                        <option value="gemini_imagen">🌟 Google Gemini Imagen 3 (API 키 필요)</option>
+                        <option value="hf_api_dev">🔧 HuggingFace FLUX.1-dev (토큰 필요)</option>
+                    </select>
+                    <button id="testTranslateBtn" class="tool-btn" title="한국어 입력을 영문 프롬프트로 미리 번역합니다">
+                        <i class="fa-solid fa-language"></i> 미리번역
+                    </button>
+                </div>
+            </div>
+
+            <!-- 2D 모드 컨테이너 -->
+            <div id="mode2DContainer" style="display: flex; flex-direction: column; gap: 16px;">
                 <div class="form-group">
                     <div class="form-label">
-                        <span>원하는 장면 묘사 (한국어 완벽 지원)</span>
-                        <span class="sub">풍경, 정물, 감성 예술</span>
+                        <span>원하는 장면 묘사 (한국어 정밀 인식)</span>
+                        <span class="sub">구체적일수록 정확히 반영됩니다</span>
                     </div>
-                    <textarea id="promptInput" class="prompt-input" placeholder="예: 비 내리는 늦가을 저녁, 따뜻한 찻잔과 창밖의 단풍나무가 놓인 고요한 서재 풍경...">비 내리는 늦가을 저녁, 따뜻한 찻잔과 창밖의 단풍나무가 놓인 고요한 서재 풍경</textarea>
-                    <div id="translationPreview" class="translation-preview">
-                        <span class="label">AI 번역 프롬프트:</span> <span id="translatedText"></span>
-                    </div>
+                    <textarea id="promptInput" class="prompt-input" placeholder="예: 비 내리는 늦가을 저녁, 원목 책상 위의 따뜻한 김이 피어오르는 찻잔, 창밖의 붉은 단풍나무, 고요한 서재 풍경">비 내리는 늦가을 저녁, 원목 책상 위의 따뜻한 김이 피어오르는 찻잔, 창밖의 붉은 단풍나무, 고요한 서재 풍경</textarea>
                 </div>
 
                 <div class="form-group">
@@ -672,15 +861,15 @@
                     <div class="preset-grid">
                         <div class="preset-btn active" data-style="realism">
                             <span class="name"><i class="fa-solid fa-camera"></i> 초고화질 실사</span>
-                            <span class="desc">정교한 디테일과 자연광 조명</span>
+                            <span class="desc">35mm 자연광 포토그래피</span>
                         </div>
                         <div class="preset-btn" data-style="classic_oil">
                             <span class="name"><i class="fa-solid fa-brush"></i> 인문 고전 유화</span>
-                            <span class="desc">렘브란트풍 중후한 유화 터치</span>
+                            <span class="desc">중후한 유화 붓터치와 명암</span>
                         </div>
                         <div class="preset-btn" data-style="cyberpunk">
                             <span class="name"><i class="fa-solid fa-microchip"></i> 네오 사이버펑크</span>
-                            <span class="desc">네온 조명과 미래형 SF 감성</span>
+                            <span class="desc">시안·골드 네온 미래 도시</span>
                         </div>
                         <div class="preset-btn" data-style="oriental">
                             <span class="name"><i class="fa-solid fa-feather"></i> 한국 전통 수묵담채</span>
@@ -698,7 +887,7 @@
                             <i class="fa-solid fa-tv"></i>
                             <span>16:9 와이드</span>
                         </div>
-                        <div class="aspect-btn" data-ratio="1:1" data-w="768" data-h="768">
+                        <div class="aspect-btn" data-ratio="1:1" data-w="1024" data-h="1024">
                             <i class="fa-solid fa-square"></i>
                             <span>1:1 정방형</span>
                         </div>
@@ -710,6 +899,7 @@
                 </div>
             </div>
 
+            <!-- 3D 모드 컨테이너 -->
             <div id="mode3DContainer">
                 <div class="form-group">
                     <div class="form-label">
@@ -719,7 +909,7 @@
                     <div class="preset-grid">
                         <div class="preset-btn active" data-3d-type="book">
                             <span class="name"><i class="fa-solid fa-book-bookmark"></i> 양장본 3D 도서</span>
-                            <span class="desc">고급 가죽 양장본 책 입체 목업</span>
+                            <span class="desc">고급 가죽 양장본 입체 목업</span>
                         </div>
                         <div class="preset-btn" data-3d-type="coin">
                             <span class="name"><i class="fa-solid fa-coins"></i> 키아노스 골드 주화</span>
@@ -727,7 +917,7 @@
                         </div>
                         <div class="preset-btn" data-3d-type="device">
                             <span class="name"><i class="fa-solid fa-tablet-screen-button"></i> 디지털 디바이스</span>
-                            <span class="desc">미니멀 스마트폰·태블릿 렌더</span>
+                            <span class="desc">미니멀 태블릿·스마트폰 렌더</span>
                         </div>
                         <div class="preset-btn" data-3d-type="emblem">
                             <span class="name"><i class="fa-solid fa-shield"></i> 사파이어 입체 국장</span>
@@ -738,22 +928,62 @@
 
                 <div class="form-group">
                     <div class="form-label">
-                        <span>3D 표지/제목 문구 묘사</span>
-                        <span class="sub">입체 표면에 각인할 내용</span>
+                        <span>3D 오브젝트 · 배경 · 재질 묘사</span>
                     </div>
-                    <textarea id="prompt3DInput" class="prompt-input" placeholder="예: '가을 그리고 차 한잔' 시집 표지, 우아한 금박 타이포그래피와 다크 블루 가죽 질감...">가을 그리고 차 한잔, 우아한 금박 타이포그래피와 짙은 네이비 가죽 질감의 양장본 도서 목업</textarea>
+                    <textarea id="prompt3DInput" class="prompt-input" placeholder="예: 짙은 네이비 가죽 양장본 책, 금박 테두리 장식, 따뜻한 서재 원목 테이블 위에 놓인 입체 구도">짙은 네이비 가죽 양장본 책, 섬세한 금박 테두리 장식, 따뜻한 서재 원목 테이블 위에 놓인 입체 구도</textarea>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-label">
+                        <span>표면 각인 문구 (선택 사항 · 영문 권장)</span>
+                        <span class="sub">비우면 문구 없이 순수 조형으로 렌더링</span>
+                    </div>
+                    <input type="text" id="engraveTextInput" class="text-input" placeholder="예: AUTUMN & TEA (영문 입력 시 표지에 선명히 각인)">
                 </div>
             </div>
 
-            <!-- 대기 타이머 알림 배너 -->
-            <div id="cooldownAlert" class="cooldown-alert">
-                <i class="fa-solid fa-hourglass-half"></i>
-                <span id="cooldownText">공공 서버의 안정적 품질 유지를 위해 잠시 대기 중입니다.</span>
+            <!-- 프롬프트 반영 방식 & 번역 프리뷰 -->
+            <div class="form-group">
+                <div class="form-label">
+                    <span>프롬프트 반영 방식</span>
+                    <span class="sub">원문 충실도 제어</span>
+                </div>
+                <div class="fidelity-row">
+                    <button id="fidelityStrictBtn" class="fidelity-btn active" data-fidelity="strict">
+                        <i class="fa-solid fa-bullseye"></i> 원문 100% 충실 (추천)
+                    </button>
+                    <button id="fidelityEnhancedBtn" class="fidelity-btn" data-fidelity="enhanced">
+                        <i class="fa-solid fa-sparkles"></i> 시네마틱 디테일 보강
+                    </button>
+                </div>
+            </div>
+
+            <div class="translation-box">
+                <div class="translation-header">
+                    <span class="label"><i class="fa-solid fa-microchip"></i> 엔진 전달용 최종 영문 프롬프트 (직접 수정 가능)</span>
+                    <span id="translateSourceBadge" style="color: var(--kyanos-muted);">자동 번역 대기</span>
+                </div>
+                <textarea id="engPreviewInput" class="eng-preview-input" placeholder="[미리번역] 또는 [생성]을 누르면 정확한 영문 프롬프트가 표시됩니다. 직접 영문을 수정할 수도 있습니다."></textarea>
+            </div>
+
+            <!-- 시드 제어 -->
+            <div class="seed-row">
+                <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+                    <input type="checkbox" id="lockSeedCheckbox"> 시드(Seed) 고정:
+                </label>
+                <input type="number" id="seedInput" class="text-input" value="0" min="0" max="2147483647" disabled>
+                <span id="lastSeedLabel" style="margin-left:auto; font-size:11px;"></span>
+            </div>
+
+            <!-- 상태 알림 배너 -->
+            <div id="statusBanner" class="status-banner">
+                <i class="fa-solid fa-circle-info"></i>
+                <span id="statusBannerText"></span>
             </div>
 
             <button id="generateBtn" class="generate-btn">
                 <i class="fa-solid fa-wand-magic-sparkles"></i>
-                <span id="generateBtnText">이미지 즉시 창작 (Generate)</span>
+                <span id="generateBtnText">2D 예술 창작 (Generate)</span>
             </button>
         </section>
 
@@ -761,11 +991,14 @@
             <div class="panel" style="flex: 1;">
                 <div class="panel-header">
                     <h2><i class="fa-solid fa-image"></i> 완성된 작품 캔버스</h2>
-                    <div class="action-btns" style="display: flex; gap: 8px;">
-                        <button id="clearCanvasBtn" class="tool-btn danger" style="display: none;" title="현재 캔버스를 비우고 초기화합니다">
-                            <i class="fa-solid fa-trash-can"></i> 캔버스 비우기
+                    <div class="action-btns" style="display: flex; gap: 8px; flex-wrap: wrap;">
+                        <button id="rerollBtn" class="tool-btn" style="display: none;" title="같은 프롬프트에 새 시드로 다시 생성">
+                            <i class="fa-solid fa-dice"></i> 다시 그리기
                         </button>
-                        <a id="downloadBtn" class="tool-btn primary" href="#" download="kyanos_studio.jpg" style="display: none;">
+                        <button id="clearCanvasBtn" class="tool-btn danger" style="display: none;" title="현재 캔버스를 비웁니다">
+                            <i class="fa-solid fa-trash-can"></i> 비우기
+                        </button>
+                        <a id="downloadBtn" class="tool-btn primary" href="#" download="kyanos_studio.png" style="display: none;">
                             <i class="fa-solid fa-download"></i> 고화질 저장
                         </a>
                     </div>
@@ -775,13 +1008,13 @@
                     <div id="loadingOverlay" class="loading-overlay">
                         <div class="spinner"></div>
                         <div id="loadingMainText" class="loading-text">지능형 렌더링 엔진 가동 중...</div>
-                        <div id="loadingSubText" class="loading-subtext">장면의 빛과 질감을 계산하고 있습니다 (약 4~7초)</div>
+                        <div id="loadingSubText" class="loading-subtext">프롬프트를 정밀 분석하여 고화질 이미지를 생성하고 있습니다.</div>
                     </div>
 
                     <div id="emptyState" class="empty-state">
                         <i class="fa-solid fa-compass-drafting"></i>
                         <p class="main-text">캔버스가 비어 있습니다</p>
-                        <p class="sub-text">좌측에서 설정을 마치고 [이미지 즉시 창작] 버튼을 누르면 고화질 작품이 렌더링됩니다.</p>
+                        <p class="sub-text">좌측에서 장면을 묘사하고 [창작] 버튼을 누르면 한국어를 정밀 해석하여 고화질 작품을 생성합니다.</p>
                     </div>
 
                     <img id="resultImage" class="preview-image" alt="키아노스 완성 작품">
@@ -790,7 +1023,8 @@
                 <div class="viewer-actions">
                     <div class="image-meta">
                         <span id="metaRes"><i class="fa-solid fa-expand"></i> 해상도: 1024 × 576 px (16:9)</span>
-                        <span id="metaStyle"><i class="fa-solid fa-paintbrush"></i> 모드: 2D 초고화질 실사</span>
+                        <span id="metaStyle"><i class="fa-solid fa-paintbrush"></i> 화풍: 2D 초고화질 실사</span>
+                        <span id="metaEngine"><i class="fa-solid fa-server"></i> 엔진: FLUX.1-schnell</span>
                     </div>
                     <div class="action-btns">
                         <button id="fullscreenBtn" class="tool-btn" style="display: none;">
@@ -814,47 +1048,115 @@
         </section>
     </main>
 
+    <!-- 엔진 / API 설정 모달 -->
+    <div id="settingsModal" class="modal-backdrop">
+        <div class="modal-card">
+            <h3><i class="fa-solid fa-sliders"></i> 키아노스 고급 엔진 및 API 설정</h3>
+            <p class="hint">
+                기본 엔진(<strong>FLUX.1-schnell</strong> 및 <strong>Puter</strong>)은 별도 API 키 없이 즉시 동작합니다.<br>
+                더 높은 상용 화질이 필요하실 경우, 아래에 개인 API 키를 입력하시면 브라우저 내부(localStorage)에만 안전하게 저장되어 직통 연결됩니다.
+            </p>
+            <div class="form-group">
+                <div class="form-label"><span>Google Gemini API Key (Imagen 3용)</span></div>
+                <input type="password" id="geminiKeyInput" class="text-input" placeholder="AIza...">
+            </div>
+            <div class="form-group">
+                <div class="form-label"><span>Hugging Face Access Token (FLUX.1-dev용)</span></div>
+                <input type="password" id="hfTokenInput" class="text-input" placeholder="hf_...">
+            </div>
+            <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:6px;">
+                <button id="closeSettingsBtn" class="tool-btn">닫기</button>
+                <button id="saveSettingsBtn" class="tool-btn primary">설정 저장</button>
+            </div>
+        </div>
+    </div>
+
     <footer>
-        <p>© 2026 KYANOS GOVERNMENT. MINISTRY OF SCIENCE & SUPER INTELLIGENCE. ALL RIGHTS RESERVED.</p>
-        <p style="margin-top: 4px; color: #64748b;">국민 누구나 자유롭게 향유하는 키아노스 덕치 문화 공공 인프라</p>
+        <p>© 2026 KYANOS GOVERNMENT. MINISTRY OF SCIENCE &amp; SUPER INTELLIGENCE. ALL RIGHTS RESERVED.</p>
+        <p style="margin-top: 4px; color: #64748b;">키아노스 이미지 스튜디오 v2.0 — 프롬프트 정밀 반영 &amp; 다중 초지능 엔진 통합 플랫폼</p>
     </footer>
 
-    <script>
+    <script type="module">
+        import { Client } from "https://cdn.jsdelivr.net/npm/@gradio/client/dist/index.min.js";
+
+        // 상태 변수
         let activeMode = '2d';
         let currentStyle = 'realism';
         let current3DType = 'book';
         let currentWidth = 1024;
         let currentHeight = 576;
+        let currentRatio = '16:9';
+        let currentFidelity = 'strict'; // 'strict' | 'enhanced'
         let historyImages = [];
         let cooldownTimer = null;
         let remainingSeconds = 0;
+        let gradioClientPromise = null;
+        let lastTranslatedSource = '';
 
+        // FLUX-Native 스타일 모디파이어 (부정어 'no text' 등 역효과 키워드 완전 제거)
         const styleModifiers2D = {
-            realism: "photorealistic, highly detailed, atmospheric lighting, beautiful composition, 8k resolution, cinematic aesthetic, masterpiece, sharp focus, no text overlay, no watermark",
-            classic_oil: "masterpiece classic oil painting, fine art museum style, rich textured brush strokes, warm golden chiaroscuro lighting, elegant artistic atmosphere",
-            cyberpunk: "futuristic neo-cyberpunk scene, glowing cyan and gold neon accents, high-tech architectural details, sleek cinematic atmosphere, ultra-detailed 8k",
-            oriental: "traditional Korean ink and wash painting, sumi-e style, graceful black ink strokes, poetic mist, serene peaceful landscape, artistic masterpiece"
+            realism: {
+                strict: "natural photography, 35mm lens, sharp focus",
+                enhanced: "photorealistic 35mm photograph, natural soft lighting, rich authentic textures, shallow depth of field, cinematic composition"
+            },
+            classic_oil: {
+                strict: "classic oil painting on canvas, fine art brushwork",
+                enhanced: "masterpiece classic oil painting on canvas, rich impasto brush strokes, warm chiaroscuro lighting, museum fine art aesthetic"
+            },
+            cyberpunk: {
+                strict: "cyberpunk digital art, neon cyan and amber lighting",
+                enhanced: "futuristic neo-cyberpunk scene, glowing cyan and gold neon reflections, intricate sci-fi architecture, atmospheric rain haze"
+            },
+            oriental: {
+                strict: "traditional Korean ink wash painting, sumi-e on hanji paper",
+                enhanced: "traditional Korean ink and light color wash painting, sumi-e on textured hanji paper, poetic mountain mist, graceful negative space"
+            }
         };
 
         const styleModifiers3D = {
-            book: "3D hardcover book mockup render, elegant luxury leather texture, isometric perspective, premium gold foil debossed typography on cover, soft studio shadow, octane render 8k",
-            coin: "3D commemorative golden coin render, metallic gold reflection, highly detailed relief engraving, isometric macro lens, studio lighting, Raytracing Cycles 8k",
-            device: "3D modern digital device tablet mockup, sleek minimalist glass and aluminum finish, isometric studio setup, clean ambient occlusion, 8k render",
-            emblem: "3D royal metallic shield emblem, sapphire and gold materials, ornate intricate crest, dramatic studio rim lighting, cinematic 3D asset 8k"
+            book: {
+                strict: "3D hardcover book mockup, isometric product photography, soft studio lighting",
+                enhanced: "3D luxury hardcover book mockup render, fine textured binding, isometric angle, soft diffused studio shadows, crisp product render"
+            },
+            coin: {
+                strict: "3D commemorative gold coin render, macro studio lighting",
+                enhanced: "3D commemorative metallic gold coin render, intricate relief engraving, realistic specular reflection, dark studio backdrop"
+            },
+            device: {
+                strict: "3D sleek tablet and smartphone mockup, minimalist studio setup",
+                enhanced: "3D modern minimalist tablet device mockup, brushed aluminum and glass finish, clean studio lighting, soft ambient shadows"
+            },
+            emblem: {
+                strict: "3D metallic shield emblem, sapphire and gold, studio rim lighting",
+                enhanced: "3D royal metallic shield crest emblem, polished sapphire and brushed gold materials, dramatic studio rim lighting"
+            }
         };
 
+        // DOM 요소
         const tab2D = document.getElementById('tab2D');
         const tab3D = document.getElementById('tab3D');
         const mode2DContainer = document.getElementById('mode2DContainer');
         const mode3DContainer = document.getElementById('mode3DContainer');
         const panelModeTitle = document.getElementById('panelModeTitle');
+        const engineSelect = document.getElementById('engineSelect');
+        const engineStatusTag = document.getElementById('engineStatusTag');
         const promptInput = document.getElementById('promptInput');
         const prompt3DInput = document.getElementById('prompt3DInput');
-        const translationPreview = document.getElementById('translationPreview');
-        const translatedText = document.getElementById('translatedText');
+        const engraveTextInput = document.getElementById('engraveTextInput');
+        const engPreviewInput = document.getElementById('engPreviewInput');
+        const translateSourceBadge = document.getElementById('translateSourceBadge');
+        const testTranslateBtn = document.getElementById('testTranslateBtn');
+        const fidelityStrictBtn = document.getElementById('fidelityStrictBtn');
+        const fidelityEnhancedBtn = document.getElementById('fidelityEnhancedBtn');
+        const lockSeedCheckbox = document.getElementById('lockSeedCheckbox');
+        const seedInput = document.getElementById('seedInput');
+        const lastSeedLabel = document.getElementById('lastSeedLabel');
+        const statusBanner = document.getElementById('statusBanner');
+        const statusBannerText = document.getElementById('statusBannerText');
         const generateBtn = document.getElementById('generateBtn');
         const generateBtnText = document.getElementById('generateBtnText');
         const resetBtn = document.getElementById('resetBtn');
+        const rerollBtn = document.getElementById('rerollBtn');
         const previewBox = document.getElementById('previewBox');
         const emptyState = document.getElementById('emptyState');
         const resultImage = document.getElementById('resultImage');
@@ -867,11 +1169,42 @@
         const clearAllHistoryBtn = document.getElementById('clearAllHistoryBtn');
         const metaRes = document.getElementById('metaRes');
         const metaStyle = document.getElementById('metaStyle');
+        const metaEngine = document.getElementById('metaEngine');
         const historyThumbnails = document.getElementById('historyThumbnails');
         const historyCount = document.getElementById('historyCount');
-        const cooldownAlert = document.getElementById('cooldownAlert');
-        const cooldownText = document.getElementById('cooldownText');
 
+        // 설정 모달
+        const settingsModal = document.getElementById('settingsModal');
+        const openSettingsBtn = document.getElementById('openSettingsBtn');
+        const closeSettingsBtn = document.getElementById('closeSettingsBtn');
+        const saveSettingsBtn = document.getElementById('saveSettingsBtn');
+        const geminiKeyInput = document.getElementById('geminiKeyInput');
+        const hfTokenInput = document.getElementById('hfTokenInput');
+
+        // 저장된 API 키 로드
+        geminiKeyInput.value = localStorage.getItem('kyanos_gemini_key') || '';
+        hfTokenInput.value = localStorage.getItem('kyanos_hf_token') || '';
+
+        openSettingsBtn.addEventListener('click', () => settingsModal.style.display = 'flex');
+        closeSettingsBtn.addEventListener('click', () => settingsModal.style.display = 'none');
+        saveSettingsBtn.addEventListener('click', () => {
+            localStorage.setItem('kyanos_gemini_key', geminiKeyInput.value.trim());
+            localStorage.setItem('kyanos_hf_token', hfTokenInput.value.trim());
+            settingsModal.style.display = 'none';
+            showBanner('API 키 설정이 브라우저에 안전하게 저장되었습니다.', 'info');
+        });
+
+        function showBanner(msg, type = 'info') {
+            statusBanner.className = 'status-banner' + (type === 'warn' ? ' warn' : type === 'error' ? ' error' : '');
+            statusBannerText.innerText = msg;
+            statusBanner.style.display = 'flex';
+        }
+
+        function hideBanner() {
+            statusBanner.style.display = 'none';
+        }
+
+        // 탭 전환
         tab2D.addEventListener('click', () => {
             activeMode = '2d';
             tab2D.classList.add('active');
@@ -880,7 +1213,9 @@
             mode3DContainer.style.display = 'none';
             panelModeTitle.innerHTML = `<i class="fa-solid fa-sliders"></i> 2D 회화 설정 (Prompt & Style)`;
             if (remainingSeconds <= 0) generateBtnText.innerText = "2D 예술 창작 (Generate)";
-            metaStyle.innerHTML = `<i class="fa-solid fa-paintbrush"></i> 모드: 2D 초고화질 실사`;
+            metaStyle.innerHTML = `<i class="fa-solid fa-paintbrush"></i> 화풍: 2D ${document.querySelector('#mode2DContainer .preset-btn.active .name').innerText.trim()}`;
+            engPreviewInput.value = '';
+            lastTranslatedSource = '';
         });
 
         tab3D.addEventListener('click', () => {
@@ -891,9 +1226,25 @@
             mode3DContainer.style.display = 'flex';
             panelModeTitle.innerHTML = `<i class="fa-solid fa-cube"></i> 3D 입체 설정 (3D Mockup Asset)`;
             if (remainingSeconds <= 0) generateBtnText.innerText = "3D 입체 렌더링 (Render 3D)";
-            metaStyle.innerHTML = `<i class="fa-solid fa-cube"></i> 모드: 3D 양장본 목업`;
+            metaStyle.innerHTML = `<i class="fa-solid fa-cube"></i> 모드: 3D ${document.querySelector('#mode3DContainer .preset-btn.active .name').innerText.trim()}`;
+            engPreviewInput.value = '';
+            lastTranslatedSource = '';
         });
 
+        // 엔진 변경 표시
+        engineSelect.addEventListener('change', () => {
+            const label = engineSelect.options[engineSelect.selectedIndex].text.split('(')[0].trim();
+            metaEngine.innerHTML = `<i class="fa-solid fa-server"></i> 엔진: ${label}`;
+            if (engineSelect.value === 'hf_flux_schnell') {
+                engineStatusTag.innerText = '무인증 직통 가동 중';
+            } else if (engineSelect.value.startsWith('puter_')) {
+                engineStatusTag.innerText = 'Puter 무료 계정 연동';
+            } else {
+                engineStatusTag.innerText = 'API 키 직통 모드';
+            }
+        });
+
+        // 프리셋 선택
         document.querySelectorAll('#mode2DContainer .preset-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('#mode2DContainer .preset-btn').forEach(b => b.classList.remove('active'));
@@ -918,19 +1269,39 @@
                 btn.classList.add('active');
                 currentWidth = parseInt(btn.getAttribute('data-w'));
                 currentHeight = parseInt(btn.getAttribute('data-h'));
-                metaRes.innerHTML = `<i class="fa-solid fa-expand"></i> 해상도: ${currentWidth} × ${currentHeight} px (${btn.getAttribute('data-ratio')})`;
+                currentRatio = btn.getAttribute('data-ratio');
+                metaRes.innerHTML = `<i class="fa-solid fa-expand"></i> 해상도: ${currentWidth} × ${currentHeight} px (${currentRatio})`;
             });
+        });
+
+        // 충실도 토글
+        [fidelityStrictBtn, fidelityEnhancedBtn].forEach(btn => {
+            btn.addEventListener('click', () => {
+                fidelityStrictBtn.classList.remove('active');
+                fidelityEnhancedBtn.classList.remove('active');
+                btn.classList.add('active');
+                currentFidelity = btn.getAttribute('data-fidelity');
+            });
+        });
+
+        // 시드 고정 체크박스
+        lockSeedCheckbox.addEventListener('change', () => {
+            seedInput.disabled = !lockSeedCheckbox.checked;
         });
 
         resetBtn.addEventListener('click', () => {
             if (activeMode === '2d') {
                 promptInput.value = '';
-                translationPreview.style.display = 'none';
                 promptInput.focus();
             } else {
                 prompt3DInput.value = '';
+                engraveTextInput.value = '';
                 prompt3DInput.focus();
             }
+            engPreviewInput.value = '';
+            lastTranslatedSource = '';
+            translateSourceBadge.innerText = '자동 번역 대기';
+            hideBanner();
         });
 
         clearCanvasBtn.addEventListener('click', () => {
@@ -941,6 +1312,7 @@
             clearCanvasBtn.style.display = 'none';
             downloadBtn.style.display = 'none';
             fullscreenBtn.style.display = 'none';
+            rerollBtn.style.display = 'none';
         });
 
         clearAllHistoryBtn.addEventListener('click', () => {
@@ -950,128 +1322,284 @@
             }
         });
 
+        // 한국어 포함 여부
         function containsKorean(text) {
             return /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/.test(text);
         }
 
+        // 다중 번역 폴백 체인 (MyMemory -> Google GTX)
         async function translateKoreanToEnglish(koreanText) {
-            if (!containsKorean(koreanText)) return koreanText;
-            try {
-                const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=ko&tl=en&dt=t&q=${encodeURIComponent(koreanText)}`;
-                const response = await fetch(url);
-                if (!response.ok) throw new Error("Translation network error");
-                const data = await response.json();
-                let translated = "";
-                if (data && data[0]) {
-                    data[0].forEach(chunk => { if (chunk[0]) translated += chunk[0]; });
-                }
-                return translated.trim() || koreanText;
-            } catch (err) {
-                console.warn("Translation fallback:", err);
+            if (!containsKorean(koreanText)) {
+                translateSourceBadge.innerText = '영문 원문 직접 사용';
                 return koreanText;
             }
+
+            // 1순위: MyMemory API (안정적 CORS & 문맥 번역)
+            try {
+                const url1 = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(koreanText)}&langpair=ko|en`;
+                const res1 = await fetch(url1);
+                if (res1.ok) {
+                    const data1 = await res1.json();
+                    const text1 = data1?.responseData?.translatedText;
+                    if (text1 && !containsKorean(text1) && !text1.includes('MYMEMORY WARNING')) {
+                        translateSourceBadge.innerText = 'MyMemory 정밀 번역 완료';
+                        return text1.trim();
+                    }
+                }
+            } catch (e) {
+                console.warn('MyMemory fallback:', e);
+            }
+
+            // 2순위: Google Translate GTX
+            try {
+                const url2 = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=ko&tl=en&dt=t&q=${encodeURIComponent(koreanText)}`;
+                const res2 = await fetch(url2);
+                if (res2.ok) {
+                    const data2 = await res2.json();
+                    let translated = '';
+                    if (data2 && data2[0]) {
+                        data2[0].forEach(chunk => { if (chunk[0]) translated += chunk[0]; });
+                    }
+                    if (translated.trim() && !containsKorean(translated)) {
+                        translateSourceBadge.innerText = 'Google 번역 완료';
+                        return translated.trim();
+                    }
+                }
+            } catch (e) {
+                console.warn('GTX fallback:', e);
+            }
+
+            throw new Error('번역 서버에 일시적으로 연결할 수 없습니다. 아래 영문 프롬프트 칸에 영어로 직접 입력해 주세요.');
         }
 
-        // 45초 쿨다운 타이머 시작 함수 (노란 에러 방어)
-        function startCooldown(seconds = 45) {
+        // 최종 프롬프트 조립 (Subject-First 구조)
+        async function prepareFinalPrompt(forceRetranslate = false) {
+            const rawKorean = activeMode === '2d' ? promptInput.value.trim() : prompt3DInput.value.trim();
+            if (!rawKorean) throw new Error('창작하고자 하는 장면 묘사를 입력해 주십시오.');
+
+            let baseEnglish = engPreviewInput.value.trim();
+
+            // 사용자가 영문 박스를 직접 수정하지 않았거나, 원문이 바뀌었거나, 강제 번역 요청 시
+            if (forceRetranslate || !baseEnglish || lastTranslatedSource !== rawKorean) {
+                baseEnglish = await translateKoreanToEnglish(rawKorean);
+                engPreviewInput.value = baseEnglish;
+                lastTranslatedSource = rawKorean;
+            }
+
+            // 3D 각인 문구 결합
+            let engravePart = '';
+            if (activeMode === '3d') {
+                const engrave = engraveTextInput.value.trim();
+                if (engrave) {
+                    if (containsKorean(engrave)) {
+                        showBanner('참고: 3D 표면 각인 문구는 영문으로 입력할 때 가장 선명하게 렌더링됩니다.', 'warn');
+                    }
+                    engravePart = `, featuring embossed gold text "${engrave}" on the surface`;
+                }
+            }
+
+            const modifier = activeMode === '2d'
+                ? styleModifiers2D[currentStyle][currentFidelity]
+                : styleModifiers3D[current3DType][currentFidelity];
+
+            // Subject-First: 주체 묘사를 맨 앞에 두고 스타일은 뒤에 간결히 배치
+            return `${baseEnglish}${engravePart}, ${modifier}`;
+        }
+
+        testTranslateBtn.addEventListener('click', async () => {
+            try {
+                hideBanner();
+                testTranslateBtn.disabled = true;
+                translateSourceBadge.innerText = '번역 중...';
+                await prepareFinalPrompt(true);
+            } catch (err) {
+                showBanner(err.message, 'error');
+            } finally {
+                testTranslateBtn.disabled = false;
+            }
+        });
+
+        function startCooldown(seconds = 5) {
             remainingSeconds = seconds;
             generateBtn.disabled = true;
-            cooldownAlert.style.display = 'flex';
-
             clearInterval(cooldownTimer);
             cooldownTimer = setInterval(() => {
                 remainingSeconds--;
                 if (remainingSeconds > 0) {
-                    generateBtnText.innerText = `⏳ 다음 생성 준비 중 (${remainingSeconds}초)`;
-                    cooldownText.innerText = `공공 서버 품질 유지를 위해 다음 생성까지 ${remainingSeconds}초 대기 중입니다.`;
+                    generateBtnText.innerText = `⏳ 다음 창작 준비 (${remainingSeconds}초)`;
                 } else {
                     clearInterval(cooldownTimer);
                     generateBtn.disabled = false;
-                    cooldownAlert.style.display = 'none';
                     generateBtnText.innerText = activeMode === '2d' ? "2D 예술 창작 (Generate)" : "3D 입체 렌더링 (Render 3D)";
                 }
             }, 1000);
         }
 
-        // 통합 이미지 생성
-        generateBtn.addEventListener('click', async () => {
-            if (remainingSeconds > 0) return;
-
-            const rawPrompt = activeMode === '2d' ? promptInput.value.trim() : prompt3DInput.value.trim();
-            if (!rawPrompt) {
-                alert('창작하고자 하는 내용을 입력해 주십시오.');
-                if (activeMode === '2d') promptInput.focus(); else prompt3DInput.focus();
-                return;
+        async function getGradioClient() {
+            if (!gradioClientPromise) {
+                gradioClientPromise = Client.connect("black-forest-labs/FLUX.1-schnell").catch(err => {
+                    gradioClientPromise = null;
+                    throw err;
+                });
             }
+            return gradioClientPromise;
+        }
+
+        // URL -> Blob 검증 (에러 페이지/빈 이미지 차단 및 로컬 다운로드 보장)
+        async function fetchVerifiedImageBlob(url) {
+            const resp = await fetch(url);
+            if (!resp.ok) throw new Error(`이미지 다운로드 실패 (HTTP ${resp.status})`);
+            const blob = await resp.blob();
+            if (!blob.type.startsWith('image/') || blob.size < 5000) {
+                throw new Error('유효하지 않거나 손상된 이미지 응답입니다.');
+            }
+            return URL.createObjectURL(blob);
+        }
+
+        // 엔진별 생성 함수
+        async function runGeneration(finalPrompt, seedToUse, randomizeSeed) {
+            const engine = engineSelect.value;
+
+            if (engine === 'hf_flux_schnell') {
+                loadingSubText.innerText = "HuggingFace FLUX.1-schnell GPU 클러스터에 연결 중...";
+                const client = await getGradioClient();
+                loadingSubText.innerText = "프롬프트를 정밀 계산하여 고화질 이미지를 렌더링 중 (약 3~8초)...";
+
+                const result = await client.predict("/infer", {
+                    prompt: finalPrompt,
+                    seed: seedToUse,
+                    randomize_seed: randomizeSeed,
+                    width: currentWidth,
+                    height: currentHeight,
+                    num_inference_steps: 4
+                });
+
+                const imgData = result?.data?.[0];
+                const usedSeed = result?.data?.[1] ?? seedToUse;
+                if (!imgData || !imgData.url) {
+                    throw new Error('FLUX.1-schnell 서버에서 이미지를 반환하지 않았습니다.');
+                }
+                const blobUrl = await fetchVerifiedImageBlob(imgData.url);
+                return { blobUrl, usedSeed };
+            }
+
+            if (engine === 'puter_flux_pro' || engine === 'puter_gpt_image') {
+                if (typeof puter === 'undefined' || !puter.ai) {
+                    throw new Error('Puter.js SDK가 아직 로드되지 않았습니다. 잠시 후 다시 시도하세요.');
+                }
+                const modelName = engine === 'puter_flux_pro' ? 'black-forest-labs/FLUX.1-pro' : 'gpt-image-1';
+                loadingSubText.innerText = `Puter (${modelName}) 호출 중... 최초 사용 시 무료 로그인 창이 열릴 수 있습니다.`;
+                const imgEl = await puter.ai.txt2img(finalPrompt, { model: modelName });
+                const blobUrl = await fetchVerifiedImageBlob(imgEl.src);
+                return { blobUrl, usedSeed: seedToUse };
+            }
+
+            if (engine === 'gemini_imagen') {
+                const apiKey = localStorage.getItem('kyanos_gemini_key');
+                if (!apiKey) throw new Error('우측 상단 [엔진 설정]에서 Google Gemini API Key를 먼저 입력해 주세요.');
+                loadingSubText.innerText = "Google Imagen 3 초고화질 엔진 렌더링 중...";
+                const resp = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0-generate-002:predict?key=${encodeURIComponent(apiKey)}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        instances: [{ prompt: finalPrompt }],
+                        parameters: { sampleCount: 1, aspectRatio: currentRatio }
+                    })
+                });
+                if (!resp.ok) {
+                    const errTxt = await resp.text();
+                    throw new Error(`Gemini Imagen 오류 (${resp.status}): ${errTxt.slice(0, 140)}`);
+                }
+                const data = await resp.json();
+                const b64 = data?.predictions?.[0]?.bytesBase64Encoded;
+                if (!b64) throw new Error('Imagen 3 응답에 이미지 데이터가 없습니다.');
+                const blobUrl = await fetchVerifiedImageBlob(`data:image/png;base64,${b64}`);
+                return { blobUrl, usedSeed: seedToUse };
+            }
+
+            if (engine === 'hf_api_dev') {
+                const token = localStorage.getItem('kyanos_hf_token');
+                if (!token) throw new Error('우측 상단 [엔진 설정]에서 Hugging Face Access Token을 먼저 입력해 주세요.');
+                loadingSubText.innerText = "Hugging Face FLUX.1-dev API 렌더링 중...";
+                const resp = await fetch('https://router.huggingface.co/hf-inference/models/black-forest-labs/FLUX.1-dev', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        inputs: finalPrompt,
+                        parameters: { width: currentWidth, height: currentHeight }
+                    })
+                });
+                if (!resp.ok) throw new Error(`HF Inference 오류 (${resp.status})`);
+                const blob = await resp.blob();
+                return { blobUrl: URL.createObjectURL(blob), usedSeed: seedToUse };
+            }
+
+            throw new Error('지원되지 않는 엔진입니다.');
+        }
+
+        async function executeGeneration() {
+            if (remainingSeconds > 0) return;
+            hideBanner();
 
             generateBtn.disabled = true;
             loadingOverlay.style.display = 'flex';
-            loadingMainText.innerText = activeMode === '2d' ? "한국어 프롬프트 정밀 번역 중..." : "3D 입체 파이프라인 지오메트리 계산 중...";
-            loadingSubText.innerText = "초지능 엔진이 시각적 특징을 변환하고 있습니다";
+            loadingMainText.innerText = "한국어 프롬프트 정밀 분석 및 번역 중...";
+            loadingSubText.innerText = "입력하신 장면을 시각적 영문 프롬프트로 변환하고 있습니다.";
 
             try {
-                let englishPrompt = rawPrompt;
-                if (containsKorean(rawPrompt)) {
-                    englishPrompt = await translateKoreanToEnglish(rawPrompt);
-                    if (activeMode === '2d') {
-                        translatedText.innerText = englishPrompt;
-                        translationPreview.style.display = 'block';
-                    }
-                }
+                const finalPrompt = await prepareFinalPrompt(false);
+                const randomizeSeed = !lockSeedCheckbox.checked;
+                const seedToUse = randomizeSeed ? Math.floor(Math.random() * 2147483647) : (parseInt(seedInput.value) || 0);
 
-                loadingMainText.innerText = activeMode === '2d' ? "2D 예술 화풍 렌더링 중..." : "3D 스튜디오 조명 및 텍스처 렌더링 중...";
-                loadingSubText.innerText = "완벽한 조명과 구도를 계산하고 있습니다 (약 4~7초)";
+                loadingMainText.innerText = activeMode === '2d' ? "2D 예술 작품 렌더링 중..." : "3D 입체 목업 렌더링 중...";
+                const { blobUrl, usedSeed } = await runGeneration(finalPrompt, seedToUse, randomizeSeed);
 
-                const modifier = activeMode === '2d' 
-                    ? (styleModifiers2D[currentStyle] || styleModifiers2D.realism)
-                    : (styleModifiers3D[current3DType] || styleModifiers3D.book);
+                seedInput.value = usedSeed;
+                lastSeedLabel.innerText = `Seed: ${usedSeed}`;
 
-                const fullPrompt = `${englishPrompt}, ${modifier}`;
-                const encodedPrompt = encodeURIComponent(fullPrompt);
-                const seed = Math.floor(Math.random() * 99999999);
+                resultImage.src = blobUrl;
+                resultImage.style.display = 'block';
+                emptyState.style.display = 'none';
+                previewBox.classList.add('has-image');
+                loadingOverlay.style.display = 'none';
 
-                // 고화질 FLUX.1 엔진
-                const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=${currentWidth}&height=${currentHeight}&model=flux&seed=${seed}&nologo=true`;
+                const timestamp = new Date().toISOString().replace(/[-:T]/g, '').slice(0, 14);
+                downloadBtn.href = blobUrl;
+                downloadBtn.download = `kyanos_${activeMode}_${timestamp}.png`;
+                downloadBtn.style.display = 'inline-flex';
+                fullscreenBtn.style.display = 'inline-flex';
+                clearCanvasBtn.style.display = 'inline-flex';
+                rerollBtn.style.display = 'inline-flex';
 
-                const tempImg = new Image();
-                tempImg.crossOrigin = "anonymous";
-                
-                tempImg.onload = () => {
-                    // 노란색 에러 방어: 45초 쿨다운 발동
-                    startCooldown(45);
+                const rawPrompt = activeMode === '2d' ? promptInput.value.trim() : prompt3DInput.value.trim();
+                addHistory(blobUrl, rawPrompt, finalPrompt, activeMode, usedSeed);
 
-                    resultImage.src = imageUrl;
-                    resultImage.style.display = 'block';
-                    emptyState.style.display = 'none';
-                    previewBox.classList.add('has-image');
-                    loadingOverlay.style.display = 'none';
-
-                    downloadBtn.href = imageUrl;
-                    downloadBtn.style.display = 'inline-flex';
-                    fullscreenBtn.style.display = 'inline-flex';
-                    clearCanvasBtn.style.display = 'inline-flex';
-
-                    addHistory(imageUrl, rawPrompt, englishPrompt, activeMode);
-                };
-
-                tempImg.onerror = () => {
-                    alert('일시적인 통신 장애가 발생했습니다. 잠시 후 다시 시도해 주십시오.');
-                    loadingOverlay.style.display = 'none';
-                    generateBtn.disabled = false;
-                };
-
-                tempImg.src = imageUrl;
-
+                startCooldown(4);
             } catch (err) {
                 console.error(err);
-                alert('이미지 생성 도중 오류가 발생했습니다: ' + err.message);
                 loadingOverlay.style.display = 'none';
                 generateBtn.disabled = false;
+                const msg = err?.message || String(err);
+                if (msg.includes('quota') || msg.includes('ZeroGPU')) {
+                    showBanner('공용 GPU 할당량이 일시적으로 혼잡합니다. 잠시 후 다시 시도하시거나 상단 [엔진 설정] / Puter 엔진을 선택해 보세요.', 'warn');
+                } else {
+                    showBanner('생성 중 오류: ' + msg, 'error');
+                }
             }
+        }
+
+        generateBtn.addEventListener('click', executeGeneration);
+        rerollBtn.addEventListener('click', () => {
+            lockSeedCheckbox.checked = false;
+            seedInput.disabled = true;
+            executeGeneration();
         });
 
-        function addHistory(url, rawPrompt, engPrompt, mode) {
-            historyImages.unshift({ id: Date.now(), url, rawPrompt, engPrompt, mode });
+        function addHistory(url, rawPrompt, engPrompt, mode, seed) {
+            historyImages.unshift({ id: Date.now(), url, rawPrompt, engPrompt, mode, seed });
             if (historyImages.length > 12) historyImages.pop();
             renderHistory();
         }
@@ -1085,17 +1613,12 @@
         function renderHistory() {
             historyThumbnails.innerHTML = '';
             historyCount.innerText = historyImages.length;
-
-            if (historyImages.length > 0) {
-                clearAllHistoryBtn.style.display = 'inline-flex';
-            } else {
-                clearAllHistoryBtn.style.display = 'none';
-            }
+            clearAllHistoryBtn.style.display = historyImages.length > 0 ? 'inline-flex' : 'none';
 
             historyImages.forEach(item => {
                 const card = document.createElement('div');
                 card.className = 'history-card';
-                card.title = `[${item.mode.toUpperCase()}] ${item.rawPrompt}`;
+                card.title = `[${item.mode.toUpperCase()} | Seed:${item.seed}] ${item.rawPrompt}`;
 
                 const img = document.createElement('img');
                 img.src = item.url;
@@ -1118,6 +1641,8 @@
                     clearCanvasBtn.style.display = 'inline-flex';
                     downloadBtn.style.display = 'inline-flex';
                     fullscreenBtn.style.display = 'inline-flex';
+                    rerollBtn.style.display = 'inline-flex';
+                    lastSeedLabel.innerText = `Seed: ${item.seed}`;
                 });
 
                 historyThumbnails.appendChild(card);
