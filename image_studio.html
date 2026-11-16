@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>키아노스 국립 이미지 공방 | 오픈소스 AI 스튜디오</title>
+    <title>키아노스 국립 초지능 미디어 공방 | 2D·3D 통합 스튜디오</title>
     <!-- 구글 폰트: 한글 및 영문 타이포그래피 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,6 +21,7 @@
             --kyanos-muted: #94a3b8;
             --kyanos-btn-grad: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
             --kyanos-gold-grad: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            --kyanos-danger: #ef4444;
         }
 
         * {
@@ -44,7 +45,7 @@
 
         /* 헤더 */
         header {
-            padding: 24px 32px;
+            padding: 20px 32px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -99,40 +100,53 @@
             margin-top: 2px;
         }
 
-        .header-tags {
+        /* 스튜디오 모드 전환 탭 (2D / 3D) */
+        .studio-mode-nav {
             display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-
-        .tag-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 14px;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(3, 7, 18, 0.7);
+            padding: 4px;
+            border-radius: 12px;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            font-size: 12px;
-            color: var(--kyanos-muted);
+            gap: 4px;
         }
 
-        .tag-pill.active {
-            background: rgba(14, 165, 233, 0.15);
-            border-color: rgba(14, 165, 233, 0.4);
+        .mode-tab-btn {
+            background: transparent;
+            border: none;
+            padding: 8px 18px;
+            color: var(--kyanos-muted);
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .mode-tab-btn:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .mode-tab-btn.active {
+            background: rgba(14, 165, 233, 0.2);
             color: var(--kyanos-accent);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            box-shadow: 0 0 12px rgba(14, 165, 233, 0.3);
         }
 
         /* 메인 컨테이너 */
         main {
             flex: 1;
-            max-width: 1360px;
+            max-width: 1400px;
             width: 100%;
             margin: 0 auto;
-            padding: 32px 24px;
+            padding: 28px 24px;
             display: grid;
-            grid-template-columns: 460px 1fr;
-            gap: 32px;
+            grid-template-columns: 480px 1fr;
+            gap: 28px;
         }
 
         @media (max-width: 1024px) {
@@ -146,23 +160,23 @@
             background: var(--kyanos-card);
             border: 1px solid var(--kyanos-card-border);
             border-radius: 16px;
-            padding: 28px;
+            padding: 26px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
             display: flex;
             flex-direction: column;
-            gap: 22px;
+            gap: 20px;
         }
 
         .panel-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-bottom: 16px;
+            padding-bottom: 14px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .panel-header h2 {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 600;
             display: flex;
             align-items: center;
@@ -197,7 +211,7 @@
 
         textarea.prompt-input {
             width: 100%;
-            height: 120px;
+            height: 110px;
             background: rgba(3, 7, 18, 0.6);
             border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 12px;
@@ -217,7 +231,7 @@
             background: rgba(3, 7, 18, 0.8);
         }
 
-        /* 번역 결과 표시 바 */
+        /* 번역 결과 바 */
         .translation-preview {
             background: rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -235,7 +249,7 @@
             margin-right: 6px;
         }
 
-        /* 스타일 프리셋 그리드 */
+        /* 스타일 / 3D 프리셋 그리드 */
         .preset-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -281,7 +295,7 @@
             color: var(--kyanos-muted);
         }
 
-        /* 비율 선택 */
+        /* 종횡비 */
         .aspect-ratio-row {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -316,23 +330,6 @@
             font-weight: 600;
         }
 
-        /* 모델 선택 셀렉트박스 */
-        .select-input {
-            width: 100%;
-            background: rgba(3, 7, 18, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 8px;
-            padding: 10px 14px;
-            color: #f1f5f9;
-            font-size: 13px;
-            outline: none;
-            cursor: pointer;
-        }
-
-        .select-input:focus {
-            border-color: var(--kyanos-accent);
-        }
-
         /* 실행 버튼 */
         .generate-btn {
             background: var(--kyanos-btn-grad);
@@ -357,10 +354,6 @@
             filter: brightness(1.1);
         }
 
-        .generate-btn:active {
-            transform: translateY(0);
-        }
-
         .generate-btn:disabled {
             background: #334155;
             box-shadow: none;
@@ -368,7 +361,14 @@
             opacity: 0.6;
         }
 
-        /* 오른쪽: 캔버스 / 결과 뷰어 */
+        /* 3D 모드 전용 입력 폼 */
+        #mode3DContainer {
+            display: none;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        /* 우측 결과물 캔버스 */
         .viewer-panel {
             display: flex;
             flex-direction: column;
@@ -398,7 +398,7 @@
 
         .preview-image {
             max-width: 100%;
-            max-height: 600px;
+            max-height: 580px;
             object-fit: contain;
             border-radius: 8px;
             box-shadow: 0 12px 32px rgba(0, 0, 0, 0.8);
@@ -463,7 +463,6 @@
             font-size: 14px;
             font-weight: 600;
             color: var(--kyanos-accent);
-            letter-spacing: -0.3px;
         }
 
         .loading-subtext {
@@ -471,27 +470,12 @@
             color: var(--kyanos-muted);
         }
 
-        /* 뷰어 하단 액션바 */
-        .viewer-actions {
+        /* 뷰어 상단 및 하단 액션 툴바 */
+        .canvas-toolbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 20px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 12px;
-        }
-
-        .image-meta {
-            font-size: 12px;
-            color: var(--kyanos-muted);
-            display: flex;
-            gap: 14px;
-        }
-
-        .action-btns {
-            display: flex;
-            gap: 10px;
+            width: 100%;
         }
 
         .tool-btn {
@@ -503,7 +487,7 @@
             font-weight: 600;
             color: #e2e8f0;
             cursor: pointer;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 6px;
             transition: all 0.2s;
@@ -527,11 +511,45 @@
             color: #000;
         }
 
-        /* 갤러리 히스토리 섹션 */
+        .tool-btn.danger {
+            background: rgba(239, 68, 68, 0.15);
+            border-color: rgba(239, 68, 68, 0.3);
+            color: #f87171;
+        }
+
+        .tool-btn.danger:hover {
+            background: var(--kyanos-danger);
+            color: white;
+        }
+
+        .viewer-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+        }
+
+        .image-meta {
+            font-size: 12px;
+            color: var(--kyanos-muted);
+            display: flex;
+            gap: 14px;
+        }
+
+        /* 갤러리 히스토리 및 삭제 헤더 */
         .history-section {
             display: flex;
             flex-direction: column;
             gap: 12px;
+        }
+
+        .history-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .history-title {
@@ -550,21 +568,56 @@
             padding-bottom: 6px;
         }
 
-        .history-thumb {
+        .history-card {
+            position: relative;
             width: 80px;
             height: 80px;
+            flex-shrink: 0;
             border-radius: 8px;
+            overflow: hidden;
             border: 2px solid transparent;
-            object-fit: cover;
             cursor: pointer;
             transition: all 0.2s;
-            flex-shrink: 0;
             background: #111;
         }
 
-        .history-thumb:hover {
+        .history-card:hover {
             border-color: var(--kyanos-accent);
             transform: scale(1.05);
+        }
+
+        .history-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .history-delete-btn {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            width: 20px;
+            height: 20px;
+            background: rgba(0, 0, 0, 0.75);
+            color: #ef4444;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .history-card:hover .history-delete-btn {
+            opacity: 1;
+        }
+
+        .history-delete-btn:hover {
+            background: #ef4444;
+            color: white;
         }
 
         /* 안내 배너 */
@@ -572,22 +625,17 @@
             background: rgba(14, 165, 233, 0.05);
             border: 1px solid rgba(14, 165, 233, 0.2);
             border-radius: 12px;
-            padding: 14px 18px;
+            padding: 12px 16px;
             display: flex;
-            gap: 12px;
-            align-items: flex-start;
+            gap: 10px;
+            align-items: center;
+            font-size: 12px;
+            color: #cbd5e1;
         }
 
         .info-card i {
             color: var(--kyanos-accent);
             font-size: 16px;
-            margin-top: 2px;
-        }
-
-        .info-card-text {
-            font-size: 12px;
-            line-height: 1.5;
-            color: #cbd5e1;
         }
 
         /* 푸터 */
@@ -607,17 +655,22 @@
     <header>
         <div class="brand-container">
             <div class="brand-badge">
-                <i class="fa-solid fa-palette"></i>
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
             </div>
             <div class="brand-title">
-                <h1>키아노스 국립 이미지 공방 <span class="eng">KYANOS OPEN AI STUDIO</span></h1>
-                <div class="brand-subtitle">키아노스 정부 과학·SI부 공공 지능 미디어 창작실</div>
+                <h1>키아노스 국립 초지능 미디어 공방 <span class="eng">KYANOS MEDIA STUDIO</span></h1>
+                <div class="brand-subtitle">키아노스 정부 과학·SI부 공공 지능 미디어 융합 창작실</div>
             </div>
         </div>
-        <div class="header-tags">
-            <span class="tag-pill active"><i class="fa-solid fa-language"></i> 한국어 정밀 자동번역 탑재</span>
-            <span class="tag-pill"><i class="fa-solid fa-cube"></i> FLUX.1 & SDXL 엔진</span>
-            <span class="tag-pill"><i class="fa-solid fa-shield-halved"></i> 100% 무과금 공공 개방</span>
+
+        <!-- 2D / 3D 단일 창 모드 전환 스위치 -->
+        <div class="studio-mode-nav">
+            <button id="tab2D" class="mode-tab-btn active">
+                <i class="fa-solid fa-paintbrush"></i> 2D 회화·풍경 스튜디오
+            </button>
+            <button id="tab3D" class="mode-tab-btn">
+                <i class="fa-solid fa-cube"></i> 3D 입체·목업 스튜디오 (신설)
+            </button>
         </div>
     </header>
 
@@ -626,93 +679,120 @@
         <!-- 좌측: 컨트롤 패널 -->
         <section class="panel">
             <div class="panel-header">
-                <h2><i class="fa-solid fa-sliders"></i> 창작 설정 (Prompt & Style)</h2>
-                <button class="tool-btn" id="resetBtn" title="초기화"><i class="fa-solid fa-rotate-left"></i></button>
+                <h2 id="panelModeTitle"><i class="fa-solid fa-sliders"></i> 2D 회화 설정 (Prompt & Style)</h2>
+                <button class="tool-btn" id="resetBtn" title="프롬프트 초기화"><i class="fa-solid fa-rotate-left"></i> 비우기</button>
             </div>
 
-            <!-- 프롬프트 입력창 -->
-            <div class="form-group">
-                <div class="form-label">
-                    <span>원하는 장면 묘사 (한국어 완벽 지원)</span>
-                    <span class="sub">풍경, 정물, 인물 무엇이든 편하게 입력하세요</span>
+            <!-- 2D 스튜디오 전용 입력 영역 -->
+            <div id="mode2DContainer" style="display: flex; flex-direction: column; gap: 18px;">
+                <!-- 프롬프트 입력창 -->
+                <div class="form-group">
+                    <div class="form-label">
+                        <span>원하는 장면 묘사 (한국어 완벽 지원)</span>
+                        <span class="sub">풍경, 정물, 감성 예술</span>
+                    </div>
+                    <textarea id="promptInput" class="prompt-input" placeholder="예: 비 내리는 늦가을 저녁, 따뜻한 찻잔과 창밖의 단풍나무가 놓인 고요한 서재 풍경...">비 내리는 늦가을 저녁, 따뜻한 찻잔과 창밖의 단풍나무가 놓인 고요한 서재 풍경</textarea>
+                    <!-- 번역 미리보기 -->
+                    <div id="translationPreview" class="translation-preview">
+                        <span class="label">AI 번역 프롬프트:</span> <span id="translatedText"></span>
+                    </div>
                 </div>
-                <textarea id="promptInput" class="prompt-input" placeholder="예: 비 내리는 늦가을 저녁, 따뜻한 찻잔과 창밖의 단풍나무가 놓인 고요한 서재 풍경...">비 내리는 늦가을 저녁, 따뜻한 찻잔과 창밖의 단풍나무가 놓인 고요한 서재 풍경</textarea>
-                <!-- 번역 미리보기 영역 -->
-                <div id="translationPreview" class="translation-preview">
-                    <span class="label">AI 번역 프롬프트:</span> <span id="translatedText"></span>
+
+                <!-- 2D 화풍 프리셋 선택 -->
+                <div class="form-group">
+                    <div class="form-label">
+                        <span>키아노스 2D 화풍 프리셋</span>
+                    </div>
+                    <div class="preset-grid">
+                        <div class="preset-btn active" data-style="realism">
+                            <span class="name"><i class="fa-solid fa-camera"></i> 초고화질 실사</span>
+                            <span class="desc">정교한 디테일과 자연광 조명</span>
+                        </div>
+                        <div class="preset-btn" data-style="classic_oil">
+                            <span class="name"><i class="fa-solid fa-brush"></i> 인문 고전 유화</span>
+                            <span class="desc">렘브란트풍 중후한 유화 터치</span>
+                        </div>
+                        <div class="preset-btn" data-style="cyberpunk">
+                            <span class="name"><i class="fa-solid fa-microchip"></i> 네오 사이버펑크</span>
+                            <span class="desc">네온 조명과 미래형 SF 감성</span>
+                        </div>
+                        <div class="preset-btn" data-style="oriental">
+                            <span class="name"><i class="fa-solid fa-feather"></i> 한국 전통 수묵담채</span>
+                            <span class="desc">여백과 먹의 깊은 정취</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 비율 선택 -->
+                <div class="form-group">
+                    <div class="form-label">
+                        <span>이미지 종횡비 (Aspect Ratio)</span>
+                    </div>
+                    <div class="aspect-ratio-row">
+                        <div class="aspect-btn active" data-ratio="16:9" data-w="1024" data-h="576">
+                            <i class="fa-solid fa-tv"></i>
+                            <span>16:9 와이드</span>
+                        </div>
+                        <div class="aspect-btn" data-ratio="1:1" data-w="768" data-h="768">
+                            <i class="fa-solid fa-square"></i>
+                            <span>1:1 정방형</span>
+                        </div>
+                        <div class="aspect-btn" data-ratio="9:16" data-w="576" data-h="1024">
+                            <i class="fa-solid fa-mobile-screen"></i>
+                            <span>9:16 세로형</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- 화풍 프리셋 선택 -->
-            <div class="form-group">
-                <div class="form-label">
-                    <span>키아노스 화풍 프리셋 (Style Presets)</span>
-                    <span class="sub">클릭 시 자동 최적화 반영</span>
+            <!-- 3D 스튜디오 전용 입력 영역 (신설) -->
+            <div id="mode3DContainer">
+                <div class="form-group">
+                    <div class="form-label">
+                        <span>3D 입체 목업 템플릿 선택</span>
+                        <span class="sub">1인 기업 고부가가치 자산</span>
+                    </div>
+                    <div class="preset-grid">
+                        <div class="preset-btn active" data-3d-type="book">
+                            <span class="name"><i class="fa-solid fa-book-bookmark"></i> 양장본 3D 도서</span>
+                            <span class="desc">고급 가죽 양장본 책 입체 목업</span>
+                        </div>
+                        <div class="preset-btn" data-3d-type="coin">
+                            <span class="name"><i class="fa-solid fa-coins"></i> 키아노스 골드 주화</span>
+                            <span class="desc">황금빛 음각 입체 기념 코인</span>
+                        </div>
+                        <div class="preset-btn" data-3d-type="device">
+                            <span class="name"><i class="fa-solid fa-tablet-screen-button"></i> 디지털 디바이스</span>
+                            <span class="desc">미니멀 스마트폰·태블릿 렌더</span>
+                        </div>
+                        <div class="preset-btn" data-3d-type="emblem">
+                            <span class="name"><i class="fa-solid fa-shield"></i> 사파이어 입체 국장</span>
+                            <span class="desc">3D 메탈릭 엠블럼·휘장</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="preset-grid">
-                    <div class="preset-btn active" data-style="realism">
-                        <span class="name"><i class="fa-solid fa-camera"></i> 초고화질 실사</span>
-                        <span class="desc">정교한 디테일과 자연스러운 조명</span>
+
+                <div class="form-group">
+                    <div class="form-label">
+                        <span>3D 표지/제목 문구 묘사</span>
+                        <span class="sub">입체 표면에 각인할 내용</span>
                     </div>
-                    <div class="preset-btn" data-style="classic_oil">
-                        <span class="name"><i class="fa-solid fa-brush"></i> 인문 고전 유화</span>
-                        <span class="desc">렘브란트풍 중후한 유화 터치</span>
-                    </div>
-                    <div class="preset-btn" data-style="cyberpunk">
-                        <span class="name"><i class="fa-solid fa-microchip"></i> 네오 사이버펑크</span>
-                        <span class="desc">네온 조명과 미래형 SF 감성</span>
-                    </div>
-                    <div class="preset-btn" data-style="oriental">
-                        <span class="name"><i class="fa-solid fa-feather"></i> 한국 전통 수묵담채</span>
-                        <span class="desc">여백과 먹의 깊은 정취</span>
-                    </div>
+                    <textarea id="prompt3DInput" class="prompt-input" placeholder="예: '가을 그리고 차 한잔' 시집 표지, 우아한 금박 타이포그래피와 다크 블루 가죽 질감...">가을 그리고 차 한잔, 우아한 금박 타이포그래피와 짙은 네이비 가죽 질감의 양장본 도서 목업</textarea>
                 </div>
             </div>
 
-            <!-- 비율 선택 -->
-            <div class="form-group">
-                <div class="form-label">
-                    <span>이미지 종횡비 (Aspect Ratio)</span>
-                </div>
-                <div class="aspect-ratio-row">
-                    <div class="aspect-btn active" data-ratio="16:9" data-w="1024" data-h="576">
-                        <i class="fa-solid fa-tv"></i>
-                        <span>16:9 와이드 (문학/보도)</span>
-                    </div>
-                    <div class="aspect-btn" data-ratio="1:1" data-w="768" data-h="768">
-                        <i class="fa-solid fa-square"></i>
-                        <span>1:1 정방형 (음반/프로필)</span>
-                    </div>
-                    <div class="aspect-btn" data-ratio="9:16" data-w="576" data-h="1024">
-                        <i class="fa-solid fa-mobile-screen"></i>
-                        <span>9:16 세로형 (쇼츠/모바일)</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 오픈소스 엔진 선택 -->
-            <div class="form-group">
-                <div class="form-label">
-                    <span>오픈소스 렌더링 엔진</span>
-                </div>
-                <select id="modelSelect" class="select-input">
-                    <option value="flux" selected>FLUX.1-schnell (Black Forest Labs 차세대 오픈소스)</option>
-                    <option value="turbo">Stable Diffusion Turbo (초고속 실시간 엔진)</option>
-                </select>
-            </div>
-
-            <!-- 공공 서비스 안내 -->
+            <!-- 안내 배너 -->
             <div class="info-card">
-                <i class="fa-solid fa-circle-check"></i>
-                <div class="info-card-text">
-                    [한국어 지능형 번역 모듈 탑재] 한글 프롬프트를 AI 엔진이 가장 시각화하기 좋은 영문 프롬프트로 자동 변환하여 정밀 렌더링합니다.
+                <i class="fa-solid fa-shield-halved"></i>
+                <div class="info-text">
+                    사용자 PC의 GPU·VRAM 소모율 0%로 작동하는 초경량 클라우드 렌더링 파이프라인입니다.
                 </div>
             </div>
 
             <!-- 생성 버튼 -->
             <button id="generateBtn" class="generate-btn">
                 <i class="fa-solid fa-wand-magic-sparkles"></i>
-                <span>이미지 즉시 창작 (Generate)</span>
+                <span id="generateBtnText">이미지 즉시 창작 (Generate)</span>
             </button>
         </section>
 
@@ -721,39 +801,43 @@
             <div class="panel" style="flex: 1;">
                 <div class="panel-header">
                     <h2><i class="fa-solid fa-image"></i> 완성된 작품 캔버스</h2>
-                    <div class="action-btns">
-                        <a id="downloadBtn" class="tool-btn primary" href="#" download="kyanos_art.jpg" style="display: none;">
+                    <!-- 삭제 및 액션 버튼군 -->
+                    <div class="action-btns" style="display: flex; gap: 8px;">
+                        <!-- 캔버스 삭제/비우기 버튼 (요청 기능) -->
+                        <button id="clearCanvasBtn" class="tool-btn danger" style="display: none;" title="현재 캔버스를 비우고 초기화합니다">
+                            <i class="fa-solid fa-trash-can"></i> 캔버스 비우기
+                        </button>
+                        <a id="downloadBtn" class="tool-btn primary" href="#" download="kyanos_studio.jpg" style="display: none;">
                             <i class="fa-solid fa-download"></i> 고화질 저장
                         </a>
                     </div>
                 </div>
 
-                <!-- 캔버스 / 이미지 출력 영역 -->
+                <!-- 캔버스 영역 -->
                 <div id="previewBox" class="preview-box">
                     <!-- 로딩 상태 -->
                     <div id="loadingOverlay" class="loading-overlay">
                         <div class="spinner"></div>
-                        <div id="loadingMainText" class="loading-text">한국어 프롬프트 번역 및 AI 렌더링 준비 중...</div>
-                        <div id="loadingSubText" class="loading-subtext">장면의 빛과 질감을 계산하고 있습니다 (약 4~8초)</div>
+                        <div id="loadingMainText" class="loading-text">지능형 렌더링 엔진 가동 중...</div>
+                        <div id="loadingSubText" class="loading-subtext">장면의 빛과 질감을 계산하고 있습니다 (약 4~7초)</div>
                     </div>
 
                     <!-- 빈 화면 (초기 상태) -->
                     <div id="emptyState" class="empty-state">
                         <i class="fa-solid fa-compass-drafting"></i>
-                        <p class="main-text">아직 생성된 작품이 없습니다</p>
-                        <p class="sub-text">좌측에서 장면을 묘사하고 화풍을 선택한 후 [이미지 즉시 창작] 버튼을 눌러보세요.</p>
+                        <p class="main-text">캔버스가 비어 있습니다</p>
+                        <p class="sub-text">좌측에서 설정을 마치고 [이미지 즉시 창작] 버튼을 누르면 고화질 작품이 렌더링됩니다.</p>
                     </div>
 
                     <!-- 결과 이미지 -->
-                    <img id="resultImage" class="preview-image" alt="키아노스 생성 작품">
+                    <img id="resultImage" class="preview-image" alt="키아노스 완성 작품">
                 </div>
 
-                <!-- 뷰어 하단 메타정보 -->
+                <!-- 메타정보 -->
                 <div class="viewer-actions">
                     <div class="image-meta">
                         <span id="metaRes"><i class="fa-solid fa-expand"></i> 해상도: 1024 × 576 px (16:9)</span>
-                        <span id="metaStyle"><i class="fa-solid fa-paintbrush"></i> 화풍: 초고화질 실사</span>
-                        <span id="metaEngine"><i class="fa-solid fa-microchip"></i> 엔진: FLUX.1</span>
+                        <span id="metaStyle"><i class="fa-solid fa-paintbrush"></i> 모드: 2D 초고화질 실사</span>
                     </div>
                     <div class="action-btns">
                         <button id="fullscreenBtn" class="tool-btn" style="display: none;">
@@ -762,13 +846,18 @@
                     </div>
                 </div>
 
-                <!-- 최근 창작 히스토리 -->
+                <!-- 최근 창작 히스토리 (개별 삭제 및 전체 삭제 기능 탑재) -->
                 <div class="history-section">
-                    <div class="history-title">
-                        <i class="fa-solid fa-clock-rotate-left"></i> 최근 생성된 작품 목록
+                    <div class="history-header">
+                        <div class="history-title">
+                            <i class="fa-solid fa-clock-rotate-left"></i> 최근 생성된 작품 목록 (<span id="historyCount">0</span>)
+                        </div>
+                        <button id="clearAllHistoryBtn" class="tool-btn" style="font-size: 11px; padding: 4px 10px; display: none;">
+                            <i class="fa-solid fa-broom"></i> 목록 전체 삭제
+                        </button>
                     </div>
                     <div id="historyThumbnails" class="history-thumbnails">
-                        <!-- 동적으로 추가되는 썸네일 -->
+                        <!-- 동적으로 추가되는 썸네일 카드 -->
                     </div>
                 </div>
             </div>
@@ -783,27 +872,42 @@
 
     <!-- 로직 스크립트 -->
     <script>
-        // 상태 관리
+        // 현재 활성 모드: '2d' 또는 '3d'
+        let activeMode = '2d';
         let currentStyle = 'realism';
+        let current3DType = 'book';
         let currentWidth = 1024;
         let currentHeight = 576;
-        let currentRatioName = '16:9 와이드';
-        let currentModel = 'flux';
-        const historyImages = [];
+        let historyImages = [];
 
-        // 인물 편향(35mm lens 등)을 배제한 중립적·품격 높은 화풍 수식어
-        const styleModifiers = {
+        // 2D 화풍 수식어
+        const styleModifiers2D = {
             realism: "photorealistic, highly detailed, atmospheric lighting, beautiful composition, 8k resolution, cinematic aesthetic, masterpiece, sharp focus, no text overlay, no watermark",
             classic_oil: "masterpiece classic oil painting, fine art museum style, rich textured brush strokes, warm golden chiaroscuro lighting, elegant artistic atmosphere",
             cyberpunk: "futuristic neo-cyberpunk scene, glowing cyan and gold neon accents, high-tech architectural details, sleek cinematic atmosphere, ultra-detailed 8k",
             oriental: "traditional Korean ink and wash painting, sumi-e style, graceful black ink strokes, poetic mist, serene peaceful landscape, artistic masterpiece"
         };
 
-        // DOM 요소
+        // 3D 템플릿 수식어 (Blender 스타일의 전문 3D 렌더링 룩)
+        const styleModifiers3D = {
+            book: "3D hardcover book mockup render, elegant luxury leather texture, isometric perspective, premium gold foil debossed typography on cover, soft studio shadow, octane render 8k",
+            coin: "3D commemorative golden coin render, metallic gold reflection, highly detailed relief engraving, isometric macro lens, studio lighting, Raytracing Cycles 8k",
+            device: "3D modern digital device tablet mockup, sleek minimalist glass and aluminum finish, isometric studio setup, clean ambient occlusion, 8k render",
+            emblem: "3D royal metallic shield emblem, sapphire and gold materials, ornate intricate crest, dramatic studio rim lighting, cinematic 3D asset 8k"
+        };
+
+        // DOM 참조
+        const tab2D = document.getElementById('tab2D');
+        const tab3D = document.getElementById('tab3D');
+        const mode2DContainer = document.getElementById('mode2DContainer');
+        const mode3DContainer = document.getElementById('mode3DContainer');
+        const panelModeTitle = document.getElementById('panelModeTitle');
         const promptInput = document.getElementById('promptInput');
+        const prompt3DInput = document.getElementById('prompt3DInput');
         const translationPreview = document.getElementById('translationPreview');
         const translatedText = document.getElementById('translatedText');
         const generateBtn = document.getElementById('generateBtn');
+        const generateBtnText = document.getElementById('generateBtnText');
         const resetBtn = document.getElementById('resetBtn');
         const previewBox = document.getElementById('previewBox');
         const emptyState = document.getElementById('emptyState');
@@ -813,70 +917,113 @@
         const loadingSubText = document.getElementById('loadingSubText');
         const downloadBtn = document.getElementById('downloadBtn');
         const fullscreenBtn = document.getElementById('fullscreenBtn');
+        const clearCanvasBtn = document.getElementById('clearCanvasBtn');
+        const clearAllHistoryBtn = document.getElementById('clearAllHistoryBtn');
         const metaRes = document.getElementById('metaRes');
         const metaStyle = document.getElementById('metaStyle');
-        const metaEngine = document.getElementById('metaEngine');
         const historyThumbnails = document.getElementById('historyThumbnails');
-        const modelSelect = document.getElementById('modelSelect');
+        const historyCount = document.getElementById('historyCount');
 
-        // 스타일 버튼 클릭 이벤트
-        document.querySelectorAll('.preset-btn').forEach(btn => {
+        // 탭 전환 핸들러
+        tab2D.addEventListener('click', () => {
+            activeMode = '2d';
+            tab2D.classList.add('active');
+            tab3D.classList.remove('active');
+            mode2DContainer.style.display = 'flex';
+            mode3DContainer.style.display = 'none';
+            panelModeTitle.innerHTML = `<i class="fa-solid fa-sliders"></i> 2D 회화 설정 (Prompt & Style)`;
+            generateBtnText.innerText = "2D 예술 창작 (Generate)";
+            metaStyle.innerHTML = `<i class="fa-solid fa-paintbrush"></i> 모드: 2D 초고화질 실사`;
+        });
+
+        tab3D.addEventListener('click', () => {
+            activeMode = '3d';
+            tab3D.classList.add('active');
+            tab2D.classList.remove('active');
+            mode2DContainer.style.display = 'none';
+            mode3DContainer.style.display = 'flex';
+            panelModeTitle.innerHTML = `<i class="fa-solid fa-cube"></i> 3D 입체 설정 (3D Mockup Asset)`;
+            generateBtnText.innerText = "3D 입체 렌더링 (Render 3D)";
+            metaStyle.innerHTML = `<i class="fa-solid fa-cube"></i> 모드: 3D 양장본 목업`;
+        });
+
+        // 2D 프리셋 선택
+        document.querySelectorAll('#mode2DContainer .preset-btn').forEach(btn => {
             btn.addEventListener('click', () => {
-                document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('#mode2DContainer .preset-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 currentStyle = btn.getAttribute('data-style');
-                metaStyle.innerHTML = `<i class="fa-solid fa-paintbrush"></i> 화풍: ${btn.querySelector('.name').innerText.trim()}`;
+                metaStyle.innerHTML = `<i class="fa-solid fa-paintbrush"></i> 화풍: 2D ${btn.querySelector('.name').innerText.trim()}`;
             });
         });
 
-        // 비율 버튼 클릭 이벤트
+        // 3D 프리셋 선택
+        document.querySelectorAll('#mode3DContainer .preset-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('#mode3DContainer .preset-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                current3DType = btn.getAttribute('data-3d-type');
+                metaStyle.innerHTML = `<i class="fa-solid fa-cube"></i> 모드: 3D ${btn.querySelector('.name').innerText.trim()}`;
+            });
+        });
+
+        // 비율 버튼 클릭
         document.querySelectorAll('.aspect-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.aspect-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 currentWidth = parseInt(btn.getAttribute('data-w'));
                 currentHeight = parseInt(btn.getAttribute('data-h'));
-                currentRatioName = btn.querySelector('span').innerText.trim();
                 metaRes.innerHTML = `<i class="fa-solid fa-expand"></i> 해상도: ${currentWidth} × ${currentHeight} px (${btn.getAttribute('data-ratio')})`;
             });
         });
 
-        // 모델 선택 이벤트
-        modelSelect.addEventListener('change', (e) => {
-            currentModel = e.target.value;
-            const engineName = e.target.value === 'flux' ? 'FLUX.1' : 'SDXL Turbo';
-            metaEngine.innerHTML = `<i class="fa-solid fa-microchip"></i> 엔진: ${engineName}`;
-        });
-
         // 초기화 버튼
         resetBtn.addEventListener('click', () => {
-            promptInput.value = '';
-            translationPreview.style.display = 'none';
-            promptInput.focus();
+            if (activeMode === '2d') {
+                promptInput.value = '';
+                translationPreview.style.display = 'none';
+                promptInput.focus();
+            } else {
+                prompt3DInput.value = '';
+                prompt3DInput.focus();
+            }
         });
 
-        // 한글 감지 함수
+        // 캔버스 비우기/삭제 기능 (핵심 요청 사항)
+        clearCanvasBtn.addEventListener('click', () => {
+            resultImage.src = '';
+            resultImage.style.display = 'none';
+            emptyState.style.display = 'flex';
+            previewBox.classList.remove('has-image');
+            clearCanvasBtn.style.display = 'none';
+            downloadBtn.style.display = 'none';
+            fullscreenBtn.style.display = 'none';
+        });
+
+        // 히스토리 전체 삭제
+        clearAllHistoryBtn.addEventListener('click', () => {
+            if (confirm("최근 생성된 모든 히스토리 목록을 비우시겠습니까?")) {
+                historyImages = [];
+                renderHistory();
+            }
+        });
+
+        // 한글 감지 및 실시간 번역
         function containsKorean(text) {
             return /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/.test(text);
         }
 
-        // 구글 무료 번역 API (클라이언트단 실시간 한국어 ➔ 영어 자동 변환)
         async function translateKoreanToEnglish(koreanText) {
-            if (!containsKorean(koreanText)) {
-                return koreanText; // 이미 영어인 경우 그대로 사용
-            }
+            if (!containsKorean(koreanText)) return koreanText;
             try {
                 const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=ko&tl=en&dt=t&q=${encodeURIComponent(koreanText)}`;
                 const response = await fetch(url);
                 if (!response.ok) throw new Error("Translation network error");
                 const data = await response.json();
-                
-                // 번역 조각 병합
                 let translated = "";
                 if (data && data[0]) {
-                    data[0].forEach(chunk => {
-                        if (chunk[0]) translated += chunk[0];
-                    });
+                    data[0].forEach(chunk => { if (chunk[0]) translated += chunk[0]; });
                 }
                 return translated.trim() || koreanText;
             } catch (err) {
@@ -885,51 +1032,48 @@
             }
         }
 
-        // 이미지 생성 핸들러
+        // 통합 이미지 생성 핸들러
         generateBtn.addEventListener('click', async () => {
-            const rawPrompt = promptInput.value.trim();
+            const rawPrompt = activeMode === '2d' ? promptInput.value.trim() : prompt3DInput.value.trim();
             if (!rawPrompt) {
-                alert('창작하고자 하는 장면을 간단히 입력해 주십시오.');
-                promptInput.focus();
+                alert('창작하고자 하는 장면이나 대상의 설명을 입력해 주십시오.');
+                if (activeMode === '2d') promptInput.focus(); else prompt3DInput.focus();
                 return;
             }
 
-            // 로딩 시작
             generateBtn.disabled = true;
             loadingOverlay.style.display = 'flex';
-            loadingMainText.innerText = "한국어 프롬프트 번역 및 분석 중...";
-            loadingSubText.innerText = "오픈소스 AI가 정확하게 이해할 수 있도록 변환합니다";
+            loadingMainText.innerText = activeMode === '2d' ? "한국어 프롬프트 번역 및 분석 중..." : "3D 입체 파이프라인 지오메트리 계산 중...";
+            loadingSubText.innerText = "초지능 엔진이 시각적 특징을 변환하고 있습니다";
 
             try {
-                // 1단계: 한국어 ➔ 영어 실시간 정밀 번역
                 let englishPrompt = rawPrompt;
                 if (containsKorean(rawPrompt)) {
                     englishPrompt = await translateKoreanToEnglish(rawPrompt);
-                    translatedText.innerText = englishPrompt;
-                    translationPreview.style.display = 'block';
-                } else {
-                    translationPreview.style.display = 'none';
+                    if (activeMode === '2d') {
+                        translatedText.innerText = englishPrompt;
+                        translationPreview.style.display = 'block';
+                    }
                 }
 
-                loadingMainText.innerText = "초지능 오픈소스 엔진 렌더링 중...";
-                loadingSubText.innerText = "빛과 공간, 질감을 정밀 계산하고 있습니다 (약 4~7초)";
+                loadingMainText.innerText = activeMode === '2d' ? "2D 예술 화풍 렌더링 중..." : "3D 스튜디오 조명 및 텍스처 렌더링 중...";
+                loadingSubText.innerText = "완벽한 조명과 구도를 계산하고 있습니다 (약 4~7초)";
 
-                // 2단계: 최적화된 프롬프트 합성
-                const modifier = styleModifiers[currentStyle] || styleModifiers.realism;
+                // 모드별 모디파이어 선택
+                const modifier = activeMode === '2d' 
+                    ? (styleModifiers2D[currentStyle] || styleModifiers2D.realism)
+                    : (styleModifiers3D[current3DType] || styleModifiers3D.book);
+
                 const fullPrompt = `${englishPrompt}, ${modifier}`;
                 const encodedPrompt = encodeURIComponent(fullPrompt);
-                
-                // 3단계: 인물 왜곡을 일으키는 enhance=true 배제 및 시드 부여
                 const seed = Math.floor(Math.random() * 99999999);
-                // enhance=false(왜곡 방지) 적용
-                const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=${currentWidth}&height=${currentHeight}&model=${currentModel}&seed=${seed}&nologo=true`;
 
-                // 이미지 사전 로딩
+                // 고품질 FLUX.1 엔진 렌더링 (왜곡 방지 enhance 미적용)
+                const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=${currentWidth}&height=${currentHeight}&model=flux&seed=${seed}&nologo=true`;
+
                 const tempImg = new Image();
                 tempImg.crossOrigin = "anonymous";
-                
                 tempImg.onload = () => {
-                    // 출력 갱신
                     resultImage.src = imageUrl;
                     resultImage.style.display = 'block';
                     emptyState.style.display = 'none';
@@ -937,13 +1081,14 @@
                     loadingOverlay.style.display = 'none';
                     generateBtn.disabled = false;
 
-                    // 다운로드 링크 설정
+                    // 액션 버튼 표시
                     downloadBtn.href = imageUrl;
                     downloadBtn.style.display = 'inline-flex';
                     fullscreenBtn.style.display = 'inline-flex';
+                    clearCanvasBtn.style.display = 'inline-flex'; // 캔버스 비우기 버튼 활성화
 
                     // 히스토리에 추가
-                    addHistory(imageUrl, rawPrompt, englishPrompt);
+                    addHistory(imageUrl, rawPrompt, englishPrompt, activeMode);
                 };
 
                 tempImg.onerror = () => {
@@ -962,26 +1107,63 @@
             }
         });
 
-        // 히스토리 썸네일 관리
-        function addHistory(url, rawPrompt, engPrompt) {
-            historyImages.unshift({ url, rawPrompt, engPrompt });
-            if (historyImages.length > 8) historyImages.pop();
+        // 히스토리 관리 및 개별 삭제
+        function addHistory(url, rawPrompt, engPrompt, mode) {
+            historyImages.unshift({ id: Date.now(), url, rawPrompt, engPrompt, mode });
+            if (historyImages.length > 12) historyImages.pop();
+            renderHistory();
+        }
 
+        function deleteHistoryItem(id, event) {
+            event.stopPropagation(); // 카드 클릭 방지
+            historyImages = historyImages.filter(item => item.id !== id);
+            renderHistory();
+        }
+
+        function renderHistory() {
             historyThumbnails.innerHTML = '';
+            historyCount.innerText = historyImages.length;
+
+            if (historyImages.length > 0) {
+                clearAllHistoryBtn.style.display = 'inline-flex';
+            } else {
+                clearAllHistoryBtn.style.display = 'none';
+            }
+
             historyImages.forEach(item => {
-                const thumb = document.createElement('img');
-                thumb.className = 'history-thumb';
-                thumb.src = item.url;
-                thumb.title = `${item.rawPrompt}\n(${item.engPrompt})`;
-                thumb.addEventListener('click', () => {
+                const card = document.createElement('div');
+                card.className = 'history-card';
+                card.title = `[${item.mode.toUpperCase()}] ${item.rawPrompt}`;
+
+                const img = document.createElement('img');
+                img.src = item.url;
+
+                // 개별 삭제 X 버튼 (요청 기능)
+                const delBtn = document.createElement('button');
+                delBtn.className = 'history-delete-btn';
+                delBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+                delBtn.title = '이 이미지 삭제';
+                delBtn.addEventListener('click', (e) => deleteHistoryItem(item.id, e));
+
+                card.appendChild(img);
+                card.appendChild(delBtn);
+
+                card.addEventListener('click', () => {
                     resultImage.src = item.url;
                     downloadBtn.href = item.url;
+                    resultImage.style.display = 'block';
+                    emptyState.style.display = 'none';
+                    previewBox.classList.add('has-image');
+                    clearCanvasBtn.style.display = 'inline-flex';
+                    downloadBtn.style.display = 'inline-flex';
+                    fullscreenBtn.style.display = 'inline-flex';
                 });
-                historyThumbnails.appendChild(thumb);
+
+                historyThumbnails.appendChild(card);
             });
         }
 
-        // 전체화면 뷰어
+        // 전체화면
         fullscreenBtn.addEventListener('click', () => {
             if (resultImage.requestFullscreen) {
                 resultImage.requestFullscreen();
