@@ -828,11 +828,12 @@
             <div class="form-group">
                 <div class="form-label">
                     <span>렌더링 엔진 선택</span>
-                    <span class="sub" id="engineStatusTag">무인증 직통 가동 중</span>
+                    <span class="sub" id="engineStatusTag">로컬 RTX 3050 직통 가동 중</span>
                 </div>
                 <div class="engine-bar">
                     <select id="engineSelect" class="select-input">
-                        <option value="hf_flux_schnell">⚡ FLUX.1-schnell (공식 무료·초고속 정밀)</option>
+                        <option value="kyanos_local_comfy" selected>🚀 키아노스 로컬 ComfyUI (FLUX.1-schnell GGUF · 무제한)</option>
+                        <option value="hf_flux_schnell">⚡ FLUX.1-schnell (공용 HuggingFace 클러스터)</option>
                         <option value="puter_flux_pro">💎 Puter FLUX.1-pro (초고화질·무료계정)</option>
                         <option value="puter_gpt_image">🎨 Puter GPT-Image-1 (문맥·텍스트 최강)</option>
                         <option value="gemini_imagen">🌟 Google Gemini Imagen 3 (API 키 필요)</option>
@@ -971,7 +972,7 @@
                 <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
                     <input type="checkbox" id="lockSeedCheckbox"> 시드(Seed) 고정:
                 </label>
-                <input type="number" id="seedInput" class="text-input" value="0" min="0" max="2147483647" disabled>
+                <input type="number" id="seedInput" class="text-input" value="774102931" min="0" max="2147483647" disabled>
                 <span id="lastSeedLabel" style="margin-left:auto; font-size:11px;"></span>
             </div>
 
@@ -1235,8 +1236,10 @@
         engineSelect.addEventListener('change', () => {
             const label = engineSelect.options[engineSelect.selectedIndex].text.split('(')[0].trim();
             metaEngine.innerHTML = `<i class="fa-solid fa-server"></i> 엔진: ${label}`;
-            if (engineSelect.value === 'hf_flux_schnell') {
-                engineStatusTag.innerText = '무인증 직통 가동 중';
+            if (engineSelect.value === 'kyanos_local_comfy') {
+                engineStatusTag.innerText = '로컬 RTX 3050 직통 가동 중';
+            } else if (engineSelect.value === 'hf_flux_schnell') {
+                engineStatusTag.innerText = '공용 클러스터 직통 모드';
             } else if (engineSelect.value.startsWith('puter_')) {
                 engineStatusTag.innerText = 'Puter 무료 계정 연동';
             } else {
@@ -1460,6 +1463,77 @@
         async function runGeneration(finalPrompt, seedToUse, randomizeSeed) {
             const engine = engineSelect.value;
 
+            if (engine === 'kyanos_local_comfy') {
+                const comfyBase = 'http://127.0.0.1:8188';
+                loadingSubText.innerText = "키아노스 로컬 ComfyUI (RTX 3050)에 워크플로우 전송 중...";
+
+                const workflow = {
+                    "1": { "class_type": "UnetLoaderGGUF", "inputs": { "unet_name": "flux1-schnell-Q4_K_S.gguf" } },
+                    "2": { "class_type": "DualCLIPLoader", "inputs": { "clip_name1": "clip_l.safetensors", "clip_name2": "t5xxl_fp8_e4m3fn.safetensors", "type": "flux" } },
+                    "3": { "class_type": "VAELoader", "inputs": { "vae_name": "ae.safetensors" } },
+                    "4": { "class_type": "CLIPTextEncode", "inputs": { "text": finalPrompt, "clip": ["2", 0] } },
+                    "5": { "class_type": "CLIPTextEncode", "inputs": { "text": "", "clip": ["2", 0] } },
+                    "6": { "class_type": "EmptySD3LatentImage", "inputs": { "width": currentWidth, "height": currentHeight, "batch_size": 1 } },
+                    "7": {
+                        "class_type": "KSampler",
+                        "inputs": {
+                            "model": ["1", 0],
+                            "positive": ["4", 0],
+                            "negative": ["5", 0],
+                            "latent_image": ["6", 0],
+                            "seed": seedToUse,
+                            "steps": 4,
+                            "cfg": 1.0,
+                            "sampler_name": "euler",
+                            "scheduler": "simple",
+                            "denoise": 1.0
+                        }
+                    },
+                    "8": { "class_type": "VAEDecode", "inputs": { "samples": ["7", 0], "vae": ["3", 0] } },
+                    "9": { "class_type": "SaveImage", "inputs": { "images": ["8", 0], "filename_prefix": "kyanos_studio" } }
+                };
+
+                let promptResp;
+                try {
+                    promptResp = await fetch(`${comfyBase}/prompt`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ prompt: workflow })
+                    });
+                } catch (e) {
+                    throw new Error('로컬 ComfyUI 서버(127.0.0.1:8188)에 연결할 수 없습니다. 서버 가동 상태를 확인해 주세요.');
+                }
+                if (!promptResp.ok) {
+                    const errTxt = await promptResp.text();
+                    throw new Error(`로컬 ComfyUI 요청 오류 (${promptResp.status}): ${errTxt.slice(0, 140)}`);
+                }
+                const { prompt_id } = await promptResp.json();
+                loadingSubText.innerText = "로컬 RTX 3050에서 FLUX.1-schnell 이미지 렌더링 중...";
+
+                let outputImage = null;
+                for (let attempt = 0; attempt < 180; attempt++) {
+                    await new Promise(r => setTimeout(r, 1000));
+                    const histResp = await fetch(`${comfyBase}/history/${prompt_id}`);
+                    if (!histResp.ok) continue;
+                    const histData = await histResp.json();
+                    const entry = histData?.[prompt_id];
+                    if (entry?.status?.status_str === 'error') {
+                        throw new Error('로컬 ComfyUI 렌더링 중 오류가 발생했습니다.');
+                    }
+                    const imgs = entry?.outputs?.['9']?.images;
+                    if (imgs && imgs.length > 0) {
+                        outputImage = imgs[0];
+                        break;
+                    }
+                }
+                if (!outputImage) {
+                    throw new Error('로컬 ComfyUI 렌더링 대기 시간이 초과되었습니다.');
+                }
+                const viewUrl = `${comfyBase}/view?filename=${encodeURIComponent(outputImage.filename)}&subfolder=${encodeURIComponent(outputImage.subfolder || '')}&type=${encodeURIComponent(outputImage.type || 'output')}`;
+                const blobUrl = await fetchVerifiedImageBlob(viewUrl);
+                return { blobUrl, usedSeed: seedToUse };
+            }
+
             if (engine === 'hf_flux_schnell') {
                 loadingSubText.innerText = "HuggingFace FLUX.1-schnell GPU 클러스터에 연결 중...";
                 const client = await getGradioClient();
@@ -1552,7 +1626,10 @@
             try {
                 const finalPrompt = await prepareFinalPrompt(false);
                 const randomizeSeed = !lockSeedCheckbox.checked;
-                const seedToUse = randomizeSeed ? Math.floor(Math.random() * 2147483647) : (parseInt(seedInput.value) || 0);
+                const parsedSeed = parseInt(seedInput.value, 10);
+                const seedToUse = randomizeSeed
+                    ? (Math.floor(Math.random() * 2147483646) + 1)
+                    : (Number.isFinite(parsedSeed) && parsedSeed >= 0 ? parsedSeed : 1);
 
                 loadingMainText.innerText = activeMode === '2d' ? "2D 예술 작품 렌더링 중..." : "3D 입체 목업 렌더링 중...";
                 const { blobUrl, usedSeed } = await runGeneration(finalPrompt, seedToUse, randomizeSeed);
