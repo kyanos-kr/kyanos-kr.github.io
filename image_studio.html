@@ -1650,12 +1650,14 @@
                 } catch (e) {
                     console.warn('로컬 ComfyUI 연결 불가, FLUX.1-schnell 클러스터로 자동 전환:', e);
                     showBanner('로컬 ComfyUI(127.0.0.1:8188)가 가동 중이지 않아, 공용 FLUX.1-schnell 클러스터로 자동 전환하여 창작합니다.', 'info');
+                    metaEngine.innerHTML = `<i class="fa-solid fa-server"></i> 엔진: ⚡ FLUX.1-schnell (클라우드 전환)`;
                     return await generateWithHFSchnell(finalPrompt, seedToUse, randomizeSeed);
                 }
 
                 if (!promptResp || !promptResp.ok) {
                     console.warn('로컬 ComfyUI 오류 응답, FLUX.1-schnell 클러스터로 자동 전환');
                     showBanner('로컬 ComfyUI 응답 이상으로 공용 FLUX.1-schnell 클러스터로 안전하게 자동 전환합니다.', 'info');
+                    metaEngine.innerHTML = `<i class="fa-solid fa-server"></i> 엔진: ⚡ FLUX.1-schnell (클라우드 전환)`;
                     return await generateWithHFSchnell(finalPrompt, seedToUse, randomizeSeed);
                 }
 
