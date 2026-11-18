@@ -1325,9 +1325,9 @@
                 if (resp.ok) {
                     const comfyOpt = engineSelect.querySelector('option[value="kyanos_local_comfy"]');
                     if (comfyOpt) comfyOpt.text = '🚀 키아노스 로컬 ComfyUI (RTX 3050 · 가동 감지됨)';
-                    if (engineSelect.value === 'kyanos_local_comfy') {
-                        engineStatusTag.innerText = '로컬 RTX 3050 하드웨어 가속 연결됨';
-                    }
+                    engineSelect.value = 'kyanos_local_comfy';
+                    engineStatusTag.innerText = '로컬 RTX 3050 하드웨어 가속 연결됨 (무제한 초고속)';
+                    metaEngine.innerHTML = '<i class="fa-solid fa-server"></i> 엔진: 🚀 로컬 ComfyUI (RTX 3050)';
                 }
             } catch (e) {
                 // 비가동 상태 시 기본 클라우드 모드 유지
@@ -1584,14 +1584,32 @@
             const client = await getGradioClient();
             loadingSubText.innerText = "프롬프트를 정밀 계산하여 고화질 이미지를 렌더링 중 (약 3~8초)...";
 
-            const result = await client.predict("/infer", {
-                prompt: finalPrompt,
-                seed: seedToUse,
-                randomize_seed: randomizeSeed,
-                width: currentWidth,
-                height: currentHeight,
-                num_inference_steps: 4
-            });
+            let result;
+            try {
+                result = await client.predict("/infer", {
+                    prompt: finalPrompt,
+                    seed: seedToUse,
+                    randomize_seed: randomizeSeed,
+                    width: currentWidth,
+                    height: currentHeight,
+                    num_inference_steps: 4
+                });
+            } catch (err) {
+                const msg = err?.message || String(err);
+                if (msg.includes('quota') || msg.includes('ZeroGPU')) {
+                    try {
+                        const check = await fetch('http://127.0.0.1:8188/system_stats');
+                        if (check.ok) {
+                            console.info('HuggingFace 할당량 초과 감지 -> 로컬 ComfyUI로 자동 전환');
+                            showBanner('공용 GPU 할당량이 소진되어, 가동 중인 로컬 RTX 3050 ComfyUI로 자동 전환하여 창작합니다.', 'info');
+                            engineSelect.value = 'kyanos_local_comfy';
+                            metaEngine.innerHTML = `<i class="fa-solid fa-server"></i> 엔진: 🚀 로컬 ComfyUI (RTX 3050)`;
+                            return await runGeneration(finalPrompt, seedToUse, randomizeSeed);
+                        }
+                    } catch (e) {}
+                }
+                throw err;
+            }
 
             const imgData = result?.data?.[0];
             const usedSeed = result?.data?.[1] ?? seedToUse;
