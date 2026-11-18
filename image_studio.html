@@ -866,12 +866,12 @@
             <div class="form-group">
                 <div class="form-label">
                     <span>렌더링 엔진 선택</span>
-                    <span class="sub" id="engineStatusTag">⚡ 공용 클러스터 직통 모드 (즉시 가동)</span>
+                    <span class="sub" id="engineStatusTag">🚀 로컬 RTX 3050 직통 가동 중 (무제한 초고속)</span>
                 </div>
                 <div class="engine-bar">
                     <select id="engineSelect" class="select-input">
-                        <option value="hf_flux_schnell" selected>⚡ FLUX.1-schnell (공용 HuggingFace 클러스터 · 무설정 즉시 생성)</option>
-                        <option value="kyanos_local_comfy">🚀 키아노스 로컬 ComfyUI (FLUX.1-schnell GGUF · RTX 3050)</option>
+                        <option value="kyanos_local_comfy" selected>🚀 키아노스 로컬 ComfyUI (FLUX.1-schnell GGUF · RTX 3050 무제한)</option>
+                        <option value="hf_flux_schnell">⚡ FLUX.1-schnell (공용 HuggingFace 클러스터 · 할당량 제한)</option>
                         <option value="puter_flux_pro">💎 Puter FLUX.1-pro (초고화질·무료계정)</option>
                         <option value="puter_gpt_image">🎨 Puter GPT-Image-1 (문맥·텍스트 최강)</option>
                         <option value="gemini_imagen">🌟 Google Gemini Imagen 3 (API 키 필요)</option>
@@ -1087,7 +1087,7 @@
                     <div class="image-meta">
                         <span id="metaRes"><i class="fa-solid fa-expand"></i> 해상도: 1280 × 720 px (16:9)</span>
                         <span id="metaStyle"><i class="fa-solid fa-paintbrush"></i> 화풍: 2D 초고화질 실사</span>
-                        <span id="metaEngine"><i class="fa-solid fa-server"></i> 엔진: ⚡ FLUX.1-schnell</span>
+                        <span id="metaEngine"><i class="fa-solid fa-server"></i> 엔진: 🚀 로컬 ComfyUI (RTX 3050)</span>
                     </div>
                     <div class="action-btns">
                         <button id="fullscreenBtn" class="tool-btn" style="display: none;">
@@ -1305,9 +1305,9 @@
             const label = engineSelect.options[engineSelect.selectedIndex].text.split('(')[0].trim();
             metaEngine.innerHTML = `<i class="fa-solid fa-server"></i> 엔진: ${label}`;
             if (engineSelect.value === 'kyanos_local_comfy') {
-                engineStatusTag.innerText = '로컬 RTX 3050 직통 모드 (미가동 시 자동 클라우드 전환)';
+                engineStatusTag.innerText = '로컬 RTX 3050 직통 가동 중 (무제한 초고속)';
             } else if (engineSelect.value === 'hf_flux_schnell') {
-                engineStatusTag.innerText = '공용 클러스터 직통 모드 (즉시 가동)';
+                engineStatusTag.innerText = '공용 클러스터 모드 (ZeroGPU 할당량 주의)';
             } else if (engineSelect.value.startsWith('puter_')) {
                 engineStatusTag.innerText = 'Puter 무료 계정 연동';
             } else {
@@ -1639,7 +1639,7 @@
                 let promptResp = null;
                 try {
                     const controller = new AbortController();
-                    const timer = setTimeout(() => controller.abort(), 2000);
+                    const timer = setTimeout(() => controller.abort(), 8000);
                     promptResp = await fetch(`${comfyBase}/prompt`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
@@ -1800,9 +1800,9 @@
                 console.error(err);
                 loadingOverlay.style.display = 'none';
                 generateBtn.disabled = false;
-                const msg = err?.message || String(err);
+                const msg = err?.message || (typeof err === 'object' ? JSON.stringify(err) : String(err));
                 if (msg.includes('quota') || msg.includes('ZeroGPU')) {
-                    showBanner('공용 GPU 할당량이 일시적으로 혼잡합니다. 잠시 후 다시 시도하시거나 상단 [엔진 설정] / Puter 엔진을 선택해 보세요.', 'warn');
+                    showBanner('HuggingFace 공용 GPU 할당량이 소진되었습니다. 현재 정상 가동 중인 [🚀 키아노스 로컬 ComfyUI] 엔진을 선택하시면 RTX 3050으로 무제한 즉시 생성됩니다.', 'warn');
                 } else {
                     showBanner('생성 중 오류: ' + msg, 'error');
                 }
