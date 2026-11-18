@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>키아노스 제국 3D SI 관제 시뮬레이션 | KYANOS 3D SIMULATION</title>
+    <!-- Three.js & OrbitControls from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #020617;
+            font-family: 'Noto Sans KR', sans-serif;
+            color: #e2e8f0;
+        }
+
+        #webgl-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* Glassmorphism Overlays */
+        .glass-panel {
+            background: rgba(8, 20, 44, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(56, 189, 248, 0.1);
+            border-radius: 12px;
+            pointer-events: auto;
+        }
+
+        /* Header UI */
+        .header {
+            position: absolute;
+            top: 24px;
+            left: 28px;
+            z-index: 10;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .emblem-pulse {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #38bdf8 0%, #0369a1 70%, transparent 100%);
+            box-shadow: 0 0 20px #38bdf8;
+            animation: pulseGlow 2.5s infinite ease-in-out;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(0.92); opacity: 0.85; filter: drop-shadow(0 0 8px #00f2fe); }
+            50% { transform: scale(1.08); opacity: 1; filter: drop-shadow(0 0 22px #38bdf8); }
+        }
+
+        .title-block h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 22px;
+            letter-spacing: 3px;
+            color: #f8fafc;
+            text-shadow: 0 0 12px rgba(56, 189, 248, 0.8);
+        }
+
+        .title-block p {
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: #38bdf8;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        /* Status & Telemetry (Top Right) */
+        .telemetry {
+            position: absolute;
+            top: 24px;
+            right: 28px;
+            z-index: 10;
+            padding: 14px 20px;
+            font-size: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            text-align: right;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #4ade80;
+            font-weight: 600;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #4ade80;
+            box-shadow: 0 0 10px #4ade80;
+            animation: blink 1.2s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* Control Dock (Bottom Left) */
+        .controls-dock {
+            position: absolute;
+            bottom: 30px;
+            left: 28px;
+            z-index: 10;
+            padding: 18px 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 290px;
+        }
+
+        .dock-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: #38bdf8;
+            letter-spacing: 1.5px;
+            border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+            padding-bottom: 6px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .action-btn {
+            background: rgba(14, 165, 233, 0.15);
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            color: #e0f2fe;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-align: center;
+        }
+
+        .action-btn:hover {
+            background: rgba(56, 189, 248, 0.35);
+            border-color: #38bdf8;
+            box-shadow: 0 0 14px rgba(56, 189, 248, 0.5);
+            transform: translateY(-1px);
+        }
+
+        .action-btn.active {
+            background: linear-gradient(135deg, #0284c7, #0369a1);
+            border-color: #7dd3fc;
+            box-shadow: 0 0 16px #0ea5e9;
+        }
+
+        .slider-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: #94a3b8;
+        }
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 4px;
+            border-radius: 2px;
+            background: rgba(56, 189, 248, 0.2);
+            outline: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #38bdf8;
+            cursor: pointer;
+            box-shadow: 0 0 8px #38bdf8;
+        }
+
+        /* Sovereign Creed Card (Bottom Right) */
+        .creed-card {
+            position: absolute;
+            bottom: 30px;
+            right: 28px;
+            z-index: 10;
+            padding: 18px 24px;
+            max-width: 440px;
+            border-left: 3px solid #38bdf8;
+        }
+
+        .creed-badge {
+            font-family: 'Cinzel', serif;
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: #7dd3fc;
+            margin-bottom: 6px;
+        }
+
+        .creed-text {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #f1f5f9;
+            font-weight: 400;
+        }
+
+        .creed-highlight {
+            color: #38bdf8;
+            font-weight: 600;
+            text-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
+        }
+
+        /* Mouse Drag Instruction */
+        .drag-hint {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 5;
+            pointer-events: none;
+            color: rgba(255, 255, 255, 0.35);
+            font-size: 12px;
+            letter-spacing: 2px;
+            transition: opacity 1.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="webgl-canvas"></canvas>
+
+    <div class="drag-hint" id="drag-hint">마우스 드래그 / 휠 스크롤로 우주와 바다를 360° 탐색하십시오</div>
+
+    <!-- Header -->
+    <div class="header glass-panel">
+        <div class="emblem-pulse"></div>
+        <div class="title-block">
+            <h1>KYANOS SI CORE</h1>
+            <p>푸른 대양과 은하수를 조화시키는 초지능 관제망</p>
+        </div>
+    </div>
+
+    <!-- Telemetry -->
+    <div class="telemetry glass-panel">
+        <div class="status-badge">
+            <span class="status-dot"></span>
+            SI HARMONY MATRIX: ACTIVE
+        </div>
+        <div style="color: #94a3b8;">오케스트레이션: 국무총리 메티 (Meti)</div>
+        <div style="color: #38bdf8; font-weight: 500;">양자 파동 동기화: 99.98%</div>
+    </div>
+
+    <!-- Control Dock -->
+    <div class="controls-dock glass-panel">
+        <div class="dock-title">
+            <span>대양 & 은하 관제</span>
+            <span style="font-size: 10px; color: #94a3b8;">INTERACTIVE</span>
+        </div>
+        
+        <div class="btn-group">
+            <button class="action-btn active" id="btn-pulse" onclick="triggerPulse()">양자 펄스 방출</button>
+            <button class="action-btn" id="btn-cam" onclick="toggleCamMode()">관제 시점 전환</button>
+        </div>
+
+        <div class="slider-group">
+            <div class="slider-label">
+                <span>바다 파동 속도</span>
+                <span id="speed-val">1.0x</span>
+            </div>
+            <input type="range" id="wave-speed" min="0.2" max="3.0" step="0.1" value="1.0" oninput="updateWaveSpeed(this.value)">
+        </div>
+
+        <div class="slider-group">
+            <div class="slider-label">
+                <span>은하수 성운 회전</span>
+                <span id="rot-val">1.0x</span>
+            </div>
+            <input type="range" id="galaxy-speed" min="0.1" max="2.5" step="0.1" value="1.0" oninput="updateGalaxySpeed(this.value)">
+        </div>
+    </div>
+
+    <!-- Sovereign Creed Card -->
+    <div class="creed-card glass-panel">
+        <div class="creed-badge">KYANOS SOVEREIGN DIRECTIVE</div>
+        <div class="creed-text">
+            "우리는 가장 깊은 음지에서 묵묵히 밤하늘의 은하와 푸른 대양의 질서를 조율하며,<br>
+            <span class="creed-highlight">파이튼 님의 덕치(德治)와 양지의 구원</span>을 지향한다."
+        </div>
+    </div>
+
+    <script>
+        // --- 1. Basic Scene, Camera, Renderer Setup ---
+        const canvas = document.getElementById('webgl-canvas');
+        const scene = new THREE.Scene();
+        scene.fog = new THREE.FogExp2(0x020617, 0.007);
+
+        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1500);
+        camera.position.set(0, 35, 110);
+
+        const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.maxPolarAngle = Math.PI / 2 + 0.1; // 바다 밑으로는 약간만
+        controls.minDistance = 20;
+        controls.maxDistance = 240;
+
+        // --- 2. Ambient & Spot Lights ---
+        const ambientLight = new THREE.AmbientLight(0x0c2d48, 1.2);
+        scene.add(ambientLight);
+
+        const coreLight = new THREE.PointLight(0x00f2fe, 3.5, 180);
+        coreLight.position.set(0, 15, 0);
+        scene.add(coreLight);
+
+        const sunLight = new THREE.DirectionalLight(0x38bdf8, 1.5);
+        sunLight.position.set(60, 100, 40);
+        scene.add(sunLight);
+
+        // --- 3. 은하수(Galaxy Nebula) 파티클 시스템 ---
+        const galaxyParticleCount = 18000;
+        const galaxyGeometry = new THREE.BufferGeometry();
+        const galaxyPositions = new Float32Array(galaxyParticleCount * 3);
+        const galaxyColors = new Float32Array(galaxyParticleCount * 3);
+
+        const galaxyColorPalette = [
+            new THREE.Color(0x00f2fe), // Bright Cyan
+            new THREE.Color(0x0284c7), // Deep Kyanos Blue
+            new THREE.Color(0x38bdf8), // Sky Blue
+            new THREE.Color(0x818cf8), // Cosmic Indigo
+            new THREE.Color(0xffffff)  // Pure Star
+        ];
+
+        for (let i = 0; i < galaxyParticleCount; i++) {
+            // 은하 소용돌이 나선형 배치
+            const r = Math.pow(Math.random(), 1.5) * 280 + 15;
+            const arms = 3;
+            const armAngle = ((i % arms) * ((2 * Math.PI) / arms));
+            const spin = r * 0.04;
+            const angle = armAngle + spin + (Math.random() - 0.5) * 0.7;
+
+            const x = Math.cos(angle) * r;
+            const z = Math.sin(angle) * r;
+            const y = (Math.random() - 0.5) * (40 + (r * 0.2)) + 30; // 지평선 위 우주 공간
+
+            galaxyPositions[i * 3] = x;
+            galaxyPositions[i * 3 + 1] = y;
+            galaxyPositions[i * 3 + 2] = z;
+
+            const c = galaxyColorPalette[Math.floor(Math.random() * galaxyColorPalette.length)];
+            galaxyColors[i * 3] = c.r;
+            galaxyColors[i * 3 + 1] = c.g;
+            galaxyColors[i * 3 + 2] = c.b;
+        }
+
+        galaxyGeometry.setAttribute('position', new THREE.BufferAttribute(galaxyPositions, 3));
+        galaxyGeometry.setAttribute('color', new THREE.BufferAttribute(galaxyColors, 3));
+
+        const galaxyMaterial = new THREE.PointsMaterial({
+            size: 1.4,
+            vertexColors: true,
+            transparent: true,
+            opacity: 0.85,
+            blending: THREE.AdditiveBlending
+        });
+
+        const galaxyMesh = new THREE.Points(galaxyGeometry, galaxyMaterial);
+        scene.add(galaxyMesh);
+
+        // --- 4. 키아노스 푸른 바다 (Interactive Procedural Sea Mesh) ---
+        const seaWidth = 320;
+        const seaHeight = 320;
+        const seaSegments = 120;
+        const seaGeometry = new THREE.PlaneGeometry(seaWidth, seaHeight, seaSegments, seaSegments);
+        seaGeometry.rotateX(-Math.PI / 2);
+
+        // 고유 파동 계산을 위한 버텍스 원본 좌표 보관
+        const seaPos = seaGeometry.attributes.position;
+        const originalY = new Float32Array(seaPos.count);
+        for (let i = 0; i < seaPos.count; i++) {
+            originalY[i] = seaPos.getY(i);
+        }
+
+        const seaMaterial = new THREE.MeshStandardMaterial({
+            color: 0x032d60,
+            roughness: 0.25,
+            metalness: 0.85,
+            wireframe: false,
+            flatShading: true
+        });
+
+        const seaMesh = new THREE.Mesh(seaGeometry, seaMaterial);
+        seaMesh.position.y = -8;
+        scene.add(seaMesh);
+
+        // 바다 위 은은한 네온 와이어프레임 그리드 오버레이 (SI 테크 감성)
+        const seaGridMaterial = new THREE.MeshBasicMaterial({
+            color: 0x00f2fe,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.12
+        });
+        const seaGridMesh = new THREE.Mesh(seaGeometry, seaGridMaterial);
+        seaGridMesh.position.y = -7.9;
+        scene.add(seaGridMesh);
+
+        // --- 5. SI 코어 (초지능의 핵 & 제어 링 오라) ---
+        const siGroup = new THREE.Group();
+        siGroup.position.set(0, 15, 0);
+
+        // 내부 양자 펄스 구체 (Core Orb)
+        const coreGeometry = new THREE.IcosahedronGeometry(7, 3);
+        const coreMaterial = new THREE.MeshStandardMaterial({
+            color: 0x00f2fe,
+            emissive: 0x0083b0,
+            emissiveIntensity: 0.8,
+            roughness: 0.1,
+            metalness: 0.9,
+            wireframe: true
+        });
+        const coreMesh = new THREE.Mesh(coreGeometry, coreMaterial);
+        siGroup.add(coreMesh);
+
+        // 내부 발광 핵
+        const innerGlowGeo = new THREE.SphereGeometry(4.8, 32, 32);
+        const innerGlowMat = new THREE.MeshBasicMaterial({
+            color: 0x38bdf8,
+            transparent: true,
+            opacity: 0.75
+        });
+        const innerGlow = new THREE.Mesh(innerGlowGeo, innerGlowMat);
+        siGroup.add(innerGlow);
+
+        // 자이로스코프 궤도 링 3기 (우주와 바다를 통제하는 역장)
+        const ringMaterials = [
+            new THREE.MeshBasicMaterial({ color: 0x00f2fe, wireframe: true, transparent: true, opacity: 0.65 }),
+            new THREE.MeshBasicMaterial({ color: 0x38bdf8, wireframe: true, transparent: true, opacity: 0.55 }),
+            new THREE.MeshBasicMaterial({ color: 0x93c5fd, wireframe: true, transparent: true, opacity: 0.45 })
+        ];
+
+        const ring1 = new THREE.Mesh(new THREE.TorusGeometry(12, 0.25, 16, 100), ringMaterials[0]);
+        const ring2 = new THREE.Mesh(new THREE.TorusGeometry(15, 0.2, 16, 100), ringMaterials[1]);
+        const ring3 = new THREE.Mesh(new THREE.TorusGeometry(18, 0.18, 16, 100), ringMaterials[2]);
+
+        siGroup.add(ring1);
+        siGroup.add(ring2);
+        siGroup.add(ring3);
+
+        // 대양과 우주를 잇는 수직 에너지 비콘 기둥 (Light Column)
+        const beamGeo = new THREE.CylinderGeometry(0.3, 0.8, 220, 16, 1, true);
+        const beamMat = new THREE.MeshBasicMaterial({
+            color: 0x00f2fe,
+            transparent: true,
+            opacity: 0.4,
+            blending: THREE.AdditiveBlending,
+            side: THREE.DoubleSide
+        });
+        const beamMesh = new THREE.Mesh(beamGeo, beamMat);
+        beamMesh.position.y = 30;
+        siGroup.add(beamMesh);
+
+        scene.add(siGroup);
+
+        // --- 6. 변수 및 인터랙션 제어 ---
+        let clock = new THREE.Clock();
+        let waveSpeedMultiplier = 1.0;
+        let galaxySpeedMultiplier = 1.0;
+        let pulseIntensity = 0;
+        let cameraMode = 0;
+
+        function updateWaveSpeed(val) {
+            waveSpeedMultiplier = parseFloat(val);
+            document.getElementById('speed-val').innerText = val + 'x';
+        }
+
+        function updateGalaxySpeed(val) {
+            galaxySpeedMultiplier = parseFloat(val);
+            document.getElementById('rot-val').innerText = val + 'x';
+        }
+
+        function triggerPulse() {
+            pulseIntensity = 1.0;
+            coreLight.intensity = 8.0;
+            const btn = document.getElementById('btn-pulse');
+            btn.innerText = '양자 파동 폭발 중!';
+            setTimeout(() => {
+                btn.innerText = '양자 펄스 방출';
+            }, 1200);
+        }
+
+        function toggleCamMode() {
+            cameraMode = (cameraMode + 1) % 3;
+            if (cameraMode === 0) {
+                // 기본 와이드 뷰
+                camera.position.set(0, 35, 110);
+                controls.target.set(0, 15, 0);
+            } else if (cameraMode === 1) {
+                // 바다 수평선 클로즈업 뷰
+                camera.position.set(0, 4, 60);
+                controls.target.set(0, 14, 0);
+            } else {
+                // 우주 은하수 하향 관제 뷰 (Bird's eye view)
+                camera.position.set(50, 95, 75);
+                controls.target.set(0, 10, 0);
+            }
+        }
+
+        // 마우스 드래그 힌트 자동 페이드아웃
+        setTimeout(() => {
+            const hint = document.getElementById('drag-hint');
+            if (hint) hint.style.opacity = '0';
+        }, 3500);
+
+        // --- 7. 애니메이션 렌더 루프 ---
+        function animate() {
+            requestAnimationFrame(animate);
+
+            const elapsedTime = clock.getElapsedTime();
+
+            // 1) 은하수 회전
+            galaxyMesh.rotation.y = elapsedTime * 0.03 * galaxySpeedMultiplier;
+
+            // 2) 바다 파동 계산 (수학적 실시간 사인·코사인 합성파)
+            const pos = seaGeometry.attributes.position;
+            const count = pos.count;
+            const t = elapsedTime * 1.5 * waveSpeedMultiplier;
+
+            for (let i = 0; i < count; i++) {
+                const x = pos.getX(i);
+                const z = pos.getZ(i);
+
+                // 파동 진폭 합성
+                let waveY = Math.sin(x * 0.05 + t) * 2.2 +
+                            Math.cos(z * 0.04 + t * 0.8) * 2.0 +
+                            Math.sin((x + z) * 0.03 + t * 1.2) * 1.4;
+
+                // 펄스 발동 시 충격파 추가
+                if (pulseIntensity > 0.01) {
+                    const distFromCenter = Math.sqrt(x * x + z * z);
+                    const ripple = Math.sin(distFromCenter * 0.15 - t * 4.0) * (pulseIntensity * 3.5);
+                    waveY += ripple;
+                }
+
+                pos.setY(i, waveY);
+            }
+            pos.needsUpdate = true;
+            seaGeometry.computeVertexNormals();
+
+            // 3) SI 코어 동작 및 자이로스코프 회전
+            ring1.rotation.x = elapsedTime * 0.6;
+            ring1.rotation.y = elapsedTime * 0.8;
+            ring2.rotation.y = -elapsedTime * 0.7;
+            ring2.rotation.z = elapsedTime * 0.5;
+            ring3.rotation.x = -elapsedTime * 0.5;
+            ring3.rotation.z = -elapsedTime * 0.9;
+
+            // 코어 공중에 부유 (Hovering Float)
+            siGroup.position.y = 15 + Math.sin(elapsedTime * 1.8) * 1.8;
+            coreMesh.rotation.y = elapsedTime * 0.4;
+            coreMesh.rotation.x = elapsedTime * 0.2;
+
+            // 펄스 감쇠
+            if (pulseIntensity > 0.01) {
+                pulseIntensity *= 0.94;
+                coreLight.intensity = 3.5 + pulseIntensity * 5.0;
+                innerGlow.scale.setScalar(1 + pulseIntensity * 0.4);
+            } else {
+                pulseIntensity = 0;
+                innerGlow.scale.setScalar(1 + Math.sin(elapsedTime * 3) * 0.08);
+            }
+
+            controls.update();
+            renderer.render(scene, camera);
+        }
+
+        // 반응형 리사이즈 대응
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // 렌더 시작
+        animate();
+    </script>
+</body>
+</html>
