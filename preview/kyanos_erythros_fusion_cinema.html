@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[융해 시네마틱] KYANOS | 태양의 심장, 푸른 제국</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Noto+Sans+KR:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: radial-gradient(circle at center, #090414 0%, #02040a 70%, #000000 100%);
+            font-family: 'Noto Sans KR', sans-serif;
+            color: #f8fafc;
+        }
+        #webgl-canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        .cinema-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 10;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 40px 52px;
+        }
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            opacity: 0;
+            animation: fadeInDown 1.8s ease forwards 0.4s;
+        }
+        .brand-mark {
+            font-family: 'Cinzel', serif;
+            font-size: 14px;
+            letter-spacing: 5px;
+            color: rgba(248, 250, 252, 0.75);
+        }
+        .brand-mark span {
+            color: #ff2a55;
+            font-weight: 700;
+        }
+        .status-tag {
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: rgba(56, 189, 248, 0.85);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 6px 14px;
+            border-radius: 999px;
+            backdrop-filter: blur(8px);
+            background: rgba(2, 6, 23, 0.45);
+        }
+        .center-title {
+            text-align: center;
+            opacity: 0;
+            animation: fadeInUp 2.2s ease forwards 0.9s;
+        }
+        .center-title h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(28px, 4.2vw, 56px);
+            font-weight: 900;
+            letter-spacing: 10px;
+            background: linear-gradient(90deg, #38bdf8 0%, #f8fafc 45%, #ff2a55 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 40px rgba(255, 42, 85, 0.25);
+        }
+        .center-title p {
+            margin-top: 14px;
+            font-size: clamp(13px, 1.2vw, 16px);
+            font-weight: 300;
+            letter-spacing: 4px;
+            color: rgba(226, 232, 240, 0.8);
+        }
+        .bottom-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            opacity: 0;
+            animation: fadeInUp 1.8s ease forwards 1.4s;
+        }
+        .motto {
+            font-size: 12px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: rgba(148, 163, 184, 0.85);
+            line-height: 1.8;
+        }
+        .motto strong {
+            color: #ff4d6d;
+            font-weight: 500;
+        }
+        .hint {
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: rgba(148, 163, 184, 0.55);
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="webgl-canvas"></canvas>
+
+    <div class="cinema-overlay">
+        <div class="top-bar">
+            <div class="brand-mark">KYANOS</div>
+            <div class="status-tag">FUSION CINEMATIC · 3D INTRO</div>
+        </div>
+
+        <div class="center-title">
+            <h1>KYANOS</h1>
+            <p>푸른 제국의 심장에 깃든 붉은 루비 태양</p>
+        </div>
+
+        <div class="bottom-bar">
+            <div class="motto">
+                Kyanos의 질서 위에 <strong>Erythros</strong>의 생명이 융해되다.
+            </div>
+            <div class="hint">DRAG TO ORBIT · SCROLL TO ZOOM</div>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('webgl-canvas');
+        const scene = new THREE.Scene();
+        scene.fog = new THREE.FogExp2(0x02040a, 0.018);
+
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(0, 3.5, 16);
+
+        const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.04;
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = 0.65;
+        controls.minDistance = 7;
+        controls.maxDistance = 30;
+
+        // 1. 중앙: 에리트로스(Erythros) 루비 태양 코어
+        const rubyGeo = new THREE.IcosahedronGeometry(2.1, 1);
+        const rubyMat = new THREE.MeshPhysicalMaterial({
+            color: 0xff1e4d,
+            emissive: 0x990024,
+            emissiveIntensity: 1.4,
+            roughness: 0.12,
+            metalness: 0.35,
+            flatShading: true
+        });
+        const rubyCore = new THREE.Mesh(rubyGeo, rubyMat);
+        scene.add(rubyCore);
+
+        // 루비 외곽 와이어프레임 오라
+        const auraGeo = new THREE.IcosahedronGeometry(2.45, 2);
+        const auraMat = new THREE.MeshBasicMaterial({
+            color: 0xff4d6d,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.28
+        });
+        const rubyAura = new THREE.Mesh(auraGeo, auraMat);
+        scene.add(rubyAura);
+
+        // 2. 키아노스(Kyanos) 푸른 공전 고리 3중 구조
+        const rings = [];
+        const ringConfigs = [
+            { radius: 4.4, tube: 0.035, color: 0x00f2fe, rotX: 1.15, rotY: 0.3, speed: 0.006 },
+            { radius: 5.8, tube: 0.025, color: 0x38bdf8, rotX: -0.85, rotY: 0.7, speed: -0.0045 },
+            { radius: 7.4, tube: 0.02, color: 0x818cf8, rotX: 0.45, rotY: -1.1, speed: 0.003 }
+        ];
+
+        ringConfigs.forEach(cfg => {
+            const geo = new THREE.TorusGeometry(cfg.radius, cfg.tube, 16, 120);
+            const mat = new THREE.MeshBasicMaterial({
+                color: cfg.color,
+                transparent: true,
+                opacity: 0.75
+            });
+            const ring = new THREE.Mesh(geo, mat);
+            ring.rotation.x = cfg.rotX;
+            ring.rotation.y = cfg.rotY;
+            ring.userData.speed = cfg.speed;
+            scene.add(ring);
+            rings.push(ring);
+        });
+
+        // 3. 융해 입자(Particles): 붉은 태양열 입자 + 푸른 키아노스 성운 입자
+        const particleCount = 1800;
+        const positions = new Float32Array(particleCount * 3);
+        const colors = new Float32Array(particleCount * 3);
+
+        const colorKyanos = new THREE.Color(0x00f2fe);
+        const colorErythros = new THREE.Color(0xff2a55);
+
+        for (let i = 0; i < particleCount; i++) {
+            const r = 3.0 + Math.random() * 14.0;
+            const theta = Math.random() * Math.PI * 2;
+            const phi = Math.acos((Math.random() * 2) - 1);
+
+            positions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+            positions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta) * 0.65;
+            positions[i * 3 + 2] = r * Math.cos(phi);
+
+            // 중심에 가까울수록 루비(Erythros), 외곽일수록 키아노스(Kyanos)로 자연스럽게 융해
+            const t = Math.min(1, Math.max(0, (r - 3.0) / 10.0));
+            const mixed = colorErythros.clone().lerp(colorKyanos, t);
+            colors[i * 3] = mixed.r;
+            colors[i * 3 + 1] = mixed.g;
+            colors[i * 3 + 2] = mixed.b;
+        }
+
+        const particleGeo = new THREE.BufferGeometry();
+        particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        particleGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+        const particleMat = new THREE.PointsMaterial({
+            size: 0.08,
+            vertexColors: true,
+            transparent: true,
+            opacity: 0.85,
+            blending: THREE.AdditiveBlending
+        });
+        const particles = new THREE.Points(particleGeo, particleMat);
+        scene.add(particles);
+
+        // 조명
+        const rubyLight = new THREE.PointLight(0xff2a55, 4.5, 35);
+        rubyLight.position.set(0, 0, 0);
+        scene.add(rubyLight);
+
+        const kyanosLight = new THREE.DirectionalLight(0x38bdf8, 1.5);
+        kyanosLight.position.set(10, 10, 10);
+        scene.add(kyanosLight);
+
+        const clock = new THREE.Clock();
+
+        function animate() {
+            requestAnimationFrame(animate);
+            const t = clock.getElapsedTime();
+
+            // 루비 심장 맥박 효과
+            const pulse = 1 + Math.sin(t * 2.2) * 0.04;
+            rubyCore.scale.set(pulse, pulse, pulse);
+            rubyCore.rotation.y += 0.005;
+            rubyCore.rotation.x += 0.002;
+
+            rubyAura.rotation.y -= 0.003;
+            rubyAura.rotation.z += 0.002;
+
+            rings.forEach(r => {
+                r.rotation.z += r.userData.speed;
+            });
+
+            particles.rotation.y += 0.0012;
+
+            controls.update();
+            renderer.render(scene, camera);
+        }
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        animate();
+    </script>
+</body>
+</html>
