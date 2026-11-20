@@ -1,0 +1,326 @@
+/* ==========================================================================
+   KYANOS SOVEREIGN REALM - UNIFIED AUTH GATEWAY & PASSPORT CSS
+   키아노스 통합 로그인 관문 및 패스포트 4계층 권한 인증 모듈
+   통수권자: 국왕 파이튼 | 총괄 지휘: 국무총리 메티
+   ========================================================================== */
+
+/* 상단 관문 토글 버튼 */
+.kyanos-auth-trigger-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 14px;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.22), rgba(11, 16, 33, 0.85));
+  border: 1px solid rgba(251, 191, 36, 0.55);
+  border-radius: 20px;
+  color: #fde68a;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  text-decoration: none;
+}
+
+.kyanos-auth-trigger-btn:hover {
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.4), rgba(24, 34, 62, 0.95));
+  border-color: #fde68a;
+  box-shadow: 0 0 14px rgba(251, 191, 36, 0.45);
+  transform: translateY(-1px);
+  color: #ffffff;
+}
+
+/* 모달 오버레이 */
+.kyanos-gate-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at 50% 40%, rgba(11, 16, 33, 0.88) 0%, rgba(5, 8, 18, 0.96) 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+.kyanos-gate-modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* 모달 카드 */
+.kyanos-gate-card {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  background: linear-gradient(165deg, rgba(25, 34, 60, 0.95) 0%, rgba(11, 16, 33, 0.98) 100%);
+  border: 1.5px solid rgba(212, 175, 55, 0.6);
+  border-radius: 20px;
+  padding: 2.2rem 2rem 1.8rem 2rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(212, 175, 55, 0.18);
+  color: #e2e8f0;
+  font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
+  transform: translateY(12px) scale(0.97);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+.kyanos-gate-modal-overlay.active .kyanos-gate-card {
+  transform: translateY(0) scale(1);
+}
+
+/* 닫기 버튼 */
+.kyanos-gate-close-btn {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #94a3b8;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: all 0.2s;
+}
+
+.kyanos-gate-close-btn:hover {
+  background: rgba(255, 77, 109, 0.2);
+  border-color: #ff4d6d;
+  color: #ff859c;
+}
+
+/* 엠블럼 및 헤더 */
+.kyanos-gate-header {
+  text-align: center;
+  margin-bottom: 1.4rem;
+}
+
+.kyanos-gate-emblem {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, rgba(15, 23, 42, 0.8) 75%);
+  border: 1.5px solid rgba(251, 191, 36, 0.7);
+  box-shadow: 0 0 18px rgba(251, 191, 36, 0.35);
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.kyanos-gate-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.28rem;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  color: #fde68a;
+  text-shadow: 0 0 10px rgba(251, 191, 36, 0.4);
+  margin-bottom: 0.3rem;
+}
+
+.kyanos-gate-subtitle {
+  font-size: 0.78rem;
+  color: #94a3b8;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
+}
+
+/* 권한 계층 안내 뱃지 */
+.kyanos-gate-tiers-badge {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 1.3rem;
+}
+
+.kyanos-tier-pill {
+  font-size: 0.68rem;
+  padding: 3px 8px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #94a3b8;
+}
+
+.kyanos-tier-pill.active {
+  border-color: rgba(251, 191, 36, 0.6);
+  color: #fde68a;
+  background: rgba(251, 191, 36, 0.12);
+}
+
+/* 폼 요소 */
+.kyanos-gate-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.kyanos-gate-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  text-align: left;
+}
+
+.kyanos-gate-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #cbd5e1;
+  letter-spacing: 0.5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.kyanos-gate-input {
+  width: 100%;
+  padding: 10px 14px;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 10px;
+  color: #f8fafc;
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.2s;
+  box-sizing: border-box;
+}
+
+.kyanos-gate-input:focus {
+  border-color: #fde68a;
+  box-shadow: 0 0 12px rgba(251, 191, 36, 0.3);
+  background: rgba(15, 23, 42, 0.95);
+}
+
+.kyanos-gate-btn-submit {
+  width: 100%;
+  padding: 11px;
+  background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
+  border: none;
+  border-radius: 10px;
+  color: #0b1021;
+  font-weight: 800;
+  font-size: 0.92rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.35);
+  margin-top: 0.3rem;
+}
+
+.kyanos-gate-btn-submit:hover {
+  background: linear-gradient(135deg, #fde68a 0%, #d4af37 100%);
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.6);
+  transform: translateY(-1px);
+}
+
+/* 상태 메시지 */
+.kyanos-gate-status {
+  min-height: 1.2rem;
+  font-size: 0.78rem;
+  text-align: center;
+  color: #94a3b8;
+  margin-top: 0.3rem;
+}
+
+.kyanos-gate-status.error {
+  color: #ff6b7a;
+}
+
+.kyanos-gate-status.success {
+  color: #34d399;
+}
+
+/* 일반 방문자 사전 등록 및 안내 구역 */
+.kyanos-gate-footer {
+  margin-top: 1.4rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.76rem;
+  color: #64748b;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.kyanos-gate-footer a {
+  color: #38bdf8;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.kyanos-gate-footer a:hover {
+  text-decoration: underline;
+}
+
+/* 차폐 알림 모달/인터셉터 */
+.kyanos-shield-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.95);
+  background: rgba(11, 16, 33, 0.98);
+  border: 1.5px solid #ff4d6d;
+  border-radius: 16px;
+  padding: 1.8rem 2rem;
+  z-index: 100001;
+  max-width: 420px;
+  width: 90%;
+  box-shadow: 0 0 35px rgba(255, 77, 109, 0.35);
+  color: #fff;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s ease;
+  box-sizing: border-box;
+}
+
+.kyanos-shield-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.kyanos-shield-modal h4 {
+  color: #ff859c;
+  font-size: 1.1rem;
+  margin-bottom: 0.6rem;
+  font-family: 'Cinzel', serif;
+}
+
+.kyanos-shield-modal p {
+  font-size: 0.82rem;
+  color: #cbd5e1;
+  line-height: 1.5;
+  margin-bottom: 1.2rem;
+}
+
+.kyanos-shield-modal-close {
+  display: inline-block;
+  padding: 7px 18px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.kyanos-shield-modal-close:hover {
+  background: rgba(255, 77, 109, 0.3);
+  border-color: #ff4d6d;
+}
