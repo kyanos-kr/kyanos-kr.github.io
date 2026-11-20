@@ -1,0 +1,49 @@
+/* ==========================================================================
+   KYANOS × ERYTHROS — 90:10 Golden Ratio Theme Tokens
+   - 90% Kyanos (Deep Navy / Crisp Sky Blue): 질서, 신뢰, 선명한 가독성
+   - 10% Erythros (Ruby Red / Solar Crimson): 태양의 아들, 핵심 강조, 활성 포인트
+   ========================================================================== */
+
+:root {
+    /* Kyanos Base (90%) */
+    --kyanos-bg-deep: #020617;
+    --kyanos-bg-panel: rgba(15, 23, 42, 0.88);
+    --kyanos-blue: #38bdf8;
+    --kyanos-cyan: #00f2fe;
+    --kyanos-text-main: #f8fafc;
+    --kyanos-text-sub: #cbd5e1;
+
+    /* Erythros Accent (10%) */
+    --erythros-ruby: #ff2a55;
+    --erythros-crimson: #e11d48;
+    --erythros-glow: rgba(255, 42, 85, 0.38);
+    --erythros-border: rgba(255, 42, 85, 0.55);
+}
+
+/* 선명한 시야 확보: 활성 메뉴 · 주요 버튼 · 핵심 인장 10% 루비 포인트 */
+.erythros-accent,
+.active-menu,
+nav a.active,
+.btn-primary-ruby {
+    border-color: var(--erythros-border) !important;
+    box-shadow: 0 0 16px var(--erythros-glow) !important;
+}
+
+/* 마우스 호버 시 푸른 질서 위에 붉은 루비의 맥박이 감도는 반응 */
+a:hover,
+button:hover {
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
+}
+
+/* 스크롤바 선명도 개선 */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--kyanos-bg-deep);
+}
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--kyanos-blue), var(--erythros-ruby));
+    border-radius: 3px;
+}
