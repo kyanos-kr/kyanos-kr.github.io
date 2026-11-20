@@ -1,0 +1,136 @@
+[2026-10-21 12:04:10] === Ant-Travel Korea 일일 자동 1편 업로드 점검 시작 ===
+[2026-10-21 12:04:10] 오늘(2026-10-21) 이미 여행기 1편이 발행되었습니다. 규칙에 따라 추가 업로드를 중단하고 내일로 대기합니다.
+[2026-10-23 10:28:01] === Ant-Travel Korea 일일 자동 1편 업로드 점검 시작 ===
+[2026-10-23 10:28:01] 오늘자 신규 원고 작성이 필요한 상태입니다. 큐에서 미발행 여행지를 선별합니다.
+[2026-10-23 10:28:01] === 점검 완료 ===
+[2026-10-23 12:40:51] [TRAVEL_AUTO_PUBLISH_SUCCESS] ������������ DMZ ��ȭ���� (��� ����) -> PostId: 8372117252415399820, URL: https://antkoreatrip.blogspot.com/2026/10/paju-dmz-peace-tour-traditional-market.html
+[2026-10-24 10:00:02] === Ant-Travel Korea 일일 자동 1편 업로드 점검 시작 ===
+[2026-10-24 10:00:02] 오늘자 신규 원고 작성이 필요한 상태입니다. 큐에서 미발행 여행지를 선별합니다.
+[2026-10-24 10:00:02] === 점검 완료 ===
+[2026-10-25 10:00:02] === Ant-Travel Korea 일일 자동 1편 업로드 점검 시작 ===
+[2026-10-25 10:00:02] 오늘자 신규 원고 작성이 필요한 상태입니다. 큐에서 미발행 여행지를 선별합니다.
+[2026-10-25 10:00:02] === 점검 완료 ===
+[2026-10-26 10:00:02] === Ant-Travel Korea 일일 자동 1편 업로드 점검 시작 ===
+[2026-10-26 10:00:02] 오늘자 신규 원고 작성이 필요한 상태입니다. 큐에서 미발행 여행지를 선별합니다.
+[2026-10-26 10:00:02] === 점검 완료 ===
+[2026-10-26 13:03:08] [TRAVEL_AUTO_PUBLISH_SUCCESS] Byeonsanbando National Park -> PostId: 2213665828473618120, URL: https://antkoreatrip.blogspot.com/2026/10/buan-coastal-wonders-byeonsanbando.html
+[2026-10-27 10:00:01] === Ant-Travel Korea 일일 자동 1편 업로드 점검 시작 ===
+[2026-10-27 10:00:01] 오늘자 신규 원고 작성이 필요한 상태입니다. 큐에서 미발행 여행지를 선별합니다.
+[2026-10-27 10:00:01] === 점검 완료 ===
+[2026-10-28 10:00:01] === Ant-Travel Korea 일일 자동 1편 업로드 점검 시작 ===
+[2026-10-28 10:00:02] 오늘자 신규 원고 작성이 필요한 상태입니다. 큐에서 미발행 여행지를 선별합니다.
+[2026-10-28 10:00:02] === 점검 완료 ===
+[2026-10-28 22:56:44] === Ant-Travel Korea ���� �ڵ� 1�� ���ε� ���� ���� ===
+Traceback (most recent call last):
+  File "D:\��Ƽ�׷���Ƽ����ư\Ű�Ƴ뽺_���κ�ó\04_����_��ȭ��\3��_���α�_��Ʈ��ũ\02_����_Ant_Travel_Korea\auto_daily_travel_runner.py", line 90, in <module>
+    run_daily_upload()
+  File "D:\��Ƽ�׷���Ƽ����ư\Ű�Ƴ뽺_���κ�ó\04_����_��ȭ��\3��_���α�_��Ʈ��ũ\02_����_Ant_Travel_Korea\auto_daily_travel_runner.py", line 63, in run_daily_upload
+    log("=== Ant-Travel Korea ���� �ڵ� 1�� ���ε� ���� ���� ===")
+  File "D:\��Ƽ�׷���Ƽ����ư\Ű�Ƴ뽺_���κ�ó\04_����_��ȭ��\3��_���α�_��Ʈ��ũ\02_����_Ant_Travel_Korea\auto_daily_travel_runner.py", line 26, in log
+    with open(os.path.join(TRAVEL_DIR, "auto_upload.log"), "a", encoding="utf-8") as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: 'd:\\��Ƽ�׷���Ƽ����ư\\Ű�Ƴ뽺_���κ�ó\\04_����_��ȭ��\\3��_���α�_��Ʈ��ũ\\02_����_Ant_Travel_Korea\\auto_upload.log'
+[2026-10-28 22:56:53] === Ant-Travel Korea 일일 자동 1편 업로드 점검 시작 ===
+[2026-10-28 22:56:53] 오늘(2026-10-28) 이미 여행기 1편이 발행되었습니다. 규칙에 따라 추가 업로드를 중단하고 내일로 대기합니다.
+[2026-10-29 10:00:02] === Ant-Travel Korea 일일 자동 1편 업로드 점검 시작 ===
+[2026-10-29 10:00:02] 오늘자 신규 원고 작성이 필요한 상태입니다. 큐에서 미발행 여행지를 선별합니다.
+[2026-10-29 10:00:02] === 점검 완료 ===
+[2026-10-29 13:39:08] === Ant-Travel Korea 일일 자동 1편 업로드 점검 시작 ===
+[2026-10-29 13:39:08] 오늘자 기작성 원고 발견: 2026-10-29_Travel_Chungnam_Seocheon_Maryangri_Camellia_Forest_Dongbaekjeong.html -> Blogger 업로드 실행
+[2026-10-29 13:39:12] Blogger 업로드 결과:
+
+[2026-10-29 13:41:14] === Ant-Travel Korea 일일 자동 1편 업로드 점검 시작 ===
+[2026-10-29 13:41:14] 오늘(2026-10-29) 이미 여행기 1편이 발행되었습니다. 규칙에 따라 추가 업로드를 중단하고 내일로 대기합니다.
+[2026-10-29 13:41:55] [TRAVEL_AUTO_PUBLISH_SUCCESS] Maryang-ri Camellia Forest & Dongbaekjeong (Chungnam Seocheon) -> PostId: 6291825467277971665, URL: https://antkoreatrip.blogspot.com/2026/10/phaeton-k-travel-inbound-guide-maryang.html
+
+[2026-10-30 10:00:02] === Ant-Travel Korea 일일 자동 1편 업로드 점검 시작 ===
+[2026-10-30 10:00:02] 오늘자 신규 원고 작성이 필요한 상태입니다. 큐에서 미발행 여행지를 선별합니다.
+[2026-10-30 10:00:02] === 점검 완료 ===
+[2026-10-30 12:18:38] === Ant-Travel Korea 일일 자동 1편 업로드 점검 시작 ===
+[2026-10-30 12:18:38] 오늘자 신규 원고 작성이 필요한 상태입니다. 큐에서 미발행 여행지를 선별합니다.
+[2026-10-30 12:18:38] === 점검 완료 ===
+[2026-10-30 12:19:48] [TRAVEL_AUTO_PUBLISH_SUCCESS] Jeongdong-Simgok Badabuchaegil (Gangwon Gangneung) -> PostId: 1962169193924433884, URL: https://antkoreatrip.blogspot.com/2026/10/phaeton-k-travel-inbound-guide.html
+[2026-10-31 10:00:02] === Ant-Travel Korea 일일 자동 1편 업로드 점검 시작 ===
+[2026-10-31 10:00:02] 오늘자 신규 원고 작성이 필요한 상태입니다. 큐에서 미발행 여행지를 선별합니다.
+[2026-10-31 10:00:02] === 점검 완료 ===
+[2026-11-01 10:00:01] === Ant-Travel Korea 일일 자동 1편 업로드 점검 시작 ===
+[2026-11-01 10:00:01] 오늘자 신규 원고 작성이 필요한 상태입니다. 큐에서 미발행 여행지를 선별합니다.
+[2026-11-01 10:00:01] === 점검 완료 ===
+[2026-11-02 10:00:02] === Ant-Travel Korea 일일 자동 1편 업로드 점검 시작 ===
+[2026-11-02 10:00:02] 오늘자 신규 원고 작성이 필요한 상태입니다. 큐에서 미발행 여행지를 선별합니다.
+[2026-11-02 10:00:02] === 점검 완료 ===
+[2026-11-02 15:58:39] === Ant-Travel Korea 일일 자동 1편 업로드 점검 시작 ===
+[2026-11-02 15:58:39] 오늘자 기작성 원고 발견: 2026-11-02_Travel_Gyeonggi_Gapyeong_Garden_of_Morning_Calm_Autumn_Symphony.html -> Blogger 업로드 실행
+[2026-11-02 15:58:46] Blogger 업로드 결과:
+----------------------------------------
+블로그   : https://antkoreatrip.blogspot.com/
+제목     : [Phaeton K-Travel Inbound Guide] The Garden of Morning Calm: Autumn Foliage, Resplendent Chrysanthemums, and Traditional Hanok Serenity in Gapyeong
+라벨     : Garden of Morning Calm, Gapyeong Travel, Korea Inbound Guide, Autumn Foliage, Chrysanthemum Festival, Seohwayeon, Ant Travel Korea
+상태     : LIVE
+글 ID    : 5719137267179757378
+게시 주소: https://antkoreatrip.blogspot.com/2026/11/phaeton-k-travel-inbound-guide-garden.html
+본문 길이: 13005자
+----------------------------------------
+
+[2026-11-02 15:58:46] [TRAVEL_AUTO_PUBLISH_SUCCESS] The Garden of Morning Calm (Gyeonggi Gapyeong) -> PostId: 5719137267179757378, URL: https://antkoreatrip.blogspot.com/2026/11/phaeton-k-travel-inbound-guide-garden.html
+[2026-11-03 07:30:02] [LIVE] 2026-11-03_Travel_Gangwon_Chuncheon_Obongsan_Cheongpyeongsa_Temple.html -> https://antkoreatrip.blogspot.com/2026/11/phaeton-k-travel-inbound-guide-obongsan.html (ID: 4022503428015759925)
+[2026-11-03 10:00:01] === Ant-Travel Korea 일일 자동 1편 업로드 점검 시작 ===
+[2026-11-03 10:00:01] 오늘(2026-11-03) 이미 여행기 1편이 발행되었습니다. 규칙에 따라 추가 업로드를 중단하고 내일로 대기합니다.
+[2026-11-04 10:00:02] === Ant-Travel Korea 일일 자동 1편 업로드 점검 시작 ===
+[2026-11-04 10:00:02] 오늘자 신규 원고 작성이 필요한 상태입니다. 큐에서 미발행 여행지를 선별합니다.
+[2026-11-04 10:00:02] === 점검 완료 ===
+[2026-11-04 10:19:26] 2026-11-04_Travel_Gangwon_Yangyang_Seoraksan_Osaek_Jujeongol_Valley.html -> Blogger 업로드 성공 (글 ID: 2400941729628945856, URL: https://antkoreatrip.blogspot.com/2026/11/phaeton-k-travel-inbound-guide.html)
+[2026-11-05 10:00:01] === Ant-Travel Korea 일일 자동 1편 업로드 점검 시작 ===
+[2026-11-05 10:00:01] 오늘자 신규 원고 작성이 필요한 상태입니다. 큐에서 미발행 여행지를 선별합니다.
+[2026-11-05 10:00:01] === 점검 완료 ===
+[2026-11-06 10:00:02] === Ant-Travel Korea 일일 자동 1편 업로드 점검 시작 ===
+[2026-11-06 10:00:02] 오늘(2026-11-06) 이미 여행기 1편이 발행되었습니다. 규칙에 따라 추가 업로드를 중단하고 내일로 대기합니다.
+[2026-11-07 10:00:01] === Ant-Travel Korea 일일 자동 1편 업로드 점검 시작 ===
+[2026-11-07 10:00:01] 오늘자 신규 원고 작성이 필요한 상태입니다. 큐에서 미발행 여행지를 선별합니다.
+[2026-11-07 10:00:01] === 점검 완료 ===
+[2026-11-09 12:51:23] [LIVE] 2026-11-09_Travel_Gangwon_Pyeongchang_Balwangsan_Woljeongsa_Alpine.html -> https://antkoreatrip.blogspot.com/2026/11/phaeton-k-travel-inbound-guide_01355182563.html (ID: 3764424790382263817)
+[2026-11-10 19:20:35] === Ant-Travel Korea 일일 자동 1편 업로드 점검 시작 ===
+[2026-11-10 19:20:35] 오늘자 신규 원고 작성이 필요한 상태입니다. 큐에서 미발행 여행지를 선별합니다.
+[2026-11-10 19:20:35] === 점검 완료 ===
+[2026-11-10 19:24:41] === Ant-Travel Korea 일일 자동 1편 업로드 점검 시작 ===
+[2026-11-10 19:24:41] 오늘자 기작성 원고 발견: 2026-11-10_Travel_Gyeonggi_Namyangju_Mount_Ungilsan_Sujongsa_Temple.html -> Blogger 업로드 실행
+[2026-11-10 19:24:47] Blogger 업로드 결과:
+----------------------------------------
+블로그   : https://antkoreatrip.blogspot.com/
+제목     : [Phaeton K-Travel Inbound Guide] Sujongsa Temple: The Crown View of Eastern Temples, Sacred Ginkgo of King Sejo, and Meditative Tea Overlooking Dumulmeori
+라벨     : Sujongsa Temple, Dumulmeori, Namyangju Travel, Mount Ungilsan, King Sejo, Samjeongheon Tea House, Joseon Heritage, Korea Inbound Guide, Ant Travel Korea
+상태     : LIVE
+글 ID    : 4621622207222064
+게시 주소: https://antkoreatrip.blogspot.com/2026/11/phaeton-k-travel-inbound-guide-sujongsa.html
+본문 길이: 13703자
+----------------------------------------
+
+[2026-11-11 10:00:01] === Ant-Travel Korea 일일 자동 1편 업로드 점검 시작 ===
+[2026-11-11 10:00:01] 오늘자 신규 원고 작성이 필요한 상태입니다. 큐에서 미발행 여행지를 선별합니다.
+[2026-11-11 10:00:01] === 점검 완료 ===
+[2026-11-12 10:00:02] === Ant-Travel Korea 일일 자동 1편 업로드 점검 시작 ===
+[2026-11-12 10:00:02] 오늘자 신규 원고 작성이 필요한 상태입니다. 큐에서 미발행 여행지를 선별합니다.
+[2026-11-12 10:00:02] === 점검 완료 ===
+[2026-11-12 12:42:35] 오늘자 신구대 식물원 원고 업로드 완료: 2026-11-12_Travel_Gyeonggi_Seongnam_Shingu_Botanic_Garden.html (Post ID: 3473239248051247564)
+[2026-11-19 10:00:02] === Ant-Travel Korea 일일 자동 1편 업로드 점검 시작 ===
+[2026-11-19 10:00:02] 오늘자 신규 원고 작성이 필요한 상태입니다. 큐에서 미발행 여행지를 선별합니다.
+[2026-11-19 10:00:02] === 점검 완료 ===
+[2026-11-20 10:00:02] === Ant-Travel Korea 일일 자동 1편 업로드 점검 시작 ===
+[2026-11-20 10:00:02] 오늘자 신규 원고 작성이 필요한 상태입니다. 큐에서 미발행 여행지를 선별합니다.
+[2026-11-20 10:00:02] === 점검 완료 ===
+[2026-11-20 13:26:40] === Ant-Travel Korea 일일 자동 1편 업로드 점검 시작 ===
+[2026-11-20 13:26:40] 오늘자 신규 원고 작성이 필요한 상태입니다. 큐에서 미발행 여행지를 선별합니다.
+[2026-11-20 13:26:40] === 점검 완료 ===
+[2026-11-20 13:59:14] === Ant-Travel Korea 일일 자동 1편 업로드 점검 시작 ===
+[2026-11-20 13:59:14] 오늘자 기작성 원고 발견: 2026-11-20_Travel_Gyeonggi_Siheung_Oido_Island_Seawall_Lighthouse.html -> Blogger 업로드 실행
+[2026-11-20 13:59:20] Blogger 업로드 결과:
+----------------------------------------
+블로그   : https://antkoreatrip.blogspot.com/
+제목     : [Phaeton K-Travel Inbound Guide] Oido Island: Strolling Along the Seawall, the Scent of Fresh Tides, Bustling Open-Air Fish Markets, and the Solitary Charm of the Red Lighthouse
+라벨     : Oido Island, Siheung Travel, Red Lighthouse, Seawall Boardwalk, Open-Air Seafood Market, Roasted Clams, Sihwa Seawall, West Sea Sunset, Korea Inbound Guide, Ant Travel Korea
+상태     : LIVE
+글 ID    : 110272134553186506
+게시 주소: https://antkoreatrip.blogspot.com/2026/11/phaeton-k-travel-inbound-guide-oido_0778306155.html
+본문 길이: 14988자
+----------------------------------------
+
