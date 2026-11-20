@@ -89,8 +89,8 @@
           
           <div class="kyanos-gate-header">
             <div class="kyanos-gate-emblem">👑</div>
-            <h3 class="kyanos-gate-title notranslate" translate="no">KYANOS PASSPORT</h3>
-            <p class="kyanos-gate-subtitle">키아노스 통합 로그인 관문 및 주권자 인증 체계</p>
+            <h3 class="kyanos-gate-title notranslate" translate="no">KYANOS LOGIN</h3>
+            <p class="kyanos-gate-subtitle">키아노스 통합 로그인 및 주권자 인증</p>
           </div>
 
           <div class="kyanos-gate-tiers-badge">
@@ -118,7 +118,7 @@
               <span style="color:#fde68a; cursor:pointer;" id="kyanosFastPassBtn" title="파이튼 님 간편 검증">[마스터 패스]</span>
             </div>
 
-            <button type="submit" class="kyanos-gate-btn-submit" id="kyanosGateSubmitBtn">관문 인증 및 진입</button>
+            <button type="submit" class="kyanos-gate-btn-submit" id="kyanosGateSubmitBtn">로그인</button>
             <div class="kyanos-gate-status" id="kyanosGateStatus"></div>
           </form>
 
@@ -140,7 +140,7 @@
         <p id="kyanosShieldMsg">해당 구역은 현재 키아노스 국가 인프라 편제 및 정밀 고도화 공사가 진행 중인 <strong>보안 인가 전용 구역</strong>입니다.</p>
         <div style="display:flex; justify-content:center; gap:10px;">
           <button class="kyanos-shield-modal-close" id="kyanosShieldCloseBtn">확인</button>
-          <button class="kyanos-shield-modal-close" id="kyanosShieldLoginBtn" style="border-color:#f59e0b; color:#fde68a;">인증 관문 열기</button>
+          <button class="kyanos-shield-modal-close" id="kyanosShieldLoginBtn" style="border-color:#f59e0b; color:#fde68a;">로그인</button>
         </div>
       `;
       document.body.appendChild(shield);
@@ -268,7 +268,7 @@
           li.id = 'kyanos-auth-nav-item';
           li.style.display = 'inline-flex';
           li.style.alignItems = 'center';
-          li.innerHTML = `<button id="kyanosTopAuthTrigger" class="kyanos-auth-trigger-btn">관문 인증</button>`;
+          li.innerHTML = `<button id="kyanosTopAuthTrigger" class="kyanos-auth-trigger-btn">로그인</button>`;
           headerNav.appendChild(li);
           triggerBtn = document.getElementById('kyanosTopAuthTrigger');
         }
@@ -284,8 +284,8 @@
             }
           };
         } else {
-          triggerBtn.innerHTML = `<span>👑 관문 로그인</span>`;
-          triggerBtn.title = "키아노스 4계층 권한 로그인 관문 열기";
+          triggerBtn.innerHTML = `<span>👑 로그인</span>`;
+          triggerBtn.title = "키아노스 로그인 열기";
           triggerBtn.onclick = () => this.openModal();
         }
       }
