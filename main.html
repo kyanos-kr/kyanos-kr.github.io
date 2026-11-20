@@ -162,8 +162,10 @@
 
     .nav-links {
       display: flex;
-      gap: 2rem;
+      align-items: center;
+      gap: 1.25rem;
       list-style: none;
+      flex-wrap: nowrap;
     }
 
     .nav-links a {
@@ -1350,13 +1352,13 @@
         <li><a href="index.html" style="color:var(--gold-bright); font-weight:700;"><span style="display:inline-block; width:7px; height:7px; background:var(--gold-bright); border-radius:50%; margin-right:5px; box-shadow:0 0 8px var(--gold-bright);"></span>👑 인트로 관문</a></li>
         <!-- 왕국 개요 독립 전시관 바로가기 (새창 열기) -->
         <li><a href="gov_overview.html" target="_blank" style="color:var(--gold-light); font-weight:700;"><span style="display:inline-block; width:7px; height:7px; background:var(--gold); border-radius:50%; margin-right:5px; box-shadow:0 0 8px var(--gold);"></span>왕국개요관 ↗</a></li>
-        <!-- 국정 일정 관제 시스템 (수석비서실/총리실) 바로가기 -->
-        <li><a href="schedule_manager.html" target="_blank" style="color:#38bdf8; font-weight:700;"><span style="display:inline-block; width:7px; height:7px; background:#38bdf8; border-radius:50%; margin-right:5px; box-shadow:0 0 8px #38bdf8;"></span>📅 국정일정관제 ↗</a></li>
         <!-- 정부 조직도 드롭다운 -->
         <li class="nav-dropdown">
           <a href="#gov-org">🏛️ 정부 조직도 ▾</a>
           <ul class="dropdown-menu">
             <li><a href="#gov-org" style="color:var(--gold-bright); font-weight:700;"><span style="display:inline-block; width:6px; height:6px; background:var(--gold-bright); border-radius:50%; margin-right:6px; box-shadow:0 0 6px var(--gold-bright);"></span>🏛️ 조직도 전체 조망 ↓</a></li>
+            <li style="border-top:1px solid rgba(212,175,55,0.15); margin:3px 0;"></li>
+            <li><a href="schedule_manager.html" target="_blank" style="color:#38bdf8; font-weight:700;">📅 국정 일정 관제 시스템 (수석비서실) ↗</a></li>
             <li style="border-top:1px solid rgba(212,175,55,0.15); margin:3px 0;"></li>
             <li><a href="gov_security.html" target="_blank" style="color:#ff6b7a; font-weight:700;">⚔️ 보안사령부 (K-SEF) ↗</a></li>
             <li><a href="gov_economy.html" target="_blank">💰 경제부 ↗</a></li>
@@ -1961,6 +1963,11 @@
             <p style="font-size:0.75rem; color:var(--text-sub); margin-top:0.6rem; line-height:1.5;">
               국왕의 통치 철학과 덕치 12대 원칙을 바탕으로 국가 행정, 경제, 과학, 복지, 사회, 국제, 사법을 직접 실행하는 주권령 정부 기구
             </p>
+            <div style="margin-top:0.8rem; display:flex; justify-content:center; gap:8px;">
+              <a href="schedule_manager.html" target="_blank" style="display:inline-flex; align-items:center; gap:5px; font-size:0.72rem; background:rgba(56,189,248,0.2); border:1px solid #38bdf8; color:#7dd3fc; padding:4px 12px; border-radius:12px; font-weight:700; text-decoration:none;" title="국왕 직속 수석비서실 국정 일정 관제 시스템">
+                <span>📅 국정 일정 관제 시스템 (수석비서실) ↗</span>
+              </a>
+            </div>
           </div>
 
           <!-- 2. 국왕 직속: 국제질서유지 보안사령부 (NEW) -->
