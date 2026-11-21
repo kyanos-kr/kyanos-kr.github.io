@@ -424,6 +424,65 @@
             font-size: 12px;
         }
 
+        /* 참조 이미지 업로드 (인물 합성·변형용) */
+        .ref-upload-zone {
+            border: 1.5px dashed rgba(56, 189, 248, 0.35);
+            border-radius: 12px;
+            padding: 12px;
+            background: rgba(15, 23, 42, 0.45);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .ref-upload-zone:hover, .ref-upload-zone.dragover {
+            border-color: var(--kyanos-accent);
+            background: rgba(56, 189, 248, 0.1);
+        }
+        .ref-upload-hint {
+            font-size: 12px;
+            color: var(--kyanos-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .ref-thumb-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .ref-thumb-item {
+            position: relative;
+            width: 68px;
+            height: 68px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: #0b1120;
+        }
+        .ref-thumb-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .ref-remove-btn {
+            position: absolute;
+            top: 3px;
+            right: 3px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(15, 23, 42, 0.85);
+            color: #f87171;
+            font-size: 11px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         .generate-btn {
             background: var(--kyanos-btn-grad);
             border: none;
@@ -874,6 +933,7 @@
                         <option value="hf_flux_schnell">⚡ FLUX.1-schnell (공용 HuggingFace 클러스터 · 할당량 제한)</option>
                         <option value="puter_flux_pro">💎 Puter FLUX.1-pro (초고화질·무료계정)</option>
                         <option value="puter_gpt_image">🎨 Puter GPT-Image-1 (문맥·텍스트 최강)</option>
+                        <option value="gemini_multimodal">✨ Google Gemini 2.5 멀티모달 (참조 사진 합성·편집 · API 키)</option>
                         <option value="gemini_imagen">🌟 Google Gemini Imagen 3 (API 키 필요)</option>
                         <option value="hf_api_dev">🔧 HuggingFace FLUX.1-dev (토큰 필요)</option>
                     </select>
@@ -891,6 +951,22 @@
                         <span class="sub">구체적일수록 정확히 반영됩니다</span>
                     </div>
                     <textarea id="promptInput" class="prompt-input" placeholder="예: 비 내리는 늦가을 저녁, 원목 책상 위의 따뜻한 김이 피어오르는 찻잔, 창밖의 붉은 단풍나무, 고요한 서재 풍경">비 내리는 늦가을 저녁, 원목 책상 위의 따뜻한 김이 피어오르는 찻잔, 창밖의 붉은 단풍나무, 고요한 서재 풍경</textarea>
+                </div>
+
+                <!-- 참조 사진 첨부 (인물 일관성 변형 및 다중 합성) -->
+                <div class="form-group">
+                    <div class="form-label">
+                        <span>참조 사진 첨부 <span style="color:var(--kyanos-accent);font-weight:600;">(선택 · 최대 3장)</span></span>
+                        <span class="sub">인물 합성·연령/의상 변형 시 Gemini 2.5 멀티모달 사용</span>
+                    </div>
+                    <input type="file" id="refImageInput" accept="image/*" multiple style="display:none;">
+                    <div id="refUploadZone" class="ref-upload-zone">
+                        <div class="ref-upload-hint">
+                            <i class="fa-solid fa-images" style="color:var(--kyanos-accent);"></i>
+                            <span>클릭하거나 사진을 끌어다 놓으세요 (인물·배경 참조용)</span>
+                        </div>
+                        <div id="refThumbList" class="ref-thumb-list" style="display:none;"></div>
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -1155,6 +1231,7 @@
         let remainingSeconds = 0;
         let gradioClientPromise = null;
         let lastTranslatedSource = '';
+        let referenceImages = []; // { mimeType, base64, dataUrl } (최대 3장)
 
         // FLUX-Native 스타일 모디파이어 (부정어 'no text' 등 역효과 키워드 완전 제거)
         const styleModifiers2D = {
@@ -1213,6 +1290,103 @@
         const fidelityEnhancedBtn = document.getElementById('fidelityEnhancedBtn');
         const lockSeedCheckbox = document.getElementById('lockSeedCheckbox');
         const seedInput = document.getElementById('seedInput');
+        const refImageInput = document.getElementById('refImageInput');
+        const refUploadZone = document.getElementById('refUploadZone');
+        const refThumbList = document.getElementById('refThumbList');
+
+        // 참조 이미지 리사이징 및 로드 (최대 1536px로 경량화하여 메모리·네트워크 부담 최소화)
+        function loadReferenceFile(file) {
+            return new Promise((resolve, reject) => {
+                if (!file || !file.type.startsWith('image/')) return reject(new Error('이미지 파일만 첨부 가능합니다.'));
+                const reader = new FileReader();
+                reader.onload = (ev) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        const maxDim = 1536;
+                        let w = img.width, h = img.height;
+                        if (w > maxDim || h > maxDim) {
+                            const scale = maxDim / Math.max(w, h);
+                            w = Math.round(w * scale);
+                            h = Math.round(h * scale);
+                        }
+                        const canvas = document.createElement('canvas');
+                        canvas.width = w;
+                        canvas.height = h;
+                        canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+                        const dataUrl = canvas.toDataURL('image/jpeg', 0.9);
+                        resolve({
+                            mimeType: 'image/jpeg',
+                            base64: dataUrl.split(',')[1],
+                            dataUrl
+                        });
+                    };
+                    img.onerror = () => reject(new Error('이미지를 읽을 수 없습니다.'));
+                    img.src = ev.target.result;
+                };
+                reader.onerror = () => reject(new Error('파일 읽기 오류'));
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function renderRefThumbnails() {
+            if (referenceImages.length === 0) {
+                refThumbList.style.display = 'none';
+                refThumbList.innerHTML = '';
+                return;
+            }
+            refThumbList.style.display = 'flex';
+            refThumbList.innerHTML = referenceImages.map((item, idx) => `
+                <div class="ref-thumb-item">
+                    <img src="${item.dataUrl}" alt="참조 사진 ${idx + 1}">
+                    <button type="button" class="ref-remove-btn" data-idx="${idx}" title="삭제">&times;</button>
+                </div>
+            `).join('');
+            refThumbList.querySelectorAll('.ref-remove-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const i = parseInt(btn.getAttribute('data-idx'), 10);
+                    referenceImages.splice(i, 1);
+                    renderRefThumbnails();
+                });
+            });
+        }
+
+        async function handleRefFiles(files) {
+            for (const file of Array.from(files)) {
+                if (referenceImages.length >= 3) {
+                    showBanner('참조 사진은 최대 3장까지 첨부할 수 있습니다.', 'info');
+                    break;
+                }
+                try {
+                    const processed = await loadReferenceFile(file);
+                    referenceImages.push(processed);
+                } catch (err) {
+                    showBanner(err.message, 'error');
+                }
+            }
+            renderRefThumbnails();
+            if (referenceImages.length > 0 && engineSelect.value !== 'gemini_multimodal') {
+                engineSelect.value = 'gemini_multimodal';
+                engineStatusTag.innerText = 'API 키 직통 모드 (참조 사진 합성·편집 활성)';
+                showBanner('참조 사진이 첨부되어 [Google Gemini 2.5 멀티모달] 엔진으로 자동 전환되었습니다.', 'info');
+            }
+        }
+
+        refUploadZone.addEventListener('click', () => refImageInput.click());
+        refImageInput.addEventListener('change', (e) => {
+            if (e.target.files?.length) handleRefFiles(e.target.files);
+            e.target.value = '';
+        });
+        refUploadZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            refUploadZone.classList.add('dragover');
+        });
+        refUploadZone.addEventListener('dragleave', () => refUploadZone.classList.remove('dragover'));
+        refUploadZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            refUploadZone.classList.remove('dragover');
+            if (e.dataTransfer?.files?.length) handleRefFiles(e.dataTransfer.files);
+        });
         const lastSeedLabel = document.getElementById('lastSeedLabel');
         const statusBanner = document.getElementById('statusBanner');
         const statusBannerText = document.getElementById('statusBannerText');
@@ -1721,6 +1895,46 @@
                 loadingSubText.innerText = `Puter (${modelName}) 호출 중... 최초 사용 시 무료 로그인 창이 열릴 수 있습니다.`;
                 const imgEl = await puter.ai.txt2img(finalPrompt, { model: modelName });
                 const blobUrl = await fetchVerifiedImageBlob(imgEl.src);
+                return { blobUrl, usedSeed: seedToUse };
+            }
+
+            if (engine === 'gemini_multimodal') {
+                const apiKey = localStorage.getItem('kyanos_gemini_key');
+                if (!apiKey) throw new Error('우측 상단 [엔진 설정]에서 Google Gemini API Key를 먼저 입력해 주세요.');
+                loadingSubText.innerText = referenceImages.length > 0
+                    ? `참조 사진 ${referenceImages.length}장을 바탕으로 Gemini 2.5 멀티모달 합성·편집 중...`
+                    : "Google Gemini 2.5 멀티모달 이미지 생성 중...";
+
+                const parts = [];
+                referenceImages.forEach(img => {
+                    parts.push({ inlineData: { mimeType: img.mimeType, data: img.base64 } });
+                });
+                const promptInstruction = referenceImages.length > 0
+                    ? `Using the provided ${referenceImages.length} reference image(s), preserve the subject identity/features as requested and generate a single cohesive photorealistic image matching this description (aspect ratio ${currentRatio}): ${finalPrompt}`
+                    : `${finalPrompt} (aspect ratio ${currentRatio})`;
+                parts.push({ text: promptInstruction });
+
+                const resp = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent?key=${encodeURIComponent(apiKey)}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts }],
+                        generationConfig: { responseModalities: ['IMAGE', 'TEXT'] }
+                    })
+                });
+                if (!resp.ok) {
+                    const errTxt = await resp.text();
+                    throw new Error(`Gemini 멀티모달 오류 (${resp.status}): ${errTxt.slice(0, 160)}`);
+                }
+                const data = await resp.json();
+                const resParts = data?.candidates?.[0]?.content?.parts || [];
+                const imgPart = resParts.find(p => p.inlineData?.data);
+                if (!imgPart) {
+                    const txtPart = resParts.find(p => p.text)?.text || '이미지 데이터가 반환되지 않았습니다.';
+                    throw new Error(`Gemini 멀티모달 응답 오류: ${txtPart.slice(0, 140)}`);
+                }
+                const outMime = imgPart.inlineData.mimeType || 'image/png';
+                const blobUrl = await fetchVerifiedImageBlob(`data:${outMime};base64,${imgPart.inlineData.data}`);
                 return { blobUrl, usedSeed: seedToUse };
             }
 
