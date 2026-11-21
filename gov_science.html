@@ -503,6 +503,33 @@
       .gov-hero-title { font-size: 1.9rem; }
       .architecture-card, .bureau-card { padding: 1.5rem; }
     }
+    .nav-game-dropdown { position: relative; display: inline-block; }
+    .nav-game-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      min-width: 245px;
+      background: rgba(3, 8, 20, 0.97);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 10px;
+      padding: 6px 0;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.6);
+      z-index: 300;
+      backdrop-filter: blur(14px);
+    }
+    .nav-game-menu::before { content: ''; position: absolute; top: -10px; left: 0; width: 100%; height: 10px; }
+    .nav-game-dropdown:hover .nav-game-menu { display: block; }
+    .nav-game-menu a {
+      display: block;
+      padding: 9px 16px;
+      font-size: 0.84rem;
+      color: #cbd5e1;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.15s, color 0.15s;
+    }
+    .nav-game-menu a:hover { background: rgba(56, 189, 248, 0.15); color: #38bdf8; }
   </style>
   <link rel="stylesheet" href="assets/css/kyanos_omni_dialogue.css?v=20261031_0925">
 </head>
@@ -524,9 +551,15 @@
       <a href="main.html#governance" class="nav-btn nav-btn-gold">
         <span>🏛️</span> 국무회의
       </a>
-      <a href="games/aegis_protocol_v2.html" target="_blank" class="nav-btn nav-btn-cyan" style="border-color:#38bdf8; color:#38bdf8;">
-        <span>🎮</span> 이지스 게임 II ↗
-      </a>
+      <div class="nav-game-dropdown">
+        <a href="games/aegis_protocol_v2.html" target="_blank" class="nav-btn nav-btn-cyan" style="border-color:#38bdf8; color:#38bdf8;">
+          <span>🎮</span> 이지스 게임 ▾
+        </a>
+        <div class="nav-game-menu">
+          <a href="games/aegis_protocol_v2.html" target="_blank" style="color:#38bdf8; font-weight:700;">🚀 Lv.2 퀀텀 뱅가드 (최신판) ↗</a>
+          <a href="games/aegis_protocol.html" target="_blank">🛡️ Lv.1 클래식 (초기판) ↗</a>
+        </div>
+      </div>
       <a href="main.html" class="nav-btn nav-btn-cyan">
         <span>🏠</span> 메인 포털
       </a>
