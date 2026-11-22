@@ -13,6 +13,7 @@ TRAVEL_DIR = os.path.dirname(os.path.abspath(__file__))
 TOOLS_DIR = os.path.join(BASE_DIR, r"키아노스_정부부처\09_미디어부\블로그_발행관제실\tools")
 UPLOAD_SCRIPT = os.path.join(TOOLS_DIR, "blogger_upload.ps1")
 STATE_FILE = os.path.join(TRAVEL_DIR, "travel_upload_state.yaml")
+ARCHIVE_DIR = r"F:\혜민각\04_국정 기록·언론\정부부처_행정아카이브\04_교육_문화부\3대_블로그_네트워크\앤트여행블로그\발행완료_원고"
 SRC_ROOT = r"D:\DATA CENTER\편집 기사\오늘편집\국내"
 WEB_IMG_ROOT = os.path.join(BASE_DIR, r"assets\images\travel")
 PIPELINE_MD = os.path.join(TRAVEL_DIR, "DAILY_TRAVEL_AUTO_PIPELINE.md")
@@ -80,6 +81,15 @@ def run_daily_upload():
         post_id_match = re.search(r"글 ID\s*:\s*(\d+)", res.stdout)
         post_id = post_id_match.group(1) if post_id_match else ""
         record_upload(spot_name, post_id)
+
+        # 3. 발행 완료 즉시 F: 드라이브 영구 서고로 자동 이동 (작업공간 초경량화)
+        try:
+            os.makedirs(ARCHIVE_DIR, exist_ok=True)
+            dst_html = os.path.join(ARCHIVE_DIR, spot_name)
+            shutil.move(target_html, dst_html)
+            log(f"발행 완료 원고 영구 서고 자동 이관 완료: {dst_html}")
+        except Exception as e:
+            log(f"영구 서고 이관 중 오류 발생: {e}")
         return
 
     log("오늘자 신규 원고 작성이 필요한 상태입니다. 큐에서 미발행 여행지를 선별합니다.")
