@@ -1,25 +1,25 @@
 {
-  "updated_at": "2026-11-23 08:18",
+  "updated_at": "2026-11-23 11:22",
   "date_key": "20261123",
-  "total_count": 27,
+  "total_count": 34,
   "market_indicators": [
     {
       "symbol": "BTC",
-      "price": "83,353,000원",
-      "change": "▲0.91%",
-      "is_up": true
+      "price": "82,898,000원",
+      "change": "▼0.79%",
+      "is_up": false
     },
     {
       "symbol": "XRP",
-      "price": "1,265원",
-      "change": "▼1.02%",
+      "price": "1,255원",
+      "change": "▼0.87%",
       "is_up": false
     },
     {
       "symbol": "ETH",
-      "price": "2,351,000원",
-      "change": "▲1.60%",
-      "is_up": true
+      "price": "2,328,000원",
+      "change": "▼1.02%",
+      "is_up": false
     }
   ],
   "categories": [
@@ -80,12 +80,12 @@
       "id": "20261123_politics_12",
       "category": "politics",
       "sub_tag": "대통령실·국정로드맵",
-      "title": "대법, 한덕수 내란 일부 혐의 무죄 판단… 비상계엄은 위헌·위법 인정 > 뉴스포커스",
-      "summary": "• [대통령실·국정로드맵] 주요 현안 팩트: 대법, 한덕수 내란 일부 혐의 무죄 판단… 비상계엄은 위헌·위법 인정 > 뉴스포커스\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
+      "title": "국토부, 「주택법 시행령」 개정안 국무회의 의결... 리모델링 동의율 75%→ 70% 완화",
+      "summary": "• [대통령실·국정로드맵] 주요 현안 팩트: 국토부, 「주택법 시행령」 개정안 국무회의 의결... 리모델링 동의율 75%→ 70% 완화\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
       "editorial_angle": "🎯 [취재 각도] 국정 최고사령탑의 정책 드라이브 및 헌법적 통치 실효성 심층 분석 (앤트뉴스 독자 서술 및 1차 공식자료 교차검증 권장)",
-      "source": "팩트 레이더 (SeattleN)",
-      "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE1IUEFhV2ZoZTFZQTc0VTI0SWd1VDNSdmtscWdCUW0wenRHc2pRY0RWcHJpWVNlOW15YVhsd19VU0VSSWNhbUtacW9VN24?oc=5",
-      "time_badge": "3시간 전 포착",
+      "source": "팩트 레이더 (하우징타임즈)",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5MYzdxYkFUZlFHQ3hYUzduUTFQM0d5NmJiRWlUVDBrbHBkQTRHQTVVX25wbkFhdGd1ZUFYSFNvTFY5LTNoM1lRM0FTN2hhT0tobnk0cklTc1laaDdRQkJpbmF2TEtNbnhaWFdIOVg0NjU?oc=5",
+      "time_badge": "1시간 전 포착",
       "tags": [
         "대통령실·국정로드맵",
         "POLITICS",
@@ -101,7 +101,7 @@
       "editorial_angle": "🎯 [취재 각도] 국정 최고사령탑의 정책 드라이브 및 헌법적 통치 실효성 심층 분석 (앤트뉴스 독자 서술 및 1차 공식자료 교차검증 권장)",
       "source": "팩트 레이더 (한국일보)",
       "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9NU2pOeEJBRGUyb204dHROc2xwd2Y0c2JtaEhDeEgtZmlOZGlkWWxFX3pONGFJVEhrSG9jaGZocUxFcGhVbUJuQ1NiY0p0UjNqRlFXaDdkMVJaV2NsQUlqRTBLMEdBN2M3NFRxUGhn0gFzQVVfeXFMTWd2RzZna0NwR0VDU2FBRGExcEVjRzBESlpHVUJXdzZUWEU0R01YN0IzMFQ5ZVhJa0FUMDEzWmprS2VFcmd6bkItb0laUlVuRVVwbG5VSVN4TUxYcUZ1NTVVWFlZRkZXd1JDRnU1ZFFrTzFBWQ?oc=5",
-      "time_badge": "3시간 전 포착",
+      "time_badge": "6시간 전 포착",
       "tags": [
         "대통령실·국정로드맵",
         "POLITICS",
@@ -112,12 +112,12 @@
       "id": "20261123_politics_14",
       "category": "politics",
       "sub_tag": "국회·입법예산",
-      "title": "[창간 7주년] 3대 메가프로젝트 입법 속도전…‘입지·전력·규제특례’ 관건",
-      "summary": "• [국회·입법예산] 주요 현안 팩트: [창간 7주년] 3대 메가프로젝트 입법 속도전…‘입지·전력·규제특례’ 관건\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
+      "title": "청년 떠나는 지방마다 처방 달라야...공장 있는 무안은 생활 인프라 채우고, 대기업 부족한 대구 수성구는 일자리 갖춰야",
+      "summary": "• [국회·입법예산] 주요 현안 팩트: 청년 떠나는 지방마다 처방 달라야...공장 있는 무안은 생활 인프라 채우고, 대기업 부족한 대구 수성구는 일자리 갖춰야\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
       "editorial_angle": "🎯 [취재 각도] 삼권분립 원칙과 국가 본예산·민생 법안의 실질적 입법 동향 진단 (앤트뉴스 독자 서술 및 1차 공식자료 교차검증 권장)",
-      "source": "팩트 레이더 (기계설비신문)",
-      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9NbGtHTDhRQ2cxZmZnNlVPYWpxbVZiZEF0MG92ZFJ2RmR4Tmg1TTZ4U1Vma0NuWVhvOENVZm0tc3FoLVByX0pqRWN1b1BROUhodjY4Sm9mMUNyb19Cbk84Sy1VaEJUcXF2azhKOA?oc=5",
-      "time_badge": "2시간 전 포착",
+      "source": "팩트 레이더 (조선일보)",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQQXhBQk4ybE1Qb21qSWdxc1V5WnpvQ2l6STByZVd0aldicFNwSFZqTkNwMkt5b0g3T2x0ZXFKWWhySjdyRnRabkpnRXZJb1hyc0xTd0RPWG9BZWtJSVRGMTN6Y2JIUGRlN2dncTZ2RzE0aWJWZlluN1pyWmp2WXJCZmRPa2lpZTRSRGhTV01R?oc=5",
+      "time_badge": "방금 전 실시간 포착",
       "tags": [
         "국회·입법예산",
         "POLITICS",
@@ -128,12 +128,12 @@
       "id": "20261123_politics_15",
       "category": "politics",
       "sub_tag": "국회·입법예산",
-      "title": "제16대 국회 제2회기: 입법 성과 및 실천 정신",
-      "summary": "• [국회·입법예산] 주요 현안 팩트: 제16대 국회 제2회기: 입법 성과 및 실천 정신\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
+      "title": "“정확한 진단·치료 위한 한의사 X-ray 사용…국회 입법 서둘러야” > 뉴스",
+      "summary": "• [국회·입법예산] 주요 현안 팩트: “정확한 진단·치료 위한 한의사 X-ray 사용…국회 입법 서둘러야” > 뉴스\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
       "editorial_angle": "🎯 [취재 각도] 삼권분립 원칙과 국가 본예산·민생 법안의 실질적 입법 동향 진단 (앤트뉴스 독자 서술 및 1차 공식자료 교차검증 권장)",
-      "source": "팩트 레이더 (Vietnam.vn)",
-      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQbjllSnRfQTJMN3dOX084anFjeGtTaG9YblZpQXdfVGtMUlAtNFNsbnJ2dFhlWkRKNzI4SUdvLXlpMXRvZmRRTzJpdjFabEpCLW1YcERlQlZ6RzgwSjR6NFFCcXY1OFNDQ0N6S2VnMS1oUmlOanl5VUpUelBraVR1dUpLcEppSFl1Vm5xWDZnU3N6aHpaVktkZ09MZXhvUQ?oc=5",
-      "time_badge": "6시간 전 포착",
+      "source": "팩트 레이더 (한의신문)",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBJQmVVU1ZNa09NM3dwbnhKSXF1VnRRUmpsUTFlQ3NUUzZDNlY2VWl4MnNCbFlzZGVGM19BQWdMQ2xSNGgxWEx5bWNRU0t1X2d3emJkeVV1MXBwWERERHNISHFucFFQTFhmYWdIY1hrZjRXdw?oc=5",
+      "time_badge": "1시간 전 포착",
       "tags": [
         "국회·입법예산",
         "POLITICS",
@@ -143,15 +143,15 @@
     {
       "id": "20261123_politics_16",
       "category": "politics",
-      "sub_tag": "정부부처·공공정책",
-      "title": "금융행정 쇄신안 이번주 발표⋯ “금감원 독립성 약해져”",
-      "summary": "• [정부부처·공공정책] 주요 현안 팩트: 금융행정 쇄신안 이번주 발표⋯ “금감원 독립성 약해져”\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
-      "editorial_angle": "🎯 [취재 각도] 정부 공식 정책 발표의 실효성과 산업·국민 체감도 심층 검증 (앤트뉴스 독자 서술 및 1차 공식자료 교차검증 권장)",
-      "source": "팩트 레이더 (국민일보)",
-      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE93T1lHUi16d3MyYXlBNWstbWpJWWNFZ3ZvbUVIRjBuTG0yYXB2M19MQ0prSHJfeU52WXhUdTVWa3NpdG9kS0VQenBTWWdmdTR4d2JmeHBRaEI?oc=5",
-      "time_badge": "8시간 전 포착",
+      "sub_tag": "국회·입법예산",
+      "title": "국힘, 특검법 권한쟁의 청구…李 탄핵론 번지나",
+      "summary": "• [국회·입법예산] 주요 현안 팩트: 국힘, 특검법 권한쟁의 청구…李 탄핵론 번지나\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
+      "editorial_angle": "🎯 [취재 각도] 삼권분립 원칙과 국가 본예산·민생 법안의 실질적 입법 동향 진단 (앤트뉴스 독자 서술 및 1차 공식자료 교차검증 권장)",
+      "source": "팩트 레이더 (매일일보)",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBaMlZlSV9nYTgzLVJVMUNBdGp4bDNlMUM3OW5oMEw3eGRNYXZ6U2pWYS1TR3JzTEZKNlViZmV2clZmMF82MXRMbGU1dGs2ZmVxZHQwel9Dbml3YWNyT3NyRXBON2s?oc=5",
+      "time_badge": "방금 전 실시간 포착",
       "tags": [
-        "정부부처·공공정책",
+        "국회·입법예산",
         "POLITICS",
         "당일신규원석"
       ]
@@ -160,11 +160,11 @@
       "id": "20261123_politics_17",
       "category": "politics",
       "sub_tag": "정부부처·공공정책",
-      "title": "금주 한국은행 및 금융당국(금융위·금감원) 주요일정",
-      "summary": "• [정부부처·공공정책] 주요 현안 팩트: 금주 한국은행 및 금융당국(금융위·금감원) 주요일정\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
+      "title": "에이전틱 페이 등 관련 금융권 논의에 대해 확정된 내용은 없습니다.",
+      "summary": "• [정부부처·공공정책] 주요 현안 팩트: 에이전틱 페이 등 관련 금융권 논의에 대해 확정된 내용은 없습니다.\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
       "editorial_angle": "🎯 [취재 각도] 정부 공식 정책 발표의 실효성과 산업·국민 체감도 심층 검증 (앤트뉴스 독자 서술 및 1차 공식자료 교차검증 권장)",
-      "source": "팩트 레이더 (조세일보)",
-      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE42ZDNULVl1NjNTQkpQc2l6YWtoSWRLbHUyWG1USnVzQ1Z0Qll2bDJxYjNZRUlZRlV6cGs0RmgzRFRJc0JpV3VOMUVpeGZ4dXBQbXRqQXR4M0N0R0VqTjdhWnhKNWc3ZHVNN0NGRnZjMA?oc=5",
+      "source": "팩트 레이더 (Daily NTN)",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBXVUFOX2ZmY1BGeGFHZExLZ1ZxaWY4c0NnUXEtSGtOUExCNUI2TUFQbUpxazVZUHY1dzlGUzJUWmxiUXZ3TWNVUjFCOHhxZF9yczZZd2Ziajl0eVRWSmlUQXd2cEZSWVBVY0E?oc=5",
       "time_badge": "1시간 전 포착",
       "tags": [
         "정부부처·공공정책",
@@ -173,14 +173,46 @@
       ]
     },
     {
-      "id": "20261123_world_18",
+      "id": "20261123_politics_18",
+      "category": "politics",
+      "sub_tag": "정부부처·공공정책",
+      "title": "청년회계사회, 금융위 앞 트럭시위…\"내년 800명 이하 선발해야\"",
+      "summary": "• [정부부처·공공정책] 주요 현안 팩트: 청년회계사회, 금융위 앞 트럭시위…\"내년 800명 이하 선발해야\"\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
+      "editorial_angle": "🎯 [취재 각도] 정부 공식 정책 발표의 실효성과 산업·국민 체감도 심층 검증 (앤트뉴스 독자 서술 및 1차 공식자료 교차검증 권장)",
+      "source": "팩트 레이더 (조세일보)",
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBaVG1TMl85X0k0N1hnZVlTX2c1enBaUmVhMVcxS3RHbVZtdUZYTTBnZGhEUVJ0a0JwdmlxTTJsTmpVdHJmbE9sZ2ZFeXRoM3pOVmtGblJxcEpwamJ3M3Nfb0RxNi1yTlJUY0hLRWhCRQ?oc=5",
+      "time_badge": "방금 전 실시간 포착",
+      "tags": [
+        "정부부처·공공정책",
+        "POLITICS",
+        "당일신규원석"
+      ]
+    },
+    {
+      "id": "20261123_politics_19",
+      "category": "politics",
+      "sub_tag": "정부부처·공공정책",
+      "title": "FIU \"가상자산 개인지갑 자금이전 철저히 관리\"",
+      "summary": "• [정부부처·공공정책] 주요 현안 팩트: FIU \"가상자산 개인지갑 자금이전 철저히 관리\"\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
+      "editorial_angle": "🎯 [취재 각도] 정부 공식 정책 발표의 실효성과 산업·국민 체감도 심층 검증 (앤트뉴스 독자 서술 및 1차 공식자료 교차검증 권장)",
+      "source": "팩트 레이더 (디지털애셋)",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBIaWZ1MEZmblB5SGlSZHQ1TnByOHhHNWpoV0JDMWxjU3pZamdic2dYeWM2elhkWFYzZXlNeWpzYTl0VXNyZ0tVUDAtTVFWaV9vMHJ6N0pPMUhsTlJZMnRSQ0I0VWoxRHJvYktoelYwby0wZw?oc=5",
+      "time_badge": "방금 전 실시간 포착",
+      "tags": [
+        "정부부처·공공정책",
+        "POLITICS",
+        "당일신규원석"
+      ]
+    },
+    {
+      "id": "20261123_world_20",
       "category": "world",
       "sub_tag": "미국 대선·글로벌외교",
-      "title": "주간 정치 뉴스: 바이든의 백악관 연회장 비판, 트럼프의 FBI 해킹 긍정적 측면 언급 외",
-      "summary": "• [미국 대선·글로벌외교] 주요 현안 팩트: 주간 정치 뉴스: 바이든의 백악관 연회장 비판, 트럼프의 FBI 해킹 긍정적 측면 언급 외\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
+      "title": "“트럼프, 김정은 만나려 핵폐기 없이 종전선언 검토했다”",
+      "summary": "• [미국 대선·글로벌외교] 주요 현안 팩트: “트럼프, 김정은 만나려 핵폐기 없이 종전선언 검토했다”\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
       "editorial_angle": "🎯 [취재 각도] 글로벌 패권 이동과 차기 미국 행정부 대외정책의 지정학적 파급력 (앤트뉴스 독자 서술 및 1차 공식자료 교차검증 권장)",
-      "source": "팩트 레이더 (Benzinga)",
-      "url": "https://news.google.com/rss/articles/CBMi1gJBVV95cUxNcmZsSF9IVWtpOWNDX205X3VXTkJJaVUwVVdKRnR5UFhHTDdGcGppbnZKUHFQb1ZmbVNPZXM4ZDVubUJVRVpEYUxIVXZFX1FoNmswUzFheGhNWXZJVWxuTkJGM1hITXIyWmVEbHQ5bHlLTGZ4ZUt5QTd0VFBmQ1N2UTRIMDAzaGJUYjBzOC1wdEhpbXRaNndFRkswbmlHNVhHMEFTRVdoQkFuMVVhTlJyeXFONFhCMWdoOVlocWJLQVhnckU0NExVd29JT3dWOThnUkc1WVpSMUEtWVk1YnZtOGdtNjQwVVpBdmh0YjRaTHNpZU1iSVVtZm9KcWZXQWFLbmNJOXh6RFM2R1hmUE5Gd1BMV3M3N0lLYW1qaUt0V25Ya2ktU0labFlUSmZzVjZzRTBSN0JnVmM0dGJfSm1QX2RLVjZXdGNkU3JWNTE4Yk94bUdOLWc?oc=5",
+      "source": "팩트 레이더 (중앙일보)",
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5ZRV9DTVRKYzlzemJ6aUlnMWNXcENwUkd1MjNmanNwc2Z6S0p6cFhXMVJpaEpNZVE4Sk9KTll3Qm41bFJCSHd0WVdhRnJqTTdjZ0VsbGJn?oc=5",
       "time_badge": "오늘의 톱뉴스 ★",
       "tags": [
         "미국 대선·글로벌외교",
@@ -189,15 +221,15 @@
       ]
     },
     {
-      "id": "20261123_world_19",
+      "id": "20261123_world_21",
       "category": "world",
       "sub_tag": "미국 대선·글로벌외교",
-      "title": "“트럼프, 김정은 만나려 핵폐기 없이 종전선언 검토했다”",
-      "summary": "• [미국 대선·글로벌외교] 주요 현안 팩트: “트럼프, 김정은 만나려 핵폐기 없이 종전선언 검토했다”\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
+      "title": "베선트, 젠슨 황 엔비디아 복귀 배제 안 해…입장 변화",
+      "summary": "• [미국 대선·글로벌외교] 주요 현안 팩트: 베선트, 젠슨 황 엔비디아 복귀 배제 안 해…입장 변화\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
       "editorial_angle": "🎯 [취재 각도] 글로벌 패권 이동과 차기 미국 행정부 대외정책의 지정학적 파급력 (앤트뉴스 독자 서술 및 1차 공식자료 교차검증 권장)",
-      "source": "팩트 레이더 (중앙일보)",
-      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5ZRV9DTVRKYzlzemJ6aUlnMWNXcENwUkd1MjNmanNwc2Z6S0p6cFhXMVJpaEpNZVE4Sk9KTll3Qm41bFJCSHd0WVdhRnJqTTdjZ0VsbGJn?oc=5",
-      "time_badge": "8시간 전 포착",
+      "source": "팩트 레이더 (한국경제)",
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE8tYVBWUTFwMThVQ0dYU1h5S19jMWkzR01WRUtMSGhXc3kwVy02Z0p4MndqQWUyRVhzSTFTWWo5VGk1ZUx5RWJ0OXExTXZNOVlsWE1UQjNOU0U3QQ?oc=5",
+      "time_badge": "2시간 전 포착",
       "tags": [
         "미국 대선·글로벌외교",
         "WORLD",
@@ -205,15 +237,31 @@
       ]
     },
     {
-      "id": "20261123_world_20",
+      "id": "20261123_world_22",
+      "category": "world",
+      "sub_tag": "미국 대선·글로벌외교",
+      "title": "주간 정치 뉴스: 바이든의 백악관 연회장 비판, 트럼프의 FBI 해킹 긍정적 측면 언급 외",
+      "summary": "• [미국 대선·글로벌외교] 주요 현안 팩트: 주간 정치 뉴스: 바이든의 백악관 연회장 비판, 트럼프의 FBI 해킹 긍정적 측면 언급 외\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
+      "editorial_angle": "🎯 [취재 각도] 글로벌 패권 이동과 차기 미국 행정부 대외정책의 지정학적 파급력 (앤트뉴스 독자 서술 및 1차 공식자료 교차검증 권장)",
+      "source": "팩트 레이더 (Benzinga)",
+      "url": "https://news.google.com/rss/articles/CBMi1gJBVV95cUxNcmZsSF9IVWtpOWNDX205X3VXTkJJaVUwVVdKRnR5UFhHTDdGcGppbnZKUHFQb1ZmbVNPZXM4ZDVubUJVRVpEYUxIVXZFX1FoNmswUzFheGhNWXZJVWxuTkJGM1hITXIyWmVEbHQ5bHlLTGZ4ZUt5QTd0VFBmQ1N2UTRIMDAzaGJUYjBzOC1wdEhpbXRaNndFRkswbmlHNVhHMEFTRVdoQkFuMVVhTlJyeXFONFhCMWdoOVlocWJLQVhnckU0NExVd29JT3dWOThnUkc1WVpSMUEtWVk1YnZtOGdtNjQwVVpBdmh0YjRaTHNpZU1iSVVtZm9KcWZXQWFLbmNJOXh6RFM2R1hmUE5Gd1BMV3M3N0lLYW1qaUt0V25Ya2ktU0labFlUSmZzVjZzRTBSN0JnVmM0dGJfSm1QX2RLVjZXdGNkU3JWNTE4Yk94bUdOLWc?oc=5",
+      "time_badge": "3시간 전 포착",
+      "tags": [
+        "미국 대선·글로벌외교",
+        "WORLD",
+        "당일신규원석"
+      ]
+    },
+    {
+      "id": "20261123_world_23",
       "category": "world",
       "sub_tag": "미·중 패권 & 통상관세",
-      "title": "미 재무장관 “엔비디아 AI 칩 중국 밀반입 의혹, 내부 규정준수 여부 핵심”",
-      "summary": "• [미·중 패권 & 통상관세] 주요 현안 팩트: 미 재무장관 “엔비디아 AI 칩 중국 밀반입 의혹, 내부 규정준수 여부 핵심”\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
+      "title": "선전 정상회담서도 못 푼 반도체·희토류 갈등…엔비디아 사태로 무역전쟁 재점화 우려",
+      "summary": "• [미·중 패권 & 통상관세] 주요 현안 팩트: 선전 정상회담서도 못 푼 반도체·희토류 갈등…엔비디아 사태로 무역전쟁 재점화 우려\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
       "editorial_angle": "🎯 [취재 각도] 미·중 무역 냉전 격화 속 대한민국 전략 수출 산업의 생존로 타진 (앤트뉴스 독자 서술 및 1차 공식자료 교차검증 권장)",
-      "source": "팩트 레이더 (VOA 한국어 홈페이지)",
-      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBXMHpzWlROSUo3ZXlOUF9kWnpVX0FMY3lOVmNtSTctVmJXbDN2M3RiZ3ZYOWp1cERjQ1dxTzYtV3A4RHRHNjYtdmJpN1YzUEFoZWlF0gFTQVVfeXFMUFcwenNaVE5JSjdleU5QX2RaelVfQUxjeU5WY21JNy1WYldsM3YzdGJndlg5anVwRGNDV3FPNi1XcDhEdEc2Ni12Ymk3VjNQQWhlaUU?oc=5",
-      "time_badge": "4시간 전 포착",
+      "source": "팩트 레이더 (마켓잉크)",
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE10MmNWbXdOdTc0N2UxSjVjLWpnVnVsX1Ztcm5OUTBqTmdmQnhKRUVjci05NzJ4RFFMVldZY243V0Ric0RpcE54U00zdlhrclVNN2sxZFFrRmhEMHFnWm1sZVVPRzJjbm14d3BtQzEwMA?oc=5",
+      "time_badge": "1시간 전 포착",
       "tags": [
         "미·중 패권 & 통상관세",
         "WORLD",
@@ -221,14 +269,14 @@
       ]
     },
     {
-      "id": "20261123_world_21",
+      "id": "20261123_world_24",
       "category": "world",
       "sub_tag": "미·중 패권 & 통상관세",
-      "title": "“엔비디아 사태로 美中 무역전쟁 재점화 우려”… 반도체·희토류 갈등 격화",
-      "summary": "• [미·중 패권 & 통상관세] 주요 현안 팩트: “엔비디아 사태로 美中 무역전쟁 재점화 우려”… 반도체·희토류 갈등 격화\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
+      "title": "미 재무장관 “엔비디아 AI 칩 중국 밀반입 의혹, 내부 규정준수 여부 핵심”",
+      "summary": "• [미·중 패권 & 통상관세] 주요 현안 팩트: 미 재무장관 “엔비디아 AI 칩 중국 밀반입 의혹, 내부 규정준수 여부 핵심”\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
       "editorial_angle": "🎯 [취재 각도] 미·중 무역 냉전 격화 속 대한민국 전략 수출 산업의 생존로 타진 (앤트뉴스 독자 서술 및 1차 공식자료 교차검증 권장)",
-      "source": "팩트 레이더 (Chosunbiz)",
-      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNTHdFQ2dMRW5vWGRhUkVNZFNrQkpJdU1Kb1FIaGFFT3lDY1VoQUQ1a3g1YVpaa0pYWDY5Qnl1VTU2bF95TFpMME9JdzBvdk9DYWIydTB1UklxSHpSaGNpMEh2VEJpMkppV1NCZi1lNnpoUjRPOVVNOEZXR0IwQTZaLUZSM0NaVmU4WVNWZ3dYZER0TjJ2QTI5cUtWLV8yVG9nVnhrTjVUamN1RkVKcUJkRFd30gGyAUFVX3lxTE1Md0VDZ0xFbm9YZGFSRU1kU2tCSkl1TUpvUUhoYUVPeUNjVWhBRDVreDVhWlprSlhYNjlCeXVVNTZsX3lMWkwwT0l3MG92T0NhYjJ1MHVSSXFIelJoY2kwSHZUQmkySmlXU0JmLWU2emhSNE85VU04RldHQjBBNlotRlIzQ1pWZThZU1Znd1hkRHROMnZBMjlxS1YtXzJUb2dWeGtONVRqY3VGRUpxQmREV3c?oc=5",
+      "source": "팩트 레이더 (VOA 한국어 홈페이지)",
+      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBXMHpzWlROSUo3ZXlOUF9kWnpVX0FMY3lOVmNtSTctVmJXbDN2M3RiZ3ZYOWp1cERjQ1dxTzYtV3A4RHRHNjYtdmJpN1YzUEFoZWlF0gFTQVVfeXFMUFcwenNaVE5JSjdleU5QX2RaelVfQUxjeU5WY21JNy1WYldsM3YzdGJndlg5anVwRGNDV3FPNi1XcDhEdEc2Ni12Ymk3VjNQQWhlaUU?oc=5",
       "time_badge": "7시간 전 포착",
       "tags": [
         "미·중 패권 & 통상관세",
@@ -237,7 +285,7 @@
       ]
     },
     {
-      "id": "20261123_world_22",
+      "id": "20261123_world_25",
       "category": "world",
       "sub_tag": "미·중 패권 & 통상관세",
       "title": "중국, 희토류로 반격하나…유니온·동국알앤에스 주목을",
@@ -245,7 +293,7 @@
       "editorial_angle": "🎯 [취재 각도] 미·중 무역 냉전 격화 속 대한민국 전략 수출 산업의 생존로 타진 (앤트뉴스 독자 서술 및 1차 공식자료 교차검증 권장)",
       "source": "팩트 레이더 (핀포인트뉴스)",
       "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9meXZDZzNabUlseVZsM05xNTBYM2M0bndDM0RCY3pMNUJKRV9VZ3R0QnQxM00xMDhvekl3ZGlBMjF5QjYySFlhNlgyOVhDVXExZWNqUlJNU2RfVUtIQ3hydHJUbmNtMWhWSGZhMUpPbUNoazBmekVN0gF3QVVfeXFMT2Z5dkNnM1ptSWx5VmwzTnE1MFgzYzRud0MzREJjekw1QkpFX1VndHRCdDEzTTEwOG96SXdkaUEyMXlCNjJIWWE2WDI5WENVcTFlY2pSUk1TZF9VS0hDeHJ0clRuY20xaFZIZmExSk9tQ2hrMGZ6RU0?oc=5",
-      "time_badge": "3시간 전 포착",
+      "time_badge": "6시간 전 포착",
       "tags": [
         "미·중 패권 & 통상관세",
         "WORLD",
@@ -253,7 +301,7 @@
       ]
     },
     {
-      "id": "20261123_world_23",
+      "id": "20261123_world_26",
       "category": "world",
       "sub_tag": "지정학 리스크 & 물류",
       "title": "박영사, '달라진 세상, 갈라진 세계' 출간",
@@ -261,6 +309,38 @@
       "editorial_angle": "🎯 [취재 각도] 마이클 스나이더 연계: 글로벌 부채와 지정학 충격 속 공급망 리스크 (앤트뉴스 독자 서술 및 1차 공식자료 교차검증 권장)",
       "source": "팩트 레이더 (공감신문)",
       "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBOUlVpNS1TaGt4MzNhX3V1eHc4ZEZkX1BjTWlGYmxxUF9XaWpwNXdFd0s1MEhPUU55RWpJNHlNcFBYOGxqNW02UHNVaG5OTFprWXpDQ05wcVhNQWJ6U3ZlQXBmUjVtU28?oc=5",
+      "time_badge": "3시간 전 포착",
+      "tags": [
+        "지정학 리스크 & 물류",
+        "WORLD",
+        "당일신규원석"
+      ]
+    },
+    {
+      "id": "20261123_world_27",
+      "category": "world",
+      "sub_tag": "지정학 리스크 & 물류",
+      "title": "호르무즈 막혀도 사우디 원유 수출 회복…VLCC 운항지도 바뀐다",
+      "summary": "• [지정학 리스크 & 물류] 주요 현안 팩트: 호르무즈 막혀도 사우디 원유 수출 회복…VLCC 운항지도 바뀐다\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
+      "editorial_angle": "🎯 [취재 각도] 마이클 스나이더 연계: 글로벌 부채와 지정학 충격 속 공급망 리스크 (앤트뉴스 독자 서술 및 1차 공식자료 교차검증 권장)",
+      "source": "팩트 레이더 (해사신문)",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1EVTMzY3lSZ1VOS3dHUjIyWTRiajhnSDZ3bUhZa2o1WDlrUDdSc3FFZ3RXSjFBcmJtbzh4eXdNbEJyRU9icXRwN081OHJoVjB1cTFfRl9wZDB3dmg1NzVTajRoeVRFN2VDazNR?oc=5",
+      "time_badge": "2시간 전 포착",
+      "tags": [
+        "지정학 리스크 & 물류",
+        "WORLD",
+        "당일신규원석"
+      ]
+    },
+    {
+      "id": "20261123_world_28",
+      "category": "world",
+      "sub_tag": "지정학 리스크 & 물류",
+      "title": "중동發 에너지 위기 “원전 르네상스 가속”",
+      "summary": "• [지정학 리스크 & 물류] 주요 현안 팩트: 중동發 에너지 위기 “원전 르네상스 가속”\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
+      "editorial_angle": "🎯 [취재 각도] 마이클 스나이더 연계: 글로벌 부채와 지정학 충격 속 공급망 리스크 (앤트뉴스 독자 서술 및 1차 공식자료 교차검증 권장)",
+      "source": "팩트 레이더 (인사이트N파워)",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBHRHkzX3R6c2RDYk40VmpPOXgxVHh1Mjl6MjNRTmxaWWszM0VUd3JRZ0pzNTVVYkdESnJMSkthQXVkVVhQU0gzeEkzMk5mRzIwREJIMmV2bnE4bDdIbHBVRmR2d1FMUQ?oc=5",
       "time_badge": "방금 전 실시간 포착",
       "tags": [
         "지정학 리스크 & 물류",
@@ -269,14 +349,14 @@
       ]
     },
     {
-      "id": "20261123_tech_24",
+      "id": "20261123_tech_29",
       "category": "tech",
       "sub_tag": "반도체·초지능(SI)",
-      "title": "코스피, ‘검은 금요일’ 충격 딛고 반등할까…삼성전자·SK하이닉스 시험대",
-      "summary": "• [반도체·초지능(SI)] 주요 현안 팩트: 코스피, ‘검은 금요일’ 충격 딛고 반등할까…삼성전자·SK하이닉스 시험대\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
+      "title": "[핫스톡] 美 반도체 쇼크에 삼성전자·SK하이닉스 5% 급락",
+      "summary": "• [반도체·초지능(SI)] 주요 현안 팩트: [핫스톡] 美 반도체 쇼크에 삼성전자·SK하이닉스 5% 급락\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
       "editorial_angle": "🎯 [취재 각도] HBM 및 차세대 초지능(SI) 인프라 데이터센터 슈퍼사이클 분석 (앤트뉴스 독자 서술 및 1차 공식자료 교차검증 권장)",
-      "source": "팩트 레이더 (진일보 | 전남일보)",
-      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE0wZXFaTFgzV3RDbGhabzluekpLWkd4bml2c2ZYZUNuU3FLU0dqb0c5NmNvdm1aRXozY2FaZ2I0WlBOUHc5WEhBR1pIWkZHVTdrMXZWZFFEYkdSRDVxaG9Ud2pmQWc5aVpSRldLMUVIUQ?oc=5",
+      "source": "팩트 레이더 (뉴시안)",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1hdFRMb0RwbjhCSTFqREJqbVFxck1QcGstdXhqVzkxU180d1hWWGhvR0pJcHNKUUVVYnpES3Y4b3Jma2hUTUtKa3p3MWRlWTdjbFlFZ2djdDJLRXVmNVFIZkU5QXh4T2pHY3QzRg?oc=5",
       "time_badge": "오늘의 톱뉴스 ★",
       "tags": [
         "반도체·초지능(SI)",
@@ -285,7 +365,7 @@
       ]
     },
     {
-      "id": "20261123_tech_25",
+      "id": "20261123_tech_30",
       "category": "tech",
       "sub_tag": "반도체·초지능(SI)",
       "title": "엔비디아 실적 발표하면 '삼전닉스' 주가 오른다고?",
@@ -293,7 +373,7 @@
       "editorial_angle": "🎯 [취재 각도] HBM 및 차세대 초지능(SI) 인프라 데이터센터 슈퍼사이클 분석 (앤트뉴스 독자 서술 및 1차 공식자료 교차검증 권장)",
       "source": "팩트 레이더 (뉴스톱)",
       "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5wNGdjUW8yM2gwbXhVUWpqa2FuS0loSHV3UHkySldqWFhVS21tWVdEUGhxRndJMXpFNk1RNVhPUDR4UUh6SndKbkFkYzNzNzI1TmFDOFpSdGNkeUxaVXc?oc=5",
-      "time_badge": "2시간 전 포착",
+      "time_badge": "5시간 전 포착",
       "tags": [
         "반도체·초지능(SI)",
         "TECH",
@@ -301,15 +381,15 @@
       ]
     },
     {
-      "id": "20261123_tech_26",
+      "id": "20261123_tech_31",
       "category": "tech",
       "sub_tag": "반도체·초지능(SI)",
-      "title": "깐부 잃은 K반도체, 탈 엔비디아 속도 낼까",
-      "summary": "• [반도체·초지능(SI)] 주요 현안 팩트: 깐부 잃은 K반도체, 탈 엔비디아 속도 낼까\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
+      "title": "코스피, ‘검은 금요일’ 충격 딛고 반등할까…삼성전자·SK하이닉스 시험대",
+      "summary": "• [반도체·초지능(SI)] 주요 현안 팩트: 코스피, ‘검은 금요일’ 충격 딛고 반등할까…삼성전자·SK하이닉스 시험대\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
       "editorial_angle": "🎯 [취재 각도] HBM 및 차세대 초지능(SI) 인프라 데이터센터 슈퍼사이클 분석 (앤트뉴스 독자 서술 및 1차 공식자료 교차검증 권장)",
-      "source": "팩트 레이더 (주간경향)",
-      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5uREJSNVdiV3RtV1dkTUsyT19xV19BRkpkdW1MUV9ZXzF4ZWd2a2k0NFhrMmhCNl9FSU1rUkNnS2NmckF2eWtSY0FYQlI2TWdFTGozMUJFSzBfVlk3aGc?oc=5",
-      "time_badge": "2시간 전 포착",
+      "source": "팩트 레이더 (진일보 | 전남일보)",
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE0wZXFaTFgzV3RDbGhabzluekpLWkd4bml2c2ZYZUNuU3FLU0dqb0c5NmNvdm1aRXozY2FaZ2I0WlBOUHc5WEhBR1pIWkZHVTdrMXZWZFFEYkdSRDVxaG9Ud2pmQWc5aVpSRldLMUVIUQ?oc=5",
+      "time_badge": "8시간 전 포착",
       "tags": [
         "반도체·초지능(SI)",
         "TECH",
@@ -317,7 +397,7 @@
       ]
     },
     {
-      "id": "20261123_tech_27",
+      "id": "20261123_tech_32",
       "category": "tech",
       "sub_tag": "휴머노이드 로봇·피지컬AI",
       "title": "[피지컬 AI, 시연 넘어 양산 경쟁②] 휴머노이드, 시연에서 양산으로…공장 투입이 진짜 승부처",
@@ -325,7 +405,7 @@
       "editorial_angle": "🎯 [취재 각도] 제조 및 서비스 현장 실전 배치와 정밀 감속기·구동계 부품 수혜 점검 (앤트뉴스 독자 서술 및 1차 공식자료 교차검증 권장)",
       "source": "팩트 레이더 (뉴시안)",
       "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5Wc3d2bFlSZVB5bU5zRHJGeDVrY1RLZHlva0JVT3kzSHpycVhqQzc1Ymh6cVdVemdXTEU0cXdlTUZVYnpPbEJfLXFXc3JYZEppTTRUWTFucjJiNzdlVkdUSHpua0xLcWJBY1BWZg?oc=5",
-      "time_badge": "1시간 전 포착",
+      "time_badge": "4시간 전 포착",
       "tags": [
         "휴머노이드 로봇·피지컬AI",
         "TECH",
@@ -333,14 +413,30 @@
       ]
     },
     {
-      "id": "20261123_tech_28",
+      "id": "20261123_tech_33",
       "category": "tech",
       "sub_tag": "휴머노이드 로봇·피지컬AI",
-      "title": "[창간 7주년] 숙련공의 조력자 '피지컬 AI'",
-      "summary": "• [휴머노이드 로봇·피지컬AI] 주요 현안 팩트: [창간 7주년] 숙련공의 조력자 '피지컬 AI'\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
+      "title": "[Books] 더 피지컬라이제이션(The Physicalization)",
+      "summary": "• [휴머노이드 로봇·피지컬AI] 주요 현안 팩트: [Books] 더 피지컬라이제이션(The Physicalization)\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
       "editorial_angle": "🎯 [취재 각도] 제조 및 서비스 현장 실전 배치와 정밀 감속기·구동계 부품 수혜 점검 (앤트뉴스 독자 서술 및 1차 공식자료 교차검증 권장)",
-      "source": "팩트 레이더 (기계설비신문)",
-      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1Wakk1alpwX0RBT3Z1VTVLWXFCWERTM3V4Xzg0em5oQ0sxcllkOHRMMTROa2VXSmpHS0pJREZvTFhDRE5FTF9ZcDZTWmxXZWpyN1hobFhiMV9NQ1k1MmF0T1VPRGI4Z0ZmamVXcw?oc=5",
+      "source": "팩트 레이더 (로봇신문)",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5YdWlDOURoclZQX0FkLUhld0RHS2k1UFpnc2xpNDZsQjF0cTJldGM2UlVSZmVwOFhpQjVoaGNxZWM3Wl9aR3N5a2VOWFA5TTJGSjJmeGI1bklseEh3WEdhN2VIRHdXVmtPN2lKcA?oc=5",
+      "time_badge": "9시간 전 포착",
+      "tags": [
+        "휴머노이드 로봇·피지컬AI",
+        "TECH",
+        "당일신규원석"
+      ]
+    },
+    {
+      "id": "20261123_tech_34",
+      "category": "tech",
+      "sub_tag": "휴머노이드 로봇·피지컬AI",
+      "title": "슈퍼브에이아이, 국제로봇콘테스트 휴머노이드 경진대회 은상 수상",
+      "summary": "• [휴머노이드 로봇·피지컬AI] 주요 현안 팩트: 슈퍼브에이아이, 국제로봇콘테스트 휴머노이드 경진대회 은상 수상\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
+      "editorial_angle": "🎯 [취재 각도] 제조 및 서비스 현장 실전 배치와 정밀 감속기·구동계 부품 수혜 점검 (앤트뉴스 독자 서술 및 1차 공식자료 교차검증 권장)",
+      "source": "팩트 레이더 (데이터넷)",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFA1RDZFN1JMQnNiVkl4RHIxcVQ5QVMyM21tYlU2OFpKWWlFTldrZEZYUkJVdEVUN3BuMk1fS01PVWw5MzVBU2lYVDJzelN5QUdlZ0RRSURGT2xCVS1vLVdGNW9tZU9zRUNqTjJ3Wg?oc=5",
       "time_badge": "2시간 전 포착",
       "tags": [
         "휴머노이드 로봇·피지컬AI",
@@ -349,14 +445,14 @@
       ]
     },
     {
-      "id": "20261123_economy_29",
+      "id": "20261123_economy_35",
       "category": "economy",
       "sub_tag": "환율·금리·거시지표",
-      "title": "원·달러 환율, 1346.0원…달러, 미 국채금리 하락에 약세",
-      "summary": "• [환율·금리·거시지표] 주요 현안 팩트: 원·달러 환율, 1346.0원…달러, 미 국채금리 하락에 약세\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
+      "title": "[환율 전망] 조금씩 흔들리는 균형",
+      "summary": "• [환율·금리·거시지표] 주요 현안 팩트: [환율 전망] 조금씩 흔들리는 균형\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
       "editorial_angle": "🎯 [취재 각도] 고환율·고금리 복합 압박 속 가계·기업 재정 건전성 방어 분석 (앤트뉴스 독자 서술 및 1차 공식자료 교차검증 권장)",
-      "source": "팩트 레이더 (조세일보)",
-      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9fOHhYZUJVWDJ0TVhvZE1Ra1dUODJTVkRJR19nckE3UXRxNFV1YzZnejVua1dYRzZrMnFob3RwV2JXVWt4U2RnLWNJRWdjZUc1V2oxTUNxTTBjaTRGLVM1akhlUzVuNW1mQ2doUE1NWUpGVXpp?oc=5",
+      "source": "팩트 레이더 (KB Think)",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBCT0NpTUlNU1JXb2Y2U3Jod3NwVGkzcEpVQTlubzBQY1I5b0U2QjRVM1NOOGdaRXRlZE9pOFNKbHJOZ3lTUFprdVBjQjBhR1dKZ3lsZnRGcllfLTFBcEpiRg?oc=5",
       "time_badge": "오늘의 톱뉴스 ★",
       "tags": [
         "환율·금리·거시지표",
@@ -365,15 +461,15 @@
       ]
     },
     {
-      "id": "20261123_economy_30",
+      "id": "20261123_economy_36",
       "category": "economy",
       "sub_tag": "환율·금리·거시지표",
-      "title": "iM증권 \"주식시장 불안에 달러 강세 지속…이번주 환율 1330~1370원 전망\"",
-      "summary": "• [환율·금리·거시지표] 주요 현안 팩트: iM증권 \"주식시장 불안에 달러 강세 지속…이번주 환율 1330~1370원 전망\"\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
+      "title": "원·달러 환율, 1346.0원…달러, 미 국채금리 하락에 약세",
+      "summary": "• [환율·금리·거시지표] 주요 현안 팩트: 원·달러 환율, 1346.0원…달러, 미 국채금리 하락에 약세\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
       "editorial_angle": "🎯 [취재 각도] 고환율·고금리 복합 압박 속 가계·기업 재정 건전성 방어 분석 (앤트뉴스 독자 서술 및 1차 공식자료 교차검증 권장)",
-      "source": "팩트 레이더 (이투데이)",
-      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE56SkZmb0dnQ296U25Cc0lQeEdlNlMyejg4NDBoUVZhYUs5SHFzOW1fZldqWjc4RDFMcUtVeEdtWm1LYy15TlhDY0RZYXRpQ2RWb19KVg?oc=5",
-      "time_badge": "방금 전 실시간 포착",
+      "source": "팩트 레이더 (조세일보)",
+      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE0zVlpMS21WRjNHYXVuWFJoaFNYdjdqaUtMVzdVcUZOU0J1WlR3RGFBS2RyZlV4R3E5UnB6emthZGxZMTlwSFBDLTQ4eldRS1NXU3Y4TXBtV21PRWFubEZN?oc=5",
+      "time_badge": "3시간 전 포착",
       "tags": [
         "환율·금리·거시지표",
         "ECONOMY",
@@ -381,15 +477,15 @@
       ]
     },
     {
-      "id": "20261123_economy_31",
+      "id": "20261123_economy_37",
       "category": "economy",
       "sub_tag": "환율·금리·거시지표",
-      "title": "[이번주 관전포인트]코스피 급락 뒤 PCE·한은 금리 결정이 이번 주 증시 가른다",
-      "summary": "• [환율·금리·거시지표] 주요 현안 팩트: [이번주 관전포인트]코스피 급락 뒤 PCE·한은 금리 결정이 이번 주 증시 가른다\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
+      "title": "환율, 1340원선까지 올라…글로벌 증시 불안에 강달러 지속",
+      "summary": "• [환율·금리·거시지표] 주요 현안 팩트: 환율, 1340원선까지 올라…글로벌 증시 불안에 강달러 지속\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
       "editorial_angle": "🎯 [취재 각도] 고환율·고금리 복합 압박 속 가계·기업 재정 건전성 방어 분석 (앤트뉴스 독자 서술 및 1차 공식자료 교차검증 권장)",
-      "source": "팩트 레이더 (센트럴경제)",
-      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBUT29QOURPc3ZnTHhVQW9BbklZcl9YOEtYRGVzR3A0ejVxV0xYQWJIRFNQMkpFZUNDLVFnTmVlZ0tiZzNieUh1dUNCQURZVEVfSEVnSU5vS2hTZjNJTEdCS2M1alpXQdIBakFVX3lxTE5yTXJ5TEliQ01QWjlfVnVGMmVSNWx4MmRHR2ZFUnpBUjRCanJGMWFFVjFNNGZyanpnTnphNmVDU2xmRm54OVA1UjdPaFVMdWwzb3VJdlRYanRBUHE2MG9zV1FWMnhzUTdCbnc?oc=5",
-      "time_badge": "2시간 전 포착",
+      "source": "팩트 레이더 (뉴스투데이)",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE15dGRmSE9OY0ZxZTBjcW13TEROdWhpeGstaUhJZ2kySndIV2RUMDBtZF9zUEtjNjg4b1AwdW53Ni1ZYzdYY1puUS1DZExuTURtQXJMVDhxYjVEcU5mLVE?oc=5",
+      "time_badge": "1시간 전 포착",
       "tags": [
         "환율·금리·거시지표",
         "ECONOMY",
@@ -397,15 +493,15 @@
       ]
     },
     {
-      "id": "20261123_economy_32",
+      "id": "20261123_economy_38",
       "category": "economy",
       "sub_tag": "디지털 자산·귀금속",
-      "title": "전쟁에도 추락하는 금값? 안전자산에 무슨 일이",
-      "summary": "• [디지털 자산·귀금속] 주요 현안 팩트: 전쟁에도 추락하는 금값? 안전자산에 무슨 일이\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
+      "title": "[국제] 국제 금값 66달러 반등…온스당 3582달러 회복, 국내 SJC는 주간 하락세 지속",
+      "summary": "• [디지털 자산·귀금속] 주요 현안 팩트: [국제] 국제 금값 66달러 반등…온스당 3582달러 회복, 국내 SJC는 주간 하락세 지속\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
       "editorial_angle": "🎯 [취재 각도] 디지털 자산 제도권 편입 및 금·은 대체 안전자산 배분 궤도 (앤트뉴스 독자 서술 및 1차 공식자료 교차검증 권장)",
-      "source": "팩트 레이더 (데일리바이트(DAILY BYTE))",
-      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPTFdONlBnZE5scUtGeFl6UHh4cTFpVHBOZkI1cmRPVFJZRm9qVGxHRWNCd3VyUUEzS0VicG5xNTZYZ2JGd3BkQmdPeVdKcGxtX0VvM1AzQlRZbU16MVdyempLQVJGcFc3RExOaXQxQ3dVYVRrOEhSMHNuVklQMEtVNA?oc=5",
-      "time_badge": "8시간 전 포착",
+      "source": "팩트 레이더 (굿모닝베트남미디어)",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBOUmVqSEVwLXY0Qk9RckZBemtBLUJTSjh2bGRNbjQtTDBHTnRwa2xpYV9wR2lCSzV3SWZHaTNoR2FBcE5NVzdaVlVXT0U1UC1ZMGZoTmJ6Um44dDV0LTE5Ti1nVnVnZVliNjQtWnFLamE?oc=5",
+      "time_badge": "1시간 전 포착",
       "tags": [
         "디지털 자산·귀금속",
         "ECONOMY",
@@ -413,15 +509,31 @@
       ]
     },
     {
-      "id": "20261123_economy_33",
+      "id": "20261123_economy_39",
       "category": "economy",
       "sub_tag": "디지털 자산·귀금속",
-      "title": "금(금값, 금시세) 18K 14K 등 얼마…뉴욕증시 급락 등 불안정한 금융시장 속 반등 여부는?",
-      "summary": "• [디지털 자산·귀금속] 주요 현안 팩트: 금(금값, 금시세) 18K 14K 등 얼마…뉴욕증시 급락 등 불안정한 금융시장 속 반등 여부는?\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
+      "title": "금(금값, 금시세) 11월 23일, 18K 14K 등 '반등'",
+      "summary": "• [디지털 자산·귀금속] 주요 현안 팩트: 금(금값, 금시세) 11월 23일, 18K 14K 등 '반등'\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
       "editorial_angle": "🎯 [취재 각도] 디지털 자산 제도권 편입 및 금·은 대체 안전자산 배분 궤도 (앤트뉴스 독자 서술 및 1차 공식자료 교차검증 권장)",
       "source": "팩트 레이더 (CBC뉴스)",
-      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBnQ1F0aUNUMGI5WkZ3clMtR2JuVnd2MUsydEZMOHI3SlQ4XzZJOWlQaC02NWdYaW55RGVhRkVhaXRlNHhwd2NyZk9HRGt6WHVfeXhNM1NrQ2ltd3RfNFZZN0ZlSWp4M00?oc=5",
-      "time_badge": "8시간 전 포착",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9yajRxcnhZeGlLaGNvQlZzZEQzVFp3LWh1R01YOHBTdk9nMjdPWnJCRFFobk1DRnhPSl9DWDJUQ0NOUHh5WTBPbzFSN0t0VF9obTNoeWk2M3B5d2ZoMDd2VkctM3IyRDdR?oc=5",
+      "time_badge": "1시간 전 포착",
+      "tags": [
+        "디지털 자산·귀금속",
+        "ECONOMY",
+        "당일신규원석"
+      ]
+    },
+    {
+      "id": "20261123_economy_40",
+      "category": "economy",
+      "sub_tag": "디지털 자산·귀금속",
+      "title": "전쟁에도 추락하는 금값? 안전자산에 무슨 일이",
+      "summary": "• [디지털 자산·귀금속] 주요 현안 팩트: 전쟁에도 추락하는 금값? 안전자산에 무슨 일이\n• 관련 정부 부처 및 시장 파급효과 실시간 점검 대상.",
+      "editorial_angle": "🎯 [취재 각도] 디지털 자산 제도권 편입 및 금·은 대체 안전자산 배분 궤도 (앤트뉴스 독자 서술 및 1차 공식자료 교차검증 권장)",
+      "source": "팩트 레이더 (데일리바이트(DAILY BYTE))",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPTFdONlBnZE5scUtGeFl6UHh4cTFpVHBOZkI1cmRPVFJZRm9qVGxHRWNCd3VyUUEzS0VicG5xNTZYZ2JGd3BkQmdPeVdKcGxtX0VvM1AzQlRZbU16MVdyempLQVJGcFc3RExOaXQxQ3dVYVRrOEhSMHNuVklQMEtVNA?oc=5",
+      "time_badge": "11시간 전 포착",
       "tags": [
         "디지털 자산·귀금속",
         "ECONOMY",
@@ -450,7 +562,7 @@
       "category": "cartoons",
       "sub_tag": "만평 02 · 글로벌외교",
       "title": "🎨 [세상만평 #2] ‘해외 데이터센터 세금 폭탄’과 트럼프의 계산기",
-      "summary": "• [풍자 모티브]: 오늘 국제 정세 — '주간 정치 뉴스: 바이든의 백악관 연회장 비판, 트럼프의 FBI 해킹 긍정적 측면 언급 외'\n• [시각적 구도]: 거대한 AI 서버 랙을 등에 짊어진 빅테크 기업들이 미국 국경선을 넘으려 하자, 트럼프가 '세금 폭탄(Tax Bomb)' 투척기를 장전하며 '러시아·중국과는 베스트 프렌드' 팻말을 흔드는 기이한 삼각 외교 풍경.\n• [결정적 한 방 말풍선]: “친구는 밖에서 사귀고, 세금은 안방에서 털겠다는 아메리카 퍼스트 2.0!”",
+      "summary": "• [풍자 모티브]: 오늘 국제 정세 — '“트럼프, 김정은 만나려 핵폐기 없이 종전선언 검토했다”'\n• [시각적 구도]: 거대한 AI 서버 랙을 등에 짊어진 빅테크 기업들이 미국 국경선을 넘으려 하자, 트럼프가 '세금 폭탄(Tax Bomb)' 투척기를 장전하며 '러시아·중국과는 베스트 프렌드' 팻말을 흔드는 기이한 삼각 외교 풍경.\n• [결정적 한 방 말풍선]: “친구는 밖에서 사귀고, 세금은 안방에서 털겠다는 아메리카 퍼스트 2.0!”",
       "editorial_angle": "📚 [출판·만평 포인트] 단행본 〈트럼프의 관세 폭탄과 AI 패권〉 수록 후보. 글로벌 지정학 패권의 이면을 통찰하는 단행본 챕터.",
       "source": "앤트뉴스 만평 연구실 (파이튼 출판 컬렉션)",
       "url": "#",
@@ -467,7 +579,7 @@
       "category": "cartoons",
       "sub_tag": "만평 03 · 초지능·로봇",
       "title": "🎨 [세상만평 #3] 목표주가 깎는 증권사 리포트와 고요한 ‘반도체 용광로’",
-      "summary": "• [풍자 모티브]: 오늘 5대 테크 현안 — '코스피, ‘검은 금요일’ 충격 딛고 반등할까…삼성전자·SK하이닉스 시험대'\n• [시각적 구도]: 얼마 전까지 ‘반도체 20만 전자 간다’며 나팔을 불던 증권사 애널리스트들이 태세를 바꿔 ‘조정 국면 시작’ 깃발로 갈아치우는 동안, 반도체 팹 안에서는 차세대 HBM 웨이퍼를 묵묵히 연마하는 엔지니어들의 땀방울.\n• [결정적 한 방 말풍선]: “오를 때는 장밋빛 찬가, 내릴 때는 절망의 곡소리… 당신들의 목표가는 도대체 누구를 위한 것입니까?”",
+      "summary": "• [풍자 모티브]: 오늘 5대 테크 현안 — '[핫스톡] 美 반도체 쇼크에 삼성전자·SK하이닉스 5% 급락'\n• [시각적 구도]: 얼마 전까지 ‘반도체 20만 전자 간다’며 나팔을 불던 증권사 애널리스트들이 태세를 바꿔 ‘조정 국면 시작’ 깃발로 갈아치우는 동안, 반도체 팹 안에서는 차세대 HBM 웨이퍼를 묵묵히 연마하는 엔지니어들의 땀방울.\n• [결정적 한 방 말풍선]: “오를 때는 장밋빛 찬가, 내릴 때는 절망의 곡소리… 당신들의 목표가는 도대체 누구를 위한 것입니까?”",
       "editorial_angle": "📚 [출판·만평 포인트] 단행본 〈반도체 슈퍼사이클의 허상과 실체〉 수록 후보. 초지능(SI)과 반도체 산업의 현실을 조명하는 만평.",
       "source": "앤트뉴스 만평 연구실 (파이튼 출판 컬렉션)",
       "url": "#",
@@ -483,9 +595,9 @@
       "id": "20261123_car_04",
       "category": "cartoons",
       "sub_tag": "만평 04 · 증시·자산",
-      "title": "🎨 [세상만평 #4] 금값도 코인도 휘청… ‘실질금리의 닻’ 앞에 흔들리는 자산들",
-      "summary": "• [풍자 모티브]: 오늘 거시경제 현황 — '원·달러 환율, 1346.0원…달러, 미 국채금리 하락에 약세'\n• [시각적 구도]: 높아진 실질금리라는 거대한 파도가 밀려오자, 금괴와 비트코인 보물상자를 든 투자자들이 요동치는 뗏목 위에서 균형을 잡으려 안간힘을 쓰는 금융 풍경.\n• [결정적 한 방 말풍선]: “유동성의 거품이 걷힐 때, 진짜 안전한 피난처가 어디인지 비로소 드러납니다.”",
-      "editorial_angle": "📚 [출판·만평 포인트] 단행본 〈디지털 자산과 금, 화폐의 미래〉 수록 후보. 금융 위기와 변동성을 꿰뚫는 가치투자 혜안.",
+      "title": "🎨 [세상만평 #4] 시장의 요동과 ‘[환율 전망] 조금씩 흔들리는 균’의 통찰",
+      "summary": "• [풍자 모티브]: 오늘 거시경제 현황 — '[환율 전망] 조금씩 흔들리는 균형'\n• [시각적 구도]: 거시경제 지표 변동에 일희일비하며 매도·매수 버튼을 누르느라 넋이 나간 개미 투자자들과, 거시 사이클의 큰 지도를 펼쳐놓고 길을 찾는 현자의 대비.\n• [결정적 한 방 말풍선]: “시장의 파도에 휩쓸리지 마십시오. 나침반을 가진 자만이 목적지에 도달합니다.”",
+      "editorial_angle": "📚 [출판·만평 포인트] 단행본 〈시장의 소음을 뚫는 부의 안목〉 수록 후보. 금융 위기와 변동성을 꿰뚫는 가치투자 혜안.",
       "source": "앤트뉴스 만평 연구실 (파이튼 출판 컬렉션)",
       "url": "#",
       "time_badge": "자산통찰 ★",
