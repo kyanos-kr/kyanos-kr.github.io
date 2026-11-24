@@ -1,49 +1,505 @@
 /* ==========================================================================
-   KYANOS × ERYTHROS — 90:10 Golden Ratio Theme Tokens
-   - 90% Kyanos (Deep Navy / Crisp Sky Blue): 질서, 신뢰, 선명한 가독성
-   - 10% Erythros (Ruby Red / Solar Crimson): 태양의 아들, 핵심 강조, 활성 포인트
+   KYANOS ⇋ ERYTHROS — Dynamic Mode / Pulse Theme Architecture
+   - Default (Kyanos Mode): 깊은 심해 청색 · 지성 · 질서 · 헌정 아카이브
+   - Pulse   (Erythros Mode): 흑단-심홍 루비 · 태양의 아들 · 결단 · 역동적 실행
+   Single Platform, Dual Heartbeat — Zero-Collision Lean Design System
    ========================================================================== */
 
 :root {
-    /* Kyanos Base (90%) */
-    --kyanos-bg-deep: #020617;
-    --kyanos-bg-panel: rgba(15, 23, 42, 0.88);
-    --kyanos-blue: #38bdf8;
-    --kyanos-cyan: #00f2fe;
-    --kyanos-text-main: #f8fafc;
-    --kyanos-text-sub: #cbd5e1;
+  /* Kyanos Base Tokens */
+  --kyanos-bg-deep: #020617;
+  --kyanos-bg-panel: rgba(15, 23, 42, 0.88);
+  --kyanos-blue: #38bdf8;
+  --kyanos-cyan: #00f2fe;
+  --kyanos-text-main: #f8fafc;
+  --kyanos-text-sub: #cbd5e1;
 
-    /* Erythros Accent (10%) */
-    --erythros-ruby: #ff2a55;
-    --erythros-crimson: #e11d48;
-    --erythros-glow: rgba(255, 42, 85, 0.38);
-    --erythros-border: rgba(255, 42, 85, 0.55);
+  /* Erythros Pulse Tokens */
+  --erythros-bg-deep: #14070d;
+  --erythros-bg-mid: #280d19;
+  --erythros-bg-panel: rgba(42, 14, 26, 0.78);
+  --erythros-ruby: #ff2a55;
+  --erythros-crimson: #e11d48;
+  --erythros-rose-light: #fda4af;
+  --erythros-solar-gold: #fbbf24;
+  --erythros-glow: rgba(255, 42, 85, 0.42);
+  --erythros-border: rgba(255, 42, 85, 0.48);
+  --erythros-text-main: #fff7f8;
+  --erythros-text-sub: #e6ccd3;
+
+  /* Active Transition Curve */
+  --pulse-ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* 선명한 시야 확보: 활성 메뉴 · 주요 버튼 · 핵심 인장 10% 루비 포인트 */
+/* Smooth Mode Transition (only toggled briefly during interactive switch to keep initial paint instant) */
+html.kyanos-theme-transitioning body,
+html.kyanos-theme-transitioning header,
+html.kyanos-theme-transitioning .top-nav,
+html.kyanos-theme-transitioning .cosmic-overlay,
+html.kyanos-theme-transitioning .background-glow,
+html.kyanos-theme-transitioning .ambient-glow,
+html.kyanos-theme-transitioning .brand-symbol,
+html.kyanos-theme-transitioning .national-emblem-badge,
+html.kyanos-theme-transitioning .hero-motto-box,
+html.kyanos-theme-transitioning .pillar-card,
+html.kyanos-theme-transitioning .virtue-card,
+html.kyanos-theme-transitioning .bylaws-container,
+html.kyanos-theme-transitioning .top-brand-emblem {
+  transition:
+    background-color 0.55s var(--pulse-ease),
+    background 0.55s var(--pulse-ease),
+    border-color 0.45s var(--pulse-ease),
+    box-shadow 0.55s var(--pulse-ease),
+    color 0.4s ease !important;
+}
+
+/* ==========================================================================
+   ERYTHROS PULSE MODE — Global Token & Atmospheric Override
+   Specificity (0,1,1) cleanly overrides page-level :root (0,1,0)
+   ========================================================================== */
+html[data-theme="erythros"] {
+  /* Core Portal Variables (main.html, gov_overview.html, market_monitor.html, gov_media.html) */
+  --bg-dark: #14070d;
+  --bg-deep-blue: #290d1a;
+  --bg-color: #14070d;
+  --bg-secondary: #2b0e1c;
+  --bg-card: rgba(44, 14, 27, 0.78);
+  --card-bg: rgba(38, 12, 24, 0.8);
+  --card-border: rgba(255, 42, 85, 0.32);
+  --glass-bg: rgba(44, 14, 27, 0.72);
+  --glass-card: rgba(44, 14, 27, 0.74);
+  --glass-border: rgba(255, 42, 85, 0.42);
+  --cyan-glow: #ff4d73;
+  --cyan: #ff4d73;
+  --sapphire: #881337;
+  --text-main: #fff7f8;
+  --text-sub: #e6ccd3;
+}
+
+/* Body & Atmospheric Glows */
+html[data-theme="erythros"] body {
+  background-color: var(--erythros-bg-deep);
+  color: var(--erythros-text-main);
+}
+
+/* index.html radial backdrop */
+html[data-theme="erythros"] .background-glow {
+  background: radial-gradient(
+    circle,
+    rgba(255, 42, 85, 0.28) 0%,
+    rgba(225, 29, 72, 0.2) 42%,
+    rgba(20, 7, 13, 0) 72%
+  );
+  animation: erythrosBreathGlow 5.5s ease-in-out infinite alternate;
+}
+
+/* main.html cosmic radial overlay */
+html[data-theme="erythros"] .cosmic-overlay {
+  background: radial-gradient(
+    circle at 50% 24%,
+    rgba(255, 42, 85, 0.24) 0%,
+    rgba(76, 14, 38, 0.68) 44%,
+    rgba(20, 7, 13, 0.94) 88%
+  );
+}
+
+/* market_monitor.html ambient lighting (preserves Korean up/down market colors) */
+html[data-theme="erythros"] .ambient-glow {
+  background: radial-gradient(
+    circle,
+    rgba(255, 42, 85, 0.2) 0%,
+    rgba(245, 158, 11, 0.11) 38%,
+    transparent 70%
+  );
+}
+
+/* Top Headers & Navigation Bars */
+html[data-theme="erythros"] header,
+html[data-theme="erythros"] .top-nav {
+  background: linear-gradient(180deg, rgba(24, 7, 15, 0.94) 0%, rgba(24, 7, 15, 0.35) 100%);
+  border-bottom-color: rgba(255, 42, 85, 0.3);
+  box-shadow: 0 4px 24px rgba(225, 29, 72, 0.12);
+}
+
+html[data-theme="erythros"] .brand-symbol {
+  border-color: var(--erythros-ruby);
+  background: radial-gradient(circle, #ff2a55 0%, #3b0718 72%);
+  box-shadow: 0 0 18px rgba(255, 42, 85, 0.58);
+}
+
+html[data-theme="erythros"] .nav-dropdown .dropdown-menu {
+  background: rgba(20, 7, 13, 0.97);
+  border-color: rgba(255, 42, 85, 0.35);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.65), 0 0 22px rgba(255, 42, 85, 0.14);
+}
+
+html[data-theme="erythros"] .top-brand-emblem {
+  background: rgba(44, 14, 27, 0.78);
+  border-color: rgba(255, 42, 85, 0.45);
+  box-shadow: 0 4px 20px rgba(255, 42, 85, 0.22);
+}
+
+/* Hero Emblem, Title & Key Controls */
+html[data-theme="erythros"] .national-emblem-badge {
+  background: rgba(159, 18, 57, 0.28);
+  border-color: rgba(255, 42, 85, 0.55);
+  box-shadow: 0 0 24px rgba(255, 42, 85, 0.28);
+  animation: erythrosBadgePulse 3.2s infinite alternate ease-in-out;
+}
+
+html[data-theme="erythros"] .national-emblem-badge span {
+  color: #fda4af;
+}
+
+html[data-theme="erythros"] .hero-title {
+  background: linear-gradient(135deg, #ffffff 0%, #ffe4e6 32%, #fda4af 68%, #ff2a55 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+html[data-theme="erythros"] .btn-glass {
+  background: rgba(44, 12, 24, 0.74);
+  border-color: rgba(255, 42, 85, 0.48);
+}
+
+html[data-theme="erythros"] .btn-glass:hover {
+  background: rgba(159, 18, 57, 0.72);
+  border-color: #ff4d73;
+  box-shadow: 0 0 26px rgba(255, 42, 85, 0.48);
+}
+
+html[data-theme="erythros"] .bylaws-container {
+  background: rgba(26, 8, 16, 0.88);
+  border-color: rgba(255, 42, 85, 0.38);
+  box-shadow: 0 4px 26px rgba(255, 42, 85, 0.14);
+}
+
+html[data-theme="erythros"] .bylaw-item {
+  background: rgba(255, 42, 85, 0.07);
+  border-color: rgba(255, 42, 85, 0.24);
+}
+
+html[data-theme="erythros"] .virtue-card:hover {
+  background: rgba(58, 16, 34, 0.82);
+  border-color: var(--erythros-ruby);
+  box-shadow: 0 8px 24px rgba(255, 42, 85, 0.22);
+}
+
+html[data-theme="erythros"] .mobile-drawer {
+  background: linear-gradient(180deg, rgba(24, 7, 15, 0.98) 0%, rgba(16, 5, 10, 0.99) 100%);
+  border-left-color: rgba(255, 42, 85, 0.35);
+}
+
+html[data-theme="erythros"] .mobile-bottom-nav {
+  background: rgba(22, 7, 14, 0.95);
+  border-top-color: rgba(255, 42, 85, 0.35);
+}
+
+/* Legacy 90:10 Ruby Accent Utility preserved */
 .erythros-accent,
-.active-menu,
-nav a.active,
 .btn-primary-ruby {
-    border-color: var(--erythros-border) !important;
-    box-shadow: 0 0 16px var(--erythros-glow) !important;
+  border-color: var(--erythros-border) !important;
+  box-shadow: 0 0 16px var(--erythros-glow) !important;
 }
 
-/* 마우스 호버 시 푸른 질서 위에 붉은 루비의 맥박이 감도는 반응 */
-a:hover,
-button:hover {
-    transition: border-color 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
-}
-
-/* 스크롤바 선명도 개선 */
+/* Scrollbar — Reflects Active Mode */
 ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
-    background: var(--kyanos-bg-deep);
+  background: var(--kyanos-bg-deep);
 }
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, var(--kyanos-blue), var(--erythros-ruby));
-    border-radius: 3px;
+  background: linear-gradient(180deg, var(--kyanos-blue), var(--erythros-ruby));
+  border-radius: 3px;
+}
+html[data-theme="erythros"] ::-webkit-scrollbar-track {
+  background: var(--erythros-bg-deep);
+}
+html[data-theme="erythros"] ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--erythros-ruby), var(--erythros-solar-gold));
+}
+
+/* ==========================================================================
+   KYANOS ⇋ ERYTHROS — Floating Dynamic Pulse Switcher UI
+   Positioned bottom-left (Zero collision with top-right i18n & bottom-right Omni)
+   ========================================================================== */
+.kyanos-pulse-dock {
+  position: fixed;
+  bottom: 18px;
+  left: 16px;
+  z-index: 9990;
+  display: inline-flex;
+  align-items: center;
+  padding: 3px;
+  border-radius: 999px;
+  background: rgba(11, 18, 36, 0.86);
+  border: 1px solid rgba(96, 165, 250, 0.38);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.5),
+    0 0 18px rgba(56, 189, 248, 0.16);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  font-family: 'Montserrat', 'Pretendard', sans-serif;
+  user-select: none;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+}
+
+html[data-theme="erythros"] .kyanos-pulse-dock {
+  background: rgba(28, 9, 17, 0.88);
+  border-color: rgba(255, 42, 85, 0.55);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.55),
+    0 0 24px rgba(255, 42, 85, 0.32);
+}
+
+.kyanos-pulse-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 11px;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(203, 213, 225, 0.72);
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.3s ease, background 0.35s var(--pulse-ease), box-shadow 0.35s ease, transform 0.2s ease;
+}
+
+.kyanos-pulse-btn:hover {
+  color: #ffffff;
+}
+
+.kyanos-pulse-btn:focus-visible {
+  outline: 2px solid #fde68a;
+  outline-offset: 2px;
+}
+
+.kyanos-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.kyanos-pulse-btn[data-mode="kyanos"] .kyanos-pulse-dot {
+  background: #38bdf8;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.85);
+}
+
+.kyanos-pulse-btn[data-mode="erythros"] .kyanos-pulse-dot {
+  background: #ff2a55;
+  box-shadow: 0 0 8px rgba(255, 42, 85, 0.85);
+}
+
+/* Active Segment States */
+.kyanos-pulse-btn[data-mode="kyanos"][aria-pressed="true"] {
+  background: linear-gradient(135deg, rgba(14, 116, 144, 0.55), rgba(30, 58, 138, 0.82));
+  color: #e0f2fe;
+  box-shadow: inset 0 0 0 1px rgba(56, 189, 248, 0.55), 0 0 14px rgba(56, 189, 248, 0.3);
+}
+
+.kyanos-pulse-btn[data-mode="erythros"][aria-pressed="true"] {
+  background: linear-gradient(135deg, rgba(225, 29, 72, 0.78), rgba(136, 19, 55, 0.92));
+  color: #fff1f2;
+  box-shadow: inset 0 0 0 1px rgba(253, 164, 175, 0.55), 0 0 16px rgba(255, 42, 85, 0.55);
+}
+
+.kyanos-pulse-btn[data-mode="erythros"][aria-pressed="true"] .kyanos-pulse-dot {
+  background: #fff1f2;
+  box-shadow: 0 0 10px #ff2a55, 0 0 18px #ff2a55;
+  animation: erythrosHeartbeat 1.5s infinite ease-in-out;
+}
+
+/* Mobile Drawer Sync Tile */
+.drawer-pulse-card {
+  margin: 0 0 1rem 0;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.72);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+html[data-theme="erythros"] .drawer-pulse-card {
+  background: rgba(56, 12, 28, 0.78);
+  border-color: rgba(255, 42, 85, 0.5);
+}
+
+.drawer-pulse-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.drawer-pulse-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.04em;
+}
+
+.drawer-pulse-desc {
+  font-size: 0.7rem;
+  color: #cbd5e1;
+}
+
+.drawer-pulse-toggle {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(56, 189, 248, 0.6);
+  background: rgba(14, 116, 144, 0.35);
+  color: #e0f2fe;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+html[data-theme="erythros"] .drawer-pulse-toggle {
+  border-color: rgba(255, 42, 85, 0.75);
+  background: linear-gradient(135deg, #e11d48, #9f1239);
+  color: #fff1f2;
+}
+
+/* Pulse Ripple Transition Wave */
+.kyanos-pulse-ripple {
+  position: fixed;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0.55;
+  animation: kyanosRippleExpand 0.68s var(--pulse-ease) forwards;
+}
+
+.kyanos-pulse-ripple.to-erythros {
+  background: radial-gradient(circle, rgba(255, 42, 85, 0.45) 0%, rgba(225, 29, 72, 0.15) 55%, transparent 72%);
+}
+
+.kyanos-pulse-ripple.to-kyanos {
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.42) 0%, rgba(30, 64, 175, 0.14) 55%, transparent 72%);
+}
+
+/* Status Toast Notification */
+.kyanos-pulse-toast {
+  position: fixed;
+  bottom: 64px;
+  left: 16px;
+  z-index: 9995;
+  max-width: 340px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-family: 'Montserrat', 'Noto Serif KR', 'Pretendard', sans-serif;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: #fff;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s var(--pulse-ease);
+}
+
+.kyanos-pulse-toast.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.kyanos-pulse-toast.mode-erythros {
+  background: rgba(38, 10, 22, 0.94);
+  border: 1px solid rgba(255, 42, 85, 0.62);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55), 0 0 22px rgba(255, 42, 85, 0.28);
+}
+
+.kyanos-pulse-toast.mode-kyanos {
+  background: rgba(11, 22, 46, 0.94);
+  border: 1px solid rgba(56, 189, 248, 0.55);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55), 0 0 22px rgba(56, 189, 248, 0.24);
+}
+
+.kyanos-pulse-toast strong {
+  display: block;
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 2px;
+}
+
+.kyanos-pulse-toast.mode-erythros strong {
+  color: #fda4af;
+}
+
+.kyanos-pulse-toast.mode-kyanos strong {
+  color: #7dd3fc;
+}
+
+/* Animations */
+@keyframes erythrosHeartbeat {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  45% { transform: scale(1.38); opacity: 0.82; }
+  70% { transform: scale(1.12); opacity: 1; }
+}
+
+@keyframes erythrosBadgePulse {
+  0% { box-shadow: 0 0 16px rgba(255, 42, 85, 0.2); }
+  100% { box-shadow: 0 0 34px rgba(255, 42, 85, 0.52); }
+}
+
+@keyframes erythrosBreathGlow {
+  0% { opacity: 0.85; transform: translate(-50%, -50%) scale(0.98); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1.06); }
+}
+
+@keyframes kyanosRippleExpand {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.65; }
+  100% { transform: translate(-50%, -50%) scale(110); opacity: 0; }
+}
+
+/* Mobile Responsive Adjustment (Avoids bottom-nav bar overlap) */
+@media (max-width: 768px) {
+  .kyanos-pulse-dock {
+    bottom: 76px;
+    left: 12px;
+    padding: 3px;
+  }
+  .kyanos-pulse-btn {
+    padding: 6px 10px;
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    gap: 5px;
+  }
+  .kyanos-pulse-toast {
+    bottom: 124px;
+    left: 12px;
+    right: 12px;
+    max-width: none;
+  }
+}
+
+/* Accessibility: Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .kyanos-pulse-ripple,
+  html[data-theme="erythros"] .background-glow,
+  html[data-theme="erythros"] .national-emblem-badge,
+  .kyanos-pulse-btn[data-mode="erythros"][aria-pressed="true"] .kyanos-pulse-dot {
+    animation: none !important;
+  }
+  html.kyanos-theme-transitioning * {
+    transition: none !important;
+  }
 }

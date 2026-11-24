@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>(function(){try{if(localStorage.getItem('kyanos_theme_mode')==='erythros'){document.documentElement.setAttribute('data-theme','erythros');}}catch(e){}})();</script>
   <title>키아노스 포털 | The Sovereign Realm of Kyanos</title>
   <meta name="description" content="덕치와 초지능(SI)의 주권 국가 키아노스 공식 포털 — 정부 부처, 경제, 사법, 문화, 앤트뉴스 종합 허브">
   <meta name="keywords" content="키아노스, Kyanos, 포털, 파이튼, 앤트, 정부부처, 앤트뉴스, AntNews, Sovereign Realm">
@@ -1330,6 +1331,8 @@
   </style>
   <!-- 키아노스 통합 로그인 관문 및 패스포트 4계층 권한 CSS -->
   <link rel="stylesheet" href="assets/css/kyanos_passport.css?v=20261120">
+  <!-- 키아노스 ⇋ 에리트로스 Dynamic Mode / Pulse 테마 -->
+  <link rel="stylesheet" href="assets/css/kyanos_erythros_theme.css?v=20261124">
 </head>
 <body>
 
@@ -2325,6 +2328,8 @@
     window.addEventListener('resize', resize);
     resize();
 
+    let isErythrosTheme = document.documentElement.getAttribute('data-theme') === 'erythros';
+
     class Particle {
       constructor() {
         this.reset();
@@ -2335,23 +2340,31 @@
         this.size = Math.random() * 2 + 0.5;
         this.speedX = (Math.random() - 0.5) * 0.4;
         this.speedY = (Math.random() - 0.5) * 0.4;
-        this.color = Math.random() > 0.4 ? 'rgba(0, 210, 255,' : 'rgba(212, 175, 55,';
+        this.isPrimary = Math.random() > 0.4;
         this.alpha = Math.random() * 0.6 + 0.2;
       }
       update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
+        const speedFactor = isErythrosTheme ? 1.35 : 1.0;
+        this.x += this.speedX * speedFactor;
+        this.y += this.speedY * speedFactor;
         if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
           this.reset();
         }
       }
       draw() {
-        ctx.fillStyle = this.color + this.alpha + ')';
+        const colorPrefix = isErythrosTheme
+          ? (this.isPrimary ? 'rgba(255, 42, 85,' : 'rgba(251, 191, 36,')
+          : (this.isPrimary ? 'rgba(0, 210, 255,' : 'rgba(212, 175, 55,');
+        ctx.fillStyle = colorPrefix + this.alpha + ')';
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
       }
     }
+
+    window.addEventListener('kyanos:themechange', (e) => {
+      isErythrosTheme = !!(e.detail && e.detail.mode === 'erythros');
+    });
 
     function initParticles() {
       particles = [];
@@ -2451,5 +2464,7 @@
   <script src="assets/js/kyanos_mobile.js" defer></script>
   <!-- 키아노스 통합 로그인 관문 및 제로트러스트 인증 엔진 -->
   <script src="assets/js/kyanos_passport.js?v=20261120" defer></script>
+  <!-- 키아노스 ⇋ 에리트로스 Dynamic Mode / Pulse 제어 엔진 -->
+  <script src="assets/js/kyanos_pulse_mode.js?v=20261124" defer></script>
 </body>
 </html>

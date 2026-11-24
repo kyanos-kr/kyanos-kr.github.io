@@ -1,10 +1,15 @@
 /* ==========================================================================
-   KYANOS × ERYTHROS — 3D Fusion Ambient Background
-   메인 화면의 시야 선명도를 해치지 않도록 은은한 투명도(0.42)와 느린 공전 속도로 구동
+   KYANOS × ERYTHROS — 3D Fusion Ambient Background (Dynamic Pulse Reactive)
+   - Kyanos Mode : 청색 3중 공전 고리 중심의 정제된 평온 (루비 코어 은은한 심박)
+   - Erythros Mode: 에리트로스 루비 태양 코어가 강렬하게 맥박치며 깨어나는 활력 상태
    ========================================================================== */
 (function () {
     function initFusionBackground() {
         if (typeof THREE === 'undefined') return;
+
+        var isErythros = document.documentElement.getAttribute('data-theme') === 'erythros';
+        var targetMix = isErythros ? 1.0 : 0.0;
+        var currentMix = targetMix;
 
         const canvas = document.createElement('canvas');
         canvas.id = 'kyanos-fusion-bg';
@@ -15,7 +20,8 @@
         canvas.style.height = '100%';
         canvas.style.zIndex = '0';
         canvas.style.pointerEvents = 'none';
-        canvas.style.opacity = '0.42';
+        canvas.style.opacity = isErythros ? '0.58' : '0.38';
+        canvas.style.transition = 'opacity 0.6s ease';
         document.body.insertBefore(canvas, document.body.firstChild);
 
         const scene = new THREE.Scene();
@@ -31,7 +37,7 @@
         const rubyMat = new THREE.MeshPhysicalMaterial({
             color: 0xff1e4d,
             emissive: 0x990024,
-            emissiveIntensity: 1.2,
+            emissiveIntensity: isErythros ? 2.0 : 0.72,
             roughness: 0.15,
             metalness: 0.3,
             flatShading: true
@@ -39,21 +45,27 @@
         const rubyCore = new THREE.Mesh(rubyGeo, rubyMat);
         scene.add(rubyCore);
 
-        // 키아노스 3중 공전 고리
+        // 키아노스 3중 공전 고리 (Kyanos <-> Erythros 색상 보간)
         const rings = [];
         const ringConfigs = [
-            { radius: 4.5, tube: 0.03, color: 0x00f2fe, rotX: 1.15, rotY: 0.3, speed: 0.0025 },
-            { radius: 6.0, tube: 0.022, color: 0x38bdf8, rotX: -0.85, rotY: 0.7, speed: -0.0018 },
-            { radius: 7.6, tube: 0.018, color: 0x818cf8, rotX: 0.45, rotY: -1.1, speed: 0.0012 }
+            { radius: 4.5, tube: 0.03, colorK: 0x00f2fe, colorE: 0xff2a55, rotX: 1.15, rotY: 0.3, speed: 0.0025 },
+            { radius: 6.0, tube: 0.022, colorK: 0x38bdf8, colorE: 0xfbbf24, rotX: -0.85, rotY: 0.7, speed: -0.0018 },
+            { radius: 7.6, tube: 0.018, colorK: 0x818cf8, colorE: 0xf43f5e, rotX: 0.45, rotY: -1.1, speed: 0.0012 }
         ];
 
         ringConfigs.forEach(function (cfg) {
             const geo = new THREE.TorusGeometry(cfg.radius, cfg.tube, 12, 96);
-            const mat = new THREE.MeshBasicMaterial({ color: cfg.color, transparent: true, opacity: 0.65 });
+            const mat = new THREE.MeshBasicMaterial({
+                color: isErythros ? cfg.colorE : cfg.colorK,
+                transparent: true,
+                opacity: 0.65
+            });
             const ring = new THREE.Mesh(geo, mat);
             ring.rotation.x = cfg.rotX;
             ring.rotation.y = cfg.rotY;
             ring.userData.speed = cfg.speed;
+            ring.userData.colorK = new THREE.Color(cfg.colorK);
+            ring.userData.colorE = new THREE.Color(cfg.colorE);
             scene.add(ring);
             rings.push(ring);
         });
@@ -95,28 +107,49 @@
         const particles = new THREE.Points(particleGeo, particleMat);
         scene.add(particles);
 
-        const rubyLight = new THREE.PointLight(0xff2a55, 3.8, 35);
+        const rubyLight = new THREE.PointLight(0xff2a55, isErythros ? 5.2 : 2.6, 38);
         scene.add(rubyLight);
 
-        const kyanosLight = new THREE.DirectionalLight(0x38bdf8, 1.2);
+        const kyanosLight = new THREE.DirectionalLight(0x38bdf8, isErythros ? 0.55 : 1.35);
         kyanosLight.position.set(10, 10, 10);
         scene.add(kyanosLight);
+
+        // Dynamic Pulse Mode 실시간 연동
+        window.addEventListener('kyanos:themechange', function (e) {
+            isErythros = e.detail && e.detail.mode === 'erythros';
+            targetMix = isErythros ? 1.0 : 0.0;
+            canvas.style.opacity = isErythros ? '0.58' : '0.38';
+        });
 
         const clock = new THREE.Clock();
 
         function animate() {
             requestAnimationFrame(animate);
             const t = clock.getElapsedTime();
-            const pulse = 1 + Math.sin(t * 1.6) * 0.035;
-            rubyCore.scale.set(pulse, pulse, pulse);
-            rubyCore.rotation.y += 0.0025;
-            rubyCore.rotation.x += 0.001;
 
+            // 부드러운 상태 보간 (lerp)
+            currentMix += (targetMix - currentMix) * 0.05;
+
+            const pulseFreq = 1.5 + currentMix * 1.1;
+            const pulseAmp = 0.03 + currentMix * 0.045;
+            const baseScale = 0.96 + currentMix * 0.14;
+            const pulse = baseScale + Math.sin(t * pulseFreq) * pulseAmp;
+
+            rubyCore.scale.set(pulse, pulse, pulse);
+            rubyCore.rotation.y += 0.0022 + currentMix * 0.0024;
+            rubyCore.rotation.x += 0.0009 + currentMix * 0.0012;
+            rubyMat.emissiveIntensity = 0.72 + currentMix * 1.35;
+
+            rubyLight.intensity = 2.6 + currentMix * 2.8;
+            kyanosLight.intensity = 1.35 - currentMix * 0.8;
+
+            const speedBoost = 1 + currentMix * 0.55;
             rings.forEach(function (r) {
-                r.rotation.z += r.userData.speed;
+                r.rotation.z += r.userData.speed * speedBoost;
+                r.material.color.copy(r.userData.colorK).lerp(r.userData.colorE, currentMix);
             });
 
-            particles.rotation.y += 0.0006;
+            particles.rotation.y += 0.00055 + currentMix * 0.00045;
             renderer.render(scene, camera);
         }
 

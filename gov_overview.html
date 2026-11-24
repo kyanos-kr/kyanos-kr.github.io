@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>(function(){try{if(localStorage.getItem('kyanos_theme_mode')==='erythros'){document.documentElement.setAttribute('data-theme','erythros');}}catch(e){}})();</script>
   <title>키아노스 왕국개요관 (The Sovereign Overview of Kyanos) | 국가 상징 및 건국 아카이브</title>
   <meta name="description" content="키아노스 왕국 2대 핵심 기둥(EVERMORE·NEXFORUM), 덕치 12대 원칙, 건국 선언문, 공식 국기 및 영토 지도 독립 전시관">
   
@@ -724,6 +725,7 @@
     }
   </style>
   <link rel="stylesheet" href="assets/css/kyanos_omni_dialogue.css?v=20261031_0925">
+  <link rel="stylesheet" href="assets/css/kyanos_erythros_theme.css?v=20261124">
 </head>
 <body>
 
@@ -1073,18 +1075,24 @@
         this.size = Math.random() * 2 + 0.5;
         this.speedX = (Math.random() - 0.5) * 0.4;
         this.speedY = (Math.random() - 0.5) * 0.4;
-        this.color = Math.random() > 0.4 ? 'rgba(0, 210, 255,' : 'rgba(212, 175, 55,';
+        this.isPrimary = Math.random() > 0.4;
         this.alpha = Math.random() * 0.6 + 0.2;
       }
       update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
+        const isEry = document.documentElement.getAttribute('data-theme') === 'erythros';
+        const f = isEry ? 1.35 : 1.0;
+        this.x += this.speedX * f;
+        this.y += this.speedY * f;
         if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
           this.reset();
         }
       }
       draw() {
-        ctx.fillStyle = this.color + this.alpha + ')';
+        const isEry = document.documentElement.getAttribute('data-theme') === 'erythros';
+        const prefix = isEry
+          ? (this.isPrimary ? 'rgba(255, 42, 85,' : 'rgba(251, 191, 36,')
+          : (this.isPrimary ? 'rgba(0, 210, 255,' : 'rgba(212, 175, 55,');
+        ctx.fillStyle = prefix + this.alpha + ')';
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
@@ -1142,5 +1150,6 @@
     });
   </script>
   <script src="assets/js/kyanos_omni_dialogue.js?v=20261031_1005" defer></script>
+  <script src="assets/js/kyanos_pulse_mode.js?v=20261124" defer></script>
 </body>
 </html>
