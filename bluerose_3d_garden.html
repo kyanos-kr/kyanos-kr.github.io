@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>블루로즈 3D 디지털 정원 & 음악실 | 키아노스 교육·문화부</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Montserrat:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@300;500;700;900&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <style>
+    :root {
+      --bg-deep: #070b1a;
+      --card-bg: rgba(16, 24, 48, 0.78);
+      --blue-rose: #60a5fa;
+      --sapphire: #3b82f6;
+      --purple: #b894ff;
+      --gold: #f59e0b;
+      --gold-light: #fde68a;
+      --text-main: #f8fafc;
+      --text-sub: #cbd5e1;
+      --border-glow: rgba(96, 165, 250, 0.35);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg-deep);
+      color: var(--text-main);
+      font-family: 'Montserrat', 'Noto Serif KR', serif;
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+
+    /* Top Nav */
+    .top-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.85rem 2rem;
+      background: rgba(7, 11, 26, 0.72);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(96, 165, 250, 0.22);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .brand-icon { font-size: 1.5rem; filter: drop-shadow(0 0 10px rgba(96,165,250,0.8)); }
+    .brand-text .en {
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: #93c5fd;
+    }
+    .brand-text .kr {
+      display: block;
+      font-size: 0.7rem;
+      color: var(--text-sub);
+      letter-spacing: 0.12em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .nav-pill {
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(147, 197, 253, 0.35);
+      color: #e2e8f0;
+      background: rgba(30, 41, 59, 0.55);
+      transition: all 0.25s ease;
+    }
+    .nav-pill:hover {
+      background: rgba(59, 130, 246, 0.25);
+      border-color: #60a5fa;
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+    .nav-pill.gold {
+      border-color: rgba(245, 158, 11, 0.55);
+      color: var(--gold-light);
+      background: rgba(245, 158, 11, 0.12);
+    }
+    .nav-pill.gold:hover {
+      background: rgba(245, 158, 11, 0.3);
+      color: #fff;
+    }
+
+    /* 3D Hero Stage */
+    .hero-stage {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 680px;
+      overflow: hidden;
+    }
+    #webgl-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: grab;
+    }
+    #webgl-canvas:active { cursor: grabbing; }
+
+    /* Hero Overlay Title */
+    .hero-hud-top {
+      position: absolute;
+      top: 86px;
+      left: 32px;
+      z-index: 20;
+      pointer-events: none;
+      max-width: 560px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 14px;
+      border-radius: 999px;
+      background: rgba(59, 130, 246, 0.18);
+      border: 1px solid rgba(147, 197, 253, 0.45);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: #bfdbfe;
+      margin-bottom: 12px;
+      backdrop-filter: blur(8px);
+    }
+    .hero-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: clamp(1.7rem, 3.2vw, 2.7rem);
+      font-weight: 900;
+      line-height: 1.25;
+      background: linear-gradient(135deg, #ffffff 0%, #bfdbfe 55%, #fde68a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 4px 24px rgba(59, 130, 246, 0.25);
+    }
+    .hero-desc {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: #cbd5e1;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+    }
+
+    /* Telemetry HUD (Top Right) */
+    .telemetry-hud {
+      position: absolute;
+      top: 86px;
+      right: 32px;
+      z-index: 20;
+      background: rgba(10, 16, 36, 0.68);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(147, 197, 253, 0.22);
+      border-radius: 14px;
+      padding: 14px 18px;
+      min-width: 225px;
+      font-size: 0.76rem;
+    }
+    .tel-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .tel-row:last-child { border-bottom: none; }
+    .tel-key { color: #94a3b8; }
+    .tel-val { font-family: monospace; font-weight: 700; color: #93c5fd; }
+
+    /* Control Deck (Bottom Left) */
+    .control-deck {
+      position: absolute;
+      bottom: 28px;
+      left: 32px;
+      right: 32px;
+      z-index: 25;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 14px;
+      pointer-events: none;
+    }
+    .deck-panel {
+      pointer-events: auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 20px;
+      background: rgba(10, 16, 36, 0.78);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(147, 197, 253, 0.28);
+      border-radius: 18px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
+    }
+    .ctrl-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .ctrl-label {
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #94a3b8;
+    }
+    .btn-row { display: flex; gap: 6px; flex-wrap: wrap; }
+    .ctrl-btn {
+      padding: 7px 13px;
+      border-radius: 9px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(30, 41, 59, 0.75);
+      color: #e2e8f0;
+      font-size: 0.76rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+    .ctrl-btn:hover {
+      border-color: #60a5fa;
+      color: #ffffff;
+      background: rgba(59, 130, 246, 0.25);
+    }
+    .ctrl-btn.active {
+      background: linear-gradient(135deg, #2563eb, #6366f1);
+      border-color: #93c5fd;
+      color: #ffffff;
+      box-shadow: 0 0 16px rgba(59, 130, 246, 0.5);
+    }
+    .ctrl-btn.audio-on {
+      background: linear-gradient(135deg, #059669, #10b981);
+      border-color: #6ee7b7;
+      color: #ffffff;
+      box-shadow: 0 0 16px rgba(16, 185, 129, 0.45);
+    }
+    .ctrl-btn.bloom-btn {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.25), rgba(184, 148, 255, 0.28));
+      border-color: rgba(253, 230, 138, 0.55);
+      color: #fef3c7;
+    }
+    .ctrl-btn.bloom-btn:hover {
+      background: linear-gradient(135deg, #d97706, #7c3aed);
+      color: #fff;
+    }
+    .divider {
+      width: 1px;
+      height: 36px;
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .scroll-hint {
+      pointer-events: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.76);
+      border: 1px solid rgba(253, 230, 138, 0.4);
+      color: #fde68a;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-decoration: none;
+      backdrop-filter: blur(12px);
+      transition: all 0.25s ease;
+    }
+    .scroll-hint:hover {
+      background: rgba(245, 158, 11, 0.22);
+      transform: translateY(-2px);
+    }
+
+    /* Portal Section Below 3D Hero */
+    .portal-section {
+      position: relative;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 5.5rem 2rem 6rem;
+    }
+    .section-head {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+    .section-kicker {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.22em;
+      color: #93c5fd;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: clamp(1.6rem, 3vw, 2.35rem);
+      font-weight: 900;
+      color: #fffbeb;
+      margin-bottom: 0.9rem;
+    }
+    .section-sub {
+      color: #94a3b8;
+      max-width: 720px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 24px;
+      margin-bottom: 4rem;
+    }
+    .culture-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(147, 197, 253, 0.22);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+    .culture-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #3b82f6, #b894ff, #f59e0b);
+      opacity: 0.75;
+    }
+    .culture-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(147, 197, 253, 0.55);
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.75);
+    }
+    .card-icon { font-size: 2.1rem; margin-bottom: 1rem; }
+    .card-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #93c5fd;
+      background: rgba(59, 130, 246, 0.14);
+      padding: 3px 10px;
+      border-radius: 999px;
+      margin-bottom: 0.8rem;
+    }
+    .culture-card h3 {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fffbeb;
+      margin-bottom: 0.75rem;
+    }
+    .culture-card p {
+      font-size: 0.88rem;
+      color: #cbd5e1;
+      margin-bottom: 1.4rem;
+    }
+    .card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #fde68a;
+      padding: 9px 16px;
+      border-radius: 10px;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      width: fit-content;
+      transition: all 0.25s ease;
+    }
+    .card-cta:hover {
+      background: rgba(245, 158, 11, 0.28);
+      color: #fff;
+    }
+
+    /* Poetic Quote Banner */
+    .quote-banner {
+      background: linear-gradient(135deg, rgba(30, 58, 138, 0.35), rgba(88, 28, 135, 0.28));
+      border: 1px solid rgba(184, 148, 255, 0.35);
+      border-radius: 22px;
+      padding: 2.6rem 2.2rem;
+      text-align: center;
+    }
+    .quote-text {
+      font-family: 'Noto Serif KR', serif;
+      font-size: clamp(1.1rem, 2vw, 1.45rem);
+      font-weight: 500;
+      color: #fffbeb;
+      margin-bottom: 0.8rem;
+    }
+    .quote-author {
+      font-size: 0.82rem;
+      color: #bfdbfe;
+      letter-spacing: 0.14em;
+    }
+
+    footer {
+      border-top: 1px solid rgba(147, 197, 253, 0.15);
+      padding: 2.2rem 2rem;
+      text-align: center;
+      font-size: 0.78rem;
+      color: #64748b;
+    }
+
+    @media (max-width: 768px) {
+      .top-nav { padding: 0.7rem 1rem; }
+      .hero-hud-top { left: 16px; right: 16px; top: 76px; }
+      .telemetry-hud { display: none; }
+      .control-deck { left: 12px; right: 12px; bottom: 14px; }
+      .divider { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav class="top-nav">
+    <a href="gov_culture.html" class="brand">
+      <span class="brand-icon">🌹</span>
+      <span class="brand-text">
+        <span class="en">BLUE ROSE 3D SANCTUARY</span>
+        <span class="kr">키아노스 교육·문화부 · 블루로즈 문화원</span>
+      </span>
+    </a>
+    <div class="nav-links">
+      <a href="gov_culture.html" class="nav-pill">🏛️ 교육·문화부</a>
+      <a href="music_studio.html" class="nav-pill">🎶 국립음악창작원</a>
+      <a href="talos_3d_showroom.html" class="nav-pill">🦾 TALOS 3D 쇼룸</a>
+      <a href="main.html" class="nav-pill gold">👑 키아노스 국정 포털</a>
+    </div>
+  </nav>
+
+  <!-- 100vh 3D Interactive Stage -->
+  <section class="hero-stage">
+    <div id="webgl-canvas"></div>
+
+    <div class="hero-hud-top">
+      <div class="hero-badge">✨ THREE.JS + WEB AUDIO API • ZERO EXTERNAL ASSETS</div>
+      <h1 class="hero-title">블루로즈 3D 디지털 정원</h1>
+      <p class="hero-desc">
+        마우스로 정원을 360° 회전하며 아침·노을·달빛 야경과 무과금 Web Audio API 힐링 사운드를 체험하십시오. 중앙의 푸른 장미를 클릭하면 빛의 개화 파동이 호수로 번집니다.
+      </p>
+    </div>
+
+    <div class="telemetry-hud">
+      <div class="tel-row"><span class="tel-key">3D 외부 모델</span><span class="tel-val" style="color:#4ade80;">0 KB (순수 코드)</span></div>
+      <div class="tel-row"><span class="tel-key">오디오 엔진</span><span class="tel-val" id="hud-audio-state">Web Audio 대기</span></div>
+      <div class="tel-row"><span class="tel-key">현재 테마</span><span class="tel-val" id="hud-mood">야간 달빛 (Night)</span></div>
+      <div class="tel-row"><span class="tel-key">반딧불이 파티클</span><span class="tel-val">4,500 Pts</span></div>
+      <div class="tel-row"><span class="tel-key">프레임 속도</span><span class="tel-val" id="hud-fps">60 FPS</span></div>
+    </div>
+
+    <div class="control-deck">
+      <div class="deck-panel">
+        <div class="ctrl-group">
+          <span class="ctrl-label">시간대별 3단 무드</span>
+          <div class="btn-row">
+            <button class="ctrl-btn" id="mood-morning" onclick="setMood('morning')">🌅 아침</button>
+            <button class="ctrl-btn" id="mood-sunset" onclick="setMood('sunset')">🌇 노을</button>
+            <button class="ctrl-btn active" id="mood-night" onclick="setMood('night')">🌙 야간</button>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="ctrl-group">
+          <span class="ctrl-label">카메라 시점</span>
+          <div class="btn-row">
+            <button class="ctrl-btn active" id="cam-overview" onclick="setCameraPreset('overview')">전체 조망</button>
+            <button class="ctrl-btn" id="cam-macro" onclick="setCameraPreset('macro')">장미 클로즈업</button>
+            <button class="ctrl-btn" id="cam-lake" onclick="setCameraPreset('lake')">호수 수면</button>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="ctrl-group">
+          <span class="ctrl-label">회전 & 인터랙션</span>
+          <div class="btn-row">
+            <button class="ctrl-btn active" id="spd-normal" onclick="setOrbitSpeed('normal')">보통</button>
+            <button class="ctrl-btn" id="spd-slow" onclick="setOrbitSpeed('slow')">느리게</button>
+            <button class="ctrl-btn" id="spd-pause" onclick="setOrbitSpeed('pause')">정지</button>
+            <button class="ctrl-btn bloom-btn" onclick="triggerBloomPulse()">✨ 빛의 개화</button>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="ctrl-group">
+          <span class="ctrl-label">Web Audio 합성음</span>
+          <div class="btn-row">
+            <button class="ctrl-btn" id="btn-audio" onclick="toggleAmbientAudio()">🔇 사운드 켜기</button>
+          </div>
+        </div>
+      </div>
+
+      <a href="#culture-portal" class="scroll-hint">아래로 내려 문화원 포털 보기 ↓</a>
+    </div>
+  </section>
+
+  <!-- Portal Content Section (Stage 3 Web Service Transformation) -->
+  <section id="culture-portal" class="portal-section">
+    <div class="section-head">
+      <div class="section-kicker">MINISTRY OF EDUCATION & CULTURE • DIGITAL SANCTUARY</div>
+      <h2 class="section-title">블루로즈 문화원 & 국립음악창작원 아카이브</h2>
+      <p class="section-sub">
+        키아노스 교육·문화부가 지향하는 문학·철학·음악의 품격 있는 안식처입니다. 무설치 3D 정원의 고요함 속에서 인류 문명의 고전과 파이튼 국왕의 서정 음악을 만나보실 수 있습니다.
+      </p>
+    </div>
+
+    <div class="card-grid">
+      <div class="culture-card">
+        <div>
+          <div class="card-icon">🎶</div>
+          <span class="card-tag">NATIONAL MUSIC STUDIO</span>
+          <h3>국립음악창작원 & 감성 음악실</h3>
+          <p>
+            〈가을 그리고 차 한잔〉을 비롯한 파이튼 국왕 원작 시 기반의 편곡 음원, 코드 악보, 전용 웹 플레이어를 통해 깊이 있는 음악적 여운을 감상합니다.
+          </p>
+        </div>
+        <a href="music_studio.html" class="card-cta">음악창작원 입장하기 →</a>
+      </div>
+
+      <div class="culture-card">
+        <div>
+          <div class="card-icon">🏛️</div>
+          <span class="card-tag">HUMAN CIVILIZATION INSTITUTE</span>
+          <h3>국립 인류문명사연구원</h3>
+          <p>
+            세계 문학 불멸의 고전관, 동서양 사상·철학 서고, 인류 지성사 아카이브를 하나의 통합 포털에서 열람하고 사유의 깊이를 더합니다.
+          </p>
+        </div>
+        <a href="gov_culture.html" class="card-cta">교육·문화부 포털 이동 →</a>
+      </div>
+
+      <div class="culture-card">
+        <div>
+          <div class="card-icon">🦾</div>
+          <span class="card-tag">SCIENCE & SI SHOWROOM</span>
+          <h3>Project TALOS 3D 전략산업 쇼룸</h3>
+          <p>
+            동일한 무설치 Three.js 엔진으로 구현된 과학·SI부 및 경제부 5대 미래 전략 산업(2차전지·EV·반도체·SI·로봇) 실시간 3D 부품 분해 쇼룸을 체험합니다.
+          </p>
+        </div>
+        <a href="talos_3d_showroom.html" class="card-cta">TALOS 3D 쇼룸 이동 →</a>
+      </div>
+    </div>
+
+    <div class="quote-banner">
+      <p class="quote-text">“우리는 음지에서 일하고, 양지를 지향한다 — 기술은 차가운 코드가 아니라 인간의 영혼을 위로하는 빛이 되어야 한다.”</p>
+      <div class="quote-author">KYANOS SOVEREIGN NATION • MINISTRY OF EDUCATION & CULTURE</div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 KYANOS SOVEREIGN NATION • BLUE ROSE 3D DIGITAL GARDEN (Pure Three.js + Web Audio API)
+  </footer>
+
+  <script>
+    /* =========================================================================
+       1. THREE.JS SCENE & RENDERER SETUP
+    ========================================================================= */
+    const container = document.getElementById('webgl-canvas');
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x060b1d, 0.022);
+
+    const camera = new THREE.PerspectiveCamera(48, container.clientWidth / container.clientHeight, 0.1, 300);
+    camera.position.set(0, 6.2, 15.5);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.15;
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    container.appendChild(renderer.domElement);
+
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.055;
+    controls.target.set(0, 2.3, 0);
+    controls.minDistance = 4.2;
+    controls.maxDistance = 30;
+    controls.maxPolarAngle = Math.PI / 2 - 0.04;
+    controls.autoRotate = true;
+    controls.autoRotateSpeed = 0.55;
+
+    /* =========================================================================
+       2. LIGHTING & SKY DOME (3 MOODS: MORNING / SUNSET / NIGHT)
+    ========================================================================= */
+    const ambientLight = new THREE.AmbientLight(0x1e3a8a, 0.9);
+    scene.add(ambientLight);
+
+    const hemiLight = new THREE.HemisphereLight(0x93c5fd, 0x0f172a, 0.85);
+    scene.add(hemiLight);
+
+    const mainLight = new THREE.DirectionalLight(0xbfdbfe, 2.1);
+    mainLight.position.set(10, 18, 12);
+    mainLight.castShadow = true;
+    mainLight.shadow.mapSize.set(2048, 2048);
+    mainLight.shadow.camera.near = 1;
+    mainLight.shadow.camera.far = 55;
+    mainLight.shadow.camera.left = -16;
+    mainLight.shadow.camera.right = 16;
+    mainLight.shadow.camera.top = 16;
+    mainLight.shadow.camera.bottom = -16;
+    scene.add(mainLight);
+
+    const roseCoreLight = new THREE.PointLight(0x3b82f6, 4.2, 22);
+    roseCoreLight.position.set(0, 3.6, 0);
+    scene.add(roseCoreLight);
+
+    const goldAccentLight = new THREE.PointLight(0xf59e0b, 1.8, 18);
+    goldAccentLight.position.set(-4, 2.2, 4);
+    scene.add(goldAccentLight);
+
+    // Moon / Sun Orb in Background
+    const celestialGeo = new THREE.SphereGeometry(2.6, 32, 32);
+    const celestialMat = new THREE.MeshBasicMaterial({ color: 0xdbeafe });
+    const celestialOrb = new THREE.Mesh(celestialGeo, celestialMat);
+    celestialOrb.position.set(-14, 14, -36);
+    scene.add(celestialOrb);
+
+    /* =========================================================================
+       3. REFLECTIVE LAKE SURFACE & WATER RIPPLES
+    ========================================================================= */
+    const lakeGeo = new THREE.PlaneGeometry(110, 110, 96, 96);
+    lakeGeo.rotateX(-Math.PI / 2);
+    const lakePosAttr = lakeGeo.attributes.position;
+    const lakeBaseY = new Float32Array(lakePosAttr.count);
+    for (let i = 0; i < lakePosAttr.count; i++) lakeBaseY[i] = lakePosAttr.getY(i);
+
+    const lakeMat = new THREE.MeshStandardMaterial({
+      color: 0x091632,
+      roughness: 0.14,
+      metalness: 0.88
+    });
+    const lakeMesh = new THREE.Mesh(lakeGeo, lakeMat);
+    lakeMesh.receiveShadow = true;
+    scene.add(lakeMesh);
+
+    /* =========================================================================
+       4. CENTRAL CRYSTAL SANCTUARY PEDESTAL & COLONNADE ARCHES
+    ========================================================================= */
+    const pedestalGroup = new THREE.Group();
+    scene.add(pedestalGroup);
+
+    const stoneMat = new THREE.MeshStandardMaterial({
+      color: 0x1e293b,
+      roughness: 0.35,
+      metalness: 0.45
+    });
+    const goldTrimMat = new THREE.MeshStandardMaterial({
+      color: 0xf59e0b,
+      roughness: 0.25,
+      metalness: 0.9,
+      emissive: 0x78350f,
+      emissiveIntensity: 0.25
+    });
+
+    // 3-tier circular sanctuary dais
+    const tier1 = new THREE.Mesh(new THREE.CylinderGeometry(4.2, 4.6, 0.45, 48), stoneMat);
+    tier1.position.y = 0.12;
+    tier1.receiveShadow = true;
+    pedestalGroup.add(tier1);
+
+    const tier2 = new THREE.Mesh(new THREE.CylinderGeometry(3.1, 3.4, 0.45, 48), stoneMat);
+    tier2.position.y = 0.55;
+    tier2.receiveShadow = true;
+    pedestalGroup.add(tier2);
+
+    const goldRing = new THREE.Mesh(new THREE.TorusGeometry(3.12, 0.055, 16, 64), goldTrimMat);
+    goldRing.rotation.x = Math.PI / 2;
+    goldRing.position.y = 0.78;
+    pedestalGroup.add(goldRing);
+
+    // 8 surrounding sanctuary pillars + floating light orbs
+    const pillarCount = 8;
+    const pillarRadius = 8.4;
+    const lanternOrbs = [];
+    const pillarMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, roughness: 0.4, metalness: 0.35 });
+    const orbMat = new THREE.MeshStandardMaterial({
+      color: 0xfde68a,
+      emissive: 0xf59e0b,
+      emissiveIntensity: 1.6,
+      roughness: 0.2
+    });
+
+    for (let i = 0; i < pillarCount; i++) {
+      const angle = (i / pillarCount) * Math.PI * 2;
+      const px = Math.cos(angle) * pillarRadius;
+      const pz = Math.sin(angle) * pillarRadius;
+
+      const pGroup = new THREE.Group();
+      pGroup.position.set(px, 0, pz);
+
+      const base = new THREE.Mesh(new THREE.CylinderGeometry(0.42, 0.52, 0.5, 16), pillarMat);
+      base.position.y = 0.25;
+      pGroup.add(base);
+
+      const shaft = new THREE.Mesh(new THREE.CylinderGeometry(0.26, 0.3, 4.2, 16), pillarMat);
+      shaft.position.y = 2.5;
+      shaft.castShadow = true;
+      pGroup.add(shaft);
+
+      const cap = new THREE.Mesh(new THREE.CylinderGeometry(0.48, 0.32, 0.35, 16), goldTrimMat);
+      cap.position.y = 4.7;
+      pGroup.add(cap);
+
+      const orb = new THREE.Mesh(new THREE.OctahedronGeometry(0.24, 1), orbMat);
+      orb.position.y = 5.35;
+      pGroup.add(orb);
+      lanternOrbs.push({ mesh: orb, baseY: 5.35, phase: i * 0.8 });
+
+      scene.add(pGroup);
+    }
+
+    // Floating Lotus Leaves & Golden Water Lanterns
+    const leafMat = new THREE.MeshStandardMaterial({ color: 0x0f3b3a, roughness: 0.5, metalness: 0.15 });
+    for (let i = 0; i < 18; i++) {
+      const dist = 5.2 + Math.random() * 12;
+      const ang = Math.random() * Math.PI * 2;
+      const leaf = new THREE.Mesh(new THREE.CylinderGeometry(0.55 + Math.random() * 0.45, 0.55, 0.04, 24, 1, false, 0, Math.PI * 1.85), leafMat);
+      leaf.position.set(Math.cos(ang) * dist, 0.04, Math.sin(ang) * dist);
+      leaf.rotation.y = Math.random() * Math.PI * 2;
+      scene.add(leaf);
+    }
+
+    /* =========================================================================
+       5. PROCEDURAL 3D BLUE ROSE SCULPTURE (MULTI-LAYER PETALS)
+    ========================================================================= */
+    const roseGroup = new THREE.Group();
+    roseGroup.position.set(0, 0.78, 0);
+    scene.add(roseGroup);
+
+    // Stem
+    const stemCurve = new THREE.CatmullRomCurve3([
+      new THREE.Vector3(0, 0, 0),
+      new THREE.Vector3(0.08, 0.9, 0.04),
+      new THREE.Vector3(-0.05, 1.8, -0.04),
+      new THREE.Vector3(0, 2.55, 0)
+    ]);
+    const stemMat = new THREE.MeshStandardMaterial({ color: 0x14532d, roughness: 0.45, metalness: 0.25 });
+    const stemMesh = new THREE.Mesh(new THREE.TubeGeometry(stemCurve, 24, 0.11, 12, false), stemMat);
+    stemMesh.castShadow = true;
+    roseGroup.add(stemMesh);
+
+    // Stem Leaves
+    function createLeafMesh(scaleX, scaleZ) {
+      const shape = new THREE.Shape();
+      shape.moveTo(0, 0);
+      shape.bezierCurveTo(0.45, 0.25, 0.75, 0.85, 0, 1.45);
+      shape.bezierCurveTo(-0.75, 0.85, -0.45, 0.25, 0, 0);
+      const geo = new THREE.ExtrudeGeometry(shape, { depth: 0.03, bevelEnabled: true, bevelThickness: 0.015, bevelSize: 0.015, bevelSegments: 2 });
+      const mat = new THREE.MeshStandardMaterial({ color: 0x166534, roughness: 0.4, metalness: 0.2 });
+      const mesh = new THREE.Mesh(geo, mat);
+      mesh.scale.set(scaleX, scaleZ, 1);
+      return mesh;
+    }
+    const leaf1 = createLeafMesh(0.75, 0.85);
+    leaf1.position.set(0.05, 1.15, 0.02);
+    leaf1.rotation.set(0.95, 0.2, -0.75);
+    roseGroup.add(leaf1);
+
+    const leaf2 = createLeafMesh(0.7, 0.8);
+    leaf2.position.set(-0.05, 1.55, -0.02);
+    leaf2.rotation.set(0.9, Math.PI + 0.3, -0.7);
+    roseGroup.add(leaf2);
+
+    // Rose Blossom Head
+    const blossomGroup = new THREE.Group();
+    blossomGroup.position.set(0, 2.65, 0);
+    roseGroup.add(blossomGroup);
+
+    // Glowing Golden Heart Core
+    const heartCore = new THREE.Mesh(
+      new THREE.IcosahedronGeometry(0.32, 2),
+      new THREE.MeshStandardMaterial({
+        color: 0xfef08a,
+        emissive: 0x60a5fa,
+        emissiveIntensity: 1.5,
+        roughness: 0.15,
+        metalness: 0.6
+      })
+    );
+    heartCore.position.y = 0.25;
+    blossomGroup.add(heartCore);
+
+    // Custom Curved Petal Geometry
+    function createPetalGeometry(width, height, cupDepth) {
+      const geo = new THREE.PlaneGeometry(width, height, 14, 16);
+      const pos = geo.attributes.position;
+      for (let i = 0; i < pos.count; i++) {
+        let x = pos.getX(i);
+        let y = pos.getY(i);
+        const u = x / (width * 0.5); // -1..1
+        const v = (y + height * 0.5) / height; // 0..1 (base to tip)
+
+        // Taper base and round tip
+        const taper = Math.sin(Math.pow(v, 0.65) * Math.PI * 0.92);
+        x *= (0.28 + 0.95 * taper);
+
+        // Cup curvature + graceful outward curl at tip
+        const cup = (1 - u * u) * Math.sin(v * Math.PI) * cupDepth;
+        const tipCurl = Math.pow(Math.max(0, v - 0.55), 2) * (-cupDepth * 2.2);
+        const z = cup + tipCurl;
+
+        pos.setXYZ(i, x, v * height, z);
+      }
+      geo.computeVertexNormals();
+      return geo;
+    }
+
+    const petalRefs = [];
+    const layers = [
+      { count: 5,  radius: 0.24, width: 0.62, height: 0.95, cup: 0.26, tilt: 0.36, color: 0x1d4ed8, emissive: 0x1e40af },
+      { count: 7,  radius: 0.42, width: 0.88, height: 1.25, cup: 0.34, tilt: 0.64, color: 0x2563eb, emissive: 0x1d4ed8 },
+      { count: 9,  radius: 0.64, width: 1.12, height: 1.48, cup: 0.38, tilt: 0.94, color: 0x3b82f6, emissive: 0x1e3a8a },
+      { count: 11, radius: 0.85, width: 1.28, height: 1.62, cup: 0.40, tilt: 1.22, color: 0x60a5fa, emissive: 0x1d4ed8 }
+    ];
+
+    layers.forEach((layer, lIdx) => {
+      const pGeo = createPetalGeometry(layer.width, layer.height, layer.cup);
+      const pMat = new THREE.MeshPhysicalMaterial({
+        color: layer.color,
+        emissive: layer.emissive,
+        emissiveIntensity: 0.32,
+        roughness: 0.24,
+        metalness: 0.18,
+        clearcoat: 0.65,
+        clearcoatRoughness: 0.2,
+        side: THREE.DoubleSide
+      });
+
+      for (let i = 0; i < layer.count; i++) {
+        const angle = (i / layer.count) * Math.PI * 2 + lIdx * 0.48;
+        const pivot = new THREE.Group();
+        pivot.rotation.y = angle;
+
+        const petal = new THREE.Mesh(pGeo, pMat);
+        petal.position.set(0, 0.05 * lIdx, layer.radius);
+        petal.rotation.x = layer.tilt;
+        petal.castShadow = true;
+        pivot.add(petal);
+        blossomGroup.add(pivot);
+
+        petalRefs.push({ mesh: petal, baseTilt: layer.tilt, layerIdx: lIdx, phase: i * 0.6 + lIdx });
+      }
+    });
+
+    // Aura Pulse Rings (Triggered on click / Bloom button)
+    const pulseRings = [];
+    function spawnPulseRing() {
+      const rGeo = new THREE.RingGeometry(0.8, 1.02, 64);
+      const rMat = new THREE.MeshBasicMaterial({
+        color: 0x93c5fd,
+        transparent: true,
+        opacity: 0.85,
+        side: THREE.DoubleSide
+      });
+      const ring = new THREE.Mesh(rGeo, rMat);
+      ring.rotation.x = -Math.PI / 2;
+      ring.position.y = 0.15;
+      scene.add(ring);
+      pulseRings.push({ mesh: ring, age: 0 });
+    }
+
+    /* =========================================================================
+       6. FIREFLY & STARLIGHT PARTICLE ENSEMBLE (4,500 POINTS)
+    ========================================================================= */
+    const particleCount = 4500;
+    const pPositions = new Float32Array(particleCount * 3);
+    const pColors = new Float32Array(particleCount * 3);
+    const pSpeeds = new Float32Array(particleCount);
+    const c1 = new THREE.Color(0x60a5fa);
+    const c2 = new THREE.Color(0xfde68a);
+    const c3 = new THREE.Color(0xc4b5fd);
+
+    for (let i = 0; i < particleCount; i++) {
+      const r = 1.8 + Math.random() * 28;
+      const theta = Math.random() * Math.PI * 2;
+      pPositions[i * 3] = Math.cos(theta) * r;
+      pPositions[i * 3 + 1] = 0.4 + Math.random() * 18;
+      pPositions[i * 3 + 2] = Math.sin(theta) * r;
+      pSpeeds[i] = 0.25 + Math.random() * 0.75;
+
+      const pick = i % 3 === 0 ? c1 : (i % 3 === 1 ? c2 : c3);
+      pColors[i * 3] = pick.r;
+      pColors[i * 3 + 1] = pick.g;
+      pColors[i * 3 + 2] = pick.b;
+    }
+
+    const pGeo = new THREE.BufferGeometry();
+    pGeo.setAttribute('position', new THREE.BufferAttribute(pPositions, 3));
+    pGeo.setAttribute('color', new THREE.BufferAttribute(pColors, 3));
+    const pMat = new THREE.PointsMaterial({
+      size: 0.11,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.85,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false
+    });
+    const particles = new THREE.Points(pGeo, pMat);
+    scene.add(particles);
+
+    /* =========================================================================
+       7. WEB AUDIO API ZERO-COST 3-MOOD SYNTHESIZER (audio.ts concept)
+    ========================================================================= */
+    let audioCtx = null;
+    let isAudioPlaying = false;
+    let masterGain = null;
+    let noiseNode = null;
+    let arpTimer = null;
+    let currentMood = 'night';
+
+    const MOOD_SCALES = {
+      morning: [261.63, 293.66, 329.63, 392.00, 440.00, 523.25, 659.25], // C Major Pentatonic (Bright Harp)
+      sunset:  [220.00, 261.63, 293.66, 329.63, 392.00, 440.00, 523.25], // A Minor Warm Pad
+      night:   [196.00, 246.94, 293.66, 369.99, 392.00, 493.88, 587.33]  // G Lydian / Ethereal Moon
+    };
+
+    function initAudio() {
+      if (audioCtx) return;
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      audioCtx = new AudioContext();
+      masterGain = audioCtx.createGain();
+      masterGain.gain.value = 0.0;
+      masterGain.connect(audioCtx.destination);
+
+      // Gentle lake water wave noise (Filtered White Noise)
+      const bufferSize = audioCtx.sampleRate * 3;
+      const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
+
+      noiseNode = audioCtx.createBufferSource();
+      noiseNode.buffer = buffer;
+      noiseNode.loop = true;
+
+      const filter = audioCtx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.value = 320;
+
+      const waterGain = audioCtx.createGain();
+      waterGain.gain.value = 0.08;
+
+      noiseNode.connect(filter);
+      filter.connect(waterGain);
+      waterGain.connect(masterGain);
+      noiseNode.start();
+    }
+
+    function playChimeNote(freq, duration = 2.8, vol = 0.09, wave = 'sine') {
+      if (!audioCtx || !isAudioPlaying) return;
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+
+      osc.type = wave;
+      osc.frequency.setValueAtTime(freq, now);
+
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.exponentialRampToValueAtTime(vol, now + 0.08);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+
+      osc.connect(gain);
+      gain.connect(masterGain);
+      osc.start(now);
+      osc.stop(now + duration + 0.05);
+    }
+
+    function startMoodArpeggio() {
+      if (arpTimer) clearInterval(arpTimer);
+      arpTimer = setInterval(() => {
+        if (!isAudioPlaying) return;
+        const scale = MOOD_SCALES[currentMood];
+        const note = scale[Math.floor(Math.random() * scale.length)];
+        const wave = currentMood === 'sunset' ? 'triangle' : 'sine';
+        playChimeNote(note, currentMood === 'night' ? 3.8 : 2.6, 0.085, wave);
+        if (Math.random() > 0.55) {
+          setTimeout(() => playChimeNote(note * 1.5, 2.2, 0.04, 'sine'), 360);
+        }
+      }, 1550);
+    }
+
+    function toggleAmbientAudio() {
+      initAudio();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      isAudioPlaying = !isAudioPlaying;
+
+      const btn = document.getElementById('btn-audio');
+      const hud = document.getElementById('hud-audio-state');
+
+      if (isAudioPlaying) {
+        masterGain.gain.cancelScheduledValues(audioCtx.currentTime);
+        masterGain.gain.linearRampToValueAtTime(0.65, audioCtx.currentTime + 1.0);
+        btn.classList.add('audio-on');
+        btn.textContent = '🔊 사운드 끄기';
+        hud.textContent = 'Web Audio 합성 중';
+        startMoodArpeggio();
+        playChimeNote(MOOD_SCALES[currentMood][4], 2.5, 0.1, 'sine');
+      } else {
+        masterGain.gain.cancelScheduledValues(audioCtx.currentTime);
+        masterGain.gain.linearRampToValueAtTime(0.0, audioCtx.currentTime + 0.5);
+        btn.classList.remove('audio-on');
+        btn.textContent = '🔇 사운드 켜기';
+        hud.textContent = 'Web Audio 대기';
+        if (arpTimer) clearInterval(arpTimer);
+      }
+    }
+
+    /* =========================================================================
+       8. INTERACTIVE CONTROLS (MOOD / CAMERA / SPEED / BLOOM PULSE)
+    ========================================================================= */
+    const MOOD_THEMES = {
+      morning: {
+        label: '아침 햇살 (Morning)',
+        bg: 0x102845,
+        fog: 0x163457,
+        ambient: 0x7dd3fc,
+        main: 0xfffbeb,
+        lake: 0x0e3b5c,
+        orb: 0xfef08a,
+        orbPos: [16, 15, -34]
+      },
+      sunset: {
+        label: '황금 노을 (Sunset)',
+        bg: 0x261224,
+        fog: 0x3b182e,
+        ambient: 0xfb923c,
+        main: 0xfdba74,
+        lake: 0x27132b,
+        orb: 0xfb923c,
+        orbPos: [-12, 8.5, -36]
+      },
+      night: {
+        label: '야간 달빛 (Night)',
+        bg: 0x060b1d,
+        fog: 0x060b1d,
+        ambient: 0x1e3a8a,
+        main: 0xbfdbfe,
+        lake: 0x091632,
+        orb: 0xdbeafe,
+        orbPos: [-14, 14, -36]
+      }
+    };
+
+    function setMood(mood) {
+      currentMood = mood;
+      const t = MOOD_THEMES[mood];
+      scene.background = new THREE.Color(t.bg);
+      scene.fog.color.setHex(t.fog);
+      ambientLight.color.setHex(t.ambient);
+      mainLight.color.setHex(t.main);
+      lakeMat.color.setHex(t.lake);
+      celestialMat.color.setHex(t.orb);
+      celestialOrb.position.set(...t.orbPos);
+
+      document.getElementById('hud-mood').textContent = t.label;
+      ['morning', 'sunset', 'night'].forEach(m => {
+        document.getElementById('mood-' + m).classList.toggle('active', m === mood);
+      });
+      if (isAudioPlaying) playChimeNote(MOOD_SCALES[mood][2], 2.2, 0.1, 'sine');
+    }
+    scene.background = new THREE.Color(MOOD_THEMES.night.bg);
+
+    let targetCamPos = null;
+    let targetLookAt = null;
+    const CAM_PRESETS = {
+      overview: { pos: [0, 6.2, 15.5], target: [0, 2.3, 0] },
+      macro:    { pos: [0, 5.1, 4.9],  target: [0, 3.4, 0] },
+      lake:     { pos: [11.5, 1.9, 9.5], target: [0, 2.8, 0] }
+    };
+
+    function setCameraPreset(preset) {
+      const p = CAM_PRESETS[preset];
+      targetCamPos = new THREE.Vector3(...p.pos);
+      targetLookAt = new THREE.Vector3(...p.target);
+      ['overview', 'macro', 'lake'].forEach(k => {
+        document.getElementById('cam-' + k).classList.toggle('active', k === preset);
+      });
+    }
+
+    function setOrbitSpeed(mode) {
+      if (mode === 'normal') { controls.autoRotate = true; controls.autoRotateSpeed = 0.55; }
+      else if (mode === 'slow') { controls.autoRotate = true; controls.autoRotateSpeed = 0.18; }
+      else { controls.autoRotate = false; }
+      ['normal', 'slow', 'pause'].forEach(k => {
+        document.getElementById('spd-' + k).classList.toggle('active', k === mode);
+      });
+    }
+
+    let bloomBoost = 0;
+    function triggerBloomPulse() {
+      bloomBoost = 1.0;
+      spawnPulseRing();
+      if (isAudioPlaying) {
+        const sc = MOOD_SCALES[currentMood];
+        playChimeNote(sc[0] * 2, 3.0, 0.1, 'sine');
+        setTimeout(() => playChimeNote(sc[2] * 2, 3.0, 0.09, 'sine'), 140);
+        setTimeout(() => playChimeNote(sc[4] * 2, 3.4, 0.09, 'sine'), 280);
+      }
+    }
+
+    // Raycaster click on Blue Rose
+    const raycaster = new THREE.Raycaster();
+    const pointer = new THREE.Vector2();
+    renderer.domElement.addEventListener('click', (e) => {
+      const rect = renderer.domElement.getBoundingClientRect();
+      pointer.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+      pointer.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+      raycaster.setFromCamera(pointer, camera);
+      const hits = raycaster.intersectObjects(blossomGroup.children, true);
+      if (hits.length > 0) triggerBloomPulse();
+    });
+
+    /* =========================================================================
+       9. ANIMATION LOOP & RESIZE
+    ========================================================================= */
+    const clock = new THREE.Clock();
+    let frameCount = 0;
+    let lastFpsTime = performance.now();
+
+    function animate() {
+      requestAnimationFrame(animate);
+      const dt = Math.min(clock.getDelta(), 0.05);
+      const elapsed = clock.getElapsedTime();
+
+      // Smooth Camera Preset Transition
+      if (targetCamPos && targetLookAt) {
+        camera.position.lerp(targetCamPos, 0.06);
+        controls.target.lerp(targetLookAt, 0.06);
+        if (camera.position.distanceTo(targetCamPos) < 0.08) {
+          targetCamPos = null;
+          targetLookAt = null;
+        }
+      }
+
+      // Lake Gentle Ripples
+      for (let i = 0; i < lakePosAttr.count; i++) {
+        const x = lakePosAttr.getX(i);
+        const z = lakePosAttr.getZ(i);
+        const wave = Math.sin(x * 0.35 + elapsed * 1.1) * 0.055 + Math.cos(z * 0.32 + elapsed * 0.9) * 0.055;
+        lakePosAttr.setY(i, lakeBaseY[i] + wave);
+      }
+      lakePosAttr.needsUpdate = true;
+      lakeGeo.computeVertexNormals();
+
+      // Blue Rose Breathing & Bloom Pulse
+      bloomBoost = Math.max(0, bloomBoost - dt * 0.55);
+      roseGroup.rotation.y = Math.sin(elapsed * 0.25) * 0.14;
+      petalRefs.forEach(p => {
+        const breath = Math.sin(elapsed * 1.2 + p.phase) * 0.035;
+        const boostOpen = bloomBoost * (0.12 + p.layerIdx * 0.07);
+        p.mesh.rotation.x = p.baseTilt + breath + boostOpen;
+      });
+      roseCoreLight.intensity = 4.0 + Math.sin(elapsed * 2.2) * 0.8 + bloomBoost * 4.5;
+
+      // Floating Pillar Lanterns
+      lanternOrbs.forEach(o => {
+        o.mesh.position.y = o.baseY + Math.sin(elapsed * 1.5 + o.phase) * 0.16;
+        o.mesh.rotation.y += dt * 0.9;
+      });
+
+      // Rising Firefly Particles
+      const posArr = pGeo.attributes.position.array;
+      for (let i = 0; i < particleCount; i++) {
+        posArr[i * 3 + 1] += pSpeeds[i] * dt * 0.32;
+        if (posArr[i * 3 + 1] > 18.5) posArr[i * 3 + 1] = 0.4;
+      }
+      pGeo.attributes.position.needsUpdate = true;
+      particles.rotation.y = elapsed * 0.02;
+
+      // Expanding Aura Pulse Rings
+      for (let i = pulseRings.length - 1; i >= 0; i--) {
+        const pr = pulseRings[i];
+        pr.age += dt;
+        const s = 1 + pr.age * 7.5;
+        pr.mesh.scale.set(s, s, 1);
+        pr.mesh.material.opacity = Math.max(0, 0.85 - pr.age * 0.52);
+        if (pr.age > 1.7) {
+          scene.remove(pr.mesh);
+          pr.mesh.geometry.dispose();
+          pr.mesh.material.dispose();
+          pulseRings.splice(i, 1);
+        }
+      }
+
+      controls.update();
+      renderer.render(scene, camera);
+
+      // FPS Counter
+      frameCount++;
+      const now = performance.now();
+      if (now - lastFpsTime >= 1000) {
+        document.getElementById('hud-fps').textContent = frameCount + ' FPS';
+        frameCount = 0;
+        lastFpsTime = now;
+      }
+    }
+    animate();
+
+    window.addEventListener('resize', () => {
+      camera.aspect = container.clientWidth / container.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(container.clientWidth, container.clientHeight);
+    });
+  </script>
+</body>
+</html>

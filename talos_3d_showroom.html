@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project TALOS & 5대 전략산업 3D 분해 쇼룸 | 키아노스 과학·SI부 · 경제부</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Montserrat:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@400;700;900&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <style>
+    :root {
+      --bg-dark: #030816;
+      --panel-bg: rgba(10, 18, 38, 0.8);
+      --cyan: #00d2ff;
+      --emerald: #10b981;
+      --amber: #f59e0b;
+      --purple: #a855f7;
+      --rose: #f43f5e;
+      --text-main: #f8fafc;
+      --text-sub: #94a3b8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Montserrat', 'Noto Serif KR', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.65;
+    }
+
+    /* Top Nav */
+    .top-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.85rem 2rem;
+      background: rgba(3, 8, 22, 0.78);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(0, 210, 255, 0.24);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .brand-icon { font-size: 1.5rem; filter: drop-shadow(0 0 10px rgba(0,210,255,0.7)); }
+    .brand-text .en {
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: var(--cyan);
+    }
+    .brand-text .kr {
+      display: block;
+      font-size: 0.7rem;
+      color: var(--text-sub);
+      letter-spacing: 0.1em;
+    }
+    .nav-links { display: flex; gap: 10px; flex-wrap: wrap; }
+    .nav-pill {
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 210, 255, 0.32);
+      color: #e2e8f0;
+      background: rgba(15, 23, 42, 0.6);
+      transition: all 0.25s ease;
+    }
+    .nav-pill:hover {
+      background: rgba(0, 210, 255, 0.2);
+      border-color: var(--cyan);
+      color: #ffffff;
+    }
+    .nav-pill.gold {
+      border-color: rgba(245, 158, 11, 0.55);
+      color: #fde68a;
+      background: rgba(245, 158, 11, 0.12);
+    }
+
+    /* 3D Hero Stage */
+    .hero-stage {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 700px;
+      overflow: hidden;
+    }
+    #webgl-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      cursor: grab;
+    }
+    #webgl-canvas:active { cursor: grabbing; }
+
+    /* Top Left Header HUD */
+    .hero-hud-top {
+      position: absolute;
+      top: 84px;
+      left: 32px;
+      z-index: 20;
+      pointer-events: none;
+      max-width: 520px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 13px;
+      border-radius: 999px;
+      background: rgba(0, 210, 255, 0.14);
+      border: 1px solid rgba(0, 210, 255, 0.45);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: #7dd3fc;
+      margin-bottom: 10px;
+    }
+    .hero-title {
+      font-size: clamp(1.55rem, 2.8vw, 2.35rem);
+      font-weight: 900;
+      line-height: 1.22;
+      background: linear-gradient(135deg, #ffffff 0%, #38bdf8 55%, #fde68a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-desc {
+      margin-top: 8px;
+      font-size: 0.86rem;
+      color: #cbd5e1;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.85);
+    }
+
+    /* Module Inspector HUD (Right Side) */
+    .inspector-hud {
+      position: absolute;
+      top: 84px;
+      right: 32px;
+      z-index: 25;
+      width: 310px;
+      background: var(--panel-bg);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(0, 210, 255, 0.3);
+      border-radius: 16px;
+      padding: 18px 20px;
+      box-shadow: 0 20px 45px rgba(0,0,0,0.6);
+    }
+    .insp-kicker {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--cyan);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .insp-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+    .insp-desc {
+      font-size: 0.8rem;
+      color: #cbd5e1;
+      margin-bottom: 14px;
+      line-height: 1.55;
+    }
+    .spec-list {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 10px;
+      margin-bottom: 14px;
+    }
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      padding: 4px 0;
+    }
+    .spec-k { color: #94a3b8; }
+    .spec-v { font-family: monospace; font-weight: 700; color: #38bdf8; }
+
+    .module-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .mod-pill {
+      padding: 5px 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(30, 41, 59, 0.75);
+      color: #cbd5e1;
+      font-size: 0.72rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .mod-pill:hover { border-color: var(--cyan); color: #fff; }
+    .mod-pill.active {
+      background: rgba(0, 210, 255, 0.24);
+      border-color: var(--cyan);
+      color: #ffffff;
+      box-shadow: 0 0 12px rgba(0, 210, 255, 0.35);
+    }
+
+    /* Bottom Control Deck */
+    .control-deck {
+      position: absolute;
+      bottom: 24px;
+      left: 32px;
+      right: 32px;
+      z-index: 25;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 14px;
+      pointer-events: none;
+    }
+    .deck-panel {
+      pointer-events: auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 20px;
+      background: var(--panel-bg);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(0, 210, 255, 0.28);
+      border-radius: 18px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    }
+    .ctrl-group { display: flex; flex-direction: column; gap: 6px; }
+    .ctrl-label {
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #94a3b8;
+    }
+    .btn-row { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+    .ctrl-btn {
+      padding: 7px 12px;
+      border-radius: 9px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(30, 41, 59, 0.8);
+      color: #e2e8f0;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .ctrl-btn:hover { border-color: var(--cyan); color: #fff; }
+    .ctrl-btn.active {
+      background: linear-gradient(135deg, #0284c7, #0ea5e9);
+      border-color: #7dd3fc;
+      color: #fff;
+      box-shadow: 0 0 14px rgba(14, 165, 233, 0.45);
+    }
+    .ctrl-btn.explode-btn {
+      background: linear-gradient(135deg, rgba(245,158,11,0.28), rgba(234,88,12,0.32));
+      border-color: rgba(251, 191, 36, 0.6);
+      color: #fef3c7;
+    }
+    .ctrl-btn.explode-btn.active {
+      background: linear-gradient(135deg, #d97706, #ea580c);
+      color: #fff;
+    }
+    .ctrl-btn.audio-on {
+      background: linear-gradient(135deg, #059669, #10b981);
+      border-color: #6ee7b7;
+      color: #fff;
+    }
+    .explode-slider {
+      width: 130px;
+      accent-color: #f59e0b;
+      cursor: pointer;
+    }
+    .divider { width: 1px; height: 36px; background: rgba(255,255,255,0.12); }
+
+    .scroll-hint {
+      pointer-events: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: rgba(10, 18, 38, 0.82);
+      border: 1px solid rgba(0, 210, 255, 0.42);
+      color: #7dd3fc;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+    .scroll-hint:hover { background: rgba(0, 210, 255, 0.2); transform: translateY(-2px); }
+
+    /* Strategic Industries Portal Below */
+    .portal-section {
+      max-width: 1260px;
+      margin: 0 auto;
+      padding: 5.5rem 2rem 6rem;
+    }
+    .section-head { text-align: center; margin-bottom: 3.5rem; }
+    .section-kicker {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.22em;
+      color: var(--cyan);
+      margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: clamp(1.6rem, 3vw, 2.3rem);
+      font-weight: 900;
+      color: #fffbeb;
+      margin-bottom: 0.85rem;
+    }
+    .section-sub { color: #94a3b8; max-width: 760px; margin: 0 auto; font-size: 0.94rem; }
+
+    .industry-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+      margin-bottom: 3.5rem;
+    }
+    .ind-card {
+      background: rgba(15, 23, 42, 0.78);
+      border: 1px solid rgba(0, 210, 255, 0.22);
+      border-radius: 18px;
+      padding: 1.6rem;
+      transition: all 0.28s ease;
+      cursor: pointer;
+    }
+    .ind-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--cyan);
+      box-shadow: 0 16px 40px rgba(0, 210, 255, 0.14);
+    }
+    .ind-icon { font-size: 1.9rem; margin-bottom: 0.75rem; }
+    .ind-code {
+      font-family: monospace;
+      font-size: 0.7rem;
+      color: #38bdf8;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.4rem;
+    }
+    .ind-card h3 { font-size: 1.05rem; font-weight: 800; color: #fff; margin-bottom: 0.55rem; }
+    .ind-card p { font-size: 0.82rem; color: #cbd5e1; }
+
+    .portal-links-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      padding: 2rem;
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.12), rgba(245, 158, 11, 0.1));
+      border: 1px solid rgba(0, 210, 255, 0.26);
+      border-radius: 20px;
+    }
+    .portal-cta {
+      text-decoration: none;
+      padding: 11px 20px;
+      border-radius: 12px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: #fff;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      transition: all 0.25s ease;
+    }
+    .portal-cta:hover {
+      background: #0284c7;
+      border-color: #7dd3fc;
+      transform: translateY(-2px);
+    }
+
+    footer {
+      border-top: 1px solid rgba(0, 210, 255, 0.15);
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.78rem;
+      color: #64748b;
+    }
+
+    @media (max-width: 900px) {
+      .inspector-hud { display: none; }
+      .hero-hud-top { left: 16px; right: 16px; top: 74px; }
+      .control-deck { left: 12px; right: 12px; bottom: 12px; }
+      .divider { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav class="top-nav">
+    <a href="gov_science.html" class="brand">
+      <span class="brand-icon">🦾</span>
+      <span class="brand-text">
+        <span class="en">PROJECT TALOS 3D SHOWROOM</span>
+        <span class="kr">키아노스 과학·SI부 · 경제부 5대 전략산업</span>
+      </span>
+    </a>
+    <div class="nav-links">
+      <a href="gov_science.html" class="nav-pill">🧬 과학·SI부</a>
+      <a href="market_monitor.html" class="nav-pill">📈 5대 산업 시황</a>
+      <a href="bluerose_3d_garden.html" class="nav-pill">🌹 블루로즈 3D 정원</a>
+      <a href="main.html" class="nav-pill gold">👑 국정 포털</a>
+    </div>
+  </nav>
+
+  <!-- 100vh 3D Exploded Showroom -->
+  <section class="hero-stage">
+    <div id="webgl-canvas"></div>
+
+    <div class="hero-hud-top">
+      <div class="hero-badge">⚡ THREE.JS EXPLODED VIEW • 5 STRATEGIC INDUSTRIES</div>
+      <h1 class="hero-title">Project TALOS 차세대 통합 코어</h1>
+      <p class="hero-desc">
+        하단 <strong>부품 분해 슬라이더</strong>로 5대 핵심 산업 모듈(초지능 SI·반도체·2차전지·로봇·EV)을 공중 분해하고, 각 3D 부품을 클릭하여 기술 사양을 정밀 점검하십시오.
+      </p>
+    </div>
+
+    <!-- Right Module Inspector -->
+    <aside class="inspector-hud">
+      <div class="insp-kicker" id="insp-kicker">ALL MODULES INTEGRATED</div>
+      <h2 class="insp-title" id="insp-title">TALOS 통합 코어 어셈블리</h2>
+      <p class="insp-desc" id="insp-desc">
+        키아노스 5대 전략 산업 기술이 하나로 결합된 피지컬 SI 수호 코어입니다. 아래 모듈 버튼을 누르거나 3D 부품을 직접 클릭해 세부 구조를 확인하십시오.
+      </p>
+      <div class="spec-list" id="insp-specs">
+        <div class="spec-row"><span class="spec-k">외부 3D 에셋</span><span class="spec-v" style="color:#4ade80;">0 KB (순수 코드)</span></div>
+        <div class="spec-row"><span class="spec-k">분해 전개율</span><span class="spec-v" id="hud-explode-pct">0%</span></div>
+        <div class="spec-row"><span class="spec-k">오디오 상태</span><span class="spec-v" id="hud-audio-state">Web Audio 대기</span></div>
+        <div class="spec-row"><span class="spec-k">엔진 프레임</span><span class="spec-v" id="hud-fps">60 FPS</span></div>
+      </div>
+      <div class="module-pills">
+        <button class="mod-pill active" id="pill-all" onclick="focusModule('all')">전체</button>
+        <button class="mod-pill" id="pill-si" onclick="focusModule('si')">초지능 SI</button>
+        <button class="mod-pill" id="pill-semi" onclick="focusModule('semi')">반도체</button>
+        <button class="mod-pill" id="pill-battery" onclick="focusModule('battery')">2차전지</button>
+        <button class="mod-pill" id="pill-robot" onclick="focusModule('robot')">로봇</button>
+        <button class="mod-pill" id="pill-ev" onclick="focusModule('ev')">EV 파워</button>
+      </div>
+    </aside>
+
+    <!-- Bottom Control Deck -->
+    <div class="control-deck">
+      <div class="deck-panel">
+        <div class="ctrl-group">
+          <span class="ctrl-label">3D 부품 공중 분해 (Explode View)</span>
+          <div class="btn-row">
+            <button class="ctrl-btn explode-btn" id="btn-explode-toggle" onclick="toggleExplode()">💥 분해 전개</button>
+            <input type="range" min="0" max="100" value="0" class="explode-slider" id="explode-slider" oninput="setExplodePercent(this.value)">
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="ctrl-group">
+          <span class="ctrl-label">카메라 시점</span>
+          <div class="btn-row">
+            <button class="ctrl-btn active" id="cam-iso" onclick="setCameraView('iso')">ISO</button>
+            <button class="ctrl-btn" id="cam-front" onclick="setCameraView('front')">Front</button>
+            <button class="ctrl-btn" id="cam-side" onclick="setCameraView('side')">Side</button>
+            <button class="ctrl-btn" id="cam-top" onclick="setCameraView('top')">Top</button>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="ctrl-group">
+          <span class="ctrl-label">회전 속도</span>
+          <div class="btn-row">
+            <button class="ctrl-btn" id="spd-sprint" onclick="setSpeed('sprint')">Sprint</button>
+            <button class="ctrl-btn active" id="spd-normal" onclick="setSpeed('normal')">Normal</button>
+            <button class="ctrl-btn" id="spd-slow" onclick="setSpeed('slow')">Slow</button>
+            <button class="ctrl-btn" id="spd-pause" onclick="setSpeed('pause')">Pause</button>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="ctrl-group">
+          <span class="ctrl-label">Web Audio</span>
+          <div class="btn-row">
+            <button class="ctrl-btn" id="btn-audio" onclick="toggleAudio()">🔇 사운드</button>
+          </div>
+        </div>
+      </div>
+
+      <a href="#industries-portal" class="scroll-hint">5대 전략산업 브리핑 보기 ↓</a>
+    </div>
+  </section>
+
+  <!-- Stage 3 Web Portal Section -->
+  <section id="industries-portal" class="portal-section">
+    <div class="section-head">
+      <div class="section-kicker">KYANOS 5 STRATEGIC TECH PILLARS • PHYSICAL SI SOVEREIGNTY</div>
+      <h2 class="section-title">키아노스 5대 전략 산업 & Project TALOS 아키텍처</h2>
+      <p class="section-sub">
+        파이튼 국왕의 핵심 전략 산업군(2차전지·EV·반도체·초지능 SI·로봇)을 실시간 3D 인터랙티브 모델로 시각화하고, 과학·SI부와 경제부의 국정 포털과 직결합니다.
+      </p>
+    </div>
+
+    <div class="industry-grid">
+      <div class="ind-card" onclick="scrollTo3DAndFocus('si')">
+        <div class="ind-icon">🧠</div>
+        <div class="ind-code">CORE-01 // SUPER INTELLIGENCE</div>
+        <h3>초지능 (SI) 뉴럴 코어</h3>
+        <p>자율 판단과 멀티 에이전트 오케스트레이션을 수행하는 중앙 양자-뉴럴 프로세싱 코어 모듈입니다.</p>
+      </div>
+      <div class="ind-card" onclick="scrollTo3DAndFocus('semi')">
+        <div class="ind-icon">💎</div>
+        <div class="ind-code">CORE-02 // SEMICONDUCTOR</div>
+        <h3>차세대 반도체 & HBM4</h3>
+        <p>초저전력 AI 가속기, 적층 HBM4 고대역폭 메모리, 광인터커넥트 칩렛 어레이를 통합합니다.</p>
+      </div>
+      <div class="ind-card" onclick="scrollTo3DAndFocus('battery')">
+        <div class="ind-icon">🔋</div>
+        <div class="ind-code">CORE-03 // SECONDARY BATTERY</div>
+        <h3>전고체 2차전지 파워 팩</h3>
+        <p>화재 안전성과 초고에너지 밀도를 동시 확보한 좌·우 6셀 모듈형 전고체 에너지 저장 유닛입니다.</p>
+      </div>
+      <div class="ind-card" onclick="scrollTo3DAndFocus('robot')">
+        <div class="ind-icon">🦾</div>
+        <div class="ind-code">CORE-04 // ROBOTICS TALOS</div>
+        <h3>TALOS 자율 로봇·드론</h3>
+        <p>고토크 티타늄 서보 액추에이터와 360° 광학 라이다 센서로 무인 방위·물류·재난 구조를 수행합니다.</p>
+      </div>
+      <div class="ind-card" onclick="scrollTo3DAndFocus('ev')">
+        <div class="ind-icon">⚡</div>
+        <div class="ind-code">CORE-05 // ELECTRIC VEHICLE</div>
+        <h3>EV 초전도 파워트레인</h3>
+        <p>800V SiC 실리콘카바이드 인버터와 자기부상 모빌리티 섀시로 차세대 전동화 플랫폼을 완성합니다.</p>
+      </div>
+    </div>
+
+    <div class="portal-links-bar">
+      <a href="gov_science.html" class="portal-cta">🧬 과학·SI부 국정 포털</a>
+      <a href="gov_economy.html" class="portal-cta">🏦 경제부 국정 포털</a>
+      <a href="market_monitor.html" class="portal-cta">📈 글로벌 5대 산업 시황</a>
+      <a href="three_studio.html" class="portal-cta">🌌 SI 3D 셰이더 스튜디오</a>
+      <a href="bluerose_3d_garden.html" class="portal-cta">🌹 블루로즈 3D 정원</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 KYANOS SOVEREIGN NATION • PROJECT TALOS 3D SHOWROOM (Three.js + Web Audio API Zero-Cost Engine)
+  </footer>
+
+  <script>
+    /* =========================================================================
+       1. MODULE METADATA (5 STRATEGIC INDUSTRIES)
+    ========================================================================= */
+    const MODULE_DATA = {
+      all: {
+        kicker: 'ALL MODULES INTEGRATED',
+        title: 'TALOS 통합 코어 어셈블리',
+        desc: '키아노스 5대 전략 산업 기술이 하나로 결합된 피지컬 SI 수호 코어입니다. 슬라이더로 공중 분해하거나 부품을 클릭해 보십시오.',
+        cam: [9.5, 6.2, 11.5],
+        target: [0, 0.5, 0]
+      },
+      si: {
+        kicker: 'PILLAR 01 • SUPER INTELLIGENCE',
+        title: '초지능 (SI) 뉴럴 코어',
+        desc: '초당 4.8 페타플롭스급 온디바이스 추론과 6개 부처 멀티 에이전트 오케스트레이션을 총괄하는 중앙 지능 크리스탈 코어입니다.',
+        cam: [4.8, 2.6, 5.2],
+        target: [0, 0.5, 0]
+      },
+      semi: {
+        kicker: 'PILLAR 02 • SEMICONDUCTOR HBM4',
+        title: '차세대 반도체 & HBM4 스택',
+        desc: '2나노 이하 GAA 공정과 16단 HBM4 메모리 적층 패키징으로 초고속 연산 대역폭과 극저발열을 동시에 구현합니다.',
+        cam: [4.5, 5.6, 5.5],
+        target: [0, 2.8, 0]
+      },
+      battery: {
+        kicker: 'PILLAR 03 • SOLID-STATE BATTERY',
+        title: '전고체 2차전지 파워 팩',
+        desc: '황화물계 전고체 전해질 기반 500Wh/kg급 초고밀도 듀얼 배터리 뱅크로 72시간 연속 자율 작전을 지원합니다.',
+        cam: [9.2, 2.4, 5.2],
+        target: [0, 0.5, 0]
+      },
+      robot: {
+        kicker: 'PILLAR 04 • PROJECT TALOS ROBOTICS',
+        title: 'TALOS 티타늄 액추에이터 & 라이다',
+        desc: '정밀 하모닉 드라이브 관절과 360도 전방위 광학 센서 링으로 극한 환경에서도 오차 없는 피지컬 제어를 실현합니다.',
+        cam: [6.2, 3.2, 8.8],
+        target: [0, 0.5, 0]
+      },
+      ev: {
+        kicker: 'PILLAR 05 • EV POWERTRAIN & CHASSIS',
+        title: 'EV 800V SiC 인버터 & 자기부상 베이스',
+        desc: '차세대 SiC 전력반도체 인버터와 초전도 자기부상 코일이 결합된 무마찰·고효율 전동 구동 베이스입니다.',
+        cam: [6.5, -0.4, 8.2],
+        target: [0, -1.8, 0]
+      }
+    };
+
+    /* =========================================================================
+       2. THREE.JS SCENE, CAMERA, RENDERER
+    ========================================================================= */
+    const container = document.getElementById('webgl-canvas');
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x030816);
+    scene.fog = new THREE.FogExp2(0x030816, 0.024);
+
+    const camera = new THREE.PerspectiveCamera(46, container.clientWidth / container.clientHeight, 0.1, 200);
+    camera.position.set(9.5, 6.2, 11.5);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.18;
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    container.appendChild(renderer.domElement);
+
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.06;
+    controls.target.set(0, 0.5, 0);
+    controls.minDistance = 4.5;
+    controls.maxDistance = 26;
+    controls.autoRotate = true;
+    controls.autoRotateSpeed = 0.85;
+
+    /* =========================================================================
+       3. LIGHTING & STUDIO FLOOR
+    ========================================================================= */
+    scene.add(new THREE.AmbientLight(0x1e293b, 1.3));
+    const keyLight = new THREE.DirectionalLight(0x38bdf8, 2.4);
+    keyLight.position.set(10, 16, 12);
+    keyLight.castShadow = true;
+    keyLight.shadow.mapSize.set(2048, 2048);
+    scene.add(keyLight);
+
+    const rimLight = new THREE.DirectionalLight(0xf59e0b, 1.6);
+    rimLight.position.set(-12, 8, -10);
+    scene.add(rimLight);
+
+    const coreGlowLight = new THREE.PointLight(0x00d2ff, 4.5, 20);
+    coreGlowLight.position.set(0, 0.8, 0);
+    scene.add(coreGlowLight);
+
+    const floorMesh = new THREE.Mesh(
+      new THREE.PlaneGeometry(70, 70),
+      new THREE.MeshStandardMaterial({ color: 0x050b1c, roughness: 0.22, metalness: 0.88 })
+    );
+    floorMesh.rotation.x = -Math.PI / 2;
+    floorMesh.position.y = -4.2;
+    floorMesh.receiveShadow = true;
+    scene.add(floorMesh);
+
+    const grid = new THREE.GridHelper(60, 40, 0x0284c7, 0x1e293b);
+    grid.position.y = -4.18;
+    scene.add(grid);
+
+    /* =========================================================================
+       4. PROCEDURAL 5-MODULE TALOS CORE ASSEMBLY (EXPLODABLE!)
+    ========================================================================= */
+    const assemblyRoot = new THREE.Group();
+    assemblyRoot.position.y = 0.5;
+    scene.add(assemblyRoot);
+
+    const clickableMeshes = [];
+    const explodableParts = []; // { group, basePos, explodeOffset, moduleId }
+
+    function registerPart(group, baseVec, explodeVec, moduleId) {
+      group.position.copy(baseVec);
+      assemblyRoot.add(group);
+      explodableParts.push({ group, basePos: baseVec.clone(), explodeOffset: explodeVec.clone(), moduleId });
+      group.traverse(obj => {
+        if (obj.isMesh) {
+          obj.userData.moduleId = moduleId;
+          clickableMeshes.push(obj);
+        }
+      });
+    }
+
+    const metalDark = new THREE.MeshStandardMaterial({ color: 0x1e293b, roughness: 0.28, metalness: 0.88 });
+    const metalTitan = new THREE.MeshStandardMaterial({ color: 0x475569, roughness: 0.22, metalness: 0.92 });
+    const goldMat = new THREE.MeshStandardMaterial({ color: 0xf59e0b, roughness: 0.2, metalness: 0.95, emissive: 0x78350f, emissiveIntensity: 0.25 });
+    const cyanGlow = new THREE.MeshStandardMaterial({ color: 0x38bdf8, emissive: 0x00d2ff, emissiveIntensity: 1.6, roughness: 0.15, metalness: 0.5 });
+    const emeraldGlow = new THREE.MeshStandardMaterial({ color: 0x34d399, emissive: 0x10b981, emissiveIntensity: 1.4, roughness: 0.2, metalness: 0.4 });
+    const purpleGlow = new THREE.MeshStandardMaterial({ color: 0xc084fc, emissive: 0x9333ea, emissiveIntensity: 1.3, roughness: 0.2, metalness: 0.5 });
+
+    // --- MODULE 1: SI NEURAL CORE (Center) ---
+    const siGroup = new THREE.Group();
+    const coreCrystal = new THREE.Mesh(new THREE.IcosahedronGeometry(1.15, 1), cyanGlow);
+    siGroup.add(coreCrystal);
+    const coreWire = new THREE.Mesh(
+      new THREE.IcosahedronGeometry(1.42, 1),
+      new THREE.MeshBasicMaterial({ color: 0x7dd3fc, wireframe: true, transparent: true, opacity: 0.55 })
+    );
+    siGroup.add(coreWire);
+    const gyroRing1 = new THREE.Mesh(new THREE.TorusGeometry(1.75, 0.055, 16, 64), goldMat);
+    siGroup.add(gyroRing1);
+    const gyroRing2 = new THREE.Mesh(new THREE.TorusGeometry(2.05, 0.04, 16, 64), purpleGlow);
+    gyroRing2.rotation.x = Math.PI / 2.2;
+    siGroup.add(gyroRing2);
+    registerPart(siGroup, new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, 0, 0), 'si');
+
+    // --- MODULE 2: SEMICONDUCTOR & HBM4 CHIPLET STACK (Top) ---
+    const semiGroup = new THREE.Group();
+    const waferBase = new THREE.Mesh(new THREE.CylinderGeometry(1.85, 1.95, 0.22, 32), metalDark);
+    semiGroup.add(waferBase);
+    const waferRim = new THREE.Mesh(new THREE.TorusGeometry(1.9, 0.05, 12, 48), goldMat);
+    waferRim.rotation.x = Math.PI / 2;
+    semiGroup.add(waferRim);
+    // 4 HBM4 Die Stacks + Central AI Accelerator
+    const mainDie = new THREE.Mesh(new THREE.BoxGeometry(1.1, 0.35, 1.1), purpleGlow);
+    mainDie.position.y = 0.26;
+    semiGroup.add(mainDie);
+    [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach(([sx, sz]) => {
+      const hbm = new THREE.Mesh(new THREE.BoxGeometry(0.52, 0.48, 0.52), metalTitan);
+      hbm.position.set(sx * 0.92, 0.34, sz * 0.92);
+      semiGroup.add(hbm);
+      const cap = new THREE.Mesh(new THREE.BoxGeometry(0.42, 0.06, 0.42), goldMat);
+      cap.position.set(sx * 0.92, 0.61, sz * 0.92);
+      semiGroup.add(cap);
+    });
+    registerPart(semiGroup, new THREE.Vector3(0, 2.05, 0), new THREE.Vector3(0, 2.6, 0), 'semi');
+
+    // --- MODULE 3: SOLID-STATE 2차전지 BATTERY PACKS (Left & Right) ---
+    [-1, 1].forEach(side => {
+      const batGroup = new THREE.Group();
+      const housing = new THREE.Mesh(new THREE.BoxGeometry(0.95, 2.2, 1.65), metalDark);
+      batGroup.add(housing);
+      for (let i = -1; i <= 1; i++) {
+        const cell = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.22, 1.85, 16), metalTitan);
+        cell.position.set(side * 0.32, 0, i * 0.52);
+        batGroup.add(cell);
+        const led = new THREE.Mesh(new THREE.BoxGeometry(0.08, 1.5, 0.14), emeraldGlow);
+        led.position.set(side * 0.52, 0, i * 0.52);
+        batGroup.add(led);
+      }
+      registerPart(batGroup, new THREE.Vector3(side * 2.55, 0, 0), new THREE.Vector3(side * 3.1, 0.2, 0), 'battery');
+    });
+
+    // --- MODULE 4: PROJECT TALOS ROBOTICS ACTUATORS & LIDAR (Front & Back) ---
+    [-1, 1].forEach(side => {
+      const robGroup = new THREE.Group();
+      const armor = new THREE.Mesh(new THREE.BoxGeometry(2.1, 1.15, 0.55), metalTitan);
+      robGroup.add(armor);
+      const visor = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.18, 0.6), cyanGlow);
+      visor.position.y = 0.22;
+      robGroup.add(visor);
+      // Twin Servo Actuators
+      [-0.75, 0.75].forEach(ax => {
+        const joint = new THREE.Mesh(new THREE.CylinderGeometry(0.32, 0.32, 0.72, 20), goldMat);
+        joint.rotation.z = Math.PI / 2;
+        joint.position.set(ax, -0.32, side * 0.12);
+        robGroup.add(joint);
+      });
+      registerPart(robGroup, new THREE.Vector3(0, 0.15, side * 2.45), new THREE.Vector3(0, 0.4, side * 3.0), 'robot');
+    });
+
+    // --- MODULE 5: EV 800V SiC POWERTRAIN & MAGLEV CHASSIS (Bottom) ---
+    const evGroup = new THREE.Group();
+    const chassis = new THREE.Mesh(new THREE.CylinderGeometry(2.35, 2.75, 0.55, 8), metalDark);
+    evGroup.add(chassis);
+    const coilRing = new THREE.Mesh(new THREE.TorusGeometry(2.1, 0.12, 16, 48), goldMat);
+    coilRing.rotation.x = Math.PI / 2;
+    coilRing.position.y = 0.32;
+    evGroup.add(coilRing);
+    const magGlow = new THREE.Mesh(new THREE.TorusGeometry(2.45, 0.06, 12, 64), cyanGlow);
+    magGlow.rotation.x = Math.PI / 2;
+    magGlow.position.y = -0.28;
+    evGroup.add(magGlow);
+    registerPart(evGroup, new THREE.Vector3(0, -2.05, 0), new THREE.Vector3(0, -2.1, 0), 'ev');
+
+    // Data Flow Particles
+    const pCount = 2400;
+    const pPos = new Float32Array(pCount * 3);
+    for (let i = 0; i < pCount; i++) {
+      const r = 3.5 + Math.random() * 18;
+      const a = Math.random() * Math.PI * 2;
+      pPos[i * 3] = Math.cos(a) * r;
+      pPos[i * 3 + 1] = (Math.random() - 0.5) * 14;
+      pPos[i * 3 + 2] = Math.sin(a) * r;
+    }
+    const pGeo = new THREE.BufferGeometry();
+    pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+    const dataStars = new THREE.Points(
+      pGeo,
+      new THREE.PointsMaterial({ color: 0x38bdf8, size: 0.075, transparent: true, opacity: 0.7, blending: THREE.AdditiveBlending })
+    );
+    scene.add(dataStars);
+
+    /* =========================================================================
+       5. WEB AUDIO API HI-TECH SYNTHESIZER (ZERO COST)
+    ========================================================================= */
+    let audioCtx = null;
+    let isAudioOn = false;
+    let droneGain = null;
+
+    function initAudio() {
+      if (audioCtx) return;
+      const AC = window.AudioContext || window.webkitAudioContext;
+      audioCtx = new AC();
+      droneGain = audioCtx.createGain();
+      droneGain.gain.value = 0;
+      droneGain.connect(audioCtx.destination);
+
+      [55, 110.2, 164.81].forEach((freq, idx) => {
+        const osc = audioCtx.createOscillator();
+        const g = audioCtx.createGain();
+        osc.type = idx === 0 ? 'sine' : 'triangle';
+        osc.frequency.value = freq;
+        g.gain.value = idx === 0 ? 0.08 : 0.025;
+        osc.connect(g);
+        g.connect(droneGain);
+        osc.start();
+      });
+    }
+
+    function playTechPing(freq = 640, dur = 0.22) {
+      if (!audioCtx || !isAudioOn) return;
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const g = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, now);
+      osc.frequency.exponentialRampToValueAtTime(freq * 1.35, now + dur);
+      g.gain.setValueAtTime(0.08, now);
+      g.gain.exponentialRampToValueAtTime(0.0001, now + dur);
+      osc.connect(g);
+      g.connect(audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + dur + 0.02);
+    }
+
+    function playServoSweep(expanding) {
+      if (!audioCtx || !isAudioOn) return;
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const g = audioCtx.createGain();
+      osc.type = 'sawtooth';
+      const filter = audioCtx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.value = 600;
+      osc.frequency.setValueAtTime(expanding ? 140 : 320, now);
+      osc.frequency.exponentialRampToValueAtTime(expanding ? 340 : 120, now + 0.35);
+      g.gain.setValueAtTime(0.04, now);
+      g.gain.exponentialRampToValueAtTime(0.0001, now + 0.38);
+      osc.connect(filter);
+      filter.connect(g);
+      g.connect(audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + 0.4);
+    }
+
+    function toggleAudio() {
+      initAudio();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      isAudioOn = !isAudioOn;
+      const btn = document.getElementById('btn-audio');
+      const hud = document.getElementById('hud-audio-state');
+      if (isAudioOn) {
+        droneGain.gain.linearRampToValueAtTime(0.8, audioCtx.currentTime + 0.6);
+        btn.classList.add('audio-on');
+        btn.textContent = '🔊 사운드 ON';
+        hud.textContent = 'Web Audio 합성 중';
+        playTechPing(587.33, 0.25);
+      } else {
+        droneGain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.35);
+        btn.classList.remove('audio-on');
+        btn.textContent = '🔇 사운드';
+        hud.textContent = 'Web Audio 대기';
+      }
+    }
+
+    /* =========================================================================
+       6. EXPLODED VIEW, CAMERA, SPEED & MODULE SELECTION CONTROLS
+    ========================================================================= */
+    let targetExplode = 0;
+    let currentExplode = 0;
+
+    function setExplodePercent(val) {
+      targetExplode = Number(val) / 100;
+      document.getElementById('hud-explode-pct').textContent = Math.round(val) + '%';
+      const btn = document.getElementById('btn-explode-toggle');
+      if (targetExplode > 0.5) {
+        btn.classList.add('active');
+        btn.textContent = '🔧 완전 조립';
+      } else {
+        btn.classList.remove('active');
+        btn.textContent = '💥 분해 전개';
+      }
+    }
+
+    function toggleExplode() {
+      const next = targetExplode < 0.5 ? 100 : 0;
+      document.getElementById('explode-slider').value = next;
+      setExplodePercent(next);
+      playServoSweep(next > 50);
+    }
+
+    let camGoalPos = null;
+    let camGoalTarget = null;
+    const CAM_VIEWS = {
+      iso:   { pos: [9.5, 6.2, 11.5], target: [0, 0.5, 0] },
+      front: { pos: [0, 1.2, 13.5],   target: [0, 0.5, 0] },
+      side:  { pos: [13.5, 1.2, 0],   target: [0, 0.5, 0] },
+      top:   { pos: [0.1, 14.5, 0.1], target: [0, 0.5, 0] }
+    };
+
+    function setCameraView(v) {
+      camGoalPos = new THREE.Vector3(...CAM_VIEWS[v].pos);
+      camGoalTarget = new THREE.Vector3(...CAM_VIEWS[v].target);
+      ['iso', 'front', 'side', 'top'].forEach(k => {
+        document.getElementById('cam-' + k).classList.toggle('active', k === v);
+      });
+      playTechPing(520, 0.16);
+    }
+
+    function setSpeed(mode) {
+      const map = { sprint: 3.2, normal: 0.85, slow: 0.25, pause: 0 };
+      controls.autoRotate = mode !== 'pause';
+      controls.autoRotateSpeed = map[mode];
+      ['sprint', 'normal', 'slow', 'pause'].forEach(k => {
+        document.getElementById('spd-' + k).classList.toggle('active', k === mode);
+      });
+    }
+
+    function focusModule(id) {
+      const m = MODULE_DATA[id] || MODULE_DATA.all;
+      document.getElementById('insp-kicker').textContent = m.kicker;
+      document.getElementById('insp-title').textContent = m.title;
+      document.getElementById('insp-desc').textContent = m.desc;
+
+      ['all', 'si', 'semi', 'battery', 'robot', 'ev'].forEach(k => {
+        document.getElementById('pill-' + k).classList.toggle('active', k === id);
+      });
+
+      // Auto-explode slightly if focusing an internal module
+      if (id !== 'all' && targetExplode < 0.65) {
+        document.getElementById('explode-slider').value = 75;
+        setExplodePercent(75);
+        playServoSweep(true);
+      } else {
+        playTechPing(740, 0.2);
+      }
+
+      camGoalPos = new THREE.Vector3(...m.cam);
+      camGoalTarget = new THREE.Vector3(...m.target);
+    }
+
+    function scrollTo3DAndFocus(id) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(() => focusModule(id), 350);
+    }
+
+    // Raycaster Click on 3D Parts
+    const raycaster = new THREE.Raycaster();
+    const pointer = new THREE.Vector2();
+    renderer.domElement.addEventListener('click', (e) => {
+      const rect = renderer.domElement.getBoundingClientRect();
+      pointer.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+      pointer.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+      raycaster.setFromCamera(pointer, camera);
+      const hits = raycaster.intersectObjects(clickableMeshes, false);
+      if (hits.length > 0 && hits[0].object.userData.moduleId) {
+        focusModule(hits[0].object.userData.moduleId);
+      }
+    });
+
+    /* =========================================================================
+       7. ANIMATION LOOP
+    ========================================================================= */
+    const clock = new THREE.Clock();
+    let fCount = 0;
+    let lastFps = performance.now();
+
+    function animate() {
+      requestAnimationFrame(animate);
+      const elapsed = clock.getElapsedTime();
+
+      // Smooth Explode Interpolation
+      currentExplode += (targetExplode - currentExplode) * 0.08;
+      explodableParts.forEach(part => {
+        const targetPos = part.basePos.clone().addScaledVector(part.explodeOffset, currentExplode);
+        part.group.position.copy(targetPos);
+      });
+
+      // Alive Core Animations
+      coreCrystal.rotation.y = elapsed * 0.7;
+      coreCrystal.rotation.x = Math.sin(elapsed * 0.5) * 0.25;
+      coreWire.rotation.y = -elapsed * 0.45;
+      gyroRing1.rotation.x = elapsed * 0.85;
+      gyroRing1.rotation.y = elapsed * 0.45;
+      gyroRing2.rotation.z = -elapsed * 0.65;
+      assemblyRoot.position.y = 0.5 + Math.sin(elapsed * 1.4) * 0.14;
+      dataStars.rotation.y = elapsed * 0.03;
+
+      if (camGoalPos && camGoalTarget) {
+        camera.position.lerp(camGoalPos, 0.065);
+        controls.target.lerp(camGoalTarget, 0.065);
+        if (camera.position.distanceTo(camGoalPos) < 0.08) {
+          camGoalPos = null;
+          camGoalTarget = null;
+        }
+      }
+
+      controls.update();
+      renderer.render(scene, camera);
+
+      fCount++;
+      const now = performance.now();
+      if (now - lastFps >= 1000) {
+        document.getElementById('hud-fps').textContent = fCount + ' FPS';
+        fCount = 0;
+        lastFps = now;
+      }
+    }
+    animate();
+
+    window.addEventListener('resize', () => {
+      camera.aspect = container.clientWidth / container.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(container.clientWidth, container.clientHeight);
+    });
+  </script>
+</body>
+</html>
