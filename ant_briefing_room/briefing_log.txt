@@ -1627,3 +1627,8 @@ error: failed to push some refs to 'https://github.com/kyanos-kr/kyanos-kr.githu
 🧹 [자동 폐기 관제] 3일 이전(2026-11-24 이전) 경과 취재원석 자동 정밀 정리 가동...
   🗑️ [영구 폐기 완료]: briefing_20261123.md
   -> 총 1개의 3일 경과 취재원석 파일이 영구 자동 폐기되었습니다.
+  [Git Notice] git pull rebase 알림 (시도 1/3): Git 실행 오류: From https://github.com/kyanos-kr/kyanos-kr.github.io
+ * branch            main       -> FETCH_HEAD
+fatal: Cannot rebase onto multiple branches.
+  [Git] GitHub Pages 라이브 배포 완료: https://kyanos-kr.github.io/ant_briefing_room/ (2026-11-27 08:50)
+[2026-11-27  8:50:49.25] AntNews Briefing Room Update Completed (Code: 0) 

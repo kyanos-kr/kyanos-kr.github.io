@@ -13,8 +13,8 @@ import os
 from typing import List, Dict
 
 OLLAMA_API = os.environ.get("OLLAMA_API", "http://localhost:11434/api/generate")
-MODEL      = "exaone3.5:2.4b"
-TIMEOUT    = 35
+MODEL      = os.environ.get("OLLAMA_MODEL", "llama3.2:latest")
+TIMEOUT    = 60
 
 # ──────────────────────────────────────────────────────────
 # 1. Ollama AI 오리지널 전략 분석 프롬프트
