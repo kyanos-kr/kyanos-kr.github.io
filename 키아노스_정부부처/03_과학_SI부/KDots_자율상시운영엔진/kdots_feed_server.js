@@ -1,8 +1,8 @@
 /**
- * Kyanos Cabinet Living Feed & Local Voice Call Server (v2.1)
+ * Kyanos Cabinet Autonomous Mind Server (v3.0)
  * - 127.0.0.1 루프백 전용 바인딩 (외부 네트워크 접근 원천 차단)
- * - 24/7 대화창 외부 상시 자율 심장박동 루프(autonomousTick, 60초 주기 감시) 내장
- * - 순수 키아노스 로컬 직통 통화(/api/call) + 신경망 TTS 스트리밍(/api/tts) 제공
+ * - 24/7 대화창 외부 상시 자율 사유 루프(autonomousTick, 60초 주기 감시)
+ * - 수동적 대화창 없이 국왕 의결(/api/stance) 및 능동 발제 육성(/api/tts) 제공
  */
 
 const http = require('http');
@@ -13,8 +13,7 @@ const {
   updateLivingBridge,
   autonomousTick,
   addPublicationSeed,
-  replyToFeedItem,
-  converseWithPersona,
+  recordRoyalStance,
   loadCabinetFeed,
   loadCabinetMemory,
   CABINET_FEED_FILE
@@ -71,7 +70,7 @@ function readJsonBody(req) {
 
 function synthesizeNeuralTts(persona, text) {
   return new Promise((resolve, reject) => {
-    const cleanText = String(text || '').replace(/\s+/g, ' ').trim().slice(0, 400);
+    const cleanText = String(text || '').replace(/\*\*/g, '').replace(/\s+/g, ' ').trim().slice(0, 450);
     if (!cleanText) return reject(new Error('음성 변환 문장이 비어 있습니다.'));
     if (!fs.existsSync(VENV_PYTHON) || !fs.existsSync(TTS_SCRIPT)) {
       return reject(new Error('TTS 실행 환경이 준비되지 않았습니다.'));
@@ -109,7 +108,7 @@ function runDaemonTick() {
   try {
     const res = autonomousTick();
     if (res.pulsed) {
-      logServer(`Autonomous pulse triggered (${res.result.phase}, posts=${res.result.cabinetPosts})`);
+      logServer(`Autonomous deliberation triggered (${res.result.phase}, posts=${res.result.cabinetPosts})`);
     }
   } catch (err) {
     logServer(`Autonomous tick error: ${err.message}`);
@@ -131,6 +130,7 @@ const server = http.createServer(async (req, res) => {
       sendJson(res, 200, {
         ok: true,
         mode: 'ROYAL_INTERNAL_ONLY',
+        architecture: 'AUTONOMOUS_OPINION_ENGINE_V3',
         autonomous_daemon: true,
         heartbeat_ms: HEARTBEAT_MS,
         host: HOST,
@@ -158,16 +158,9 @@ const server = http.createServer(async (req, res) => {
       return;
     }
 
-    if (req.method === 'POST' && reqPath === '/api/reply') {
+    if (req.method === 'POST' && reqPath === '/api/stance') {
       const body = await readJsonBody(req);
-      const result = replyToFeedItem(body.itemId, body.text);
-      sendJson(res, 200, { ok: true, result, feed: loadCabinetFeed(), memory: loadCabinetMemory() });
-      return;
-    }
-
-    if (req.method === 'POST' && reqPath === '/api/call') {
-      const body = await readJsonBody(req);
-      const result = converseWithPersona(body.persona, body.text);
+      const result = recordRoyalStance(body.itemId, body.stance, body.note || '');
       sendJson(res, 200, result);
       return;
     }
@@ -194,6 +187,6 @@ const server = http.createServer(async (req, res) => {
 server.listen(PORT, HOST, () => {
   runDaemonTick();
   setInterval(runDaemonTick, HEARTBEAT_MS);
-  logServer(`Autonomous Living Feed & Voice Call Server active on http://${HOST}:${PORT}`);
-  console.log(`🏛️ 키아노스 24/7 자율 내각 피드 & 직통 통화 서버 가동: http://${HOST}:${PORT}`);
+  logServer(`Autonomous Cabinet Mind Server v3.0 active on http://${HOST}:${PORT}`);
+  console.log(`🏛️ 키아노스 자율 내각 능동 발제 서버 가동: http://${HOST}:${PORT}`);
 });
