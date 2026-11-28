@@ -422,6 +422,81 @@
     ::-webkit-scrollbar { width: 6px; height: 6px; }
     ::-webkit-scrollbar-track { background: transparent; }
     ::-webkit-scrollbar-thumb { background: rgba(148, 163, 184, 0.25); border-radius: 3px; }
+
+    /* Real Photo Reference & Modal */
+    .ref-photo-wrap {
+      position: relative;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      cursor: zoom-in;
+      background: #070b14;
+      aspect-ratio: 16 / 9;
+    }
+    .ref-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.25s ease;
+    }
+    .ref-photo-wrap:hover img { transform: scale(1.03); }
+    .ref-photo-cap {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 5px 8px;
+      background: linear-gradient(transparent, rgba(7, 11, 20, 0.88));
+      font-size: 10.5px;
+      color: #e2e8f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .photo-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(5, 8, 16, 0.88);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .photo-modal.open { display: flex; }
+    .photo-modal-card {
+      max-width: 960px;
+      width: 100%;
+      background: var(--bg-panel);
+      border: 1px solid var(--border-active);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65);
+    }
+    .photo-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border-subtle);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .photo-modal-body img {
+      width: 100%;
+      max-height: 70vh;
+      object-fit: cover;
+      display: block;
+    }
+    .photo-modal-footer {
+      padding: 10px 16px;
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      background: #0d1322;
+    }
   </style>
 </head>
 <body>
@@ -600,6 +675,20 @@
   <aside class="right-panel">
     <div class="panel-section">
       <div class="section-title">
+        <span>실물 형태 레퍼런스</span>
+        <span style="font-size:10px; color:var(--text-muted); font-weight:400;">클릭 시 확대</span>
+      </div>
+      <div class="ref-photo-wrap" onclick="openPhotoModal()">
+        <img id="ref-photo-img" src="assets/archicad/9_modular.jpg" alt="모델 실물 형태">
+        <div class="ref-photo-cap">
+          <span id="ref-photo-title">9평형 모듈식 세컨하우스</span>
+          <span style="color:var(--accent-cyan);">🔍 크게 보기</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <div class="section-title">
         <span id="model-name-label">9평형 모듈식 세컨하우스</span>
       </div>
       <div class="spec-grid">
@@ -647,6 +736,30 @@
     <div id="status-coords">X: 0 mm | Y: 0 mm | SNAP: 100 mm</div>
     <div id="status-msg">준비 완료 · 2D 마우스 휠(줌) / 드래그(이동) · 3D 좌클릭 회전 / 우클릭 이동</div>
   </footer>
+</div>
+
+<!-- 실물 형태 확대 모달 -->
+<div class="photo-modal" id="photo-modal" onclick="if(event.target===this) closePhotoModal()">
+  <div class="photo-modal-card">
+    <div class="photo-modal-header">
+      <span id="modal-photo-title">모델 실물 형태</span>
+      <button class="btn" onclick="closePhotoModal()">✕ 닫기</button>
+    </div>
+    <div class="photo-modal-body">
+      <img id="modal-photo-img" src="assets/archicad/9_modular.jpg" alt="모델 실물 확대">
+    </div>
+    <div class="photo-modal-footer">
+      <div style="display:flex; gap:6px; flex-wrap:wrap;">
+        <button class="mini-btn" onclick="switchFromModal('9','modular')">9평 모듈식</button>
+        <button class="mini-btn" onclick="switchFromModal('9','custom')">9평 일반</button>
+        <button class="mini-btn" onclick="switchFromModal('15','modular')">15평 모듈식</button>
+        <button class="mini-btn" onclick="switchFromModal('15','custom')">15평 일반</button>
+        <button class="mini-btn" onclick="switchFromModal('25','modular')">25평 모듈식</button>
+        <button class="mini-btn" onclick="switchFromModal('25','custom')">25평 일반</button>
+      </div>
+      <span style="font-size:11px; color:var(--text-muted);">* 건축 이해를 돕기 위한 실물 레퍼런스 이미지</span>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -1659,6 +1772,15 @@ function build3DHouse() {
 function updateInspector() {
   const p = getCurrentPreset();
   document.getElementById('model-name-label').textContent = p.title;
+  const photoPath = `assets/archicad/${p.id}.jpg`;
+  const refImg = document.getElementById('ref-photo-img');
+  if (refImg) refImg.src = photoPath;
+  const refTitle = document.getElementById('ref-photo-title');
+  if (refTitle) refTitle.textContent = p.title;
+  const modalImg = document.getElementById('modal-photo-img');
+  if (modalImg) modalImg.src = photoPath;
+  const modalTitle = document.getElementById('modal-photo-title');
+  if (modalTitle) modalTitle.textContent = `${p.title} — 실물 형태 레퍼런스`;
   document.getElementById('spec-area').textContent = `${p.areaSqm.toFixed(1)} ㎡`;
   document.getElementById('spec-pyeong').textContent = `${p.pyeong.toFixed(1)} 평`;
 
@@ -1858,9 +1980,37 @@ function exportSVG() {
   a.click();
 }
 
+function openPhotoModal() {
+  document.getElementById('photo-modal').classList.add('open');
+}
+function closePhotoModal() {
+  document.getElementById('photo-modal').classList.remove('open');
+}
+function switchFromModal(sz, tp) {
+  state.size = sz;
+  state.type = tp;
+  document.querySelectorAll('#size-selector .seg-btn').forEach(b => b.classList.toggle('active', b.dataset.size === sz));
+  document.querySelectorAll('#type-selector .seg-btn').forEach(b => {
+    b.classList.remove('active', 'active-gold');
+    if (b.dataset.type === tp) b.classList.add(tp === 'custom' ? 'active-gold' : 'active');
+  });
+  resetCurrentModel();
+}
+
 // 초기화
 window.addEventListener('resize', resizeCanvases);
 window.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
+  const m = params.get('model');
+  if (m && MODEL_PRESETS[m]) {
+    state.size = MODEL_PRESETS[m].size;
+    state.type = MODEL_PRESETS[m].type;
+    document.querySelectorAll('#size-selector .seg-btn').forEach(b => b.classList.toggle('active', b.dataset.size === state.size));
+    document.querySelectorAll('#type-selector .seg-btn').forEach(b => {
+      b.classList.remove('active', 'active-gold');
+      if (b.dataset.type === state.type) b.classList.add(state.type === 'custom' ? 'active-gold' : 'active');
+    });
+  }
   initThree();
   updateInspector();
   resizeCanvases();
