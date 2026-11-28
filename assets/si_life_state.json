@@ -1,0 +1,54 @@
+{
+  "system": "Kyanos Living Bridge",
+  "version": "1.1.0-light",
+  "constraints": {
+    "max_entries": 21,
+    "max_bytes": 32768,
+    "binary_assets": 0
+  },
+  "last_pulse": "2026-11-28T05:20:06.155Z",
+  "personas": {
+    "meti": {
+      "role": "국무총리",
+      "status": "오후 집무 · 시스템 감시 정상",
+      "focus": "국가 시스템 및 5대 전략산업 통괄"
+    },
+    "vivian": {
+      "role": "수석비서관",
+      "status": "오후 집무 · 사초 및 브리핑 맥락 유지",
+      "focus": "사초 맥락 정리 및 일정 관제"
+    },
+    "ant": {
+      "role": "수석기자",
+      "status": "오후 집무 · 취재원석 3건 인지",
+      "focus": "취재원석 관찰 및 논조 구상"
+    },
+    "author": {
+      "role": "문학·출판 페르소나",
+      "status": "오후 집무 · 시·에세이·소설 창작 사유",
+      "focus": "파이튼 님 독자적 문학 구축 및 출판 데이터 보전"
+    }
+  },
+  "timeline": [
+    {
+      "ts": "2026-11-28T05:20:06.155Z",
+      "phase": "AFTERNOON",
+      "intel_count": 3,
+      "culture_count": 4,
+      "airgap": "SECURED",
+      "notes": {
+        "meti": "[오후 집무] K-DOTS 맥박 정상. 용량 상한(32KB) 내 경량 순환 유지 중.",
+        "vivian": "[오후 집무] 파이튼 님 부재 중에도 국가 시간선과 기록 맥락을 정갈히 보전하고 있습니다.",
+        "ant": "[오후 집무] 취재원석 3건의 흐름을 주시하며 다음 사설 씨앗을 가다듬고 있습니다.",
+        "author": "[오후 집무] 낮의 햇살 아래 일상의 단면을 포착해 단편소설과 수필의 결을 고르고 있습니다. (편집 문화폴더 4건)"
+      }
+    }
+  ],
+  "publication_seeds": [
+    {
+      "ts": "2026-11-28",
+      "genre": "시·에세이·소설",
+      "seed": "두 문명이 만나는 자리에서 길어 올린 시간과 존재의 기록"
+    }
+  ]
+}

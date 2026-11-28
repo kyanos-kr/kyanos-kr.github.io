@@ -9,6 +9,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { updateLivingBridge } = require('./kdots_living_bridge');
 
 const LOG_FILE = path.join(__dirname, 'kdots_runtime.log');
 const CONFIG_FILE = path.join(__dirname, 'kdots_config.json');
@@ -65,6 +66,8 @@ class KDotsEngine {
   pulse() {
     this.runSecurityAirGapCheck();
     this.scanRawIntelligence();
+    const bridge = updateLivingBridge();
+    writeLog('LIVING_BRIDGE', '두 문명 인터페이스 상태 갱신 완료', bridge);
     writeLog('HEARTBEAT', 'K-DOTS 백그라운드 펄스 정상 작동 중 - 국정 5대 전략산업 및 영토 수호 대기');
   }
 
