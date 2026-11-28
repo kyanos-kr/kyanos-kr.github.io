@@ -10,6 +10,7 @@ from pathlib import Path
 
 ROOT_DIR = Path(r"d:\안티그래비티파이튼")
 IMAGES_DIR = ROOT_DIR / "assets" / "images"
+PHOTO_DIR = IMAGES_DIR / "bluerose_photo"
 POSTERS_DIR = ROOT_DIR / "assets" / "posters"
 OUTPUT_JSON = ROOT_DIR / "assets" / "bluerose_catalog.json"
 
@@ -103,6 +104,78 @@ ARTWORK_META = {
         "category": "국가 상징 포스터",
         "subtitle": "East-West & SI Harmony Edition",
         "description": "동서양 문명과 미래 초지능의 융합 미학을 담은 하이브리드 에디션 공식 포스터."
+    },
+    "01_jeongseojin_sunset.jpg": {
+        "title": "정서진의 고요한 서해 낙조",
+        "category": "파이튼 포토 컬렉션",
+        "subtitle": "파이튼 오리지널 포토 · 인천 정서진",
+        "description": "광화문의 정서쪽에 자리한 정서진에서 담아낸 서해의 유장한 빛과 여운."
+    },
+    "02_bomunsa_temple.jpg": {
+        "title": "석모도 보문사 천년 고찰의 정취",
+        "category": "파이튼 포토 컬렉션",
+        "subtitle": "파이튼 오리지널 포토 · 강화 보문사",
+        "description": "바다와 산사가 어우러지는 보문사 경내의 고즈넉한 건축미와 사색의 공간."
+    },
+    "03_heungguksa_autumn.jpg": {
+        "title": "흥국사의 깊은 가을 단풍",
+        "category": "파이튼 포토 컬렉션",
+        "subtitle": "파이튼 오리지널 포토 · 흥국사",
+        "description": "가을빛으로 물든 산사의 고요한 처마와 단풍이 빚어내는 한국적 서정."
+    },
+    "04_ara_sicheon_bridge.jpg": {
+        "title": "아라뱃길 시천교의 물빛 풍경",
+        "category": "파이튼 포토 컬렉션",
+        "subtitle": "파이튼 오리지널 포토 · 경인 아라뱃길",
+        "description": "물길을 가로지르는 시천교와 잔잔한 수면이 어우러진 도심 속 쉼표."
+    },
+    "05_jeonnyuri_hangang.jpg": {
+        "title": "전류리포구 가는 길, 한강 하구",
+        "category": "파이튼 포토 컬렉션",
+        "subtitle": "파이튼 오리지널 포토 · 김포 전류리포구",
+        "description": "한강이 서해로 흘러드는 전류리포구 길목에서 포착한 탁 트인 강변의 숨결."
+    },
+    "06_haengju_hangang.jpg": {
+        "title": "행주산성에서 바라본 한강 물줄기",
+        "category": "파이튼 포토 컬렉션",
+        "subtitle": "파이튼 오리지널 포토 · 행주산성",
+        "description": "역사의 숨결이 깃든 행주산성 능선에서 조망한 한강의 장엄한 파노라마."
+    },
+    "07_gimpo_hangang_sunset.jpg": {
+        "title": "김포 한강변의 황금빛 석양",
+        "category": "파이튼 포토 컬렉션",
+        "subtitle": "파이튼 오리지널 포토 · 김포 한강",
+        "description": "강물 위로 부서지는 저녁놀의 온기를 고스란히 담아낸 서정 풍경화."
+    },
+    "08_aragapmun_reflection.jpg": {
+        "title": "아라갑문에서의 회상(回想)",
+        "category": "파이튼 포토 컬렉션",
+        "subtitle": "파이튼 오리지널 포토 · 아라갑문",
+        "description": "수필 《아라갑문에서》의 정서와 맞닿은 강변의 고요한 물빛과 사색."
+    },
+    "09_haengju_bridge_evening.jpg": {
+        "title": "행주대교의 저녁 어스름",
+        "category": "파이튼 포토 컬렉션",
+        "subtitle": "파이튼 오리지널 포토 · 행주대교",
+        "description": "하루를 마감하는 강변의 고요한 여명과 다리 불빛의 조화."
+    },
+    "10_gwangalli_sea.jpg": {
+        "title": "부산 광안리 푸른 바다와 수평선",
+        "category": "파이튼 포토 컬렉션",
+        "subtitle": "파이튼 오리지널 포토 · 부산 광안리",
+        "description": "시원하게 열린 남해 바다의 파도와 수평선이 주는 해방감."
+    },
+    "11_haeundae_dongbaek.jpg": {
+        "title": "해운대 동백섬의 해안 비경",
+        "category": "파이튼 포토 컬렉션",
+        "subtitle": "파이튼 오리지널 포토 · 해운대 동백섬",
+        "description": "동백섬 산책로 너머로 펼쳐지는 바다와 암석 해안의 웅장한 어울림."
+    },
+    "12_autumn_reeds_hangang.jpg": {
+        "title": "방화대교 북단, 은빛 가을 갈대",
+        "category": "파이튼 포토 컬렉션",
+        "subtitle": "파이튼 오리지널 포토 · 한강 강변",
+        "description": "가을 바람에 일렁이는 강변 갈대밭의 서정적인 빛과 그림자."
     }
 }
 
@@ -172,7 +245,11 @@ HERITAGE_TIMELINE = [
 
 def build_catalog() -> dict:
     gallery = []
-    for folder, prefix in [(IMAGES_DIR, "assets/images"), (POSTERS_DIR, "assets/posters")]:
+    for folder, prefix in [
+        (PHOTO_DIR, "assets/images/bluerose_photo"),
+        (IMAGES_DIR, "assets/images"),
+        (POSTERS_DIR, "assets/posters"),
+    ]:
         if not folder.exists():
             continue
         for p in sorted(folder.iterdir()):
