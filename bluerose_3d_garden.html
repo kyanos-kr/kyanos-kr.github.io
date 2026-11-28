@@ -419,6 +419,236 @@
       letter-spacing: 0.14em;
     }
 
+    /* Blue Rose 2.0: Sanctuary Tabs, Gallery, Poetry Salon & Heritage Timeline */
+    .sanctuary-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+    .s-tab-btn {
+      padding: 10px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(147, 197, 253, 0.3);
+      background: rgba(15, 23, 42, 0.72);
+      color: #cbd5e1;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-family: inherit;
+    }
+    .s-tab-btn:hover {
+      border-color: #60a5fa;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+    .s-tab-btn.active {
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      border-color: #93c5fd;
+      color: #ffffff;
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.45);
+    }
+    .s-pane { display: none; animation: fadeInPane 0.35s ease; }
+    .s-pane.active { display: block; }
+    @keyframes fadeInPane {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .gallery-filters {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 1.8rem;
+    }
+    .filter-pill {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(30, 41, 59, 0.6);
+      color: #94a3b8;
+      font-size: 0.76rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+    .filter-pill.active, .filter-pill:hover {
+      background: rgba(59, 130, 246, 0.25);
+      border-color: #60a5fa;
+      color: #fff;
+    }
+
+    .art-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 22px;
+      margin-bottom: 3rem;
+    }
+    .art-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(147, 197, 253, 0.2);
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .art-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(253, 230, 138, 0.55);
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.55);
+    }
+    .art-thumb {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+      background: #0f172a;
+    }
+    .art-body { padding: 1.15rem 1.25rem; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .art-cat {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #93c5fd;
+      margin-bottom: 0.35rem;
+    }
+    .art-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: #fffbeb;
+      margin-bottom: 0.3rem;
+    }
+    .art-sub { font-size: 0.78rem; color: #94a3b8; }
+
+    .poetry-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 22px;
+      margin-bottom: 2.5rem;
+    }
+    .poem-card {
+      background: linear-gradient(160deg, rgba(16, 24, 48, 0.88), rgba(30, 27, 75, 0.65));
+      border: 1px solid rgba(184, 148, 255, 0.28);
+      border-radius: 18px;
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .poem-meta { font-size: 0.72rem; color: #c4b5fd; font-weight: 700; letter-spacing: 0.06em; margin-bottom: 0.4rem; }
+    .poem-title { font-family: 'Noto Serif KR', serif; font-size: 1.25rem; font-weight: 900; color: #fde68a; margin-bottom: 0.9rem; }
+    .poem-excerpt {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 0.92rem;
+      line-height: 1.85;
+      color: #e2e8f0;
+      white-space: pre-line;
+      padding: 1rem 1.1rem;
+      background: rgba(7, 11, 26, 0.55);
+      border-left: 3px solid #60a5fa;
+      border-radius: 0 10px 10px 0;
+      margin-bottom: 0.9rem;
+    }
+    .poem-note { font-size: 0.8rem; color: #94a3b8; margin-bottom: 1rem; }
+    .poem-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .poem-btn {
+      padding: 7px 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(253, 230, 138, 0.45);
+      background: rgba(245, 158, 11, 0.14);
+      color: #fde68a;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s ease;
+    }
+    .poem-btn:hover { background: rgba(245, 158, 11, 0.3); color: #fff; }
+
+    .award-banner {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.16), rgba(59, 130, 246, 0.16));
+      border: 1px solid rgba(245, 158, 11, 0.45);
+      border-radius: 18px;
+      padding: 1.8rem 2rem;
+      margin-bottom: 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .timeline-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      max-width: 860px;
+      margin: 0 auto 3rem;
+    }
+    .timeline-item {
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+      background: var(--card-bg);
+      border: 1px solid rgba(96, 165, 250, 0.22);
+      border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+    }
+    .tl-date {
+      min-width: 88px;
+      padding: 4px 10px;
+      border-radius: 8px;
+      background: rgba(59, 130, 246, 0.2);
+      border: 1px solid rgba(147, 197, 253, 0.4);
+      color: #93c5fd;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-align: center;
+    }
+    .tl-body h4 { font-family: 'Noto Serif KR', serif; font-size: 1.05rem; color: #fffbeb; margin-bottom: 0.25rem; }
+    .tl-body p { font-size: 0.84rem; color: #cbd5e1; }
+
+    /* Artwork Modal */
+    .art-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(4, 7, 18, 0.88);
+      backdrop-filter: blur(10px);
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    .art-modal.open { display: flex; }
+    .art-modal-box {
+      max-width: 860px;
+      width: 100%;
+      background: #0f172a;
+      border: 1px solid rgba(147, 197, 253, 0.45);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+    }
+    .art-modal-img { width: 100%; max-height: 58vh; object-fit: contain; background: #050814; display: block; }
+    .art-modal-info { padding: 1.5rem 1.8rem; }
+    .art-modal-close {
+      float: right;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
     footer {
       border-top: 1px solid rgba(147, 197, 253, 0.15);
       padding: 2.2rem 2rem;
@@ -468,10 +698,10 @@
     </div>
 
     <div class="telemetry-hud">
-      <div class="tel-row"><span class="tel-key">3D 외부 모델</span><span class="tel-val" style="color:#4ade80;">0 KB (순수 코드)</span></div>
+      <div class="tel-row"><span class="tel-key">3D 조형물</span><span class="tel-val" style="color:#4ade80;">푸른 장미 + 3대 성소 비석</span></div>
+      <div class="tel-row"><span class="tel-key">전시 컬렉션</span><span class="tel-val" id="hud-collection-stat">미술관 15점 · 시문학 4편</span></div>
       <div class="tel-row"><span class="tel-key">오디오 엔진</span><span class="tel-val" id="hud-audio-state">Web Audio 대기</span></div>
       <div class="tel-row"><span class="tel-key">현재 테마</span><span class="tel-val" id="hud-mood">야간 달빛 (Night)</span></div>
-      <div class="tel-row"><span class="tel-key">반딧불이 파티클</span><span class="tel-val">4,500 Pts</span></div>
       <div class="tel-row"><span class="tel-key">프레임 속도</span><span class="tel-val" id="hud-fps">60 FPS</span></div>
     </div>
 
@@ -523,59 +753,114 @@
     </div>
   </section>
 
-  <!-- Portal Content Section (Stage 3 Web Service Transformation) -->
+  <!-- Portal Content Section (Blue Rose Sanctuary 2.0) -->
   <section id="culture-portal" class="portal-section">
     <div class="section-head">
-      <div class="section-kicker">MINISTRY OF EDUCATION & CULTURE • DIGITAL SANCTUARY</div>
-      <h2 class="section-title">블루로즈 문화원 & 국립음악창작원 아카이브</h2>
+      <div class="section-kicker">BLUE ROSE CULTURAL ARTS FOUNDATION • SANCTUARY 2.0</div>
+      <h2 class="section-title">블루로즈 문화원 디지털 예술 전당</h2>
       <p class="section-sub">
-        키아노스 교육·문화부가 지향하는 문학·철학·음악의 품격 있는 안식처입니다. 무설치 3D 정원의 고요함 속에서 인류 문명의 고전과 파이튼 국왕의 서정 음악을 만나보실 수 있습니다.
+        키아노스의 국화 '파란 장미(기적과 영원)'의 미학을 시각예술·시문학·국가 헤리티지로 승화시킨 4대 통합 전시관입니다. 3D 정원 속 조형물이나 아래 탭을 통해 즉시 관람하실 수 있습니다.
       </p>
     </div>
 
-    <div class="card-grid">
-      <div class="culture-card">
-        <div>
-          <div class="card-icon">🎶</div>
-          <span class="card-tag">NATIONAL MUSIC STUDIO</span>
-          <h3>국립음악창작원 & 감성 음악실</h3>
-          <p>
-            〈가을 그리고 차 한잔〉을 비롯한 파이튼 국왕 원작 시 기반의 편곡 음원, 코드 악보, 전용 웹 플레이어를 통해 깊이 있는 음악적 여운을 감상합니다.
-          </p>
-        </div>
-        <a href="music_studio.html" class="card-cta">음악창작원 입장하기 →</a>
-      </div>
+    <!-- 4대 전시관 네비게이션 탭 -->
+    <div class="sanctuary-tabs">
+      <button class="s-tab-btn active" onclick="switchSanctuaryTab('tab-gallery', this)">🖼️ 블루로즈 디지털 미술관</button>
+      <button class="s-tab-btn" onclick="switchSanctuaryTab('tab-poetry', this)">✍️ 파이튼 시문학 & 문예 살롱</button>
+      <button class="s-tab-btn" onclick="switchSanctuaryTab('tab-heritage', this)">🏛️ 국가 문화 헤리티지 타임라인</button>
+      <button class="s-tab-btn" onclick="switchSanctuaryTab('tab-network', this)">🌐 교육·문화부 연계 관문</button>
+    </div>
 
-      <div class="culture-card">
-        <div>
-          <div class="card-icon">🏛️</div>
-          <span class="card-tag">HUMAN CIVILIZATION INSTITUTE</span>
-          <h3>국립 인류문명사연구원</h3>
-          <p>
-            세계 문학 불멸의 고전관, 동서양 사상·철학 서고, 인류 지성사 아카이브를 하나의 통합 포털에서 열람하고 사유의 깊이를 더합니다.
-          </p>
-        </div>
-        <a href="gov_culture.html" class="card-cta">교육·문화부 포털 이동 →</a>
+    <!-- 1. 디지털 미술관 -->
+    <div id="tab-gallery" class="s-pane active">
+      <div class="gallery-filters" id="gallery-filters">
+        <button class="filter-pill active" onclick="filterGallery('전체', this)">전체 컬렉션</button>
+        <button class="filter-pill" onclick="filterGallery('세계문학 아트워크', this)">세계문학 아트워크</button>
+        <button class="filter-pill" onclick="filterGallery('동서양 철학 회화', this)">동서양 철학 회화</button>
+        <button class="filter-pill" onclick="filterGallery('지성·과학 미학', this)">지성·과학 미학</button>
+        <button class="filter-pill" onclick="filterGallery('국가 상징 포스터', this)">국가 상징 포스터</button>
       </div>
+      <div class="art-grid" id="art-gallery-grid"></div>
+    </div>
 
-      <div class="culture-card">
+    <!-- 2. 파이튼 시문학 & 문예 살롱 -->
+    <div id="tab-poetry" class="s-pane">
+      <div class="award-banner">
         <div>
-          <div class="card-icon">🦾</div>
-          <span class="card-tag">SCIENCE & SI SHOWROOM</span>
-          <h3>Project TALOS 3D 전략산업 쇼룸</h3>
-          <p>
-            동일한 무설치 Three.js 엔진으로 구현된 과학·SI부 및 경제부 5대 미래 전략 산업(2차전지·EV·반도체·SI·로봇) 실시간 3D 부품 분해 쇼룸을 체험합니다.
-          </p>
+          <div style="font-size:0.75rem; font-weight:700; color:#fde68a; letter-spacing:0.1em; margin-bottom:4px;">🏆 PYTHON LITERARY AWARD & HALL OF FAME</div>
+          <h3 style="font-family:'Noto Serif KR',serif; font-size:1.3rem; color:#fffbeb; margin-bottom:4px;">제1회 파이튼 문학상 & 서정 명시 선집</h3>
+          <p style="font-size:0.86rem; color:#cbd5e1;">이백의 호방함, 두보의 시대적 사색, 릴케의 사랑이 어우러진 파이튼 국왕의 창작 시문학(제1~3권 50편 컴파일) 중 대표 명시와 산문을 음성 낭독과 함께 감상합니다.</p>
         </div>
-        <a href="talos_3d_showroom.html" class="card-cta">TALOS 3D 쇼룸 이동 →</a>
+        <button class="poem-btn" onclick="stopPoemSpeech()">⏹ 낭독 정지</button>
+      </div>
+      <div class="poetry-grid" id="poetry-salon-grid"></div>
+    </div>
+
+    <!-- 3. 국가 문화 헤리티지 타임라인 -->
+    <div id="tab-heritage" class="s-pane">
+      <div class="timeline-list" id="heritage-timeline-list"></div>
+    </div>
+
+    <!-- 4. 교육·문화부 연계 관문 -->
+    <div id="tab-network" class="s-pane">
+      <div class="card-grid">
+        <div class="culture-card">
+          <div>
+            <div class="card-icon">🎶</div>
+            <span class="card-tag">NATIONAL MUSIC STUDIO</span>
+            <h3>국립음악창작원 & 감성 음악실</h3>
+            <p>
+              〈가을 그리고 차 한잔〉을 비롯한 파이튼 국왕 원작 시 기반의 편곡 음원, 코드 악보, 전용 웹 플레이어를 통해 깊이 있는 음악적 여운을 감상합니다.
+            </p>
+          </div>
+          <a href="music_studio.html" class="card-cta">음악창작원 입장하기 →</a>
+        </div>
+
+        <div class="culture-card">
+          <div>
+            <div class="card-icon">🏛️</div>
+            <span class="card-tag">HUMAN CIVILIZATION INSTITUTE</span>
+            <h3>국립 인류문명사연구원</h3>
+            <p>
+              세계 문학 불멸의 17대 고전관, 동서양 사상·철학 서고, 인류 지성사 아카이브를 하나의 통합 포털에서 열람하고 사유의 깊이를 더합니다.
+            </p>
+          </div>
+          <a href="gov_culture.html" class="card-cta">교육·문화부 포털 이동 →</a>
+        </div>
+
+        <div class="culture-card">
+          <div>
+            <div class="card-icon">🦾</div>
+            <span class="card-tag">SCIENCE & SI SHOWROOM</span>
+            <h3>Project TALOS 3D 전략산업 쇼룸</h3>
+            <p>
+              동일한 무설치 Three.js 엔진으로 구현된 과학·SI부 및 경제부 5대 미래 전략 산업(2차전지·EV·반도체·SI·로봇) 실시간 3D 부품 분해 쇼룸을 체험합니다.
+            </p>
+          </div>
+          <a href="talos_3d_showroom.html" class="card-cta">TALOS 3D 쇼룸 이동 →</a>
+        </div>
       </div>
     </div>
 
     <div class="quote-banner">
       <p class="quote-text">“우리는 음지에서 일하고, 양지를 지향한다 — 기술은 차가운 코드가 아니라 인간의 영혼을 위로하는 빛이 되어야 한다.”</p>
-      <div class="quote-author">KYANOS SOVEREIGN NATION • MINISTRY OF EDUCATION & CULTURE</div>
+      <div class="quote-author">KYANOS SOVEREIGN NATION • BLUE ROSE CULTURAL ARTS FOUNDATION 2.0</div>
     </div>
   </section>
+
+  <!-- Artwork Lightbox Modal -->
+  <div class="art-modal" id="art-modal" onclick="if(event.target===this) closeArtModal()">
+    <div class="art-modal-box">
+      <img id="modal-art-img" class="art-modal-img" src="" alt="">
+      <div class="art-modal-info">
+        <button class="art-modal-close" onclick="closeArtModal()">닫기 ✕</button>
+        <div id="modal-art-cat" class="art-cat"></div>
+        <h3 id="modal-art-title" style="font-family:'Noto Serif KR',serif; font-size:1.35rem; color:#fde68a; margin-bottom:0.35rem;"></h3>
+        <div id="modal-art-sub" style="font-size:0.85rem; color:#93c5fd; margin-bottom:0.75rem;"></div>
+        <p id="modal-art-desc" style="font-size:0.9rem; color:#cbd5e1; line-height:1.7;"></p>
+      </div>
+    </div>
+  </div>
 
   <footer>
     © 2026 KYANOS SOVEREIGN NATION • BLUE ROSE 3D DIGITAL GARDEN (Pure Three.js + Web Audio API)
@@ -891,6 +1176,44 @@
       pulseRings.push({ mesh: ring, age: 0 });
     }
 
+    // 3D Sculpture Park Monuments (Gallery Obelisk, Poetry Stele, Heritage Beacon)
+    const monumentTargets = [];
+    function createSanctuaryMonument(x, z, colorHex, tabId, label) {
+      const mGroup = new THREE.Group();
+      mGroup.position.set(x, 0, z);
+      const base = new THREE.Mesh(new THREE.CylinderGeometry(0.85, 1.0, 0.4, 8), stoneMat);
+      base.position.y = 0.2;
+      mGroup.add(base);
+
+      const body = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.32, 0.48, 2.7, 6),
+        new THREE.MeshStandardMaterial({ color: 0x0f172a, roughness: 0.25, metalness: 0.75 })
+      );
+      body.position.y = 1.75;
+      body.castShadow = true;
+      mGroup.add(body);
+
+      const crystal = new THREE.Mesh(
+        new THREE.OctahedronGeometry(0.45, 0),
+        new THREE.MeshStandardMaterial({
+          color: colorHex,
+          emissive: colorHex,
+          emissiveIntensity: 0.9,
+          roughness: 0.15,
+          metalness: 0.5
+        })
+      );
+      crystal.position.y = 3.55;
+      crystal.userData = { tabId, label };
+      mGroup.add(crystal);
+      monumentTargets.push(crystal);
+      lanternOrbs.push({ mesh: crystal, baseY: 3.55, phase: x + z });
+      scene.add(mGroup);
+    }
+    createSanctuaryMonument(-5.8, 2.5, 0x60a5fa, 'tab-gallery', '디지털 미술관');
+    createSanctuaryMonument(5.8, 2.5, 0xc084fc, 'tab-poetry', '파이튼 시문학 살롱');
+    createSanctuaryMonument(0, -6.2, 0xf59e0b, 'tab-heritage', '국가 헤리티지 타임라인');
+
     /* =========================================================================
        6. FIREFLY & STARLIGHT PARTICLE ENSEMBLE (4,500 POINTS)
     ========================================================================= */
@@ -1129,7 +1452,7 @@
       }
     }
 
-    // Raycaster click on Blue Rose
+    // Raycaster click on Blue Rose & 3D Sanctuary Monuments
     const raycaster = new THREE.Raycaster();
     const pointer = new THREE.Vector2();
     renderer.domElement.addEventListener('click', (e) => {
@@ -1138,7 +1461,18 @@
       pointer.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
       raycaster.setFromCamera(pointer, camera);
       const hits = raycaster.intersectObjects(blossomGroup.children, true);
-      if (hits.length > 0) triggerBloomPulse();
+      if (hits.length > 0) {
+        triggerBloomPulse();
+        return;
+      }
+      const mHits = raycaster.intersectObjects(monumentTargets, false);
+      if (mHits.length > 0) {
+        const targetTab = mHits[0].object.userData.tabId;
+        triggerBloomPulse();
+        const btn = document.querySelector(`.s-tab-btn[onclick*="${targetTab}"]`);
+        if (btn) switchSanctuaryTab(targetTab, btn);
+        document.getElementById('culture-portal').scrollIntoView({ behavior: 'smooth' });
+      }
     });
 
     /* =========================================================================
@@ -1232,6 +1566,142 @@
       camera.updateProjectionMatrix();
       renderer.setSize(container.clientWidth, container.clientHeight);
     });
+
+    /* =========================================================================
+       10. BLUE ROSE SANCTUARY 2.0 CATALOG LOADER & INTERACTIVE TABS
+    ========================================================================= */
+    let catalogData = null;
+    let currentGalleryFilter = '전체';
+
+    function switchSanctuaryTab(paneId, btnEl) {
+      document.querySelectorAll('.s-pane').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.s-tab-btn').forEach(b => b.classList.remove('active'));
+      const target = document.getElementById(paneId);
+      if (target) target.classList.add('active');
+      if (btnEl) btnEl.classList.add('active');
+    }
+
+    function filterGallery(category, btnEl) {
+      currentGalleryFilter = category;
+      document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+      if (btnEl) btnEl.classList.add('active');
+      renderGallery();
+    }
+
+    function renderGallery() {
+      const grid = document.getElementById('art-gallery-grid');
+      if (!grid || !catalogData) return;
+      const items = currentGalleryFilter === '전체'
+        ? catalogData.gallery
+        : catalogData.gallery.filter(item => item.category === currentGalleryFilter);
+      grid.innerHTML = items.map((item, idx) => `
+        <div class="art-card" onclick="openArtModal('${item.filename}')">
+          <img class="art-thumb" src="${item.src}" alt="${item.title}" loading="lazy">
+          <div class="art-body">
+            <div>
+              <div class="art-cat">${item.category}</div>
+              <div class="art-title">${item.title}</div>
+            </div>
+            <div class="art-sub">${item.subtitle}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function openArtModal(filename) {
+      if (!catalogData) return;
+      const item = catalogData.gallery.find(g => g.filename === filename);
+      if (!item) return;
+      document.getElementById('modal-art-img').src = item.src;
+      document.getElementById('modal-art-cat').textContent = item.category;
+      document.getElementById('modal-art-title').textContent = item.title;
+      document.getElementById('modal-art-sub').textContent = item.subtitle;
+      document.getElementById('modal-art-desc').textContent = item.description;
+      document.getElementById('art-modal').classList.add('open');
+    }
+
+    function closeArtModal() {
+      document.getElementById('art-modal').classList.remove('open');
+    }
+
+    function renderPoetrySalon() {
+      const grid = document.getElementById('poetry-salon-grid');
+      if (!grid || !catalogData) return;
+      grid.innerHTML = catalogData.poetry_salon.map(poem => `
+        <div class="poem-card">
+          <div>
+            <div class="poem-meta">${poem.volume} · ${poem.genre}</div>
+            <h3 class="poem-title">${poem.title}</h3>
+            <div class="poem-excerpt">${poem.excerpt}</div>
+            <p class="poem-note">${poem.note}</p>
+          </div>
+          <div class="poem-actions">
+            <button class="poem-btn" onclick="speakPoem('${poem.id}')">🔊 시 음성 낭독</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function speakPoem(poemId) {
+      if (!('speechSynthesis' in window) || !catalogData) return;
+      const poem = catalogData.poetry_salon.find(p => p.id === poemId);
+      if (!poem) return;
+      window.speechSynthesis.cancel();
+      const utter = new SpeechSynthesisUtterance(`${poem.title}. ${poem.excerpt}`);
+      utter.lang = 'ko-KR';
+      utter.rate = 0.88;
+      utter.pitch = 0.95;
+      window.speechSynthesis.speak(utter);
+    }
+
+    function stopPoemSpeech() {
+      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+    }
+
+    function renderHeritageTimeline() {
+      const list = document.getElementById('heritage-timeline-list');
+      if (!list || !catalogData) return;
+      list.innerHTML = catalogData.heritage_timeline.map(ev => `
+        <div class="timeline-item">
+          <div class="tl-date">${ev.date}</div>
+          <div class="tl-body">
+            <h4>${ev.title}</h4>
+            <p>${ev.desc}</p>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    async function initBlueRoseCatalog() {
+      try {
+        const res = await fetch('assets/bluerose_catalog.json?v=20261128');
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        catalogData = await res.json();
+      } catch (err) {
+        catalogData = {
+          stats: { gallery_count: 3, poetry_count: 1 },
+          gallery: [
+            { filename: 'kyanos_official_poster_kr.png', src: 'assets/posters/kyanos_official_poster_kr.png', title: '키아노스 건국 공식 포스터 (국문판)', category: '국가 상징 포스터', subtitle: 'Kyanos Sovereign Nation Official Poster', description: '덕치와 초지능(SI)의 조화를 천명한 키아노스 정부의 공식 국문 상징 포스터.' },
+            { filename: 'saint_exupery_little_prince.jpg', src: 'assets/images/saint_exupery_little_prince.jpg', title: '사막의 별빛과 길들여진 장미', category: '세계문학 아트워크', subtitle: '생텍쥐페리 — 어린 왕자', description: '눈에 보이지 않는 본질과 사랑의 책임을 별빛 아래 장미의 은유로 그려낸 서정 아트워크.' },
+            { filename: 'laozi_tao_te_ching.jpg', src: 'assets/images/laozi_tao_te_ching.jpg', title: '상선약수(上善若水), 고요한 도의 강물', category: '동서양 철학 회화', subtitle: '노자 — 도덕경', description: '물처럼 다투지 않고 만물을 이롭게 하는 덕치의 근원을 형상화한 작품.' }
+          ],
+          poetry_salon: [
+            { id: 'poem-dawn', title: '병오의 통곡 속 여명', volume: '제2권 《가을 그리고 차 한잔》 제5편', genre: '서정시', excerpt: '장미 가시 돋친 고독의 성소(聖所)\\n어둠을 등불 삼아 건너는 비극의 심연\\n고통의 재를 털어낸 저 뜨거운 이마 위로\\n내일의 눈동자가 눈부시게 열린다.', note: '내일을 향한 여명의 빛을 노래한 파이튼 국왕 대표 명시.' }
+          ],
+          heritage_timeline: [
+            { date: '2026.11.28', title: '블루로즈 문화원 2.0 전면 개편', desc: '3D 조형 파크, 디지털 미술관, 파이튼 시문학 살롱, 자동 카탈로그 통합 가동.' }
+          ]
+        };
+      }
+      const statEl = document.getElementById('hud-collection-stat');
+      if (statEl && catalogData.stats) {
+        statEl.textContent = `미술관 ${catalogData.stats.gallery_count}점 · 시문학 ${catalogData.stats.poetry_count}편`;
+      }
+      renderGallery();
+      renderPoetrySalon();
+      renderHeritageTimeline();
+    }
+    initBlueRoseCatalog();
   </script>
 </body>
 </html>
