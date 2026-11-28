@@ -993,6 +993,7 @@
       </div>
       <div id="lb-personas" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;"></div>
       <div id="lb-latest-notes" style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.88rem; color: var(--text-sub); display: grid; gap: 0.55rem;"></div>
+      <div id="lb-seeds" style="margin-top: 1rem; padding-top: 0.9rem; border-top: 1px dashed rgba(212,175,55,0.22); font-size: 0.82rem; color: var(--gold-light);"></div>
     </section>
   </main>
 
@@ -1188,6 +1189,10 @@
             notesEl.innerHTML = Object.entries(latest.notes).map(([k, txt]) =>
               `<div><strong style="color: var(--gold-light);">${icons[k] || k}:</strong> ${txt}</div>`
             ).join('');
+          }
+          const seedsEl = document.getElementById('lb-seeds');
+          if (seedsEl && Array.isArray(data.publication_seeds) && data.publication_seeds.length) {
+            seedsEl.innerHTML = '✒️ <strong>출판 창작 씨앗:</strong> ' + data.publication_seeds.map(s => `<span style="color:var(--text-sub);">[${s.ts} · ${s.genre}]</span> ${s.seed}`).join(' &nbsp;|&nbsp; ');
           }
         })
         .catch(() => { metaEl.textContent = '로컬 맥박 대기 중'; });
