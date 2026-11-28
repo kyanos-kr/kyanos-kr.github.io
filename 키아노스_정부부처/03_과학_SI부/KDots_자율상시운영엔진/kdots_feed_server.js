@@ -14,6 +14,7 @@ const {
   autonomousTick,
   addPublicationSeed,
   recordRoyalStance,
+  assertTripleLockSecurity,
   loadCabinetFeed,
   loadCabinetMemory,
   CABINET_FEED_FILE
@@ -70,8 +71,9 @@ function readJsonBody(req) {
 
 function synthesizeNeuralTts(persona, text) {
   return new Promise((resolve, reject) => {
-    const cleanText = String(text || '').replace(/\*\*/g, '').replace(/\s+/g, ' ').trim().slice(0, 450);
+    const cleanText = String(text || '').replace(/\*\*/g, '').replace(/\s+/g, ' ').trim().slice(0, 700);
     if (!cleanText) return reject(new Error('음성 변환 문장이 비어 있습니다.'));
+    assertTripleLockSecurity(cleanText);
     if (!fs.existsSync(VENV_PYTHON) || !fs.existsSync(TTS_SCRIPT)) {
       return reject(new Error('TTS 실행 환경이 준비되지 않았습니다.'));
     }

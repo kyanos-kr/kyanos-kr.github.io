@@ -687,6 +687,7 @@ module.exports = {
   autonomousTick,
   addPublicationSeed,
   recordRoyalStance,
+  assertTripleLockSecurity,
   loadCabinetFeed,
   loadCabinetMemory,
   CABINET_FEED_FILE,

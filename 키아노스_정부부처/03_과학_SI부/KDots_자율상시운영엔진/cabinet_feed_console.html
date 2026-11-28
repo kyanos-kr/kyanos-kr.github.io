@@ -220,6 +220,7 @@
       </div>
     </div>
     <div class="top-actions">
+      <button class="btn-ghost" id="stopAudioBtn" style="display:none; border-color:#fb7185; color:#fda4af;">⏹️ 음성 중지</button>
       <label class="pill" style="display:flex; align-items:center; gap:0.35rem; cursor:pointer;">
         <input type="checkbox" id="autoSpeakToggle" style="width:auto;"> 🔔 신규 발제 자동 육성 보고
       </label>
@@ -304,13 +305,27 @@
       return escapeHtml(text).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
     }
 
-    async function speakAsPersona(persona, text) {
-      if (!text) return;
+    function stopAllAudio() {
       if (currentAudio) {
         currentAudio.pause();
         currentAudio = null;
       }
       if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+      const stopBtn = document.getElementById('stopAudioBtn');
+      if (stopBtn) stopBtn.style.display = 'none';
+    }
+
+    function buildSpokenScript(meta, item) {
+      const speaker = (meta && meta.name) ? `${meta.name} 보고드립니다. ` : '';
+      const init = item.initiative ? ` 이어서 발제드립니다. ${item.initiative}` : '';
+      return `${speaker}${item.body}${init}`;
+    }
+
+    async function speakAsPersona(persona, text) {
+      if (!text) return;
+      stopAllAudio();
+      const stopBtn = document.getElementById('stopAudioBtn');
+      if (stopBtn) stopBtn.style.display = 'inline-block';
 
       try {
         const resp = await fetch('/api/tts', {
@@ -323,16 +338,24 @@
         const url = URL.createObjectURL(blob);
         const audio = new Audio(url);
         currentAudio = audio;
-        audio.onended = () => URL.revokeObjectURL(url);
+        audio.onended = () => {
+          URL.revokeObjectURL(url);
+          if (currentAudio === audio) stopAllAudio();
+        };
         await audio.play();
       } catch (_) {
         if ('speechSynthesis' in window) {
           const utter = new SpeechSynthesisUtterance(text.replace(/\*\*/g, ''));
           utter.lang = 'ko-KR';
+          utter.onend = () => stopAllAudio();
           window.speechSynthesis.speak(utter);
+        } else {
+          stopAllAudio();
         }
       }
     }
+
+    document.getElementById('stopAudioBtn').onclick = stopAllAudio;
 
     async function submitStance(itemId, stance, note = '') {
       const res = await fetch('/api/stance', {
@@ -405,20 +428,27 @@
         initEl.innerHTML = topInits.map(item => {
           const meta = personas[item.persona] || {};
           return `
-            <div class="init-card">
+            <div class="init-card" data-id="${escapeHtml(item.id)}">
               <div class="init-head">
                 <span>${meta.icon || ICONS[item.persona] || ''} ${escapeHtml(meta.name || item.persona)}</span>
                 <span style="font-size:0.71rem; color:var(--cyan);">${escapeHtml(item.tag)}</span>
               </div>
               <div>${escapeHtml(item.initiative)}</div>
               <div class="init-actions">
-                <button class="btn-ghost" onclick="speakAsPersona('${item.persona}', ${JSON.stringify(item.body + ' ' + item.initiative)})">🔊 육성</button>
-                <button class="btn-ghost btn-adopt" onclick="submitStance('${item.id}', 'adopted')">✓ 채택</button>
-                <button class="btn-ghost btn-reconsider" onclick="submitStance('${item.id}', 'reconsider')">↺ 재숙고</button>
+                <button class="btn-ghost init-listen-btn">🔊 육성</button>
+                <button class="btn-ghost btn-adopt init-adopt-btn">✓ 채택</button>
+                <button class="btn-ghost btn-reconsider init-reconsider-btn">↺ 재숙고</button>
               </div>
             </div>
           `;
         }).join('');
+        initEl.querySelectorAll('.init-card').forEach(card => {
+          const item = topInits.find(x => x.id === card.dataset.id);
+          const meta = personas[item.persona] || {};
+          card.querySelector('.init-listen-btn').onclick = () => speakAsPersona(item.persona, buildSpokenScript(meta, item));
+          card.querySelector('.init-adopt-btn').onclick = () => submitStance(item.id, 'adopted');
+          card.querySelector('.init-reconsider-btn').onclick = () => submitStance(item.id, 'reconsider');
+        });
       }
 
       // Center Feed
@@ -479,7 +509,7 @@
         const input = form.querySelector('input');
 
         card.querySelector('.listen-btn').onclick = () =>
-          speakAsPersona(post.persona, `${post.body} ${post.initiative || ''}`);
+          speakAsPersona(post.persona, buildSpokenScript(personas[post.persona], post));
         card.querySelector('.adopt-btn').onclick = () => submitStance(id, 'adopted');
         card.querySelector('.reconsider-btn').onclick = () => submitStance(id, 'reconsider');
         card.querySelector('.toggle-reply-btn').onclick = () => {
