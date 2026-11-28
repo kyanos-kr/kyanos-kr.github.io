@@ -26,6 +26,11 @@ scratch/
 
 graphify-out/cache/
 
+# Kyanos Private Cabinet Living Feed (제1안 국왕 직속 비공개)
+키아노스_정부부처/03_과학_SI부/KDots_자율상시운영엔진/cabinet_life_feed.json
+키아노스_정부부처/03_과학_SI부/KDots_자율상시운영엔진/cabinet_memory.json
+키아노스_정부부처/03_과학_SI부/KDots_자율상시운영엔진/kdots_feed_server.log
+
 # Media Lab B-Roll Raw Cache & Temp Clips
 키아노스_정부부처/09_미디어부/유튜브랩_MED-YTB-01/엔진_스튜디오/broll_cache/
 키아노스_정부부처/09_미디어부/유튜브랩_MED-YTB-01/엔진_스튜디오/생성_산출물/*_temp*
