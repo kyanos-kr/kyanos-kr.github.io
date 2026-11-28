@@ -497,6 +497,89 @@
       align-items: center;
       background: #0d1322;
     }
+
+    /* Law & Site Guide Modal */
+    .guide-tabs {
+      display: flex;
+      gap: 6px;
+      padding: 10px 16px;
+      background: #0d1322;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .guide-body {
+      padding: 18px;
+      max-height: 70vh;
+      overflow-y: auto;
+      font-size: 13px;
+      line-height: 1.65;
+      color: var(--text-muted);
+    }
+    .guide-panel { display: none; }
+    .guide-panel.active { display: block; }
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .calc-input-box {
+      background: #090d16;
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 10px 12px;
+    }
+    .calc-input-box label {
+      display: block;
+      font-size: 11px;
+      color: var(--accent-cyan);
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+    .calc-input-box input, .calc-input-box select {
+      width: 100%;
+      background: #111827;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      padding: 7px 10px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-family: inherit;
+    }
+    .calc-result {
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      border-radius: 8px;
+      padding: 14px;
+      color: var(--text-main);
+    }
+    .calc-result.warn {
+      background: rgba(239, 68, 68, 0.1);
+      border-color: rgba(239, 68, 68, 0.45);
+    }
+    .law-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      margin-top: 8px;
+    }
+    .law-table th, .law-table td {
+      padding: 8px 10px;
+      border: 1px solid var(--border-subtle);
+      text-align: left;
+    }
+    .law-table th { background: #0d1322; color: var(--accent-cyan); }
+    .check-card {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      background: #090d16;
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+    .check-card input { margin-top: 4px; accent-color: var(--accent-emerald); }
   </style>
 </head>
 <body>
@@ -510,6 +593,7 @@
       <span class="brand-sub">과학·SI부 건축설계국 v1.0</span>
     </div>
     <div class="header-actions">
+      <button class="btn" style="border-color:rgba(16,185,129,0.5); color:#34d399;" onclick="openGuideModal()">📋 부지·법규 가이드</button>
       <button class="btn" onclick="resetCurrentModel()">↺ 모델 초기화</button>
       <button class="btn" onclick="exportSVG()">⬇ SVG 도면</button>
       <button class="btn gold" onclick="exportDXF()">📐 DXF (AutoCAD) 내보내기</button>
@@ -758,6 +842,73 @@
         <button class="mini-btn" onclick="switchFromModal('25','custom')">25평 일반</button>
       </div>
       <span style="font-size:11px; color:var(--text-muted);">* 건축 이해를 돕기 위한 실물 레퍼런스 이미지</span>
+    </div>
+  </div>
+</div>
+
+<!-- 쉬운 건축 법규 · 부지 검토 가이드 모달 -->
+<div class="photo-modal" id="guide-modal" onclick="if(event.target===this) closeGuideModal()">
+  <div class="photo-modal-card" style="max-width:780px;">
+    <div class="photo-modal-header">
+      <span>📋 쉬운 건축 법규 · 부지 검토 가이드 (비전문가용)</span>
+      <button class="btn" onclick="closeGuideModal()">✕ 닫기</button>
+    </div>
+    <div class="guide-tabs">
+      <button class="seg-btn active" id="gtab-btn-calc" onclick="switchGuideTab('calc')">1. 내 땅 건폐율 계산기</button>
+      <button class="seg-btn" id="gtab-btn-compare" onclick="switchGuideTab('compare')">2. 쉼터/농막 vs 건축신고</button>
+      <button class="seg-btn" id="gtab-btn-check" onclick="switchGuideTab('check')">3. 착공 전 부지 체크리스트</button>
+    </div>
+    <div class="guide-body">
+      <!-- Tab 1: 건폐율 계산기 -->
+      <div class="guide-panel active" id="gtab-calc">
+        <p style="margin-bottom:12px;">
+          <strong style="color:#fff;">건폐율</strong>이란 <em>“내 땅 넓이 중에서 집 바닥이 차지할 수 있는 최대 비율”</em>입니다. 현재 선택하신 모델(<strong id="calc-model-name" style="color:var(--accent-cyan);">9평형</strong>)을 기준으로 내 땅에 지을 수 있는지 바로 확인해 보세요.
+        </p>
+        <div class="calc-grid">
+          <div class="calc-input-box">
+            <label>내 땅 면적 (평)</label>
+            <input type="number" id="land-pyeong" value="100" min="10" max="5000" oninput="calcSiteLaw()">
+          </div>
+          <div class="calc-input-box">
+            <label>땅의 용도지역 (토지이음 확인)</label>
+            <select id="land-zone" onchange="calcSiteLaw()">
+              <option value="40">계획관리지역 (가장 흔한 전원주택지 · 건폐율 40%)</option>
+              <option value="20">생산/보전관리 · 농림지역 (건폐율 20%)</option>
+              <option value="60">제1·2종 일반주거지역 (건폐율 60%)</option>
+              <option value="20_nat">자연환경보전지역 (건폐율 20%)</option>
+            </select>
+          </div>
+        </div>
+        <div class="calc-result" id="calc-result-box"></div>
+      </div>
+
+      <!-- Tab 2: 쉼터/농막 vs 건축신고 -->
+      <div class="guide-panel" id="gtab-compare">
+        <p style="margin-bottom:10px;">9평 이하 소형 세컨하우스는 <strong style="color:#fff;">체류형 쉼터(가설건축물)</strong>로 놓을지, <strong style="color:#fff;">정식 단독주택(건축신고)</strong>으로 지을지에 따라 절차와 세금이 달라집니다.</p>
+        <table class="law-table">
+          <thead>
+            <tr><th>구분</th><th>체류형 쉼터 / 농막 (가설)</th><th>정식 단독주택 (건축신고/허가)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>적용 모델</strong></td><td><strong>9평형 이하</strong> (연면적 33㎡ 이하 기준)</td><td><strong>9평 · 15평 · 25평</strong> 모든 모델 가능</td></tr>
+            <tr><td><strong>지목 요건</strong></td><td>농지(전·답·과수원) 위 농지전용 없이 설치 가능</td><td>대지 또는 농지/산지전용 허가 필요</td></tr>
+            <tr><td><strong>인허가 절차</strong></td><td>가설건축물 축조신고 (절차 간편)</td><td>건축사 설계 + 건축신고(100㎡ 이하) + 사용승인</td></tr>
+            <tr><td><strong>등기 / 주소</strong></td><td>건물 등기 불가 (전입신고 제한)</td><td><strong>정식 건물 등기 가능</strong> (재산권·전입 가능)</td></tr>
+            <tr><td><strong>데크 / 정화조</strong></td><td>일부 부속시설 면적 제한 준수 필요</td><td>넓은 데크·정화조·주차장 자유 설치</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Tab 3: 체크리스트 -->
+      <div class="guide-panel" id="gtab-check">
+        <p style="margin-bottom:10px;">땅을 계약하거나 설계를 확정하기 전, 아래 6가지를 반드시 확인하시면 큰 시행착오를 막을 수 있습니다.</p>
+        <label class="check-card"><input type="checkbox"><div><strong style="color:#fff;">1. 진입도로 (폭 4m 이상)</strong><br>정식 집을 지으려면 땅이 폭 4m 이상의 도로에 최소 2m 이상 닿아 있어야 합니다. 특히 모듈식 주택은 대형 크레인 차량 진입이 가능해야 합니다.</div></label>
+        <label class="check-card"><input type="checkbox"><div><strong style="color:#fff;">2. 지목 확인 (대지 vs 전·답·임야)</strong><br>‘대지’는 바로 건축할 수 있지만, 논·밭(전·답)이나 산(임야)은 전용 부담금과 인허가 기간이 추가됩니다.</div></label>
+        <label class="check-card"><input type="checkbox"><div><strong style="color:#fff;">3. 상수도 또는 지하수 관정</strong><br>시골 땅은 상수도가 안 들어오는 곳이 많습니다. 주변 상수도 인입 가능 여부 또는 지하수 개발 비용을 미리 확인하세요.</div></label>
+        <label class="check-card"><input type="checkbox"><div><strong style="color:#fff;">4. 정화조 (오수처리시설) 방류 경로</strong><br>화장실·주방 물을 처리한 뒤 내보낼 하수관로나 구거(도랑)가 주변에 있는지 확인해야 합니다.</div></label>
+        <label class="check-card"><input type="checkbox"><div><strong style="color:#fff;">5. 전기 인입 (전봇대 거리)</strong><br>인근 전봇대가 200m 이내에 있으면 기본 인입이 수월하나, 너무 멀면 추가 인입 비용이 발생합니다.</div></label>
+        <label class="check-card"><input type="checkbox"><div><strong style="color:#fff;">6. 남향 배치 및 물빠짐(배수)</strong><br>거실과 데크가 남향·남동향을 바라보도록 배치하고, 비가 왔을 때 물이 고이지 않는 완만한 경사지인지 확인하세요.</div></label>
+      </div>
     </div>
   </div>
 </div>
@@ -1985,6 +2136,39 @@ function openPhotoModal() {
 }
 function closePhotoModal() {
   document.getElementById('photo-modal').classList.remove('open');
+}
+function openGuideModal() {
+  document.getElementById('guide-modal').classList.add('open');
+  calcSiteLaw();
+}
+function closeGuideModal() {
+  document.getElementById('guide-modal').classList.remove('open');
+}
+function switchGuideTab(tab) {
+  ['calc', 'compare', 'check'].forEach(t => {
+    document.getElementById(`gtab-${t}`).classList.toggle('active', t === tab);
+    document.getElementById(`gtab-btn-${t}`).classList.toggle('active', t === tab);
+  });
+}
+function calcSiteLaw() {
+  const p = getCurrentPreset();
+  const landPy = parseFloat(document.getElementById('land-pyeong').value) || 0;
+  const maxRatio = parseFloat(document.getElementById('land-zone').value) || 40;
+  const maxBuildPy = landPy * (maxRatio / 100);
+  const ok = maxBuildPy >= p.pyeong;
+  const remainPy = Math.max(0, landPy - p.pyeong);
+  const minNeedPy = Math.ceil(p.pyeong / (maxRatio / 100));
+
+  document.getElementById('calc-model-name').textContent = `${p.title} (${p.pyeong}평)`;
+  const box = document.getElementById('calc-result-box');
+  box.classList.toggle('warn', !ok);
+  box.innerHTML = ok
+    ? `<strong style="color:#34d399; font-size:14px;">✅ 건축 가능 (적합)</strong><br>
+       • 내 땅 <strong>${landPy}평</strong>(${(landPy*3.3058).toFixed(1)}㎡)에서 최대 <strong>${maxBuildPy.toFixed(1)}평</strong>까지 지을 수 있습니다.<br>
+       • 선택한 <strong>${p.pyeong}평</strong> 주택을 지어도 <strong>마당·주차공간 약 ${remainPy.toFixed(1)}평</strong>이 여유 있게 남습니다.`
+    : `<strong style="color:#f87171; font-size:14px;">⚠️ 땅 면적 부족 (건폐율 초과)</strong><br>
+       • 이 지역 건폐율(${maxRatio}%) 기준, ${landPy}평 땅에는 최대 <strong>${maxBuildPy.toFixed(1)}평</strong>까지만 건축 가능합니다.<br>
+       • 현재 선택한 <strong>${p.pyeong}평</strong> 모델을 지으시려면 최소 <strong>${minNeedPy}평</strong> 이상의 땅이 필요합니다.`;
 }
 function switchFromModal(sz, tp) {
   state.size = sz;
