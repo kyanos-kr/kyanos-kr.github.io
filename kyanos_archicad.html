@@ -1,0 +1,1872 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KYANOS ARCHI-CAD | 전원주택·세컨하우스 설계 스튜디오</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <style>
+    :root {
+      --bg-app: #090d16;
+      --bg-panel: #111827;
+      --bg-panel-alt: #161f33;
+      --border-subtle: rgba(148, 163, 184, 0.16);
+      --border-active: rgba(56, 189, 248, 0.55);
+      --accent-cyan: #38bdf8;
+      --accent-blue: #3b82f6;
+      --accent-gold: #f59e0b;
+      --accent-emerald: #10b981;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 100%; height: 100%;
+      background: var(--bg-app);
+      color: var(--text-main);
+      font-family: 'Noto Sans KR', 'Inter', sans-serif;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    /* Layout */
+    .app-shell {
+      display: grid;
+      grid-template-rows: 54px 46px 1fr 28px;
+      grid-template-columns: 270px 1fr 310px;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    /* Top Header */
+    .top-header {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      background: #0d1322;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .brand-badge {
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 5px;
+      letter-spacing: 0.06em;
+    }
+    .brand-title {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .brand-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-left: 6px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 11px;
+      font-size: 12px;
+      font-weight: 500;
+      border-radius: 6px;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-panel-alt);
+      color: var(--text-main);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      font-family: inherit;
+    }
+    .btn:hover {
+      border-color: var(--border-active);
+      background: #1e293b;
+    }
+    .btn.primary {
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      border-color: transparent;
+      color: #fff;
+    }
+    .btn.primary:hover { filter: brightness(1.1); }
+    .btn.gold {
+      background: rgba(245, 158, 11, 0.14);
+      border-color: rgba(245, 158, 11, 0.4);
+      color: #fbbf24;
+    }
+    .btn.active {
+      background: rgba(56, 189, 248, 0.18);
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+    }
+
+    /* Sub Toolbar (Preset Selector + View Mode) */
+    .sub-toolbar {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      background: var(--bg-panel);
+      border-bottom: 1px solid var(--border-subtle);
+      gap: 12px;
+    }
+    .toolbar-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .toolbar-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-right: 4px;
+    }
+    .seg-group {
+      display: inline-flex;
+      background: #090d16;
+      padding: 3px;
+      border-radius: 7px;
+      border: 1px solid var(--border-subtle);
+    }
+    .seg-btn {
+      padding: 4px 11px;
+      font-size: 12px;
+      font-weight: 500;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.15s;
+      font-family: inherit;
+    }
+    .seg-btn.active {
+      background: var(--accent-blue);
+      color: #fff;
+      font-weight: 600;
+    }
+    .seg-btn.active-gold {
+      background: var(--accent-gold);
+      color: #090d16;
+      font-weight: 700;
+    }
+
+    /* Sidebars */
+    .left-panel, .right-panel {
+      background: var(--bg-panel);
+      overflow-y: auto;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .left-panel { border-right: 1px solid var(--border-subtle); }
+    .right-panel { border-left: 1px solid var(--border-subtle); }
+
+    .panel-section {
+      background: var(--bg-panel-alt);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 11px;
+    }
+    .section-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-cyan);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Tool buttons grid */
+    .tool-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+    .tool-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      padding: 9px 6px;
+      background: #0d1322;
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      color: var(--text-muted);
+      font-size: 11px;
+      cursor: pointer;
+      transition: all 0.15s;
+      font-family: inherit;
+    }
+    .tool-btn:hover { border-color: var(--border-active); color: var(--text-main); }
+    .tool-btn.active {
+      background: rgba(56, 189, 248, 0.14);
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+      font-weight: 600;
+    }
+    .tool-icon { font-size: 16px; }
+
+    /* Layer toggles */
+    .layer-list { display: flex; flex-direction: column; gap: 6px; }
+    .layer-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      padding: 5px 8px;
+      background: #0d1322;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .layer-item input { accent-color: var(--accent-cyan); cursor: pointer; }
+
+    /* Material swatches */
+    .swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+    }
+    .swatch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      padding: 6px 4px;
+      border-radius: 6px;
+      border: 1px solid var(--border-subtle);
+      background: #0d1322;
+      cursor: pointer;
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+    .swatch.active {
+      border-color: var(--accent-gold);
+      color: var(--text-main);
+      background: rgba(245, 158, 11, 0.1);
+    }
+    .swatch-color {
+      width: 24px; height: 24px;
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    /* Main Viewport */
+    .viewport-area {
+      position: relative;
+      display: flex;
+      background: #070a12;
+      overflow: hidden;
+    }
+    .pane {
+      position: relative;
+      flex: 1;
+      height: 100%;
+      overflow: hidden;
+    }
+    .pane + .pane {
+      border-left: 2px solid #1e293b;
+    }
+    .pane-badge {
+      position: absolute;
+      top: 10px;
+      left: 12px;
+      z-index: 10;
+      background: rgba(9, 13, 22, 0.82);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border-subtle);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--accent-cyan);
+      pointer-events: none;
+    }
+    .pane-controls {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      z-index: 10;
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .mini-btn {
+      background: rgba(17, 24, 39, 0.86);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      padding: 4px 9px;
+      border-radius: 5px;
+      font-size: 11px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .mini-btn:hover { border-color: var(--accent-cyan); }
+    .mini-btn.active {
+      background: rgba(56, 189, 248, 0.22);
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+    }
+
+    #cad-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: crosshair;
+    }
+    #three-container {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Right Panel Specs */
+    .spec-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .spec-card {
+      background: #0d1322;
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      padding: 8px 10px;
+    }
+    .spec-label { font-size: 10px; color: var(--text-muted); }
+    .spec-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-top: 2px;
+    }
+    .spec-sub { font-size: 10px; color: var(--accent-cyan); }
+
+    .room-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11px;
+    }
+    .room-table th, .room-table td {
+      padding: 5px 4px;
+      border-bottom: 1px solid var(--border-subtle);
+      text-align: left;
+    }
+    .room-table th { color: var(--text-muted); font-weight: 600; }
+    .room-table td.num {
+      text-align: right;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .compare-box {
+      font-size: 11.5px;
+      line-height: 1.55;
+      color: var(--text-muted);
+    }
+    .compare-box strong { color: var(--text-main); }
+    .tag {
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .tag-mod { background: rgba(56, 189, 248, 0.18); color: #38bdf8; }
+    .tag-cus { background: rgba(245, 158, 11, 0.18); color: #fbbf24; }
+
+    /* Status bar */
+    .status-bar {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 14px;
+      background: #060911;
+      border-top: 1px solid var(--border-subtle);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(148, 163, 184, 0.25); border-radius: 3px; }
+  </style>
+</head>
+<body>
+
+<div class="app-shell">
+  <!-- Top Header -->
+  <header class="top-header">
+    <div class="brand">
+      <span class="brand-badge">KYANOS ARCHI-CAD</span>
+      <span class="brand-title">전원주택 · 세컨하우스 설계 스튜디오</span>
+      <span class="brand-sub">과학·SI부 건축설계국 v1.0</span>
+    </div>
+    <div class="header-actions">
+      <button class="btn" onclick="resetCurrentModel()">↺ 모델 초기화</button>
+      <button class="btn" onclick="exportSVG()">⬇ SVG 도면</button>
+      <button class="btn gold" onclick="exportDXF()">📐 DXF (AutoCAD) 내보내기</button>
+      <button class="btn primary" onclick="window.print()">🖨 도면 인쇄</button>
+    </div>
+  </header>
+
+  <!-- Sub Toolbar -->
+  <div class="sub-toolbar">
+    <div class="toolbar-group">
+      <span class="toolbar-label">평형대</span>
+      <div class="seg-group" id="size-selector">
+        <button class="seg-btn active" data-size="9" onclick="selectSize('9')">9평형 (29.7㎡)</button>
+        <button class="seg-btn" data-size="15" onclick="selectSize('15')">15평형 (49.5㎡)</button>
+        <button class="seg-btn" data-size="25" onclick="selectSize('25')">25평형 (82.5㎡)</button>
+      </div>
+    </div>
+
+    <div class="toolbar-group">
+      <span class="toolbar-label">건축 공법</span>
+      <div class="seg-group" id="type-selector">
+        <button class="seg-btn active" data-type="modular" onclick="selectType('modular')">모듈식 (Modular)</button>
+        <button class="seg-btn" data-type="custom" onclick="selectType('custom')">일반주택 (목조/현장시공)</button>
+      </div>
+    </div>
+
+    <div class="toolbar-group">
+      <span class="toolbar-label">화면 보기</span>
+      <div class="seg-group" id="view-selector">
+        <button class="seg-btn active" data-view="split" onclick="setViewMode('split')">2D + 3D 분할</button>
+        <button class="seg-btn" data-view="2d" onclick="setViewMode('2d')">2D CAD 평면도</button>
+        <button class="seg-btn" data-view="3d" onclick="setViewMode('3d')">3D 실물 내외도</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Left CAD Controls -->
+  <aside class="left-panel">
+    <div class="panel-section">
+      <div class="section-title">2D CAD 작도 도구</div>
+      <div class="tool-grid">
+        <button class="tool-btn active" id="tool-pan" onclick="setCadTool('pan')">
+          <span class="tool-icon">✋</span><span>선택 / 이동</span>
+        </button>
+        <button class="tool-btn" id="tool-wall" onclick="setCadTool('wall')">
+          <span class="tool-icon">🧱</span><span>벽체 추가</span>
+        </button>
+        <button class="tool-btn" id="tool-measure" onclick="setCadTool('measure')">
+          <span class="tool-icon">📏</span><span>치수 측정</span>
+        </button>
+        <button class="tool-btn" id="tool-undo" onclick="undoCustomWall()">
+          <span class="tool-icon">↩</span><span>벽체 되돌리기</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <div class="section-title">도면 레이어 (Layers)</div>
+      <div class="layer-list">
+        <label class="layer-item">
+          <span>그리드 (1,000mm / 200mm)</span>
+          <input type="checkbox" checked onchange="toggleLayer('grid', this.checked)">
+        </label>
+        <label class="layer-item">
+          <span>외벽 · 내벽 구조</span>
+          <input type="checkbox" checked onchange="toggleLayer('walls', this.checked)">
+        </label>
+        <label class="layer-item">
+          <span>창호 · 출입문</span>
+          <input type="checkbox" checked onchange="toggleLayer('openings', this.checked)">
+        </label>
+        <label class="layer-item">
+          <span>실내 가구 · 설비</span>
+          <input type="checkbox" checked onchange="toggleLayer('furniture', this.checked)">
+        </label>
+        <label class="layer-item">
+          <span>치수선 (mm) · 실명</span>
+          <input type="checkbox" checked onchange="toggleLayer('dimensions', this.checked)">
+        </label>
+        <label class="layer-item">
+          <span>외부 우드 데크</span>
+          <input type="checkbox" checked onchange="toggleLayer('deck', this.checked)">
+        </label>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <div class="section-title">외장재 · 지붕 · 인테리어</div>
+      <div style="font-size:11px; color:var(--text-muted); margin-bottom:6px;">외벽 마감재</div>
+      <div class="swatch-grid" id="ext-swatches">
+        <div class="swatch active" onclick="setExteriorMat('stucco', this)">
+          <div class="swatch-color" style="background:#f1f5f9;"></div><span>화이트 스터코</span>
+        </div>
+        <div class="swatch" onclick="setExteriorMat('cedar', this)">
+          <div class="swatch-color" style="background:#b47b48;"></div><span>적삼목 사이딩</span>
+        </div>
+        <div class="swatch" onclick="setExteriorMat('charred', this)">
+          <div class="swatch-color" style="background:#27272a;"></div><span>탄화목/징크</span>
+        </div>
+      </div>
+
+      <div style="font-size:11px; color:var(--text-muted); margin:10px 0 6px;">실내 바닥재</div>
+      <div class="swatch-grid" id="floor-swatches">
+        <div class="swatch active" onclick="setFloorMat('oak', this)">
+          <div class="swatch-color" style="background:#d4a373;"></div><span>내추럴 오크</span>
+        </div>
+        <div class="swatch" onclick="setFloorMat('walnut', this)">
+          <div class="swatch-color" style="background:#6f4e37;"></div><span>다크 월넛</span>
+        </div>
+        <div class="swatch" onclick="setFloorMat('tile', this)">
+          <div class="swatch-color" style="background:#cbd5e1;"></div><span>포세린 타일</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <div class="section-title">3D 조명 · 시간대</div>
+      <div class="tool-grid">
+        <button class="tool-btn" id="time-morning" onclick="setTimeOfDay('morning')">
+          <span class="tool-icon">🌅</span><span>아침 (동향)</span>
+        </button>
+        <button class="tool-btn active" id="time-noon" onclick="setTimeOfDay('noon')">
+          <span class="tool-icon">☀️</span><span>한낮 (남향)</span>
+        </button>
+        <button class="tool-btn" id="time-sunset" onclick="setTimeOfDay('sunset')">
+          <span class="tool-icon">🌇</span><span>노을 (서향)</span>
+        </button>
+        <button class="tool-btn" id="time-night" onclick="setTimeOfDay('night')">
+          <span class="tool-icon">🌙</span><span>야간 무드등</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Center Viewports -->
+  <main class="viewport-area">
+    <!-- 2D CAD Pane -->
+    <section class="pane" id="pane-2d">
+      <div class="pane-badge" id="badge-2d">2D CAD 평면도 (mm)</div>
+      <div class="pane-controls">
+        <button class="mini-btn" onclick="zoomCad(1.2)">＋ 확대</button>
+        <button class="mini-btn" onclick="zoomCad(0.83)">－ 축소</button>
+        <button class="mini-btn" onclick="fitCadToScreen()">⊡ 화면 맞춤</button>
+      </div>
+      <canvas id="cad-canvas"></canvas>
+    </section>
+
+    <!-- 3D View Pane -->
+    <section class="pane" id="pane-3d">
+      <div class="pane-badge" id="badge-3d">3D 실물 내외도</div>
+      <div class="pane-controls">
+        <button class="mini-btn active" id="btn-roof-toggle" onclick="toggleRoofCutaway()">🏠 지붕 열기 (내부 투시)</button>
+        <button class="mini-btn" onclick="setCameraView('iso')">조감도</button>
+        <button class="mini-btn" onclick="setCameraView('front')">정면</button>
+        <button class="mini-btn" onclick="setCameraView('top')">평면뷰</button>
+        <button class="mini-btn" onclick="setCameraView('interior')">실내 시점</button>
+      </div>
+      <div id="three-container"></div>
+    </section>
+  </main>
+
+  <!-- Right Inspector & Comparison -->
+  <aside class="right-panel">
+    <div class="panel-section">
+      <div class="section-title">
+        <span id="model-name-label">9평형 모듈식 세컨하우스</span>
+      </div>
+      <div class="spec-grid">
+        <div class="spec-card">
+          <div class="spec-label">건축 면적</div>
+          <div class="spec-val" id="spec-area">29.7 ㎡</div>
+          <div class="spec-sub" id="spec-pyeong">9.0 평</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-label">데크 면적</div>
+          <div class="spec-val" id="spec-deck">13.0 ㎡</div>
+          <div class="spec-sub" id="spec-deck-py">3.9 평</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-label">외곽 치수 (mm)</div>
+          <div class="spec-val" id="spec-dims" style="font-size:12px;">7,200 × 4,125</div>
+          <div class="spec-sub" id="spec-height">층고 2,800mm</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-label">예상 공사비 (참고)</div>
+          <div class="spec-val" id="spec-cost" style="font-size:13px; color:#fbbf24;">약 5,500만원</div>
+          <div class="spec-sub" id="spec-duration">공기 약 3~4주</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <div class="section-title">공간 구성표 (Room Schedule)</div>
+      <table class="room-table">
+        <thead>
+          <tr><th>실명</th><th class="num">규격(m)</th><th class="num">면적</th></tr>
+        </thead>
+        <tbody id="room-schedule-body"></tbody>
+      </table>
+    </div>
+
+    <div class="panel-section">
+      <div class="section-title">공법 및 설계 특징</div>
+      <div id="method-desc" class="compare-box"></div>
+    </div>
+  </aside>
+
+  <!-- Bottom Status Bar -->
+  <footer class="status-bar">
+    <div id="status-coords">X: 0 mm | Y: 0 mm | SNAP: 100 mm</div>
+    <div id="status-msg">준비 완료 · 2D 마우스 휠(줌) / 드래그(이동) · 3D 좌클릭 회전 / 우클릭 이동</div>
+  </footer>
+</div>
+
+<script>
+// ============================================================================
+// 1. 6대 표준 모델하우스 프리셋 (9평, 15평, 25평 × 모듈식 / 일반주택)
+// 좌표 단위: mm (좌상단 기준 X: 오른쪽+, Y: 아래쪽+)
+// ============================================================================
+const MODEL_PRESETS = {
+  '9_modular': {
+    id: '9_modular',
+    title: '9평형 모듈식 세컨하우스',
+    size: '9',
+    type: 'modular',
+    roofType: 'flat', // 모노피치/평지붕
+    wallHeight: 2800,
+    extWallThick: 200,
+    intWallThick: 120,
+    areaSqm: 29.7,
+    pyeong: 9.0,
+    costText: '약 5,200~6,200만원',
+    durationText: '공장제작 3주 / 현장 2일',
+    dimsText: '7,200 × 4,125',
+    summary: `<span class="tag tag-mod">모듈식 (Steel/Wood Modular)</span><br>
+      <strong>특징:</strong> 공장에서 90% 이상 완성 후 크레인으로 하루 만에 안착시키는 초경량 스튜디오형 세컨하우스입니다. 전면 통창과 일체형 데크로 9평 이상의 개방감을 확보했습니다.<br><br>
+      <strong>적합 용도:</strong> 주말 농막형 세컨하우스, 게스트하우스, 1~2인 작업실.`,
+    footprint: [[0,0], [7200,0], [7200,4125], [0,4125]],
+    decks: [{ x: 0, y: 4125, w: 7200, h: 1800 }],
+    walls: [
+      // 외벽
+      { x1: 0, y1: 0, x2: 7200, y2: 0, ext: true },
+      { x1: 7200, y1: 0, x2: 7200, y2: 4125, ext: true },
+      { x1: 7200, y1: 4125, x2: 0, y2: 4125, ext: true },
+      { x1: 0, y1: 4125, x2: 0, y2: 0, ext: true },
+      // 욕실 구획
+      { x1: 2000, y1: 0, x2: 2000, y2: 2200, ext: false },
+      { x1: 0, y1: 2200, x2: 2000, y2: 2200, ext: false }
+    ],
+    openings: [
+      // 전면 통창 및 데크 출입 슬라이딩 도어
+      { x1: 2600, y1: 4125, x2: 5600, y2: 4125, kind: 'sliding' },
+      // 현관문 (좌측 하단)
+      { x1: 500, y1: 4125, x2: 1400, y2: 4125, kind: 'door' },
+      // 욕실 문
+      { x1: 2000, y1: 1200, x2: 2000, y2: 1950, kind: 'door' },
+      // 우측 창호
+      { x1: 7200, y1: 1000, x2: 7200, y2: 2800, kind: 'window' },
+      // 욕실 환기창
+      { x1: 600, y1: 0, x2: 1400, y2: 0, kind: 'window' }
+    ],
+    rooms: [
+      { name: '거실 · 침실(통합)', x: 2000, y: 0, w: 5200, h: 4125 },
+      { name: '미니 주방존', x: 0, y: 2200, w: 2000, h: 1925 },
+      { name: '욕실', x: 0, y: 0, w: 2000, h: 2200 }
+    ],
+    furniture: [
+      { kind: 'bed', x: 5000, y: 300, w: 1900, h: 2000, label: '퀸 침대' },
+      { kind: 'sofa', x: 2400, y: 400, w: 2000, h: 850, label: '소파' },
+      { kind: 'table', x: 2700, y: 1700, w: 1400, h: 800, label: '테이블' },
+      { kind: 'kitchen', x: 200, y: 2350, w: 1650, h: 650, label: '싱크대' },
+      { kind: 'bath', x: 200, y: 200, w: 1600, h: 1800, label: '샤워/위생' }
+    ]
+  },
+
+  '9_custom': {
+    id: '9_custom',
+    title: '9평형 일반주택 (박공 목조)',
+    size: '9',
+    type: 'custom',
+    roofType: 'gable',
+    wallHeight: 3100,
+    extWallThick: 220,
+    intWallThick: 120,
+    areaSqm: 29.7,
+    pyeong: 9.0,
+    costText: '약 6,500~7,800만원',
+    durationText: '현장 시공 약 6~8주',
+    dimsText: '6,000 × 4,950',
+    summary: `<span class="tag tag-cus">일반주택 (경량목구조 박공형)</span><br>
+      <strong>특징:</strong> 높은 박공지붕의 공간감을 살려 상부 다락(Loft) 공간 확장이 가능한 정통 목조 세컨하우스입니다. 깊은 처마와 포치로 비·햇빛 차단이 우수합니다.<br><br>
+      <strong>적합 용도:</strong> 사계절 체류형 별장, 다락 포함 가족 휴양 소형 주택.`,
+    footprint: [[0,0], [6000,0], [6000,4950], [0,4950]],
+    decks: [{ x: 0, y: 4950, w: 6000, h: 1800 }],
+    walls: [
+      { x1: 0, y1: 0, x2: 6000, y2: 0, ext: true },
+      { x1: 6000, y1: 0, x2: 6000, y2: 4950, ext: true },
+      { x1: 6000, y1: 4950, x2: 0, y2: 4950, ext: true },
+      { x1: 0, y1: 4950, x2: 0, y2: 0, ext: true },
+      // 좌측 서비스 존(주방/욕실/다락계단) 분리
+      { x1: 2200, y1: 0, x2: 2200, y2: 2500, ext: false },
+      { x1: 0, y1: 2500, x2: 2200, y2: 2500, ext: false }
+    ],
+    openings: [
+      { x1: 2600, y1: 4950, x2: 5200, y2: 4950, kind: 'sliding' },
+      { x1: 500, y1: 4950, x2: 1400, y2: 4950, kind: 'door' },
+      { x1: 2200, y1: 1500, x2: 2200, y2: 2250, kind: 'door' },
+      { x1: 3200, y1: 0, x2: 5000, y2: 0, kind: 'window' },
+      { x1: 6000, y1: 1200, x2: 6000, y2: 3200, kind: 'window' },
+      { x1: 600, y1: 0, x2: 1400, y2: 0, kind: 'window' }
+    ],
+    rooms: [
+      { name: '거실 (오픈 천장)', x: 2200, y: 0, w: 3800, h: 4950 },
+      { name: '주방 · 다락계단', x: 0, y: 2500, w: 2200, h: 2450 },
+      { name: '욕실', x: 0, y: 0, w: 2200, h: 2500 }
+    ],
+    furniture: [
+      { kind: 'sofa', x: 3700, y: 400, w: 2000, h: 900, label: '거실 소파' },
+      { kind: 'table', x: 2500, y: 2200, w: 1400, h: 850, label: '원목 식탁' },
+      { kind: 'kitchen', x: 200, y: 2650, w: 1800, h: 650, label: '주방 싱크' },
+      { kind: 'stairs', x: 200, y: 3950, w: 1800, h: 800, label: '다락 계단' },
+      { kind: 'bath', x: 200, y: 200, w: 1800, h: 2000, label: '욕실' }
+    ]
+  },
+
+  '15_modular': {
+    id: '15_modular',
+    title: '15평형 모듈식 세컨하우스 (듀얼 모듈)',
+    size: '15',
+    type: 'modular',
+    roofType: 'flat',
+    wallHeight: 2850,
+    extWallThick: 200,
+    intWallThick: 120,
+    areaSqm: 49.5,
+    pyeong: 15.0,
+    costText: '약 8,800만~1.05억원',
+    durationText: '공장제작 4주 / 현장 3일',
+    dimsText: '9,000 × 5,500',
+    summary: `<span class="tag tag-mod">모듈식 (2-Module 결합형)</span><br>
+      <strong>특징:</strong> 2개의 대형 모듈을 현장에서 접합하여 <strong>독립 침실 1개 + 넓은 LDK(거실·주방)</strong>를 완벽 분리한 베스트셀러 평면입니다. 전면 데크와 파노라마 창이 쾌적합니다.<br><br>
+      <strong>적합 용도:</strong> 부부 세컨하우스, 장기 체류형 리모트 워킹 하우스.`,
+    footprint: [[0,0], [9000,0], [9000,5500], [0,5500]],
+    decks: [{ x: 0, y: 5500, w: 9000, h: 2100 }],
+    walls: [
+      { x1: 0, y1: 0, x2: 9000, y2: 0, ext: true },
+      { x1: 9000, y1: 0, x2: 9000, y2: 5500, ext: true },
+      { x1: 9000, y1: 5500, x2: 0, y2: 5500, ext: true },
+      { x1: 0, y1: 5500, x2: 0, y2: 0, ext: true },
+      // 모듈 경계 및 방 구획
+      { x1: 3800, y1: 0, x2: 3800, y2: 5500, ext: false },
+      { x1: 0, y1: 3300, x2: 3800, y2: 3300, ext: false },
+      { x1: 2200, y1: 3300, x2: 2200, y2: 5500, ext: false }
+    ],
+    openings: [
+      { x1: 4500, y1: 5500, x2: 8100, y2: 5500, kind: 'sliding' },
+      { x1: 2550, y1: 5500, x2: 3450, y2: 5500, kind: 'door' },
+      { x1: 3800, y1: 2200, x2: 3800, y2: 3050, kind: 'door' }, // 침실 문
+      { x1: 2200, y1: 3700, x2: 2200, y2: 4450, kind: 'door' }, // 욕실 문
+      { x1: 900, y1: 0, x2: 2800, y2: 0, kind: 'window' }, // 침실 창
+      { x1: 9000, y1: 1200, x2: 9000, y2: 3800, kind: 'window' }, // 거실 측면창
+      { x1: 5000, y1: 0, x2: 7500, y2: 0, kind: 'window' } // 주방 상부창
+    ],
+    rooms: [
+      { name: '거실 · 주방 (LDK)', x: 3800, y: 0, w: 5200, h: 5500 },
+      { name: '독립 침실', x: 0, y: 0, w: 3800, h: 3300 },
+      { name: '욕실', x: 0, y: 3300, w: 2200, h: 2200 },
+      { name: '현관 · 다용도', x: 2200, y: 3300, w: 1600, h: 2200 }
+    ],
+    furniture: [
+      { kind: 'bed', x: 300, y: 300, w: 2000, h: 2100, label: '킹 침대' },
+      { kind: 'sofa', x: 5800, y: 3400, w: 2500, h: 950, label: '거실 소파' },
+      { kind: 'table', x: 4300, y: 2000, w: 1600, h: 900, label: '4인 식탁' },
+      { kind: 'kitchen', x: 4200, y: 250, w: 3800, h: 700, label: 'ㄷ/ㅡ자 주방' },
+      { kind: 'bath', x: 200, y: 3500, w: 1800, h: 1800, label: '욕실' }
+    ]
+  },
+
+  '15_custom': {
+    id: '15_custom',
+    title: '15평형 일반주택 (내추럴 박공)',
+    size: '15',
+    type: 'custom',
+    roofType: 'gable',
+    wallHeight: 3000,
+    extWallThick: 220,
+    intWallThick: 120,
+    areaSqm: 49.47,
+    pyeong: 15.0,
+    costText: '약 1.0억~1.2억원',
+    durationText: '현장 시공 약 2.5~3개월',
+    dimsText: '8,500 × 5,820',
+    summary: `<span class="tag tag-cus">일반주택 (현장 목조 시공)</span><br>
+      <strong>특징:</strong> 현관 전실(중문)을 두어 단열과 프라이버시를 강화하고, 다용도실과 보일러실을 별도 구획한 실거주급 소형 전원주택입니다. 박공지붕 아래 따뜻한 목재 인테리어가 돋보입니다.<br><br>
+      <strong>적합 용도:</strong> 은퇴 후 소형 전원생활, 사계절 안정적 거주.`,
+    footprint: [[0,0], [8500,0], [8500,5820], [0,5820]],
+    decks: [{ x: 1800, y: 5820, w: 6700, h: 2200 }],
+    walls: [
+      { x1: 0, y1: 0, x2: 8500, y2: 0, ext: true },
+      { x1: 8500, y1: 0, x2: 8500, y2: 5820, ext: true },
+      { x1: 8500, y1: 5820, x2: 0, y2: 5820, ext: true },
+      { x1: 0, y1: 5820, x2: 0, y2: 0, ext: true },
+      // 내부 구획
+      { x1: 3600, y1: 0, x2: 3600, y2: 5820, ext: false },
+      { x1: 0, y1: 3600, x2: 3600, y2: 3600, ext: false },
+      { x1: 2000, y1: 3600, x2: 2000, y2: 5820, ext: false },
+      { x1: 3600, y1: 4000, x2: 5300, y2: 4000, ext: false },
+      { x1: 5300, y1: 4000, x2: 5300, y2: 5820, ext: false }
+    ],
+    openings: [
+      { x1: 5800, y1: 5820, x2: 8100, y2: 5820, kind: 'sliding' },
+      { x1: 4000, y1: 5820, x2: 4950, y2: 5820, kind: 'door' }, // 현관
+      { x1: 3600, y1: 2400, x2: 3600, y2: 3250, kind: 'door' }, // 침실문
+      { x1: 2000, y1: 4200, x2: 2000, y2: 4950, kind: 'door' }, // 욕실문
+      { x1: 800, y1: 0, x2: 2800, y2: 0, kind: 'window' },
+      { x1: 8500, y1: 1200, x2: 8500, y2: 4000, kind: 'window' },
+      { x1: 4800, y1: 0, x2: 7400, y2: 0, kind: 'window' }
+    ],
+    rooms: [
+      { name: '거실 · 주방', x: 3600, y: 0, w: 4900, h: 4000 },
+      { name: '안방', x: 0, y: 0, w: 3600, h: 3600 },
+      { name: '욕실', x: 0, y: 3600, w: 2000, h: 2220 },
+      { name: '다용도실', x: 2000, y: 3600, w: 1600, h: 2220 },
+      { name: '현관 전실', x: 3600, y: 4000, w: 1700, h: 1820 }
+    ],
+    furniture: [
+      { kind: 'bed', x: 300, y: 300, w: 2000, h: 2100, label: '침대' },
+      { kind: 'sofa', x: 5800, y: 2600, w: 2300, h: 900, label: '소파' },
+      { kind: 'table', x: 4000, y: 1800, w: 1500, h: 850, label: '식탁' },
+      { kind: 'kitchen', x: 4100, y: 250, w: 3800, h: 700, label: '주방' },
+      { kind: 'bath', x: 200, y: 3800, w: 1600, h: 1800, label: '욕실' }
+    ]
+  },
+
+  '25_modular': {
+    id: '25_modular',
+    title: '25평형 모듈식 세컨하우스 (ㄱ자 중정형)',
+    size: '25',
+    type: 'modular',
+    roofType: 'flat',
+    wallHeight: 2900,
+    extWallThick: 220,
+    intWallThick: 120,
+    areaSqm: 82.5,
+    pyeong: 25.0,
+    costText: '약 1.5억~1.8억원',
+    durationText: '공장제작 5~6주 / 현장 5일',
+    dimsText: '10,500 × 11,000 (ㄱ자)',
+    summary: `<span class="tag tag-mod">모듈식 (3-Module ㄱ자 중정형)</span><br>
+      <strong>특징:</strong> 3개의 하이엔드 모듈을 ㄱ자로 배치해 <strong>프라이빗 중정 데크</strong>를 품은 럭셔리 세컨하우스입니다. 메인동(LDK+게스트룸)과 윙동(마스터 스위트)이 완벽히 분리됩니다.<br><br>
+      <strong>적합 용도:</strong> 프리미엄 가족 별장, 워크숍·세컨하우스 겸용.`,
+    footprint: [[0,0], [10500,0], [10500,11000], [5500,11000], [5500,5000], [0,5000]],
+    decks: [{ x: 0, y: 5000, w: 5500, h: 5500 }], // 중정 데크
+    walls: [
+      // ㄱ자 외벽
+      { x1: 0, y1: 0, x2: 10500, y2: 0, ext: true },
+      { x1: 10500, y1: 0, x2: 10500, y2: 11000, ext: true },
+      { x1: 10500, y1: 11000, x2: 5500, y2: 11000, ext: true },
+      { x1: 5500, y1: 11000, x2: 5500, y2: 5000, ext: true },
+      { x1: 5500, y1: 5000, x2: 0, y2: 5000, ext: true },
+      { x1: 0, y1: 5000, x2: 0, y2: 0, ext: true },
+      // 내부 구획
+      { x1: 3500, y1: 0, x2: 3500, y2: 5000, ext: false }, // 게스트존 분리
+      { x1: 0, y1: 2800, x2: 3500, y2: 2800, ext: false }, // 게스트룸 / 공용욕실
+      { x1: 5500, y1: 5000, x2: 10500, y2: 5000, ext: false }, // 윙동 경계
+      { x1: 5500, y1: 8800, x2: 10500, y2: 8800, ext: false }, // 부부욕실/드레스룸
+      { x1: 8000, y1: 8800, x2: 8000, y2: 11000, ext: false }
+    ],
+    openings: [
+      { x1: 3800, y1: 5000, x2: 5300, y2: 5000, kind: 'sliding' }, // 거실->중정 데크
+      { x1: 5500, y1: 5800, x2: 5500, y2: 8200, kind: 'sliding' }, // 안방->중정 데크
+      { x1: 7200, y1: 0, x2: 8200, y2: 0, kind: 'door' }, // 현관
+      { x1: 3500, y1: 1800, x2: 3500, y2: 2600, kind: 'door' },
+      { x1: 3500, y1: 3200, x2: 3500, y2: 4000, kind: 'door' },
+      { x1: 8200, y1: 5000, x2: 9100, y2: 5000, kind: 'door' }, // 안방 문
+      { x1: 6800, y1: 8800, x2: 7600, y2: 8800, kind: 'door' }, // 부부욕실 문
+      { x1: 800, y1: 0, x2: 2600, y2: 0, kind: 'window' },
+      { x1: 10500, y1: 1500, x2: 10500, y2: 4200, kind: 'window' }
+    ],
+    rooms: [
+      { name: '거실 · 주방 (LDK)', x: 3500, y: 0, w: 7000, h: 5000 },
+      { name: '게스트룸', x: 0, y: 0, w: 3500, h: 2800 },
+      { name: '공용욕실', x: 0, y: 2800, w: 3500, h: 2200 },
+      { name: '마스터 안방', x: 5500, y: 5000, w: 5000, h: 3800 },
+      { name: '부부욕실', x: 5500, y: 8800, w: 2500, h: 2200 },
+      { name: '드레스룸', x: 8000, y: 8800, w: 2500, h: 2200 }
+    ],
+    furniture: [
+      { kind: 'sofa', x: 4200, y: 2500, w: 2600, h: 950, label: '대형 소파' },
+      { kind: 'table', x: 7500, y: 2200, w: 1800, h: 950, label: '6인 식탁' },
+      { kind: 'kitchen', x: 4000, y: 250, w: 3000, h: 700, label: '아일랜드 주방' },
+      { kind: 'bed', x: 400, y: 300, w: 1800, h: 2000, label: '게스트 침대' },
+      { kind: 'bed', x: 7800, y: 5800, w: 2100, h: 2100, label: '킹 침대' },
+      { kind: 'bath', x: 200, y: 3000, w: 2000, h: 1800, label: '공용욕실' },
+      { kind: 'bath', x: 5700, y: 9000, w: 2100, h: 1800, label: '부부욕실' }
+    ]
+  },
+
+  '25_custom': {
+    id: '25_custom',
+    title: '25평형 일반주택 (정통 전원주택)',
+    size: '25',
+    type: 'custom',
+    roofType: 'gable',
+    wallHeight: 3200,
+    extWallThick: 240,
+    intWallThick: 120,
+    areaSqm: 82.5,
+    pyeong: 25.0,
+    costText: '약 1.7억~2.1억원',
+    durationText: '현장 시공 약 3.5~4개월',
+    dimsText: '11,000 × 7,500',
+    summary: `<span class="tag tag-cus">일반주택 (정통 박공 2룸+2욕실)</span><br>
+      <strong>특징:</strong> 중앙 와이드 LDK를 중심으로 좌측 마스터존(안방+부부욕실)과 우측 게스트존(침실2+공용욕실+다용도실)을 대칭 배치해 동선 간섭이 전혀 없는 <strong>정통 한국형 전원주택 표준 평면</strong>입니다.<br><br>
+      <strong>적합 용도:</strong> 상시 거주용 본가, 3~4인 가족 전원주택.`,
+    footprint: [[0,0], [11000,0], [11000,7500], [0,7500]],
+    decks: [{ x: 0, y: 7500, w: 11000, h: 2400 }],
+    walls: [
+      { x1: 0, y1: 0, x2: 11000, y2: 0, ext: true },
+      { x1: 11000, y1: 0, x2: 11000, y2: 7500, ext: true },
+      { x1: 11000, y1: 7500, x2: 0, y2: 7500, ext: true },
+      { x1: 0, y1: 7500, x2: 0, y2: 0, ext: true },
+      // 좌측 마스터존
+      { x1: 3600, y1: 0, x2: 3600, y2: 7500, ext: false },
+      { x1: 0, y1: 4200, x2: 3600, y2: 4200, ext: false },
+      { x1: 2000, y1: 4200, x2: 2000, y2: 7500, ext: false },
+      // 우측 게스트존
+      { x1: 7600, y1: 0, x2: 7600, y2: 7500, ext: false },
+      { x1: 7600, y1: 3800, x2: 11000, y2: 3800, ext: false },
+      { x1: 9300, y1: 3800, x2: 9300, y2: 7500, ext: false }
+    ],
+    openings: [
+      { x1: 4000, y1: 7500, x2: 7200, y2: 7500, kind: 'sliding' }, // 거실 전면 통창
+      { x1: 5000, y1: 0, x2: 6100, y2: 0, kind: 'door' }, // 후면/북측 현관
+      { x1: 3600, y1: 2600, x2: 3600, y2: 3500, kind: 'door' }, // 안방 문
+      { x1: 2000, y1: 4700, x2: 2000, y2: 5500, kind: 'door' }, // 부부욕실 문
+      { x1: 7600, y1: 2400, x2: 7600, y2: 3300, kind: 'door' }, // 침실2 문
+      { x1: 7600, y1: 4600, x2: 7600, y2: 5400, kind: 'door' }, // 공용욕실 문
+      { x1: 800, y1: 7500, x2: 3000, y2: 7500, kind: 'window' },
+      { x1: 8000, y1: 0, x2: 10200, y2: 0, kind: 'window' }
+    ],
+    rooms: [
+      { name: '중앙 LDK (거실·주방)', x: 3600, y: 0, w: 4000, h: 7500 },
+      { name: '안방 (마스터)', x: 0, y: 0, w: 3600, h: 4200 },
+      { name: '부부욕실', x: 0, y: 4200, w: 2000, h: 3300 },
+      { name: '드레스룸', x: 2000, y: 4200, w: 1600, h: 3300 },
+      { name: '침실 2', x: 7600, y: 0, w: 3400, h: 3800 },
+      { name: '공용욕실', x: 7600, y: 3800, w: 1700, h: 3700 },
+      { name: '다용도/계단', x: 9300, y: 3800, w: 1700, h: 3700 }
+    ],
+    furniture: [
+      { kind: 'sofa', x: 4000, y: 4800, w: 2600, h: 950, label: '메인 소파' },
+      { kind: 'table', x: 4600, y: 2400, w: 1800, h: 900, label: '6인 식탁' },
+      { kind: 'kitchen', x: 3900, y: 400, w: 3200, h: 700, label: '주방 싱크' },
+      { kind: 'bed', x: 400, y: 400, w: 2100, h: 2100, label: '킹 침대' },
+      { kind: 'bed', x: 8500, y: 400, w: 1800, h: 2000, label: '싱글/더블' },
+      { kind: 'bath', x: 200, y: 4400, w: 1600, h: 2200, label: '부부욕실' },
+      { kind: 'bath', x: 7750, y: 4000, w: 1400, h: 2000, label: '공용욕실' }
+    ]
+  }
+};
+
+// ============================================================================
+// 2. 상태 관리 (Application State)
+// ============================================================================
+let state = {
+  size: '9',
+  type: 'modular',
+  viewMode: 'split',
+  cadTool: 'pan',
+  extMat: 'stucco',
+  floorMat: 'oak',
+  timeOfDay: 'noon',
+  roofOpen: true, // 기본 내부 투시 가능하도록 반열림/열림 토글
+  layers: {
+    grid: true,
+    walls: true,
+    openings: true,
+    furniture: true,
+    dimensions: true,
+    deck: true
+  },
+  customWalls: [],
+  measureLines: [],
+  tempPoint: null,
+  hoverPoint: { x: 0, y: 0 }
+};
+
+function getCurrentPreset() {
+  return MODEL_PRESETS[`${state.size}_${state.type}`];
+}
+
+// ============================================================================
+// 3. 2D CAD 캔버스 엔진
+// ============================================================================
+const cadCanvas = document.getElementById('cad-canvas');
+const ctx = cadCanvas.getContext('2d');
+let cam2D = { offsetX: 140, offsetY: 90, scale: 0.055 }; // mm -> px
+let isDragging2D = false;
+let dragStart = { x: 0, y: 0 };
+
+function resizeCanvases() {
+  const p2d = document.getElementById('pane-2d');
+  if (p2d && p2d.style.display !== 'none') {
+    cadCanvas.width = p2d.clientWidth * window.devicePixelRatio;
+    cadCanvas.height = p2d.clientHeight * window.devicePixelRatio;
+    ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
+    drawCAD();
+  }
+  resizeThree();
+}
+
+function fitCadToScreen() {
+  const p2d = document.getElementById('pane-2d');
+  if (!p2d) return;
+  const preset = getCurrentPreset();
+  let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+  preset.footprint.forEach(([x, y]) => {
+    minX = Math.min(minX, x); minY = Math.min(minY, y);
+    maxX = Math.max(maxX, x); maxY = Math.max(maxY, y);
+  });
+  preset.decks.forEach(d => {
+    minX = Math.min(minX, d.x); minY = Math.min(minY, d.y);
+    maxX = Math.max(maxX, d.x + d.w); maxY = Math.max(maxY, d.y + d.h);
+  });
+
+  const w = p2d.clientWidth || 600;
+  const h = p2d.clientHeight || 500;
+  const modelW = maxX - minX + 2600;
+  const modelH = maxY - minY + 2600;
+  cam2D.scale = Math.min(w / modelW, h / modelH) * 0.85;
+  cam2D.offsetX = (w - (maxX - minX) * cam2D.scale) / 2 - minX * cam2D.scale;
+  cam2D.offsetY = (h - (maxY - minY) * cam2D.scale) / 2 - minY * cam2D.scale;
+  drawCAD();
+}
+
+function zoomCad(factor) {
+  const p2d = document.getElementById('pane-2d');
+  const cx = p2d.clientWidth / 2;
+  const cy = p2d.clientHeight / 2;
+  cam2D.offsetX = cx - (cx - cam2D.offsetX) * factor;
+  cam2D.offsetY = cy - (cy - cam2D.offsetY) * factor;
+  cam2D.scale *= factor;
+  drawCAD();
+}
+
+function screenToWorld(sx, sy) {
+  return {
+    x: (sx - cam2D.offsetX) / cam2D.scale,
+    y: (sy - cam2D.offsetY) / cam2D.scale
+  };
+}
+function snap100(val) { return Math.round(val / 100) * 100; }
+
+function worldToScreen(wx, wy) {
+  return {
+    x: wx * cam2D.scale + cam2D.offsetX,
+    y: wy * cam2D.scale + cam2D.offsetY
+  };
+}
+
+function drawCAD() {
+  const p2d = document.getElementById('pane-2d');
+  if (!p2d || p2d.style.display === 'none') return;
+  const W = p2d.clientWidth;
+  const H = p2d.clientHeight;
+  const preset = getCurrentPreset();
+
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#070b14';
+  ctx.fillRect(0, 0, W, H);
+
+  // 1. Grid
+  if (state.layers.grid) {
+    const startW = screenToWorld(0, 0);
+    const endW = screenToWorld(W, H);
+    const stepMinor = 200;
+    const stepMajor = 1000;
+
+    if (cam2D.scale > 0.03) {
+      ctx.strokeStyle = 'rgba(56, 189, 248, 0.05)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      for (let x = Math.floor(startW.x / stepMinor) * stepMinor; x <= endW.x; x += stepMinor) {
+        const sx = worldToScreen(x, 0).x;
+        ctx.moveTo(sx, 0); ctx.lineTo(sx, H);
+      }
+      for (let y = Math.floor(startW.y / stepMinor) * stepMinor; y <= endW.y; y += stepMinor) {
+        const sy = worldToScreen(0, y).y;
+        ctx.moveTo(0, sy); ctx.lineTo(W, sy);
+      }
+      ctx.stroke();
+    }
+
+    ctx.strokeStyle = 'rgba(56, 189, 248, 0.14)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    for (let x = Math.floor(startW.x / stepMajor) * stepMajor; x <= endW.x; x += stepMajor) {
+      const sx = worldToScreen(x, 0).x;
+      ctx.moveTo(sx, 0); ctx.lineTo(sx, H);
+    }
+    for (let y = Math.floor(startW.y / stepMajor) * stepMajor; y <= endW.y; y += stepMajor) {
+      const sy = worldToScreen(0, y).y;
+      ctx.moveTo(0, sy); ctx.lineTo(W, sy);
+    }
+    ctx.stroke();
+  }
+
+  ctx.save();
+  ctx.translate(cam2D.offsetX, cam2D.offsetY);
+  ctx.scale(cam2D.scale, cam2D.scale);
+
+  // 2. Floor footprint subtle fill
+  ctx.fillStyle = 'rgba(30, 41, 59, 0.45)';
+  ctx.beginPath();
+  preset.footprint.forEach(([x, y], i) => i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y));
+  ctx.closePath();
+  ctx.fill();
+
+  // 3. Decks
+  if (state.layers.deck) {
+    preset.decks.forEach(d => {
+      ctx.fillStyle = 'rgba(180, 123, 72, 0.22)';
+      ctx.strokeStyle = '#b47b48';
+      ctx.lineWidth = 2 / cam2D.scale;
+      ctx.fillRect(d.x, d.y, d.w, d.h);
+      ctx.strokeRect(d.x, d.y, d.w, d.h);
+      // Deck planks
+      ctx.strokeStyle = 'rgba(180, 123, 72, 0.32)';
+      ctx.lineWidth = 1 / cam2D.scale;
+      for (let py = d.y + 200; py < d.y + d.h; py += 200) {
+        ctx.beginPath(); ctx.moveTo(d.x, py); ctx.lineTo(d.x + d.w, py); ctx.stroke();
+      }
+      ctx.fillStyle = '#d99b66';
+      ctx.font = `${Math.max(220, 11 / cam2D.scale)}px Noto Sans KR`;
+      ctx.textAlign = 'center';
+      ctx.fillText('우드 데크 (WOOD DECK)', d.x + d.w / 2, d.y + d.h / 2 + 80);
+    });
+  }
+
+  // 4. Furniture
+  if (state.layers.furniture) {
+    preset.furniture.forEach(f => {
+      ctx.fillStyle = 'rgba(148, 163, 184, 0.14)';
+      ctx.strokeStyle = '#64748b';
+      ctx.lineWidth = 1.5 / cam2D.scale;
+      ctx.fillRect(f.x, f.y, f.w, f.h);
+      ctx.strokeRect(f.x, f.y, f.w, f.h);
+
+      if (f.kind === 'bed') {
+        ctx.strokeRect(f.x + 120, f.y + 120, f.w / 2 - 180, 420);
+        ctx.strokeRect(f.x + f.w / 2 + 60, f.y + 120, f.w / 2 - 180, 420);
+      } else if (f.kind === 'stairs') {
+        for (let sx = f.x + 250; sx < f.x + f.w; sx += 250) {
+          ctx.beginPath(); ctx.moveTo(sx, f.y); ctx.lineTo(sx, f.y + f.h); ctx.stroke();
+        }
+      } else if (f.kind === 'kitchen') {
+        ctx.strokeRect(f.x + 150, f.y + 120, 600, 420); // 싱크볼
+      }
+
+      ctx.fillStyle = '#94a3b8';
+      ctx.font = `${Math.max(180, 9.5 / cam2D.scale)}px Noto Sans KR`;
+      ctx.textAlign = 'center';
+      ctx.fillText(f.label, f.x + f.w / 2, f.y + f.h / 2 + 60);
+    });
+  }
+
+  // 5. Walls
+  if (state.layers.walls) {
+    const allWalls = [...preset.walls, ...state.customWalls];
+    allWalls.forEach(w => {
+      const thick = w.ext ? preset.extWallThick : preset.intWallThick;
+      ctx.strokeStyle = w.custom ? '#fbbf24' : (w.ext ? '#e2e8f0' : '#94a3b8');
+      ctx.lineWidth = thick;
+      ctx.lineCap = 'square';
+      ctx.beginPath();
+      ctx.moveTo(w.x1, w.y1);
+      ctx.lineTo(w.x2, w.y2);
+      ctx.stroke();
+
+      // Inner core line
+      ctx.strokeStyle = '#0f172a';
+      ctx.lineWidth = thick * 0.45;
+      ctx.beginPath();
+      ctx.moveTo(w.x1, w.y1);
+      ctx.lineTo(w.x2, w.y2);
+      ctx.stroke();
+    });
+  }
+
+  // 6. Openings (Windows & Doors)
+  if (state.layers.openings) {
+    preset.openings.forEach(op => {
+      ctx.lineCap = 'butt';
+      if (op.kind === 'window' || op.kind === 'sliding') {
+        ctx.strokeStyle = '#070b14';
+        ctx.lineWidth = preset.extWallThick + 20;
+        ctx.beginPath(); ctx.moveTo(op.x1, op.y1); ctx.lineTo(op.x2, op.y2); ctx.stroke();
+
+        ctx.strokeStyle = op.kind === 'sliding' ? '#38bdf8' : '#7dd3fc';
+        ctx.lineWidth = 60;
+        ctx.beginPath(); ctx.moveTo(op.x1, op.y1); ctx.lineTo(op.x2, op.y2); ctx.stroke();
+      } else if (op.kind === 'door') {
+        ctx.strokeStyle = '#070b14';
+        ctx.lineWidth = preset.extWallThick + 20;
+        ctx.beginPath(); ctx.moveTo(op.x1, op.y1); ctx.lineTo(op.x2, op.y2); ctx.stroke();
+
+        const len = Math.hypot(op.x2 - op.x1, op.y2 - op.y1);
+        const ang = Math.atan2(op.y2 - op.y1, op.x2 - op.x1);
+        ctx.strokeStyle = '#f59e0b';
+        ctx.lineWidth = 28;
+        ctx.beginPath();
+        ctx.moveTo(op.x1, op.y1);
+        ctx.lineTo(op.x1 + Math.cos(ang - Math.PI / 2) * len, op.y1 + Math.sin(ang - Math.PI / 2) * len);
+        ctx.stroke();
+
+        ctx.strokeStyle = 'rgba(245, 158, 11, 0.45)';
+        ctx.lineWidth = 14;
+        ctx.beginPath();
+        ctx.arc(op.x1, op.y1, len, ang - Math.PI / 2, ang);
+        ctx.stroke();
+      }
+    });
+  }
+
+  // 7. Dimensions & Room Labels
+  if (state.layers.dimensions) {
+    preset.rooms.forEach(r => {
+      const sqm = ((r.w * r.h) / 1000000).toFixed(1);
+      ctx.fillStyle = '#f8fafc';
+      ctx.font = `bold ${Math.max(240, 12 / cam2D.scale)}px Noto Sans KR`;
+      ctx.textAlign = 'center';
+      ctx.fillText(r.name, r.x + r.w / 2, r.y + r.h / 2 - 80);
+
+      ctx.fillStyle = '#38bdf8';
+      ctx.font = `${Math.max(200, 10 / cam2D.scale)}px JetBrains Mono`;
+      ctx.fillText(`${sqm}㎡ (${(r.w/1000).toFixed(1)}×${(r.h/1000).toFixed(1)}m)`, r.x + r.w / 2, r.y + r.h / 2 + 180);
+    });
+
+    // Outer overall dimension lines
+    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+    preset.footprint.forEach(([x, y]) => {
+      minX = Math.min(minX, x); minY = Math.min(minY, y);
+      maxX = Math.max(maxX, x); maxY = Math.max(maxY, y);
+    });
+    drawDimLine(minX, minY - 650, maxX, minY - 650, `${(maxX - minX).toLocaleString()} mm`);
+    drawDimLine(minX - 650, minY, minX - 650, maxY, `${(maxY - minY).toLocaleString()} mm`, true);
+  }
+
+  // 8. User measure lines & temp drawing preview
+  state.measureLines.forEach(m => {
+    const dist = Math.round(Math.hypot(m.x2 - m.x1, m.y2 - m.y1));
+    drawDimLine(m.x1, m.y1, m.x2, m.y2, `${dist.toLocaleString()} mm`, false, '#10b981');
+  });
+
+  if (state.tempPoint) {
+    ctx.strokeStyle = state.cadTool === 'wall' ? '#fbbf24' : '#10b981';
+    ctx.lineWidth = state.cadTool === 'wall' ? 120 : 30;
+    ctx.setLineDash([120, 80]);
+    ctx.beginPath();
+    ctx.moveTo(state.tempPoint.x, state.tempPoint.y);
+    ctx.lineTo(state.hoverPoint.x, state.hoverPoint.y);
+    ctx.stroke();
+    ctx.setLineDash([]);
+  }
+
+  ctx.restore();
+}
+
+function drawDimLine(x1, y1, x2, y2, text, vertical = false, color = '#38bdf8') {
+  ctx.strokeStyle = color;
+  ctx.fillStyle = color;
+  ctx.lineWidth = 1.2 / cam2D.scale;
+  ctx.beginPath();
+  ctx.moveTo(x1, y1); ctx.lineTo(x2, y2);
+  ctx.stroke();
+
+  const tick = 120;
+  ctx.beginPath();
+  if (vertical) {
+    ctx.moveTo(x1 - tick, y1); ctx.lineTo(x1 + tick, y1);
+    ctx.moveTo(x2 - tick, y2); ctx.lineTo(x2 + tick, y2);
+  } else {
+    ctx.moveTo(x1, y1 - tick); ctx.lineTo(x1, y1 + tick);
+    ctx.moveTo(x2, y2 - tick); ctx.lineTo(x2, y2 + tick);
+  }
+  ctx.stroke();
+
+  ctx.font = `bold ${Math.max(220, 11 / cam2D.scale)}px JetBrains Mono`;
+  ctx.textAlign = 'center';
+  const mx = (x1 + x2) / 2;
+  const my = (y1 + y2) / 2;
+  if (vertical) {
+    ctx.save();
+    ctx.translate(mx - 180, my);
+    ctx.rotate(-Math.PI / 2);
+    ctx.fillText(text, 0, 0);
+    ctx.restore();
+  } else {
+    ctx.fillText(text, mx, my - 130);
+  }
+}
+
+// 2D Mouse Events
+cadCanvas.addEventListener('mousedown', (e) => {
+  const rect = cadCanvas.getBoundingClientRect();
+  const sx = e.clientX - rect.left;
+  const sy = e.clientY - rect.top;
+  const w = screenToWorld(sx, sy);
+  const wx = snap100(w.x), wy = snap100(w.y);
+
+  if (state.cadTool === 'pan' || e.button === 1 || e.button === 2) {
+    isDragging2D = true;
+    dragStart = { x: e.clientX - cam2D.offsetX, y: e.clientY - cam2D.offsetY };
+  } else if (state.cadTool === 'wall' || state.cadTool === 'measure') {
+    if (!state.tempPoint) {
+      state.tempPoint = { x: wx, y: wy };
+    } else {
+      if (state.cadTool === 'wall') {
+        state.customWalls.push({ x1: state.tempPoint.x, y1: state.tempPoint.y, x2: wx, y2: wy, ext: false, custom: true });
+        build3DHouse();
+      } else {
+        state.measureLines.push({ x1: state.tempPoint.x, y1: state.tempPoint.y, x2: wx, y2: wy });
+      }
+      state.tempPoint = null;
+      drawCAD();
+    }
+  }
+});
+
+window.addEventListener('mousemove', (e) => {
+  const rect = cadCanvas.getBoundingClientRect();
+  if (e.target === cadCanvas) {
+    const w = screenToWorld(e.clientX - rect.left, e.clientY - rect.top);
+    state.hoverPoint = { x: snap100(w.x), y: snap100(w.y) };
+    document.getElementById('status-coords').textContent =
+      `X: ${state.hoverPoint.x.toLocaleString()} mm | Y: ${state.hoverPoint.y.toLocaleString()} mm | SNAP: 100 mm`;
+    if (state.tempPoint) drawCAD();
+  }
+  if (isDragging2D) {
+    cam2D.offsetX = e.clientX - dragStart.x;
+    cam2D.offsetY = e.clientY - dragStart.y;
+    drawCAD();
+  }
+});
+
+window.addEventListener('mouseup', () => { isDragging2D = false; });
+
+cadCanvas.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  const rect = cadCanvas.getBoundingClientRect();
+  const sx = e.clientX - rect.left;
+  const sy = e.clientY - rect.top;
+  const factor = e.deltaY < 0 ? 1.14 : 0.88;
+  cam2D.offsetX = sx - (sx - cam2D.offsetX) * factor;
+  cam2D.offsetY = sy - (sy - cam2D.offsetY) * factor;
+  cam2D.scale *= factor;
+  drawCAD();
+}, { passive: false });
+
+// ============================================================================
+// 4. 3D Three.js 실물 내외도 엔진 (단위: 1 Three.js unit = 1 meter = 1000mm)
+// ============================================================================
+let scene, camera, renderer, controls;
+let houseGroup, roofGroup, sunLight, hemiLight, interiorLights = [];
+
+function initThree() {
+  const container = document.getElementById('three-container');
+  scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x0c1424);
+  scene.fog = new THREE.FogExp2(0x0c1424, 0.015);
+
+  camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 200);
+  camera.position.set(13, 10, 14);
+
+  renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setSize(container.clientWidth, container.clientHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  container.appendChild(renderer.domElement);
+
+  controls = new THREE.OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.06;
+  controls.maxPolarAngle = Math.PI / 2 - 0.03;
+
+  // Ground (잔디 부지)
+  const groundGeo = new THREE.PlaneGeometry(80, 80);
+  const groundMat = new THREE.MeshStandardMaterial({ color: 0x243b2a, roughness: 0.92 });
+  const ground = new THREE.Mesh(groundGeo, groundMat);
+  ground.rotation.x = -Math.PI / 2;
+  ground.receiveShadow = true;
+  scene.add(ground);
+
+  const gridHelper = new THREE.GridHelper(40, 40, 0x38bdf8, 0x1e293b);
+  gridHelper.position.y = 0.01;
+  gridHelper.material.opacity = 0.25;
+  gridHelper.material.transparent = true;
+  scene.add(gridHelper);
+
+  // Lights
+  hemiLight = new THREE.HemisphereLight(0xdbeafe, 0x334155, 0.75);
+  scene.add(hemiLight);
+
+  sunLight = new THREE.DirectionalLight(0xfffbeb, 1.3);
+  sunLight.position.set(12, 18, 12);
+  sunLight.castShadow = true;
+  sunLight.shadow.mapSize.set(2048, 2048);
+  sunLight.shadow.camera.near = 1;
+  sunLight.shadow.camera.far = 50;
+  sunLight.shadow.camera.left = -16;
+  sunLight.shadow.camera.right = 16;
+  sunLight.shadow.camera.top = 16;
+  sunLight.shadow.camera.bottom = -16;
+  scene.add(sunLight);
+
+  houseGroup = new THREE.Group();
+  roofGroup = new THREE.Group();
+  scene.add(houseGroup);
+  scene.add(roofGroup);
+
+  animateThree();
+}
+
+function resizeThree() {
+  const container = document.getElementById('three-container');
+  const p3d = document.getElementById('pane-3d');
+  if (!renderer || !p3d || p3d.style.display === 'none') return;
+  const w = p3d.clientWidth;
+  const h = p3d.clientHeight;
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+  renderer.setSize(w, h);
+}
+
+function animateThree() {
+  requestAnimationFrame(animateThree);
+  if (controls) controls.update();
+  if (renderer && scene && camera) renderer.render(scene, camera);
+}
+
+function getExteriorColor() {
+  if (state.extMat === 'cedar') return 0xb47b48;
+  if (state.extMat === 'charred') return 0x27272a;
+  return 0xf1f5f9;
+}
+function getFloorColor() {
+  if (state.floorMat === 'walnut') return 0x5c3d28;
+  if (state.floorMat === 'tile') return 0xcbd5e1;
+  return 0xd4a373;
+}
+
+function build3DHouse() {
+  if (!houseGroup) return;
+  while (houseGroup.children.length) houseGroup.remove(houseGroup.children[0]);
+  while (roofGroup.children.length) roofGroup.remove(roofGroup.children[0]);
+  interiorLights.forEach(l => scene.remove(l));
+  interiorLights = [];
+
+  const preset = getCurrentPreset();
+  const scale = 0.001; // mm -> m
+  const H = preset.wallHeight * scale;
+
+  // 중심 정렬 오프셋 계산
+  let minX = Infinity, minZ = Infinity, maxX = -Infinity, maxZ = -Infinity;
+  preset.footprint.forEach(([x, y]) => {
+    minX = Math.min(minX, x); minZ = Math.min(minZ, y);
+    maxX = Math.max(maxX, x); maxZ = Math.max(maxZ, y);
+  });
+  const cx = ((minX + maxX) / 2) * scale;
+  const cz = ((minZ + maxZ) / 2) * scale;
+
+  // 1. 기초 콘크리트 슬라브 + 실내 바닥
+  const shape = new THREE.Shape();
+  preset.footprint.forEach(([x, y], i) => {
+    const px = x * scale - cx;
+    const py = -(y * scale - cz);
+    if (i === 0) shape.moveTo(px, py);
+    else shape.lineTo(px, py);
+  });
+  shape.closePath();
+
+  const slabGeo = new THREE.ExtrudeGeometry(shape, { depth: 0.18, bevelEnabled: false });
+  const slabMat = new THREE.MeshStandardMaterial({ color: getFloorColor(), roughness: 0.7 });
+  const slab = new THREE.Mesh(slabGeo, slabMat);
+  slab.rotation.x = -Math.PI / 2;
+  slab.position.y = 0.02;
+  slab.receiveShadow = true;
+  slab.castShadow = true;
+  houseGroup.add(slab);
+
+  // 2. 데크
+  if (state.layers.deck) {
+    preset.decks.forEach(d => {
+      const deckGeo = new THREE.BoxGeometry(d.w * scale, 0.16, d.h * scale);
+      const deckMat = new THREE.MeshStandardMaterial({ color: 0x9a6338, roughness: 0.85 });
+      const deck = new THREE.Mesh(deckGeo, deckMat);
+      deck.position.set((d.x + d.w / 2) * scale - cx, 0.08, (d.y + d.h / 2) * scale - cz);
+      deck.receiveShadow = true;
+      deck.castShadow = true;
+      houseGroup.add(deck);
+    });
+  }
+
+  // 3. 벽체 생성 (개구부 위치에 창호/문 표현 포함)
+  const extMat = new THREE.MeshStandardMaterial({ color: getExteriorColor(), roughness: 0.75 });
+  const intMat = new THREE.MeshStandardMaterial({ color: 0xe2e8f0, roughness: 0.85 });
+  const glassMat = new THREE.MeshPhysicalMaterial({
+    color: 0x7dd3fc, transparent: true, opacity: 0.38, roughness: 0.1, metalness: 0.1
+  });
+  const frameMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, roughness: 0.4, metalness: 0.5 });
+
+  const allWalls = [...preset.walls, ...state.customWalls];
+  allWalls.forEach(w => {
+    const x1 = w.x1 * scale - cx, z1 = w.y1 * scale - cz;
+    const x2 = w.x2 * scale - cx, z2 = w.y2 * scale - cz;
+    const len = Math.hypot(x2 - x1, z2 - z1);
+    if (len < 0.05) return;
+    const thick = (w.ext ? preset.extWallThick : preset.intWallThick) * scale;
+    const ang = Math.atan2(z2 - z1, x2 - x1);
+
+    // 벽체 기본 메쉬 (지붕 열림 시 내부가 잘 보이도록 외벽은 그대로, 내벽은 살짝 낮게 또는 투명도 없이 입체감)
+    const wallGeo = new THREE.BoxGeometry(len, H, thick);
+    const wallMesh = new THREE.Mesh(wallGeo, w.ext ? extMat : intMat);
+    wallMesh.position.set((x1 + x2) / 2, H / 2 + 0.18, (z1 + z2) / 2);
+    wallMesh.rotation.y = -ang;
+    wallMesh.castShadow = true;
+    wallMesh.receiveShadow = true;
+    houseGroup.add(wallMesh);
+  });
+
+  // 4. 창호 및 출입문 3D 오버레이 (벽면 위 유리창 & 프레임)
+  preset.openings.forEach(op => {
+    const x1 = op.x1 * scale - cx, z1 = op.y1 * scale - cz;
+    const x2 = op.x2 * scale - cx, z2 = op.y2 * scale - cz;
+    const len = Math.hypot(x2 - x1, z2 - z1);
+    const ang = Math.atan2(z2 - z1, x2 - x1);
+    const isDoor = op.kind === 'door' || op.kind === 'sliding';
+    const opH = isDoor ? 2.15 : 1.35;
+    const opY = isDoor ? 0.18 + opH / 2 : 0.18 + 0.9 + opH / 2;
+
+    const frame = new THREE.Mesh(new THREE.BoxGeometry(len, opH, 0.25), frameMat);
+    frame.position.set((x1 + x2) / 2, opY, (z1 + z2) / 2);
+    frame.rotation.y = -ang;
+    houseGroup.add(frame);
+
+    const glass = new THREE.Mesh(
+      new THREE.BoxGeometry(len * 0.92, opH * 0.9, 0.27),
+      op.kind === 'door' ? new THREE.MeshStandardMaterial({ color: 0x78350f, roughness: 0.6 }) : glassMat
+    );
+    glass.position.copy(frame.position);
+    glass.rotation.copy(frame.rotation);
+    houseGroup.add(glass);
+  });
+
+  // 5. 실내 가구 3D 배치
+  preset.furniture.forEach(f => {
+    const fw = f.w * scale, fd = f.h * scale;
+    const fx = (f.x + f.w / 2) * scale - cx;
+    const fz = (f.y + f.h / 2) * scale - cz;
+    let fh = 0.55, color = 0x94a3b8;
+    if (f.kind === 'bed') { fh = 0.5; color = 0xf8fafc; }
+    else if (f.kind === 'sofa') { fh = 0.72; color = 0x475569; }
+    else if (f.kind === 'table') { fh = 0.75; color = 0xb47b48; }
+    else if (f.kind === 'kitchen') { fh = 0.88; color = 0x334155; }
+    else if (f.kind === 'bath') { fh = 0.45; color = 0xe0f2fe; }
+    else if (f.kind === 'stairs') { fh = 1.4; color = 0x9a6338; }
+
+    const mesh = new THREE.Mesh(
+      new THREE.BoxGeometry(fw, fh, fd),
+      new THREE.MeshStandardMaterial({ color, roughness: 0.7 })
+    );
+    mesh.position.set(fx, 0.18 + fh / 2, fz);
+    mesh.castShadow = true;
+    mesh.receiveShadow = true;
+    houseGroup.add(mesh);
+  });
+
+  // 6. 지붕 (모듈식 = 모던 평지붕/모노피치, 일반주택 = 박공지붕)
+  const roofW = (maxX - minX) * scale + 0.8;
+  const roofD = (maxZ - minZ) * scale + 0.8;
+  const roofMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, roughness: 0.6, metalness: 0.25 });
+
+  if (preset.roofType === 'flat') {
+    const rMesh = new THREE.Mesh(new THREE.BoxGeometry(roofW, 0.22, roofD), roofMat);
+    rMesh.position.set(0, H + 0.28, 0);
+    rMesh.castShadow = true;
+    roofGroup.add(rMesh);
+  } else {
+    // 박공 지붕 (2개 경사 슬래브)
+    const ridgeH = 1.45;
+    const halfD = roofD / 2;
+    const slopeLen = Math.hypot(halfD, ridgeH);
+    const slopeAng = Math.atan2(ridgeH, halfD);
+
+    const s1 = new THREE.Mesh(new THREE.BoxGeometry(roofW, 0.16, slopeLen), roofMat);
+    s1.position.set(0, H + 0.18 + ridgeH / 2, -halfD / 2);
+    s1.rotation.x = slopeAng;
+    s1.castShadow = true;
+
+    const s2 = new THREE.Mesh(new THREE.BoxGeometry(roofW, 0.16, slopeLen), roofMat);
+    s2.position.set(0, H + 0.18 + ridgeH / 2, halfD / 2);
+    s2.rotation.x = -slopeAng;
+    s2.castShadow = true;
+
+    roofGroup.add(s1, s2);
+  }
+
+  // 실내 무드 조명
+  const pLight = new THREE.PointLight(0xfef3c7, state.timeOfDay === 'night' ? 1.8 : 0.4, 15);
+  pLight.position.set(0, H - 0.3, 0);
+  scene.add(pLight);
+  interiorLights.push(pLight);
+
+  roofGroup.visible = !state.roofOpen;
+}
+
+// ============================================================================
+// 5. UI 인터랙션 & 내보내기 (DXF / SVG)
+// ============================================================================
+function updateInspector() {
+  const p = getCurrentPreset();
+  document.getElementById('model-name-label').textContent = p.title;
+  document.getElementById('spec-area').textContent = `${p.areaSqm.toFixed(1)} ㎡`;
+  document.getElementById('spec-pyeong').textContent = `${p.pyeong.toFixed(1)} 평`;
+
+  const deckSqm = p.decks.reduce((acc, d) => acc + (d.w * d.h) / 1000000, 0);
+  document.getElementById('spec-deck').textContent = `${deckSqm.toFixed(1)} ㎡`;
+  document.getElementById('spec-deck-py').textContent = `${(deckSqm / 3.3058).toFixed(1)} 평`;
+
+  document.getElementById('spec-dims').textContent = p.dimsText;
+  document.getElementById('spec-height').textContent = `층고 ${p.wallHeight.toLocaleString()}mm`;
+  document.getElementById('spec-cost').textContent = p.costText;
+  document.getElementById('spec-duration').textContent = p.durationText;
+
+  const tbody = document.getElementById('room-schedule-body');
+  tbody.innerHTML = p.rooms.map(r => {
+    const sqm = ((r.w * r.h) / 1000000).toFixed(1);
+    return `<tr><td>${r.name}</td><td class="num">${(r.w/1000).toFixed(1)}×${(r.h/1000).toFixed(1)}</td><td class="num">${sqm}㎡</td></tr>`;
+  }).join('');
+
+  document.getElementById('method-desc').innerHTML = p.summary;
+}
+
+function selectSize(sz) {
+  state.size = sz;
+  document.querySelectorAll('#size-selector .seg-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.size === sz);
+  });
+  resetCurrentModel();
+}
+
+function selectType(tp) {
+  state.type = tp;
+  document.querySelectorAll('#type-selector .seg-btn').forEach(b => {
+    b.classList.remove('active', 'active-gold');
+    if (b.dataset.type === tp) b.classList.add(tp === 'custom' ? 'active-gold' : 'active');
+  });
+  resetCurrentModel();
+}
+
+function resetCurrentModel() {
+  state.customWalls = [];
+  state.measureLines = [];
+  state.tempPoint = null;
+  updateInspector();
+  fitCadToScreen();
+  build3DHouse();
+}
+
+function setViewMode(mode) {
+  state.viewMode = mode;
+  document.querySelectorAll('#view-selector .seg-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.view === mode);
+  });
+  const p2 = document.getElementById('pane-2d');
+  const p3 = document.getElementById('pane-3d');
+  p2.style.display = (mode === '3d') ? 'none' : 'block';
+  p3.style.display = (mode === '2d') ? 'none' : 'block';
+  setTimeout(() => { resizeCanvases(); fitCadToScreen(); }, 30);
+}
+
+function setCadTool(tool) {
+  state.cadTool = tool;
+  state.tempPoint = null;
+  document.querySelectorAll('.left-panel .tool-btn').forEach(b => {
+    if (b.id.startsWith('tool-')) b.classList.toggle('active', b.id === `tool-${tool}`);
+  });
+  cadCanvas.style.cursor = tool === 'pan' ? 'grab' : 'crosshair';
+}
+
+function undoCustomWall() {
+  if (state.customWalls.length) {
+    state.customWalls.pop();
+    drawCAD();
+    build3DHouse();
+  } else if (state.measureLines.length) {
+    state.measureLines.pop();
+    drawCAD();
+  }
+}
+
+function toggleLayer(name, checked) {
+  state.layers[name] = checked;
+  drawCAD();
+  if (name === 'deck') build3DHouse();
+}
+
+function setExteriorMat(mat, el) {
+  state.extMat = mat;
+  document.querySelectorAll('#ext-swatches .swatch').forEach(s => s.classList.remove('active'));
+  el.classList.add('active');
+  build3DHouse();
+}
+
+function setFloorMat(mat, el) {
+  state.floorMat = mat;
+  document.querySelectorAll('#floor-swatches .swatch').forEach(s => s.classList.remove('active'));
+  el.classList.add('active');
+  build3DHouse();
+}
+
+function setTimeOfDay(tod) {
+  state.timeOfDay = tod;
+  document.querySelectorAll('[id^="time-"]').forEach(b => b.classList.remove('active'));
+  document.getElementById(`time-${tod}`).classList.add('active');
+
+  if (tod === 'morning') {
+    scene.background.setHex(0x1e293b);
+    sunLight.position.set(16, 8, 6);
+    sunLight.color.setHex(0xffedd5);
+    sunLight.intensity = 1.1;
+    hemiLight.intensity = 0.7;
+  } else if (tod === 'noon') {
+    scene.background.setHex(0x0c1424);
+    sunLight.position.set(10, 20, 12);
+    sunLight.color.setHex(0xfffbeb);
+    sunLight.intensity = 1.35;
+    hemiLight.intensity = 0.8;
+  } else if (tod === 'sunset') {
+    scene.background.setHex(0x2a1824);
+    sunLight.position.set(-16, 6, 8);
+    sunLight.color.setHex(0xfb923c);
+    sunLight.intensity = 1.15;
+    hemiLight.intensity = 0.55;
+  } else {
+    scene.background.setHex(0x030712);
+    sunLight.intensity = 0.18;
+    hemiLight.intensity = 0.25;
+  }
+  interiorLights.forEach(l => l.intensity = tod === 'night' ? 2.2 : 0.4);
+}
+
+function toggleRoofCutaway() {
+  state.roofOpen = !state.roofOpen;
+  if (roofGroup) roofGroup.visible = !state.roofOpen;
+  const btn = document.getElementById('btn-roof-toggle');
+  btn.classList.toggle('active', state.roofOpen);
+  btn.textContent = state.roofOpen ? '🏠 지붕 열기 (내부 투시 ON)' : '🏠 지붕 닫기 (외관 보기)';
+}
+
+function setCameraView(v) {
+  if (!camera || !controls) return;
+  if (v === 'iso') { camera.position.set(13, 10, 14); controls.target.set(0, 1, 0); }
+  else if (v === 'front') { camera.position.set(0, 3.5, 16); controls.target.set(0, 1.4, 0); }
+  else if (v === 'top') { camera.position.set(0, 18, 0.01); controls.target.set(0, 0, 0); }
+  else if (v === 'interior') { camera.position.set(2.5, 2.2, 4.5); controls.target.set(0, 1.2, 0); }
+  controls.update();
+}
+
+// ============================================================================
+// 6. 표준 CAD DXF & SVG 내보내기
+// ============================================================================
+function exportDXF() {
+  const p = getCurrentPreset();
+  let lines = [
+    '0', 'SECTION', '2', 'HEADER', '0', 'ENDSEC',
+    '0', 'SECTION', '2', 'ENTITIES'
+  ];
+  const addLine = (x1, y1, x2, y2, layer) => {
+    lines.push('0', 'LINE', '8', layer,
+      '10', x1.toFixed(1), '20', (-y1).toFixed(1), '30', '0.0',
+      '11', x2.toFixed(1), '21', (-y2).toFixed(1), '31', '0.0');
+  };
+
+  [...p.walls, ...state.customWalls].forEach(w => addLine(w.x1, w.y1, w.x2, w.y2, w.ext ? 'WALL_EXT' : 'WALL_INT'));
+  p.openings.forEach(o => addLine(o.x1, o.y1, o.x2, o.y2, 'OPENINGS'));
+  p.decks.forEach(d => {
+    addLine(d.x, d.y, d.x + d.w, d.y, 'DECK');
+    addLine(d.x + d.w, d.y, d.x + d.w, d.y + d.h, 'DECK');
+    addLine(d.x + d.w, d.y + d.h, d.x, d.y + d.h, 'DECK');
+    addLine(d.x, d.y + d.h, d.x, d.y, 'DECK');
+  });
+
+  lines.push('0', 'ENDSEC', '0', 'EOF');
+  const blob = new Blob([lines.join('\n')], { type: 'application/dxf' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `KYANOS_${p.id}_CAD.dxf`;
+  a.click();
+}
+
+function exportSVG() {
+  const p = getCurrentPreset();
+  let svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 14000 14000" style="background:#070b14">`;
+  p.decks.forEach(d => {
+    svg += `<rect x="${d.x}" y="${d.y}" width="${d.w}" height="${d.h}" fill="rgba(180,123,72,0.25)" stroke="#b47b48" stroke-width="25"/>`;
+  });
+  [...p.walls, ...state.customWalls].forEach(w => {
+    svg += `<line x1="${w.x1}" y1="${w.y1}" x2="${w.x2}" y2="${w.y2}" stroke="${w.ext ? '#f8fafc' : '#94a3b8'}" stroke-width="${w.ext ? p.extWallThick : p.intWallThick}" stroke-linecap="square"/>`;
+  });
+  p.openings.forEach(o => {
+    svg += `<line x1="${o.x1}" y1="${o.y1}" x2="${o.x2}" y2="${o.y2}" stroke="${o.kind === 'door' ? '#f59e0b' : '#38bdf8'}" stroke-width="70"/>`;
+  });
+  svg += `</svg>`;
+  const blob = new Blob([svg], { type: 'image/svg+xml' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `KYANOS_${p.id}_PLAN.svg`;
+  a.click();
+}
+
+// 초기화
+window.addEventListener('resize', resizeCanvases);
+window.addEventListener('DOMContentLoaded', () => {
+  initThree();
+  updateInspector();
+  resizeCanvases();
+  fitCadToScreen();
+  build3DHouse();
+});
+</script>
+</body>
+</html>
