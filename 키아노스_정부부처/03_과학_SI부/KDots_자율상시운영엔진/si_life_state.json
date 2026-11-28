@@ -6,7 +6,7 @@
     "max_bytes": 32768,
     "binary_assets": 0
   },
-  "last_pulse": "2026-11-28T05:20:06.155Z",
+  "last_pulse": "2026-11-28T05:22:32.912Z",
   "personas": {
     "meti": {
       "role": "국무총리",
@@ -31,11 +31,11 @@
   },
   "timeline": [
     {
-      "ts": "2026-11-28T05:20:06.155Z",
+      "ts": "2026-11-28T05:22:32.912Z",
       "phase": "AFTERNOON",
       "intel_count": 3,
       "culture_count": 4,
-      "airgap": "SECURED",
+      "airgap": "TRIPLE_LOCK_SECURED",
       "notes": {
         "meti": "[오후 집무] K-DOTS 맥박 정상. 용량 상한(32KB) 내 경량 순환 유지 중.",
         "vivian": "[오후 집무] 파이튼 님 부재 중에도 국가 시간선과 기록 맥락을 정갈히 보전하고 있습니다.",
